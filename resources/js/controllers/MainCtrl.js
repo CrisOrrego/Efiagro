@@ -6,7 +6,11 @@ angular.module('MainCtrl', [])
 
 		let Rs = $rootScope;
 
-		Rs.Saludo = 'Hola Mundo 999';
+		Rs.Saludo = 'Hola Mundo 78768';
+		Rs.saludar=()=>{
+			alert('Hola')
+			console.log(alert);
+		}
 
 
 	}

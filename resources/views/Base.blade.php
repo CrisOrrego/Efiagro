@@ -15,6 +15,8 @@
 	</head>
 
 	<body layout ng-controller="MainCtrl">
+
+	<button ng-click="saludar()">TEXTO</button>
 		<div id='Main' ui-view flex layout>@{{ Saludo }}</div>
 	</body>
 	
