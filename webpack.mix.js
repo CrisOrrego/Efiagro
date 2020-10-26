@@ -1,17 +1,28 @@
 const mix = require('laravel-mix');
+const libs = false;
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
- | file for the application as well as bundling up all the JS files.
- |
- */
+if(libs){
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+	mix.scripts([
+
+		'resources/js/libs/jquery.min.js',
+		'resources/js/libs/angular.min.js',
+		'resources/js/libs/angular-material.min.js',
+	    
+	    'resources/js/libs/other/moment.min.js',
+	    'resources/js/libs/other/moment_es.js',
+	    'resources/js/libs/other/xlsx.mini.min.js',
+	    'resources/js/libs/other/jsstore.js',
+
+	], 'public/js/libs.min.js');
+	
+};
+
+mix.sass('resources/sass/app.scss', 'public/css/app.min.css');
+
+mix.scripts([
+
+	'resources/js/app.js',
+	'resources/js/controllers/MainCtrl.js',
+
+], 'public/js/app.min.js');

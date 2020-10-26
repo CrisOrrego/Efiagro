@@ -1,1 +1,3 @@
-require('./bootstrap');
+angular.module('App', [
+	'MainCtrl'
+]);
