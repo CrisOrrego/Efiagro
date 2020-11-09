@@ -1,6 +1,6 @@
 angular.module('LoginCtrl', [])
-.controller('LoginCtrl', ['$rootScope', 
-	function($rootScope){
+.controller('LoginCtrl', ['$rootScope', '$http', 
+	function($rootScope, $http){
 
 		console.log('LoginCtrl');
 
@@ -8,10 +8,17 @@ angular.module('LoginCtrl', [])
 
 		
 		Rs.Usuario = {
-			Correo: 'Hola',
-			Password: 'Mundo'
+			Correo: 'info@mbrain.co',
+			Password: '12345'
 		};
 
+		Rs.enviarLogin = (ev) => {
+			ev.preventDefault();
+			
+			$http.post('/api/usuario/login', { Credenciales: Rs.Usuario }).then((r) => {
+				console.log(r);
+			});
+		}
 
 	}
 ]);
