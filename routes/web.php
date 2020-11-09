@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('Base');
 });
+
+Route::post('/api/usuario/login', 'UsuarioController@Login');
