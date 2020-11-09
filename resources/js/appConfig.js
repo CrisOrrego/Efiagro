@@ -1,28 +1,3 @@
-angular.module('App', [
-
-	'ui.router',
-
-	'ngStorage',
-	'ngMaterial',
-	'ngSanitize',
-
-	'md.data.table',
-	
-	//'ngFileUpload',
-	//'angular-loading-bar',
-	//'angularResizable',
-	'ui.utils.masks',
-	'as.sortable',
-	'ngCsv',
-	//'angular-img-cropper',
-	//'indexedDB',
-
-	//'appRoutes',
-	'appConfig',
-
-	'LoginCtrl',
-	'MainCtrl'
-]);
 angular.module('appConfig', [])
 .config(['$mdThemingProvider', '$mdIconProvider', '$mdDateLocaleProvider',
 	function($mdThemingProvider, $mdIconProvider, $mdDateLocaleProvider){
@@ -75,40 +50,6 @@ angular.module('appConfig', [])
 		angular.forEach(icons, function(icon, k) {
 			iconp.icon(k, 'data:image/svg+xml, '+icon, 24);
 		});
-
-	}
-]);
-angular.module('LoginCtrl', [])
-.controller('LoginCtrl', ['$rootScope', 
-	function($rootScope){
-
-		console.log('LoginCtrl');
-
-		let Rs = $rootScope;
-
-		
-		Rs.Usuario = {
-			Correo: 'Hola',
-			Password: 'Mundo'
-		};
-
-
-	}
-]);
-angular.module('MainCtrl', [])
-.controller('MainCtrl', ['$rootScope', 
-	function($rootScope){
-
-		console.log('MainCtrl');
-
-		let Rs = $rootScope;
-
-		Rs.Saludo = 'Hola Mundo 78768';
-		Rs.saludar=()=>{
-			alert('Hola')
-			console.log(alert);
-		}
-
 
 	}
 ]);
