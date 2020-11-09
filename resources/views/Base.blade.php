@@ -8,16 +8,16 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
 
-		<link   rel="stylesheet"              		href="/css/app.min.css?202010051927" />
+		<link   rel="stylesheet" href="/css/app.min.css?202010051927" />
 
 		<script type="application/javascript" src="/js/libs.min.js"></script>
 		<script defer type="application/javascript" src="/js/app.min.js?202010051927"></script>
 	</head>
-
+	
 	<body layout ng-controller="MainCtrl">
 
 	<button ng-click="saludar()">TEXTO</button>
 		<div id='Main' ui-view flex layout>@{{ Saludo }}</div>
 	</body>
-	
+
 </html>
