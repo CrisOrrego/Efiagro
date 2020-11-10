@@ -17,4 +17,7 @@ Route::get('/', function () {
     return view('Base');
 });
 
-Route::post('/api/usuario/login', 'UsuarioController@Login');
+Route::get('/Login', function(){ return view('Login'); });
+Route::get('/Home', function(){  return view('Home'); });
+
+AdvancedRoute::controller('/api/usuario', 'UsuarioController');

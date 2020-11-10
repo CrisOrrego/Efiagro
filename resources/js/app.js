@@ -6,20 +6,21 @@ angular.module('App', [
 	'ngMaterial',
 	'ngSanitize',
 
-	'md.data.table',
+	//'md.data.table',
 	
 	//'ngFileUpload',
 	//'angular-loading-bar',
 	//'angularResizable',
-	'ui.utils.masks',
-	'as.sortable',
-	'ngCsv',
+	//'ui.utils.masks',
+	//'as.sortable',
+	//'ngCsv',
 	//'angular-img-cropper',
 	//'indexedDB',
 
-	//'appRoutes',
+	'appRoutes',
 	'appConfig',
 
 	'LoginCtrl',
-	'MainCtrl'
+	'MainCtrl',
+	'HomeCtrl',
 ]);

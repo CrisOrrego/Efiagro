@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Usuario;
 
 class UsuarioController extends Controller
 {
-    public function Login()
+    public function postLogin()
     {
     	$Credenciales = request('Credenciales');
-    	return $Credenciales;
+    	
+    	$Usuario = Usuario::where('correo', $Credenciales['Correo'])->orWhere('cedula', $Credenciales['Correo'])->first();
+
+    	if($Usuario){
+    		return $Usuario;
+    	}else{
+    		return response()->json(['Msg' => 'Error en usuario o contraseña'], 500);
+    	}
     }
 }

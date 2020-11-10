@@ -1,6 +1,6 @@
 angular.module('LoginCtrl', [])
-.controller('LoginCtrl', ['$rootScope', '$http', 
-	function($rootScope, $http){
+.controller('LoginCtrl', ['$rootScope', '$http', '$state',
+	function($rootScope, $http, $state){
 
 		console.log('LoginCtrl');
 
@@ -16,7 +16,7 @@ angular.module('LoginCtrl', [])
 			ev.preventDefault();
 			
 			$http.post('/api/usuario/login', { Credenciales: Rs.Usuario }).then((r) => {
-				console.log(r);
+				$state.go('Home');
 			});
 		}
 

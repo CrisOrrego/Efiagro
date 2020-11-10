@@ -16,8 +16,6 @@
 		<script defer type="application/javascript" src="/js/app.min.js?202010051927"></script>
 	</head>
 
-	<body layout>
-		@include('Login')
-	</body>
+	<body layout ui-view></body>
 	
 </html>
