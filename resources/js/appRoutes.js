@@ -9,8 +9,43 @@ angular.module('appRoutes', [])
 			})
 			.state('Home', {
 				url: '/Home',
-				templateUrl: '/Home'
+				templateUrl: '/Home',
+				resolve: {
+					promiseObj: ($rootScope, $localStorage, $http) => {
+						return $http.post('api/usuario/revisar-token', { token: $localStorage.token });
+					},
+					controller: ($rootScope, $localStorage, promiseObj) => {
+						$rootScope.Usuario = promiseObj.data;
+					}
+				}
 			});
 
+		$urlRouterProvider.otherwise('/Home');
+
+		$httpProvider.interceptors.push(['$q', '$localStorage', 
+			function ($q, $localStorage) {
+				return {
+					request: function (config) {
+						config.headers = config.headers || {};
+						if ($localStorage.token) {
+							config.headers.token = $localStorage.token;
+						}
+						return config;
+					},
+					response: function (res) {
+						return res || $q.when(res);
+					},
+					responseError: function(rejection) {
+
+					  if ([400, 401, 412].indexOf(rejection.status) !== -1) {
+						location.replace("/#/Login");
+					  }
+
+					  return $q.reject(rejection);
+					}
+
+				};
+			}
+		]);
 	}
 ]);

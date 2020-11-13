@@ -11,5 +11,11 @@ class Usuario extends Model
 
     protected $table = 'usuarios';
     protected $guarded = ['id'];
+    protected $appends = [ 'nombre' ];
+
+    public function getNombreAttribute()
+    {
+    	return $this->nombres .' '. $this->apellidos;
+    }
 
 }
