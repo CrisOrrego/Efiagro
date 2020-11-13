@@ -18,6 +18,14 @@ angular.module('appRoutes', [])
 						$rootScope.Usuario = promiseObj.data;
 					}
 				}
+			})
+			.state('Home.Seccion', {
+				url: '/:seccion',
+				templateUrl: (params) => { return '/Home/' + params.seccion; }
+			})
+			.state('Home.Seccion.Subseccion', {
+				url: '/:subseccion',
+				templateUrl: (params) => { return '/Home/' + params.seccion + '/' + params.subseccion }
 			});
 
 		$urlRouterProvider.otherwise('/Home');

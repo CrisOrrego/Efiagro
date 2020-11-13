@@ -12,4 +12,12 @@
 		</div>
 	</md-toolbar>
 
+	<div flex ui-view>
+		
+		<a ng-repeat="S in Secciones" href="#/Home/@{{ S[0].seccion_slug }}/@{{ S[0].subseccion_slug }}">
+			@{{ S[0].seccion }}
+		</a>
+
+	</div>
+
 </div>

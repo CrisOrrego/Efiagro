@@ -19,5 +19,8 @@ Route::get('/', function () {
 
 Route::get('/Login', function(){ return view('Login'); });
 Route::get('/Home', function(){  return view('Home'); });
+Route::get('/Home/{seccion}', function(){  return view('Seccion'); });
+Route::get('/Home/{seccion}/{subseccion}', 'MainController@cargarSubseccion');
 
+AdvancedRoute::controller('/api/main',    'MainController');
 AdvancedRoute::controller('/api/usuario', 'UsuarioController');
