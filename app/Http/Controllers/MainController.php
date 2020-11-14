@@ -28,4 +28,9 @@ class MainController extends Controller
             return "<h2>$nombre_vista no existe...</h2>";
         }
     }
+
+    public function cargarFragmento($vista)
+    {
+        return view($vista);
+    }
 }
