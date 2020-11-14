@@ -12,6 +12,23 @@ body {
   background-position: center center;
 }
 
+.bg-primary {
+  background-color: #388e3c;
+  color: white;
+}
+
+.text-primary {
+  color: white !important;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-black {
+  background-color: black;
+}
+
 /**
  *  Box model
  */
@@ -6845,6 +6862,10 @@ body {
   padding: 10px 0 !important;
 }
 
+.padding-5-20 {
+  padding: 5px 20px !important;
+}
+
 .padding-10-20 {
   padding: 10px 20px !important;
 }
@@ -7347,5 +7368,66 @@ md-input-container .md-errors-spacer {
   text-transform: initial;
   padding: 0 10px;
   border-radius: 4px;
+}
+
+md-icon {
+  color: inherit !important;
+}
+
+md-toolbar.md-short,
+div.md-short {
+  min-height: 40px !important;
+}
+
+md-toolbar.md-short .md-toolbar-tools,
+div.md-short .md-toolbar-tools {
+  height: 40px !important;
+  max-height: 40px !important;
+  font-size: 18px;
+  padding: 0 13px;
+}
+
+md-toolbar.md-short .md-subtitle,
+div.md-short .md-subtitle {
+  line-height: 40px;
+  margin: 0 15px 0 0;
+}
+
+md-toolbar.md-short md-tabs,
+div.md-short md-tabs {
+  min-height: 40px;
+}
+
+md-toolbar.md-short md-tabs md-tabs-canvas,
+div.md-short md-tabs md-tabs-canvas {
+  height: 40px !important;
+}
+
+md-toolbar.md-short md-tabs md-tabs-canvas md-pagination-wrapper,
+div.md-short md-tabs md-tabs-canvas md-pagination-wrapper {
+  height: 40px !important;
+}
+
+md-toolbar.md-short md-tabs md-tabs-canvas .md-tab,
+div.md-short md-tabs md-tabs-canvas .md-tab {
+  padding: 8px 24px;
+}
+
+md-toolbar.md-short md-tabs-content-wrapper,
+div.md-short md-tabs-content-wrapper {
+  top: 40px;
+}
+
+md-toolbar.md-short .md-button,
+div.md-short .md-button {
+  line-height: 30px;
+  min-height: 30px;
+  height: 30px;
+}
+
+md-toolbar.md-short .md-button.md-icon-button,
+div.md-short .md-button.md-icon-button {
+  padding: 0px;
+  width: 30px;
 }
 
