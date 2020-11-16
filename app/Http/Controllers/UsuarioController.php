@@ -19,8 +19,7 @@ class UsuarioController extends Controller
     		return response()->json(['Msg' => 'Error en usuario o contraseña'], 500);
     	}
     }
-
-
+ 
     public function postRevisarToken()
     {
         $token = request('token');

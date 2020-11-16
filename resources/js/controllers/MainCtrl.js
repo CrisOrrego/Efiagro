@@ -11,9 +11,5 @@ angular.module('MainCtrl', [])
 			alert('Hola')
 			console.log(alert);
 		}
-
-		
-
-
 	}
 ]);
