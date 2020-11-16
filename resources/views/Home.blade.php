@@ -1,23 +1,61 @@
-<div flex id="Home" ng-controller="HomeCtrl">
+<div flex id="Home" ng-controller="HomeCtrl" layout=column>
 	
-	<md-toolbar class="">
-		<div class="md-toolbar-tools">
-			<h2>Efiagro</h2>
-			<span flex></span>
-			<h2>@{{ Usuario.nombre }}</h2>
-			<md-button class="md-icon-button" ng-click="Logout()">
-				<md-icon md-font-icon="fa-power-off fa-lg"></md-icon>
-				<md-tooltip>Cerrar Sesion</md-tooltip>
-			</md-button>
-		</div>
-	</md-toolbar>
-
-	<div flex ui-view>
+	<div class="h40 bg-primary" layout layout-align="center center"
+		style="padding-left: 30px">
 		
-		<a ng-repeat="S in Secciones" href="#/Home/@{{ S[0].seccion_slug }}/@{{ S[0].subseccion_slug }}">
-			@{{ S[0].seccion }}
-		</a>
+		<div>Efiagro</div>
+		<span flex></span>
+		<div>@{{ Usuario.nombre }}</div>
+		<md-button class="md-icon-button" ng-click="Logout()">
+			<md-icon md-font-icon="fa-power-off fa-lg"></md-icon>
+			<md-tooltip>Cerrar Sesion</md-tooltip>
+		</md-button>
+	</div>
 
+	<div flex ui-view layout=column class="overflow-y">
+		
+		<div flex layout layout-align="space-around center" layout-wrap>
+			<a ng-repeat="S in Secciones" href="#/Home/@{{ S[0].seccion_slug }}/@{{ S[0].subseccion_slug }}"
+				class="seccion_icono no-underline" layout=column>
+				<div class="seccion_icono_img" flex></div>
+				<div class="seccion_icono_texto">@{{ S[0].seccion }}</div>
+			</a>
+			<div flex=100 class="h50"></div>
+		</div>
+
+		
 	</div>
 
 </div>
+
+<style type="text/css">
+	
+	.seccion_icono{
+		width: 160px;
+		height: 200px;
+		margin: 20px;
+		transform: scale(0.95);
+		transition: all 0.3s;
+	}
+
+	.seccion_icono:hover{
+		transform: scale(1)	;
+	}
+
+
+
+	.seccion_icono_texto{
+		text-align: center;
+		height: 40px;
+		color: white;
+		font-size: 1.2rem;
+		text-shadow: 0 0 5px black;
+	}
+
+	.seccion_icono_img{
+		background-color: grey;
+		margin: 5px;
+		border-radius: 500px;
+	}
+
+</style>

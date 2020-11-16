@@ -13,3 +13,47 @@ md-input-container {
 	padding: 0 10px;
 	border-radius: 4px;
 }
+
+md-icon {
+    color: inherit !important;
+}
+
+md-toolbar.md-short, div.md-short{
+	min-height: 40px !important;
+
+	.md-toolbar-tools{
+		height: 40px !important;	
+		max-height: 40px !important;
+		font-size: 18px;
+    	padding: 0 13px;
+	}
+
+	.md-subtitle {
+    	line-height: 40px;
+    	margin: 0 15px 0 0;
+	}
+
+	md-tabs{ 
+		min-height: 40px;
+		md-tabs-canvas{
+			height: 40px !important;
+			md-pagination-wrapper{ height: 40px !important; }
+			.md-tab{ padding: 8px 24px; }
+		}
+	}
+
+	md-tabs-content-wrapper{
+		top: 40px;
+	}
+
+	.md-button{
+		line-height: 30px;
+    	min-height: 30px;
+    	height: 30px;
+
+    	&.md-icon-button {
+			padding: 0px;
+			width: 30px;
+		}
+	}
+}

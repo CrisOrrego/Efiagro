@@ -23,4 +23,7 @@ angular.module('App', [
 	'LoginCtrl',
 	'MainCtrl',
 	'HomeCtrl',
+
+	'MiTecnicoAmigoCtrl',
+	'ArticuloDiagCtrl',
 ]);
