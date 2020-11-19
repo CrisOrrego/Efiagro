@@ -6,7 +6,7 @@ angular.module('App', [
 	'ngMaterial',
 	'ngSanitize',
 
-	//'md.data.table',
+	'md.data.table',
 	
 	//'ngFileUpload',
 	//'angular-loading-bar',
@@ -16,9 +16,12 @@ angular.module('App', [
 	//'ngCsv',
 	//'angular-img-cropper',
 	//'indexedDB',
+	'CRUD',
+	'CRUDDialogCtrl',
 
 	'appRoutes',
 	'appConfig',
+	'appFunctions',
 
 	'LoginCtrl',
 	'MainCtrl',
@@ -26,4 +29,6 @@ angular.module('App', [
 
 	'MiTecnicoAmigoCtrl',
 	'ArticuloDiagCtrl',
+
+	'UsuariosCtrl',
 ]);

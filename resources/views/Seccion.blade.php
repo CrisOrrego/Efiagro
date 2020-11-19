@@ -9,12 +9,13 @@
 
 		<md-tabs flex >
 			<md-tab ng-repeat="S in Secciones[Estado.ruta[2]]" label="@{{ S.subseccion }}"
-				href="#/Home/@{{ S.seccion_slug }}/@{{ S.subseccion_slug }}"></md-tab>
+				md-active="(S.subseccion_slug == Estado.ruta[3])"
+				ng-click="navegarSubseccion(S.seccion_slug, S.subseccion_slug)"></md-tab>
 		</md-tabs>
 
 
 	</div>
 
-	<div id="Subseccion" flex ui-view></div>
+	<div id="Subseccion" flex layout ui-view></div>
 
 </div>
