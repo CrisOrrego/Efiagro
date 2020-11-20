@@ -29,6 +29,10 @@ body {
   background-color: black;
 }
 
+.bg-yellow {
+  background-color: #ffffdc;
+}
+
 /**
  *  Box model
  */

@@ -30,8 +30,9 @@ angular.module('App', [
 	'HomeCtrl',
 
 	'MiTecnicoAmigoCtrl',
-	'ArticuloDiagCtrl',
+		'ArticuloDiagCtrl',
 
 	'UsuariosCtrl',
 	'ArticulosCtrl',
+		'Articulos_ArticuloEditorCtrl'
 ]);

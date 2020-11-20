@@ -16,6 +16,12 @@ class ArticulosController extends Controller
         return $CRUD->call(request()->fn, request()->ops);
  	}
 
+ 	public function postSecciones()
+ 	{
+ 		$CRUD = new CRUD('App\Models\ArticuloSeccion');
+        return $CRUD->call(request()->fn, request()->ops);
+ 	}
+
  	public function postObtener()
 	{
 		$Articulos = Articulo::with(['secciones'])->activos()->accesibles()->get();

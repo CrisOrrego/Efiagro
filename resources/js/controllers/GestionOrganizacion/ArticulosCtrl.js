@@ -16,7 +16,7 @@ angular.module('ArticulosCtrl', [])
 
 		Ctrl.getArticulos = () => {
 			Ctrl.ArticulosCRUD.get().then(() => {
-				
+				Ctrl.editarArticulo(Ctrl.ArticulosCRUD.rows[1]);
 			});
 		};
 
@@ -31,10 +31,22 @@ angular.module('ArticulosCtrl', [])
 				title: 'Nuevo Articulo',
 				only: ['titulo']
 			}).then(r => {
+				if(!r) return;
 				Ctrl.ArticulosCRUD.add(r);
 			});
 
 		};
+
+
+		Ctrl.editarArticulo = (A) => {
+			$mdDialog.show({
+				templateUrl: 'Frag/GestionOrganizacion.Articulos_ArticuloEditorDiag',
+				controller: 'Articulos_ArticuloEditorCtrl',
+				locals: { Articulo: A },
+				scope: Ctrl.$new()
+			});
+		}
+
 
 	}
 ]);
