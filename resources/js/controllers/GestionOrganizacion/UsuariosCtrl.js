@@ -34,6 +34,7 @@ angular.module('UsuariosCtrl', [])
 			Ctrl.UsuariosCRUD.dialog(U, {
 				title: 'Editar el usuario' + U.nombres
 			}).then(r => {
+				if(r == 'DELETE') return Ctrl.UsuariosCRUD.delete(U);
 				Ctrl.UsuariosCRUD.update(r).then(() => {
 					Rs.showToast('Usuario actualizado');
 				});

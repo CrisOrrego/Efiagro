@@ -18,6 +18,8 @@ angular.module('App', [
 	//'indexedDB',
 	'CRUD',
 	'CRUDDialogCtrl',
+	'ConfirmDeleteCtrl',
+	'Filters',
 
 	'appRoutes',
 	'appConfig',
@@ -31,4 +33,5 @@ angular.module('App', [
 	'ArticuloDiagCtrl',
 
 	'UsuariosCtrl',
+	'ArticulosCtrl',
 ]);
