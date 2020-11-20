@@ -16,10 +16,10 @@ if(libs){
 		'resources/js/libs/jquery_plugins/*.js',
 		'resources/js/libs/angular_modules/*.js',
 	    
-	    //'resources/js/libs/other/moment.min.js',
-	    //'resources/js/libs/other/moment_es.js',
-	    //'resources/js/libs/other/xlsx.mini.min.js',
-	    //'resources/js/libs/other/jsstore.js',
+	    'resources/js/libs/other/moment.min.js',
+	    'resources/js/libs/other/moment_es.js',
+	    'resources/js/libs/other/xlsx.mini.min.js',
+	    'resources/js/libs/other/jsstore.js',
 
 	], 'public/js/libs.min.js');
 	

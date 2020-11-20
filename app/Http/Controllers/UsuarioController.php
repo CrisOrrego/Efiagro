@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Functions\CRUD;
 
 use Crypt;
 
 class UsuarioController extends Controller
 {
+    public function postUsuarios()
+    {
+        $CRUD = new CRUD('App\Models\Usuario');
+        return $CRUD->call(request()->fn, request()->ops);
+    }
+
     public function postLogin()
     {
     	$Credenciales = request('Credenciales');

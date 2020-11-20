@@ -1,6 +1,6 @@
 angular.module('HomeCtrl', [])
-.controller('HomeCtrl', ['$scope', '$rootScope', '$http', '$state', '$mdDialog', '$location',
-	function($scope, $rootScope, $http, $state, $mdDialog, $location) {
+.controller('HomeCtrl', ['$scope', '$rootScope', '$http', '$state', '$mdDialog', '$location', 'appFunctions',
+	function($scope, $rootScope, $http, $state, $mdDialog, $location, appFunctions) {
 
 		console.info('HomeCtrl');
 		var Ctrl = $scope;
@@ -32,6 +32,10 @@ angular.module('HomeCtrl', [])
 			Rs.Estado.ruta = $location.path().split('/');
 
 			console.log(Rs.Estado);
+		};
+
+		Rs.navegarSubseccion = (Seccion, Subseccion) => {
+			$state.go('Home.Seccion.Subseccion', { seccion: Seccion, subseccion: Subseccion });
 		};
 
 		Rs.$on("$stateChangeSuccess", Rs.cambioEstado);

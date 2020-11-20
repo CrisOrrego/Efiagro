@@ -13,6 +13,17 @@ class Articulo extends Model
     protected $guarded = ['id'];
     protected $appends = [];
 
+    public function columns()
+    {
+        //Name, Desc, Type, Required, Unique, Default, Width, Options
+        return [
+            [ 'titulo',          'Titulo',          null,    true,  false, null,  100 ],
+            [ 'palabras_clave',  'Palabras Clave',  null,    false,  false, null, 100 ],
+            [ 'estado',          'Estado',          null,    true,  false, null,  100 ],
+            [ 'usuario_id',      'usuario_id',      null,    true,  false, null,  100 ],
+        ];
+    }
+
     public function scopeActivos($q)
     {
     	return $q->where('estado', 'A');
@@ -26,6 +37,11 @@ class Articulo extends Model
     public function secciones()
     {
     	return $this->hasMany('App\Models\ArticuloSeccion', 'articulo_id', 'id');
+    }
+
+    public function autor()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id', 'id');
     }
 
 }
