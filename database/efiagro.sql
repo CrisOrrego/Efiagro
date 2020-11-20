@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2020 a las 17:13:05
+-- Tiempo de generación: 20-11-2020 a las 03:05:04
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -31,9 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `articulos` (
   `id` int(10) NOT NULL,
   `titulo` varchar(1000) NOT NULL,
-  `palabras_clave` varchar(1000) NOT NULL,
-  `estado` varchar(5) NOT NULL,
-  `permisos` varchar(1000) NOT NULL,
+  `palabras_clave` varchar(1000) DEFAULT NULL,
+  `estado` varchar(50) NOT NULL,
+  `permisos` varchar(1000) DEFAULT NULL,
   `usuario_id` int(10) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
@@ -45,8 +45,9 @@ CREATE TABLE `articulos` (
 
 INSERT INTO `articulos` (`id`, `titulo`, `palabras_clave`, `estado`, `permisos`, `usuario_id`, `created_at`, `updated_at`) VALUES
 (1, '5 formas de evitar la roya en su cultivo', '', 'A', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'Ultimas guias de la OMS para el cuidado de sus vacas', '', 'A', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', '', 'A', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(2, 'Ultimas guias de la OMS para el cuidado de sus vacas', '', 'A', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', '', 'A', '', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, '3 nuevas semillas de platano', NULL, 'Borrador', NULL, 1, '2020-11-20 01:52:22', '2020-11-20 01:52:22');
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,8 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (2, 'Gestión Organización', 'Organización', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'Gestión Organización', 'Usuarios', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (4, 'Gestión Organización', 'Productores', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'Mi Finca', 'Mi Finca', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(5, 'Mi Finca', 'Mi Finca', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Gestión Organización', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -112,16 +114,18 @@ CREATE TABLE `usuarios` (
   `asociacion_id` int(10) DEFAULT NULL,
   `finca_id` int(10) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `asociacion_id`, `finca_id`, `created_at`, `updated_at`) VALUES
-(1, 'Christian Alejandro', 'Orrego Herrera', '1093217141', 'info@mbrain.co', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `asociacion_id`, `finca_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Christian Alejandro', 'Orrego Herrera', '1093217141', 'info@mbrain.co', NULL, NULL, '0000-00-00 00:00:00', '2020-11-20 01:09:56', NULL),
+(2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(3, 'Pepito', 'Perez', '1093217142', 'pepito@mbrain.co', NULL, NULL, '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18');
 
 --
 -- Índices para tablas volcadas
@@ -159,7 +163,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
@@ -171,13 +175,13 @@ ALTER TABLE `articulos_secciones`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
