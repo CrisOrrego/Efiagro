@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Seccion;
 
+use Image;
+use File;
+
 class MainController extends Controller
 {
     public function postObtenerSecciones()
@@ -33,4 +36,22 @@ class MainController extends Controller
     {
         return view($vista);
     }
+
+    public function postUploadImg()
+    {
+        extract(request()->all()); //Path, Quality
+
+        //dd(Input::file('file'));
+        $image = Image::make(request('file')->getRealPath());
+        
+        $Ruta = dirname($Path);
+        if(!File::exists($Ruta)) File::makeDirectory($Ruta, 0775, true, true);
+
+        if(!$image->save($Path, $Quality)){
+            return response()->json(['Msg' => 'No se pudo guardar la imagen'], 512);
+        }else{
+            return response()->json(['Msg' => $Path ], 200);
+        };
+    }
+
 }

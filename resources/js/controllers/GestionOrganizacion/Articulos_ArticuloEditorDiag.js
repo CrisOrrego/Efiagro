@@ -38,10 +38,49 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 			});
 		}
 
-		Ctrl.crearSeccion = (kT) => {
+		Ctrl.crearSeccion = async (kT) => {
+
+			var ruta = null;
+
+			if(kT == 'Imagen'){
+				var Img = await $mdDialog.show({
+					templateUrl: 'templates/dialogs/image-editor.html',
+					controller: 'ImageEditor_DialogCtrl',
+					multiple: true,
+					locals: { 
+						Config: {
+							Theme: 'default',
+							CanvasWidth:  600,			//Ancho del canvas
+							CanvasHeight: 400,			//Alto del canvas
+							CropWidth:  600,			//Ancho del recorte que se subirá
+							CropHeight: 400,			//Alto del recorte que se subirá
+							MinWidth:  60,				//Ancho mínimo del selector
+							MinHeight: 40,				//Ancho mínimo del selector
+							KeepAspect: false,
+							Daten: {
+								Path: 'files/articulos_media/' + Articulo.id + '/' + moment().format('YYYYMMDDHHmmss') + '.jpg'
+
+							}
+						}
+					}
+				});
+
+				if(Img) ruta = Img.Msg;
+			}
+
 			Ctrl.SeccionesCRUD.add({
 				articulo_id: Articulo.id,
-				tipo: kT
+				tipo: kT,
+				ruta: ruta
+			});
+		}
+
+		Ctrl.eliminarSeccion = (S) => {
+			Rs.confirmDelete({
+				Title: '¿Eliminar la Sección?',
+			}).then(R => {
+				if(!R) return;
+				Ctrl.SeccionesCRUD.delete(S);
 			});
 		}
 

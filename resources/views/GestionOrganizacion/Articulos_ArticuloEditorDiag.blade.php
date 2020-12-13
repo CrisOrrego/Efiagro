@@ -17,11 +17,36 @@
 
 		<div flex layout=column>
 			
-			<div ng-repeat="S in SeccionesCRUD.rows" class="padding" layout=column ng-class="{ 'bg-yellow': S.changed }">
+			<div ng-repeat="S in SeccionesCRUD.rows" class="padding" layout ng-class="{ 'bg-yellow': S.changed }">
 				
-				<md-input-container class="no-margin" ng-if="S.tipo == 'Parrafo'" md-no-float>
-		          <textarea ng-model="S.contenido" rows="5" placeholder="Contenido" ng-change="S.changed = true"></textarea>
-		        </md-input-container>
+				<div>
+					
+					<md-menu>
+						<md-button ng-click="$mdMenu.open($event)" class="md-icon-button no-margin" aria-label="Menu">
+							<md-icon md-svg-icon="md-more-v"></md-icon>
+						</md-button>
+						<md-menu-content>
+							<md-menu-item><md-button class="md-warn" ng-click="eliminarSeccion(S)">Eliminar Seccion</md-button></md-menu-item>
+						</md-menu-content>
+					</md-menu>
+
+				</div>
+
+				<div flex layout=column>
+					
+					<md-input-container class="no-margin" ng-if="S.tipo == 'Parrafo'" md-no-float>
+			          <textarea ng-model="S.contenido" rows="5" placeholder="Contenido" ng-change="S.changed = true"></textarea>
+			        </md-input-container>
+
+			        <div ng-if="S.tipo == 'Imagen'" layout=column>
+			        	
+			        	<img ng-src=" @{{ S.ruta }} ">
+
+			        </div>
+
+				</div>
+
+
 
 			</div>
 

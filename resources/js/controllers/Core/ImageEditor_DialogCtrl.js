@@ -5,7 +5,7 @@ angular.module('ImageEditor_DialogCtrl', [])
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 
-		//console.info('-> Image Editor');
+		console.info('-> Image Editor');
 
 		Ctrl.Config = {
 			Theme : 'Snow_White',		//El tema
@@ -83,7 +83,7 @@ angular.module('ImageEditor_DialogCtrl', [])
 
 			Upload.upload({
 
-				url: '/api/Archivos/upload-img',
+				url: '/api/main/upload-img',
 				data: Daten,
 
 			}).then(function (res) {

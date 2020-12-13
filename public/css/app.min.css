@@ -7435,3 +7435,46 @@ div.md-short .md-button.md-icon-button {
   width: 30px;
 }
 
+#ImageEditor md-dialog-content {
+  min-width: 500px;
+}
+
+#ImageEditor .UploadArea {
+  padding: 0px 0 10px;
+}
+
+#ImageEditor .UploadArea .md-button {
+  width: 150px;
+}
+
+#ImageEditor .UploadArea .md-button md-icon {
+  position: absolute;
+  top: 6px;
+  left: 17px;
+}
+
+#ImageEditor .UploadArea .md-button label {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding-left: 25px;
+}
+
+#ImageEditor .UploadArea input {
+  display: none;
+}
+
+#ImageEditor .CropArea {
+  background: black;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+#ImageEditor .CropArea #Preview {
+  margin: 10px;
+}
+
