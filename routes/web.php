@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Base');
-});
-
+Route::get('/', function () { return view('Base'); });
 Route::get('/Login', function(){ return view('Login'); });
 Route::get('/Home', function(){  return view('Home'); });
 Route::get('/Home/{seccion}', function(){  return view('Seccion'); });

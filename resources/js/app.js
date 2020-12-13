@@ -8,17 +8,20 @@ angular.module('App', [
 
 	'md.data.table',
 	
-	//'ngFileUpload',
+	'ngFileUpload',
 	//'angular-loading-bar',
 	//'angularResizable',
 	//'ui.utils.masks',
 	//'as.sortable',
 	//'ngCsv',
-	//'angular-img-cropper',
+	'angular-img-cropper',
 	//'indexedDB',
+
+
 	'CRUD',
 	'CRUDDialogCtrl',
 	'ConfirmDeleteCtrl',
+	'ImageEditor_DialogCtrl',
 	'Filters',
 
 	'appRoutes',
