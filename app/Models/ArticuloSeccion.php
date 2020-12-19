@@ -12,6 +12,9 @@ class ArticuloSeccion extends Model
     protected $table = 'articulos_secciones';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $cast = [
+        //'objeto' => 'array'
+    ];
 
     public function columns()
     {
@@ -20,7 +23,8 @@ class ArticuloSeccion extends Model
             [ 'articulo_id',        'articulo_id',          null,    true,  false, null,  100 ],
             [ 'tipo',  				'tipo',  null,    false,  false, null, 100 ],
             [ 'contenido',          'contenido',          null,    true,  false, null,  100 ],
-            [ 'ruta',      			'ruta',      null,    true,  false, null,  100 ],
+            [ 'ruta',               'ruta',      null,    true,  false, null,  100 ],
+            //[ 'objeto',      	    'objeto',      null,    true,  false, null,  100 ],
         ];
     }
 
@@ -33,5 +37,22 @@ class ArticuloSeccion extends Model
     {
     	return $q->where('articulo_id', $id_articulo);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::saving(function($model){
+            if(!is_string($model->attributes['contenido'])) 
+                $model->attributes['contenido'] = json_encode($model->attributes['contenido']);
+        });
+    }
+
+    public function getContenidoAttribute($contenido)
+    {
+        if($this->tipo == 'Tabla') return json_decode($contenido);
+        return $contenido;
+    }
+
 
 }

@@ -44,6 +44,26 @@
 
 			        </div>
 
+			        <div ng-if="S.tipo == 'Tabla'" layout=column>
+			        	
+			        	<table>
+
+			        		<thead>
+			        			<th ng-repeat="C in S.contenido[0]">@{{ C }}</th>
+			        			<th>+</th>
+			        		</thead>
+
+			        		<tbody>
+			        			<tr ng-repeat="R in S.contenido" ng-show="!$first">
+			        				<td ng-repeat="(kC,C) in S.contenido[0]">@{{ R[kC] }}</td>
+			        			</tr>
+			        		</tbody>
+
+			        	</table>
+
+
+			        </div>
+
 				</div>
 
 

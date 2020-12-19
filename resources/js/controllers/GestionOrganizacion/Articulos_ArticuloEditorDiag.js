@@ -18,6 +18,7 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 
 		Ctrl.TiposSeccion = {
 			'Parrafo': { Nombre: 'Párrafo', Icono: 'fa-align-justify' },
+			'Tabla':   { Nombre: 'Tabla',   Icono: 'fa-table' },
 			'Imagen':  { Nombre: 'Imágen',  Icono: 'fa-image' }
 		};
 
@@ -41,6 +42,7 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 		Ctrl.crearSeccion = async (kT) => {
 
 			var ruta = null;
+			var contenido = null;
 
 			if(kT == 'Imagen'){
 				var Img = await $mdDialog.show({
@@ -56,7 +58,8 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 							CropHeight: 400,			//Alto del recorte que se subirá
 							MinWidth:  60,				//Ancho mínimo del selector
 							MinHeight: 40,				//Ancho mínimo del selector
-							KeepAspect: false,
+							KeepAspect: true,
+							Preview: false,	
 							Daten: {
 								Path: 'files/articulos_media/' + Articulo.id + '/' + moment().format('YYYYMMDDHHmmss') + '.jpg'
 
@@ -68,10 +71,17 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 				if(Img) ruta = Img.Msg;
 			}
 
+			if(kT == 'Tabla'){
+				contenido = [ [ 'Uno', 'Dos', 'Tres' ], [1,2,3], [4,5,6], [7,8,9] ];
+			};
+
+			console.table(contenido);
+
 			Ctrl.SeccionesCRUD.add({
 				articulo_id: Articulo.id,
 				tipo: kT,
-				ruta: ruta
+				ruta: ruta,
+				contenido: contenido
 			});
 		}
 
