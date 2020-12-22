@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2020 a las 03:05:04
+-- Tiempo de generación: 22-12-2020 a las 03:20:17
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -44,10 +44,10 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`id`, `titulo`, `palabras_clave`, `estado`, `permisos`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, '5 formas de evitar la roya en su cultivo', '', 'A', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'Ultimas guias de la OMS para el cuidado de sus vacas', '', 'A', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', '', 'A', '', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, '3 nuevas semillas de platano', NULL, 'Borrador', NULL, 1, '2020-11-20 01:52:22', '2020-11-20 01:52:22');
+(1, '5 formas de evitar la roya en su cultivo', NULL, 'Activo', '', 1, '0000-00-00 00:00:00', '2020-11-20 22:46:03'),
+(2, 'Ultimas guias de la OMS para el cuidado de sus vacas', '', 'Activo', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', '', 'Activo', '', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, '3 nuevas semillas de platano', NULL, 'Activo', NULL, 1, '2020-11-20 01:52:22', '2020-11-20 01:52:22');
 
 -- --------------------------------------------------------
 
@@ -59,8 +59,8 @@ CREATE TABLE `articulos_secciones` (
   `id` int(10) NOT NULL,
   `articulo_id` int(10) NOT NULL,
   `tipo` varchar(50) NOT NULL,
-  `contenido` text NOT NULL,
-  `ruta` varchar(1000) NOT NULL,
+  `contenido` text DEFAULT NULL,
+  `ruta` varchar(1000) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -70,8 +70,34 @@ CREATE TABLE `articulos_secciones` (
 --
 
 INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `tipo`, `contenido`, `ruta`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Parrafo', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempor augue nulla, sed maximus quam faucibus vitae. Cras ullamcorper dictum dignissim. Mauris viverra turpis et massa egestas maximus. Etiam rhoncus ultrices sodales. Ut dapibus, est sed feugiat pharetra, lectus nisi tristique velit, non faucibus est augue a mi. Sed viverra sapien elit, id convallis libero porttitor quis. Aliquam vitae semper ipsum.', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 1, 'Parrafo', 'Curabitur fermentum, nulla eu aliquet commodo, eros arcu lacinia ex, eu mattis ex diam eget neque. Ut auctor, enim vel congue tincidunt, nunc lacus eleifend turpis, vel porta elit dolor id odio. Ut sit amet aliquam elit. Quisque ornare condimentum tincidunt. Quisque feugiat leo quam, ut blandit velit commodo eu. Fusce vulputate mauris eget nisl dapibus lobortis. Quisque a mauris gravida enim gravida posuere et sit amet nunc. Quisque quis turpis ac nibh tincidunt pulvinar. Donec ac enim non turpis semper posuere vitae in urna. Suspendisse potenti. Aliquam congue justo non eros ultricies lacinia.', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(15, 4, 'Imagen', NULL, 'files/articulos_media/4/20201214223028.jpg', '2020-12-15 03:30:44', '2020-12-15 03:30:44'),
+(20, 1, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
+(21, 4, 'Parrafo', 'Este es un texto de prueba.', NULL, '2020-12-19 13:47:05', '2020-12-22 01:30:06'),
+(22, 4, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-19 13:47:12', '2020-12-19 13:47:12'),
+(23, 1, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `casos`
+--
+
+CREATE TABLE `casos` (
+  `id` int(11) NOT NULL,
+  `solicitante_id` int(11) DEFAULT NULL,
+  `titulo` varchar(500) NOT NULL,
+  `tipo` varchar(100) NOT NULL,
+  `asignados` varchar(1000) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `casos`
+--
+
+INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Como se maneja esto', 'Consulta General', '[]', '2020-12-22 02:13:35', '2020-12-22 02:13:35');
 
 -- --------------------------------------------------------
 
@@ -97,7 +123,7 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (3, 'Gestión Organización', 'Usuarios', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (4, 'Gestión Organización', 'Productores', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (5, 'Mi Finca', 'Mi Finca', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'Gestión Organización', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(6, 'Administración General', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -144,6 +170,12 @@ ALTER TABLE `articulos_secciones`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `casos`
+--
+ALTER TABLE `casos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `secciones`
 --
 ALTER TABLE `secciones`
@@ -169,7 +201,13 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT de la tabla `casos`
+--
+ALTER TABLE `casos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`

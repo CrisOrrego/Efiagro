@@ -14,6 +14,23 @@
 		<div ng-repeat="S in Articulo.secciones">
 			
 			<div ng-if="S.tipo == 'Parrafo'" class="margin-bottom text-justify">@{{ S.contenido }}</div>
+			<div ng-if="S.tipo == 'Imagen'" class="margin-bottom" layout=column>
+				<img ng-src=" @{{ S.ruta }} ">
+			</div>
+			<div ng-if="S.tipo == 'Tabla'" class="margin-bottom" layout=column>
+				<table>
+	        		<thead>
+	        			<th ng-repeat="C in S.contenido[0]">@{{ C }}</th>
+	        		</thead>
+
+	        		<tbody>
+	        			<tr ng-repeat="R in S.contenido" ng-show="!$first">
+	        				<td ng-repeat="(kC,C) in S.contenido[0]">@{{ R[kC] }}</td>
+	        			</tr>
+	        		</tbody>
+
+	        	</table>
+			</div>
 
 		</div>	
 

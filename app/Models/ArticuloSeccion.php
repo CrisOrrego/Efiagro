@@ -43,7 +43,7 @@ class ArticuloSeccion extends Model
         parent::boot();
 
         self::saving(function($model){
-            if(!is_string($model->attributes['contenido'])) 
+            if(!is_string($model->attributes['contenido']) AND !is_null($model->attributes['contenido'])) 
                 $model->attributes['contenido'] = json_encode($model->attributes['contenido']);
         });
     }
@@ -51,6 +51,7 @@ class ArticuloSeccion extends Model
     public function getContenidoAttribute($contenido)
     {
         if($this->tipo == 'Tabla') return json_decode($contenido);
+        //if($contenido == 'null') $contenido = '';
         return $contenido;
     }
 

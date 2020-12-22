@@ -22,6 +22,7 @@ angular.module('App', [
 	'CRUDDialogCtrl',
 	'ConfirmDeleteCtrl',
 	'ImageEditor_DialogCtrl',
+	'BasicDialogCtrl',
 	'Filters',
 
 	'appRoutes',

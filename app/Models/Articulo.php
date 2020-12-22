@@ -26,7 +26,7 @@ class Articulo extends Model
 
     public function scopeActivos($q)
     {
-    	return $q->where('estado', 'A');
+    	return $q->where('estado', 'Activo');
     }
 
     public function scopeAccesibles($q)
