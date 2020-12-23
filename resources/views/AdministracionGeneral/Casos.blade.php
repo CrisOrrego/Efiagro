@@ -16,20 +16,25 @@
 	        <th md-column>Caso</th>
 	        <th md-column>Asociado</th>
 	        <th md-column>Tipo</th>
-            <th md-column>Estado</th>
-            <th md-column>Asignado A</th>
+	        <th md-column>Titulo</th>
+	        <th md-column>Creado</th>
+	        <th md-column>Actualizado</th>
 	      </tr>
 	    </thead>
 	    <tbody md-body>
 	      <tr md-row ng-repeat="C in CasosCRUD.rows">
-	        <td md-cell><md-button class="md-icon-button" ng-click="editarCaso(C)">
-	        	<md-icon md-font-icon="fa-edit"></md-icon>
-	        </md-button></td>
-	        <td md-cell>@{{ C.caso }}</td>
+	        <td md-cell>
+	        	<md-button class="md-icon-button" ng-click="editarCaso(C)">
+		        	<md-icon md-font-icon="fa-edit"></md-icon>
+		        </md-button>
+		        <md-button class="md-icon-button md-warn" ng-click="eliminarCaso(C)">
+		        	<md-icon md-font-icon="fa-trash"></md-icon>
+		        </md-button>
+	    	</td>
+	        <td md-cell>@{{ C.id }}</td>
             <td md-cell>@{{ C.solicitante.nombre }}</td>
             <td md-cell>@{{ C.tipo }}</td>
-            <td md-cell>@{{ C.Estado }}</td>
-            <td md-cell>@{{ C.Asignado }}</td>
+            <td md-cell>@{{ C.titulo }}</td>
 	        <td md-cell>@{{ C.created_at }}</td>
 	        <td md-cell>@{{ C.updated_at }}</td>
 	      </tr>
