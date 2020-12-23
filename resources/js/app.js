@@ -38,5 +38,8 @@ angular.module('App', [
 
 	'UsuariosCtrl',
 	'ArticulosCtrl',
-		'Articulos_ArticuloEditorCtrl'
+		'Articulos_ArticuloEditorCtrl',
+
+	'CasosCtrl',
+
 ]);

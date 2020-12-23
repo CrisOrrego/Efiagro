@@ -12,5 +12,7 @@ class CasosController extends Controller
  	{
  		$CRUD = new CRUD('App\Models\Caso');
         return $CRUD->call(request()->fn, request()->ops);
- 	}
+	 }
+	 
+	 
 }

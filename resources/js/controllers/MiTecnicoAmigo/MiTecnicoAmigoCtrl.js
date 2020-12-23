@@ -23,8 +23,6 @@ angular.module('MiTecnicoAmigoCtrl', [])
 			});
 		}
 
-
-
 		//Casos
 		Ctrl.CasosCRUD = $injector.get('CRUD').config({ 
 			base_url: '/api/casos/casos',
