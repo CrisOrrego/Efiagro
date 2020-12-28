@@ -6,12 +6,12 @@ angular.module('MiTecnicoAmigoCtrl', [])
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 
-		//Ctrl.Subseccion = 'Articulos';
-		Ctrl.Subseccion = 'Solicitudes';
+		Ctrl.Subseccion = 'Articulos';
+		// Ctrl.Subseccion = 'Solicitudes';
 
 		$http.post('api/articulos/obtener', {}).then(r => {
 			Ctrl.Articulos = r.data;
-			//Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
+			Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
 		});
 
 		Ctrl.abrirArticulo = (A) => {

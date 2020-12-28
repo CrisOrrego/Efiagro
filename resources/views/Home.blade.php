@@ -21,9 +21,7 @@
 				<div class="seccion_icono_texto">@{{ S[0].seccion }}</div>
 			</a>
 			<div flex=100 class="h50"></div>
-		</div>
-
-		
+		</div>	
 	</div>
 
 </div>
@@ -36,13 +34,12 @@
 		margin: 20px;
 		transform: scale(0.95);
 		transition: all 0.3s;
+		
 	}
 
 	.seccion_icono:hover{
 		transform: scale(1)	;
 	}
-
-
 
 	.seccion_icono_texto{
 		text-align: center;
@@ -56,6 +53,9 @@
 		background-color: grey;
 		margin: 5px;
 		border-radius: 500px;
+		background-image: url("http://www.cabildodelanzarote.com/Uploads/img/20120502130412614.jpg");
+		
+
 	}
 
 </style>
