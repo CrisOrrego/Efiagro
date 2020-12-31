@@ -94,5 +94,39 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 			});
 		}
 
+		//Seccion Tabla
+		Ctrl.agregarColumna = (S) => {
+			var Tabla = S.contenido;
+			angular.forEach(Tabla, (Fila) => {
+				Fila.push('');
+			});
+			S.changed = true;
+		}
+
+		Ctrl.eliminarColumna = (S, kC) => {
+			var Tabla = angular.copy(S.contenido);
+			angular.forEach(Tabla, (Fila) => {
+				Fila.splice(kC, 1);
+			});
+			S.contenido = Tabla;
+			S.changed = true;
+		}
+
+		Ctrl.agregarFila = (S) => {
+			var Tabla = S.contenido;
+			var NuevaFila = angular.copy(Tabla[0]);
+			NuevaFila = NuevaFila.map(V => { return null });
+
+			Tabla.push(NuevaFila);
+			S.changed = true;
+		}
+
+		Ctrl.eliminarFila = (S, kR) => {
+			var Tabla = S.contenido;
+			Tabla.splice(kR, 1);
+			S.changed = true;
+		}
+
+
 	}
 ]);

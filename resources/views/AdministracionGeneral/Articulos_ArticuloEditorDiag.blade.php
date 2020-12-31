@@ -39,27 +39,61 @@
 			        </md-input-container>
 
 			        <div ng-if="S.tipo == 'Imagen'" layout=column>
-			        	
 			        	<img ng-src=" @{{ S.ruta }} ">
-
 			        </div>
 
 			        <div ng-if="S.tipo == 'Tabla'" layout=column>
 			        	
-			        	<table>
+			        	<table border=1 style="border-collapse: collapse;">
 
 			        		<thead>
-			        			<th ng-repeat="C in S.contenido[0]">@{{ C }}</th>
-			        			<th>+</th>
+			        			<th ng-repeat="(kC,C) in S.contenido[0] track by $index">
+			        				<md-input-container class="no-margin">
+			        					<input type="text" ng-model="C" ng-change="S.changed = true" ng-blur="S.contenido[0][kC] = C">
+			        				</md-input-container>
+			        				<md-menu>
+			        					<md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Abrir Menu">
+											<md-icon md-svg-icon="md-more-v"></md-icon>
+										</md-button>
+										<md-menu-content>
+											<md-menu-item><md-button class="md-warn" ng-click="eliminarColumna(S, kC)">Eliminar</md-button></md-menu-item>
+										</md-menu-content>
+			        				</md-menu>
+			        			</th>
+			        			<th>
+			        				<md-button class="md-icon-button" ng-click="agregarColumna(S)">
+			        					<md-icon md-svg-icon="md-plus"></md-icon>
+			        					<md-tooltip>Agregar Columna</md-tooltip>
+			        				</md-button>
+			        			</th>
 			        		</thead>
 
 			        		<tbody>
-			        			<tr ng-repeat="R in S.contenido" ng-show="!$first">
-			        				<td ng-repeat="(kC,C) in S.contenido[0]">@{{ R[kC] }}</td>
+			        			<tr ng-repeat="(kR,R) in S.contenido" ng-show="!$first">
+			        				<td ng-repeat="(kC,C) in S.contenido[0] track by $index">
+
+			        					<md-input-container class="no-margin">
+				        					<input type="text" ng-model="R[kC]" ng-change="S.changed = true">
+				        				</md-input-container>
+
+			        				</td>
+			        				<td>
+			        					<md-button class="md-icon-button" ng-click="eliminarFila(S, kR)">
+				        					<md-icon md-svg-icon="md-close"></md-icon>
+				        					<md-tooltip>Eliminar Fila</md-tooltip>
+				        				</md-button>
+			        				</td>
 			        			</tr>
 			        		</tbody>
 
 			        	</table>
+
+			        	<md-button class="md-icon-button" ng-click="agregarFila(S)">
+			        		<md-tooltip>Agregar Fila</md-tooltip>
+        					<md-icon md-svg-icon="md-plus"></md-icon>
+        				</md-button>
+
+			        	<pre>@{{ S.contenido | json }}</pre>
 
 
 			        </div>

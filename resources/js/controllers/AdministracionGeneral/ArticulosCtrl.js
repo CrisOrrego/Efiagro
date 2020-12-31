@@ -16,7 +16,7 @@ angular.module('ArticulosCtrl', [])
 
 		Ctrl.getArticulos = () => {
 			Ctrl.ArticulosCRUD.get().then(() => {
-				//Ctrl.editarArticulo(Ctrl.ArticulosCRUD.rows[1]);
+				//Ctrl.editarArticulo(Ctrl.ArticulosCRUD.rows[0]);
 			});
 		};
 
