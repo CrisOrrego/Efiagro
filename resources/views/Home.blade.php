@@ -53,9 +53,7 @@
 		background-color: grey;
 		margin: 5px;
 		border-radius: 500px;
-		background-image: url("http://www.cabildodelanzarote.com/Uploads/img/20120502130412614.jpg");
-		
-
+		background-image: url("imgs/default-section-icon.jpg");
 	}
 
 </style>
