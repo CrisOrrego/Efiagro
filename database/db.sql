@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-01-2021 a las 15:21:43
+-- Tiempo de generación: 06-01-2021 a las 03:36:03
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -77,6 +77,21 @@ INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `tipo`, `contenido`, `ru
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `asignaciones`
+--
+
+CREATE TABLE `asignaciones` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `organizacion_id` int(11) NOT NULL,
+  `perfil_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `casos`
 --
 
@@ -96,6 +111,111 @@ CREATE TABLE `casos` (
 
 INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Como se maneja esto', 'Consulta General', '[]', '2020-12-22 02:13:35', '2020-12-22 02:13:35');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fincas`
+--
+
+CREATE TABLE `fincas` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `nombre` varchar(500) NOT NULL,
+  `zona_id` int(11) NOT NULL,
+  `latitud` decimal(11,8) NOT NULL,
+  `longitud` decimal(11,8) NOT NULL,
+  `hectareas` int(11) NOT NULL,
+  `sitios` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lineas_productivas`
+--
+
+CREATE TABLE `lineas_productivas` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(500) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lotes`
+--
+
+CREATE TABLE `lotes` (
+  `id` int(11) NOT NULL,
+  `finca_id` int(11) NOT NULL,
+  `organizacion_id` int(11) NOT NULL,
+  `linea_productiva_id` int(11) NOT NULL,
+  `hectareas` int(11) NOT NULL,
+  `sitios` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lotes_cosechas`
+--
+
+CREATE TABLE `lotes_cosechas` (
+  `id` int(11) NOT NULL,
+  `lote_id` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `organizaciones`
+--
+
+CREATE TABLE `organizaciones` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(500) NOT NULL,
+  `nit` varchar(100) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `organizacion_lineas_productivas`
+--
+
+CREATE TABLE `organizacion_lineas_productivas` (
+  `id` int(11) NOT NULL,
+  `organizacion_id` int(11) NOT NULL,
+  `linea_productiva_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `perfiles`
+--
+
+CREATE TABLE `perfiles` (
+  `id` int(11) NOT NULL,
+  `perfil` varchar(100) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -137,7 +257,7 @@ CREATE TABLE `usuarios` (
   `apellidos` varchar(100) NOT NULL,
   `cedula` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `asociacion_id` int(10) DEFAULT NULL,
+  `organizacion_id` int(11) DEFAULT NULL,
   `finca_id` int(10) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -148,10 +268,26 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `asociacion_id`, `finca_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `organizacion_id`, `finca_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Christian Alejandro', 'Orrego Herrera', '1093217141', 'info@mbrain.co', NULL, NULL, '0000-00-00 00:00:00', '2020-11-20 01:09:56', NULL),
 (2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
 (3, 'Pepito', 'Perez', '1093217142', 'pepito@mbrain.co', NULL, NULL, '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `zonas`
+--
+
+CREATE TABLE `zonas` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(500) NOT NULL,
+  `latitud` decimal(11,8) NOT NULL,
+  `longitud` decimal(11,8) NOT NULL,
+  `altitud` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
@@ -161,18 +297,80 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `asoci
 -- Indices de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `articulo_id` (`articulo_id`);
+
+--
+-- Indices de la tabla `asignaciones`
+--
+ALTER TABLE `asignaciones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`),
+  ADD KEY `organizacion_id` (`organizacion_id`),
+  ADD KEY `perfil_id` (`perfil_id`);
 
 --
 -- Indices de la tabla `casos`
 --
 ALTER TABLE `casos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `solicitante_id` (`solicitante_id`);
+
+--
+-- Indices de la tabla `fincas`
+--
+ALTER TABLE `fincas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`),
+  ADD KEY `zona_id` (`zona_id`);
+
+--
+-- Indices de la tabla `lineas_productivas`
+--
+ALTER TABLE `lineas_productivas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `lotes`
+--
+ALTER TABLE `lotes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `finca_id` (`finca_id`),
+  ADD KEY `organizacion_id` (`organizacion_id`),
+  ADD KEY `linea_productiva_id` (`linea_productiva_id`);
+
+--
+-- Indices de la tabla `lotes_cosechas`
+--
+ALTER TABLE `lotes_cosechas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lote_id` (`lote_id`);
+
+--
+-- Indices de la tabla `organizaciones`
+--
+ALTER TABLE `organizaciones`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `organizacion_lineas_productivas`
+--
+ALTER TABLE `organizacion_lineas_productivas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `organizacion_id` (`organizacion_id`),
+  ADD KEY `linea_productiva_id` (`linea_productiva_id`);
+
+--
+-- Indices de la tabla `perfiles`
+--
+ALTER TABLE `perfiles`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -185,6 +383,14 @@ ALTER TABLE `secciones`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `organizacion_id` (`organizacion_id`),
+  ADD KEY `finca_id` (`finca_id`);
+
+--
+-- Indices de la tabla `zonas`
+--
+ALTER TABLE `zonas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -204,10 +410,58 @@ ALTER TABLE `articulos_secciones`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT de la tabla `asignaciones`
+--
+ALTER TABLE `asignaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `casos`
 --
 ALTER TABLE `casos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `fincas`
+--
+ALTER TABLE `fincas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `lineas_productivas`
+--
+ALTER TABLE `lineas_productivas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `lotes`
+--
+ALTER TABLE `lotes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `lotes_cosechas`
+--
+ALTER TABLE `lotes_cosechas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `organizaciones`
+--
+ALTER TABLE `organizaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
+--
+ALTER TABLE `organizacion_lineas_productivas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `perfiles`
+--
+ALTER TABLE `perfiles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`
@@ -220,6 +474,77 @@ ALTER TABLE `secciones`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `zonas`
+--
+ALTER TABLE `zonas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `articulos`
+--
+ALTER TABLE `articulos`
+  ADD CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `articulos_secciones`
+--
+ALTER TABLE `articulos_secciones`
+  ADD CONSTRAINT `articulos_secciones_ibfk_1` FOREIGN KEY (`articulo_id`) REFERENCES `articulos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `asignaciones`
+--
+ALTER TABLE `asignaciones`
+  ADD CONSTRAINT `asignaciones_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `asignaciones_ibfk_2` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `asignaciones_ibfk_3` FOREIGN KEY (`perfil_id`) REFERENCES `perfiles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `casos`
+--
+ALTER TABLE `casos`
+  ADD CONSTRAINT `casos_ibfk_1` FOREIGN KEY (`solicitante_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `fincas`
+--
+ALTER TABLE `fincas`
+  ADD CONSTRAINT `fincas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
+
+--
+-- Filtros para la tabla `lotes`
+--
+ALTER TABLE `lotes`
+  ADD CONSTRAINT `lotes_ibfk_1` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`),
+  ADD CONSTRAINT `lotes_ibfk_2` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
+  ADD CONSTRAINT `lotes_ibfk_3` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
+
+--
+-- Filtros para la tabla `lotes_cosechas`
+--
+ALTER TABLE `lotes_cosechas`
+  ADD CONSTRAINT `lotes_cosechas_ibfk_1` FOREIGN KEY (`lote_id`) REFERENCES `lotes` (`id`);
+
+--
+-- Filtros para la tabla `organizacion_lineas_productivas`
+--
+ALTER TABLE `organizacion_lineas_productivas`
+  ADD CONSTRAINT `organizacion_lineas_productivas_ibfk_1` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
+  ADD CONSTRAINT `organizacion_lineas_productivas_ibfk_2` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
+  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
