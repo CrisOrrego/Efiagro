@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-01-2021 a las 03:36:03
+-- Tiempo de generación: 07-01-2021 a las 01:43:22
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -111,6 +111,23 @@ CREATE TABLE `casos` (
 
 INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Como se maneja esto', 'Consulta General', '[]', '2020-12-22 02:13:35', '2020-12-22 02:13:35');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `casos_novedades`
+--
+
+CREATE TABLE `casos_novedades` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `caso_id` int(11) NOT NULL,
+  `tipo` varchar(100) NOT NULL,
+  `novedad` text NOT NULL,
+  `solucion` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -324,6 +341,14 @@ ALTER TABLE `casos`
   ADD KEY `solicitante_id` (`solicitante_id`);
 
 --
+-- Indices de la tabla `casos_novedades`
+--
+ALTER TABLE `casos_novedades`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`),
+  ADD KEY `caso_id` (`caso_id`);
+
+--
 -- Indices de la tabla `fincas`
 --
 ALTER TABLE `fincas`
@@ -422,6 +447,12 @@ ALTER TABLE `casos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `casos_novedades`
+--
+ALTER TABLE `casos_novedades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `fincas`
 --
 ALTER TABLE `fincas`
@@ -510,6 +541,13 @@ ALTER TABLE `asignaciones`
 --
 ALTER TABLE `casos`
   ADD CONSTRAINT `casos_ibfk_1` FOREIGN KEY (`solicitante_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `casos_novedades`
+--
+ALTER TABLE `casos_novedades`
+  ADD CONSTRAINT `casos_novedades_ibfk_1` FOREIGN KEY (`caso_id`) REFERENCES `casos` (`id`),
+  ADD CONSTRAINT `casos_novedades_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `fincas`
