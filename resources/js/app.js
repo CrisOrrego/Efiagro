@@ -1,45 +1,46 @@
 angular.module('App', [
 
-	'ui.router',
+    'ui.router',
 
-	'ngStorage',
-	'ngMaterial',
-	'ngSanitize',
+    'ngStorage',
+    'ngMaterial',
+    'ngSanitize',
 
-	'md.data.table',
-	
-	'ngFileUpload',
-	//'angular-loading-bar',
-	//'angularResizable',
-	//'ui.utils.masks',
-	//'as.sortable',
-	//'ngCsv',
-	'angular-img-cropper',
-	//'indexedDB',
+    'md.data.table',
+
+    'ngFileUpload',
+    //'angular-loading-bar',
+    //'angularResizable',
+    //'ui.utils.masks',
+    //'as.sortable',
+    //'ngCsv',
+    'angular-img-cropper',
+    //'indexedDB',
 
 
-	'CRUD',
-	'CRUDDialogCtrl',
-	'ConfirmDeleteCtrl',
-	'ImageEditor_DialogCtrl',
-	'BasicDialogCtrl',
-	'Filters',
+    'CRUD',
+    'CRUDDialogCtrl',
+    'ConfirmDeleteCtrl',
+    'ImageEditor_DialogCtrl',
+    'BasicDialogCtrl',
+    'Filters',
 
-	'appRoutes',
-	'appConfig',
-	'appFunctions',
+    'appRoutes',
+    'appConfig',
+    'appFunctions',
 
-	'LoginCtrl',
-	'MainCtrl',
-	'HomeCtrl',
+    'LoginCtrl',
+    'MainCtrl',
+    'HomeCtrl',
 
-	'MiTecnicoAmigoCtrl',
-		'ArticuloDiagCtrl',
+    'MiTecnicoAmigoCtrl',
+    'ArticuloDiagCtrl',
+    'SolicitudesDetalleCtrl',
 
-	'UsuariosCtrl',
-	'ArticulosCtrl',
-		'Articulos_ArticuloEditorCtrl',
+    'UsuariosCtrl',
+    'ArticulosCtrl',
+    'Articulos_ArticuloEditorCtrl',
 
-	'CasosCtrl',
+    'CasosCtrl',
 
 ]);
