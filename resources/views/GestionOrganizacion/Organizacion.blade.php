@@ -10,80 +10,51 @@
 			</div>
 	
 
-			<div class="md-padding "  layout="row">
-				<md-card ng-repeat="O in OrganizacionesCRUD.rows | filter:filterOrganizaciones" class="seccion_organizacion">
-					<img src="/../imgs/organizacion1.jpg"  alt="iconOrganizacion">
-					<md-card-title >				
-						<span class="md-headline">@{{ O.nombre }}</span>
-					</md-card-title>
-			  
-			  		<md-card-content >
-				
-						<span class="seccion_texto" >
-							<label class="texto_title">NIT</label>
-							<span class="md-subhead">@{{ O.nit }}</span>
-						</span >
-
-						<span class="seccion_texto">
-							<label class="texto_title">Dirección</label> 
-							<span class="md-subhead">@{{ O.direccion }}</span>
-						</span>
-
-						<span class="seccion_texto">
-							<label class="texto_title">Teléfono</label>
-							<span class="md-subhead">@{{ O.telefono }}</span>
-						</span>
-
-						<span class="seccion_texto">
-							<label class="texto_title">Correo</label>
-							<span class="md-subhead">@{{ O.correo }}</span>
-						</span>
-
-						<span class="seccion_texto">
-							<label class="texto_title">Asociados</label> 
-							<span class="md-subhead">@{{ O.total_asociados }}</span>
-						</span>
+			<div class='md-padding' layout="row"  layout-wrap>
+				<md-card ng-repeat="O in OrganizacionesCRUD.rows | filter:filterOrganizaciones" class="seccion_organizacion" flex-sm="25" flex-gt-sm="30" flex="100">
 					
-					  </md-card-content>
-					 
+						<div align="center"><img class="img-organizacion" src="/../imgs/organizacion1.jpg"  alt="iconOrganizacion" ></div>			
+					<md-card-title class="titilo-organizacion" >				
+						<h2>@{{ O.nombre }}</h2>
+					</md-card-title>
+					  
+					  <md-button class="md-raised md-primary" aria-label="Ver" ng-click="abrirOrganizacion()">
+						<md-icon md-font-icon="open_with"></md-icon>Ver detalles
+					</md-button>
+
+					
 				</md-card>
 			
 			</div>
+
+			
 		  
 </div>
 
 
 <style type="text/css">
 	
+
 	.seccion_organizacion{
 		transform: scale(0.95);
 		transition: all 0.3s;
 		
 	}
+	.titilo-organizacion{
+		text-align: center;
+	}
 
 	.seccion_organizacion:hover{
 		transform: scale(1)	;
 	}
-	.seccion_texto{
-		white-space:pre-line;
+	md-card{
+		min-height: 200px;
 
 	}
-
-	.texto_title{
-		/* text-align: center;
-		height: 40px; */
-		color: rgb(199, 196, 196);
-		/* font-size: 1.2rem;
-		text-shadow: 0 0 5px black; */
-		
-		
-	}
-
-	.organizacion_icono{
-		background-color: grey;
-		margin: 5px;
-		border-radius: 1000px;
-		background-image: url("/../imgs/organizacion1.jpg");
+	.img-organizacion{
+		width: 100px;
+		height: 100px;
+		border-radius: 500px;
 	}
 
 </style>
