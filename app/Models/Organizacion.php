@@ -20,12 +20,14 @@ class Organizacion extends Model
             ['nombre',                      'Nombre:',                       null, true,         false, null, 100],
             ['nit',                         'Nit:',                          null, true,         false, null, 100],
             ['sigla',                       'Sigla:',                        null, false,        false, null, 100],
+            ['latitud',                     'Latitud:',                      null, false,        false, null, 100],
+            ['longitud',                    'Longitud:',                     null, false,        false, null, 100],
             ['direccion',                   'Dirección:',                    null, true,         false, null, 100],
             ['departamento',                'Departamento:',                 null, true,         false, null, 100],
             ['municipio',                   'Municipio:',                    null, true,         false, null, 100],
             ['telefono',                    'Teléfono:',                     null, true,         false, null, 100],
             ['correo',                      'Correo:',                       'email', true,      false, null, 100],
-            ['total_asociados',             'Asociados:',              'integer', true,    false, null, 100],
+            ['total_asociados',             'Asociados:',                    'integer', true,    false, null, 100],
             ['fecha_constitucion',          'Fecha Constitución:',           'date', true,       false, null, 100],         
         ];
         

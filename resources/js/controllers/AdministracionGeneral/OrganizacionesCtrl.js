@@ -9,6 +9,8 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         var Ctrl = $scope;
         var Rs = $rootScope;
 
+        Ctrl.Salir = $mdDialog.cancel;
+		
         Ctrl.OrganizacionesCRUD = $injector.get("CRUD").config({
             base_url: "/api/organizaciones/organizaciones",
             limit: 1000,
@@ -40,7 +42,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			Ctrl.OrganizacionesCRUD.dialog(O, {
 				title: 'Editar Organización' + O.nombre
 			}).then(r => {
-				if(r == 'DELETE') return Ctrl.OrganizacionesCRUD.delete(U);
+				if(r == 'DELETE') return Ctrl.OrganizacionesCRUD.delete(O);
 				Ctrl.OrganizacionesCRUD.update(r).then(() => {
 					Rs.showToast('Organizacion actualizada');
 				});
@@ -63,12 +65,14 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
 		Ctrl.abrirOrganizacion = (O) => {
 			$mdDialog.show({
-				templateUrl: 'Frag/Organizacion.OrganizacionDiag',
-				controller: 'OrganizacionDiagCtrl',
+				templateUrl: 'Frag/GestionOrganizacion.OrganizacionDiag',
+				controller: 'OrganizacionesCtrl',
 				locals: { Organizacion: O },
 				fullscreen: false,
 			});
-		}
+        }
+        
+        
     }
 ]);
 

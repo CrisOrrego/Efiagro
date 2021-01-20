@@ -21,7 +21,7 @@ class Caso extends Model
             ['titulo',          'Titulo',      null, true, false, null, 100],
             ['tipo',            'Tipo',        null, true, false, null, 100],
             ['estado',          'Estado',      null, true, false, null, 100],
-            ['asignados',       'asignados',   null, true, false, null, 100],
+            ['asignados',       'Asignados',   null, true, false, null, 100],
             ['solicitante_id',  'Solicitante', null, false, false, null, 100],
         ];
     }
