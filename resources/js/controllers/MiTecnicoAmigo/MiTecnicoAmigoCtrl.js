@@ -7,13 +7,13 @@ angular.module('MiTecnicoAmigoCtrl', [])
             var Rs = $rootScope;
 
             Ctrl.Subseccion = 'Articulos';
-            Ctrl.Subseccion = 'Solicitudes';
+            // Ctrl.Subseccion = 'Solicitudes';
 
             Ctrl.Cancel = $mdDialog.cancel;
 
             $http.post('api/articulos/obtener', {}).then(r => {
                 Ctrl.Articulos = r.data;
-                //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
+                // Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
             })
 
             Ctrl.abrirArticulo = (A) => {
@@ -84,5 +84,30 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 });
             };
             // Finaliza Codigo Luigi
+            $scope.my = {search: ""};
+        $scope.searchChange = function() {
+		    let filtro = $scope.filtroArticulos;
+		    filtro = filtro.toLowerCase().replace(" de ", " ")
+                .replace(" en ", " ")
+                .replace(" para ", " ")
+                .replace(" por ", " ")
+                .replace(" la ", " ");
+            let keys = filtro.split(" ");
+            console.log(keys);
+            Ctrl.Articulos.forEach(function (articulo) {
+                console.log(articulo.titulo);
+                articulo.contador=0;
+                articulo.encontrado = false;
+                keys.forEach(function (key){
+                    console.log(key);
+                    if(articulo.titulo.toLowerCase().indexOf(key)>0){
+                        articulo.contador++;
+                        articulo.encontrado = true;
+                    }
+                })
+            })
+            console.log(keys);
+        };
+		//FIN DEV ANGÉLICA
         }
     ]);

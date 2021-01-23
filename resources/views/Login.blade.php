@@ -1,6 +1,7 @@
-<div id="Login" ng-controller="LoginCtrl" flex layout layout-align="center center">
+<div id="Login" ng-controller="LoginCtrl" flex layout layout-align="center top">
 
-	<md-card class="mw300" layout=column>
+<div class="login">
+	<md-card class="mw300" layout="column">
 	<form flex layout=column ng-submit="enviarLogin($event)">
 		<md-card-content flex layout=column>
 
@@ -28,5 +29,24 @@
 
 	</form>
 	</md-card>
+</div>
+	<div class="logos">
+		<span class='spacer'></span>
+		<div align="center"><img class="" src="imgs/logosentidad.jpeg"  alt="" ></div>
+		<span class='spacer'></span>
+	</div>
 
 </div>
+
+<style type="text/css">
+/* .spacer {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+} */
+.logos{
+	position: absolute;
+	bottom: 0;
+}
+
+</style>
