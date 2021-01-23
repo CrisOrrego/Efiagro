@@ -30,5 +30,10 @@ class Caso extends Model
     {
         return $this->belongsTo('App\Models\Usuario', 'solicitante_id', 'id');
     }
+
+    public function novedades()
+    {
+        return $this->hasMany('App\Models\CasoNovedad', 'caso_id');
+    }
     
 }

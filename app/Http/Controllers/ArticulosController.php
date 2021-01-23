@@ -24,7 +24,7 @@ class ArticulosController extends Controller
 
  	public function postObtener()
 	{
-		$Articulos = Articulo::with(['secciones'])->activos()->accesibles()->get();
+		$Articulos = Articulo::with(['secciones', 'autor'])->activos()->accesibles()->get();
 		return $Articulos;
 	} 
 

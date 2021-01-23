@@ -16,6 +16,7 @@ angular.module('App', [
     //'ngCsv',
     'angular-img-cropper',
     //'indexedDB',
+    'enterStroke',
 
 
     'CRUD',

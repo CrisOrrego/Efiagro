@@ -47,7 +47,7 @@ class MainController extends Controller
         $Ruta = dirname($Path);
         if(!File::exists($Ruta)) File::makeDirectory($Ruta, 0775, true, true);
 
-        return $image->response('jpg', 70);
+        //return $image->response('jpg', 70);
 
 
         if(!$image->save($Path, $Quality)){

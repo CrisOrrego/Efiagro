@@ -49,7 +49,7 @@
 			        		<thead>
 			        			<th ng-repeat="(kC,C) in S.contenido[0] track by $index">
 			        				<md-input-container class="no-margin">
-			        					<input type="text" ng-model="C" ng-change="S.changed = true" ng-blur="S.contenido[0][kC] = C">
+			        					<input type="text" ng-model="C" ng-change="S.changed = true" ng-blur="S.contenido[0][kC] = C" aria-label="t">
 			        				</md-input-container>
 			        				<md-menu>
 			        					<md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Abrir Menu">
@@ -73,7 +73,7 @@
 			        				<td ng-repeat="(kC,C) in S.contenido[0] track by $index">
 
 			        					<md-input-container class="no-margin">
-				        					<input type="text" ng-model="R[kC]" ng-change="S.changed = true">
+				        					<input type="text" ng-model="R[kC]" ng-change="S.changed = true" aria-label="t">
 				        				</md-input-container>
 
 			        				</td>
@@ -92,8 +92,6 @@
 			        		<md-tooltip>Agregar Fila</md-tooltip>
         					<md-icon md-svg-icon="md-plus"></md-icon>
         				</md-button>
-
-			        	<pre>@{{ S.contenido | json }}</pre>
 
 
 			        </div>

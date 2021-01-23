@@ -6,10 +6,11 @@ angular.module('MiTecnicoAmigoCtrl', [])
             var Ctrl = $scope;
             var Rs = $rootScope;
 
-            Ctrl.Subseccion = 'Articulos';
-            // Ctrl.Subseccion = 'Solicitudes';
+            //Ctrl.Subseccion = 'Articulos';
+             Ctrl.Subseccion = 'Solicitudes';
 
             Ctrl.Cancel = $mdDialog.cancel;
+            Ctrl.Buscando = false;
 
             $http.post('api/articulos/obtener', {}).then(r => {
                 Ctrl.Articulos = r.data;
@@ -30,7 +31,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 base_url: '/api/casos/casos',
                 limit: 1000,
                 add_append: 'refresh',
-                query_with: [],
+                query_with: ['novedades'],
                 order_by: []
             })
 
@@ -84,29 +85,33 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 });
             };
             // Finaliza Codigo Luigi
-            $scope.my = {search: ""};
-        $scope.searchChange = function() {
-		    let filtro = $scope.filtroArticulos;
+        
+        Ctrl.searchChange = function() {
+		    let filtro = Ctrl.filtroArticulos;
+            if(!filtro) return Ctrl.Buscando = false;
 		    filtro = filtro.toLowerCase().replace(" de ", " ")
                 .replace(" en ", " ")
                 .replace(" para ", " ")
                 .replace(" por ", " ")
                 .replace(" la ", " ");
+
+            if(filtro == "") return Ctrl.Buscando = false;
+
             let keys = filtro.split(" ");
-            console.log(keys);
+            var ArticulosBuscados = [];
+            Ctrl.Buscando = true;
             Ctrl.Articulos.forEach(function (articulo) {
-                console.log(articulo.titulo);
                 articulo.contador=0;
-                articulo.encontrado = false;
                 keys.forEach(function (key){
-                    console.log(key);
                     if(articulo.titulo.toLowerCase().indexOf(key)>0){
                         articulo.contador++;
-                        articulo.encontrado = true;
                     }
-                })
+                });
+
+                if(articulo.contador > 0) ArticulosBuscados.push(articulo);
             })
-            console.log(keys);
+            
+            Ctrl.ArticulosBuscados = ArticulosBuscados;
         };
 		//FIN DEV ANGÉLICA
         }

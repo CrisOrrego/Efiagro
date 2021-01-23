@@ -57,11 +57,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 				Ctrl.OrganizacionesCRUD.delete(O);
 			});
         }
-        
-        $http.post('api/organizaciones/obtener', {}).then(r => {
-			Ctrl.Organizaciones = r.data;
-			Ctrl.abrirOrganizacion(Ctrl.Organizaciones[3]); //FIX
-		});
 
 		Ctrl.abrirOrganizacion = (O) => {
 			$mdDialog.show({
