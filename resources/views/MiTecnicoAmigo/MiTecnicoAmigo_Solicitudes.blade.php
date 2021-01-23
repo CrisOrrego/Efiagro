@@ -8,7 +8,14 @@
 	<div layout=column flex layout-align="start center" class="padding">
 		
 		<md-card ng-repeat="Caso in CasosCRUD.rows" layout=column class="padding w100p mxw600">
-			<h3 class="md-title no-margin">@{{ Caso.titulo }}</h3>
+			<div layout layout-align="space-between center">
+				<div>
+					<h3 class="md-title no-margin">@{{ Caso.titulo }}</h3>
+				</div>
+				<div>
+					<md-icon md-font-icon="fa-edit fa-lg" ng-click="novedadesCaso(Caso)" class="fa fa-edit fa-lg" role="img" aria-label="fa-edit fa-lg"></md-icon>
+				</div>
+			</div>
 			<div class="text-clear text-14px">@{{ Caso.tipo }}</div>
 		</md-card>
 	</div>

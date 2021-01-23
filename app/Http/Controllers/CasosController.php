@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Functions\CRUD;
+use App\Models\CasoNovedad;
 use App\Models\Caso;
+use App\Functions\CRUD;
 
 class CasosController extends Controller
 {
@@ -12,7 +13,18 @@ class CasosController extends Controller
  	{
  		$CRUD = new CRUD('App\Models\Caso');
         return $CRUD->call(request()->fn, request()->ops);
-	 }
-	 
-	 
+	}
+	
+	public function postNovedades()
+ 	{
+ 		$CRUD = new CRUD('App\Models\CasoNovedad');
+        return $CRUD->call(request()->fn, request()->ops);
+	}
+	
+	public function postObtener()
+	{
+		$Casos = CasoNovedad::with(['novedad'])->activos()->accesibles()->get();
+		return $Casos;
+	} 
+	
 }
