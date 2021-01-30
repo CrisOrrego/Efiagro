@@ -18,7 +18,7 @@
 						<h2>@{{ O.nombre }}</h2>
 					</md-card-title>
 					  
-					  <md-button class="md-raised md-primary" aria-label="Ver" ng-click="abrirOrganizacion()">
+					  <md-button class="md-raised md-primary" aria-label="Ver" ng-click="abrirOrganizacion(O)">
 						<md-icon md-font-icon="open_with"></md-icon>Ver detalles
 					</md-button>
 

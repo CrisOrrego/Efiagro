@@ -9,11 +9,6 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
         var Ctrl = $scope;
         var Rs = $rootScope;
 
-        $scope.currentNavItem = "mi-finca";
-        $scope.pagFinca = function(page) {
-            $scope.status = "PagFinca " + page;
-        };
-
         Ctrl.Salir = $mdDialog.cancel;
 
         Ctrl.FincasCRUD = $injector.get("CRUD").config({
@@ -54,27 +49,28 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
             });
         };
 
-        Ctrl.eliminarFinca = F => {
+        Ctrl.eliminarFinca = (F) => {
             Rs.confirmDelete({
-                Title: "¿Eliminar Finca #" + F.id + "?"
+                Title: "¿Eliminar Finca #" +F.id+ "?",
             }).then(d => {
                 if (!d) return;
                 Ctrl.FincasCRUD.delete(F);
             });
         };
 
-        $http.post("api/fincas/obtener", {}).then(r => {
-            Ctrl.Fincas = r.data;
-            Ctrl.abrirFinca(Ctrl.Fincas[3]); //FIX
-        });
+        // $http.post("api/fincas/obtener", {}).then(r => {
+        //     Ctrl.Fincas = r.data;
+        //     Ctrl.abrirFinca(Ctrl.Fincas[3]); //FIX
+        // });
 
-        Ctrl.abrirFinca = F => {
+        Ctrl.abrirFinca = (F) => {
             $mdDialog.show({
                 templateUrl: "Frag/MiFinca.FincaDiag",
-                controller: "FincasCtrl",
+                controller: "FincaDiagCtrl",
                 locals: { Finca: F },
-                fullscreen: false
+                fullscreen: false,
             });
         };
-    }
+
+       }
 ]);

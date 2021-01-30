@@ -44,6 +44,14 @@ angular.module('App', [
 
     'CasosCtrl',
 
-	'OrganizacionesCtrl',
-	'FincasCtrl',
+    'OrganizacionesCtrl',
+    'OrganizacionDiagCtrl',
+    
+    'FincasCtrl',
+    'FincaDiagCtrl',
+
+    'LotesCtrl',
+    'LoteDiagCtrl',
+
+    
 ]);

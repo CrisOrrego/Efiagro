@@ -12,6 +12,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         Ctrl.Salir = $mdDialog.cancel;
 		
         Ctrl.OrganizacionesCRUD = $injector.get("CRUD").config({
+            
             base_url: "/api/organizaciones/organizaciones",
             limit: 1000,
             add_append: "refresh",
@@ -59,9 +60,10 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         }
 
 		Ctrl.abrirOrganizacion = (O) => {
+            // console.log(O);
 			$mdDialog.show({
 				templateUrl: 'Frag/GestionOrganizacion.OrganizacionDiag',
-				controller: 'OrganizacionesCtrl',
+				controller: 'OrganizacionDiagCtrl',
 				locals: { Organizacion: O },
 				fullscreen: false,
 			});

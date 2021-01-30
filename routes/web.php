@@ -26,3 +26,4 @@ AdvancedRoute::controller('/api/articulos', 'ArticulosController');
 AdvancedRoute::controller('/api/casos',     'CasosController');
 AdvancedRoute::controller('/api/organizaciones',  'OrganizacionController');
 AdvancedRoute::controller('/api/fincas',  'FincaController');
+AdvancedRoute::controller('/api/lotes',  'LoteController');
