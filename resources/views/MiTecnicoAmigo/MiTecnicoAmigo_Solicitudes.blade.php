@@ -1,13 +1,9 @@
 <div flex layout=column ng-show="Subseccion == 'Solicitudes'">
 	
-	<div layout class="margin-top">
-		<div flex>
-			<md-button class="md-raised">
-				<md-icon md-font-icon="fa-arrow-left fa-fw"></md-icon>
-				Volver a Articulos
-			</md-button>
-		</div>
+	<div layout layout-align="center center" class="margin-top">
 		<md-button class="md-raised md-primary boton-principal" ng-click="crearCaso()">Crear Nueva Solicitud</md-button>
+<<<<<<< Updated upstream
+=======
 		<!--INICIO DEV ANGELICA-->
 		<div flex>
 		<a href="tel:3173562730" ng-click="crearCasoTelefonico('Llamada telefonica')">
@@ -21,6 +17,7 @@
         </a>
 		<!--FIN DEV ANGELICA--> 	
 		</div>
+>>>>>>> Stashed changes
 	</div>
 
 	
@@ -29,6 +26,8 @@
 		<md-card ng-repeat="Caso in CasosCRUD.rows" layout=column class="padding w100p mxw600 pointer"
 			ng-click="novedadesCaso(Caso)">
 			<div layout layout-align="space-between center margin-bottom-5">
+		<md-card ng-repeat="Caso in CasosCRUD.rows" layout=column class="padding w100p mxw600">
+			<div layout layout-align="space-between center">
 				<div>
 					<!--INICIO DEV ANGELICA-->
 					<div ng-if="Caso.tipo==='Whatsapp'">
@@ -46,10 +45,17 @@
 					<h5 class="md-title no-margin">@{{ Caso.solicitante_id }}</h5> <!--el administrador debe ver quien está preguntando-->
 					<!--FIN DEV ANGELICA-->
 				</div>
+				<div>
+					<md-icon md-font-icon="fa-edit fa-lg" ng-click="novedadesCaso(Caso)" class="fa fa-edit fa-lg" role="img" aria-label="fa-edit fa-lg"></md-icon>
+				</div>
 			</div>
+<<<<<<< Updated upstream
+			<div class="text-clear text-14px">@{{ Caso.tipo }}</div>
+=======
 			<div class="text-darkgreen text-bold text-14px">
 				 	@{{ Caso.novedades.length }} @{{ Caso.novedades.length == 1 ? 'Respuesta' : 'Respuestas' }}
 			</div>
+>>>>>>> Stashed changes
 		</md-card>
 	</div>
 

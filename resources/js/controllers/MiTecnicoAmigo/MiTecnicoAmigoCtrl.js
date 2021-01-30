@@ -6,15 +6,14 @@ angular.module('MiTecnicoAmigoCtrl', [])
             var Ctrl = $scope;
             var Rs = $rootScope;
 
-            //Ctrl.Subseccion = 'Articulos';
-             Ctrl.Subseccion = 'Solicitudes';
+            Ctrl.Subseccion = 'Articulos';
+            Ctrl.Subseccion = 'Solicitudes';
 
             Ctrl.Cancel = $mdDialog.cancel;
-            Ctrl.Buscando = false;
 
             $http.post('api/articulos/obtener', {}).then(r => {
                 Ctrl.Articulos = r.data;
-                // Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
+                //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
             })
 
             Ctrl.abrirArticulo = (A) => {
@@ -31,7 +30,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 base_url: '/api/casos/casos',
                 limit: 1000,
                 add_append: 'refresh',
-                query_with: ['novedades'],
+                query_with: [],
                 order_by: []
             })
 
@@ -70,8 +69,8 @@ angular.module('MiTecnicoAmigoCtrl', [])
             }
 
             //INICIO DEV ANGÉLICA
-            //yo como usuario puedo ver todas las solicitudes o solo las mias? solo las mias
-            //Si entro como admin debo ver las solicitudes de todos, con un filtro--> las que si y no tienen respuesta --- pasar las respuestas a la parte administrativas
+            //yo como usuario puedo ver todas las solicitudes o solo las mias?
+            //Si entro como admin debo ver las solicitudes de todos, con un filtro--> las que si y no tienen respuesta
             //Si el usuario navega por web que no vea el boton de SMS
             Ctrl.crearCasoTelefonico = (medio) => {
                     var NuevoCaso = {
@@ -98,8 +97,6 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 });
             };
             // Finaliza Codigo Luigi
-        
-        //INICIO ANGÉLICA//
         Ctrl.searchChange = function() {
 		    let filtro = Ctrl.filtroArticulos;
             if(!filtro) return Ctrl.Buscando = false;
