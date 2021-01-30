@@ -6,14 +6,15 @@ angular.module('MiTecnicoAmigoCtrl', [])
             var Ctrl = $scope;
             var Rs = $rootScope;
 
-            Ctrl.Subseccion = 'Articulos';
-            Ctrl.Subseccion = 'Solicitudes';
+            //Ctrl.Subseccion = 'Articulos';
+             Ctrl.Subseccion = 'Solicitudes';
 
             Ctrl.Cancel = $mdDialog.cancel;
+            Ctrl.Buscando = false;
 
             $http.post('api/articulos/obtener', {}).then(r => {
                 Ctrl.Articulos = r.data;
-                //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
+                // Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
             })
 
             Ctrl.abrirArticulo = (A) => {
@@ -30,7 +31,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 base_url: '/api/casos/casos',
                 limit: 1000,
                 add_append: 'refresh',
-                query_with: [],
+                query_with: ['novedades'],
                 order_by: []
             })
 
@@ -64,12 +65,25 @@ angular.module('MiTecnicoAmigoCtrl', [])
                         tipo: OpcionesTipo.find(a => a[0] == r.Fields[0].Value)[1],
                         asignados: '[]'
                     };
-
                     Ctrl.CasosCRUD.add(NuevoCaso);
-
-
                 });
             }
+
+            //INICIO DEV ANGÉLICA
+            //yo como usuario puedo ver todas las solicitudes o solo las mias? solo las mias
+            //Si entro como admin debo ver las solicitudes de todos, con un filtro--> las que si y no tienen respuesta --- pasar las respuestas a la parte administrativas
+            //Si el usuario navega por web que no vea el boton de SMS
+            Ctrl.crearCasoTelefonico = (medio) => {
+                    var NuevoCaso = {
+                        titulo: 'Boton Contacto',
+                        solicitante_id: Rs.Usuario.id,
+                        tipo: medio,
+                        asignados: '[]'
+                    };
+                    alert('Inicia llamado al WS')
+                    Ctrl.CasosCRUD.add(NuevoCaso);
+            }
+            //FIN DEV ANGELICA
 
             // Inicia Codigo Luigi
             Ctrl.novedadesCaso = (C) => {
@@ -84,5 +98,35 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 });
             };
             // Finaliza Codigo Luigi
+        
+        //INICIO ANGÉLICA//
+        Ctrl.searchChange = function() {
+		    let filtro = Ctrl.filtroArticulos;
+            if(!filtro) return Ctrl.Buscando = false;
+		    filtro = filtro.toLowerCase().replace(" de ", " ")
+                .replace(" en ", " ")
+                .replace(" para ", " ")
+                .replace(" por ", " ")
+                .replace(" la ", " ");
+
+            if(filtro == "") return Ctrl.Buscando = false;
+
+            let keys = filtro.split(" ");
+            var ArticulosBuscados = [];
+            Ctrl.Buscando = true;
+            Ctrl.Articulos.forEach(function (articulo) {
+                articulo.contador=0;
+                keys.forEach(function (key){
+                    if(articulo.titulo.toLowerCase().indexOf(key)>0){
+                        articulo.contador++;
+                    }
+                });
+
+                if(articulo.contador > 0) ArticulosBuscados.push(articulo);
+            })
+            
+            Ctrl.ArticulosBuscados = ArticulosBuscados;
+        };
+		//FIN DEV ANGÉLICA
         }
     ]);
