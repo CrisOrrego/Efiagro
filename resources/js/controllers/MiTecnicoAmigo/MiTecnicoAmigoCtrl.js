@@ -6,15 +6,14 @@ angular.module('MiTecnicoAmigoCtrl', [])
             var Ctrl = $scope;
             var Rs = $rootScope;
 
-            //Ctrl.Subseccion = 'Articulos';
-             Ctrl.Subseccion = 'Solicitudes';
+            Ctrl.Subseccion = 'Articulos';
+            Ctrl.Subseccion = 'Solicitudes';
 
             Ctrl.Cancel = $mdDialog.cancel;
-            Ctrl.Buscando = false;
 
             $http.post('api/articulos/obtener', {}).then(r => {
                 Ctrl.Articulos = r.data;
-                // Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
+                //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
             })
 
             Ctrl.abrirArticulo = (A) => {
@@ -31,7 +30,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 base_url: '/api/casos/casos',
                 limit: 1000,
                 add_append: 'refresh',
-                query_with: ['novedades'],
+                query_with: [],
                 order_by: []
             })
 
@@ -65,12 +64,25 @@ angular.module('MiTecnicoAmigoCtrl', [])
                         tipo: OpcionesTipo.find(a => a[0] == r.Fields[0].Value)[1],
                         asignados: '[]'
                     };
-
                     Ctrl.CasosCRUD.add(NuevoCaso);
-
-
                 });
             }
+
+            //INICIO DEV ANGÉLICA
+            //yo como usuario puedo ver todas las solicitudes o solo las mias?
+            //Si entro como admin debo ver las solicitudes de todos, con un filtro--> las que si y no tienen respuesta
+            //Si el usuario navega por web que no vea el boton de SMS
+            Ctrl.crearCasoTelefonico = (medio) => {
+                    var NuevoCaso = {
+                        titulo: 'Boton Contacto',
+                        solicitante_id: Rs.Usuario.id,
+                        tipo: medio,
+                        asignados: '[]'
+                    };
+                    alert('Inicia llamado al WS')
+                    Ctrl.CasosCRUD.add(NuevoCaso);
+            }
+            //FIN DEV ANGELICA
 
             // Inicia Codigo Luigi
             Ctrl.novedadesCaso = (C) => {
@@ -85,7 +97,6 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 });
             };
             // Finaliza Codigo Luigi
-        
         Ctrl.searchChange = function() {
 		    let filtro = Ctrl.filtroArticulos;
             if(!filtro) return Ctrl.Buscando = false;
