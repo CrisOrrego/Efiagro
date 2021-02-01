@@ -11,7 +11,6 @@
 		<div flex></div>
 	</div>
 
-	
 	<div layout=column flex layout-align="start center" class="padding">
 		
 		<md-card ng-repeat="Caso in CasosCRUD.rows" layout=column class="padding w100p mxw600 pointer"
@@ -22,7 +21,7 @@
 				</div>
 			</div>
 			<div class="text-darkgreen text-bold text-14px">
-				@{{ Caso.novedades.length }} @{{ Caso.novedades.length == 1 ? 'Respuesta' : 'Respuestas' }}
+				Ver @{{ Caso.novedades.length }} @{{ Caso.novedades.length == 1 ? 'Respuesta' : 'Respuestas' }}
 			</div>
 		</md-card>
 	</div>

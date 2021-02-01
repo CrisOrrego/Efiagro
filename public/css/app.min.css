@@ -33,6 +33,10 @@ body {
   background-color: #ffffdc;
 }
 
+.bg-light-grey {
+  background-color: #e6e6e6;
+}
+
 .highlight {
   background-color: #cdf1cd;
 }
