@@ -6,8 +6,8 @@ angular.module('MiTecnicoAmigoCtrl', [])
             var Ctrl = $scope;
             var Rs = $rootScope;
 
-            //Ctrl.Subseccion = 'Articulos';
-             Ctrl.Subseccion = 'Solicitudes';
+            Ctrl.Subseccion = 'Articulos';
+            Ctrl.Subseccion = 'Solicitudes';
 
             Ctrl.Cancel = $mdDialog.cancel;
             Ctrl.Buscando = false;
@@ -31,7 +31,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 base_url: '/api/casos/casos',
                 limit: 1000,
                 add_append: 'refresh',
-                query_with: ['novedades'],
+                query_with: ['novedades', 'solicitante'],
                 order_by: []
             })
 
@@ -74,7 +74,6 @@ angular.module('MiTecnicoAmigoCtrl', [])
 
             // Inicia Codigo Luigi
             Ctrl.novedadesCaso = (C) => {
-                //console.log('es el caso ' + C.id);
                 $mdDialog.show({
                     templateUrl: 'Frag/MiTecnicoAmigo.MiTecnicoAmigo_SolicitudesDetalleDiag',
                     controller: 'SolicitudesDetalleCtrl',
@@ -85,34 +84,34 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 });
             };
             // Finaliza Codigo Luigi
-        
-        Ctrl.searchChange = function() {
-		    let filtro = Ctrl.filtroArticulos;
-            if(!filtro) return Ctrl.Buscando = false;
-		    filtro = filtro.toLowerCase().replace(" de ", " ")
-                .replace(" en ", " ")
-                .replace(" para ", " ")
-                .replace(" por ", " ")
-                .replace(" la ", " ");
 
-            if(filtro == "") return Ctrl.Buscando = false;
+            Ctrl.searchChange = function() {
+                let filtro = Ctrl.filtroArticulos;
+                if (!filtro) return Ctrl.Buscando = false;
+                filtro = filtro.toLowerCase().replace(" de ", " ")
+                    .replace(" en ", " ")
+                    .replace(" para ", " ")
+                    .replace(" por ", " ")
+                    .replace(" la ", " ");
 
-            let keys = filtro.split(" ");
-            var ArticulosBuscados = [];
-            Ctrl.Buscando = true;
-            Ctrl.Articulos.forEach(function (articulo) {
-                articulo.contador=0;
-                keys.forEach(function (key){
-                    if(articulo.titulo.toLowerCase().indexOf(key)>0){
-                        articulo.contador++;
-                    }
-                });
+                if (filtro == "") return Ctrl.Buscando = false;
 
-                if(articulo.contador > 0) ArticulosBuscados.push(articulo);
-            })
-            
-            Ctrl.ArticulosBuscados = ArticulosBuscados;
-        };
-		//FIN DEV ANGÉLICA
+                let keys = filtro.split(" ");
+                var ArticulosBuscados = [];
+                Ctrl.Buscando = true;
+                Ctrl.Articulos.forEach(function(articulo) {
+                    articulo.contador = 0;
+                    keys.forEach(function(key) {
+                        if (articulo.titulo.toLowerCase().indexOf(key) > 0) {
+                            articulo.contador++;
+                        }
+                    });
+
+                    if (articulo.contador > 0) ArticulosBuscados.push(articulo);
+                })
+
+                Ctrl.ArticulosBuscados = ArticulosBuscados;
+            };
+            //FIN DEV ANGÉLICA
         }
     ]);

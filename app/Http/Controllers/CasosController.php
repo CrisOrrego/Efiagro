@@ -23,7 +23,7 @@ class CasosController extends Controller
 	
 	public function postObtener()
 	{
-		$Casos = CasoNovedad::with(['novedad'])->activos()->accesibles()->get();
+		$Casos = CasoNovedad::with(['novedades', 'solicitante'])->activos()->accesibles()->get();
 		return $Casos;
 	} 
 	

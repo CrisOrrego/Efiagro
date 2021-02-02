@@ -54,4 +54,9 @@ class CasoNovedad extends Model
         return $novedad;
     }
 
+    public function autor()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id', 'id');
+    }
+
 }
