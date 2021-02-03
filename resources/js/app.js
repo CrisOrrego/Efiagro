@@ -50,8 +50,5 @@ angular.module('App', [
     'FincasCtrl',
     'FincaDiagCtrl',
 
-    'LotesCtrl',
-    'LoteDiagCtrl',
-
-    
+       
 ]);

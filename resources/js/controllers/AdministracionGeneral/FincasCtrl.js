@@ -72,5 +72,62 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
             });
         };
 
+        // LOTES
+        Ctrl.LotesCRUD = $injector.get("CRUD").config({
+            base_url: "/api/lotes/lotes",
+            limit: 1000,
+            add_append: "refresh",
+            order_by: ["-created_at"]
+        });
+
+        Ctrl.getLotes = () => {
+            Ctrl.LotesCRUD.get().then(() => {
+                //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
+            });
+        };
+
+        Ctrl.getLotes();
+
+        Ctrl.nuevaLote = () => {
+            Ctrl.LotesCRUD.dialog({
+                Flex: 10,
+                Title: "Crear Lote",
+
+                Confirm: { Text: "Crear Lote" }
+            }).then(r => {
+                if (!r) return;
+                Ctrl.LotesCRUD.add(r);
+            });
+        };
+
+        Ctrl.editarLote = L => {
+            Ctrl.LotesCRUD.dialog(L, {
+                title: "Editar Lote" + L.id
+            }).then(r => {
+                if (r == "DELETE") return Ctrl.LotesCRUD.delete(L);
+                Ctrl.LotesCRUD.update(r).then(() => {
+                    Rs.showToast("Lote actualizado");
+                });
+            });
+        };
+
+        Ctrl.eliminarLote = (L) => {
+            Rs.confirmDelete({
+                Title: "¿Eliminar Lote #" +L.id+ "?",
+            }).then(d => {
+                if (!d) return;
+                Ctrl.LotesCRUD.delete(L);
+            });
+        };
+
+    //    Ctrl.abrirLote = (L) => {
+    //         $mdDialog.show({
+    //             templateUrl: "Frag/MiFinca.FincaDiag",
+    //             controller: "FincaDiagCtrl",
+    //             locals: { Lote: L },
+    //             fullscreen: false,
+    //         });
+    //     };
+
        }
 ]);

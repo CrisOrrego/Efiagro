@@ -2,8 +2,8 @@
 	
 	<div layout class="margin-top">
 		<div flex>
-			<md-button class="md-raised">
-				<md-icon md-font-icon="fa-arrow-left fa-fw"></md-icon>
+			<md-button class="md-raised" ng-click="Subseccion = 'Articulos'">
+				<md-icon md-font-icon="fa-arrow-left fa-fw" ></md-icon>
 				Volver a Articulos
 			</md-button>
 		</div>

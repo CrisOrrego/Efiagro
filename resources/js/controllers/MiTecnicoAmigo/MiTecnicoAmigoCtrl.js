@@ -7,7 +7,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
             var Rs = $rootScope;
 
             Ctrl.Subseccion = 'Articulos';
-            Ctrl.Subseccion = 'Solicitudes';
+            // Ctrl.Subseccion = 'Solicitudes';
 
             Ctrl.Cancel = $mdDialog.cancel;
             Ctrl.Buscando = false;

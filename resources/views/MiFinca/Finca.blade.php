@@ -26,7 +26,6 @@
         </md-card>
 
     </div>
-
 </div>
 
 

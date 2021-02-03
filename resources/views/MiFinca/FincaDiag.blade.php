@@ -10,11 +10,13 @@
             </div>
              
           <md-tabs md-dynamic-height md-border-bottom>  
+              {{-- SECCIÓN MI FINCA --}}
             <md-tab label="Mi Finca">
               <md-content class="md-padding">
                 
                 <div layout="row" class="w600">
                     <div flex="">
+
                             <div class="seccion_texto">
                                 <label class="texto_title">Zona</label>
                                 <p>@{{ Finca . zona_id }}</p>
@@ -38,7 +40,6 @@
                                 <p>@{{ Finca . sitios }}</p>
                             </div>
 
-                        </md-card-content>
                     </div>
                     <div flex="">
                         
@@ -74,37 +75,57 @@
                 </div>
               </md-content>
             </md-tab>
+            {{-- SECCIÓN LOTES --}}
             <md-tab label="Lotes">
               <md-content class="md-padding">
                
-                                
-                    <div layout=column flex layout-align="start center" class="padding">
-                        
-                        <md-card ng-repeat="L in LotesCRUD.rows" layout=column class="padding w100p mxw600 pointer"
-                            ng-click="abrirLote(L)">
-                            <div layout layout-align="space-between center margin-bottom-5">
+                <div class="w700">
+                        <md-card class="seccion_misLotes pointer" ng-repeat="L in LotesCRUD.rows | filter:filterLotes">
+                            <div>
+                                <label class="texto_title">Finca</label>
+                                <h3 class="md-title no-margin">@{{ L . finca_id }}</h3>  
+                            </div>
+                            <div>
+                                <label class="texto_title">Organizacion</label>
+                                <h3 class="md-title no-margin">@{{ L . organizacion_id }}</h3>  
+                            </div>
+                            <div>
+                                <label class="texto_title">Linea Productiva</label>
+                                <h3 class="md-title no-margin">@{{ L . linea_productiva_id }}</h3>  
+                            </div>
+                            <div>
+                                <label class="texto_title">Hectareas</label>
+                                <h3 class="md-title no-margin">@{{ L . hectareas }}</h3>  
+                            </div>
+                            <div>
+                                <label class="texto_title">Sitios</label>
+                                <h3 class="md-title no-margin">@{{ L . sitios }}</h3>  
+                            </div>
                                 <div>
-                                    <h3 class="md-title no-margin">@{{ L.id }}</h3>
+                                    <label class="texto_title">Coordenadas</label>
+                                    <h3 class="md-title no-margin">@{{ L . coordenadas }}</h3>  
                                 </div>
-                            </div>
-                            <div class="text-darkgreen text-bold text-14px">
-                                @{{ L.novedades.length }} @{{ Caso.novedades.length == 1 ? 'Respuesta' : 'Respuestas' }}
-                            </div>
                         </md-card>
-                    </div>
+
+                </div>
                 
               </md-content>
+              {{-- SECCIÓN EVENTOS --}}
             </md-tab>
             <md-tab label="Eventos">
               <md-content class="md-padding">
                 
-                <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur
-                  posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae
-                  hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo
-                  volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo
-                  lectus.</p>
+                <div class="w700">
+                    <md-card class="seccion_eventos pointer" >
+                            <div>
+                                <h3 class="md-title no-margin">Eventos</h3>
+                            </div>
+                    </md-card>
+
+            </div>
               </md-content>
             </md-tab>
+            {{-- SECCIÓN MI ORGANIZACIÓN --}}
             <md-tab label="Mi Organización">
               <md-content class="md-padding">
                
@@ -125,10 +146,20 @@
 
 
 <style type="text/css">
-    .seccion_finca {
+    .seccion_misLotes .seccion_eventos {
         transform: scale(0.95);
         transition: all 0.3s;
+       
+    }
+    .seccion_misLotes .seccion_eventos{
+        transform: scale(1);
+    }
 
+    .seccion_misLotes .seccion_eventos{
+        width: 700px;
+        height: 30px;
+        padding: 5px;
+        
     }
 
     .titilo-finca {
