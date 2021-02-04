@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-01-2021 a las 14:38:53
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Tiempo de generación: 04-02-2021 a las 03:39:29
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -72,7 +73,7 @@ INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `tipo`, `contenido`, `ru
 (20, 1, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
 (22, 4, 'Tabla', '[[\"Cuatro\",\"Dos\",\"Cuatro\",\"Cinco\"],[4,5,\"9\",null],[7,8,\"9\",null]]', NULL, '2020-12-19 13:47:12', '2020-12-31 02:08:51'),
 (23, 1, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
-(24, 4, 'Imagen', NULL, NULL, '2021-01-18 01:32:05', '2021-01-18 01:32:05');
+(26, 4, 'Imagen', NULL, 'files/articulos_media/4/20210123100553.jpg', '2021-01-23 15:06:01', '2021-01-23 15:06:01');
 
 -- --------------------------------------------------------
 
@@ -145,56 +146,6 @@ INSERT INTO `casos_novedades` (`id`, `usuario_id`, `caso_id`, `tipo`, `novedad`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `departamentos`
---
-
-CREATE TABLE `departamentos` (
-  `id_departamento` int(11) NOT NULL,
-  `departamento` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `departamentos`
---
-
-INSERT INTO `departamentos` (`id_departamento`, `departamento`) VALUES
-(5, 'ANTIOQUIA'),
-(8, 'ATLÁNTICO'),
-(11, 'BOGOTÁ, D. C.'),
-(13, 'BOLÍVAR'),
-(15, 'BOYACÁ'),
-(17, 'CALDAS'),
-(18, 'CAQUETÁ'),
-(19, 'CAUCA'),
-(20, 'CESAR'),
-(23, 'CÓRDOBA'),
-(25, 'CUNDINAMARCA'),
-(27, 'CHOCÓ'),
-(41, 'HUILA'),
-(44, 'LA GUAJIRA'),
-(47, 'MAGDALENA'),
-(50, 'META'),
-(52, 'NARIÑO'),
-(54, 'NORTE DE SANTANDER'),
-(63, 'QUINDÍO'),
-(66, 'RISARALDA'),
-(68, 'SANTANDER'),
-(70, 'SUCRE'),
-(73, 'TOLIMA'),
-(76, 'VALLE DEL CAUCA'),
-(81, 'ARAUCA'),
-(85, 'CASANARE'),
-(86, 'PUTUMAYO'),
-(88, 'ARCHIPIÉLAGO DE SAN ANDRÉS, PROVIDENCIA Y '),
-(91, 'AMAZONAS'),
-(94, 'GUAINÍA'),
-(95, 'GUAVIARE'),
-(97, 'VAUPÉS'),
-(99, 'VICHADA');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `fincas`
 --
 
@@ -240,6 +191,88 @@ CREATE TABLE `lineas_productivas` (
 INSERT INTO `lineas_productivas` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 (1, 'Plátano', '2021-01-12 16:13:21', '2021-01-12 16:13:21'),
 (2, 'Café', '2021-01-12 16:13:37', '2021-01-12 16:13:37');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `listas_detalle`
+--
+
+CREATE TABLE `listas_detalle` (
+  `id` int(11) NOT NULL,
+  `lista_id` int(11) NOT NULL,
+  `codigo` varchar(250) NOT NULL,
+  `descripcion` varchar(250) DEFAULT NULL,
+  `op1` varchar(100) DEFAULT NULL,
+  `op2` varchar(100) DEFAULT NULL,
+  `op3` varchar(100) DEFAULT NULL,
+  `op4` varchar(100) DEFAULT NULL,
+  `op5` varchar(100) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `listas_detalle`
+--
+
+INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, `op2`, `op3`, `op4`, `op5`, `created_at`, `updated_at`) VALUES
+(1, 1, 'COL', 'Colombia', NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 2, '05', 'antioquia', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 2, '08', 'atlántico', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 2, '11', 'bogotá, d. c.', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 2, '13', 'bolívar', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 2, '15', 'boyacá', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 2, '17', 'caldas', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 2, '18', 'caquetá', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 2, '19', 'cauca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 2, '20', 'cesar', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 2, '23', 'córdoba', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 2, '25', 'cundinamarca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 2, '27', 'chocó', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 2, '41', 'huila', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 2, '44', 'la guajira', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 2, '47', 'magdalena', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 2, '50', 'meta', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 2, '52', 'nariño', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 2, '54', 'norte de santander', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 2, '63', 'quindío', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 2, '66', 'risaralda', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, 2, '68', 'santander', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, 2, '70', 'sucre', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, 2, '73', 'tolima', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, 2, '76', 'valle del cauca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 2, '81', 'arauca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 2, '85', 'casanare', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 2, '86', 'putumayo', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, 2, '88', 'archipiélago de san andrés, providencia y ', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 2, '91', 'amazonas', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 2, '94', 'guainía', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, 2, '95', 'guaviare', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 2, '97', 'vaupés', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `listas_indice`
+--
+
+CREATE TABLE `listas_indice` (
+  `id` int(10) NOT NULL,
+  `lista` varchar(200) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `listas_indice`
+--
+
+INSERT INTO `listas_indice` (`id`, `lista`, `created_at`, `updated_at`) VALUES
+(1, 'Paises', '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
+(2, 'Departamentos', '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
+(3, 'Municipios', '2021-02-03 20:20:37', '2021-02-03 20:20:37');
 
 -- --------------------------------------------------------
 
@@ -8312,6 +8345,7 @@ CREATE TABLE `lotes` (
   `linea_productiva_id` int(11) NOT NULL,
   `hectareas` int(11) NOT NULL,
   `sitios` int(11) NOT NULL,
+  `coordenadas` text NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -8330,6 +8364,22 @@ CREATE TABLE `lotes_cosechas` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lotes_tareas`
+--
+
+CREATE TABLE `lotes_tareas` (
+  `id` int(11) NOT NULL,
+  `lote_id` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `titulo` varchar(250) NOT NULL,
+  `estado` varchar(100) NOT NULL DEFAULT 'Pendiente',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -9587,7 +9637,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `organizacion_id`, `finca_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Christian Alejandro', 'Orregos Herrera', '1093217141', 'info@mbrain.co', NULL, NULL, '0000-00-00 00:00:00', '2021-01-12 20:59:52', NULL),
+(1, 'Christian Alejandro', 'Orregos Herrera', '1093217141', 'info@mbrain.co', NULL, 2, '0000-00-00 00:00:00', '2021-01-12 20:59:52', NULL),
 (2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
 (3, 'Pepito', 'Perez', '1093217142', 'pepito@mbrain.co', NULL, NULL, '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18');
 
@@ -9657,12 +9707,6 @@ ALTER TABLE `casos_novedades`
   ADD KEY `caso_id` (`caso_id`);
 
 --
--- Indices de la tabla `departamentos`
---
-ALTER TABLE `departamentos`
-  ADD PRIMARY KEY (`id_departamento`);
-
---
 -- Indices de la tabla `fincas`
 --
 ALTER TABLE `fincas`
@@ -9674,6 +9718,19 @@ ALTER TABLE `fincas`
 -- Indices de la tabla `lineas_productivas`
 --
 ALTER TABLE `lineas_productivas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `listas_detalle`
+--
+ALTER TABLE `listas_detalle`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lista_id` (`lista_id`);
+
+--
+-- Indices de la tabla `listas_indice`
+--
+ALTER TABLE `listas_indice`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -9695,6 +9752,13 @@ ALTER TABLE `lotes`
 -- Indices de la tabla `lotes_cosechas`
 --
 ALTER TABLE `lotes_cosechas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lote_id` (`lote_id`);
+
+--
+-- Indices de la tabla `lotes_tareas`
+--
+ALTER TABLE `lotes_tareas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `lote_id` (`lote_id`);
 
@@ -9760,7 +9824,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaciones`
@@ -9781,12 +9845,6 @@ ALTER TABLE `casos_novedades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `departamentos`
---
-ALTER TABLE `departamentos`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
-
---
 -- AUTO_INCREMENT de la tabla `fincas`
 --
 ALTER TABLE `fincas`
@@ -9799,6 +9857,18 @@ ALTER TABLE `lineas_productivas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `listas_detalle`
+--
+ALTER TABLE `listas_detalle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT de la tabla `listas_indice`
+--
+ALTER TABLE `listas_indice`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `lotes`
 --
 ALTER TABLE `lotes`
@@ -9808,6 +9878,12 @@ ALTER TABLE `lotes`
 -- AUTO_INCREMENT de la tabla `lotes_cosechas`
 --
 ALTER TABLE `lotes_cosechas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `lotes_tareas`
+--
+ALTER TABLE `lotes_tareas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -9889,6 +9965,12 @@ ALTER TABLE `casos_novedades`
 ALTER TABLE `fincas`
   ADD CONSTRAINT `fincas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
+
+--
+-- Filtros para la tabla `listas_detalle`
+--
+ALTER TABLE `listas_detalle`
+  ADD CONSTRAINT `listas_detalle_ibfk_1` FOREIGN KEY (`lista_id`) REFERENCES `listas_indice` (`id`);
 
 --
 -- Filtros para la tabla `lotes`
