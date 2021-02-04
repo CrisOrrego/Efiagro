@@ -35,14 +35,15 @@
         transition: all 0.3s;
 
     }
+    .seccion_finca:hover {
+        transform: scale(1);
+    }
 
     .titilo-finca {
         text-align: center;
     }
 
-    .seccion_finca:hover {
-        transform: scale(1);
-    }
+   
 
     md-card {
         min-height: 200px;

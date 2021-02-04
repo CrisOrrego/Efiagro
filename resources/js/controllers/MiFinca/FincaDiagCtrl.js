@@ -8,7 +8,7 @@ angular.module('FincaDiagCtrl', [])
 
 		Ctrl.Salir = $mdDialog.cancel;
 		Ctrl.Finca = Finca;
-		// Ctrl.Lote = Lote;
+		// Ctrl.Tarea = Tarea;
 		
 	}
 ]);

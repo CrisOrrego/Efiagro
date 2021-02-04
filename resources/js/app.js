@@ -49,6 +49,7 @@ angular.module('App', [
     
     'FincasCtrl',
     'FincaDiagCtrl',
+    'TareaDiagCtrl',
 
        
 ]);

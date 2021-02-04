@@ -75,56 +75,56 @@
                 </div>
               </md-content>
             </md-tab>
+
             {{-- SECCIÓN LOTES --}}
             <md-tab label="Lotes">
-              <md-content class="md-padding">
-               
-                <div class="w700">
-                        <md-card class="seccion_misLotes pointer" ng-repeat="L in LotesCRUD.rows | filter:filterLotes">
-                            <div>
-                                <label class="texto_title">Finca</label>
-                                <h3 class="md-title no-margin">@{{ L . finca_id }}</h3>  
-                            </div>
-                            <div>
-                                <label class="texto_title">Organizacion</label>
-                                <h3 class="md-title no-margin">@{{ L . organizacion_id }}</h3>  
-                            </div>
-                            <div>
-                                <label class="texto_title">Linea Productiva</label>
-                                <h3 class="md-title no-margin">@{{ L . linea_productiva_id }}</h3>  
-                            </div>
-                            <div>
-                                <label class="texto_title">Hectareas</label>
-                                <h3 class="md-title no-margin">@{{ L . hectareas }}</h3>  
-                            </div>
-                            <div>
-                                <label class="texto_title">Sitios</label>
-                                <h3 class="md-title no-margin">@{{ L . sitios }}</h3>  
-                            </div>
-                                <div>
-                                    <label class="texto_title">Coordenadas</label>
-                                    <h3 class="md-title no-margin">@{{ L . coordenadas }}</h3>  
-                                </div>
-                        </md-card>
+              <md-content class="md-padding" >
 
-                </div>
-                
+                        <md-card class="seccion_lotes" ng-repeat="L in LotesCRUD.rows | filter:filterLotes" ng-click="abrirTarea(T)">
+                            
+                        <div layout="row" >
+                            <div flex="10" class="lotes_content">
+                                <img class="img-lote" src="/../imgs/platano.png" alt="iconlote">
+                            </div>
+                            <div flex="" class="lotes_content">   
+                                <div>
+                                    <label class="texto_title">Lote</label> #@{{ L . id }}  / <label class="texto_title">Linea Productiva</label> @{{ L . linea_productiva_id }}
+                                    {{-- <h3 class="md-title no-margin">@{{ L . finca_id }}</h3>   --}}
+                                </div>
+                                <div>
+                                    @{{ L . hectareas }} <label class="texto_title">Hectareas</label> / <label class="texto_title">Sitios</label> @{{ L . sitios }}                               
+                                </div>
+                                <div>
+                                    <label class="texto_tarea"> @{{ L . tarea_id }} Tareas</label>                          
+                                </div>
+                                
+                                {{-- <div>
+                                        <label class="texto_title">Coordenadas</label>
+                                        <h3 class="md-title no-margin">@{{ L . coordenadas }}</h3>  
+                                    </div> --}}
+                                </div>
+
+                                
+                        </div>
+     
+                        </md-card>                
               </md-content>
+
               {{-- SECCIÓN EVENTOS --}}
             </md-tab>
             <md-tab label="Eventos">
               <md-content class="md-padding">
                 
-                <div class="w700">
-                    <md-card class="seccion_eventos pointer" >
+                
+                    <md-card class="seccion_eventos" >
                             <div>
                                 <h3 class="md-title no-margin">Eventos</h3>
                             </div>
                     </md-card>
 
-            </div>
               </md-content>
             </md-tab>
+
             {{-- SECCIÓN MI ORGANIZACIÓN --}}
             <md-tab label="Mi Organización">
               <md-content class="md-padding">
@@ -146,21 +146,29 @@
 
 
 <style type="text/css">
-    .seccion_misLotes .seccion_eventos {
+    .seccion_lotes {
         transform: scale(0.95);
         transition: all 0.3s;
+        
        
     }
-    .seccion_misLotes .seccion_eventos{
+    .seccion_lotes:hover{
         transform: scale(1);
     }
 
-    .seccion_misLotes .seccion_eventos{
-        width: 700px;
-        height: 30px;
-        padding: 5px;
+    .seccion_lotes{
+        width: 600px;
+        padding: 10px;
         
     }
+    /* .lotes_content{
+        display: block;
+    } */
+
+    md-card {
+    min-height:0%;
+    background-color: rgb(255, 248, 240);
+}
 
     .titilo-finca {
         text-align: center;
@@ -182,28 +190,21 @@
 
 	}
 
-    /* .content {
-        /* background-image: url("/../imgs/finca.jpg"); */
-        width: 80%;
-        min-height: 200px;
-		align-content: center;
-		
-   } */
-
      .seccion_texto {
         white-space: normal;
         word-wrap: break-word;
     }
 
     .texto_title {
-        /* text-align: center;
-height: 40px; */
         color: rgb(199, 196, 196);
-        /* font-size: 1.2rem;
-text-shadow: 0 0 5px black; */
-
-
     }
-
+    .texto_tarea {
+        color: rgba(247, 20, 20, 0.815);
+    }
+    .img-lote {
+        width: 50px;
+        height: 50px;
+        /* border-radius: 500px; */
+    }
 
 </style>

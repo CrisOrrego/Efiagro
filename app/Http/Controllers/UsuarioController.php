@@ -34,7 +34,7 @@ class UsuarioController extends Controller
 
         $id = Crypt::decrypt($token);
         $Usuario = Usuario::where('id', $id)->first();
-
+ 
         return $Usuario;
     }
 
