@@ -27,4 +27,10 @@ class Finca extends Model
         ];
 
     }
+
+    public function scopeId($q, $id)
+    {
+        return $q->where('id', $id);
+    }
+
 }

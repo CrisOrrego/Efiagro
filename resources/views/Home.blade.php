@@ -2,8 +2,12 @@
 	
 	<div class="h40 bg-primary" layout layout-align="center center"
 		style="padding-left: 30px">
-		
 		<div>Efiagro</div>
+		<div class="w30"></div>
+		<md-select ng-model="Usuario.finca_id" class="no-margin">
+			<md-option ng-value="F.id" ng-repeat="F in Usuario.fincas">Finca: @{{ F.nombre }}</md-option>
+		</md-select>
+
 		<span flex></span>
 		<div>@{{ Usuario.nombre }}</div>
 		<md-button class="md-icon-button" ng-click="Logout()">

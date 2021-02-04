@@ -26,6 +26,12 @@ class Usuario extends Model
         ];
     }
 
+    //Relaciones
+    public function fincas()
+    {
+        return $this->hasMany('App\Models\Finca', 'usuario_id');
+    }
+
     public function getNombreAttribute()
     {
     	return $this->nombres .' '. $this->apellidos;

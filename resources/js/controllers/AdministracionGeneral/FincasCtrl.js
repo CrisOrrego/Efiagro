@@ -18,13 +18,15 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
             order_by: ["-created_at"]
         });
 
-        Ctrl.getFincas = () => {
+        Ctrl.getFinca = () => {
+            Ctrl.FincasCRUD.setScope('id', Rs.Usuario.finca_id);
             Ctrl.FincasCRUD.get().then(() => {
+                Ctrl.Finca = Ctrl.FincasCRUD.rows[0];
                 //Ctrl.editarFinca(Ctrl.FincasCRUD.rows[0]);
             });
         };
 
-        Ctrl.getFincas();
+        Ctrl.getFinca();
 
         Ctrl.nuevaFinca = () => {
             Ctrl.FincasCRUD.dialog({
@@ -71,6 +73,14 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
                 fullscreen: false,
             });
         };
+
+
+        //Prueba de Lista
+        $http.post('api/main/obtener-lista', { Lista: 'Departamentos', op1: 'COL' }).then(r => {
+            console.log(r.data);
+        });
+
+
 
        }
 ]);

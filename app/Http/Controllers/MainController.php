@@ -57,4 +57,15 @@ class MainController extends Controller
         };
     }
 
+
+
+    public function postObtenerLista()
+    {
+        extract(request()->all()); //Lista, Op1
+        $Lista = \App\Models\Lista::where('lista', $Lista)->first();
+        $Lista->detalles = \App\Models\ListaDetalle::where('lista_id', $Lista->id)->get();
+        return $Lista;
+    }
+
+
 }
