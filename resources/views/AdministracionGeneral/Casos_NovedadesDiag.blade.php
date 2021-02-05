@@ -17,9 +17,9 @@
 		</md-button>
 	</div>
 	<h3 class="md-title padding-0-20">@{{ Caso.titulo }}</h3>
-	
-	<div layout=column flex class="overflow-y padding-0-20">
-		<div ng-repeat="N in NovedadesCRUD.rows" class="footnote" >
+
+    <div layout=column flex class="overflow-y padding-0-20">
+        <div ng-repeat="N in NovedadesCRUD.rows" class="footnote" >
 			<div class="bg-light-grey" style="border-radius: 5px; padding: 5px;">
 				<p class="md-title">@{{ N.created_at | date:'longDate' }} - @{{ Caso.autor.nombre }} </p>
 				<div ng-if="N.tipo == 'Texto'">
@@ -32,8 +32,8 @@
 			<p></p>
 		</div>
 	</div>
-	
-	<div layout class=" padding-5-10" layout-align="space-between start">
+
+    <div layout class=" padding-5-10" layout-align="space-between start">
 		<md-input-container class="no-margin md-title mw650 w80p" >
 			<textarea id="casnovedad" ng-model="detallecaso" placeholder="Registrar la novedad" rows="3"></textarea>
 		</md-input-container>
@@ -47,4 +47,5 @@
 			</md-button>
 		</div>
 	</div>
+
 </md-dialog>

@@ -27,9 +27,12 @@
 	        	<md-button class="md-icon-button" ng-click="editarCaso(C)">
 		        	<md-icon md-font-icon="fa-edit"></md-icon>
 		        </md-button>
-		        <md-button class="md-icon-button md-warn" ng-click="eliminarCaso(C)">
-		        	<md-icon md-font-icon="fa-trash"></md-icon>
+	        	<md-button class="md-icon-button text-ocean" ng-click="novedadesCaso(C)">
+		        	<md-icon md-font-icon="fa-align-justify"></md-icon>
 		        </md-button>
+		        <!-- <md-button class="md-icon-button md-warn" ng-click="eliminarCaso(C)">
+		        	<md-icon md-font-icon="fa-trash"></md-icon>
+		        </md-button> -->
 	    	</td>
 	        <td md-cell>@{{ C.id }}</td>
             <td md-cell>@{{ C.solicitante.nombre }}</td>

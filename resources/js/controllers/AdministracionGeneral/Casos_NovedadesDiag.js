@@ -1,29 +1,19 @@
 // Inicio del codigo de Luigi
-angular.module('SolicitudesDetalleCtrl', [])
-    .controller('SolicitudesDetalleCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Caso',
+angular.module('Casos_NovedadesCtrl', [])
+    .controller('Casos_NovedadesCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Caso',
         function($scope, $rootScope, $http, $injector, $mdDialog, Caso) {
 
             // Creamos y asignamos la variables Ctrl y scope
             var Ctrl = $scope;
             var Rs = $rootScope;
+            Ctrl.Cancel = $mdDialog.cancel;
 
             // Creamos copia de Caso
             Ctrl.Caso = angular.copy(Caso);
-            //console.log(Ctrl.Caso);
-
-            // Activamos el evento Cancel, para cerrar modales
-            Ctrl.Cancel = $mdDialog.cancel;
 
             // Obtenemos los datos de novedades por caso, en NovedaesCRUD
             Ctrl.NovedadesCRUD = $injector.get('CRUD').config({
                 base_url: '/api/casos/novedades',
-                limit: 1000,
-                add_append: 'refresh',
-            });
-
-            // Obtenemos los datos de casos, en CasosCRUD
-            Ctrl.CasosCRUD = $injector.get('CRUD').config({
-                base_url: '/api/casos/casos',
                 limit: 1000,
                 add_append: 'refresh',
             });
@@ -83,6 +73,7 @@ angular.module('SolicitudesDetalleCtrl', [])
                     usuario_id: Rs.Usuario.id
                 });
             };
+
         }
     ]);
 // Fin del codigo de Luigi

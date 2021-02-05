@@ -41,9 +41,8 @@ angular.module('App', [
     'UsuariosCtrl',
     'ArticulosCtrl',
     'Articulos_ArticuloEditorCtrl',
-
     'CasosCtrl',
-
-	'OrganizacionesCtrl',
-	'FincasCtrl',
+    'OrganizacionesCtrl',
+    'FincasCtrl',
+    'Casos_NovedadesCtrl',
 ]);
