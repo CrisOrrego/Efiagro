@@ -20,12 +20,12 @@
                                 </div>
                                 <div class="seccion_texto">
                                     <label class="texto_title">Tarea</label>
-                                    <p>@{{ T . nombre_tarea }}</p>
+                                    <p>@{{ T . titulo }}</p>
                                 </div>
 
                                 <div class="seccion_texto">
                                     <label class="texto_title">Semana</label>
-                                    <p>@{{ T . semana }}</p>
+                                    <p>@{{ T . fecha }}</p>
                                 </div>
                                 <div class="seccion_texto">
                                     <label class="texto_title">Estado</label>
