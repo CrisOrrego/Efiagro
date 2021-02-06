@@ -10,11 +10,10 @@ angular.module('MiTecnicoAmigoCtrl', [])
             Ctrl.Subseccion = 'Solicitudes';
 
             Ctrl.Cancel = $mdDialog.cancel;
-            Ctrl.Buscando = false;
 
             $http.post('api/articulos/obtener', {}).then(r => {
                 Ctrl.Articulos = r.data;
-                // Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
+                //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
             })
 
             Ctrl.abrirArticulo = (A) => {
@@ -31,12 +30,28 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 base_url: '/api/casos/casos',
                 limit: 1000,
                 add_append: 'refresh',
-                query_with: ['novedades', 'solicitante'],
+                query_with: [],
+               // where: ['1 = 1'],
                 order_by: []
+            })
+            debugger;
+            $http.post('api/casos/obtener').then(r => {
+                debugger;
+                Ctrl.Articulos = r.data;
+                //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
             })
 
             Ctrl.getCasos = () => {
+
+                //Inicio Dev Angélica
+                //Filtra el tipo (sólo muestra los casos que deben aparecer en pantalla)-->'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia' [ver archivo Caso.php]
+                Ctrl.CasosCRUD.setScope('tipo');              
+
                 Ctrl.CasosCRUD.get();
+              /*let filter = Ctrl.CasosCRUD.rows.filter(caso=>caso.tipo==='tipo');
+                console.log('Ctrl.CasosCRUD.rows', Ctrl.CasosCRUD.rows);
+                console.log('filtro', filter);*/
+                //Fin Dev Angélica
             }
 
             Ctrl.getCasos();
@@ -65,15 +80,29 @@ angular.module('MiTecnicoAmigoCtrl', [])
                         tipo: OpcionesTipo.find(a => a[0] == r.Fields[0].Value)[1],
                         asignados: '[]'
                     };
-
                     Ctrl.CasosCRUD.add(NuevoCaso);
-
-
                 });
             }
 
+            //INICIO DEV ANGÉLICA
+            //yo como usuario puedo ver todas las solicitudes o solo las mias?
+            //Si entro como admin debo ver las solicitudes de todos, con un filtro--> las que si y no tienen respuesta
+            //Si el usuario navega por web que no vea el boton de SMS
+            Ctrl.crearCasoTelefonico = (medio) => {
+                    var NuevoCaso = {
+                        titulo: 'Boton Contacto',
+                        solicitante_id: Rs.Usuario.id,
+                        tipo: medio,
+                        asignados: '[]'
+                    };
+                    alert('Inicia llamado al WS')
+                    Ctrl.CasosCRUD.add(NuevoCaso);
+            }
+            //FIN DEV ANGELICA
+
             // Inicia Codigo Luigi
             Ctrl.novedadesCaso = (C) => {
+                //console.log('es el caso ' + C.id);
                 $mdDialog.show({
                     templateUrl: 'Frag/MiTecnicoAmigo.MiTecnicoAmigo_SolicitudesDetalleDiag',
                     controller: 'SolicitudesDetalleCtrl',
@@ -84,34 +113,33 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 });
             };
             // Finaliza Codigo Luigi
+        Ctrl.searchChange = function() {
+		    let filtro = Ctrl.filtroArticulos;
+            if(!filtro) return Ctrl.Buscando = false;
+		    filtro = filtro.toLowerCase().replace(" de ", " ")
+                .replace(" en ", " ")
+                .replace(" para ", " ")
+                .replace(" por ", " ")
+                .replace(" la ", " ");
 
-            Ctrl.searchChange = function() {
-                let filtro = Ctrl.filtroArticulos;
-                if (!filtro) return Ctrl.Buscando = false;
-                filtro = filtro.toLowerCase().replace(" de ", " ")
-                    .replace(" en ", " ")
-                    .replace(" para ", " ")
-                    .replace(" por ", " ")
-                    .replace(" la ", " ");
+            if(filtro == "") return Ctrl.Buscando = false;
 
-                if (filtro == "") return Ctrl.Buscando = false;
+            let keys = filtro.split(" ");
+            var ArticulosBuscados = [];
+            Ctrl.Buscando = true;
+            Ctrl.Articulos.forEach(function (articulo) {
+                articulo.contador=0;
+                keys.forEach(function (key){
+                    if(articulo.titulo.toLowerCase().indexOf(key)>0){
+                        articulo.contador++;
+                    }
+                });
 
-                let keys = filtro.split(" ");
-                var ArticulosBuscados = [];
-                Ctrl.Buscando = true;
-                Ctrl.Articulos.forEach(function(articulo) {
-                    articulo.contador = 0;
-                    keys.forEach(function(key) {
-                        if (articulo.titulo.toLowerCase().indexOf(key) > 0) {
-                            articulo.contador++;
-                        }
-                    });
-
-                    if (articulo.contador > 0) ArticulosBuscados.push(articulo);
-                })
-
-                Ctrl.ArticulosBuscados = ArticulosBuscados;
-            };
-            //FIN DEV ANGÉLICA
+                if(articulo.contador > 0) ArticulosBuscados.push(articulo);
+            })
+            
+            Ctrl.ArticulosBuscados = ArticulosBuscados;
+        };
+		//FIN DEV ANGÉLICA
         }
     ]);

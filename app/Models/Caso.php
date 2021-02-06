@@ -36,4 +36,11 @@ class Caso extends Model
         return $this->hasMany('App\Models\CasoNovedad', 'caso_id');
     }
     
+    //Inicio Dev Angélica
+    //Filtra el tipo (sólo muestra los casos que deben aparecer en pantalla-->'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia')
+    public function scopeTipo($q)
+    {
+        return $q->whereIn('tipo', ['tipo', 'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia']);
+    }
+    //Fin Dev Angélica
 }

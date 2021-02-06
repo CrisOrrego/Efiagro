@@ -8,6 +8,7 @@ angular.module('CasosCtrl', [])
 		
 		var TiposCasos = ['Consulta General', 'Apoyo Técnico', 'Contar Experiencia'];
 
+
 		Ctrl.CasosCRUD = $injector.get('CRUD').config({ 
 			base_url: '/api/casos/casos',
 			limit: 1000,
@@ -15,6 +16,11 @@ angular.module('CasosCtrl', [])
 			query_with: [ 'solicitante' ],
 			order_by: [ '-created_at' ]
 		});
+
+		//Inicio Dev Angélica
+		//Filtra el tipo (sólo muestra los casos que deben aparecer en pantalla)-->'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia'[ver archivo Caso.php]
+		Ctrl.CasosCRUD.setScope('tipo');
+		//Fin Dev Angélica
 
 		Ctrl.UsuariosCRUD = $injector.get('CRUD').config({ base_url: '/api/usuario/usuarios' });
 
