@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Functions\CRUD;
 use App\Models\Lote;
-use App\Models\LoteTarea;
 
 class LoteController extends Controller
 {

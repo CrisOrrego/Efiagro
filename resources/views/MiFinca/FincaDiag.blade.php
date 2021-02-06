@@ -95,7 +95,10 @@
                                     @{{ L . hectareas }} <label class="texto_title">Hectareas</label> / <label class="texto_title">Sitios</label> @{{ L . sitios }}                               
                                 </div>
                                 <div>
-                                    <label class="texto_tarea"> @{{ L . tarea_id }} Tareas</label>                          
+                                    <label class="texto_tarea"> @{{ L . titulo }} Tareas</label>                          
+                                </div>
+                                <div>
+                                    <label class="texto_tarea"> @{{ L . estado }} Estado</label>                          
                                 </div>
                                 
                                 {{-- <div>

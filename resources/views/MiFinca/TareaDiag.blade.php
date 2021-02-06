@@ -1,4 +1,4 @@
-<div id="Tareas" ng-controller="FincasCtrl" flex layout=column>
+<div id="Tareas"  flex layout=column>
 
     <div ng-cloak>
         <md-content class="encabezado">
@@ -20,16 +20,16 @@
                                 </div>
                                 <div class="seccion_texto">
                                     <label class="texto_title">Tarea</label>
-                                    <p>@{{ T . titulo }}</p>
+                                    <p>@{{ Tarea . titulo }}</p>
                                 </div>
 
                                 <div class="seccion_texto">
                                     <label class="texto_title">Semana</label>
-                                    <p>@{{ T . fecha }}</p>
+                                    <p>@{{ Tarea . fecha }}</p>
                                 </div>
                                 <div class="seccion_texto">
                                     <label class="texto_title">Estado</label>
-                                    <p>@{{ T . estado }}</p>
+                                    <p>@{{ Tarea . estado }}</p>
                                 </div>
 
                             </div>
