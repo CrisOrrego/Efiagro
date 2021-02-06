@@ -42,5 +42,10 @@ class Caso extends Model
     {
         return $q->whereIn('tipo', ['tipo', 'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia']);
     }
+
+    public function scopeTipocontacto($q)
+    {
+        return $q->whereIn('tipo', ['Whatsapp', 'SMS', 'Llamada telefonica']);
+    }
     //Fin Dev Angélica
 }

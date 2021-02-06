@@ -113,6 +113,8 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 });
             };
             // Finaliza Codigo Luigi
+
+        //INICIO DEV ANGÉLICA
         Ctrl.searchChange = function() {
 		    let filtro = Ctrl.filtroArticulos;
             if(!filtro) return Ctrl.Buscando = false;
