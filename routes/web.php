@@ -24,6 +24,9 @@ AdvancedRoute::controller('/api/main',      'MainController');
 AdvancedRoute::controller('/api/usuario',   'UsuarioController');
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');
 AdvancedRoute::controller('/api/casos',     'CasosController');
+//Inicio Dev ANGÉLICA
+AdvancedRoute::controller('/api/contacto',     'ContactoController');
+//FIN Dev ANGÉLICA
 AdvancedRoute::controller('/api/organizaciones',  'OrganizacionController');
 AdvancedRoute::controller('/api/fincas',  'FincaController');
 AdvancedRoute::controller('/api/lotes',  'LoteController');

@@ -43,6 +43,9 @@ angular.module('App', [
     'Articulos_ArticuloEditorCtrl',
 
     'CasosCtrl',
+    //Inicio Dev Angélica
+    'ContactoCtrl',
+    //Fin Dev Angélica
 
     'OrganizacionesCtrl',
     'OrganizacionDiagCtrl',
