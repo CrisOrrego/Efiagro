@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2021 a las 15:03:40
+-- Tiempo de generación: 06-02-2021 a las 15:51:32
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `articulos` (
   `id` int(10) NOT NULL,
+  `linea_productiva_id` int(11) NOT NULL,
   `titulo` varchar(1000) NOT NULL,
   `palabras_clave` varchar(1000) DEFAULT NULL,
   `estado` varchar(50) NOT NULL,
@@ -42,11 +43,11 @@ CREATE TABLE `articulos` (
 -- Volcado de datos para la tabla `articulos`
 --
 
-INSERT INTO `articulos` (`id`, `titulo`, `palabras_clave`, `estado`, `permisos`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, '5 formas de evitar la roya en su cultivo', NULL, 'Activo', '', 1, '0000-00-00 00:00:00', '2020-11-20 22:46:03'),
-(2, 'Ultimas guias de la OMS para el cuidado de sus vacas', '', 'Activo', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', '', 'Activo', '', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, '3 nuevas semillas de platano', NULL, 'Activo', NULL, 1, '2020-11-20 01:52:22', '2020-11-20 01:52:22');
+INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`, `estado`, `permisos`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, 0, '5 formas de evitar la roya en su cultivo', NULL, 'Activo', '', 1, '0000-00-00 00:00:00', '2020-11-20 22:46:03'),
+(2, 0, 'Ultimas guias de la OMS para el cuidado de sus vacas', '', 'Activo', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 0, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', '', 'Activo', '', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 0, '3 nuevas semillas de platano', NULL, 'Activo', NULL, 1, '2020-11-20 01:52:22', '2020-11-20 01:52:22');
 
 -- --------------------------------------------------------
 
@@ -112,7 +113,11 @@ CREATE TABLE `casos` (
 INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Como se maneja estooo', 'Consulta General', '[]', '2020-12-22 02:13:35', '2021-01-11 00:44:03'),
 (3, 1, 'Esta es un caso', 'Consulta General', '[]', '2021-01-20 21:18:15', '2021-01-20 21:18:15'),
-(4, 1, 'Nueva', 'Consulta General', '[]', '2021-01-21 20:38:32', '2021-01-21 20:38:32');
+(4, 1, 'Nueva', 'Consulta General', '[]', '2021-01-21 20:38:32', '2021-01-21 20:38:32'),
+(5, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-06 14:45:30', '2021-02-06 14:45:30'),
+(6, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-06 14:45:38', '2021-02-06 14:45:38'),
+(7, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-06 14:45:47', '2021-02-06 14:45:47'),
+(8, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-06 14:45:54', '2021-02-06 14:45:54');
 
 -- --------------------------------------------------------
 
@@ -9632,7 +9637,8 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (6, 'Administración General', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (7, 'Administración General', 'Organizaciones', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (8, 'Administración General', 'Casos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, 'Administración General', 'Fincas', '2021-01-17 23:25:24', '2021-01-17 23:25:24');
+(9, 'Administración General', 'Fincas', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
+(11, 'Administración General', 'Contacto', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -9857,7 +9863,7 @@ ALTER TABLE `asignaciones`
 -- AUTO_INCREMENT de la tabla `casos`
 --
 ALTER TABLE `casos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `casos_novedades`
@@ -9929,7 +9935,7 @@ ALTER TABLE `perfiles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
