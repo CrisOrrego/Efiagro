@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-02-2021 a las 03:39:29
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.1
+-- Tiempo de generación: 06-02-2021 a las 15:03:40
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -73,7 +72,7 @@ INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `tipo`, `contenido`, `ru
 (20, 1, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
 (22, 4, 'Tabla', '[[\"Cuatro\",\"Dos\",\"Cuatro\",\"Cinco\"],[4,5,\"9\",null],[7,8,\"9\",null]]', NULL, '2020-12-19 13:47:12', '2020-12-31 02:08:51'),
 (23, 1, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
-(26, 4, 'Imagen', NULL, 'files/articulos_media/4/20210123100553.jpg', '2021-01-23 15:06:01', '2021-01-23 15:06:01');
+(24, 4, 'Imagen', NULL, NULL, '2021-01-18 01:32:05', '2021-01-18 01:32:05');
 
 -- --------------------------------------------------------
 
@@ -141,7 +140,9 @@ INSERT INTO `casos_novedades` (`id`, `usuario_id`, `caso_id`, `tipo`, `novedad`,
 (2, 1, 3, 'Texto', 'Nueva', 0, '2021-01-20 21:18:22', '2021-01-20 21:18:22'),
 (3, 1, 1, 'Texto', 'Otra vez', 0, '2021-01-21 02:14:39', '2021-01-21 02:14:39'),
 (4, 1, 1, 'Texto', 'Ao', 0, '2021-01-21 20:38:00', '2021-01-21 20:38:00'),
-(5, 1, 4, 'Texto', 'A', 0, '2021-01-21 20:38:52', '2021-01-21 20:38:52');
+(5, 1, 4, 'Texto', 'A', 0, '2021-01-21 20:38:52', '2021-01-21 20:38:52'),
+(6, 1, 4, 'Imagen', 'files/casos_media/4/20210205142638.jpg', 0, '2021-02-05 19:26:48', '2021-02-05 19:26:48'),
+(7, 1, 4, 'Texto', 'HOLA', 0, '2021-02-05 19:26:50', '2021-02-05 19:26:50');
 
 -- --------------------------------------------------------
 
@@ -169,7 +170,8 @@ CREATE TABLE `fincas` (
 INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `created_at`, `updated_at`) VALUES
 (1, 2, 'Cafetal', 1, '7.76472000', '-80.27483000', 100, 30, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
 (2, 1, 'Platanal', 1, '7.76472000', '-80.27483000', 100, 30, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
-(3, 1, 'La Esperanza', 1, '6.76472000', '3.76472000', 5, 3444, '2021-01-18 05:12:22', '2021-01-18 18:36:48');
+(3, 1, 'La Esperanza', 1, '6.76472000', '3.76472000', 5, 3444, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
+(4, 1, 'Nuevo Cerre', 1, '7.76472000', '-80.27483000', 15, 50, '2021-02-03 19:21:08', '2021-02-03 19:21:08');
 
 -- --------------------------------------------------------
 
@@ -180,6 +182,7 @@ INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `zona_id`, `latitud`, `longi
 CREATE TABLE `lineas_productivas` (
   `id` int(11) NOT NULL,
   `nombre` varchar(500) NOT NULL,
+  `palabras_clave` varchar(1000) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -188,9 +191,9 @@ CREATE TABLE `lineas_productivas` (
 -- Volcado de datos para la tabla `lineas_productivas`
 --
 
-INSERT INTO `lineas_productivas` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
-(1, 'Plátano', '2021-01-12 16:13:21', '2021-01-12 16:13:21'),
-(2, 'Café', '2021-01-12 16:13:37', '2021-01-12 16:13:37');
+INSERT INTO `lineas_productivas` (`id`, `nombre`, `palabras_clave`, `created_at`, `updated_at`) VALUES
+(1, 'Plátano', '', '2021-01-12 16:13:21', '2021-01-12 16:13:21'),
+(2, 'Café', '', '2021-01-12 16:13:37', '2021-01-12 16:13:37');
 
 -- --------------------------------------------------------
 
@@ -210,7 +213,7 @@ CREATE TABLE `listas_detalle` (
   `op5` varchar(100) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `listas_detalle`
@@ -263,16 +266,16 @@ CREATE TABLE `listas_indice` (
   `lista` varchar(200) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `listas_indice`
 --
 
 INSERT INTO `listas_indice` (`id`, `lista`, `created_at`, `updated_at`) VALUES
-(1, 'Paises', '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
-(2, 'Departamentos', '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
-(3, 'Municipios', '2021-02-03 20:20:37', '2021-02-03 20:20:37');
+(1, 'Paises', '2021-02-05 11:45:35', '2021-02-05 11:45:35'),
+(2, 'Departamentos', '2021-02-05 11:45:35', '2021-02-05 11:45:35'),
+(3, 'Municipios', '2021-02-05 11:45:35', '2021-02-05 11:45:35');
 
 -- --------------------------------------------------------
 
@@ -8345,10 +8348,19 @@ CREATE TABLE `lotes` (
   `linea_productiva_id` int(11) NOT NULL,
   `hectareas` int(11) NOT NULL,
   `sitios` int(11) NOT NULL,
-  `coordenadas` text NOT NULL,
+  `coordenadas` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `lotes`
+--
+
+INSERT INTO `lotes` (`id`, `finca_id`, `organizacion_id`, `linea_productiva_id`, `hectareas`, `sitios`, `coordenadas`, `created_at`, `updated_at`) VALUES
+(4, 1, 14, 2, 100, 30, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
+(5, 3, 8, 1, 30, 310, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
+(6, 2, 7, 1, 50, 10, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04');
 
 -- --------------------------------------------------------
 
@@ -8374,12 +8386,21 @@ CREATE TABLE `lotes_cosechas` (
 CREATE TABLE `lotes_tareas` (
   `id` int(11) NOT NULL,
   `lote_id` int(11) NOT NULL,
-  `fecha` date NOT NULL,
   `titulo` varchar(250) NOT NULL,
+  `fecha` date NOT NULL,
   `estado` varchar(100) NOT NULL DEFAULT 'Pendiente',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `lotes_tareas`
+--
+
+INSERT INTO `lotes_tareas` (`id`, `lote_id`, `titulo`, `fecha`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 0, 'Deshoje', '0000-00-00', 'Pendiente', '2021-02-03 13:11:31', '2021-02-03 13:11:31'),
+(2, 0, 'Irrigación', '0000-00-00', 'Hecho', '2021-02-03 13:11:31', '2021-02-03 13:11:31'),
+(3, 0, 'Fumigación', '0000-00-00', 'Pendiente', '2021-02-03 13:11:31', '2021-02-03 13:11:31');
 
 -- --------------------------------------------------------
 
@@ -9824,7 +9845,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaciones`
@@ -9842,13 +9863,13 @@ ALTER TABLE `casos`
 -- AUTO_INCREMENT de la tabla `casos_novedades`
 --
 ALTER TABLE `casos_novedades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `fincas`
 --
 ALTER TABLE `fincas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `lineas_productivas`
@@ -9860,7 +9881,7 @@ ALTER TABLE `lineas_productivas`
 -- AUTO_INCREMENT de la tabla `listas_detalle`
 --
 ALTER TABLE `listas_detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `listas_indice`
@@ -9872,7 +9893,7 @@ ALTER TABLE `listas_indice`
 -- AUTO_INCREMENT de la tabla `lotes`
 --
 ALTER TABLE `lotes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_cosechas`
@@ -9884,7 +9905,7 @@ ALTER TABLE `lotes_cosechas`
 -- AUTO_INCREMENT de la tabla `lotes_tareas`
 --
 ALTER TABLE `lotes_tareas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `organizaciones`
@@ -9908,7 +9929,7 @@ ALTER TABLE `perfiles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
