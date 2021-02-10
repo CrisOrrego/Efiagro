@@ -17,7 +17,7 @@
 			<a href="sms:+573173562730?body=Hola Inges de GC!" ng-click="crearCasoTelefonico('SMS')" style="text-decoration: unset;">
 								<img src="imgs/contacto/sms.png" alt="" width="45" height="45" HSPACE="10" VSPACE="10" />
 			</a>
-			<a target="_blank" ng-click="crearCasoTelefonico('Whatsapp')" style="text-decoration: unset; href="https://api.whatsapp.com/send?phone=3173562730&text=Hola%20Ingenieros%20de%20GC%20">
+			<a target="_blank" ng-click="crearCasoTelefonico('Whatsapp')" style="text-decoration: unset;" href="https://api.whatsapp.com/send?phone=3173562730&text=Hola%20Ingenieros%20de%20GC%20">
 								<img src="imgs/contacto/wpp.png" alt="" width="45" height="45" HSPACE="10" VSPACE="10" />
 			</a>
 			<!--FIN DEV ANGELICA--> 	
