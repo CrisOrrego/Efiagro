@@ -34,12 +34,12 @@ angular.module('MiTecnicoAmigoCtrl', [])
                // where: ['1 = 1'],
                 order_by: []
             })
-            debugger;
-            $http.post('api/casos/obtener').then(r => {
-                debugger;
-                Ctrl.Articulos = r.data;
-                //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
-            })
+            // debugger;
+            // $http.post('api/casos/obtener').then(r => {
+            //     debugger;
+            //     Ctrl.Articulos = r.data;
+            //     //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
+            // })
 
             Ctrl.getCasos = () => {
 
