@@ -20,4 +20,5 @@ class OrganizacionController extends Controller
  		$CRUD = new CRUD('App\Models\Departamento');
         return $CRUD->call(request()->fn, request()->ops);
 	 }
+
 }

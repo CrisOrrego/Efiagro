@@ -19,13 +19,15 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             order_by: ["-created_at"]
         });
 
-        Ctrl.getOrganizaciones = () => {
+        Ctrl.getOrganizacion = () => {
+            Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id);
             Ctrl.OrganizacionesCRUD.get().then(() => {
+                Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows[0];
                 //Ctrl.editarOrganizacion(Ctrl.OrganizacionesCRUD.rows[0]);
             });
         };
 
-        Ctrl.getOrganizaciones();
+        Ctrl.getOrganizacion();
 
         Ctrl.nuevaOrganizacion = () => {
             Ctrl.OrganizacionesCRUD.dialog({
@@ -59,10 +61,10 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			});
         }
 
-		Ctrl.abrirOrganizacion = (O) => {
+		Ctrl.abrirOrganigrama = (O) => {
             // console.log(O);
 			$mdDialog.show({
-				templateUrl: 'Frag/GestionOrganizacion.OrganizacionDiag',
+				templateUrl: 'Frag/GestionOrganizacion.OrganigramaDiag',
 				controller: 'OrganizacionDiagCtrl',
 				locals: { Organizacion: O },
 				fullscreen: false,

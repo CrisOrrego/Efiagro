@@ -33,7 +33,7 @@ class UsuarioController extends Controller
         if(!$token) return response()->json(['Msg' => 'Usuario no autorizado'], 412);
 
         $id = Crypt::decrypt($token);
-        $Usuario = Usuario::where('id', $id)->with([ 'fincas' ])->first();
+        $Usuario = Usuario::where('id', $id)->with([ 'fincas', 'organizaciones' ])->first();
 
         return $Usuario;
     }
