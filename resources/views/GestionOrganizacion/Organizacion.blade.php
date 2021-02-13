@@ -63,15 +63,15 @@
                 <div class="seccion_content ">
                     <md-input-container class="md-block">
                         <label>Agregue novedad</label>
-                        <textarea ng-model="" md-maxlength="150" rows="1" md-select-on-focus></textarea>
-
-                </div>
+                        <input type="text" ng-model="color" md-maxlength="1000">
+    </div>
                 <br>
                 <div class="seccion_content ">
                     <md-content layout-padding>
-
+{{-- AQUI IMPRIMIR NOVEDADES --}}
                         <div layout="row">
                             <div layout="column" flex>
+                                
                                 <h2>Multiple Groups</h2>
                                 <p>
                                     Panels can be added to multiple groups. The <code>groupName</code>
