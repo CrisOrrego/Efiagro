@@ -6,9 +6,16 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 
+		//INICIO DEV ANGÉLICA -- Lists of palabras clave en chips 
+		Ctrl.keyWords = [];
+		//FIN DEV ANGÉLICA
+
 		Ctrl.Cancel = $mdDialog.cancel;
 
 		Ctrl.Articulo = angular.copy(Articulo);
+		//INICIO DEV ANGÉLICA -- Lists of palabras clave en chips 
+		Ctrl.keyWords = Ctrl.Articulo.palabras_clave.split(",");
+		//FIN DEV ANGÉLICA
 
 		Ctrl.SeccionesCRUD = $injector.get('CRUD').config({ 
 			base_url: '/api/articulos/secciones',
@@ -29,6 +36,8 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 		Ctrl.getSecciones();
 
 		Ctrl.guardarArticulo = () => {
+			//INICIO DEV ANGELICA -- Actualización de palabras clave en chips
+			Ctrl.Articulo.palabras_clave = Ctrl.keyWords.join();
 			Ctrl.$parent.ArticulosCRUD.update(Ctrl.Articulo).then(() => {
 				var SeccionesCambiadas = Ctrl.SeccionesCRUD.rows.filter(s => s.changed);
 				if(SeccionesCambiadas.length > 0){

@@ -116,7 +116,10 @@
 		</div>
 	</div>
 
-
+	<!--INICIO DEV ANGÉLICA - CHIPS ANGULA MATERIAL-->
+	<md-chips ng-model="keyWords" readonly="readonly" md-removable="removable">
+    </md-chips>
+	<!--FIN DEV ANGÉLICA - CHIPS ANGULA MATERIAL-->
 
 	<div layout class="border-top">
 		<span flex></span>
