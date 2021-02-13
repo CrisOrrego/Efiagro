@@ -13,9 +13,19 @@
 	</div>
 
 	<!--INICIO DEV ANGÉLICA-->
-	<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="!Buscando">
+	<!--Se muestra la lista de palabras clave en la vista-->
+	<br>
+	<div class="padding-0-10" layout layout-align="left" >
+        <md-card flex class="no-margin-top mxw200">			
+			<ul>
+			<li ng-repeat="A in PalabrasClave" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33 ng-click="searchKeyWords(A)">
+			@{{A}}
+			</li>
+			</ul>
+        </md-card>
 
-		<div ng-repeat="A in Articulos" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33
+		<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="!Buscando">
+			<div ng-repeat="A in Articulos" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33
 			ng-click="abrirArticulo(A)">
 			<md-card class="padding no-margin" layout=column>
 				<div class="md-title margin-bottom-5" md-truncate>@{{ A.titulo }}</div>
@@ -24,6 +34,11 @@
 		</div>
 
 	</div>
+
+	</div>
+
+
+
 
 	<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="Buscando">
 

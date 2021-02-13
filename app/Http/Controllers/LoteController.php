@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Functions\CRUD;
 use App\Models\Lote;
-use App\Models\TareasLote;
 
 class LoteController extends Controller
 {
@@ -17,7 +16,7 @@ class LoteController extends Controller
 	
 	public function postTareasLote()
  	{
- 		$CRUD = new CRUD('App\Models\TareasLote');
+ 		$CRUD = new CRUD('App\Models\LoteTarea');
         return $CRUD->call(request()->fn, request()->ops);
 	}
 	

@@ -41,8 +41,8 @@ angular.module('App', [
     'UsuariosCtrl',
     'ArticulosCtrl',
     'Articulos_ArticuloEditorCtrl',
-
     'CasosCtrl',
+    'Casos_NovedadesCtrl',
     //Inicio Dev Angélica
     'ContactoCtrl',
     //Fin Dev Angélica
@@ -52,9 +52,7 @@ angular.module('App', [
     
     'FincasCtrl',
     'FincaDiagCtrl',
+    'TareaDiagCtrl',
 
-    'LotesCtrl',
-    'LoteDiagCtrl',
-
-    
+       
 ]);

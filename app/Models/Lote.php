@@ -21,6 +21,8 @@ class Lote extends Model
             ['linea_productiva_id', 'Linea Productiva', null, false, false, null, 100],
             ['hectareas', 'Hectareas', null, true, false, null, 100],
             ['sitios', 'Sitios', null, true, false, null, 100],
+            ['tarea_id', 'Tarea', null, true, false, null, 100],
+            ['coordenadas', 'Coordenadas', null, true, false, null, 100],
             
         ];
 

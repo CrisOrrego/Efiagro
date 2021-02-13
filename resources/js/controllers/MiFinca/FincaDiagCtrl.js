@@ -1,5 +1,5 @@
 angular.module('FincaDiagCtrl', [])
-.controller('FincaDiagCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Finca',
+.controller('FincaDiagCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Finca', 
 	function($scope, $rootScope, $http, $injector, $mdDialog, Finca) {
 
 		console.info('FincaDiagCtrl');
@@ -8,6 +8,7 @@ angular.module('FincaDiagCtrl', [])
 
 		Ctrl.Salir = $mdDialog.cancel;
 		Ctrl.Finca = Finca;
+		// Ctrl.Tarea = Tarea;
 		
 	}
 ]);
