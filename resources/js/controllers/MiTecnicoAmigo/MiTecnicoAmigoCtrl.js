@@ -45,16 +45,16 @@ angular.module('MiTecnicoAmigoCtrl', [])
 
             //Casos
             Ctrl.CasosCRUD = $injector.get('CRUD').config({
-                base_url: '/api/casos/casos',
-                limit: 1000,
-                add_append: 'refresh',
-                query_with: [],
-               // where: ['1 = 1'],
-                order_by: []
-            })
-            debugger;
+                    base_url: '/api/casos/casos',
+                    limit: 1000,
+                    add_append: 'refresh',
+                    query_with: [],
+                    // where: ['1 = 1'],
+                    order_by: []
+                })
+                //debugger;
             $http.post('api/casos/obtener').then(r => {
-                debugger;
+                //debugger;
                 Ctrl.Articulos = r.data;
                 //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
             })
@@ -63,12 +63,12 @@ angular.module('MiTecnicoAmigoCtrl', [])
 
                 //Inicio Dev Angélica
                 //Filtra el tipo (sólo muestra los casos que deben aparecer en pantalla)-->'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia' [ver archivo Caso.php]
-                Ctrl.CasosCRUD.setScope('tipo');              
+                Ctrl.CasosCRUD.setScope('tipo');
 
                 Ctrl.CasosCRUD.get();
-              /*let filter = Ctrl.CasosCRUD.rows.filter(caso=>caso.tipo==='tipo');
-                console.log('Ctrl.CasosCRUD.rows', Ctrl.CasosCRUD.rows);
-                console.log('filtro', filter);*/
+                /*let filter = Ctrl.CasosCRUD.rows.filter(caso=>caso.tipo==='tipo');
+                  console.log('Ctrl.CasosCRUD.rows', Ctrl.CasosCRUD.rows);
+                  console.log('filtro', filter);*/
                 //Fin Dev Angélica
             }
 
@@ -115,8 +115,8 @@ angular.module('MiTecnicoAmigoCtrl', [])
                     };
                     alert('Inicia llamado al WS')
                     Ctrl.CasosCRUD.add(NuevoCaso);
-            }
-            //FIN DEV ANGELICA
+                }
+                //FIN DEV ANGELICA
 
             // Inicia Codigo Luigi
             Ctrl.novedadesCaso = (C) => {
