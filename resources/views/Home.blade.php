@@ -4,7 +4,7 @@
 		style="padding-left: 30px">
 		<div>Efiagro</div>
 		<div class="w30"></div>
-		<md-select ng-model="Usuario.finca_id" class="no-margin">
+		<md-select ng-model="Usuario.finca_id" class="no-margin" aria-label="Usuario.finca_id">
 			<md-option ng-value="F.id" ng-repeat="F in Usuario.fincas">Finca: @{{ F.nombre }}</md-option>
 		</md-select>
 

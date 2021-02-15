@@ -41,18 +41,19 @@ angular.module('App', [
     'UsuariosCtrl',
     'ArticulosCtrl',
     'Articulos_ArticuloEditorCtrl',
-    'CasosCtrl',
-    'Casos_NovedadesCtrl',
+    'CasosCtrl', // Luigi
+    'Casos_NovedadesCtrl', // Luigi
+    'LineasProductivasCtrl', // Luigi
     //Inicio Dev Angélica
     'ContactoCtrl',
     //Fin Dev Angélica
 
     'OrganizacionesCtrl',
     'OrganizacionDiagCtrl',
-    
+
     'FincasCtrl',
     'FincaDiagCtrl',
     'TareaDiagCtrl',
 
-       
+
 ]);
