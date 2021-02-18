@@ -1,3 +1,3 @@
-## Efiagro
+## PACO
 
-Repositorio GIT del proyecto Efiagro, "Gestión Empresarial para el Desarrollo Rural".
+Repositorio GIT del proyecto PACO, "Gestión Empresarial para el Desarrollo Rural".

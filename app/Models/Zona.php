@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Finca extends Model
+class Zona extends Model
 {
     use HasFactory;
-    protected $table = 'fincas';
+    protected $table = 'zonas_agroambientales';
     protected $guarded = ['id'];
     protected $appends = [];
 
@@ -16,13 +16,7 @@ class Finca extends Model
     {
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
-            ['usuario_id', 'Usuario', null, true, false, null, 100],
-            ['nombre', 'Nombre', null, true, false, null, 100],
-            ['zona_id', 'Zona', null, false, false, null, 100],
-            ['latitud', 'Latitud', null, true, false, null, 100],
-            ['longitud', 'Longitud', null, true, false, null, 100],
-            ['hectareas', 'Hectareas', null, true, false, null, 100],
-            ['sitios', 'Sitios', null, true, false, null, 100],
+            ['descripcion',         'Descripcion:',          null, true,     false, null, 100],
             ['temperatura',         'Temperatura (C°):',          null, false,    false, null, 100],
             ['humedad_relativa',    'Humedad Relativa (%):',     null, true,     false, null, 100],
             ['precipitacion',       'Precipitacion Mm:',        null, true,     false, null, 100],
@@ -31,17 +25,6 @@ class Finca extends Model
             ['brillo_solar',        'Brillo Solar (H):',         null, true,     false, null, 100],
 
         ];
-
-    }
-
-    public function scopeId($q, $id)
-    {
-        return $q->where('id', $id);
-    }
-
-    public function zonas()
-    {
-        return $this->hasMany('App\Models\Zona', 'id');
     }
 
 }

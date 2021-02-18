@@ -22,11 +22,17 @@
 					<th md-column>ID</th>
 					<th md-column>Usuario</th>
 					<th md-column>Nombre</th>
-					<th md-column>Zona</th>
 					<th md-column>Latitud</th>
 					<th md-column>Longitud</th>
 				    <th md-column>Hectareas</th>
 					<th md-column>Sitios</th>
+					<th md-column>Zona</th>
+					<th md-column>Temperatura </th>
+					<th md-column>Humedad Relativa </th>
+					<th md-column>Precipitación </th>
+					<th md-column>Altimetria Min </th>
+					<th md-column>Altimetria Max</th>
+					<th md-column>Brillo Solar </th>
 					<th md-column>Acción</th>
 				  </tr>
 				</thead>
@@ -36,11 +42,17 @@
                     <td md-cell>@{{ F.id }}</td>
                     <td md-cell>@{{ F.usuario_id }}</td>
 					<td md-cell>@{{ F.nombre }}</td>
-					<td md-cell>@{{ F.zona_id }}</td>
 					<td md-cell>@{{ F.latitud }}</td>
                     <td md-cell>@{{ F.longitud }}</td>
                     <td md-cell>@{{ F.hectareas }}</td>
                     <td md-cell>@{{ F.sitios }}</td>
+					<td md-cell>@{{ F.zona_id }}</td>
+					<td md-cell>@{{ F.temperatura }}<span>C°</span></td>
+					<td md-cell>@{{ F.humedad_relativa }}<span>%</span></td>
+					<td md-cell>@{{ F.precipitacion }}<span>Mm</span></td>
+					<td md-cell>@{{ F.altimetria_min }}<span>Mt</span></td>
+					<td md-cell>@{{ F.altimetria_max }}<span>Mt</span></td>
+					<td md-cell>@{{ F.brillo_solar }}<span>H</span></td>
 					{{-- <td md-cell>@{{ O.created_at }}</td> --}}
 					{{-- <td md-cell>@{{ O.updated_at }}</td> --}}
 					<td md-cell>

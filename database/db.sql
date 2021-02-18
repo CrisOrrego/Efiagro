@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-02-2021 a las 22:11:51
+-- Tiempo de generación: 18-02-2021 a las 21:42:22
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -185,6 +185,12 @@ CREATE TABLE `fincas` (
   `longitud` decimal(11,8) NOT NULL,
   `hectareas` int(11) NOT NULL,
   `sitios` int(11) NOT NULL,
+  `temperatura` float NOT NULL,
+  `humedad_relativa` float NOT NULL,
+  `precipitacion` float NOT NULL,
+  `altimetria_min` float NOT NULL,
+  `altimetria_max` float NOT NULL,
+  `brillo_solar` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -193,11 +199,28 @@ CREATE TABLE `fincas` (
 -- Volcado de datos para la tabla `fincas`
 --
 
-INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Cafetal', 1, '7.76472000', '-80.27483000', 100, 30, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
-(2, 1, 'Platanal', 1, '7.76472000', '-80.27483000', 100, 30, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
-(3, 1, 'La Esperanza', 1, '6.76472000', '3.76472000', 5, 3444, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
-(4, 1, 'Nuevo Cerre', 1, '7.76472000', '-80.27483000', 15, 50, '2021-02-03 19:21:08', '2021-02-03 19:21:08');
+INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Cafetal', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
+(2, 1, 'Platanal', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
+(3, 1, 'La Esperanza', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
+(4, 1, 'Nuevo Cerre', 1, '7.76472000', '-80.27483000', 15, 50, 0, 0, 0, 0, 0, 0, '2021-02-03 19:21:08', '2021-02-03 19:21:08'),
+(5, 1, 'Florestal', 1, '7.76472000', '-80.27483000', 35, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-18 18:56:22');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `labores`
+--
+
+CREATE TABLE `labores` (
+  `id` int(11) NOT NULL,
+  `labor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `frecuencia` int(11) NOT NULL,
+  `semana_inicio` int(11) NOT NULL,
+  `plantas_dia` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -9666,6 +9689,28 @@ CREATE TABLE `perfiles` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `perfiles`
+--
+
+INSERT INTO `perfiles` (`id`, `perfil`, `created_at`, `updated_at`) VALUES
+(1, 'Administrador', '2021-02-16 18:25:36', '2021-02-16 18:25:36'),
+(2, 'Mi Técnico Amigo', '2021-02-16 18:25:36', '2021-02-16 18:25:36'),
+(3, 'Administración General', '2021-02-16 18:25:36', '2021-02-16 18:25:36');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `rol` varchar(100) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -9688,14 +9733,18 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (1, 'Mi Técnico Amigo', 'Mi Técnico Amigo', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'Gestión Organización', 'Organización', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'Gestión Organización', 'Usuarios', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'Gestión Organización', 'Productores', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Gestión Organización', 'Productores', '2021-02-18 12:22:49', '2021-02-18 12:22:49'),
 (5, 'Mi Finca', 'Finca', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'Administración General', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 'Administración General', 'Organizaciones', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Administración General', 'Organizaciones', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Administración General', 'Artículos ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (8, 'Administración General', 'Casos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (9, 'Administración General', 'Fincas', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
-(11, 'Administración General', 'Contacto', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 'Administración General', 'Líneas Productivas', '2021-02-15 14:59:37', '2021-02-15 14:59:37');
+(11, 'Administración General', 'Zonas', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'Administración General', 'Líneas Productivas', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
+(13, 'Administración General', 'Configuración', '2021-02-16 14:59:37', '2021-02-16 14:59:37'),
+(14, 'Administración General', 'Perfiles', '2021-02-17 14:59:37', '2021-02-17 14:59:37'),
+(15, 'Administración General', 'Registro de Usuarios', '2021-02-17 14:59:37', '2021-02-17 14:59:37'),
+(16, 'Administración General', 'Contacto', '2021-02-18 12:28:26', '2021-02-18 12:28:26');
 
 -- --------------------------------------------------------
 
@@ -9709,8 +9758,10 @@ CREATE TABLE `usuarios` (
   `apellidos` varchar(100) NOT NULL,
   `cedula` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,
+  `rol_id` int(11) DEFAULT NULL,
   `organizacion_id` int(11) DEFAULT NULL,
   `finca_id` int(10) DEFAULT NULL,
+  `contrasena` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -9720,10 +9771,10 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `organizacion_id`, `finca_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Christian Alejandro', 'Orregos Herrera', '1093217141', 'info@mbrain.co', 8, 2, '0000-00-00 00:00:00', '2021-01-12 20:59:52', NULL),
-(2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
-(3, 'Pepito', 'Perez', '1093217142', 'pepito@mbrain.co', NULL, NULL, '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18');
+INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `rol_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Christian Alejandro', 'Orregos Herrera', '1093217141', 'info@mbrain.co', 0, 8, 5, '', '0000-00-00 00:00:00', '2021-01-12 20:59:52', NULL),
+(2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', 0, NULL, NULL, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(3, 'Pepito', 'Perez', '1093217142', 'pepito@mbrain.co', 0, NULL, NULL, '', '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18');
 
 -- --------------------------------------------------------
 
@@ -9747,6 +9798,34 @@ CREATE TABLE `zonas` (
 
 INSERT INTO `zonas` (`id`, `nombre`, `latitud`, `longitud`, `altitud`, `created_at`, `updated_at`) VALUES
 (1, 'Pereira', '7.76472000', '-80.27483000', 1000, '2021-01-17 23:34:40', '2021-01-17 23:34:40');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `zonas_agroambientales`
+--
+
+CREATE TABLE `zonas_agroambientales` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `temperatura` float NOT NULL,
+  `humedad_relativa` float NOT NULL,
+  `precipitacion` float NOT NULL,
+  `altimetria_min` float NOT NULL,
+  `altimetria_max` float NOT NULL,
+  `brillo_solar` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `zonas_agroambientales`
+--
+
+INSERT INTO `zonas_agroambientales` (`id`, `descripcion`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
+(1, 'ZONA 1', 23, 79, 2094, 1500, 2000, 1566, '2021-02-18 18:44:33', '2021-02-18 18:44:33'),
+(2, 'ZONA 2', 22, 77, 2268, 1300, 1500, 1224, '2021-02-18 18:45:16', '2021-02-18 18:45:16'),
+(3, 'ZONA 3', 21, 82, 2261, 0, 1300, 1511, '2021-02-18 18:45:51', '2021-02-18 18:45:51');
 
 --
 -- Índices para tablas volcadas
@@ -9797,6 +9876,12 @@ ALTER TABLE `fincas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_id` (`usuario_id`),
   ADD KEY `zona_id` (`zona_id`);
+
+--
+-- Indices de la tabla `labores`
+--
+ALTER TABLE `labores`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `lineas_productivas`
@@ -9891,6 +9976,12 @@ ALTER TABLE `perfiles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `secciones`
 --
 ALTER TABLE `secciones`
@@ -9908,6 +9999,12 @@ ALTER TABLE `usuarios`
 -- Indices de la tabla `zonas`
 --
 ALTER TABLE `zonas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `zonas_agroambientales`
+--
+ALTER TABLE `zonas_agroambientales`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -9948,7 +10045,13 @@ ALTER TABLE `casos_novedades`
 -- AUTO_INCREMENT de la tabla `fincas`
 --
 ALTER TABLE `fincas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `labores`
+--
+ALTER TABLE `labores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `lineas_productivas`
@@ -10002,13 +10105,19 @@ ALTER TABLE `organizacion_lineas_productivas`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -10021,6 +10130,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `zonas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `zonas_agroambientales`
+--
+ALTER TABLE `zonas_agroambientales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -10064,7 +10179,7 @@ ALTER TABLE `casos_novedades`
 --
 ALTER TABLE `fincas`
   ADD CONSTRAINT `fincas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
+  ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas_agroambientales` (`id`);
 
 --
 -- Filtros para la tabla `listas_detalle`

@@ -55,5 +55,9 @@ angular.module('App', [
     'FincaDiagCtrl',
     'TareaDiagCtrl',
 
+    // 'PerfilesCtrl',
+    // Zonas Agroambientales
+    'ZonasCtrl',
+
 
 ]);

@@ -13,4 +13,12 @@ class FincaController extends Controller
  		$CRUD = new CRUD('App\Models\Finca');
         return $CRUD->call(request()->fn, request()->ops);
 	 }
+
+	 public function zonasFincas()
+    {
+      
+        $Finca = Finca::where('id', $id)->with([ 'zonas' ])->first();
+
+        return $Finca;
+    }
 }

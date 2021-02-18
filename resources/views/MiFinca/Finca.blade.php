@@ -150,7 +150,7 @@
             </md-tab>
 
             {{-- SECCIÓN MI ORGANIZACIÓN --}}
-            <md-tab label="Mi Organización" ng-click="abrirOrganizacion(O)">
+            <md-tab label="Mi Organización" ng-click="">
                 <md-content class="md-padding">
 
                     <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur

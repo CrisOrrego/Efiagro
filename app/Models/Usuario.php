@@ -37,9 +37,6 @@ class Usuario extends Model
         return $this->hasMany('App\Models\Organizacion', 'usuario_id');
     }
 
-
-    
-
     public function getNombreAttribute()
     {
     	return $this->nombres .' '. $this->apellidos;

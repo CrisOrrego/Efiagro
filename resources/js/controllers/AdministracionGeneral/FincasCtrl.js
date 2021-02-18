@@ -29,6 +29,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
         Ctrl.getFinca();
 
         Ctrl.nuevaFinca = () => {
+            // Ctrl.FincasCRUD.setScope('id', Rs.zonas_agroambientales.zonas_id);
             Ctrl.FincasCRUD.dialog({
                 Flex: 10,
                 Title: "Crear Finca",
@@ -70,6 +71,15 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
                 templateUrl: "Frag/MiFinca.FincaDiag",
                 controller: "FincaDiagCtrl",
                 locals: { Finca: F },
+                fullscreen: false,
+            });
+        };
+
+        Ctrl.abrirOrganizacion = (O) => {
+            $mdDialog.show({
+                templateUrl: "Frag/GestionOrganizacion.Organizacion",
+                controller: "FincasCtrl",
+                locals: { Finca: O },
                 fullscreen: false,
             });
         };
