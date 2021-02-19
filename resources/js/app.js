@@ -58,6 +58,7 @@ angular.module('App', [
     // 'PerfilesCtrl',
     // Zonas Agroambientales
     'ZonasCtrl',
+    'LaboresCtrl',
 
 
 ]);
