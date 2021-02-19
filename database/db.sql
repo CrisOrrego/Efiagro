@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-02-2021 a las 21:42:22
+-- Tiempo de generación: 19-02-2021 a las 23:48:29
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -136,7 +136,8 @@ INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `cre
 (24, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:16:09', '2021-02-10 20:16:09'),
 (25, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-10 20:16:52', '2021-02-10 20:16:52'),
 (26, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 20:16:57', '2021-02-10 20:16:57'),
-(27, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:17:03', '2021-02-10 20:17:03');
+(27, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:17:03', '2021-02-10 20:17:03'),
+(28, 1, 'Cosecha exitosa', 'Contar Experiencia', '[]', '2021-02-19 20:08:41', '2021-02-19 20:08:41');
 
 -- --------------------------------------------------------
 
@@ -216,11 +217,32 @@ CREATE TABLE `labores` (
   `id` int(11) NOT NULL,
   `labor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `frecuencia` int(11) NOT NULL,
-  `semana_inicio` int(11) NOT NULL,
-  `plantas_dia` int(11) NOT NULL,
+  `semana_inicio` int(11) DEFAULT NULL,
+  `plantas_dia` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `labores`
+--
+
+INSERT INTO `labores` (`id`, `labor`, `frecuencia`, `semana_inicio`, `plantas_dia`, `created_at`, `updated_at`) VALUES
+(1, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 1, NULL, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04'),
+(2, 'RESIEMBRA CON CABEZA DE TORO', 1, NULL, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
+(3, 'APLICACIÓN MATERIA ORGANICA 300g', 12, NULL, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
+(4, 'FERTILIZACION QUIMICA Y PLATEO', 2, NULL, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
+(5, 'DESHOJE, CIRUGIA  Y PODA TEMPRANA', 1, NULL, 2500, '2021-02-19 22:28:39', '2021-02-19 22:28:39'),
+(6, 'CONTROL SIGATOKA QUIMICO (Según evaluación) de 6 a 9:30 a.m.', 0, NULL, 3000, '2021-02-19 22:29:04', '2021-02-19 22:29:04'),
+(7, 'CONTROL ARVENSES POR PARCHEO', 3, NULL, 3800, '2021-02-19 22:29:51', '2021-02-19 22:29:51'),
+(8, 'DESHIJE Y ESTIMULO', 6, NULL, 2000, '2021-02-19 22:30:20', '2021-02-19 22:30:20'),
+(9, 'CONTROL DE PICUDO - DESGUASQUE Y PINTURA', 6, NULL, 2000, '2021-02-19 22:30:49', '2021-02-19 22:30:49'),
+(10, 'EMBOLSE PREMATURO Y ENCINTADO', 1, NULL, 150, '2021-02-19 22:31:10', '2021-02-19 22:31:10'),
+(11, 'AMARRE O APUNTALADO', 1, NULL, 150, '2021-02-19 22:31:35', '2021-02-19 22:31:35'),
+(12, 'DESMANE O DESFLORE', 1, NULL, 150, '2021-02-19 22:31:54', '2021-02-19 22:31:54'),
+(13, 'COSECHA Y POSCOSECHA', 1, NULL, NULL, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
+(14, 'DESTRONQUE', 1, NULL, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
+(15, 'REGISTRO DE LA INFORMACION', 1, NULL, NULL, '2021-02-19 22:34:48', '2021-02-19 22:34:48');
 
 -- --------------------------------------------------------
 
@@ -9741,9 +9763,7 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (9, 'Administración General', 'Fincas', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
 (11, 'Administración General', 'Zonas', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (12, 'Administración General', 'Líneas Productivas', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
-(13, 'Administración General', 'Configuración', '2021-02-16 14:59:37', '2021-02-16 14:59:37'),
-(14, 'Administración General', 'Perfiles', '2021-02-17 14:59:37', '2021-02-17 14:59:37'),
-(15, 'Administración General', 'Registro de Usuarios', '2021-02-17 14:59:37', '2021-02-17 14:59:37'),
+(13, 'Administración General', 'Labores', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
 (16, 'Administración General', 'Contacto', '2021-02-18 12:28:26', '2021-02-18 12:28:26');
 
 -- --------------------------------------------------------
@@ -10033,7 +10053,7 @@ ALTER TABLE `asignaciones`
 -- AUTO_INCREMENT de la tabla `casos`
 --
 ALTER TABLE `casos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `casos_novedades`
@@ -10051,7 +10071,7 @@ ALTER TABLE `fincas`
 -- AUTO_INCREMENT de la tabla `labores`
 --
 ALTER TABLE `labores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `lineas_productivas`
@@ -10135,7 +10155,7 @@ ALTER TABLE `zonas`
 -- AUTO_INCREMENT de la tabla `zonas_agroambientales`
 --
 ALTER TABLE `zonas_agroambientales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
