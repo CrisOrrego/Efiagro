@@ -1,6 +1,6 @@
 <div flex layout=column ng-controller="MiTecnicoAmigoCtrl">
 
-	<div  class="md-title padding-top padding-left">
+	<div  class="div_bienvenida md-title padding-top padding-left">
         ¡Bienvenido!, ¿Cómo le puedo ayudar? 
     </div>
     <div layout=column flex layout-align="start center" class="padding">
@@ -33,4 +33,8 @@
 		font-size: 1.1em;
 		text-shadow: 1px 1px 1px #00000066;
 	}
+    .div_bienvenida{
+        color: aliceblue;
+        font-size: 2em;
+    }
 </style>
