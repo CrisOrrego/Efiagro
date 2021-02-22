@@ -44,6 +44,7 @@ angular.module('App', [
     'CasosCtrl', // Luigi
     'Casos_NovedadesCtrl', // Luigi
     'LineasProductivasCtrl', // Luigi
+    //'MitecnicoAmigoInicioCtrl', // Luigi
     //Inicio Dev Angélica
     'ContactoCtrl',
     //Fin Dev Angélica

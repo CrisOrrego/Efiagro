@@ -1,7 +1,11 @@
-<div flex layout=column ng-show="Subseccion == 'Articulos'">
+<div flex layout=column ng-controller="MiTecnicoAmigoCtrl">
 
 	<div layout layout-align="center center" class="padding-top">
 		
+		<!-- <md-button class="md-raised boton-principal border-rounded" ng-click="navegarA('MiTecnicoAmigo')">
+			Mi Técnico Amigo
+		</md-button> -->
+
 		<div layout class="w100p mxw600 bg-white padding-5-20 border-rounded">
 			<md-input-container flex class="no-margin md-no-underline" md-no-float>
 				<!--INICIO DEV ANGÉLICA-->
@@ -37,9 +41,6 @@
 
 	</div>
 
-
-
-
 	<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="Buscando">
 
 		<div ng-repeat="A in ArticulosBuscados" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33
@@ -52,9 +53,9 @@
 	</div>
     <!--FIN DEV ANGÉLICA-->
 
-	<md-button class="md-raised md-primary boton-principal abs" ng-click="Subseccion = 'Solicitudes'"
+	<?php /*md-button class="md-raised md-primary boton-principal abs" ng-click="Subseccion = 'Solicitudes'"
 		style="bottom: 10px; left: 50%; margin-left: -145px">
 		Solicitudes a Técnico Amigo
-	</md-button>
+	</md-button*/ ?>
 
 </div>	
