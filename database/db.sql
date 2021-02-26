@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-02-2021 a las 23:48:29
+-- Tiempo de generación: 26-02-2021 a las 02:17:27
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -113,7 +113,7 @@ CREATE TABLE `casos` (
 INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Como se maneja estooo', 'Consulta General', '[]', '2020-12-22 02:13:35', '2021-01-11 00:44:03'),
 (3, 1, 'Esta es un caso', 'Consulta General', '[]', '2021-01-20 21:18:15', '2021-01-20 21:18:15'),
-(4, 1, 'Nueva', 'Consulta General', '[]', '2021-01-21 20:38:32', '2021-01-21 20:38:32'),
+(4, 1, 'Nuevo', 'Consulta General', '[]', '2021-01-21 20:38:32', '2021-02-26 00:54:44'),
 (5, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-06 14:45:30', '2021-02-06 14:45:30'),
 (6, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-06 14:45:38', '2021-02-06 14:45:38'),
 (7, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-06 14:45:47', '2021-02-06 14:45:47'),
@@ -137,7 +137,10 @@ INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `cre
 (25, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-10 20:16:52', '2021-02-10 20:16:52'),
 (26, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 20:16:57', '2021-02-10 20:16:57'),
 (27, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:17:03', '2021-02-10 20:17:03'),
-(28, 1, 'Cosecha exitosa', 'Contar Experiencia', '[]', '2021-02-19 20:08:41', '2021-02-19 20:08:41');
+(28, 1, 'Cosecha exitosa', 'Contar Experiencia', '[]', '2021-02-19 20:08:41', '2021-02-19 20:08:41'),
+(29, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-20 23:44:36', '2021-02-20 23:44:36'),
+(30, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-22 20:48:16', '2021-02-22 20:48:16'),
+(31, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-22 20:48:17', '2021-02-22 20:48:17');
 
 -- --------------------------------------------------------
 
@@ -181,6 +184,13 @@ CREATE TABLE `fincas` (
   `id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `nombre` varchar(500) NOT NULL,
+  `direccion` varchar(255) NOT NULL,
+  `departamento_id` varchar(255) NOT NULL,
+  `municipio_id` varchar(255) NOT NULL,
+  `area_total` int(100) NOT NULL,
+  `tipo_cultivo` varchar(255) NOT NULL,
+  `total_lotes` int(100) NOT NULL,
+  `tipo_suelo` varchar(255) NOT NULL,
   `zona_id` int(11) NOT NULL,
   `latitud` decimal(11,8) NOT NULL,
   `longitud` decimal(11,8) NOT NULL,
@@ -200,12 +210,12 @@ CREATE TABLE `fincas` (
 -- Volcado de datos para la tabla `fincas`
 --
 
-INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Cafetal', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
-(2, 1, 'Platanal', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
-(3, 1, 'La Esperanza', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
-(4, 1, 'Nuevo Cerre', 1, '7.76472000', '-80.27483000', 15, 50, 0, 0, 0, 0, 0, 0, '2021-02-03 19:21:08', '2021-02-03 19:21:08'),
-(5, 1, 'Florestal', 1, '7.76472000', '-80.27483000', 35, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-18 18:56:22');
+INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_id`, `municipio_id`, `area_total`, `tipo_cultivo`, `total_lotes`, `tipo_suelo`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Cafetal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
+(2, 1, 'Platanal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
+(3, 1, 'La Esperanza', '', '', '', 0, '', 0, '', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
+(4, 1, 'Nuevo Cerre', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 15, 50, 0, 0, 0, 0, 0, 0, '2021-02-03 19:21:08', '2021-02-03 19:21:08'),
+(5, 1, 'La Florestal', 'Carrera 8 Bis N° 34 – 14', 'Risaralda', 'Pereira', 156, 'MONOCULTIVO', 2, 'UNIDAD AMAGÁ', 1, '7.76472000', '-80.27483000', 90, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-26 01:11:12');
 
 -- --------------------------------------------------------
 
@@ -10053,7 +10063,7 @@ ALTER TABLE `asignaciones`
 -- AUTO_INCREMENT de la tabla `casos`
 --
 ALTER TABLE `casos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `casos_novedades`
@@ -10065,7 +10075,7 @@ ALTER TABLE `casos_novedades`
 -- AUTO_INCREMENT de la tabla `fincas`
 --
 ALTER TABLE `fincas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `labores`

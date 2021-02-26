@@ -20,8 +20,15 @@
 				<thead md-head>
 				  <tr md-row>
 					<th md-column>ID</th>
-					<th md-column>Usuario</th>
-					<th md-column>Nombre</th>
+					{{-- <th md-column>Usuario</th> --}}
+					<th md-column>Finca</th>
+					<th md-column>Dirección</th>
+					<th md-column>Departamento</th>
+					<th md-column>Municipio</th>
+					<th md-column>Área total</th>
+					<th md-column>Cultivo</th>
+					<th md-column>Total de lotes</th>
+					<th md-column>Suelo</th>
 					<th md-column>Latitud</th>
 					<th md-column>Longitud</th>
 				    <th md-column>Hectareas</th>
@@ -40,8 +47,15 @@
 				  <tr md-row ng-repeat="F in FincasCRUD.rows | filter:filterFincas">
 					
                     <td md-cell>@{{ F.id }}</td>
-                    <td md-cell>@{{ F.usuario_id }}</td>
+                    {{-- <td md-cell>@{{ F.usuario_id }}</td> --}}
 					<td md-cell>@{{ F.nombre }}</td>
+					<td md-cell>@{{ F.direccion }}</td>
+					<td md-cell>@{{ F.departamento_id }}</td>
+					<td md-cell>@{{ F.municipio_id }}</td>
+					<td md-cell>@{{ F.area_total }} <span>cm²</span></td>
+					<td md-cell>@{{ F.tipo_cultivo }}</td>
+					<td md-cell>@{{ F.total_lotes }}</td>
+					<td md-cell>@{{ F.tipo_suelo }}</td>
 					<td md-cell>@{{ F.latitud }}</td>
                     <td md-cell>@{{ F.longitud }}</td>
                     <td md-cell>@{{ F.hectareas }}</td>
