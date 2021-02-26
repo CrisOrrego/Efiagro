@@ -60,7 +60,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
         });
 
         Ctrl.getFinca = () => {
-            Ctrl.FincasCRUD.setScope("id", Rs.Usuario.finca_id); //Me trae las fincas del usuario
+            // Ctrl.FincasCRUD.setScope("id", Rs.Usuario.finca_id); //Me trae las fincas del usuario
             Ctrl.FincasCRUD.get().then(() => {
                 Ctrl.Finca = Ctrl.FincasCRUD.rows[0];
                 //Ctrl.editarFinca(Ctrl.FincasCRUD.rows[0]);
@@ -233,7 +233,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
         Ctrl.editarFinca = F => {
             Rs.BasicDialog({
                 Flex: 30,
-                Title: "Crear Finca",
+                Title: "Editar Finca",
                 Fields: [
                     {
                         Nombre: "Usuario",
@@ -361,7 +361,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
                     }
                 ],
 
-                Confirm: { Text: "Crear Finca" }
+                Confirm: { Text: "Guardar" }
             }).then(r => {
                 if (!r) return;
                 var FincaEditada = {

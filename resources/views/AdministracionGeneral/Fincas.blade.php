@@ -61,12 +61,12 @@
                     <td md-cell>@{{ F.hectareas }}</td>
                     <td md-cell>@{{ F.sitios }}</td>
 					<td md-cell>@{{ F.zona_id }}</td>
-					<td md-cell>@{{ F.temperatura }}<span>C°</span></td>
-					<td md-cell>@{{ F.humedad_relativa }}<span>%</span></td>
-					<td md-cell>@{{ F.precipitacion }}<span>Mm</span></td>
-					<td md-cell>@{{ F.altimetria_min }}<span>Mt</span></td>
-					<td md-cell>@{{ F.altimetria_max }}<span>Mt</span></td>
-					<td md-cell>@{{ F.brillo_solar }}<span>H</span></td>
+					<td md-cell>@{{ F.temperatura }} <span>C°</span></td>
+					<td md-cell>@{{ F.humedad_relativa }} <span>%</span></td>
+					<td md-cell>@{{ F.precipitacion }} <span>Mm</span></td>
+					<td md-cell>@{{ F.altimetria_min }} <span>Mt</span></td>
+					<td md-cell>@{{ F.altimetria_max }} <span>Mt</span></td>
+					<td md-cell>@{{ F.brillo_solar }} <span>H</span></td>
 					{{-- <td md-cell>@{{ O.created_at }}</td> --}}
 					{{-- <td md-cell>@{{ O.updated_at }}</td> --}}
 					<td md-cell>
