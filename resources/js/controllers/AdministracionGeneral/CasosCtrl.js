@@ -128,6 +128,7 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
 
                 Ctrl.CasosCRUD.update(CasoEditado).then(() => {
                     Ctrl.CasosCRUD.get();
+                    Rs.showToast("Caso actualizado");
                 });
             });
         };
