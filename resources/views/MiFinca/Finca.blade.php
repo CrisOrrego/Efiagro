@@ -1,4 +1,4 @@
-<div ng-cloak id="MiFinca" ng-controller="FincasCtrl" class="divMiFinca w650" >
+<div ng-cloak id="MiFinca" ng-controller="FincasCtrl" class="divMiFinca w650">
     <md-content class="encabezado">
         <md-tabs md-dynamic-height md-border-bottom>
             {{-- SECCIÓN MI FINCA --}}
@@ -7,28 +7,60 @@
 
                     <div layout="row" class="w600">
                         <div flex="">
+                            <div class="seccion_texto">
+                                <label class="texto_title">Dirección:</label>
+                                <label class="no-margin">@{{ Finca . direccion }}</label>
+
+                            </div>
+                            <div class="seccion_texto">
+                                <label class="texto_title">Departamento:</label>
+                                <label class="no-margin">@{{ Finca . departamento_id }}</label>
+
+                            </div>
+                            <div class="seccion_texto">
+                                <label class="texto_title">Municipio:</label>
+                                <label class="no-margin">@{{ Finca . municipio_id }}</label>
+
+                            </div>
+                            <div class="seccion_texto">
+                                <label class="texto_title">Área total:</label>
+                                <label class="no-margin">@{{ Finca . area_total }}</label>
+
+                            </div>
+                            <div class="seccion_texto">
+                                <label class="texto_title">Tipo Cultivo:</label>
+                                <label class="no-margin">@{{ Finca . tipo_cultivo }}</label>
+                            </div>
+                            <div class="seccion_texto">
+                                <label class="texto_title">Total de lotes:</label>
+                                <label class="no-margin">@{{ Finca . total_lotes }}</label>
+                            </div>
+                            <div class="seccion_texto">
+                                <label class="texto_title">Tipo de suelo:</label>
+                                <label class="no-margin">@{{ Finca . tipo_suelo }}</label>
+                            </div>
 
                             <div class="seccion_texto">
-                                <label class="texto_title">Zona</label>
-                                <p>@{{ Finca . zona_id }}</p>
+                                <label class="texto_title">Zona:</label>
+                                <label class="no-margin">@{{ Finca . zona_id }}</label>
                             </div>
                             <div class="seccion_texto">
-                                <label class="texto_title">Hectareas</label>
-                                <p>@{{ Finca . hectareas }}</p>
-                            </div>
-
-                            <div class="seccion_texto">
-                                <label class="texto_title">Latitud</label>
-                                <p>@{{ Finca . latitud }}</p>
-                            </div>
-                            <div class="seccion_texto">
-                                <label class="texto_title">Longitud</label>
-                                <p>@{{ Finca . longitud }}</p>
+                                <label class="texto_title">Hectareas:</label>
+                                <label class="no-margin">@{{ Finca . hectareas }}</label>
                             </div>
 
                             <div class="seccion_texto">
-                                <label class="texto_title">Sitios</label>
-                                <p>@{{ Finca . sitios }}</p>
+                                <label class="texto_title">Latitud:</label>
+                                <label class="no-margin">@{{ Finca . latitud }}</label>
+                            </div>
+                            <div class="seccion_texto">
+                                <label class="texto_title">Longitud.</label>
+                                <label class="no-margin">@{{ Finca . longitud }}</label>
+                            </div>
+
+                            <div class="seccion_texto">
+                                <label class="texto_title">Sitio:s</label>
+                                <label class="no-margin">@{{ Finca . sitios }}</label>
                             </div>
 
                         </div>
@@ -100,8 +132,7 @@
                 <md-content class="md-padding">
 
                     <md-card class="seccion_lotes" ng-repeat="L in LotesCRUD.rows | filter:filterLotes"
-                        ng-click="abrirTarea(T)"
-                        >
+                        ng-click="abrirTarea(T)">
                         <div layout="row">
                             <div flex="10" class="lotes_content">
                                 <img class="img-lote" src="/../imgs/platano.png" alt="iconlote">
@@ -117,13 +148,13 @@
                                         class="texto_title">Sitios</label> @{{ L . sitios }}
                                 </div>
                                 <div>
-                                    <label class="texto_tarea"> @{{ L . titulo.length() }} Tareas</label>
+                                    <label class="texto_tarea"> @{{ L . titulo . length() }} Tareas</label>
                                 </div>
                                 {{-- <div>
                                     <label class="texto_title">Coordenadas</label>
                                     <h3 class="md-title no-margin">@{{ L . coordenadas }}</h3>
                                 </div> --}}
-                            </div> 
+                            </div>
                         </div>
                     </md-card>
                 </md-content>
@@ -166,14 +197,14 @@
 
 <style type="text/css">
     .divMiFinca {
-   margin: 3% auto;
-   left: 0;
-   right: 0;
+        margin: 3% auto;
+        left: 0;
+        right: 0;
     }
-    .encabezado{
+
+    .encabezado {
         border-radius: 1rem;
-       
- }
+    }
 
     .seccion_lotes {
         transform: scale(0.95);
@@ -187,7 +218,6 @@
     .seccion_lotes {
         width: 600px;
         padding: 10px;
-
     }
 
     md-tabs {
@@ -195,18 +225,10 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
-  
+
     md-card {
         min-height: 0%;
         background-color: rgb(255, 248, 240);
-    }
-
-    .titilo-finca {
-        text-align: center;
-        white-space: normal;
-        word-wrap: break-word;
-        color: rgb(255, 255, 255);
-
     }
 
     .titulo_navegacion {
@@ -217,14 +239,14 @@
     /* .seccion_finca:hover {
         transform: scale(1);
     } */
-  
+
     .seccion_texto {
         white-space: normal;
         word-wrap: break-word;
     }
 
     .texto_title {
-        color: rgb(199, 196, 196);
+        color: rgb(167, 161, 161);
     }
 
     .texto_tarea {
