@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-02-2021 a las 23:48:29
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Tiempo de generación: 27-02-2021 a las 23:40:18
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -284,49 +285,50 @@ CREATE TABLE `listas_detalle` (
   `op3` varchar(100) DEFAULT NULL,
   `op4` varchar(100) DEFAULT NULL,
   `op5` varchar(100) DEFAULT NULL,
+  `estado` varchar(10) NOT NULL DEFAULT 'A',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `listas_detalle`
 --
 
-INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, `op2`, `op3`, `op4`, `op5`, `created_at`, `updated_at`) VALUES
-(1, 1, 'COL', 'Colombia', NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 2, '05', 'antioquia', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 2, '08', 'atlántico', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 2, '11', 'bogotá, d. c.', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 2, '13', 'bolívar', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 2, '15', 'boyacá', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 2, '17', 'caldas', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8, 2, '18', 'caquetá', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, 2, '19', 'cauca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(10, 2, '20', 'cesar', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(11, 2, '23', 'córdoba', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 2, '25', 'cundinamarca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, 2, '27', 'chocó', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(14, 2, '41', 'huila', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, 2, '44', 'la guajira', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, 2, '47', 'magdalena', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, 2, '50', 'meta', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 2, '52', 'nariño', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19, 2, '54', 'norte de santander', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(20, 2, '63', 'quindío', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(21, 2, '66', 'risaralda', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(22, 2, '68', 'santander', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(23, 2, '70', 'sucre', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(24, 2, '73', 'tolima', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(25, 2, '76', 'valle del cauca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(26, 2, '81', 'arauca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(27, 2, '85', 'casanare', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(28, 2, '86', 'putumayo', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(29, 2, '88', 'archipiélago de san andrés, providencia y ', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(30, 2, '91', 'amazonas', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(31, 2, '94', 'guainía', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(32, 2, '95', 'guaviare', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(33, 2, '97', 'vaupés', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, `op2`, `op3`, `op4`, `op5`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 1, 'COL', 'Colombia', NULL, NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 2, '05', 'antioquia', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 2, '08', 'atlántico', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 2, '11', 'bogotá, d. c.', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 2, '13', 'bolívar', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 2, '15', 'boyacá', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 2, '17', 'caldas', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 2, '18', 'caquetá', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 2, '19', 'cauca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 2, '20', 'cesar', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 2, '23', 'córdoba', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 2, '25', 'cundinamarca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 2, '27', 'chocó', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 2, '41', 'huila', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 2, '44', 'la guajira', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 2, '47', 'magdalena', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 2, '50', 'meta', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 2, '52', 'nariño', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 2, '54', 'norte de santander', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 2, '63', 'quindío', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 2, '66', 'risaralda', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, 2, '68', 'santander', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, 2, '70', 'sucre', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, 2, '73', 'tolima', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, 2, '76', 'valle del cauca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 2, '81', 'arauca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 2, '85', 'casanare', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 2, '86', 'putumayo', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, 2, '88', 'archipiélago de san andrés, providencia y ', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 2, '91', 'amazonas', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 2, '94', 'guainía', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, 2, '95', 'guaviare', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 2, '97', 'vaupés', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -337,18 +339,20 @@ INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, 
 CREATE TABLE `listas_indice` (
   `id` int(10) NOT NULL,
   `lista` varchar(200) NOT NULL,
+  `clave_automatica` tinyint(1) NOT NULL DEFAULT 1,
+  `con_imagen` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `listas_indice`
 --
 
-INSERT INTO `listas_indice` (`id`, `lista`, `created_at`, `updated_at`) VALUES
-(1, 'Paises', '2021-02-05 11:45:35', '2021-02-05 11:45:35'),
-(2, 'Departamentos', '2021-02-05 11:45:35', '2021-02-05 11:45:35'),
-(3, 'Municipios', '2021-02-05 11:45:35', '2021-02-05 11:45:35');
+INSERT INTO `listas_indice` (`id`, `lista`, `clave_automatica`, `con_imagen`, `created_at`, `updated_at`) VALUES
+(1, 'Paises', 0, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
+(2, 'Departamentos', 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
+(3, 'Municipios', 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37');
 
 -- --------------------------------------------------------
 
@@ -9723,6 +9727,21 @@ INSERT INTO `perfiles` (`id`, `perfil`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `perfiles_secciones`
+--
+
+CREATE TABLE `perfiles_secciones` (
+  `id` int(11) NOT NULL,
+  `perfil_id` int(10) NOT NULL,
+  `seccion_id` int(10) NOT NULL,
+  `nivel` int(10) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `roles`
 --
 
@@ -9996,6 +10015,12 @@ ALTER TABLE `perfiles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `perfiles_secciones`
+--
+ALTER TABLE `perfiles_secciones`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -10126,6 +10151,12 @@ ALTER TABLE `organizacion_lineas_productivas`
 --
 ALTER TABLE `perfiles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `perfiles_secciones`
+--
+ALTER TABLE `perfiles_secciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
