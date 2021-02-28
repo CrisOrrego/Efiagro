@@ -36,12 +36,12 @@
 					
 					<td md-cell>@{{ Z.id }} </td>
 					<td md-cell>@{{ Z.descripcion }}</td>
-					<td md-cell>@{{ Z.temperatura }}<span>C°</span></td>
-					<td md-cell>@{{ Z.humedad_relativa }}<span>%</span></td>
-					<td md-cell>@{{ Z.precipitacion }}<span>Mm</span></td>
-					<td md-cell>@{{ Z.altimetria_min }}<span>Mt</span></td>
-					<td md-cell>@{{ Z.altimetria_max }}<span>Mt</span></td>
-					<td md-cell>@{{ Z.brillo_solar }}<span>H</span></td>
+					<td md-cell>@{{ Z.temperatura }} <span>C°</span></td>
+					<td md-cell>@{{ Z.humedad_relativa }} <span>%</span></td>
+					<td md-cell>@{{ Z.precipitacion }} <span>Mm</span></td>
+					<td md-cell>@{{ Z.altimetria_min }} <span>Mt</span></td>
+					<td md-cell>@{{ Z.altimetria_max }} <span>Mt</span></td>
+					<td md-cell>@{{ Z.brillo_solar }} <span>H</span></td>
 
 					<td md-cell>
 						<md-button class="md-icon-button" ng-click="editarZona(Z)">

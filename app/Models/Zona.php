@@ -19,7 +19,7 @@ class Zona extends Model
             ['descripcion',         'Descripcion:',          null, true,     false, null, 100],
             ['temperatura',         'Temperatura (C°):',          null, false,    false, null, 100],
             ['humedad_relativa',    'Humedad Relativa (%):',     null, true,     false, null, 100],
-            ['precipitacion',       'Precipitacion Mm:',        null, true,     false, null, 100],
+            ['precipitacion',       'Precipitacion (Mm):',        null, true,     false, null, 100],
             ['altimetria_min',      'Altimetria Minima (Mt):',       null, false,    false, null, 100],
             ['altimetria_max',      'Altimetria Maxima (Mt):',       null, true,     false, null, 100],
             ['brillo_solar',        'Brillo Solar (H):',         null, true,     false, null, 100],

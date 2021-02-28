@@ -175,7 +175,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
                         Required: true
                     },
                     {
-                        Nombre: "Precipitacion Mm:",
+                        Nombre: "Precipitacion (Mm):",
                         Value: "",
                         Type: "string",
                         Required: true

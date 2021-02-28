@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-02-2021 a las 23:40:18
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.1
+-- Tiempo de generación: 28-02-2021 a las 19:56:04
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -59,6 +58,7 @@ INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`
 CREATE TABLE `articulos_secciones` (
   `id` int(10) NOT NULL,
   `articulo_id` int(10) NOT NULL,
+  `indice` tinyint(5) NOT NULL,
   `tipo` varchar(50) NOT NULL,
   `contenido` text DEFAULT NULL,
   `ruta` varchar(1000) DEFAULT NULL,
@@ -70,11 +70,12 @@ CREATE TABLE `articulos_secciones` (
 -- Volcado de datos para la tabla `articulos_secciones`
 --
 
-INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `tipo`, `contenido`, `ruta`, `created_at`, `updated_at`) VALUES
-(20, 1, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
-(23, 1, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
-(24, 4, 'Imagen', NULL, NULL, '2021-01-18 01:32:05', '2021-01-18 01:32:05'),
-(25, 4, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-02-10 19:35:45', '2021-02-10 19:35:45');
+INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `indice`, `tipo`, `contenido`, `ruta`, `created_at`, `updated_at`) VALUES
+(20, 1, 0, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
+(23, 1, 0, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
+(25, 4, 3, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-02-10 19:35:45', '2021-02-28 18:44:58'),
+(26, 4, 1, 'Imagen', NULL, 'files/articulos_media/4/20210228134406.jpg', '2021-02-28 18:44:20', '2021-02-28 18:44:58'),
+(27, 4, 2, 'Parrafo', 'Esto es una forma reciente de siembra', NULL, '2021-02-28 18:44:25', '2021-02-28 18:44:58');
 
 -- --------------------------------------------------------
 
@@ -182,6 +183,13 @@ CREATE TABLE `fincas` (
   `id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `nombre` varchar(500) NOT NULL,
+  `direccion` varchar(255) NOT NULL,
+  `departamento_id` varchar(255) NOT NULL,
+  `municipio_id` varchar(255) NOT NULL,
+  `area_total` int(100) NOT NULL,
+  `tipo_cultivo` varchar(255) NOT NULL,
+  `total_lotes` int(100) NOT NULL,
+  `tipo_suelo` varchar(255) NOT NULL,
   `zona_id` int(11) NOT NULL,
   `latitud` decimal(11,8) NOT NULL,
   `longitud` decimal(11,8) NOT NULL,
@@ -201,12 +209,12 @@ CREATE TABLE `fincas` (
 -- Volcado de datos para la tabla `fincas`
 --
 
-INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Cafetal', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
-(2, 1, 'Platanal', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
-(3, 1, 'La Esperanza', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
-(4, 1, 'Nuevo Cerre', 1, '7.76472000', '-80.27483000', 15, 50, 0, 0, 0, 0, 0, 0, '2021-02-03 19:21:08', '2021-02-03 19:21:08'),
-(5, 1, 'Florestal', 1, '7.76472000', '-80.27483000', 35, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-18 18:56:22');
+INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_id`, `municipio_id`, `area_total`, `tipo_cultivo`, `total_lotes`, `tipo_suelo`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Cafetal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
+(2, 1, 'Platanal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
+(3, 1, 'La Esperanza', '', '', '', 0, '', 0, '', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
+(4, 1, 'Nuevo Cerre', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 15, 50, 0, 0, 0, 0, 0, 0, '2021-02-03 19:21:08', '2021-02-03 19:21:08'),
+(5, 1, 'Florestal', 'Carrera 8 Bis N° 34 – 14', 'Risaralda', 'Pereira', 345, 'MONOCULTIVO', 453, 'UNIDAD AMAGÁ', 1, '7.76472000', '-80.27483000', 35, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-28 18:38:39');
 
 -- --------------------------------------------------------
 
@@ -9783,7 +9791,9 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (11, 'Administración General', 'Zonas', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (12, 'Administración General', 'Líneas Productivas', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
 (13, 'Administración General', 'Labores', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
-(16, 'Administración General', 'Contacto', '2021-02-18 12:28:26', '2021-02-18 12:28:26');
+(16, 'Administración General', 'Contacto', '2021-02-18 12:28:26', '2021-02-18 12:28:26'),
+(17, 'Mi Técnico Amigo', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 'Mi Técnico Amigo', 'Solicitudes', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -10066,7 +10076,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaciones`
@@ -10168,7 +10178,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
