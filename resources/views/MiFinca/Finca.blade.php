@@ -129,6 +129,19 @@
 
             {{-- SECCIÓN LOTES --}}
             <md-tab label="Lotes">
+                <div layout class="padding-0-10" layout-align="center center">
+                    {{-- <div class="md-title">Gestion de Fincas</div> --}}
+                    {{-- <span flex></span> --}}
+                    <md-input-container class="no-margin md-icon-float" md-no-float>
+                        <md-icon md-font-icon="fa-search fa-fw"></md-icon>
+                        <input type="text" ng-model="filterLotes" placeholder="Buscar...">
+                    </md-input-container>
+                    
+                    <span flex></span>
+                    <md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="nuevoLote(L)">
+                        <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Lote
+                    </md-button>
+                </div>
                 <md-content class="md-padding">
 
                     <md-card class="seccion_lotes" ng-repeat="L in LotesCRUD.rows | filter:filterLotes"

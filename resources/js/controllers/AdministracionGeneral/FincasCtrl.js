@@ -462,7 +462,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
         //     Ctrl.mapa = r.data;
         // });
 
-        Ctrl.nuevaLote = () => {
+        Ctrl.nuevoLote = () => {
             Ctrl.LotesCRUD.dialog({
                 Flex: 10,
                 Title: "Crear Lote",
