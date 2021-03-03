@@ -46,6 +46,7 @@ angular.module('App', [
     'LineasProductivasCtrl', // Luigi
     //Inicio Dev Angélica
     'ContactoCtrl',
+    'ArticulomuroEditDialogCtrl',
     //Fin Dev Angélica
 
     'OrganizacionesCtrl',

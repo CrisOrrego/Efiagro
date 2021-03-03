@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,14 @@ Route::get('/Home', function(){  return view('Home'); });
 Route::get('/Home/{seccion}', function(){  return view('Seccion'); });
 Route::get('/Home/{seccion}/{subseccion}', 'MainController@cargarSubseccion');
 Route::get('/Frag/{vista}',                'MainController@cargarFragmento');
+Route::post("/api/upload", [FileController::class, 'upload']);
 
 AdvancedRoute::controller('/api/main',      'MainController');
 AdvancedRoute::controller('/api/usuario',   'UsuarioController');
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');
 //Inicio Dev ANGÉLICA
 AdvancedRoute::controller('/api/contacto',     'ContactoController');
+AdvancedRoute::controller('/api/organizacionesmurosecciones',     'OrganizacionesMuroSeccionesController');
 //FIN Dev ANGÉLICA
 AdvancedRoute::controller('/api/organizaciones',  'OrganizacionController');
 AdvancedRoute::controller('/api/fincas',  'FincaController');

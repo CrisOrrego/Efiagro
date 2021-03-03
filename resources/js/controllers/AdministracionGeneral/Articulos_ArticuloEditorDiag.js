@@ -17,6 +17,13 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 		Ctrl.keyWords = Ctrl.Articulo.palabras_clave.split(",");
 		//FIN DEV ANGÉLICA
 
+		//INCIO DEV ANGÉLICA --> Lineas productivas
+		$http.post('api/lineasproductivas/obtener', {}).then(r => {
+			Ctrl.lineas_productivas = r.data;
+			//console.log(r.data);
+		 });
+		//FIN DEV ANGÉLICA
+
 		Ctrl.SeccionesCRUD = $injector.get('CRUD').config({ 
 			base_url: '/api/articulos/secciones',
 			limit: 1000,
@@ -36,8 +43,11 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 		Ctrl.getSecciones();
 
 		Ctrl.guardarArticulo = () => {
-			//INICIO DEV ANGELICA -- Actualización de palabras clave en chips
+			//INICIO DEV ANGELICA -- Actualización de palabras clave en chips y select de lineas productivas
 			Ctrl.Articulo.palabras_clave = Ctrl.keyWords.join();
+			// Ctrl.Articulo.linea_productiva_id = 1;
+			console.log(Ctrl.Articulo);
+			//FIN DEV ANGELICA -- Actualización de palabras clave en chips y select de lineas productivas
 			Ctrl.$parent.ArticulosCRUD.update(Ctrl.Articulo).then(() => {
 				var SeccionesCambiadas = Ctrl.SeccionesCRUD.rows.filter(s => s.changed);
 				if(SeccionesCambiadas.length > 0){
@@ -139,4 +149,6 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 
 
 	}
+
+ 
 ]);

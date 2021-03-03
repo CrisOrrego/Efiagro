@@ -10,6 +10,11 @@ angular.module('MiTecnicoAmigoCtrl', [])
             Ctrl.Subseccion = 'Solicitudes';
             Ctrl.PalabrasClave = [];
             Ctrl.Cancel = $mdDialog.cancel;
+            //INICIO DEV ANGELICA
+            Ctrl.SelectedKey = false;
+            Ctrl.key = "";
+            Ctrl.keys= [];
+            Ctrl.ArticulosBuscados = [];
 
             $http.post('api/articulos/obtener', {}).then(r => {
                 Ctrl.Articulos = r.data;
@@ -52,9 +57,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                     // where: ['1 = 1'],
                     order_by: []
                 })
-                //debugger;
             $http.post('api/casos/obtener').then(r => {
-                //debugger;
                 Ctrl.Articulos = r.data;
                 //Ctrl.abrirArticulo(Ctrl.Articulos[3]); //FIX
             })
@@ -140,11 +143,13 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 .replace(" en ", " ")
                 .replace(" para ", " ")
                 .replace(" por ", " ")
-                .replace(" la ", " ");
+                .replace(" la ", " ")
+                .replace(" y ", " ");
 
             if(filtro == "") return Ctrl.Buscando = false;
 
             let keys = filtro.split(" ");
+            Ctrl.keys = [];
             var ArticulosBuscados = [];
             Ctrl.Buscando = true;
             Ctrl.Articulos.forEach(function (articulo) {
@@ -152,6 +157,20 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 keys.forEach(function (key){
                     if(articulo.titulo.toLowerCase().indexOf(key)>0){
                         articulo.contador++;
+                    }                     
+                });
+
+                // Recorre cada una de las palabras digitadas en el filtro
+                keys.forEach(function (palabra){
+                    // Separa cada una de las pabras clave del artuculo
+                    let keys = articulo.palabras_clave.split(",");
+                
+                    // Buscamos si la palabra del filtro esta en la lista de palabras clave
+                    if (keys.includes(palabra)) {
+                        articulo.contador++; 
+                        Ctrl.SelectedKey = true;
+                        Ctrl.keys.push(palabra);
+                        console.log(articulo.palabras_clave, palabra);
                     }
                 });
 
@@ -166,6 +185,8 @@ angular.module('MiTecnicoAmigoCtrl', [])
         Ctrl.searchKeyWords = (key) => {
             var ArticulosBuscados = [];
             Ctrl.Buscando = true;
+            Ctrl.SelectedKey = true;
+            Ctrl.key = key;
             Ctrl.Articulos.forEach(function (articulo) {
                 articulo.contador=0;
                 if(articulo.palabras_clave.indexOf(key)>=0){
@@ -177,7 +198,13 @@ angular.module('MiTecnicoAmigoCtrl', [])
             
             Ctrl.ArticulosBuscados = ArticulosBuscados;
             }
-        
+            Ctrl.cleanFilter = () => {
+                Ctrl.SelectedKey = false;
+                Ctrl.key = "";
+                Ctrl.Buscando = false;
+                Ctrl.ArticulosBuscados = [];
+                Ctrl.keys = [];
+            }
 		//FIN DEV ANGÉLICA
         }
     ]);
