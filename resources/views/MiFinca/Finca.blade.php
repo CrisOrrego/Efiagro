@@ -136,16 +136,13 @@
                         <md-icon md-font-icon="fa-search fa-fw"></md-icon>
                         <input type="text" ng-model="filterLotes" placeholder="Buscar...">
                     </md-input-container>
-                    
+
                     <span flex></span>
-                    <md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="nuevoLote(L)">
-                        <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Lote
-                    </md-button>
+                   
                 </div>
                 <md-content class="md-padding">
 
-                    <md-card class="seccion_lotes" ng-repeat="L in LotesCRUD.rows | filter:filterLotes"
-                        ng-click="abrirTarea(T)">
+                    <md-card class="seccion_lotes" ng-repeat="L in LotesCRUD.rows | filter:filterLotes">
                         <div layout="row">
                             <div flex="10" class="lotes_content">
                                 <img class="img-lote" src="/../imgs/platano.png" alt="iconlote">
@@ -169,43 +166,67 @@
                                 </div> --}}
                             </div>
                         </div>
-                    </md-card>
-                </md-content>
+                        <div layout="row">
+                            <div flex="">
+                                <md-card class="seccion_labores">
+                                    
+                                    ESTA SECCIÓN LABORES
+                                    <md-checkbox >
+                                        @{{ L . sitios }}
+                                    </md-checkbox>
+                                <md-input-container ng-controller="LaboresCtrl">
+                                    <label>AGREGAR LABORES</label>
+                                        <md-select ng-model="LotesCtrl">
+                                            <md-option ng-value="labores_id" ng-repeat="L in LaboresCRUD.rows">@{{ L . labor }}</md-option>
+                                        </md-select>
+                                  </md-input-container>
+ 
+                            </div>
+                                </md-card>
+    
+                            <div flex="">
+                                <md-card>
+                                    SECCIÓN GRAFICOS
+                                </md-card>
+                            </div>
+</div>
+</md-card>
+</md-content>
 
-                {{-- SECCIÓN EVENTOS --}}
-            </md-tab>
-            <md-tab label="Eventos">
-                <md-content class="md-padding">
+{{-- SECCIÓN EVENTOS --}}
+</md-tab>
+<md-tab label="Eventos">
+    <md-content class="md-padding">
 
 
-                    <md-card class="seccion_eventos">
-                        <div>
-                            <h3 class="md-title no-margin">Eventos</h3>
-                        </div>
+        <md-card class="seccion_eventos">
+            <div>
+                <h3 class="md-title no-margin">Eventos</h3>
+            </div>
 
-                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur
-                            posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae
-                            hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo
-                            volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo
-                            lectus.</p>
-                    </md-card>
+            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur
+                posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae
+                hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo
+                volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo
+                lectus.</p>
+        </md-card>
 
-                </md-content>
-            </md-tab>
-
-            {{-- SECCIÓN MI ORGANIZACIÓN --}}
-            <md-tab label="Mi Organización" ng-click="">
-                <md-content class="md-padding">
-
-                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur
-                        posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae
-                        hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo
-                        volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo
-                        lectus.</p>
-                </md-content>
-            </md-tab>
-        </md-tabs>
     </md-content>
+</md-tab>
+
+{{-- SECCIÓN MI ORGANIZACIÓN --}}
+<md-tab label="Mi Organización" ng-click="">
+    <md-content class="md-padding">
+
+        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur
+            posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae
+            hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo
+            volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo
+            lectus.</p>
+    </md-content>
+</md-tab>
+</md-tabs>
+</md-content>
 </div>
 
 <style type="text/css">
@@ -231,18 +252,18 @@
     .seccion_lotes {
         width: 600px;
         padding: 10px;
+        min-height: 0%;
+        background-color: rgb(255, 248, 240);
     }
 
     md-tabs {
         background-image: url("/../imgs/finca.jpg");
         background-repeat: no-repeat;
         background-size: cover;
+
     }
 
-    md-card {
-        min-height: 0%;
-        background-color: rgb(255, 248, 240);
-    }
+    .seccion_labores {}
 
     .titulo_navegacion {
         color: rgb(255, 255, 255);

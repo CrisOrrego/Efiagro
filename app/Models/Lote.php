@@ -19,6 +19,7 @@ class Lote extends Model
             ['finca_id', 'Finca', null, true, false, null, 100],
             ['organizacion_id', 'Organización', null, true, false, null, 100],
             ['linea_productiva_id', 'Linea Productiva', null, false, false, null, 100],
+            ['labores_id', 'Labores', null, false, false, null, 100], 
             ['hectareas', 'Hectareas', null, true, false, null, 100],
             ['sitios', 'Sitios', null, true, false, null, 100],
             ['coordenadas', 'Coordenadas', null, true, false, null, 100],
