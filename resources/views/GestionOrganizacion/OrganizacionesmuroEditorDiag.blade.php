@@ -8,15 +8,8 @@
 	</div>
 
 	<div layout=column class="overflow-y">
-		<div layout class="padding-0-10">
-
-
-			<md-input-container flex class="no-margin" md-no-float>
-		<div simditor ng-model="contenido"></div>
-
-
-				<textarea md-maxlength="10000" ng-model="contenido" placeholder="Que quieres publicar?" rows="8" columns="3"> </textarea>
-			</md-input-container>
+		<div layout=column class="padding-0-10">
+			<text-angular ng-model="contenido"></text-angular>
 		</div>
 
 		<div layout style="margin-top: 20px" layout class="padding-0-10">

@@ -81,24 +81,9 @@
                             <label class="texto_title">@{{M.usuario.nombre}} - @{{ M.created_at }}  @{{ Darformatofecha(M.created_at) }} </label>
                         </div>
 
+                        <!--Para dar formato al contenido-->
                         <div display:flex layout="row">
-                            <blockquote> 
-                                <!--h2 ng-click="abrirArticulomuro(A)"></h2> -->
-                                <p>
-                                <font size="+1" color="green"> 
-                                    <pre>
-                                        @{{M.contenido}}
-                                    </pre>
-                                </font>
-                                </p>
-                            </blockquote>
-                        </div>
-
-                        <div display:flex layout="row">
-                                ytf
-                                <p ng-bind.html="myHTML"></p>
-                                <p inner="@{{myHTML}}"></p>
-
+                            <p ng-bind-html="M.contenido"></p>
                         </div>
 
                         <div layout="row">

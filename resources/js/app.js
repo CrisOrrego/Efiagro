@@ -17,6 +17,8 @@ angular.module('App', [
     'angular-img-cropper',
     //'indexedDB',
     'enterStroke',
+    'textAngular',
+
 
 
     'CRUD',
