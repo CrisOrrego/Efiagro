@@ -494,70 +494,14 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
             });
         };
 
-        //    Ctrl.abrirLote = (L) => {
-        //         $mdDialog.show({
-        //             templateUrl: "Frag/MiFinca.FincaDiag",
-        //             controller: "FincaDiagCtrl",
-        //             locals: { Lote: L },
-        //             fullscreen: false,
-        //         });
-        //     };
-
-        // TAREAS
-
-        Ctrl.TareasCRUD = $injector.get("CRUD").config({
-            base_url: "/api/fincas/fincas",
-            limit: 1000,
-            add_append: "refresh",
-            order_by: ["-created_at"]
-        });
-
-        Ctrl.getTareas = () => {
-            Ctrl.TareasCRUD.get().then(() => {
-                //Ctrl.editarTarea(Ctrl.TareasCRUD.rows[0]);
-            });
-        };
-
-        Ctrl.getTareas();
-
-        Ctrl.nuevaTarea = () => {
-            Ctrl.TareasCRUD.dialog({
-                Flex: 10,
-                Title: "Crear Tarea",
-
-                Confirm: { Text: "Crear Tarea" }
-            }).then(r => {
-                if (!r) return;
-                Ctrl.TareasCRUD.add(r);
-            });
-        };
-
-        Ctrl.editarTarea = T => {
-            Ctrl.TareasCRUD.dialog(T, {
-                title: "Editar Tarea" + T.id
-            }).then(r => {
-                if (r == "DELETE") return Ctrl.TareasCRUD.delete(T);
-                Ctrl.TareasCRUD.update(r).then(() => {
-                    Rs.showToast("Tarea actualizado");
-                });
-            });
-        };
-
-        Ctrl.eliminarTarea = T => {
-            Rs.confirmDelete({
-                Title: "¿Eliminar Tarea #" + T.id + "?"
-            }).then(d => {
-                if (!d) return;
-                Ctrl.TareasCRUD.delete(T);
-            });
-        };
-        Ctrl.abrirTarea = T => {
+        Ctrl.abrirLabores = L => {
             $mdDialog.show({
-                templateUrl: "Frag/MiFinca.TareaDiag",
-                controller: "TareaDiagCtrl",
-                locals: { Tarea: T },
+                templateUrl: "Frag/MiFinca.LaboresDiag",
+                controller: "LaboresDiagCtrl",
+                locals: { Labor: L },
                 fullscreen: false
             });
         };
+        
     }
 ]);

@@ -1,4 +1,4 @@
-<div id="Tareas"  flex layout=column>
+<div id="Labores"  flex layout=column>
 
     <div ng-cloak>
         <md-content class="encabezado">
@@ -16,22 +16,8 @@
                            
                                 <div class="seccion_texto">
                                     <label class="texto_title">#</label>
-                                    <p>@{{ T . id }}</p>
+                                    <p>@{{ Labor . labor }}</p>
                                 </div>
-                                <div class="seccion_texto">
-                                    <label class="texto_title">Tarea</label>
-                                    <p>@{{ Tarea . titulo }}</p>
-                                </div>
-
-                                <div class="seccion_texto">
-                                    <label class="texto_title">Semana</label>
-                                    <p>@{{ Tarea . fecha }}</p>
-                                </div>
-                                <div class="seccion_texto">
-                                    <label class="texto_title">Estado</label>
-                                    <p>@{{ Tarea . estado }}</p>
-                                </div>
-
                             </div>
 
                         </div>
