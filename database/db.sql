@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2021 a las 15:51:32
+-- Tiempo de generación: 15-02-2021 a las 22:11:51
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -44,10 +44,10 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`, `estado`, `permisos`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 0, '5 la roya en su cultivo', NULL, 'Activo', '', 1, '0000-00-00 00:00:00', '2020-11-20 22:46:03'),
-(2, 0, 'Ultimas guias de la OMS para el cuidado de sus vacas', '', 'Activo', '', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 0, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', '', 'Activo', '', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 0, '3 nuevas semillas de platano', NULL, 'Activo', NULL, 1, '2020-11-20 01:52:22', '2020-11-20 01:52:22');
+(1, 0, '5 formas de evitar la roya en su cultivo', 'roya,cultivo', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-02-13 14:35:42'),
+(2, 0, 'Ultimas guias de la OMS para el cuidado de sus vacas', 'oms,cuidado', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-02-13 14:35:53'),
+(3, 0, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', 'morbi,finibus', 'Activo', '', 2, '0000-00-00 00:00:00', '2021-02-13 14:36:53'),
+(4, 0, '3 nuevas semillas de platano', 'platano,semillas', 'Activo', NULL, 1, '2020-11-20 01:52:22', '2021-02-13 14:35:30');
 
 -- --------------------------------------------------------
 
@@ -71,9 +71,9 @@ CREATE TABLE `articulos_secciones` (
 
 INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `tipo`, `contenido`, `ruta`, `created_at`, `updated_at`) VALUES
 (20, 1, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
-(22, 4, 'Tabla', '[[\"Cuatro\",\"Dos\",\"Cuatro\",\"Cinco\"],[4,5,\"9\",null],[7,8,\"9\",null]]', NULL, '2020-12-19 13:47:12', '2020-12-31 02:08:51'),
 (23, 1, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
-(24, 4, 'Imagen', NULL, NULL, '2021-01-18 01:32:05', '2021-01-18 01:32:05');
+(24, 4, 'Imagen', NULL, NULL, '2021-01-18 01:32:05', '2021-01-18 01:32:05'),
+(25, 4, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-02-10 19:35:45', '2021-02-10 19:35:45');
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,26 @@ INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `cre
 (5, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-06 14:45:30', '2021-02-06 14:45:30'),
 (6, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-06 14:45:38', '2021-02-06 14:45:38'),
 (7, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-06 14:45:47', '2021-02-06 14:45:47'),
-(8, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-06 14:45:54', '2021-02-06 14:45:54');
+(8, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-06 14:45:54', '2021-02-06 14:45:54'),
+(9, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:28:43', '2021-02-10 19:28:43'),
+(10, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:28:47', '2021-02-10 19:28:47'),
+(11, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:29:01', '2021-02-10 19:29:01'),
+(12, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:54:51', '2021-02-10 19:54:51'),
+(13, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 19:54:53', '2021-02-10 19:54:53'),
+(14, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:58:42', '2021-02-10 19:58:42'),
+(15, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:59:04', '2021-02-10 19:59:04'),
+(16, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:00:10', '2021-02-10 20:00:10'),
+(17, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:00:13', '2021-02-10 20:00:13'),
+(18, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:04:32', '2021-02-10 20:04:32'),
+(19, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-10 20:07:08', '2021-02-10 20:07:08'),
+(20, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 20:07:11', '2021-02-10 20:07:11'),
+(21, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:07:14', '2021-02-10 20:07:14'),
+(22, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:15:36', '2021-02-10 20:15:36'),
+(23, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:15:42', '2021-02-10 20:15:42'),
+(24, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:16:09', '2021-02-10 20:16:09'),
+(25, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-10 20:16:52', '2021-02-10 20:16:52'),
+(26, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 20:16:57', '2021-02-10 20:16:57'),
+(27, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:17:03', '2021-02-10 20:17:03');
 
 -- --------------------------------------------------------
 
@@ -147,7 +166,9 @@ INSERT INTO `casos_novedades` (`id`, `usuario_id`, `caso_id`, `tipo`, `novedad`,
 (4, 1, 1, 'Texto', 'Ao', 0, '2021-01-21 20:38:00', '2021-01-21 20:38:00'),
 (5, 1, 4, 'Texto', 'A', 0, '2021-01-21 20:38:52', '2021-01-21 20:38:52'),
 (6, 1, 4, 'Imagen', 'files/casos_media/4/20210205142638.jpg', 0, '2021-02-05 19:26:48', '2021-02-05 19:26:48'),
-(7, 1, 4, 'Texto', 'HOLA', 0, '2021-02-05 19:26:50', '2021-02-05 19:26:50');
+(7, 1, 4, 'Texto', 'HOLA', 0, '2021-02-05 19:26:50', '2021-02-05 19:26:50'),
+(8, 1, 8, 'Imagen', 'files/casos_media/8/20210206100359.jpg', 0, '2021-02-06 15:04:11', '2021-02-06 15:04:11'),
+(9, 1, 8, 'Texto', 'gG', 0, '2021-02-06 15:04:15', '2021-02-06 15:04:15');
 
 -- --------------------------------------------------------
 
@@ -189,16 +210,18 @@ CREATE TABLE `lineas_productivas` (
   `nombre` varchar(500) NOT NULL,
   `palabras_clave` varchar(1000) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `lineas_productivas`
 --
 
-INSERT INTO `lineas_productivas` (`id`, `nombre`, `palabras_clave`, `created_at`, `updated_at`) VALUES
-(1, 'Plátano', '', '2021-01-12 16:13:21', '2021-01-12 16:13:21'),
-(2, 'Café', '', '2021-01-12 16:13:37', '2021-01-12 16:13:37');
+INSERT INTO `lineas_productivas` (`id`, `nombre`, `palabras_clave`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Plátano', 'plátano', '2021-01-12 16:13:21', '2021-02-15 21:10:49', NULL),
+(2, 'Café', 'café', '2021-01-12 16:13:37', '2021-02-15 21:10:50', NULL),
+(3, 'Mora', 'mora', '2021-02-15 20:35:30', '2021-02-15 20:35:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -9555,6 +9578,7 @@ INSERT INTO `municipios` (`id_departamento`, `id_municipio`, `municipio`) VALUES
 
 CREATE TABLE `organizaciones` (
   `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
   `nombre` varchar(500) NOT NULL,
   `nit` varchar(100) NOT NULL,
   `sigla` varchar(100) NOT NULL,
@@ -9575,13 +9599,45 @@ CREATE TABLE `organizaciones` (
 -- Volcado de datos para la tabla `organizaciones`
 --
 
-INSERT INTO `organizaciones` (`id`, `nombre`, `nit`, `sigla`, `latitud`, `longitud`, `direccion`, `departamento`, `municipio`, `telefono`, `correo`, `total_asociados`, `fecha_constitucion`, `created_at`, `updated_at`) VALUES
-(6, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
-(7, 'Nacional Mi Organizacion', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:33'),
-(8, 'Autoridad Nacional de Acuicultura y Pesca', '8300728574', 'AUNAP', '4.81492200', '-75.70702000', 'Edificio UGI Calle 40A No. 13-09 Piso 6,14,15', 'Bogotá - Colombia', 'Nuevo', '+57(1) 377 0500', 'atencionalciudadano@aunap.gov.co', 45, '2021-01-03T05:00:00.000Z', '2021-01-13 01:33:13', '2021-01-13 01:45:49'),
-(13, 'Tierras de las Flores', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:57'),
-(14, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
-(15, 'Campestre Agro Mas', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:17:28');
+INSERT INTO `organizaciones` (`id`, `usuario_id`, `nombre`, `nit`, `sigla`, `latitud`, `longitud`, `direccion`, `departamento`, `municipio`, `telefono`, `correo`, `total_asociados`, `fecha_constitucion`, `created_at`, `updated_at`) VALUES
+(6, 1, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
+(7, 1, 'Nacional Mi Organizacion', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:33'),
+(8, 1, 'Autoridad Nacional de Acuicultura y Pesca', '8300728574', 'AUNAP', '4.81492200', '-75.70702000', 'Edificio UGI Calle 40A No. 13-09 Piso 6,14,15', 'Bogotá - Colombia', 'Nuevo', '+57(1) 377 0500', 'atencionalciudadano@aunap.gov.co', 45, '2021-01-03T05:00:00.000Z', '2021-01-13 01:33:13', '2021-01-13 01:45:49'),
+(13, 1, 'Tierras de las Flores', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:57'),
+(14, 1, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
+(15, 1, 'Campestre Agro Mas', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:17:28');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `organizaciones_muro`
+--
+
+CREATE TABLE `organizaciones_muro` (
+  `id` int(10) NOT NULL,
+  `organizaciones_id` int(11) NOT NULL,
+  `titulo` varchar(1000) NOT NULL,
+  `estado` varchar(50) NOT NULL,
+  `usuario_id` int(10) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `organizaciones_muro_secciones`
+--
+
+CREATE TABLE `organizaciones_muro_secciones` (
+  `id` int(10) NOT NULL,
+  `organizaciones_muro_id` int(10) NOT NULL,
+  `tipo` varchar(50) NOT NULL,
+  `contenido` text DEFAULT NULL,
+  `ruta` varchar(1000) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -9638,7 +9694,8 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (7, 'Administración General', 'Organizaciones', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (8, 'Administración General', 'Casos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (9, 'Administración General', 'Fincas', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
-(11, 'Administración General', 'Contacto', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(11, 'Administración General', 'Contacto', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'Administración General', 'Líneas Productivas', '2021-02-15 14:59:37', '2021-02-15 14:59:37');
 
 -- --------------------------------------------------------
 
@@ -9664,7 +9721,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `organizacion_id`, `finca_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Christian Alejandro', 'Orregos Herrera', '1093217141', 'info@mbrain.co', NULL, 2, '0000-00-00 00:00:00', '2021-01-12 20:59:52', NULL),
+(1, 'Christian Alejandro', 'Orregos Herrera', '1093217141', 'info@mbrain.co', 8, 2, '0000-00-00 00:00:00', '2021-01-12 20:59:52', NULL),
 (2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
 (3, 'Pepito', 'Perez', '1093217142', 'pepito@mbrain.co', NULL, NULL, '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18');
 
@@ -9801,7 +9858,23 @@ ALTER TABLE `municipios`
 ALTER TABLE `organizaciones`
   ADD PRIMARY KEY (`id`),
   ADD KEY `departamento` (`departamento`),
-  ADD KEY `municipio` (`municipio`);
+  ADD KEY `municipio` (`municipio`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indices de la tabla `organizaciones_muro`
+--
+ALTER TABLE `organizaciones_muro`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `organizaciones_id` (`organizaciones_id`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indices de la tabla `organizaciones_muro_secciones`
+--
+ALTER TABLE `organizaciones_muro_secciones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `organizaciones_muro_id` (`organizaciones_muro_id`);
 
 --
 -- Indices de la tabla `organizacion_lineas_productivas`
@@ -9851,7 +9924,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaciones`
@@ -9863,13 +9936,13 @@ ALTER TABLE `asignaciones`
 -- AUTO_INCREMENT de la tabla `casos`
 --
 ALTER TABLE `casos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `casos_novedades`
 --
 ALTER TABLE `casos_novedades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `fincas`
@@ -9881,7 +9954,7 @@ ALTER TABLE `fincas`
 -- AUTO_INCREMENT de la tabla `lineas_productivas`
 --
 ALTER TABLE `lineas_productivas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `listas_detalle`
@@ -9935,7 +10008,7 @@ ALTER TABLE `perfiles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -10012,6 +10085,25 @@ ALTER TABLE `lotes`
 --
 ALTER TABLE `lotes_cosechas`
   ADD CONSTRAINT `lotes_cosechas_ibfk_1` FOREIGN KEY (`lote_id`) REFERENCES `lotes` (`id`);
+
+--
+-- Filtros para la tabla `organizaciones`
+--
+ALTER TABLE `organizaciones`
+  ADD CONSTRAINT `organizaciones_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `organizaciones_muro`
+--
+ALTER TABLE `organizaciones_muro`
+  ADD CONSTRAINT `organizaciones_muro_ibfk_1` FOREIGN KEY (`organizaciones_id`) REFERENCES `organizaciones` (`id`),
+  ADD CONSTRAINT `organizaciones_muro_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `organizaciones_muro_secciones`
+--
+ALTER TABLE `organizaciones_muro_secciones`
+  ADD CONSTRAINT `organizaciones_muro_secciones_ibfk_1` FOREIGN KEY (`organizaciones_muro_id`) REFERENCES `organizaciones_muro` (`id`);
 
 --
 -- Filtros para la tabla `organizacion_lineas_productivas`

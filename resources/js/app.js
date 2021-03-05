@@ -17,6 +17,8 @@ angular.module('App', [
     'angular-img-cropper',
     //'indexedDB',
     'enterStroke',
+    'textAngular',
+
 
 
     'CRUD',
@@ -41,18 +43,20 @@ angular.module('App', [
     'UsuariosCtrl',
     'ArticulosCtrl',
     'Articulos_ArticuloEditorCtrl',
-    'CasosCtrl',
-    'Casos_NovedadesCtrl',
+    'CasosCtrl', // Luigi
+    'Casos_NovedadesCtrl', // Luigi
+    'LineasProductivasCtrl', // Luigi
     //Inicio Dev Angélica
     'ContactoCtrl',
+    'ArticulomuroEditDialogCtrl',
     //Fin Dev Angélica
 
     'OrganizacionesCtrl',
     'OrganizacionDiagCtrl',
-    
+
     'FincasCtrl',
     'FincaDiagCtrl',
     'TareaDiagCtrl',
 
-       
+
 ]);

@@ -57,6 +57,33 @@ class MainController extends Controller
         };
     }
 
+    //INICIO DEV ANGÉLICA --> Funcion para subir imagen al servidor
+    public function postUploadImagen()
+    {
+        extract(request()->all()); //Path, Quality, Ancho, Alto   
+
+        //dd(Input::file('file'));
+        $image = Image::make(request('file')->getRealPath());
+        
+        $Ruta = dirname($Path);
+        if(!File::exists($Ruta)) File::makeDirectory($Ruta, 0775, true, true);
+
+        // resize the image to a width of 300 and constrain aspect ratio (auto height)
+        $image->resize($Ancho, $Alto, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        //return $image->response('jpg', 70);
+
+
+        if(!$image->save($Path, $Quality)){
+            return response()->json(['Msg' => 'No se pudo guardar la imagen'], 512);
+        }else{
+            return response()->json(['Msg' => $Path ], 200);
+        };
+    }
+    //FIN DEV ANGÉLICA
+
 
 
     public function postObtenerLista()

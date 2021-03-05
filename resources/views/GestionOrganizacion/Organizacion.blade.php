@@ -1,60 +1,177 @@
 <div id="GestionOrganizaciones" ng-controller="OrganizacionesCtrl" flex layout=column>
-	
-			<div layout class="padding-0-10" layout-align="center center">
-				<div class="md-title">Organizaciones</div>
-				<md-input-container class="no-margin md-icon-float" md-no-float>
-					<md-icon md-font-icon="fa-search fa-fw"></md-icon>
-					<input type="text" ng-model="filterOrganizaciones" placeholder="Buscar...">
-				</md-input-container>
-				<span flex></span>	
-			</div>
-	
 
-			<div class='md-padding' layout="row"  layout-wrap>
-				<md-card ng-repeat="O in OrganizacionesCRUD.rows | filter:filterOrganizaciones" class="seccion_organizacion" flex-sm="25" flex-gt-sm="30" flex="100">
-					
-						<div align="center"><img class="img-organizacion" src="/../imgs/organizacion1.jpg"  alt="iconOrganizacion" ></div>			
-					<md-card-title class="titilo-organizacion" >				
-						<h2>@{{ O.nombre }}</h2>
-					</md-card-title>
-					  
-					  <md-button class="md-raised md-primary" aria-label="Ver" ng-click="abrirOrganizacion(O)">
-						<md-icon md-font-icon="open_with"></md-icon>Ver detalles
-					</md-button>
 
-					
-				</md-card>
-			
-			</div>
+    <div layout=column class="padding-10-20">
+        <div layout="center">
+            <div flex="">
+                <div class="mi_Organizacion" align="left">
 
-			
-		  
+                    <div align="center" class="content_nombre_organizacion ">
+                        <img class="img-organizacion" src="/../imgs/organizacion1.jpg" alt="iconOrganizacion">
+                        <h2>@{{ Organizacion . nombre }}</h2>
+
+                        <h4 class="openOrganigrama pointer" ng-click="abrirOrganigrama(O)">
+                            Ver Organigrama
+                        </h4>
+
+
+                    </div>
+
+                </div>
+                <br>
+                <div class="content_organizacion ">
+                    <md-card-content>
+
+                        <div class="seccion_texto">
+                            <label class="texto_title">NIT</label>
+                            <p>@{{ Organizacion . nit }}</p>
+                        </div>
+
+                        <div class="seccion_texto">
+                            <label class="texto_title">Dirección</label>
+                            <p>@{{ Organizacion . direccion }}</p>
+                        </div>
+
+                        <div class="seccion_texto">
+                            <label class="texto_title">Teléfono</label>
+                            <p>@{{ Organizacion . telefono }}</p>
+                        </div>
+
+                        <div class="seccion_texto">
+                            <label class="texto_title">Correo</label>
+                            <p>@{{ Organizacion . correo }}</p>
+                        </div>
+
+                        <div class="seccion_texto">
+                            <label class="texto_title">Asociados</label>
+                            <p>@{{ Organizacion . total_asociados }}</p>
+                        </div>
+                        {{-- <div class="seccion_texto">
+									<label class="texto_title">Latitud</label> 
+									<p >@{{ Organizacion.latitud }}</p>
+								</div>
+								<div class="seccion_texto">
+									<label class="texto_title">Longitud</label> 
+									<p >@{{ Organizacion.longitud }}</p>
+								</div> --}}
+
+                    </md-card-content>
+                </div>
+            </div>
+
+            <!--INICIO DEV ANGÉLICA -- Agrega espacio para hacer publicaciones-->
+            <div flex="60">
+                <div layout class="seccion_content" magin-bottom>
+                        <md-input-container flex class="md-block" no-margin>
+                            <h4 class="openOrganigrama pointer" ng-click="nuevoArticuloMuro()">
+                                Agregue novedad...
+                            </h4>                        
+                        </md-input-container>
+                </div>
+                <!--FIN DEV ANGÉLICA-->
+
+                <br>
+                
+                <div layout style="margin-bottom:15px;" class="seccion_content" ng-repeat="M in OrganizacionesmuroseccionesCRUD.rows" magin-bottom>
+                    <md-content layout-padding magin-bottom flex>
+                        <div layout="row">
+                            <!--
+                            <label class="texto_title">@{{M.usuario.nombre}} - @{{ DarFormatoFecha(M.created_at) }} </label>
+                            -->
+                            <label class="texto_title">@{{M.usuario.nombre}} - @{{ M.created_at }}  @{{ Darformatofecha(M.created_at) }} </label>
+                        </div>
+
+                        <!--Para dar formato al contenido-->
+                        <div display:flex layout="row">
+                            <p ng-bind-html="M.contenido"></p>
+                        </div>
+
+                        <div layout="row">
+                            <a href="@{{M.url}}" target="_blank">  @{{ M.url }} </a>
+                        </div>
+
+                        <div layout="row" ng-if="M.ruta.length>0">
+                            <img class="vistaNovedades" src="/../@{{ M.ruta }}"
+                            style="width: 540px; height: 300px;" alt="iconOrganizacion">
+
+                        </div>
+
+                    </md-content>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
 <style type="text/css">
-	
+    md-card {
+        min-height: 200px;
 
-	.seccion_organizacion{
-		transform: scale(0.95);
-		transition: all 0.3s;
-		
-	}
-	.titilo-organizacion{
-		text-align: center;
-	}
+    }
 
-	.seccion_organizacion:hover{
-		transform: scale(1)	;
-	}
-	md-card{
-		min-height: 200px;
 
-	}
-	.img-organizacion{
-		width: 100px;
-		height: 100px;
-		border-radius: 500px;
-	}
+    .content_nombre_organizacion,
+    .content_organizacion {
+        background-color: aliceblue;
+        width: 300px;
+        margin: 0;
+        padding: 12px;
+        border-radius: 10px;
+
+
+    }
+
+    .img-organizacion {
+        width: 130px;
+        height: 130px;
+        border-radius: 500px;
+        margin: 20px;
+        padding: 0;
+    }
+
+    .seccion_content {
+        background-color: aliceblue;
+        width: 600px;
+        margin: 0;
+        padding: 12px;
+        border-radius: 5px;
+
+    }
+
+    .openOrganigrama {
+        color: green;
+
+
+    }
+
+
+    .seccion_organizacion {
+        transform: scale(0.95);
+        transition: all 0.3s;
+
+    }
+
+
+    .titilo-organizacion {
+        text-align: center;
+    }
+
+    .seccion_organizacion:hover {
+        transform: scale(1);
+    }
+
+    .seccion_texto {
+        white-space: normal;
+        word-wrap: break-word;
+    }
+
+    .texto_title {
+        /* text-align: center;
+  height: 40px; */
+        color: rgb(199, 196, 196);
+        /* font-size: 1.2rem;
+  text-shadow: 0 0 5px black; */
+    }
 
 </style>

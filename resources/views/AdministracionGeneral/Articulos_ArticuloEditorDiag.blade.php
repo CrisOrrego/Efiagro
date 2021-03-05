@@ -116,10 +116,22 @@
 		</div>
 	</div>
 
-	<!--INICIO DEV ANGÉLICA - CHIPS ANGULA MATERIAL-->
+	<!--INICIO DEV ANGÉLICA - CHIPS ANGULAR MATERIAL-->
 	<md-chips ng-model="keyWords" readonly="readonly" md-removable="removable">
     </md-chips>
-	<!--FIN DEV ANGÉLICA - CHIPS ANGULA MATERIAL-->
+	<!--FIN DEV ANGÉLICA - CHIPS ANGULAR MATERIAL-->
+
+	<!--INICIO DEV ANGÉLICA - Lineas productivas en select-->
+	<h4>Lineas productivas @{{Articulo.linea_productiva_id}} </h4>
+	<mat-form-field appearance="fill">
+  	<mat-label>Elige la linea productiva</mat-label>
+	<md-select ng-model="Articulo.linea_productiva_id">
+		<md-option ng-repeat="lp in lineas_productivas" ng-value="lp.id">
+      		@{{lp.nombre}}
+   		</md-option>
+	</mat-select>
+	</mat-form-field>
+	<!--FIN DEV ANGÉLICA-->
 
 	<div layout class="border-top">
 		<span flex></span>
