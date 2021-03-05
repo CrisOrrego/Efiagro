@@ -25,6 +25,9 @@ Route::post("/api/upload", [FileController::class, 'upload']);
 AdvancedRoute::controller('/api/main',      'MainController');
 AdvancedRoute::controller('/api/usuario',   'UsuarioController');
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');
+
+// AdvancedRoute::controller('/api/perfiles', 'perfilController');
+
 //Inicio Dev ANGÉLICA
 AdvancedRoute::controller('/api/contacto',     'ContactoController');
 AdvancedRoute::controller('/api/organizacionesmurosecciones',     'OrganizacionesMuroSeccionesController');
@@ -32,6 +35,8 @@ AdvancedRoute::controller('/api/organizacionesmurosecciones',     'Organizacione
 AdvancedRoute::controller('/api/organizaciones',  'OrganizacionController');
 AdvancedRoute::controller('/api/fincas',  'FincaController');
 AdvancedRoute::controller('/api/lotes',  'LoteController');
+AdvancedRoute::controller('/api/zonas',  'ZonasController');
+AdvancedRoute::controller('/api/labores',  'LaboresController');
 
 AdvancedRoute::controller('/api/casos',     'CasosController'); // Luigi
 AdvancedRoute::controller('/api/lineasproductivas',     'LineasProductivasController'); // Luigi

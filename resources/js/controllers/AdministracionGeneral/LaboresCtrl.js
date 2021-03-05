@@ -59,5 +59,14 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             });
         };
 
+        // Ctrl.abrirOrganigrama = L => {
+        //     // console.log(O);
+        //     $mdDialog.show({
+        //         templateUrl: "Frag/GestionLabor.OrganigramaDiag",
+        //         controller: "LaborDiagCtrl",
+        //         locals: { Labor: L },
+        //         fullscreen: false
+        //     });
+        // };
     }
 ]);

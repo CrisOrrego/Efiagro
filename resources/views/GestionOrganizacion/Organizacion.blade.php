@@ -1,20 +1,15 @@
 <div id="GestionOrganizaciones" ng-controller="OrganizacionesCtrl" flex layout=column>
 
-
     <div layout=column class="padding-10-20">
         <div layout="center">
             <div flex="">
                 <div class="mi_Organizacion" align="left">
-
                     <div align="center" class="content_nombre_organizacion ">
                         <img class="img-organizacion" src="/../imgs/organizacion1.jpg" alt="iconOrganizacion">
                         <h2>@{{ Organizacion . nombre }}</h2>
-
                         <h4 class="openOrganigrama pointer" ng-click="abrirOrganigrama(O)">
                             Ver Organigrama
                         </h4>
-
-
                     </div>
 
                 </div>
