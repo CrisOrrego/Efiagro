@@ -29,11 +29,13 @@ AdvancedRoute::controller('/api/articulos', 'ArticulosController');
 //Inicio Dev ANGÉLICA
 AdvancedRoute::controller('/api/contacto',     'ContactoController');
 //FIN Dev ANGÉLICA
-AdvancedRoute::controller('/api/organizaciones',  'OrganizacionController');
-AdvancedRoute::controller('/api/fincas',  'FincaController');
-AdvancedRoute::controller('/api/lotes',  'LoteController');
-AdvancedRoute::controller('/api/zonas',  'ZonasController');
-AdvancedRoute::controller('/api/labores',  'LaboresController');
+AdvancedRoute::controller('/api/organizaciones',    'OrganizacionController');
+AdvancedRoute::controller('/api/fincas',            'FincaController');
+AdvancedRoute::controller('/api/lotes',             'LoteController');
+AdvancedRoute::controller('/api/zonas',             'ZonasController');
+AdvancedRoute::controller('/api/labores',           'LaboresController');
 
-AdvancedRoute::controller('/api/casos',     'CasosController'); // Luigi
-AdvancedRoute::controller('/api/lineasproductivas',     'LineasProductivasController'); // Luigi
+AdvancedRoute::controller('/api/casos',             'CasosController');             // Luigi
+AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController'); // Luigi
+AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          // Luigi
+AdvancedRoute::controller('/api/secciones',         'SeccionesController');         // Luigi
