@@ -49,6 +49,8 @@ angular.module('App', [
     //Inicio Dev Angélica
     'ContactoCtrl',
     'ArticulomuroEditDialogCtrl',
+    'ConfiguracionCtrl',
+    'ListaEditDialogCtrl',
     //Fin Dev Angélica
 
     'OrganizacionesCtrl',

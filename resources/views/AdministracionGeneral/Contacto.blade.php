@@ -47,8 +47,6 @@
 	</md-table-container>
 	</md-card>
 
-
-    Hello
 </div>
 
 <!--FIN DEV ANGELICA-->

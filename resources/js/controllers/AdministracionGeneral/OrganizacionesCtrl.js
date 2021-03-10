@@ -126,25 +126,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                 templateUrl: 'templates/dialogs/image-editor.html',               
 				controller: 'ImageEditor_DialogCtrl',
 				locals: {Organizacionesmurosecciones: A},
-                /*fullscreen: false,
-                locals: { 
-                    Config: {
-                        Organizacionesmurosecciones: A,
-                        Theme: 'default',
-                        CanvasWidth:  600,			//Ancho del canvas
-                        CanvasHeight: 400,			//Alto del canvas
-                        CropWidth:  600,			//Ancho del recorte que se subirá
-                        CropHeight: 400,			//Alto del recorte que se subirá
-                        MinWidth:  60,				//Ancho mínimo del selector
-                        MinHeight: 40,				//Ancho mínimo del selector
-                        KeepAspect: true,
-                        Preview: false,	
-                        Daten: {
-                            Path: 'files/muro_media/' + Ctrl.Organizacion.id + '/' + moment().format('YYYYMMDDHHmmss') + '.jpg'
-
-                        }
-                    }
-                }*/
 			});
         }
 
@@ -165,9 +146,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                     });
                 }
         
-                
-
-        
+            
         //Abre el modal del un articulo de un muro de la organizacion
         Ctrl.nuevoArticuloMuro = (O) => {
             console.log(O);
