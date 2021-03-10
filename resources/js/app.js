@@ -61,6 +61,7 @@ angular.module('App', [
     'ZonasCtrl',
     'LaboresCtrl',
     'LaboresDiagCtrl',
+    'LotesCtrl',
 
 
 ]);

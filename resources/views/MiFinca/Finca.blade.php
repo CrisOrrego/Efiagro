@@ -138,9 +138,7 @@
                     </md-input-container>
 
                     <span flex></span>
-                    <md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="nuevoLote(L)">
-                        <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Lote
-                    </md-button>
+                   
                 </div>
                 <md-content class="md-padding">
 
@@ -174,21 +172,15 @@
                                     
                                     ESTA SECCIÓN LABORES
                                     <md-checkbox >
-
+                                        @{{ L . sitios }}
                                     </md-checkbox>
-                                    <md-checkbox>
-
-                                    </md-checkbox>
-                                    <md-checkbox>
-
-                                    </md-checkbox>
-                                                                      
-                                <div>
-                                    <md-button class="md-raised md-primary" aria-label="Labores"
-                                        ng-click="abrirLabores(L)">
-                                        <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Labor
-                                    </md-button>
-                                </div>
+                                <md-input-container ng-controller="LaboresCtrl">
+                                    <label>AGREGAR LABORES</label>
+                                        <md-select ng-model="LotesCtrl">
+                                            <md-option ng-value="labores_id" ng-repeat="L in LaboresCRUD.rows">@{{ L . labor }}</md-option>
+                                        </md-select>
+                                  </md-input-container>
+ 
                             </div>
                                 </md-card>
     

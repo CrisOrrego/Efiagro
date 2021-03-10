@@ -9,11 +9,11 @@
 		</md-input-container>
 		
 		<span flex></span>
-		<md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="nuevaLote(L)">
+		<md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="nuevoLote(L)">
 			<md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Lote
 		</md-button>
 	</div>
-
+{{-- Lotes --}}
 <md-card flex class="no-margin-top">
 			<md-table-container class="border-bottom">
 			  <table md-table>
@@ -23,10 +23,12 @@
 					<th md-column>Finca</th>
 					<th md-column>Organización</th>
 					<th md-column>Linea Productiva</th>
+					<th md-column>Labores</th>
 					<th md-column>Hectareas</th>
 					<th md-column>Sitios</th>
 					<th md-column>Acción</th>
 				  </tr>
+				  
 				</thead>
 				<tbody md-body>
 				  <tr md-row ng-repeat="L in LotesCRUD.rows | filter:filterLotes">
@@ -34,15 +36,16 @@
                     <td md-cell>@{{ L.finca_id }}</td>
 					<td md-cell>@{{ L.organizacion_id }}</td>
 					<td md-cell>@{{ L.linea_productiva_id }}</td>
+					<td md-cell>@{{ L.labores_id }}</td>
 					<td md-cell>@{{ L.hectareas }}</td>
                     <td md-cell>@{{ L.sitios }}</td>
 					{{-- <td md-cell>@{{ O.created_at }}</td> --}}
 					{{-- <td md-cell>@{{ O.updated_at }}</td> --}}
 					<td md-cell>
-						<md-button class="md-icon-button" ng-click="editarLote(F)">
+						<md-button class="md-icon-button" ng-click="editarLote(L)">
 							<md-icon md-font-icon="fa-edit"></md-icon>
 						</md-button>
-						<md-button class="md-icon-button md-warn" ng-click="eliminarLote(F)">
+						<md-button class="md-icon-button md-warn" ng-click="eliminarLote(L)">
 							<md-icon md-font-icon="fa-trash"></md-icon>
 						</md-button>
 					</td>
