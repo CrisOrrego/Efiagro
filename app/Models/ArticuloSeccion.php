@@ -20,10 +20,11 @@ class ArticuloSeccion extends Model
     {
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
-            [ 'articulo_id',        'articulo_id',          null,    true,  false, null,  100 ],
-            [ 'tipo',  				'tipo',  null,    false,  false, null, 100 ],
-            [ 'contenido',          'contenido',          null,    true,  false, null,  100 ],
-            [ 'ruta',               'ruta',      null,    true,  false, null,  100 ],
+            [ 'articulo_id',    'articulo_id',  null,    true,   false, null,  100 ],
+            [ 'indice',         'indice',       null,    false,  false, null,  100 ],
+            [ 'tipo',  			'tipo',         null,    false,  false, null,  100 ],
+            [ 'contenido',      'contenido',    null,    true,   false, null,  100 ],
+            [ 'ruta',           'ruta',         null,    true,   false, null,  100 ],
             //[ 'objeto',      	    'objeto',      null,    true,  false, null,  100 ],
         ];
     }
@@ -35,7 +36,8 @@ class ArticuloSeccion extends Model
 
     public function scopeElarticulo($q, $id_articulo)
     {
-    	return $q->where('articulo_id', $id_articulo);
+        // Se agrega ordenamiento por el campo indice.
+    	return $q->where('articulo_id', $id_articulo)->orderBy('indice', 'ASC');
     }
 
     public static function boot()

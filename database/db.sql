@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-02-2021 a las 22:11:51
+-- Tiempo de generación: 28-02-2021 a las 19:56:04
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -58,6 +58,7 @@ INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`
 CREATE TABLE `articulos_secciones` (
   `id` int(10) NOT NULL,
   `articulo_id` int(10) NOT NULL,
+  `indice` tinyint(5) NOT NULL,
   `tipo` varchar(50) NOT NULL,
   `contenido` text DEFAULT NULL,
   `ruta` varchar(1000) DEFAULT NULL,
@@ -69,11 +70,12 @@ CREATE TABLE `articulos_secciones` (
 -- Volcado de datos para la tabla `articulos_secciones`
 --
 
-INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `tipo`, `contenido`, `ruta`, `created_at`, `updated_at`) VALUES
-(20, 1, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
-(23, 1, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
-(24, 4, 'Imagen', NULL, NULL, '2021-01-18 01:32:05', '2021-01-18 01:32:05'),
-(25, 4, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-02-10 19:35:45', '2021-02-10 19:35:45');
+INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `indice`, `tipo`, `contenido`, `ruta`, `created_at`, `updated_at`) VALUES
+(20, 1, 0, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
+(23, 1, 0, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
+(25, 4, 3, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-02-10 19:35:45', '2021-02-28 18:44:58'),
+(26, 4, 1, 'Imagen', NULL, 'files/articulos_media/4/20210228134406.jpg', '2021-02-28 18:44:20', '2021-02-28 18:44:58'),
+(27, 4, 2, 'Parrafo', 'Esto es una forma reciente de siembra', NULL, '2021-02-28 18:44:25', '2021-02-28 18:44:58');
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,8 @@ INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `cre
 (24, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:16:09', '2021-02-10 20:16:09'),
 (25, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-10 20:16:52', '2021-02-10 20:16:52'),
 (26, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 20:16:57', '2021-02-10 20:16:57'),
-(27, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:17:03', '2021-02-10 20:17:03');
+(27, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:17:03', '2021-02-10 20:17:03'),
+(28, 1, 'Cosecha exitosa', 'Contar Experiencia', '[]', '2021-02-19 20:08:41', '2021-02-19 20:08:41');
 
 -- --------------------------------------------------------
 
@@ -180,11 +183,24 @@ CREATE TABLE `fincas` (
   `id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `nombre` varchar(500) NOT NULL,
+  `direccion` varchar(255) NOT NULL,
+  `departamento_id` varchar(255) NOT NULL,
+  `municipio_id` varchar(255) NOT NULL,
+  `area_total` int(100) NOT NULL,
+  `tipo_cultivo` varchar(255) NOT NULL,
+  `total_lotes` int(100) NOT NULL,
+  `tipo_suelo` varchar(255) NOT NULL,
   `zona_id` int(11) NOT NULL,
   `latitud` decimal(11,8) NOT NULL,
   `longitud` decimal(11,8) NOT NULL,
   `hectareas` int(11) NOT NULL,
   `sitios` int(11) NOT NULL,
+  `temperatura` float NOT NULL,
+  `humedad_relativa` float NOT NULL,
+  `precipitacion` float NOT NULL,
+  `altimetria_min` float NOT NULL,
+  `altimetria_max` float NOT NULL,
+  `brillo_solar` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -193,11 +209,49 @@ CREATE TABLE `fincas` (
 -- Volcado de datos para la tabla `fincas`
 --
 
-INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Cafetal', 1, '7.76472000', '-80.27483000', 100, 30, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
-(2, 1, 'Platanal', 1, '7.76472000', '-80.27483000', 100, 30, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
-(3, 1, 'La Esperanza', 1, '6.76472000', '3.76472000', 5, 3444, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
-(4, 1, 'Nuevo Cerre', 1, '7.76472000', '-80.27483000', 15, 50, '2021-02-03 19:21:08', '2021-02-03 19:21:08');
+INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_id`, `municipio_id`, `area_total`, `tipo_cultivo`, `total_lotes`, `tipo_suelo`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Cafetal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
+(2, 1, 'Platanal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
+(3, 1, 'La Esperanza', '', '', '', 0, '', 0, '', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
+(4, 1, 'Nuevo Cerre', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 15, 50, 0, 0, 0, 0, 0, 0, '2021-02-03 19:21:08', '2021-02-03 19:21:08'),
+(5, 1, 'Florestal', 'Carrera 8 Bis N° 34 – 14', 'Risaralda', 'Pereira', 345, 'MONOCULTIVO', 453, 'UNIDAD AMAGÁ', 1, '7.76472000', '-80.27483000', 35, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-28 18:38:39');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `labores`
+--
+
+CREATE TABLE `labores` (
+  `id` int(11) NOT NULL,
+  `labor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `frecuencia` int(11) NOT NULL,
+  `semana_inicio` int(11) DEFAULT NULL,
+  `plantas_dia` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `labores`
+--
+
+INSERT INTO `labores` (`id`, `labor`, `frecuencia`, `semana_inicio`, `plantas_dia`, `created_at`, `updated_at`) VALUES
+(1, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 1, NULL, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04'),
+(2, 'RESIEMBRA CON CABEZA DE TORO', 1, NULL, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
+(3, 'APLICACIÓN MATERIA ORGANICA 300g', 12, NULL, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
+(4, 'FERTILIZACION QUIMICA Y PLATEO', 2, NULL, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
+(5, 'DESHOJE, CIRUGIA  Y PODA TEMPRANA', 1, NULL, 2500, '2021-02-19 22:28:39', '2021-02-19 22:28:39'),
+(6, 'CONTROL SIGATOKA QUIMICO (Según evaluación) de 6 a 9:30 a.m.', 0, NULL, 3000, '2021-02-19 22:29:04', '2021-02-19 22:29:04'),
+(7, 'CONTROL ARVENSES POR PARCHEO', 3, NULL, 3800, '2021-02-19 22:29:51', '2021-02-19 22:29:51'),
+(8, 'DESHIJE Y ESTIMULO', 6, NULL, 2000, '2021-02-19 22:30:20', '2021-02-19 22:30:20'),
+(9, 'CONTROL DE PICUDO - DESGUASQUE Y PINTURA', 6, NULL, 2000, '2021-02-19 22:30:49', '2021-02-19 22:30:49'),
+(10, 'EMBOLSE PREMATURO Y ENCINTADO', 1, NULL, 150, '2021-02-19 22:31:10', '2021-02-19 22:31:10'),
+(11, 'AMARRE O APUNTALADO', 1, NULL, 150, '2021-02-19 22:31:35', '2021-02-19 22:31:35'),
+(12, 'DESMANE O DESFLORE', 1, NULL, 150, '2021-02-19 22:31:54', '2021-02-19 22:31:54'),
+(13, 'COSECHA Y POSCOSECHA', 1, NULL, NULL, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
+(14, 'DESTRONQUE', 1, NULL, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
+(15, 'REGISTRO DE LA INFORMACION', 1, NULL, NULL, '2021-02-19 22:34:48', '2021-02-19 22:34:48');
 
 -- --------------------------------------------------------
 
@@ -239,49 +293,50 @@ CREATE TABLE `listas_detalle` (
   `op3` varchar(100) DEFAULT NULL,
   `op4` varchar(100) DEFAULT NULL,
   `op5` varchar(100) DEFAULT NULL,
+  `estado` varchar(10) NOT NULL DEFAULT 'A',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `listas_detalle`
 --
 
-INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, `op2`, `op3`, `op4`, `op5`, `created_at`, `updated_at`) VALUES
-(1, 1, 'COL', 'Colombia', NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 2, '05', 'antioquia', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 2, '08', 'atlántico', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 2, '11', 'bogotá, d. c.', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 2, '13', 'bolívar', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 2, '15', 'boyacá', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 2, '17', 'caldas', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8, 2, '18', 'caquetá', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, 2, '19', 'cauca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(10, 2, '20', 'cesar', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(11, 2, '23', 'córdoba', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 2, '25', 'cundinamarca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, 2, '27', 'chocó', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(14, 2, '41', 'huila', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, 2, '44', 'la guajira', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, 2, '47', 'magdalena', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, 2, '50', 'meta', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 2, '52', 'nariño', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19, 2, '54', 'norte de santander', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(20, 2, '63', 'quindío', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(21, 2, '66', 'risaralda', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(22, 2, '68', 'santander', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(23, 2, '70', 'sucre', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(24, 2, '73', 'tolima', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(25, 2, '76', 'valle del cauca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(26, 2, '81', 'arauca', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(27, 2, '85', 'casanare', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(28, 2, '86', 'putumayo', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(29, 2, '88', 'archipiélago de san andrés, providencia y ', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(30, 2, '91', 'amazonas', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(31, 2, '94', 'guainía', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(32, 2, '95', 'guaviare', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(33, 2, '97', 'vaupés', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, `op2`, `op3`, `op4`, `op5`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 1, 'COL', 'Colombia', NULL, NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 2, '05', 'antioquia', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 2, '08', 'atlántico', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 2, '11', 'bogotá, d. c.', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 2, '13', 'bolívar', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 2, '15', 'boyacá', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 2, '17', 'caldas', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 2, '18', 'caquetá', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 2, '19', 'cauca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 2, '20', 'cesar', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 2, '23', 'córdoba', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 2, '25', 'cundinamarca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 2, '27', 'chocó', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 2, '41', 'huila', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 2, '44', 'la guajira', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 2, '47', 'magdalena', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 2, '50', 'meta', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 2, '52', 'nariño', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 2, '54', 'norte de santander', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 2, '63', 'quindío', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 2, '66', 'risaralda', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, 2, '68', 'santander', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, 2, '70', 'sucre', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, 2, '73', 'tolima', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, 2, '76', 'valle del cauca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 2, '81', 'arauca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 2, '85', 'casanare', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 2, '86', 'putumayo', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, 2, '88', 'archipiélago de san andrés, providencia y ', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 2, '91', 'amazonas', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 2, '94', 'guainía', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, 2, '95', 'guaviare', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 2, '97', 'vaupés', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -292,18 +347,20 @@ INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, 
 CREATE TABLE `listas_indice` (
   `id` int(10) NOT NULL,
   `lista` varchar(200) NOT NULL,
+  `clave_automatica` tinyint(1) NOT NULL DEFAULT 1,
+  `con_imagen` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `listas_indice`
 --
 
-INSERT INTO `listas_indice` (`id`, `lista`, `created_at`, `updated_at`) VALUES
-(1, 'Paises', '2021-02-05 11:45:35', '2021-02-05 11:45:35'),
-(2, 'Departamentos', '2021-02-05 11:45:35', '2021-02-05 11:45:35'),
-(3, 'Municipios', '2021-02-05 11:45:35', '2021-02-05 11:45:35');
+INSERT INTO `listas_indice` (`id`, `lista`, `clave_automatica`, `con_imagen`, `created_at`, `updated_at`) VALUES
+(1, 'Paises', 0, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
+(2, 'Departamentos', 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
+(3, 'Municipios', 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37');
 
 -- --------------------------------------------------------
 
@@ -9666,6 +9723,43 @@ CREATE TABLE `perfiles` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `perfiles`
+--
+
+INSERT INTO `perfiles` (`id`, `perfil`, `created_at`, `updated_at`) VALUES
+(1, 'Administrador', '2021-02-16 18:25:36', '2021-02-16 18:25:36'),
+(2, 'Mi Técnico Amigo', '2021-02-16 18:25:36', '2021-02-16 18:25:36'),
+(3, 'Administración General', '2021-02-16 18:25:36', '2021-02-16 18:25:36');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `perfiles_secciones`
+--
+
+CREATE TABLE `perfiles_secciones` (
+  `id` int(11) NOT NULL,
+  `perfil_id` int(10) NOT NULL,
+  `seccion_id` int(10) NOT NULL,
+  `nivel` int(10) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `rol` varchar(100) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -9688,14 +9782,18 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (1, 'Mi Técnico Amigo', 'Mi Técnico Amigo', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'Gestión Organización', 'Organización', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'Gestión Organización', 'Usuarios', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'Gestión Organización', 'Productores', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Gestión Organización', 'Productores', '2021-02-18 12:22:49', '2021-02-18 12:22:49'),
 (5, 'Mi Finca', 'Finca', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'Administración General', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 'Administración General', 'Organizaciones', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Administración General', 'Organizaciones', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Administración General', 'Artículos ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (8, 'Administración General', 'Casos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (9, 'Administración General', 'Fincas', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
-(11, 'Administración General', 'Contacto', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 'Administración General', 'Líneas Productivas', '2021-02-15 14:59:37', '2021-02-15 14:59:37');
+(11, 'Administración General', 'Zonas', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'Administración General', 'Líneas Productivas', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
+(13, 'Administración General', 'Labores', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
+(16, 'Administración General', 'Contacto', '2021-02-18 12:28:26', '2021-02-18 12:28:26'),
+(17, 'Mi Técnico Amigo', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 'Mi Técnico Amigo', 'Solicitudes', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -9709,8 +9807,10 @@ CREATE TABLE `usuarios` (
   `apellidos` varchar(100) NOT NULL,
   `cedula` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,
+  `rol_id` int(11) DEFAULT NULL,
   `organizacion_id` int(11) DEFAULT NULL,
   `finca_id` int(10) DEFAULT NULL,
+  `contrasena` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -9720,10 +9820,10 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `organizacion_id`, `finca_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Christian Alejandro', 'Orregos Herrera', '1093217141', 'info@mbrain.co', 8, 2, '0000-00-00 00:00:00', '2021-01-12 20:59:52', NULL),
-(2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
-(3, 'Pepito', 'Perez', '1093217142', 'pepito@mbrain.co', NULL, NULL, '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18');
+INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `rol_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Christian Alejandro', 'Orregos Herrera', '1093217141', 'info@mbrain.co', 0, 8, 5, '', '0000-00-00 00:00:00', '2021-01-12 20:59:52', NULL),
+(2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', 0, NULL, NULL, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
+(3, 'Pepito', 'Perez', '1093217142', 'pepito@mbrain.co', 0, NULL, NULL, '', '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18');
 
 -- --------------------------------------------------------
 
@@ -9747,6 +9847,34 @@ CREATE TABLE `zonas` (
 
 INSERT INTO `zonas` (`id`, `nombre`, `latitud`, `longitud`, `altitud`, `created_at`, `updated_at`) VALUES
 (1, 'Pereira', '7.76472000', '-80.27483000', 1000, '2021-01-17 23:34:40', '2021-01-17 23:34:40');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `zonas_agroambientales`
+--
+
+CREATE TABLE `zonas_agroambientales` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `temperatura` float NOT NULL,
+  `humedad_relativa` float NOT NULL,
+  `precipitacion` float NOT NULL,
+  `altimetria_min` float NOT NULL,
+  `altimetria_max` float NOT NULL,
+  `brillo_solar` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `zonas_agroambientales`
+--
+
+INSERT INTO `zonas_agroambientales` (`id`, `descripcion`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
+(1, 'ZONA 1', 23, 79, 2094, 1500, 2000, 1566, '2021-02-18 18:44:33', '2021-02-18 18:44:33'),
+(2, 'ZONA 2', 22, 77, 2268, 1300, 1500, 1224, '2021-02-18 18:45:16', '2021-02-18 18:45:16'),
+(3, 'ZONA 3', 21, 82, 2261, 0, 1300, 1511, '2021-02-18 18:45:51', '2021-02-18 18:45:51');
 
 --
 -- Índices para tablas volcadas
@@ -9797,6 +9925,12 @@ ALTER TABLE `fincas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_id` (`usuario_id`),
   ADD KEY `zona_id` (`zona_id`);
+
+--
+-- Indices de la tabla `labores`
+--
+ALTER TABLE `labores`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `lineas_productivas`
@@ -9891,6 +10025,18 @@ ALTER TABLE `perfiles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `perfiles_secciones`
+--
+ALTER TABLE `perfiles_secciones`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `secciones`
 --
 ALTER TABLE `secciones`
@@ -9911,6 +10057,12 @@ ALTER TABLE `zonas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `zonas_agroambientales`
+--
+ALTER TABLE `zonas_agroambientales`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -9924,7 +10076,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaciones`
@@ -9936,7 +10088,7 @@ ALTER TABLE `asignaciones`
 -- AUTO_INCREMENT de la tabla `casos`
 --
 ALTER TABLE `casos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `casos_novedades`
@@ -9948,7 +10100,13 @@ ALTER TABLE `casos_novedades`
 -- AUTO_INCREMENT de la tabla `fincas`
 --
 ALTER TABLE `fincas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `labores`
+--
+ALTER TABLE `labores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `lineas_productivas`
@@ -10002,13 +10160,25 @@ ALTER TABLE `organizacion_lineas_productivas`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `perfiles_secciones`
+--
+ALTER TABLE `perfiles_secciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -10021,6 +10191,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `zonas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `zonas_agroambientales`
+--
+ALTER TABLE `zonas_agroambientales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -10064,7 +10240,7 @@ ALTER TABLE `casos_novedades`
 --
 ALTER TABLE `fincas`
   ADD CONSTRAINT `fincas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
+  ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas_agroambientales` (`id`);
 
 --
 -- Filtros para la tabla `listas_detalle`

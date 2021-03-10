@@ -13,9 +13,4 @@ class LineasProductivasController extends Controller
  		$CRUD = new CRUD('App\Models\LineaProductiva');
         return $CRUD->call(request()->fn, request()->ops);
 	}
-	public function postObtener()
-	{
-		$LineaProductiva = LineaProductiva::All();
-		return $LineaProductiva;
-	} 
 }

@@ -9,43 +9,44 @@
 
 	<div layout=column flex class="overflow-y">
 		<div layout class="padding-0-10">
-
 			<md-input-container class="no-margin md-title" md-no-float flex>
 				<input type="text" ng-model="Articulo.titulo" placeholder="Titulo">
 			</md-input-container>
 		</div>
 
 		<div flex layout=column>
-			
-			<div ng-repeat="S in SeccionesCRUD.rows" class="padding" layout ng-class="{ 'bg-yellow': S.changed }">
-				
+			<div ng-repeat="S in SeccionesCRUD.rows | orderBy : 'indice'" class="padding" layout ng-class="{ 'bg-yellow': S.changed }">
 				<div>
-					
 					<md-menu>
 						<md-button ng-click="$mdMenu.open($event)" class="md-icon-button no-margin" aria-label="Menu">
 							<md-icon md-svg-icon="md-more-v"></md-icon>
 						</md-button>
 						<md-menu-content>
-							<md-menu-item><md-button class="md-warn" ng-click="eliminarSeccion(S)">Eliminar Seccion</md-button></md-menu-item>
+							<md-menu-item ng-show=" !$first ">
+								<md-button class="md-warn" ng-click="moverSeccion(S, -1)">
+									<md-icon md-svg-icon="md-north"></md-icon>
+									Subir sección </md-button></md-menu-item>
+							<md-menu-item>
+								<md-button class="md-warn" ng-click="eliminarSeccion(S)">
+									<md-icon md-svg-icon="md-delete"></md-icon>
+									Eliminar sección </md-button></md-menu-item>
+							<md-menu-item ng-show=" !$last ">
+								<md-button class="md-warn" ng-click="moverSeccion(S, 1)">
+									<md-icon md-svg-icon="md-south"></md-icon>
+									Bajar sección </md-button></md-menu-item>
 						</md-menu-content>
 					</md-menu>
-
 				</div>
 
 				<div flex layout=column>
-					
 					<md-input-container class="no-margin" ng-if="S.tipo == 'Parrafo'" md-no-float>
 			          <textarea ng-model="S.contenido" rows="5" placeholder="Contenido" ng-change="S.changed = true"></textarea>
 			        </md-input-container>
-
 			        <div ng-if="S.tipo == 'Imagen'" layout=column>
 			        	<img ng-src=" @{{ S.ruta }} ">
 			        </div>
-
 			        <div ng-if="S.tipo == 'Tabla'" layout=column>
-			        	
 			        	<table border=1 style="border-collapse: collapse;">
-
 			        		<thead>
 			        			<th ng-repeat="(kC,C) in S.contenido[0] track by $index">
 			        				<md-input-container class="no-margin">
@@ -71,11 +72,9 @@
 			        		<tbody>
 			        			<tr ng-repeat="(kR,R) in S.contenido" ng-show="!$first">
 			        				<td ng-repeat="(kC,C) in S.contenido[0] track by $index">
-
 			        					<md-input-container class="no-margin">
 				        					<input type="text" ng-model="R[kC]" ng-change="S.changed = true" aria-label="t">
 				        				</md-input-container>
-
 			        				</td>
 			        				<td>
 			        					<md-button class="md-icon-button" ng-click="eliminarFila(S, kR)">
@@ -85,23 +84,14 @@
 			        				</td>
 			        			</tr>
 			        		</tbody>
-
 			        	</table>
-
 			        	<md-button class="md-icon-button" ng-click="agregarFila(S)">
 			        		<md-tooltip>Agregar Fila</md-tooltip>
         					<md-icon md-svg-icon="md-plus"></md-icon>
         				</md-button>
-
-
 			        </div>
-
 				</div>
-
-
-
 			</div>
-
 
 			<div layout layout-align="center center">
 				<md-button ng-repeat="(kT, T) in TiposSeccion" class="md-raised md-icon-button" 
@@ -112,26 +102,13 @@
 			</div>
 
 			<div class="h100">.</div>
-
 		</div>
 	</div>
 
-	<!--INICIO DEV ANGÉLICA - CHIPS ANGULAR MATERIAL-->
+	<!--INICIO DEV ANGÉLICA - CHIPS ANGULA MATERIAL-->
 	<md-chips ng-model="keyWords" readonly="readonly" md-removable="removable">
     </md-chips>
-	<!--FIN DEV ANGÉLICA - CHIPS ANGULAR MATERIAL-->
-
-	<!--INICIO DEV ANGÉLICA - Lineas productivas en select-->
-	<h4>Lineas productivas @{{Articulo.linea_productiva_id}} </h4>
-	<mat-form-field appearance="fill">
-  	<mat-label>Elige la linea productiva</mat-label>
-	<md-select ng-model="Articulo.linea_productiva_id">
-		<md-option ng-repeat="lp in lineas_productivas" ng-value="lp.id">
-      		@{{lp.nombre}}
-   		</md-option>
-	</mat-select>
-	</mat-form-field>
-	<!--FIN DEV ANGÉLICA-->
+	<!--FIN DEV ANGÉLICA - CHIPS ANGULA MATERIAL-->
 
 	<div layout class="border-top">
 		<span flex></span>
