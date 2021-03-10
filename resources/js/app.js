@@ -17,6 +17,7 @@ angular.module('App', [
     'angular-img-cropper',
     //'indexedDB',
     'enterStroke',
+    'textAngular',
 
 
     'CRUD',
@@ -47,6 +48,9 @@ angular.module('App', [
     //'MitecnicoAmigoInicioCtrl', // Luigi
     //Inicio Dev Angélica
     'ContactoCtrl',
+    'ArticulomuroEditDialogCtrl',
+    'ConfiguracionCtrl',
+    'ListaEditDialogCtrl',
     //Fin Dev Angélica
 
     'OrganizacionesCtrl',

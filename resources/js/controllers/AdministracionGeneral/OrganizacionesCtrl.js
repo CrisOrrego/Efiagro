@@ -70,8 +70,80 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 				fullscreen: false,
 			});
         }
+
+    //INICIO DEV ANGÉLICA 
+        //Abre el modal del un articulo de un muro de la organizacion
+        Ctrl.abrirArticulomuro = (A) => {
+            console.log(A);
+			$mdDialog.show({
+				//templateUrl: 'Frag/GestionOrganizacion.OrganizacionesmuroEditorDiag',
+                templateUrl: 'templates/dialogs/image-editor.html',               
+				controller: 'ImageEditor_DialogCtrl',
+				locals: {Organizacionesmurosecciones: A},
+			});
+        }
+
+                //Carga imagen al servidor
+                Ctrl.subirImagen = ($file) => {
+                    if(!$file) return;
         
+                    Upload.upload({
+                        url: 'api/main/upload-imagen',
+                        data: {file: $file,
+                            Path: 'files/muro_media/' + Rs.Usuario.organizacion_id + '/' + moment().format('YYYYMMDDHHmmss') + '.jpg',
+                            Ancho: 560, Alto: 300, Quality: 90
+                        }
+                    }).then(function (resp) {
+                        console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                    }, function (resp) {
+                        console.log('Error status: ' + resp.status);
+                    });
+                }
         
+            
+        //Abre el modal del un articulo de un muro de la organizacion
+        Ctrl.nuevoArticuloMuro = (O) => {
+            console.log(O);
+			$mdDialog.show({
+				templateUrl: 'Frag/GestionOrganizacion.OrganizacionesmuroEditorDiag',
+				controller: 'ArticulomuroEditDialogCtrl',
+				locals: {  },
+				fullscreen: false,
+			}).then(function (resp) {
+                Ctrl.OrganizacionesmuroseccionesCRUD.setScope('elorganizacion', Rs.Usuario.organizacion_id).get();
+            }, function (resp) {
+                console.log('Error status: ' + resp.status); 
+            });
+
+        }
+
+        // Creamos listado de Tipo de novedad
+        Ctrl.TipoNovedad = {
+            'Parrafo': { Nombre: 'Parrafo', icono: 'fa-align-justify' },
+            'Imagen': { Nombre: 'Imagen', icono: 'fa-image' }
+        }
+
+        Ctrl.DarFormatoFecha = (fecha) => {
+            debugger;
+            const dias = fecha.diff(now(), 'days');
+
+            debugger;
+            if (dias === 0) {
+                return 'Publicado hoy';
+            } else {
+                if (dias > 30) {
+                    return'Publicado hace ' + dias / 30 + ' meses';
+                } else {
+                    return'Publicado hace ' + dias + ' dias';
+                }
+            }
+        }
+
+        Ctrl.Update = () => {
+            alert("Update");
+        }
+    //FIN DEV ANGÉLICA
+
     }
 ]);
 

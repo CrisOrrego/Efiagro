@@ -19,6 +19,10 @@ Route::get('/Home', function(){  return view('Home'); });
 Route::get('/Home/{seccion}', function(){  return view('Seccion'); });
 Route::get('/Home/{seccion}/{subseccion}', 'MainController@cargarSubseccion');
 Route::get('/Frag/{vista}',                'MainController@cargarFragmento');
+Route::post("/api/upload", [FileController::class, 'upload']);
+//Inicio Dev ANGÉLICA
+Route::post("/api/lista", [ListaController::class, 'Actualizar']);
+//FIN Dev ANGÉLICA
 
 AdvancedRoute::controller('/api/main',      'MainController');
 AdvancedRoute::controller('/api/usuario',   'UsuarioController');
@@ -27,7 +31,9 @@ AdvancedRoute::controller('/api/articulos', 'ArticulosController');
 // AdvancedRoute::controller('/api/perfiles', 'perfilController');
 
 //Inicio Dev ANGÉLICA
-AdvancedRoute::controller('/api/contacto',     'ContactoController');
+AdvancedRoute::controller('/api/contacto',                        'ContactoController');
+AdvancedRoute::controller('/api/organizacionesmurosecciones',     'OrganizacionesMuroSeccionesController');
+AdvancedRoute::controller('/api/lista',                           'ListaController');
 //FIN Dev ANGÉLICA
 AdvancedRoute::controller('/api/organizaciones',  'OrganizacionController');
 AdvancedRoute::controller('/api/fincas',  'FincaController');

@@ -9,7 +9,7 @@
 
 	<div layout=column class="overflow-y">
 		<div layout=column class="padding-0-10">
-			<text-angular ng-model="contenido"></text-angular>
+			<text-angular ta-toolbar="[[],['bold','ul','ol']]" ng-model="contenido"></text-angular>
 		</div>
 
 		<div layout style="margin-top: 20px" layout class="padding-0-10">

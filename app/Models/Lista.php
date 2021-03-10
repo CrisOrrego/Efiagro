@@ -11,4 +11,17 @@ class Lista extends Model
     protected $table = 'listas_indice';
     protected $guarded = ['id'];
     protected $appends = [];
+
+    public function columns()
+    {
+        //Name, Desc, Type, Required, Unique, Default, Width, Options
+        return [
+            ['lista',            'lista',               null, true, false, null, 100],
+            ['autoincremental',  'autoincremental',     null, true, false, null, 100],
+        ];
+    }
+
+    public function listadetalle (){
+        return $this-> hasMany (ListaDetalle::class); //obtengo lista detalle
+    }
 }
