@@ -35,11 +35,14 @@ AdvancedRoute::controller('/api/contacto',                        'ContactoContr
 AdvancedRoute::controller('/api/organizacionesmurosecciones',     'OrganizacionesMuroSeccionesController');
 AdvancedRoute::controller('/api/lista',                           'ListaController');
 //FIN Dev ANGÉLICA
-AdvancedRoute::controller('/api/organizaciones',  'OrganizacionController');
-AdvancedRoute::controller('/api/fincas',  'FincaController');
-AdvancedRoute::controller('/api/lotes',  'LoteController');
-AdvancedRoute::controller('/api/zonas',  'ZonasController');
-AdvancedRoute::controller('/api/labores',  'LaboresController');
+AdvancedRoute::controller('/api/organizaciones',    'OrganizacionController');
+AdvancedRoute::controller('/api/fincas',            'FincaController');
+AdvancedRoute::controller('/api/lotes',             'LoteController');
+AdvancedRoute::controller('/api/zonas',             'ZonasController');
+AdvancedRoute::controller('/api/labores',           'LaboresController');
 
-AdvancedRoute::controller('/api/casos',     'CasosController'); // Luigi
-AdvancedRoute::controller('/api/lineasproductivas',     'LineasProductivasController'); // Luigi
+AdvancedRoute::controller('/api/casos',             'CasosController');             // Luigi
+AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController'); // Luigi
+AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          // Luigi
+AdvancedRoute::controller('/api/secciones',         'SeccionesController');         // Luigi
+AdvancedRoute::controller('/api/secciones',         'SeccionesController');         // Luigi

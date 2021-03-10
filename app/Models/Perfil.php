@@ -17,8 +17,7 @@ class Perfil extends Model
     {
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
-            ['perfil',                      'Perfil',                       null, true,         false, null, 100],
-         
+            ['perfil', 'Perfil', null, true, false, null, 100],
         ];
         
     }
@@ -26,5 +25,10 @@ class Perfil extends Model
     public function scopeId($q, $id)
     {
         return $q->where('id', $id);
+    }
+
+    public function scopeSecciones($q, $id)
+    {
+        return $q->leftJoin('perfiles_secciones', 'id', '=', 'seccion_id');
     }
 }

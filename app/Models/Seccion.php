@@ -14,6 +14,16 @@ class Seccion extends Model
     protected $guarded = ['id'];
     protected $appends = [ 'seccion_slug', 'subseccion_slug' ];
 
+    public function columns()
+    {
+        //Name, Desc, Type, Required, Unique, Default, Width, Options
+        return [
+            ['seccion',     'Seccion',      null, true, false, null, 100],
+            ['subseccion',  'Subseccion',   null, true, false, null, 100],
+        ];
+        
+    }
+
     public function obtenerSlug($string)
     {
         $string = Str::studly($string);
