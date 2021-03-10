@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-02-2021 a las 19:56:04
+-- Tiempo de generación: 05-03-2021 a las 19:04:00
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -224,13 +224,13 @@ INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_i
 
 CREATE TABLE `labores` (
   `id` int(11) NOT NULL,
-  `labor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `labor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `frecuencia` int(11) NOT NULL,
   `semana_inicio` int(11) DEFAULT NULL,
   `plantas_dia` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `labores`
@@ -8431,6 +8431,7 @@ CREATE TABLE `lotes` (
   `finca_id` int(11) NOT NULL,
   `organizacion_id` int(11) NOT NULL,
   `linea_productiva_id` int(11) NOT NULL,
+  `labores_id` int(11) NOT NULL,
   `hectareas` int(11) NOT NULL,
   `sitios` int(11) NOT NULL,
   `coordenadas` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -8442,10 +8443,12 @@ CREATE TABLE `lotes` (
 -- Volcado de datos para la tabla `lotes`
 --
 
-INSERT INTO `lotes` (`id`, `finca_id`, `organizacion_id`, `linea_productiva_id`, `hectareas`, `sitios`, `coordenadas`, `created_at`, `updated_at`) VALUES
-(4, 1, 14, 2, 100, 30, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
-(5, 3, 8, 1, 30, 310, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
-(6, 2, 7, 1, 50, 10, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04');
+INSERT INTO `lotes` (`id`, `finca_id`, `organizacion_id`, `linea_productiva_id`, `labores_id`, `hectareas`, `sitios`, `coordenadas`, `created_at`, `updated_at`) VALUES
+(4, 1, 14, 2, 1, 100, 30, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
+(5, 3, 8, 1, 2, 30, 310, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
+(6, 2, 7, 1, 3, 50, 10, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
+(10, 1, 8, 2, 4, 345, 234, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },  { \"lat\": 4.814992, \"lng\": -75.706985 },  { \"lat\": 4.814894, \"lng\": -75.706993 },  { \"lat\": 4.814897, \"lng\": -75.707047 }, ];', '2021-03-01 20:57:32', '2021-03-01 20:57:32'),
+(11, 1, 8, 1, 5, 4567, 342, '[{ \"lat\": 4.814954, \"lng\": -75.707070 }, { \"lat\": 4.814992, \"lng\": -75.706985 }, { \"lat\": 4.814894, \"lng\": -75.706993 }, { \"lat\": 4.814897, \"lng\": -75.707047 },];', '2021-03-02 22:51:57', '2021-03-02 22:54:03');
 
 -- --------------------------------------------------------
 
@@ -8461,31 +8464,6 @@ CREATE TABLE `lotes_cosechas` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `lotes_tareas`
---
-
-CREATE TABLE `lotes_tareas` (
-  `id` int(11) NOT NULL,
-  `lote_id` int(11) NOT NULL,
-  `titulo` varchar(250) NOT NULL,
-  `fecha` date NOT NULL,
-  `estado` varchar(100) NOT NULL DEFAULT 'Pendiente',
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `lotes_tareas`
---
-
-INSERT INTO `lotes_tareas` (`id`, `lote_id`, `titulo`, `fecha`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 0, 'Deshoje', '0000-00-00', 'Pendiente', '2021-02-03 13:11:31', '2021-02-03 13:11:31'),
-(2, 0, 'Irrigación', '0000-00-00', 'Hecho', '2021-02-03 13:11:31', '2021-02-03 13:11:31'),
-(3, 0, 'Fumigación', '0000-00-00', 'Pendiente', '2021-02-03 13:11:31', '2021-02-03 13:11:31');
 
 -- --------------------------------------------------------
 
@@ -9688,13 +9666,27 @@ CREATE TABLE `organizaciones_muro` (
 
 CREATE TABLE `organizaciones_muro_secciones` (
   `id` int(10) NOT NULL,
-  `organizaciones_muro_id` int(10) NOT NULL,
-  `tipo` varchar(50) NOT NULL,
+  `organizacion_id` int(10) NOT NULL,
   `contenido` text DEFAULT NULL,
-  `ruta` varchar(1000) DEFAULT NULL,
+  `ruta` varchar(100) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
+  `ext` varchar(4) DEFAULT NULL,
+  `usuario_id` int(11) DEFAULT NULL,
+  `estado` varchar(10) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `organizaciones_muro_secciones`
+--
+
+INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
+(151, 8, '<p>dfsdfzdfz</p>', 'files/muro_media/8/20210305114917.jpg', 'http://efiagro.local/#/Home/GestionOrganizacion/Organizacion', NULL, 1, NULL, '2021-03-05 16:49:20', '2021-03-05 16:49:20'),
+(152, 8, '<h1 class=\"sc-1efpnfq-0 biSEwE\" style=\"font-size: 52px;\"><b>Este nuevo método de siembra podría hacer innecesarios los pesticidas</b></h1><div><br/><br/><!--StartFragment--><p class=\"sc-77igqf-0 bOfvBY\" style=\"font-size: 18px;\">En <a class=\"sc-1out364-0 hMndXN sc-145m8ut-0 kVnoAv js_link\" href=\"http://onlinelibrary.wiley.com/doi/10.1111/wre.12101/abstract\" target=\"_blank\" rel=\"noopener noreferrer\">estudios</a>, los científicos demostraron que la maleza no puede competir con el crecimiento de cultivos como el maíz, granos y frijoles si los agricultores alteran sus patrones de siembra. La idea es plantar las semillas en modelos de red en lugar de hileras que es como normalmente se hace. Así lo explica Jacob Weiner, encargado del proyecto:</p><blockquote class=\"sc-8hxd3p-0 gZJbdR\" style=\"font-size: 18px;\"><p class=\"sc-77igqf-0 bOfvBY\" style=\"font-size: 18px;\">Nuestros resultados demuestran que el control de malezas en los campos mejora con el abandono de técnicas tradicionales de siembra. Los agricultores de todo el mundo, siembran sus cultivos en hileras. Nuestros estudios con trigo y maíz sembrados en un modelo de red, suprimen el crecimiento de malezas. Esto proporciona una mayor cosecha en los campos propensos a tener grandes cantidades de maleza.</p></blockquote><!--EndFragment--><br/><br/></div><!--EndFragment--><p><br/></p><p><br/></p>', 'files/muro_media/8/20210305121025.jpg', 'https://es.gizmodo.com/este-nuevo-metodo-de-siembra-podria-hacer-innecesarios-1679320460', NULL, 1, NULL, '2021-03-05 17:10:26', '2021-03-05 17:10:26'),
+(153, 8, '<h1 class=\"sc-1efpnfq-0 biSEwE\" style=\"font-size: 52px;\"><b>Los pesticidas</b></h1><div><b><br/><br/><!--StartFragment--><span style=\"font-size: 18px;float: none;\">l estudio busca mejorar la agricultura con un método sostenible que mantenga la producción, no dañe el medio ambiente ni a los consumidores. Los investigadores aún estudian la interacción de las plantas para mejorar la técnica de sembrado en otros tipos de granos.</span><!--EndFragment--><br/><br/><br/></b></div><!--EndFragment--><p><br/></p><p><br/></p>', 'files/muro_media/8/20210305121402.jpg', NULL, NULL, 1, NULL, '2021-03-05 17:14:02', '2021-03-05 17:14:02'),
+(154, 8, '<p><span style=\"font-size: 18px;float: none;\"></span></p><h1>El truco es aumentar la competencia</h1><p><br/></p><p><br/><br/><!--StartFragment--><span style=\"font-size: 18px;float: none;\">de las plantas buenas por el espacio, de manera que no dejen sitio a la maleza. El hecho de que las primeras se cultiven les da cierta ventaja temporal a la hora de colonizar todo el espacio más rápido. El estudio busca mejorar la agricultura con un método sostenible que mantenga la producción, no dañe el medio ambiente ni a los consumidores. Los investigadores aún estudian la interacción de las plantas para mejorar la técnica</span><!--EndFragment--><br/><br/><br/></p><!--EndFragment--><p><br/></p><p><br/></p><p><br/></p><p></p>', 'files/muro_media/8/20210305123419.jpg', 'https://es.gizmodo.com/este-nuevo-metodo-de-siembra-podria-hacer-innecesarios-1679320460', NULL, 1, NULL, '2021-03-05 17:34:20', '2021-03-05 17:34:20'),
+(156, 8, '<h1 class=\"single-title\" style=\"font-size: 45px;text-align: left;\">Explorando los Procesos de una Finca</h1><p><br/><br/><!--StartFragment--><span style=\"font-size: 20px;text-align: justify;\">Increíblemente, Finca Los Pirineos ha producido 10 veces cafés para la Taza de la Excelencia, de las cuales cuatro veces ha quedado entre los mejores diez. El productor, Gilberto Baraona, pertenece a la junta directiva de las subastas de</span><a href=\"https://perfectdailygrind.com/2017/04/historias-de-productores-de-cafe-las-subastas-facilitan-el-comercio-directo/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"font-size: 20px;text-align: justify;\"><span style=\"background-color: transparent;\"><span style=\"background-color: transparent;text-decoration: underline;\"><span style=\"background-color: transparent;text-decoration: underline;\"> Project Origin Best of El Salvado</span></span>r</span></a><span style=\"font-size: 20px;text-align: justify;\">. En su finca implementa ocho métodos de procesamiento diferentes con más de 90 variedades de café.</span><!--EndFragment--><br/><br/><br/></p><!--EndFragment--><p><br/></p><p><br/></p>', 'files/muro_media/8/20210305125057.jpg', 'https://perfectdailygrind.com/es/2017/05/22/explorando-los-procesos-de-una-finca-10-veces-ganadora-de-la-taza-de-la-excelencia/', NULL, 1, NULL, '2021-03-05 17:50:57', '2021-03-05 17:50:57');
 
 -- --------------------------------------------------------
 
@@ -9788,12 +9780,13 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (7, 'Administración General', 'Artículos ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (8, 'Administración General', 'Casos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (9, 'Administración General', 'Fincas', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
-(11, 'Administración General', 'Zonas', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 'Administración General', 'Líneas Productivas', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
-(13, 'Administración General', 'Labores', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
-(16, 'Administración General', 'Contacto', '2021-02-18 12:28:26', '2021-02-18 12:28:26'),
+(11, 'Administración General', 'Lotes', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'Administración General', 'Zonas', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
+(13, 'Administración General', 'Líneas Productivas', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
+(16, 'Administración General', 'Labores', '2021-02-18 12:28:26', '2021-02-18 12:28:26'),
 (17, 'Mi Técnico Amigo', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 'Mi Técnico Amigo', 'Solicitudes', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(18, 'Mi Técnico Amigo', 'Solicitudes', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 'Administración General', 'Contacto', '2021-03-01 12:28:26', '2021-03-01 12:28:26');
 
 -- --------------------------------------------------------
 
@@ -9964,19 +9957,13 @@ ALTER TABLE `lotes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `finca_id` (`finca_id`),
   ADD KEY `organizacion_id` (`organizacion_id`),
-  ADD KEY `linea_productiva_id` (`linea_productiva_id`);
+  ADD KEY `linea_productiva_id` (`linea_productiva_id`),
+  ADD KEY `labores_id` (`labores_id`);
 
 --
 -- Indices de la tabla `lotes_cosechas`
 --
 ALTER TABLE `lotes_cosechas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `lote_id` (`lote_id`);
-
---
--- Indices de la tabla `lotes_tareas`
---
-ALTER TABLE `lotes_tareas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `lote_id` (`lote_id`);
 
@@ -10007,8 +9994,7 @@ ALTER TABLE `organizaciones_muro`
 -- Indices de la tabla `organizaciones_muro_secciones`
 --
 ALTER TABLE `organizaciones_muro_secciones`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `organizaciones_muro_id` (`organizaciones_muro_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `organizacion_lineas_productivas`
@@ -10103,12 +10089,6 @@ ALTER TABLE `fincas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `labores`
---
-ALTER TABLE `labores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
 -- AUTO_INCREMENT de la tabla `lineas_productivas`
 --
 ALTER TABLE `lineas_productivas`
@@ -10130,7 +10110,7 @@ ALTER TABLE `listas_indice`
 -- AUTO_INCREMENT de la tabla `lotes`
 --
 ALTER TABLE `lotes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_cosechas`
@@ -10139,16 +10119,16 @@ ALTER TABLE `lotes_cosechas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `lotes_tareas`
---
-ALTER TABLE `lotes_tareas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT de la tabla `organizaciones`
 --
 ALTER TABLE `organizaciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `organizaciones_muro_secciones`
+--
+ALTER TABLE `organizaciones_muro_secciones`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
@@ -10178,7 +10158,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -10254,7 +10234,8 @@ ALTER TABLE `listas_detalle`
 ALTER TABLE `lotes`
   ADD CONSTRAINT `lotes_ibfk_1` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`),
   ADD CONSTRAINT `lotes_ibfk_2` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
-  ADD CONSTRAINT `lotes_ibfk_3` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
+  ADD CONSTRAINT `lotes_ibfk_3` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`),
+  ADD CONSTRAINT `lotes_ibfk_4` FOREIGN KEY (`labores_id`) REFERENCES `labores` (`id`);
 
 --
 -- Filtros para la tabla `lotes_cosechas`
@@ -10274,12 +10255,6 @@ ALTER TABLE `organizaciones`
 ALTER TABLE `organizaciones_muro`
   ADD CONSTRAINT `organizaciones_muro_ibfk_1` FOREIGN KEY (`organizaciones_id`) REFERENCES `organizaciones` (`id`),
   ADD CONSTRAINT `organizaciones_muro_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `organizaciones_muro_secciones`
---
-ALTER TABLE `organizaciones_muro_secciones`
-  ADD CONSTRAINT `organizaciones_muro_secciones_ibfk_1` FOREIGN KEY (`organizaciones_muro_id`) REFERENCES `organizaciones_muro` (`id`);
 
 --
 -- Filtros para la tabla `organizacion_lineas_productivas`
