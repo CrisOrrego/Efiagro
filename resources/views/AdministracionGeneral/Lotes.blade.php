@@ -13,7 +13,7 @@
 			<md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Lote
 		</md-button>
 	</div>
-
+{{-- Lotes --}}
 <md-card flex class="no-margin-top">
 			<md-table-container class="border-bottom">
 			  <table md-table>
@@ -28,6 +28,7 @@
 					<th md-column>Sitios</th>
 					<th md-column>Acción</th>
 				  </tr>
+				  
 				</thead>
 				<tbody md-body>
 				  <tr md-row ng-repeat="L in LotesCRUD.rows | filter:filterLotes">
