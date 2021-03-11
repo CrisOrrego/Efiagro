@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-const libs = true;
+const libs = false;
 
 if(libs){
 
