@@ -39,3 +39,4 @@ AdvancedRoute::controller('/api/lotes',  'LoteController');
 
 AdvancedRoute::controller('/api/casos',     'CasosController'); // Luigi
 AdvancedRoute::controller('/api/lineasproductivas',     'LineasProductivasController'); // Luigi
+// 
