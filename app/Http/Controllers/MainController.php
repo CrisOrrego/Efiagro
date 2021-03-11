@@ -47,6 +47,11 @@ class MainController extends Controller
         $Ruta = dirname($Path);
         if(!File::exists($Ruta)) File::makeDirectory($Ruta, 0775, true, true);
 
+        // resize the image to a width of 300 and constrain aspect ratio (auto height)
+        $image->resize($Ancho, $Alto, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
         //return $image->response('jpg', 70);
 
         if(!$image->save($Path, $Quality)){

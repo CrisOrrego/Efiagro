@@ -54,56 +54,51 @@
                 </div>
             </div>
 
-            <div flex="60">
-                <div class="seccion_content ">
-                    <md-input-container class="md-block">
-                        <label>Agregue novedad</label>
-                        <input type="text" ng-model="color" md-maxlength="1000">
-    </div>
+             <!--INICIO DEV ANGÉLICA -- Agrega espacio para hacer publicaciones-->
+             <div flex="60">
+                <div layout class="seccion_content" magin-bottom>
+                        <md-input-container flex class="md-block" no-margin>
+                            <h4 class="openOrganigrama pointer" ng-click="nuevoArticuloMuro()">
+                                Agregue novedad...
+                            </h4>                        
+                        </md-input-container>
+                </div>
+                <!--FIN DEV ANGÉLICA-->
+
                 <br>
-                <div class="seccion_content ">
-                    <md-content layout-padding>
-{{-- AQUI IMPRIMIR NOVEDADES --}}
+                 <div layout style="margin-bottom:15px;" class="seccion_content" ng-repeat="M in OrganizacionesmuroseccionesCRUD.rows" magin-bottom>
+                    <md-content layout-padding magin-bottom flex>
                         <div layout="row">
-                            <div layout="column" flex>
-                                
-                                <h2>Multiple Groups</h2>
-                                <p>
-                                    Panels can be added to multiple groups. The <code>groupName</code>
-                                    parameter in the panel configuration can be a string or an array of
-                                    strings. This allows for the functionality or constraints of multiple
-                                    groups to apply to each created panel.
-                                </p>
-                                <p>
-                                    To give an example, the menus within the toolbar above have been added
-                                    to the <strong>toolbar</strong> and <strong>menus</strong> groups.
-                                    The menus to the right have been added to the <strong>menus</strong>
-                                    group as well. The maximum number of open panels within the
-                                    <strong>toolbar</strong> group is <strong>2</strong>. Within the
-                                    <strong>menus</strong> group it is <strong>3</strong>. Opening the
-                                    menus to the right and more than one in the toolbar will result in
-                                    the first opened panel to the right to close.
-                                </p>
-                            </div>
+                            <!--
+                            <label class="texto_title">@{{M.usuario.nombre}} - @{{ DarFormatoFecha(M.created_at) }} </label>
+                            -->
+                            <label class="texto_title">@{{M.usuario.nombre}} - @{{ M.created_at }}  @{{ Darformatofecha(M.created_at) }} </label>
+                        </div>
+
+                        <!--Para dar formato al contenido-->
+                        <div display:flex layout="row">
+                            <p ng-bind-html="M.contenido"></p>
+                        </div>
+
+                        <div layout="row">
+                            <a href="@{{M.url}}" target="_blank">  @{{ M.url }} </a>
+                        </div>
+
+                        <div layout="row" ng-if="M.ruta.length>0">
+                            <img class="vistaNovedades" src="/../@{{ M.ruta }}"
+                            style="width: 540px; height: 300px;" alt="iconOrganizacion">
 
                         </div>
-                    </md-content>
-                </div>
-                <br>
-                <div class="seccion_content ">
-
-                    <md-content layout-padding>
-                        <label class="texto_title">Miguel Herrera - Hace 1 dia </label>
-                        <img class="vistaNovedades" src="/../imgs/vistaorganizacion_novedades.jpg"
-                            style="width: 560px; height: 300px;" alt="iconOrganizacion">
 
                     </md-content>
+
+               
 
                 </div>
             </div>
 
         </div>
-        <div class="h120">&nbsp;</div>
+        
 
     </div>
 

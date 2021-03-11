@@ -19,10 +19,36 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             order_by: ["-created_at"]
         });
 
+        Ctrl.myHTML =
+        'I am an <code>HTML</code>string with ' +
+        '<a href="#">links!</a> and other <em>stuff</em>';
+        
+        //INICIO DEV ANGÉLICA -- MURO
+        Ctrl.OrganizacionesmuroseccionesCRUD = $injector.get('CRUD').config({ 
+            base_url: '/api/organizacionesmurosecciones/organizacionesmurosecciones',
+            limit: 1000,
+			add_append: 'refresh',
+            query_with: ['usuario'],
+			order_by: [ '-created_at' ]
+		});
+        console.log(Ctrl.OrganizacionesmuroseccionesCRUD);
+
+        Ctrl.obtenerSecciones = (organizacion_id) => {
+            // console.log('nos mostrara algo?');
+            // console.log(Ctrl.OrganizacionesCRUD);
+            Ctrl.OrganizacionesmuroseccionesCRUD.setScope('elorganizacion', organizacion_id).get();
+		};
+        //console.log(Ctrl.obtenerSecciones);
+
+        //console.log(Ctrl.OrganizacionesmuroseccionesCRUD);
+
+        //FIN DEV ANGÉLICA
+
         Ctrl.getOrganizacion = () => {
             // Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id); //Me trae las organizaciones por usuario
             Ctrl.OrganizacionesCRUD.get().then(() => {
                 Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows[0];
+                Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
                 //Ctrl.editarOrganizacion(Ctrl.OrganizacionesCRUD.rows[0]);
             });
         };
@@ -61,6 +87,25 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			});
         }
 
+        //INICIO DEV ANGÉLICA
+
+        /*Ctrl.abrirMuroDialog = () => {
+            //console.log('es el caso ' + C.id);
+            $mdDialog.show({
+                templateUrl: 'Frag/GestionOrganizacion.OrganigramaDiag',
+                //templateUrl: 'Frag/GestionOrganizacion.',
+                controller: 'OrganizacionDiagCtrl',
+                locals: {
+                },
+                //scope: Ctrl.$update()
+            });
+        };*/
+
+
+        //FIN DEV ANGÉLICA
+
+        //Abre el modal de publicaciones del muro 
+
 		Ctrl.abrirOrganigrama = (O) => {
             // console.log(O);
 			$mdDialog.show({
@@ -70,6 +115,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 				fullscreen: false,
 			});
         }
+
 
     //INICIO DEV ANGÉLICA 
         //Abre el modal del un articulo de un muro de la organizacion

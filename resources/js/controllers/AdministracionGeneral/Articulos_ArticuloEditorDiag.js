@@ -19,6 +19,13 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
             Ctrl.keyWords = Ctrl.Articulo.palabras_clave.split(",");
             //FIN DEV ANGÉLICA
 
+            //INCIO DEV ANGÉLICA --> Lineas productivas
+		    $http.post('api/lineasproductivas/obtener', {}).then(r => {
+			Ctrl.lineas_productivas = r.data;
+			//console.log(r.data);
+		    });
+		    //FIN DEV ANGÉLICA
+
             Ctrl.SeccionesCRUD = $injector.get('CRUD').config({
                 base_url: '/api/articulos/secciones',
                 limit: 1000,

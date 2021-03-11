@@ -10,6 +10,12 @@ angular.module('MiTecnicoAmigoCtrl', [])
             Ctrl.Subseccion = 'Inicio';
             Ctrl.PalabrasClave = [];
             Ctrl.Cancel = $mdDialog.cancel;
+             //INICIO DEV ANGELICA
+             Ctrl.SelectedKey = false;
+             Ctrl.key = "";
+             Ctrl.keys= [];
+             Ctrl.ArticulosBuscados = [];
+ 
 
             $http.post('api/articulos/obtener', {}).then(
                 r => {
@@ -50,8 +56,17 @@ angular.module('MiTecnicoAmigoCtrl', [])
             });
 
             Ctrl.getCasos = () => {
+
+                //Inicio Dev Angélica
+                //Filtra el tipo (sólo muestra los casos que deben aparecer en pantalla)-->'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia' [ver archivo Caso.php]
+                Ctrl.CasosCRUD.setScope('tipo');
+
                 Ctrl.CasosCRUD.get();
-            };
+                /*let filter = Ctrl.CasosCRUD.rows.filter(caso=>caso.tipo==='tipo');
+                  console.log('Ctrl.CasosCRUD.rows', Ctrl.CasosCRUD.rows);
+                  console.log('filtro', filter);*/
+                //Fin Dev Angélica
+            }
             Ctrl.getCasos();
             //Casos :: Finaliza Luigi
 
@@ -121,11 +136,13 @@ angular.module('MiTecnicoAmigoCtrl', [])
                     .replace(" en ", " ")
                     .replace(" para ", " ")
                     .replace(" por ", " ")
-                    .replace(" la ", " ");
+                    .replace(" la ", " ")
+                    .replace(" y ", " ");
 
                 if (filtro == "") return Ctrl.Buscando = false;
 
                 let keys = filtro.split(" ");
+                Ctrl.keys = [];//nuevo
                 var ArticulosBuscados = [];
                 Ctrl.Buscando = true;
                 Ctrl.Articulos.forEach(function(articulo) {
@@ -135,6 +152,19 @@ angular.module('MiTecnicoAmigoCtrl', [])
                             articulo.contador++;
                         }
                     });
+                    // Recorre cada una de las palabras digitadas en el filtro
+                keys.forEach(function (palabra){
+                    // Separa cada una de las pabras clave del artuculo
+                    let keys = articulo.palabras_clave.split(",");
+                
+                    // Buscamos si la palabra del filtro esta en la lista de palabras clave
+                    if (keys.includes(palabra)) {
+                        articulo.contador++; 
+                        Ctrl.SelectedKey = true;
+                        Ctrl.keys.push(palabra);
+                        console.log(articulo.palabras_clave, palabra);
+                    }
+                });
 
                     if (articulo.contador > 0) ArticulosBuscados.push(articulo);
                 });
@@ -147,6 +177,8 @@ angular.module('MiTecnicoAmigoCtrl', [])
             Ctrl.searchKeyWords = (key) => {
                 var ArticulosBuscados = [];
                 Ctrl.Buscando = true;
+                Ctrl.SelectedKey = true;
+                Ctrl.key = key;
                 Ctrl.Articulos.forEach(function(articulo) {
                     articulo.contador = 0;
                     if (articulo.palabras_clave.indexOf(key) >= 0) {
@@ -158,6 +190,14 @@ angular.module('MiTecnicoAmigoCtrl', [])
 
                 Ctrl.ArticulosBuscados = ArticulosBuscados;
             };
+
+            Ctrl.cleanFilter = () => {
+                Ctrl.SelectedKey = false;
+                Ctrl.key = "";
+                Ctrl.Buscando = false;
+                Ctrl.ArticulosBuscados = [];
+                Ctrl.keys = [];
+            }
 
             //FIN DEV ANGÉLICA
 
