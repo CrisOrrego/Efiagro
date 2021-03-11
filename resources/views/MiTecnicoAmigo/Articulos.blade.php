@@ -20,36 +20,44 @@
 	<!--Se muestra la lista de palabras clave en la vista-->
 	<br>
 	<div class="padding-0-10" layout layout-align="left" >
-        <md-card flex class="no-margin-top mxw200">			
-			<ul>
-			<li ng-repeat="A in PalabrasClave" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33 ng-click="searchKeyWords(A)">
-			@{{A}}
-			</li>
-			</ul>
-        </md-card>
+        <md-card flex class="no-margin-top mxw200">	
+			<div ng-if="!SelectedKey" >
+				<ul>
+				<li ng-repeat="A in PalabrasClave" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33 ng-click="searchKeyWords(A)">
+				@{{A}}
+				</li>
+				</ul>
+			</div>
+			<div  ng-if="SelectedKey">
+				<ul>
+					<li ng-repeat="A in keys" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33>
+					@{{A}}
+					</li>
+				</ul>
+				<label> @{{key}} </label>
+				<button ng-click="cleanFilter()">X</button>
+			</div>
+		</md-card>
 
 		<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="!Buscando">
-			<div ng-repeat="A in Articulos" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33
-			ng-click="abrirArticulo(A)">
-			<md-card class="padding no-margin" layout=column>
-				<div class="md-title margin-bottom-5" md-truncate>@{{ A.titulo }}</div>
-				<div class="md-subheader">Por @{{ A.autor.nombre }}</div>
-			</md-card>
+			<div ng-repeat="A in Articulos" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33 ng-click="abrirArticulo(A)">
+				<md-card class="padding no-margin" layout=column>
+					<div class="md-title margin-bottom-5" md-truncate>@{{ A.titulo }}</div>
+					<div class="md-subheader">Por @{{ A.autor.nombre }}</div>
+				</md-card>
+			</div>
 		</div>
 
-	</div>
+	
 
-	</div>
+		<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="Buscando">
+			<div ng-repeat="A in ArticulosBuscados" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33 ng-click="abrirArticulo(A)">
+				<md-card class="padding no-margin">
+					<div md-highlight-text="filtroArticulos" md-highlight-flags="i">@{{ A.titulo }}</div>
+				</md-card>
+			</div>
 
-	<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="Buscando">
-
-		<div ng-repeat="A in ArticulosBuscados" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33
-			ng-click="abrirArticulo(A)">
-			<md-card class="padding no-margin">
-				<div md-highlight-text="filtroArticulos" md-highlight-flags="i">@{{ A.titulo }}</div>
-			</md-card>
 		</div>
-
 	</div>
     <!--FIN DEV ANGÉLICA-->
 

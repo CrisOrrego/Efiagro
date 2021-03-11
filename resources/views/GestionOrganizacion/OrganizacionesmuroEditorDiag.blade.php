@@ -29,8 +29,6 @@
             </md-button>-->
 		</div>
 
-        
-
 
 	</div>
 

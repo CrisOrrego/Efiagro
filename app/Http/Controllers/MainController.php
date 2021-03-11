@@ -47,8 +47,26 @@ class MainController extends Controller
         $Ruta = dirname($Path);
         if(!File::exists($Ruta)) File::makeDirectory($Ruta, 0775, true, true);
 
-        // resize the image to a width of 300 and constrain aspect ratio (auto height)
-        $image->resize($Ancho, $Alto, null, function ($constraint) {
+        //return $image->response('jpg', 70);
+
+        if(!$image->save($Path, $Quality)){
+            return response()->json(['Msg' => 'No se pudo guardar la imagen'], 512);
+        }else{
+            return response()->json(['Msg' => $Path ], 200);
+        };
+    }
+
+    public function postUploadImagen()
+    {
+        extract(request()->all()); //Path, Quality, Alto, Ancho
+
+        //dd(Input::file('file'));
+        $image = Image::make(request('file')->getRealPath());
+        
+        $Ruta = dirname($Path);
+        if(!File::exists($Ruta)) File::makeDirectory($Ruta, 0775, true, true);
+
+        $image->resize($Ancho, $Alto, function ($constraint) {
             $constraint->aspectRatio();
         });
 
@@ -60,29 +78,6 @@ class MainController extends Controller
             return response()->json(['Msg' => $Path ], 200);
         };
     }
-
-    // public function postUploadImagen()
-    // {
-    //     extract(request()->all()); //Path, Quality, Alto, Ancho
-
-    //     //dd(Input::file('file'));
-    //     $image = Image::make(request('file')->getRealPath());
-        
-    //     $Ruta = dirname($Path);
-    //     if(!File::exists($Ruta)) File::makeDirectory($Ruta, 0775, true, true);
-
-    //     $image->resize($Ancho, $Alto, function ($constraint) {
-    //         $constraint->aspectRatio();
-    //     });
-
-    //     //return $image->response('jpg', 70);
-
-    //     if(!$image->save($Path, $Quality)){
-    //         return response()->json(['Msg' => 'No se pudo guardar la imagen'], 512);
-    //     }else{
-    //         return response()->json(['Msg' => $Path ], 200);
-    //     };
-    // }
 
 
 
