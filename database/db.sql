@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-03-2021 a las 09:50:39
+-- Tiempo de generación: 12-03-2021 a las 21:12:31
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -44,10 +44,10 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`, `estado`, `permisos`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 0, '5 formas de evitar la roya en su cultivo', 'roya,cultivo', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-02-13 14:35:42'),
-(2, 0, 'Ultimas guias de la OMS para el cuidado de sus vacas', 'oms,cuidado', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-02-13 14:35:53'),
-(3, 0, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', 'morbi,finibus', 'Activo', '', 2, '0000-00-00 00:00:00', '2021-02-13 14:36:53'),
-(4, 0, '3 nuevas semillas de platano', 'platano,semillas', 'Activo', NULL, 1, '2020-11-20 01:52:22', '2021-02-13 14:35:30');
+(1, 1, '5 formas de evitar la roya en su cultivo', 'roya,cultivo', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-12 20:06:53'),
+(2, 2, 'Ultimas guias de la OMS para el cuidado de sus vacas', 'oms,cuidado', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-12 20:07:09'),
+(3, 3, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', 'morbi,finibus', 'Activo', '', 2, '0000-00-00 00:00:00', '2021-03-12 20:07:19'),
+(4, 3, '3 nuevas semillas de platano', 'platano,semillas,sed', 'Activo', NULL, 1, '2020-11-20 01:52:22', '2021-03-12 20:10:50');
 
 -- --------------------------------------------------------
 
@@ -74,8 +74,11 @@ INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `indice`, `tipo`, `conte
 (20, 1, 0, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
 (23, 1, 0, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
 (25, 4, 3, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-02-10 19:35:45', '2021-02-28 18:44:58'),
-(26, 4, 1, 'Imagen', NULL, 'files/articulos_media/4/20210228134406.jpg', '2021-02-28 18:44:20', '2021-02-28 18:44:58'),
-(27, 4, 2, 'Parrafo', 'Esto es una forma reciente de siembra', NULL, '2021-02-28 18:44:25', '2021-02-28 18:44:58');
+(26, 4, 1, 'Imagen', NULL, 'files/articulos_media/4/20210228134406.jpg', '2021-02-28 18:44:20', '2021-03-12 20:10:50'),
+(27, 4, 2, 'Parrafo', 'Esto es una forma reciente de siembra', NULL, '2021-02-28 18:44:25', '2021-03-12 20:10:50'),
+(28, 3, 1, 'Imagen', NULL, 'files/articulos_media/3/20210312150721.jpg', '2021-03-12 20:07:55', '2021-03-12 20:07:55'),
+(29, 3, 3, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-03-12 20:08:02', '2021-03-12 20:08:29'),
+(30, 3, 2, 'Parrafo', 'Este es un nuevo contenido', NULL, '2021-03-12 20:08:05', '2021-03-12 20:08:29');
 
 -- --------------------------------------------------------
 
@@ -10066,7 +10069,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaciones`
