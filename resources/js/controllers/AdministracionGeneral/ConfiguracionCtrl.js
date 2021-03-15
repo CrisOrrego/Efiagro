@@ -54,7 +54,6 @@ angular.module('ConfiguracionCtrl', [])
 		//INICIO DEV ANGÉLICA 
 		//Abre el modal para editar una lista
 		Ctrl.editarLista = (O) => {
-			console.log(O);
 			$mdDialog.show({
 				templateUrl: 'Frag/AdministracionGeneral.ListaEditorDiag',
 				controller: 'ListaEditDialogCtrl',
@@ -68,13 +67,13 @@ angular.module('ConfiguracionCtrl', [])
 
 		}
 
-
-		Ctrl.eliminarContacto = (C) => {
+		
+		Ctrl.eliminarLista = (C) => {
 			Rs.confirmDelete({
-				Title: '¿Eliminar el contacto #'+C.id+'?',
+				Title: '¿Eliminar la lista #'+C.id+'?',
 			}).then(d => {
 				if(!d) return;
-				Ctrl.ContactoCRUD.delete(C);
+				Ctrl.ListaCRUD.delete(C);
 			});
 		}
 	}

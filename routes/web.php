@@ -23,6 +23,8 @@ Route::get('/Frag/{vista}',                'MainController@cargarFragmento');
 Route::post("/api/upload", [FileController::class, 'upload']);
 //Inicio Dev ANGÉLICA
 Route::post("/api/lista", [ListaController::class, 'Actualizar']);
+Route::get("/api/lista/{id}",  [ListaController::class, 'Lista']);
+Route::delete("/api/lista/{id}",  [ListaController::class, 'Delete']);
 //FIN Dev ANGÉLICA
 
 AdvancedRoute::controller('/api/main',      'MainController');
