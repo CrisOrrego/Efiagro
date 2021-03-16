@@ -1,6 +1,6 @@
-<md-dialog class="vh75 w80p mxw550" layout=column >
+<md-dialog class="vh75 w80p mxw900" layout=column >
 	
-	<div layout class="" layout-align="center center">
+	<div flex layout class="" layout-align="center center">
 		<div class="text-clear padding-left md-title" flex>Edición de Lista</div>
 		<md-button ng-click="Cancel()" class="md-icon-button no-margin">
 			<md-icon md-font-icon="fa-times"></md-icon>
@@ -12,9 +12,10 @@
 		@{{Lista.lista}}
 
 			<md-input-container class="md-block">
-			<md-switch class="md-primary" name="special" ng-model="project.special" required>
+			<md-switch class="md-primary" name="autoincremental" ng-model="Autoincremental" required>
 			Autoincremental.
 			</md-switch>
+			@{{autoincremental}}
 			<div ng-messages="projectForm.special.$error" multiple>
 			<div ng-message="required">
 				Habilitas esta opción si quieres que esta lista sea autoincremental.
@@ -51,13 +52,15 @@
 								<md-icon md-font-icon="fa-trash"></md-icon>
 							</md-button>
 						</td>
-						<td md-cell><input type="text" ng-model="C.codigo"></td>
-						<td md-cell><input type="text" ng-model="C.descripcion"></td>
-						<td md-cell><input type="text" ng-model="C.op1"></td>
-						<td md-cell><input type="text" ng-model="C.op2"></td>
-						<td md-cell><input type="text" ng-model="C.op3"></td>
-						<td md-cell><input type="text" ng-model="C.op4"></td>
-						<td md-cell><input type="text" ng-model="C.op5"></td>						
+						<td md-cell><input ng-if="!autoincremental" type="text" ng-model="C.codigo" style="width : 35px; heigth : 1px">
+						<label ng-if="autoincremental">@{{C.codigo}}</label>
+						</td>
+						<td md-cell><input type="text" ng-model="C.descripcion" style="width : 80px; heigth : 1px"></td>
+						<td md-cell><input type="text" ng-model="C.op1" style="width : 40px; heigth : 1px"></td>
+						<td md-cell><input type="text" ng-model="C.op2" style="width : 40px; heigth : 1px"></td>
+						<td md-cell><input type="text" ng-model="C.op3" style="width : 40px; heigth : 1px"></td>
+						<td md-cell><input type="text" ng-model="C.op4" style="width : 40px; heigth : 1px"></td>
+						<td md-cell><input type="text" ng-model="C.op5" style="width : 40px; heigth : 1px"></td>						
 					</tr>
 				</tbody>
 			</table>

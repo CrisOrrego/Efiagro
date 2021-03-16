@@ -4,7 +4,8 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
     "$http",
     "$injector",
     "$mdDialog",
-    function($scope, $rootScope, $http, $injector, $mdDialog) {
+    "Upload",  //DEV ANGÉLICA --> 
+    function($scope, $rootScope, $http, $injector, $mdDialog, Upload) {
         console.info("OrganizacionesCtrl");
         var Ctrl = $scope;
         var Rs = $rootScope;
