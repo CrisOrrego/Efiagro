@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-03-2021 a las 21:12:31
+-- Tiempo de generación: 16-03-2021 a las 05:20:02
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -47,7 +47,7 @@ INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`
 (1, 1, '5 formas de evitar la roya en su cultivo', 'roya,cultivo', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-12 20:06:53'),
 (2, 2, 'Ultimas guias de la OMS para el cuidado de sus vacas', 'oms,cuidado', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-12 20:07:09'),
 (3, 3, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', 'morbi,finibus', 'Activo', '', 2, '0000-00-00 00:00:00', '2021-03-12 20:07:19'),
-(4, 3, '3 nuevas semillas de platano', 'platano,semillas,sed', 'Activo', NULL, 1, '2020-11-20 01:52:22', '2021-03-12 20:10:50');
+(4, 2, '3 nuevas semillas de platano', 'platano,semillas,sed,otra', 'Activo', NULL, 1, '2020-11-20 01:52:22', '2021-03-12 20:19:07');
 
 -- --------------------------------------------------------
 
@@ -74,8 +74,8 @@ INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `indice`, `tipo`, `conte
 (20, 1, 0, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
 (23, 1, 0, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
 (25, 4, 3, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-02-10 19:35:45', '2021-02-28 18:44:58'),
-(26, 4, 1, 'Imagen', NULL, 'files/articulos_media/4/20210228134406.jpg', '2021-02-28 18:44:20', '2021-03-12 20:10:50'),
-(27, 4, 2, 'Parrafo', 'Esto es una forma reciente de siembra', NULL, '2021-02-28 18:44:25', '2021-03-12 20:10:50'),
+(26, 4, 1, 'Imagen', NULL, 'files/articulos_media/4/20210228134406.jpg', '2021-02-28 18:44:20', '2021-03-15 15:58:08'),
+(27, 4, 2, 'Parrafo', 'Esto es una forma reciente de siembra', NULL, '2021-02-28 18:44:25', '2021-03-15 15:58:07'),
 (28, 3, 1, 'Imagen', NULL, 'files/articulos_media/3/20210312150721.jpg', '2021-03-12 20:07:55', '2021-03-12 20:07:55'),
 (29, 3, 3, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-03-12 20:08:02', '2021-03-12 20:08:29'),
 (30, 3, 2, 'Parrafo', 'Este es un nuevo contenido', NULL, '2021-03-12 20:08:05', '2021-03-12 20:08:29');
@@ -232,9 +232,10 @@ INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_i
 CREATE TABLE `labores` (
   `id` int(11) NOT NULL,
   `labor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `linea_productiva_id` int(11) NOT NULL,
   `frecuencia` int(11) NOT NULL,
   `semana_inicio` int(11) DEFAULT NULL,
-  `plantas_dia` int(11) DEFAULT NULL,
+  `margen` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -243,22 +244,24 @@ CREATE TABLE `labores` (
 -- Volcado de datos para la tabla `labores`
 --
 
-INSERT INTO `labores` (`id`, `labor`, `frecuencia`, `semana_inicio`, `plantas_dia`, `created_at`, `updated_at`) VALUES
-(1, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 1, NULL, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04'),
-(2, 'RESIEMBRA CON CABEZA DE TORO', 1, NULL, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
-(3, 'APLICACIÓN MATERIA ORGANICA 300g', 12, NULL, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
-(4, 'FERTILIZACION QUIMICA Y PLATEO', 2, NULL, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
-(5, 'DESHOJE, CIRUGIA  Y PODA TEMPRANA', 1, NULL, 2500, '2021-02-19 22:28:39', '2021-02-19 22:28:39'),
-(6, 'CONTROL SIGATOKA QUIMICO (Según evaluación) de 6 a 9:30 a.m.', 0, NULL, 3000, '2021-02-19 22:29:04', '2021-02-19 22:29:04'),
-(7, 'CONTROL ARVENSES POR PARCHEO', 3, NULL, 3800, '2021-02-19 22:29:51', '2021-02-19 22:29:51'),
-(8, 'DESHIJE Y ESTIMULO', 6, NULL, 2000, '2021-02-19 22:30:20', '2021-02-19 22:30:20'),
-(9, 'CONTROL DE PICUDO - DESGUASQUE Y PINTURA', 6, NULL, 2000, '2021-02-19 22:30:49', '2021-02-19 22:30:49'),
-(10, 'EMBOLSE PREMATURO Y ENCINTADO', 1, NULL, 150, '2021-02-19 22:31:10', '2021-02-19 22:31:10'),
-(11, 'AMARRE O APUNTALADO', 1, NULL, 150, '2021-02-19 22:31:35', '2021-02-19 22:31:35'),
-(12, 'DESMANE O DESFLORE', 1, NULL, 150, '2021-02-19 22:31:54', '2021-02-19 22:31:54'),
-(13, 'COSECHA Y POSCOSECHA', 1, NULL, NULL, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
-(14, 'DESTRONQUE', 1, NULL, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
-(15, 'REGISTRO DE LA INFORMACION', 1, NULL, NULL, '2021-02-19 22:34:48', '2021-02-19 22:34:48');
+INSERT INTO `labores` (`id`, `labor`, `linea_productiva_id`, `frecuencia`, `semana_inicio`, `margen`, `created_at`, `updated_at`) VALUES
+(2, 'RESIEMBRA CON CABEZA DE TORO', 2, 1, NULL, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
+(3, 'APLICACIÓN MATERIA ORGANICA 300g', 3, 12, NULL, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
+(4, 'FERTILIZACION QUIMICA Y PLATEO', 1, 2, NULL, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
+(5, 'DESHOJE, CIRUGIA  Y PODA TEMPRANA', 2, 1, NULL, 2500, '2021-02-19 22:28:39', '2021-02-19 22:28:39'),
+(6, 'CONTROL SIGATOKA QUIMICO (Según evaluación) de 6 a 9:30 a.m.', 3, 0, NULL, 3000, '2021-02-19 22:29:04', '2021-02-19 22:29:04'),
+(7, 'CONTROL ARVENSES POR PARCHEO', 1, 3, NULL, 3800, '2021-02-19 22:29:51', '2021-02-19 22:29:51'),
+(8, 'DESHIJE Y ESTIMULO', 2, 6, NULL, 2000, '2021-02-19 22:30:20', '2021-02-19 22:30:20'),
+(9, 'CONTROL DE PICUDO - DESGUASQUE Y PINTURA', 3, 6, NULL, 2000, '2021-02-19 22:30:49', '2021-02-19 22:30:49'),
+(10, 'EMBOLSE PREMATURO Y ENCINTADO', 1, 1, NULL, 150, '2021-02-19 22:31:10', '2021-02-19 22:31:10'),
+(11, 'AMARRE O APUNTALADO', 2, 1, NULL, 150, '2021-02-19 22:31:35', '2021-02-19 22:31:35'),
+(12, 'DESMANE O DESFLORE', 3, 1, NULL, 150, '2021-02-19 22:31:54', '2021-02-19 22:31:54'),
+(13, 'COSECHA Y POSCOSECHA', 1, 1, NULL, 0, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
+(14, 'DESTRONQUE', 2, 1, NULL, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
+(15, 'REGISTRO DE LA INFORMACION', 3, 1, NULL, 0, '2021-02-19 22:34:48', '2021-02-19 22:34:48'),
+(16, 'NUEVA LABOR', 3, 3, 2, 5, '2021-03-15 11:41:00', '2021-03-15 11:41:00'),
+(17, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 1, 1, NULL, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04'),
+(19, 'Nueva Labor aquí ot', 1, 100222, 900, 500, '2021-03-15 19:41:30', '2021-03-16 03:19:38');
 
 -- --------------------------------------------------------
 
@@ -343,7 +346,8 @@ INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, 
 (31, 2, '94', 'guainía', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (32, 2, '95', 'guaviare', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (33, 2, '97', 'vaupés', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(35, 4, 'Mi', 'Miguel', '1', '2', '3', '4', '5', 'A', '2021-03-16 04:03:07', '2021-03-16 04:03:07');
 
 -- --------------------------------------------------------
 
@@ -354,20 +358,23 @@ INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, 
 CREATE TABLE `listas_indice` (
   `id` int(10) NOT NULL,
   `lista` varchar(200) NOT NULL,
+  `autoincremental` tinyint(4) NOT NULL,
   `clave_automatica` tinyint(1) NOT NULL DEFAULT 1,
   `con_imagen` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `listas_indice`
 --
 
-INSERT INTO `listas_indice` (`id`, `lista`, `clave_automatica`, `con_imagen`, `created_at`, `updated_at`) VALUES
-(1, 'Paises', 0, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
-(2, 'Departamentos', 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37'),
-(3, 'Municipios', 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37');
+INSERT INTO `listas_indice` (`id`, `lista`, `autoincremental`, `clave_automatica`, `con_imagen`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Paises', 0, 0, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37', NULL),
+(2, 'Departamentos', 0, 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37', NULL),
+(3, 'Municipios', 0, 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37', NULL),
+(4, 'Migue', 1, 1, 0, '2021-03-16 04:02:39', '2021-03-16 04:04:10', '2021-03-16 04:04:10');
 
 -- --------------------------------------------------------
 
@@ -8451,7 +8458,7 @@ CREATE TABLE `lotes` (
 --
 
 INSERT INTO `lotes` (`id`, `finca_id`, `organizacion_id`, `linea_productiva_id`, `labores_id`, `hectareas`, `sitios`, `coordenadas`, `created_at`, `updated_at`) VALUES
-(4, 1, 14, 2, 1, 100, 30, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
+(4, 1, 14, 2, 16, 100, 30, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
 (5, 3, 8, 1, 2, 30, 310, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
 (6, 2, 7, 1, 3, 50, 10, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
 (10, 1, 8, 2, 4, 345, 234, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },  { \"lat\": 4.814992, \"lng\": -75.706985 },  { \"lat\": 4.814894, \"lng\": -75.706993 },  { \"lat\": 4.814897, \"lng\": -75.707047 }, ];', '2021-03-01 20:57:32', '2021-03-01 20:57:32'),
@@ -9690,7 +9697,10 @@ CREATE TABLE `organizaciones_muro_secciones` (
 
 INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
 (165, 8, '<p>Hola</p><ul><li>​</li></ul><ol><li><br/></li></ol>', 'files/muro_media/8/20210311031015.jpg', NULL, NULL, 1, NULL, '2021-03-11 08:10:17', '2021-03-11 08:10:17'),
-(166, 8, '<p><b>EL CULTIVO DEL PLÁTANO EN ALTAS DENSIDADES DE SIEMBRA<br/>UNA NUEVA CONCEPCIÓN TECNOLÓGICA DE PRODUCCIÓN</b></p><p><!--EndFragment--><br/><br/><!--StartFragment-->INTRODUCCIÓN<br/>En Colombia existen actualmente mas de 400,000 ha cultivadas con plátano, de<br/>las cuales 280,600 ha se encuentran en la zona central cafetera, cuyo volumen<br/>de producción es del orden de 1.7 millones de toneladas al año, con un<br/>rendimiento promedio de 6.1 ton/ha. Este rendimiento se considera<br/>relativamente bajo, por cuanto si se utilizan las nuevas tecnologías de<br/>producción, es posible alcanzar niveles de 50.1 ton/ha.</p><ul><li>IMPORTANCIA ECONÓMICA</li></ul><ol><li>VENTAJAS ECONÓMICAS <!--EndFragment--><br/><br/><br/></li></ol><p><br/></p><p><br/></p><p><br/></p><p><br/></p>', 'files/muro_media/8/20210311034719.jpg', NULL, NULL, 1, NULL, '2021-03-11 08:47:19', '2021-03-11 08:47:19');
+(166, 8, '<p><b>EL CULTIVO DEL PLÁTANO EN ALTAS DENSIDADES DE SIEMBRA<br/>UNA NUEVA CONCEPCIÓN TECNOLÓGICA DE PRODUCCIÓN</b></p><p><!--EndFragment--><br/><br/><!--StartFragment-->INTRODUCCIÓN<br/>En Colombia existen actualmente mas de 400,000 ha cultivadas con plátano, de<br/>las cuales 280,600 ha se encuentran en la zona central cafetera, cuyo volumen<br/>de producción es del orden de 1.7 millones de toneladas al año, con un<br/>rendimiento promedio de 6.1 ton/ha. Este rendimiento se considera<br/>relativamente bajo, por cuanto si se utilizan las nuevas tecnologías de<br/>producción, es posible alcanzar niveles de 50.1 ton/ha.</p><ul><li>IMPORTANCIA ECONÓMICA</li></ul><ol><li>VENTAJAS ECONÓMICAS <!--EndFragment--><br/><br/><br/></li></ol><p><br/></p><p><br/></p><p><br/></p><p><br/></p>', 'files/muro_media/8/20210311034719.jpg', NULL, NULL, 1, NULL, '2021-03-11 08:47:19', '2021-03-11 08:47:19'),
+(167, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224917.jpg', NULL, NULL, 1, NULL, '2021-03-16 03:49:17', '2021-03-16 03:49:17'),
+(168, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224932.jpg', NULL, NULL, 1, NULL, '2021-03-16 03:49:32', '2021-03-16 03:49:32'),
+(169, 8, '<p>Ota</p>', 'files/muro_media/8/20210315231555.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:15:55', '2021-03-16 04:15:55');
 
 -- --------------------------------------------------------
 
@@ -9930,7 +9940,8 @@ ALTER TABLE `fincas`
 -- Indices de la tabla `labores`
 --
 ALTER TABLE `labores`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linea_productiva_id` (`linea_productiva_id`);
 
 --
 -- Indices de la tabla `lineas_productivas`
@@ -10096,6 +10107,12 @@ ALTER TABLE `fincas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `labores`
+--
+ALTER TABLE `labores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT de la tabla `lineas_productivas`
 --
 ALTER TABLE `lineas_productivas`
@@ -10105,13 +10122,13 @@ ALTER TABLE `lineas_productivas`
 -- AUTO_INCREMENT de la tabla `listas_detalle`
 --
 ALTER TABLE `listas_detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `listas_indice`
 --
 ALTER TABLE `listas_indice`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes`
@@ -10135,7 +10152,7 @@ ALTER TABLE `organizaciones`
 -- AUTO_INCREMENT de la tabla `organizaciones_muro_secciones`
 --
 ALTER TABLE `organizaciones_muro_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
@@ -10228,6 +10245,12 @@ ALTER TABLE `casos_novedades`
 ALTER TABLE `fincas`
   ADD CONSTRAINT `fincas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas_agroambientales` (`id`);
+
+--
+-- Filtros para la tabla `labores`
+--
+ALTER TABLE `labores`
+  ADD CONSTRAINT `labores_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
 
 --
 -- Filtros para la tabla `listas_detalle`
