@@ -48,7 +48,7 @@
 							<!--<md-button class="md-icon-button" ng-click="editarLista(C)">
 								<md-icon md-font-icon="fa-edit"></md-icon>
 							</md-button>-->
-							<md-button class="md-icon-button md-warn" ng-click="eliminarLista(L)">
+							<md-button class="md-icon-button md-warn" ng-click="eliminarLista(C)">
 								<md-icon md-font-icon="fa-trash"></md-icon>
 							</md-button>
 						</td>

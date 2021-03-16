@@ -1,4 +1,5 @@
 <?php
+//Inicio Dev ANGÉLICA
 
 namespace App\Http\Controllers;
 
@@ -54,11 +55,15 @@ class ListaController extends Controller
 		$L = Lista::with ("listadetalle")->findOrFail($lista['id']); 
 		return $L;
 	}
-/*
-	public function deleteDelete($id)
+
+	public function postDelete(Request $req)
 	{
-		$listadetalle=ListaDetalle::findOrFail($id);
+		$listadetalle=ListaDetalle::findOrFail($req->id);
+		$id=$listadetalle->lista_id;
 		$listadetalle->delete();
-	}*/
+		$L = Lista::with ("listadetalle")->findOrFail($id); 
+		return $L;
+	}
 	
 }
+//fIN Dev ANGÉLICA

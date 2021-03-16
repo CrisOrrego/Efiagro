@@ -58,12 +58,17 @@ angular.module('ListaEditDialogCtrl', [])
 		}
 
 		
-		Ctrl.eliminarLista = (L) => {
+		Ctrl.eliminarLista = (C) => {
 			Rs.confirmDelete({
-				Title: '¿Eliminar la Sección?',
+				Title: '¿Eliminar elemento de la lista?',
 			}).then(R => {
-				if(!R) return;
-				Ctrl.ListaCRUD.delete(L);
+				$http.post('api/lista/delete', {id:C.id}).then((r)=>{
+					Ctrl.Lista = r.data;
+					console.log(Ctrl.Lista);
+				})
+
+				/*if(!R) return;
+				Ctrl.ListaCRUD.delete(L);*/
 			});
 		}
 
