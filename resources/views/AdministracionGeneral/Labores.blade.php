@@ -20,9 +20,10 @@
 	      <tr md-row>
 			<th md-column>ID</th>
 	        <th md-column>Labor</th>
+			<th md-column>Linea Productiva</th>
 	        <th md-column>Frecuencia</th>
 	        <th md-column>Semana de Inicio</th>
-	        <th md-column>Plantas día</th>
+	        <th md-column>Margen</th>
 			<th md-column>Acción</th>
 	      </tr>
 	    </thead>
@@ -30,11 +31,12 @@
 			<tr md-row ng-repeat="L in LaboresCRUD.rows | filter:filterLabores">
 			<td md-cell>@{{ L.id }} </td>
 	        <td md-cell>@{{ L.labor }}</td>
+			<td md-cell>@{{ L.linea_productiva_id }} </td> 
             <td md-cell><span>CADA</span> <b>@{{ L.frecuencia }}</b> <span>SEMANAS</span></td>
             <td md-cell>@{{ L.semana_inicio }}</td>
-            <td md-cell>@{{ L.plantas_dia }}</td>
+            <td md-cell><b>@{{ L.margen }}</b> <span>SEMANAS</span></td>
 			<td md-cell>
-				<md-button class="md-icon-button" ng-click="editarLabor(L)">
+				<md-button class="md-icon-button" ng-click="editarLabor(Labor)">
 					<md-icon md-font-icon="fa-edit"></md-icon>
 				</md-button>
 				<md-button class="md-icon-button md-warn" ng-click="eliminarLabor(L)">

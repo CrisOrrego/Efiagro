@@ -22,9 +22,13 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             // Ctrl.LaboresCRUD.setScope('id', Rs.Usuario.Labor_id);
             Ctrl.LaboresCRUD.get().then(() => {
                 Ctrl.Labor = Ctrl.LaboresCRUD.rows[0];
-                //Ctrl.editarLabor(Ctrl.LaboresCRUD.rows[0]);
+                
             });
         };
+
+        // Ctrl.getLabores = () => {
+        //     Ctrl.LaboresCRUD.setScope('lalabor', Labor.id).get();
+        // };
 
         Ctrl.getLabor();
 
@@ -39,16 +43,31 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             });
         };
 
-        Ctrl.editarLabor = L => {
-            Ctrl.LaboresCRUD.dialog(L, {
-                title: L.labor
-            }).then(r => {
-                if (r == "DELETE") return Ctrl.LaboresCRUD.delete(L);
-                Ctrl.LaboresCRUD.update(r).then(() => {
-                    Rs.showToast("Labor actualizada");
-                });
+        Ctrl.editarLabor = (L) => {
+			$mdDialog.show( {
+				templateUrl: 'Frag/AdministracionGeneral.LaboresDiag',
+				controller: 'LaboresCtrl',
+				locals: { Labor: L },
+				scope: Ctrl.$new()
+			});
+		}
+        Ctrl.guardarLabor = () => {
+            Ctrl.$parent.LaboresCRUD.update(Ctrl.Labor).then(() => {
+                        console.log('Labor Actualizada');
+                
             });
-        };
+        }
+
+        // Ctrl.editarLabor = L => {
+        //     Ctrl.LaboresCRUD.dialog(L, {
+        //         title: L.labor
+        //     }).then(r => {
+        //         if (r == "DELETE") return Ctrl.LaboresCRUD.delete(L);
+        //         Ctrl.LaboresCRUD.update(r).then(() => {
+        //             Rs.showToast("Labor actualizada");
+        //         });
+        //     });
+        // };
 
         Ctrl.eliminarLabor = L => {
             Rs.confirmDelete({
@@ -58,6 +77,13 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
                 Ctrl.LaboresCRUD.delete(L);
             });
         };
+
+        
+		    $http.post('api/lineasproductivas/obtener', {}).then(r => {
+			Ctrl.lineas_productivas = r.data;
+			
+		    });
+		    
 
         // Ctrl.abrirOrganigrama = L => {
         //     // console.log(O);
