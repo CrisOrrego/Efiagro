@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2021 a las 05:20:02
+-- Tiempo de generación: 17-03-2021 a las 05:53:45
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -178,7 +178,9 @@ INSERT INTO `casos_novedades` (`id`, `usuario_id`, `caso_id`, `tipo`, `novedad`,
 (6, 1, 4, 'Imagen', 'files/casos_media/4/20210205142638.jpg', 0, '2021-02-05 19:26:48', '2021-02-05 19:26:48'),
 (7, 1, 4, 'Texto', 'HOLA', 0, '2021-02-05 19:26:50', '2021-02-05 19:26:50'),
 (8, 1, 8, 'Imagen', 'files/casos_media/8/20210206100359.jpg', 0, '2021-02-06 15:04:11', '2021-02-06 15:04:11'),
-(9, 1, 8, 'Texto', 'gG', 0, '2021-02-06 15:04:15', '2021-02-06 15:04:15');
+(9, 1, 8, 'Texto', 'gG', 0, '2021-02-06 15:04:15', '2021-02-06 15:04:15'),
+(10, 1, 1, 'Texto', 'GGGG', 0, '2021-03-16 04:52:41', '2021-03-16 04:52:41'),
+(11, 1, 1, 'Imagen', 'files/casos_media/1/20210315235244.jpg', 0, '2021-03-16 04:52:51', '2021-03-16 04:52:51');
 
 -- --------------------------------------------------------
 
@@ -259,9 +261,9 @@ INSERT INTO `labores` (`id`, `labor`, `linea_productiva_id`, `frecuencia`, `sema
 (13, 'COSECHA Y POSCOSECHA', 1, 1, NULL, 0, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
 (14, 'DESTRONQUE', 2, 1, NULL, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
 (15, 'REGISTRO DE LA INFORMACION', 3, 1, NULL, 0, '2021-02-19 22:34:48', '2021-02-19 22:34:48'),
-(16, 'NUEVA LABOR', 3, 3, 2, 5, '2021-03-15 11:41:00', '2021-03-15 11:41:00'),
+(16, 'NUEVA LABOR', 1, 3, 2, 55555, '2021-03-15 11:41:00', '2021-03-17 02:51:35'),
 (17, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 1, 1, NULL, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04'),
-(19, 'Nueva Labor aquí ot', 1, 100222, 900, 500, '2021-03-15 19:41:30', '2021-03-16 03:19:38');
+(19, 'Aquiiiii', 3, 10, 10, 10, '2021-03-15 19:41:30', '2021-03-17 03:12:33');
 
 -- --------------------------------------------------------
 
@@ -9700,7 +9702,8 @@ INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido
 (166, 8, '<p><b>EL CULTIVO DEL PLÁTANO EN ALTAS DENSIDADES DE SIEMBRA<br/>UNA NUEVA CONCEPCIÓN TECNOLÓGICA DE PRODUCCIÓN</b></p><p><!--EndFragment--><br/><br/><!--StartFragment-->INTRODUCCIÓN<br/>En Colombia existen actualmente mas de 400,000 ha cultivadas con plátano, de<br/>las cuales 280,600 ha se encuentran en la zona central cafetera, cuyo volumen<br/>de producción es del orden de 1.7 millones de toneladas al año, con un<br/>rendimiento promedio de 6.1 ton/ha. Este rendimiento se considera<br/>relativamente bajo, por cuanto si se utilizan las nuevas tecnologías de<br/>producción, es posible alcanzar niveles de 50.1 ton/ha.</p><ul><li>IMPORTANCIA ECONÓMICA</li></ul><ol><li>VENTAJAS ECONÓMICAS <!--EndFragment--><br/><br/><br/></li></ol><p><br/></p><p><br/></p><p><br/></p><p><br/></p>', 'files/muro_media/8/20210311034719.jpg', NULL, NULL, 1, NULL, '2021-03-11 08:47:19', '2021-03-11 08:47:19'),
 (167, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224917.jpg', NULL, NULL, 1, NULL, '2021-03-16 03:49:17', '2021-03-16 03:49:17'),
 (168, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224932.jpg', NULL, NULL, 1, NULL, '2021-03-16 03:49:32', '2021-03-16 03:49:32'),
-(169, 8, '<p>Ota</p>', 'files/muro_media/8/20210315231555.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:15:55', '2021-03-16 04:15:55');
+(169, 8, '<p>Ota</p>', 'files/muro_media/8/20210315231555.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:15:55', '2021-03-16 04:15:55'),
+(170, 8, '<p>FFFF</p>', 'files/muro_media/8/20210315235538.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:55:39', '2021-03-16 04:55:39');
 
 -- --------------------------------------------------------
 
@@ -9838,41 +9841,24 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `rol_i
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `zonas`
---
-
-CREATE TABLE `zonas` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(500) NOT NULL,
-  `latitud` decimal(11,8) NOT NULL,
-  `longitud` decimal(11,8) NOT NULL,
-  `altitud` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `zonas`
---
-
-INSERT INTO `zonas` (`id`, `nombre`, `latitud`, `longitud`, `altitud`, `created_at`, `updated_at`) VALUES
-(1, 'Pereira', '7.76472000', '-80.27483000', 1000, '2021-01-17 23:34:40', '2021-01-17 23:34:40');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `zonas_agroambientales`
 --
 
 CREATE TABLE `zonas_agroambientales` (
   `id` int(11) NOT NULL,
+  `linea_productiva_id` int(11) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
-  `temperatura` float NOT NULL,
-  `humedad_relativa` float NOT NULL,
-  `precipitacion` float NOT NULL,
+  `temperatura_min` float NOT NULL,
+  `temperatura_max` float NOT NULL,
+  `humedad_relativa_min` float NOT NULL,
+  `humedad_relativa_max` float NOT NULL,
+  `precipitacion_min` float NOT NULL,
+  `precipitacion_max` float NOT NULL,
   `altimetria_min` float NOT NULL,
   `altimetria_max` float NOT NULL,
-  `brillo_solar` int(11) NOT NULL,
+  `brillo_solar_min` int(11) NOT NULL,
+  `brillo_solar_max` int(11) NOT NULL,
+  `pendiente` int(100) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -9881,10 +9867,11 @@ CREATE TABLE `zonas_agroambientales` (
 -- Volcado de datos para la tabla `zonas_agroambientales`
 --
 
-INSERT INTO `zonas_agroambientales` (`id`, `descripcion`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
-(1, 'ZONA 1', 23, 79, 2094, 1500, 2000, 1566, '2021-02-18 18:44:33', '2021-02-18 18:44:33'),
-(2, 'ZONA 2', 22, 77, 2268, 1300, 1500, 1224, '2021-02-18 18:45:16', '2021-02-18 18:45:16'),
-(3, 'ZONA 3', 21, 82, 2261, 0, 1300, 1511, '2021-02-18 18:45:51', '2021-02-18 18:45:51');
+INSERT INTO `zonas_agroambientales` (`id`, `linea_productiva_id`, `descripcion`, `temperatura_min`, `temperatura_max`, `humedad_relativa_min`, `humedad_relativa_max`, `precipitacion_min`, `precipitacion_max`, `altimetria_min`, `altimetria_max`, `brillo_solar_min`, `brillo_solar_max`, `pendiente`, `created_at`, `updated_at`) VALUES
+(1, 1, 'ZONA 1', 23, 0, 79, 0, 2094, 0, 1500, 2000, 1566, 0, 0, '2021-02-18 18:44:33', '2021-02-18 18:44:33'),
+(2, 2, 'ZONA 2', 22, 0, 77, 0, 2268, 0, 1300, 1500, 1224, 0, 0, '2021-02-18 18:45:16', '2021-02-18 18:45:16'),
+(3, 2, 'ZONA 3', 21, 0, 82, 0, 2261, 0, 0, 1300, 1511, 0, 0, '2021-02-18 18:45:51', '2021-03-17 04:44:41'),
+(5, 3, 'ZONA 4', 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, '2021-03-17 04:21:23', '2021-03-17 04:44:19');
 
 --
 -- Índices para tablas volcadas
@@ -10055,16 +10042,11 @@ ALTER TABLE `usuarios`
   ADD KEY `finca_id` (`finca_id`);
 
 --
--- Indices de la tabla `zonas`
---
-ALTER TABLE `zonas`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `zonas_agroambientales`
 --
 ALTER TABLE `zonas_agroambientales`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linea_productiva_id` (`linea_productiva_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -10098,7 +10080,7 @@ ALTER TABLE `casos`
 -- AUTO_INCREMENT de la tabla `casos_novedades`
 --
 ALTER TABLE `casos_novedades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `fincas`
@@ -10152,7 +10134,7 @@ ALTER TABLE `organizaciones`
 -- AUTO_INCREMENT de la tabla `organizaciones_muro_secciones`
 --
 ALTER TABLE `organizaciones_muro_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
@@ -10191,16 +10173,10 @@ ALTER TABLE `usuarios`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `zonas`
---
-ALTER TABLE `zonas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT de la tabla `zonas_agroambientales`
 --
 ALTER TABLE `zonas_agroambientales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -10299,6 +10275,12 @@ ALTER TABLE `organizacion_lineas_productivas`
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
   ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`);
+
+--
+-- Filtros para la tabla `zonas_agroambientales`
+--
+ALTER TABLE `zonas_agroambientales`
+  ADD CONSTRAINT `zonas_agroambientales_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
