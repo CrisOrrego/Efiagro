@@ -26,10 +26,7 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             });
         };
 
-        // Ctrl.getLabores = () => {
-        //     Ctrl.LaboresCRUD.setScope('lalabor', Labor.id).get();
-        // };
-
+       
         Ctrl.getLabor();
 
         Ctrl.nuevaLabor = () => {
@@ -42,21 +39,16 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
                 Ctrl.LaboresCRUD.add(r);
             });
         };
-
         Ctrl.editarLabor = (L) => {
+            console.log(L);
 			$mdDialog.show( {
-				templateUrl: 'Frag/AdministracionGeneral.LaboresDiag',
-				controller: 'LaboresCtrl',
+				templateUrl: 'Frag/AdministracionGeneral.Labores_LaborEditorDiag',
+				controller: 'Labores_LaborEditorCtrl',
 				locals: { Labor: L },
 				scope: Ctrl.$new()
 			});
 		}
-        Ctrl.guardarLabor = () => {
-            Ctrl.$parent.LaboresCRUD.update(Ctrl.Labor).then(() => {
-                        console.log('Labor Actualizada');
-                
-            });
-        }
+
 
         // Ctrl.editarLabor = L => {
         //     Ctrl.LaboresCRUD.dialog(L, {
@@ -79,12 +71,7 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
         };
 
         
-		    $http.post('api/lineasproductivas/obtener', {}).then(r => {
-			Ctrl.lineas_productivas = r.data;
-			
-		    });
-		    
-
+		
         // Ctrl.abrirOrganigrama = L => {
         //     // console.log(O);
         //     $mdDialog.show({

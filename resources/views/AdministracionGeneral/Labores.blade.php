@@ -36,7 +36,7 @@
             <td md-cell>@{{ L.semana_inicio }}</td>
             <td md-cell><b>@{{ L.margen }}</b> <span>SEMANAS</span></td>
 			<td md-cell>
-				<md-button class="md-icon-button" ng-click="editarLabor(Labor)">
+				<md-button class="md-icon-button" ng-click="editarLabor(L)">
 					<md-icon md-font-icon="fa-edit"></md-icon>
 				</md-button>
 				<md-button class="md-icon-button md-warn" ng-click="eliminarLabor(L)">

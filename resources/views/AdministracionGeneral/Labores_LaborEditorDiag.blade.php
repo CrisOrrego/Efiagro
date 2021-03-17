@@ -1,10 +1,10 @@
 <md-dialog class="w100p mxw550" layout=column>
 
     <div layout class="" layout-align="center center">
-        <div class="text-clear padding-left" flex>Edición de Labores</div>
-        <md-button class="md-icon-button no-margin" aria-label="salir" ng-click="Salir()">
-            <md-icon md-font-icon="fa-times fa-lg fa-fw"></md-icon>
-        </md-button>
+        <div class="text-clear padding-left" flex> Edición de Labores </div>
+        <md-button ng-click="Cancel()" class="md-icon-button no-margin">
+			<md-icon md-font-icon="fa-times"></md-icon>
+		</md-button>
     </div>
 
     <div flex layout=column class="overflow-y" >
@@ -45,7 +45,7 @@
             
    
             <div>
-                <md-button class="md-raised md-primary" ng-click="guardarLabor(L)">
+                <md-button class="md-raised md-primary" ng-click="guardarLabor(Labor)">
                     <md-icon md-font-icon="fa-save"></md-icon>Guardar
                 </md-button>
            

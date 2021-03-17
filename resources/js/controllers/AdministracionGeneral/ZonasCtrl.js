@@ -39,16 +39,27 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
             });
         };
 
-        Ctrl.editarZona = Z => {
-            Ctrl.ZonasCRUD.dialog(Z, {
-                title: "Editar Zona" + Z.descripcion
-            }).then(r => {
-                if (r == "DELETE") return Ctrl.ZonasCRUD.delete(Z);
-                Ctrl.ZonasCRUD.update(r).then(() => {
-                    Rs.showToast("Zona actualizada");
-                });
-            });
-        };
+        Ctrl.editarZona = (Z) => {
+            console.log(Z);
+			$mdDialog.show( {
+				templateUrl: 'Frag/AdministracionGeneral.Zonas_ZonaEditorDiag',
+				controller: 'Zonas_ZonaEditorCtrl',
+				locals: { Zona: Z },
+				scope: Ctrl.$new()
+			});
+		}
+
+
+        // Ctrl.editarZona = Z => {
+        //     Ctrl.ZonasCRUD.dialog(Z, {
+        //         title: "Editar Zona" + Z.descripcion
+        //     }).then(r => {
+        //         if (r == "DELETE") return Ctrl.ZonasCRUD.delete(Z);
+        //         Ctrl.ZonasCRUD.update(r).then(() => {
+        //             Rs.showToast("Zona actualizada");
+        //         });
+        //     });
+        // };
 
         Ctrl.eliminarZona = Z => {
             Rs.confirmDelete({

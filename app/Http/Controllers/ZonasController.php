@@ -13,4 +13,9 @@ class ZonasController extends Controller
  		$CRUD = new CRUD('App\Models\Zona');
         return $CRUD->call(request()->fn, request()->ops);
  	}
+	 public function postObtener()
+	 {
+		 $Zona = Zona::All();
+		 return $Zona;
+	 } 
 }
