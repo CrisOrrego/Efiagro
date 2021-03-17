@@ -13,4 +13,10 @@ class LaboresController extends Controller
  		$CRUD = new CRUD('App\Models\Labor');
         return $CRUD->call(request()->fn, request()->ops);
 	 }
+
+	 public function postObtener()
+	{
+		$Labor = Labor::All();
+		return $Labor;
+	} 
 }
