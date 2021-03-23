@@ -19,13 +19,16 @@ angular.module('CRUDDialogCtrl', [])
 
 		angular.forEach(columns, function(F){
 			if(F.Default !== null){
-				var DefValue = angular.copy(F.Default);
+				var DefValue = angular.copy(F.Default);only
 				Ctrl.Obj[F.Field] = DefValue;
 			};
 
 			F.show = true;
 			if(config.only.length > 0){
 				F.show = Rs.inArray(F.Field, config.only);
+			};
+			if(config.except.length > 0){
+				F.show = !Rs.inArray(F.Field, config.except); 
 			};
 		});
 

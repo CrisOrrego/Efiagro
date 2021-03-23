@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Zona extends Model
 {
     use HasFactory;
-    protected $table = 'zonas_agroambientales';
+    protected $table = 'zonas';
     protected $guarded = ['id'];
     protected $appends = [];
 
@@ -32,5 +32,16 @@ class Zona extends Model
 
         ];
     }
+
+    public function scopeId($q, $id)
+    {
+        return $q->where('id', $id);
+    }
+
+    public function labores()
+    {
+        return $this->hasMany('App\Models\Labor', 'zona_id');
+    }
+
 
 }

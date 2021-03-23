@@ -9,6 +9,9 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
         var Ctrl = $scope;
         var Rs = $rootScope;
 
+        Ctrl.zona_select = null;
+        Ctrl.linea_lp_select = null;
+
         Ctrl.Salir = $mdDialog.cancel;
 
         Ctrl.LaboresCRUD = $injector.get("CRUD").config({
@@ -18,16 +21,25 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             order_by: ["-created_at"]
         });
 
-        Ctrl.getLabor = () => {
-            // Ctrl.LaboresCRUD.setScope('id', Rs.Usuario.Labor_id);
+        Ctrl.getLabores = () => {
+            console.log(Ctrl.zona_select);
+            console.log(Ctrl.linea_lp_select);
+            Ctrl.LaboresCRUD.setScope('lazona', Ctrl.zona_select);
+            Ctrl.LaboresCRUD.setScope('lalineaproductiva', Ctrl.linea_lp_select);
+            
             Ctrl.LaboresCRUD.get().then(() => {
-                Ctrl.Labor = Ctrl.LaboresCRUD.rows[0];
-                
+                               
             });
         };
 
+        // $scope.update = function() {
+        //     // Ctrl.LaboresCRUD.setScope('lazona', Rs.Labor.zona_id);
+        //     $scope.item.size.code = $scope.selectedItem.code
+        //     // use $scope.selectedItem.code and $scope.selectedItem.name here
+        //  }
+
        
-        Ctrl.getLabor();
+        // Ctrl.getLabor();
 
         Ctrl.nuevaLabor = () => {
             Ctrl.LaboresCRUD.dialog({
@@ -41,25 +53,13 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
         };
         Ctrl.editarLabor = (L) => {
             console.log(L);
-			$mdDialog.show( {
+			$mdDialog.show( { 
 				templateUrl: 'Frag/AdministracionGeneral.Labores_LaborEditorDiag',
 				controller: 'Labores_LaborEditorCtrl',
 				locals: { Labor: L },
 				scope: Ctrl.$new()
 			});
 		}
-
-
-        // Ctrl.editarLabor = L => {
-        //     Ctrl.LaboresCRUD.dialog(L, {
-        //         title: L.labor
-        //     }).then(r => {
-        //         if (r == "DELETE") return Ctrl.LaboresCRUD.delete(L);
-        //         Ctrl.LaboresCRUD.update(r).then(() => {
-        //             Rs.showToast("Labor actualizada");
-        //         });
-        //     });
-        // };
 
         Ctrl.eliminarLabor = L => {
             Rs.confirmDelete({
@@ -70,16 +70,28 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             });
         };
 
-        
-		
-        // Ctrl.abrirOrganigrama = L => {
-        //     // console.log(O);
-        //     $mdDialog.show({
-        //         templateUrl: "Frag/GestionLabor.OrganigramaDiag",
-        //         controller: "LaborDiagCtrl",
-        //         locals: { Labor: L },
-        //         fullscreen: false
-        //     });
-        // };
+        Ctrl.obtener_lp = () =>{
+            return $http.post('api/lineasproductivas/obtener', {}).then(r => {
+                Ctrl.lineas_productivas = r.data;
+                Ctrl.linea_lp_select = Ctrl.lineas_productivas[0].id;
+                
+            });
+
+        }
+        Ctrl.obtener_zonas = ()=>{
+            return $http.post('api/zonas/obtener', {}).then(r => {
+                Ctrl.zonas = r.data;
+                Ctrl.zona_select = Ctrl.zonas[0].id;
+                
+            });
+        }
+
+        Promise.all([
+            Ctrl.obtener_lp(),
+            Ctrl.obtener_zonas()
+        ]).then(() => {
+            Ctrl.getLabores();
+        });
+	
     }
 ]);

@@ -42,4 +42,8 @@ class LineaProductiva extends Model
                 $model->attributes['palabras_clave'] = implode(',', $model->attributes['palabras_clave']);
         });
     }
+    public function labores()
+    {
+        return $this->hasMany('App\Models\Labor', 'linea_productiva_id');
+    }
 }

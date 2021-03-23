@@ -33,7 +33,12 @@ angular.module('Labores_LaborEditorCtrl', [])
 		$http.post('api/lineasproductivas/obtener', {}).then(r => {
 			Ctrl.lineas_productivas = r.data;
 			
-		    });
+		});
+
+		$http.post('api/zonas/obtener', {}).then(r => {
+			Ctrl.zonas = r.data;
+			
+		});
 
 	}
 ]);
