@@ -56,7 +56,7 @@ angular.module('UsuariosCtrl', [])
                         Rs.showToast(`Usuario ${ U.nombres } actualizado`);
                     });
                 });
-            };
+            }; 
 
             // Modal para la modificación de la clave de acceso
             Ctrl.claveUsuario = (U) => {

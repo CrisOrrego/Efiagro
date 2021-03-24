@@ -72,7 +72,7 @@ class Usuario extends Model
     public static function boot()
     {
         parent::boot();
-        // encriptamos el documento de identidad para obtener el valor de la clave
+        // encriptamos el documento de identidad para obtener el valor de la clave.
         self::creating(function($model){
             $model->attributes['contrasena'] = Crypt::encryptString($model->attributes['documento']);
         });

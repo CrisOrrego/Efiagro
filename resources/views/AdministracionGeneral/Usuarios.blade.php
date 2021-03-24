@@ -40,13 +40,11 @@
                         <tr md-row ng-repeat="U in UsuariosCRUD.rows | filter:filtroBuscar ">
                             <td md-cell>
                                 <md-button class="md-icon-button" ng-click="editarUsuario(U)">
-                                    <md-icon md-font-icon="fa-edit"></md-icon>
-                                </md-button>
+                                    <md-icon md-font-icon="fa-edit"></md-icon></md-button>
                             </td>
                             <td md-cell>
                                 <md-button class="md-icon-button" ng-click="claveUsuario(U)">
-                                    <md-icon md-font-icon="fa-key"></md-icon>
-                                </md-button>
+                                    <md-icon md-font-icon="fa-key"></md-icon></md-button>
                             </td>
                             <td md-cell>@{{ U.tipo_documento }}</td>
                             <td md-cell>@{{ U.documento }}</td>
