@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Zona extends Model
 {
     use HasFactory;
-    protected $table = 'zonas_agroambientales';
+    protected $table = 'zonas';
     protected $guarded = ['id'];
     protected $appends = [];
 
