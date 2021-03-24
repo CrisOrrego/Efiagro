@@ -26,6 +26,11 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
             });
         };
 
+        Ctrl.getZonas = () => {
+            Ctrl.ZonasCRUD.get().then(() => {});
+            //Ctrl.nuevo();
+        };
+
         Ctrl.getZona();
 
         Ctrl.nuevaZona = () => {

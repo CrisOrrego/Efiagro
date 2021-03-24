@@ -14,7 +14,7 @@
 				<input type="text" ng-model="Labor.labor" placeholder="Titulo">
 			</md-input-container>
 		</div>
-
+       
         <div class="padding">   
             <md-input-container  >
                 <label>Frecuencia</label> 
@@ -27,6 +27,18 @@
                <md-input-container > 
                 <label>Margen</label> 
                 <input class="inputEditLabor" type="text" ng-model="Labor.margen">
+            </md-input-container>
+
+
+            <md-input-container >
+                <label>Zonas: @{{Labor.zona_id}}</label>
+                <mat-form-field appearance="fill">
+                <md-select ng-model="Labor.zona_id">
+                <md-option ng-repeat="za in zonas" ng-value="za.id">
+                    @{{za.descripcion}}
+                </md-option>
+                </mat-select>
+                </mat-form-field>
             </md-input-container>
            
             <md-input-container >

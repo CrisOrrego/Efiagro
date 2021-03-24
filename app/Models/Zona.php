@@ -33,4 +33,15 @@ class Zona extends Model
         ];
     }
 
+    public function scopeId($q, $id)
+    {
+        return $q->where('id', $id);
+    }
+
+    public function labores()
+    {
+        return $this->hasMany('App\Models\Labor', 'zona_id');
+    }
+
+
 }

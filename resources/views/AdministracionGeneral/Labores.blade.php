@@ -3,6 +3,24 @@
 	<div layout class="padding-0-10" layout-align="center center">
 		<div class="md-title">Gestion de Labores</div>
 		<span flex></span>
+	
+		<div>
+			<md-input-container >
+                <md-select ng-model="zona_select" ng-change="getLabores()">
+                	<md-option ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
+                </mat-select>
+            </md-input-container>
+           
+            <md-input-container >
+                
+                <md-select ng-model="linea_lp_select" ng-change="getLabores()" >
+                	<md-option ng-repeat="lp in lineas_productivas" ng-value="lp.id">@{{lp.nombre}}</md-option>
+                </mat-select>
+            </md-input-container>
+
+		</div>
+		<span flex></span>
+
 		<md-input-container class="no-margin md-icon-float" md-no-float>
 			<md-icon md-font-icon="fa-search fa-fw"></md-icon>
 			<input type="text" ng-model="filterLabores" placeholder="Buscar...">
@@ -20,6 +38,7 @@
 	      <tr md-row>
 			<th md-column>ID</th>
 	        <th md-column>Labor</th>
+			<th md-column>Zona</th>
 			<th md-column>Linea Productiva</th>
 	        <th md-column>Frecuencia</th>
 	        <th md-column>Semana de Inicio</th>
@@ -31,6 +50,7 @@
 			<tr md-row ng-repeat="L in LaboresCRUD.rows | filter:filterLabores">
 			<td md-cell>@{{ L.id }} </td>
 	        <td md-cell>@{{ L.labor }}</td>
+			<td md-cell>@{{ L.zona_id }}</td>
 			<td md-cell>@{{ L.linea_productiva_id }} </td> 
             <td md-cell><span>CADA</span> <b>@{{ L.frecuencia }}</b> <span>SEMANAS</span></td>
             <td md-cell>@{{ L.semana_inicio }}</td>
