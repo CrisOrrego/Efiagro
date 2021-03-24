@@ -34,33 +34,34 @@ angular.module('App', [
     'MainCtrl',
     'HomeCtrl',
 
+    // Mi tecnico Amigo
     'MiTecnicoAmigoCtrl',
-    'ArticuloDiagCtrl',
-    'SolicitudesDetalleCtrl',
-
-    'UsuariosCtrl',
     'ArticulosCtrl',
+    'ArticuloDiagCtrl',
     'Articulos_ArticuloEditorCtrl',
+    'SolicitudesDetalleCtrl',
     'CasosCtrl', // Luigi
     'Casos_NovedadesCtrl', // Luigi
-    'LineasProductivasCtrl', // Luigi
-    //'MitecnicoAmigoInicioCtrl', // Luigi
-    //Inicio Dev Angélica
-    'ContactoCtrl',
-    //Fin Dev Angélica
+    //'MitecnicoAmigoInicioCtrl', // Luigi // Se inactiva pq se cambia el modelo de visualizacion
 
+    // Gestion de la Organizacion
     'OrganizacionesCtrl',
     'OrganizacionDiagCtrl',
-
+    //'UsuariosCtrl',
+    
+    // Mi finca
     'FincasCtrl',
     'FincaDiagCtrl',
+
+    // Administracion General
+    'ZonasCtrl',
+    'LineasProductivasCtrl', // Luigi
+    'ContactoCtrl',
+    'LaboresCtrl',
+    'UsuariosCtrl', // Luigi
+    
+    // Pendientes
     'TareaDiagCtrl',
     'PerfilesCtrl', // Luigi
-
-    // 'PerfilesCtrl',
-    // Zonas Agroambientales
-    'ZonasCtrl',
-    'LaboresCtrl',
-
 
 ]);

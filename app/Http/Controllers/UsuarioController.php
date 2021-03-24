@@ -19,7 +19,7 @@ class UsuarioController extends Controller
     public function postLogin()
     {
     	$Credenciales = request('Credenciales');
-    	$Usuario = Usuario::where('correo', $Credenciales['Correo'])->orWhere('cedula', $Credenciales['Correo'])->first();
+    	$Usuario = Usuario::where('correo', $Credenciales['Correo'])->orWhere('documento', $Credenciales['Correo'])->first();
     	if($Usuario){
     		return Crypt::encrypt($Usuario->id);
     	}else{

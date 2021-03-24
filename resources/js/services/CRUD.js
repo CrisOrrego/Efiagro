@@ -146,6 +146,7 @@ angular.module('CRUD', [])
 					with_delete: true,
 					delete_title: '',
 					only: [],
+					except: [],
 					buttons: [],
 				};
 
