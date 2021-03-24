@@ -11,7 +11,7 @@ angular.module('App', [
     'ngFileUpload',
     //'angular-loading-bar',
     //'angularResizable',
-    //'ui.utils.masks',
+    'ui.utils.masks',
     //'as.sortable',
     //'ngCsv',
     'angular-img-cropper',
@@ -70,5 +70,8 @@ angular.module('App', [
     'LotesCtrl',
     'Labores_LaborEditorCtrl',
 
+    'FondoRotatorio_CreditosCtrl', //CAOH
+    'FondoRotatorio_NuevoCreditoDiagCtrl', //CAOH
+    'CreditoSrv',
 
 ]);
