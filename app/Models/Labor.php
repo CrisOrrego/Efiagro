@@ -13,8 +13,15 @@ class Labor extends Model
     protected $guarded = ['id'];
     protected $appends = [];
 
+
+
     public function columns()
     {
+        $zonas = \App\Models\zona::all()->keyBy('id')->map(function($z){
+            return $z['zona'];
+        })->toArray();
+        // dd($zonas);
+
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
             ['labor',               'Labor:',                                           null, true, false, null, 255],
@@ -34,12 +41,12 @@ class Labor extends Model
         return $q->where('linea_productiva_id', $linea_productiva_id);
      }
 
-    public function zonas()
+    public function zona()
     {
-        return $this->belongsTo('App\Models\Labor', 'zona_id', 'id');
+        return $this->belongsTo('App\Models\Zona',  'zona_id');
     }
     public function lineaproductiva()
     {
-        return $this->belongsTo('App\Models\Labor', 'linea_productiva_id', 'id');
+        return $this->belongsTo('App\Models\LineaProductiva',  'linea_productivaid');
     }
 }
