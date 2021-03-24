@@ -44,7 +44,7 @@
                                 </md-button>
                             </td>
                             <td md-cell>
-                                <md-button class="md-icon-button" ng-click="editarUsuario(U)">
+                                <md-button class="md-icon-button" ng-click="claveUsuario(U)">
                                     <md-icon md-font-icon="fa-key"></md-icon>
                                 </md-button>
                             </td>

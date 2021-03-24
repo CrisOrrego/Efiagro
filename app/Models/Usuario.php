@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Arr;
-// use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Crypt;
 
 class Usuario extends Model
 {
@@ -15,7 +15,6 @@ class Usuario extends Model
 
     protected $table = 'usuarios';
     protected $guarded = ['id'];
-    //protected $appends = [ 'nombre' ];
 
     public function columns()
     {
@@ -23,6 +22,7 @@ class Usuario extends Model
         $tipodocumento = [
             'CC' => 'Cedula Ciudadania', 'CE' => 'Cedula Extranjeria', 'TI' => 'Tarjeta Identidad', 'PA' => 'Pasaporte', 'RC' => 'Registro Civil', 'NI' => 'NIT'
         ];
+        // Arreglo para la carga de los perfiles.
         $perfiles = \App\Models\Perfil::all()->keyBy('id')->map( function($p){
             return $p['perfil'];
         })->toArray();
@@ -37,13 +37,14 @@ class Usuario extends Model
             [ 'celular',        'Celular',          'string',   false,  false,  null, 45 ],
             [ 'perfil_id',      'Perfil',           'select',   true,   false,  null, 50, ['options' => $perfiles] ],
             [ 'organizacion_id','Organización',     'select',   false,  false,  null, 50 ],
-            [ 'finca_id',       'Finca',            'select',   false,  false,  null, 50 ]
+            [ 'finca_id',       'Finca',            'select',   false,  false,  null, 50 ],
+            [ 'contrasena',     'Contraseña',        null,      false,  false,  null, 50 ]
         ];
     }
 
+    // Obtener la organización por defecto de cada usuario
     public function scopeLaorganizacion( $q, $organizacion_id) {
         return $q->where('organizacion_id', $organizacion_id);
-        //laorganizacion
     }
 
     //Relaciones
@@ -60,7 +61,6 @@ class Usuario extends Model
     public function perfil()
     {
         return $this->belongsTo('App\Models\Perfil', 'perfil_id');
-        // return $this->hasMany('App\Models\Perfil');
     }
 
     public function getNombreAttribute()
@@ -68,15 +68,13 @@ class Usuario extends Model
     	return $this->nombres .' '. $this->apellidos;
     }
 
+    // Función para agregar un valor especial a un campo específico o varios campos.
     public static function boot()
     {
         parent::boot();
-
+        // encriptamos el documento de identidad para obtener el valor de la clave
         self::creating(function($model){
-            // dd(Crypt::encryptString($model->attributes['documento']));
-            // $model->attributes['contrasena'] = Crypt::encryptString($model->attributes['documento']);
-            $model->attributes['contrasena'] = $model->attributes['documento'];
-            // agregar encryp
+            $model->attributes['contrasena'] = Crypt::encryptString($model->attributes['documento']);
         });
     }
 
