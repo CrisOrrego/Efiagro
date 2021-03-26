@@ -1,5 +1,5 @@
-angular.module('UsuariosCtrl', [])
-.controller('UsuariosCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 
+angular.module('xxxUsuariosCtrl', [])
+.controller('xxxUsuariosCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 
 	function($scope, $rootScope, $http, $injector, $mdDialog) {
 
 		console.info('UsuariosCtrl');

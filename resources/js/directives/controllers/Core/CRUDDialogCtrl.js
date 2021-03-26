@@ -28,6 +28,7 @@ angular.module('CRUDDialogCtrl', [])
 				F.show = Rs.inArray(F.Field, config.only);
 			};
 			if(config.except.length > 0){
+				F.show = !Rs.inArray(F.Field, config.except);
 				F.show = !Rs.inArray(F.Field, config.except); 
 			};
 		});
