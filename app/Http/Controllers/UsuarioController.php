@@ -19,7 +19,7 @@ class UsuarioController extends Controller
     public function postLogin()
     {
     	$Credenciales = request('Credenciales');
-    	$Usuario = Usuario::where('correo', $Credenciales['Correo'])->orWhere('documento', $Credenciales['Correo'])->first();
+    	$Usuario = Usuario::where('correo', $Credenciales['Correo'])->orWhere('cedula', $Credenciales['Correo'])->first();
     	if($Usuario){
     		return Crypt::encrypt($Usuario->id);
     	}else{
@@ -44,7 +44,7 @@ class UsuarioController extends Controller
         $query = request('query');
         return Usuario::where('nombres',   'LIKE', "%$query%")
                     ->orWhere('apellidos', 'LIKE', "%$query%")
-                    ->orWhere('documento',    'LIKE', "$query%")
+                    ->orWhere('cedula',    'LIKE', "$query%")
                     ->get();
     }
 

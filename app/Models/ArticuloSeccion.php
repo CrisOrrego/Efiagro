@@ -24,7 +24,8 @@ class ArticuloSeccion extends Model
             [ 'indice',         'indice',       null,    false,  false, null,  100 ],
             [ 'tipo',  			'tipo',         null,    false,  false, null,  100 ],
             [ 'contenido',      'contenido',    null,    true,   false, null,  100 ],
-            [ 'ruta',           'ruta',         null,    true,   false, null,  100 ]
+            [ 'ruta',           'ruta',         null,    true,   false, null,  100 ],
+            //[ 'objeto',      	    'objeto',      null,    true,  false, null,  100 ],
         ];
     }
 
@@ -52,6 +53,7 @@ class ArticuloSeccion extends Model
     public function getContenidoAttribute($contenido)
     {
         if($this->tipo == 'Tabla') return json_decode($contenido);
+        //if($contenido == 'null') $contenido = '';
         return $contenido;
     }
 

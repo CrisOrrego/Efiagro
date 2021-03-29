@@ -35,15 +35,15 @@ angular.module('App', [
     'MainCtrl',
     'HomeCtrl',
 
-    // Mi tecnico Amigo
     'MiTecnicoAmigoCtrl',
-    'ArticulosCtrl',
     'ArticuloDiagCtrl',
-    'Articulos_ArticuloEditorCtrl',
     'SolicitudesDetalleCtrl',
+
+    'UsuariosCtrl',
+    'ArticulosCtrl',
+    'Articulos_ArticuloEditorCtrl',
     'CasosCtrl', // Luigi
     'Casos_NovedadesCtrl', // Luigi
-    //'MitecnicoAmigoInicioCtrl', // Luigi // Se inactiva pq se cambia el modelo de visualizacion
     'LineasProductivasCtrl', // Luigi
     //'MitecnicoAmigoInicioCtrl', // Luigi
     //Inicio Dev Angélica
@@ -53,25 +53,17 @@ angular.module('App', [
     'ListaEditDialogCtrl',
     //Fin Dev Angélica
 
-    // Gestion de la Organizacion
     'OrganizacionesCtrl',
     'OrganizacionDiagCtrl',
-    //'UsuariosCtrl',
-    
-    // Mi finca
+
     'FincasCtrl',
     'FincaDiagCtrl',
-
-    // Administracion General
-    'ZonasCtrl',
-    'LineasProductivasCtrl', // Luigi
-    'ContactoCtrl',
-    'LaboresCtrl',
-    'UsuariosCtrl', // Luigi
-    
-    // Pendientes
     'TareaDiagCtrl',
     'PerfilesCtrl', // Luigi
+
+    // 'PerfilesCtrl',
+    // Zonas Agroambientales
+    'ZonasCtrl',
     'Zonas_ZonaEditorCtrl',
     'LaboresCtrl',
     'LaboresDiagCtrl',

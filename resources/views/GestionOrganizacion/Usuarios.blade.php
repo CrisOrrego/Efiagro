@@ -1,4 +1,4 @@
-<div id="GestionUsuarios" flex layout=column ng-controller="xxxUsuariosCtrl">
+<div id="GestionUsuarios" flex layout=column ng-controller="UsuariosCtrl">
 	
 	<div layout class="padding-0-10" layout-align="center center">
 		<div class="md-title margin-right-20">Gestión de Usuarios</div>
