@@ -7,7 +7,7 @@ angular.module('ConfiguracionCtrl', [])
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 		
-		var autoincrementals = ['Si', 'No'];
+		//var autoincrementals = ['Si', 'No'];
 
 		Ctrl.ListaCRUD = $injector.get('CRUD').config({ 
 			base_url: '/api/lista/listas',
@@ -27,26 +27,38 @@ angular.module('ConfiguracionCtrl', [])
 
 		Ctrl.getListas();
 
+		/*Ctrl.nuevoUsuario = () => {
+			Ctrl.UsuariosCRUD.dialog({}, {
+				title: 'Agregar Usuario',
+			}).then(r => {
+				Ctrl.UsuariosCRUD.add(r).then(() => {
+					Rs.showToast('Usuario creado');
+				});
+			});
+		}*/
+
 		Ctrl.nuevaLista = () => {
 
-			Rs.BasicDialog({
+			Ctrl.ListaCRUD.dialog({}, {
+			//Rs.BasicDialog({
 				Flex: 30,
 				Title: 'Crear Nueva Lista',
-				Fields: [
+				/*Fields: [
 					{ Nombre: 'lista',  Value: '', Type: 'textarea', Required: true},
 					{ Nombre: 'autoincremental', Value: autoincrementals[0], Type: 'simplelist', List: autoincrementals, Required: true }
 				],
-				Confirm: { Text: 'Crear Lista' },
+				Confirm: { Text: 'Crear Lista' },*/
 			}).then(r => {
-				if(!r) return;
-				debugger;
-
+				Ctrl.ListaCRUD.add(r).then(() => {
+					Rs.showToast('Lista creada');
+				});
+				/*if(!r) return;
 				var NuevaLista = {
 					lista: r.Fields[0].Value,
 					autoincremental: r.Fields[1].Value === 'Si' ? 1:0
 				};
 
-				Ctrl.ListaCRUD.add(NuevaLista);
+				Ctrl.ListaCRUD.add(NuevaLista);*/
 			});
 
 		};

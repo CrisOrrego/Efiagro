@@ -61,8 +61,8 @@ class ListaController extends Controller
 		$listadetalle=ListaDetalle::findOrFail($req->id);
 		$id=$listadetalle->lista_id;
 		$listadetalle->delete();
-		$L = Lista::with ("listadetalle")->findOrFail($id); 
-		return $L;
+		/*$L = Lista::with ("listadetalle")->findOrFail($id); 
+		return $L;*/
 	}
 	
 }

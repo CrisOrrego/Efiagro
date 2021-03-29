@@ -24,10 +24,19 @@ angular.module('ListaEditDialogCtrl', [])
 
 		Ctrl.addListadetalle = () => {
 			if(!Ctrl.Lista.listadetalle || Ctrl.Lista.listadetalle.length===0 || Ctrl.Lista.listadetalle [Ctrl.Lista.listadetalle.length-1].descripcion.length>0){
-				Ctrl.Lista.listadetalle.push({
+				let codigo = 0;
+				if(Ctrl.Lista.autoincremental){
+					if(!Ctrl.Lista.listadetalle || Ctrl.Lista.listadetalle.length===0){
+						codigo = 1;
+
+					}else{
+						codigo = parseInt(Ctrl.Lista.listadetalle[Ctrl.Lista.listadetalle?.length-1].codigo) + 1;
+					}
+				}
+				Ctrl.Lista.listadetalle.push({ //Cuando queramos que no se repitan datos guardados en base de datos
 					id: -1,
 					lista_id: Ctrl.Lista.id,
-					codigo: Ctrl.Autoincremental ? Ctrl.Lista.listadetalle?.length+1: '',
+					codigo: Ctrl.Autoincremental ? codigo : '',
 					descripcion: '',
 					op1: '',
 					op2: '',
@@ -59,17 +68,24 @@ angular.module('ListaEditDialogCtrl', [])
 
 		
 		Ctrl.eliminarLista = (C) => {
-			Rs.confirmDelete({
-				Title: '¿Eliminar elemento de la lista?',
-			}).then(R => {
-				$http.post('api/lista/delete', {id:C.id}).then((r)=>{
-					Ctrl.Lista = r.data;
-					console.log(Ctrl.Lista);
-				})
+			if(C.id==-1){
+				const index = Ctrl.Lista.listadetalle.findIndex(item => item.codigo === C.codigo);
+				Ctrl.Lista.listadetalle.splice(index, 1);
+			}else{
+				Rs.confirmDelete({
+					Title: '¿Eliminar elemento de la lista?',
+				}).then(R => {
+					$http.post('api/lista/delete', {id:C.id}).then((r)=>{
+						const index = Ctrl.Lista.listadetalle.findIndex(item => item.codigo === C.codigo);
+						Ctrl.Lista.listadetalle.splice(index, 1);
+					})
+	
+					/*if(!R) return;
+					Ctrl.ListaCRUD.delete(L);*/
+				});
 
-				/*if(!R) return;
-				Ctrl.ListaCRUD.delete(L);*/
-			});
+			}
+			//revisar boton borrar, cancelar e igual borra
 		}
 
 
