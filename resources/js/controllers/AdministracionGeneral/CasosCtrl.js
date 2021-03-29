@@ -15,6 +15,11 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
             "Contar Experiencia"
         ];
 
+        Ctrl.tiposCasos = TiposCasos;
+        Ctrl.filterTipo = "";
+        Ctrl.filterAsociado = "";
+        Ctrl.filterLlevacaso = "";
+
         Ctrl.CasosCRUD = $injector.get("CRUD").config({
             base_url: "/api/casos/casos",
             limit: 1000,
@@ -34,7 +39,7 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
         Ctrl.getCasos = () => {
             Promise.all([Ctrl.UsuariosCRUD.get()]).then(() => {
                 Ctrl.CasosCRUD.get().then(() => {
-                    //Ctrl.novedadesCaso(Ctrl.CasosCRUD.rows[1]);
+                	Ctrl.Casoscopy = Ctrl.CasosCRUD.rows.slice();
                 });
             });
         };
@@ -82,6 +87,7 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
                 };
 
                 Ctrl.CasosCRUD.add(NuevoCaso);
+                //Ctrl.Casoscopy.add(NuevoCaso);
             });
         };
 
@@ -153,5 +159,24 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
             });
         };
         // Finaliza codigo Luigi
+
+        //INICIO DEV ANGÉLICA
+        Ctrl.filterCaso = () => {
+            //Filtro de tipo de caso
+			Ctrl.Casoscopy = Ctrl.CasosCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
+			if (Ctrl.filterTipo && Ctrl.filterTipo.length > 0){ //quiero que se haya digitado alguna cosa en el campo
+				Ctrl.Casoscopy = Ctrl.Casoscopy.filter(caso => caso.tipo === Ctrl.filterTipo);
+			}
+            //Filtro para asociado
+			if (Ctrl.filterAsociado && Ctrl.filterAsociado.length > 2){
+				//toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+				Ctrl.Casoscopy = Ctrl.Casoscopy.filter(caso => caso.solicitante.nombre.toUpperCase().indexOf(Ctrl.filterAsociado.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+			}
+            //Filtro para quien lleva el caso
+			if (Ctrl.filterLlevacaso && Ctrl.filterLlevacaso.length > 2){
+				//toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+				Ctrl.Casoscopy = Ctrl.Casoscopy.filter(caso => caso.asignados.toUpperCase().indexOf(Ctrl.filterLlevacaso.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+			}
+        }
     }
 ]);
