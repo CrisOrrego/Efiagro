@@ -16,15 +16,19 @@
 					<label>Filtros de búsqueda</label>
 						
 					<mat-form-field appearance="fill">
-						<md-select ng-model="idLineaproductiva" ng-change="filterArticulos()" placeholder="Línea Productiva">
-							<md-option ng-value="lp">
-								Todos las líneas
-							</md-option>
-							<md-option ng-repeat="lp in lineas_productivas" ng-value="lp.id">
-								@{{lp.nombre}}
-							</md-option>
-						</mat-select>
-					</mat-form-field>
+					
+					<md-input-container>
+						<label>Lineas productivas</label>
+							<md-select ng-model="idLineaproductiva" ng-change="filterArticulos()" placeholder="Línea Productiva">
+								<md-option ng-value="lp">
+									Todos las líneas
+								</md-option>
+								<md-option ng-repeat="lp in lineas_productivas" ng-value="lp.id">
+									@{{lp.nombre}}
+								</md-option>
+							</mat-select>
+						</mat-form-field>
+					</md-input-container>
 
 					<md-input-container>
 						<label>Título</label>
