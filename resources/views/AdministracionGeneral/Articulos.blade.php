@@ -8,32 +8,27 @@
 		</md-button>
 	</div>
 
-	<md-card flex class="no-margin-top">
-	<md-table-container class="border-bottom">
-	  <table md-table>
-	    <thead md-head>
-	      <tr md-row>
-	        <th md-column></th>
-	        <th md-column>Titulo</th>
-	        <th md-column>Autor</th>
-	        <th md-column>Creado</th>
-	        <th md-column>Actualizado</th>
-	      </tr>
-	    </thead>
-	    <tbody md-body>
-	      <tr md-row ng-repeat="A in ArticulosCRUD.rows">
-	        <td md-cell><md-button class="md-icon-button" ng-click="editarArticulo(A)">
-	        	<md-icon md-font-icon="fa-edit"></md-icon>
-	        </md-button></td>
-	        <td md-cell>@{{ A.titulo }}</td>
-	        <td md-cell>@{{ A.autor.nombre }}</td>
-	        <td md-cell>@{{ A.created_at }}</td>
-	        <td md-cell>@{{ A.updated_at }}</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	</md-table-container>
-	</md-card>
+	<div class="padding-0-10" layout flex layout-align="center" >
+		<div layout=column class="padding-10-10">
+			<md-card layout=column class="no-margin-top mxw230">
+				<div class="padding-20" layout=column>
+						
+					<label>Filtros de búsqueda</label>
+						
+					<mat-form-field appearance="fill">
+					
+					<md-input-container>
+						<label>Lineas productivas</label>
+							<md-select ng-model="idLineaproductiva" ng-change="filterArticulos()" placeholder="Línea Productiva">
+								<md-option ng-value="lp">
+									Todos las líneas
+								</md-option>
+								<md-option ng-repeat="lp in lineas_productivas" ng-value="lp.id">
+									@{{lp.nombre}}
+								</md-option>
+							</mat-select>
+						</mat-form-field>
+					</md-input-container>
 
 </div>
 
