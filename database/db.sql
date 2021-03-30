@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-03-2021 a las 04:59:18
+-- Tiempo de generación: 30-03-2021 a las 02:20:47
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -47,7 +47,7 @@ INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`
 (1, 1, '5 formas de evitar la roya en su cultivo', 'roya,cultivo,formas', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-22 23:17:59'),
 (2, 2, 'Ultimas guias de la OMS para el cuidado de sus vacas', 'oms,cuidado', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-12 20:07:09'),
 (3, 3, 'Mauris dapibus non formas nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', 'morbi,finibus,formas', 'Activo', '', 2, '0000-00-00 00:00:00', '2021-03-22 23:17:00'),
-(4, 2, '3 nuevas semillas de platano', 'platano,semillas,sed,otra', 'Activo', NULL, 1, '2020-11-20 01:52:22', '2021-03-12 20:19:07');
+(4, 3, '3 nuevas semillas de platano', 'platano,semillas,sed,otra,más', 'Activo', NULL, 1, '2020-11-20 01:52:22', '2021-03-26 20:18:11');
 
 -- --------------------------------------------------------
 
@@ -116,7 +116,7 @@ CREATE TABLE `casos` (
 --
 
 INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Como se maneja estooo', 'Consulta General', '[]', '2020-12-22 02:13:35', '2021-01-11 00:44:03'),
+(1, 1, 'Como se maneja estooo', 'Consulta General', '[Angelica]', '2020-12-22 02:13:35', '2021-01-11 00:44:03'),
 (3, 1, 'Esta es un caso', 'Consulta General', '[]', '2021-01-20 21:18:15', '2021-01-20 21:18:15'),
 (4, 1, 'Nueva', 'Consulta General', '[]', '2021-01-21 20:38:32', '2021-01-21 20:38:32'),
 (5, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-06 14:45:30', '2021-02-06 14:45:30'),
@@ -142,7 +142,7 @@ INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `cre
 (25, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-10 20:16:52', '2021-02-10 20:16:52'),
 (26, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 20:16:57', '2021-02-10 20:16:57'),
 (27, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:17:03', '2021-02-10 20:17:03'),
-(28, 1, 'Cosecha exitosa', 'Contar Experiencia', '[]', '2021-02-19 20:08:41', '2021-02-19 20:08:41'),
+(28, 2, 'Cosecha exitosa', 'Contar Experiencia', '[]', '2021-02-19 20:08:41', '2021-03-29 21:52:03'),
 (29, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-03-11 08:36:27', '2021-03-11 08:36:27'),
 (30, 1, 'Boton Contacto', 'SMS', '[]', '2021-03-11 08:36:35', '2021-03-11 08:36:35'),
 (31, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-03-11 08:36:45', '2021-03-11 08:36:45'),
@@ -9705,7 +9705,8 @@ INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido
 (167, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224917.jpg', NULL, NULL, 1, NULL, '2021-03-16 03:49:17', '2021-03-16 03:49:17'),
 (168, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224932.jpg', NULL, NULL, 1, NULL, '2021-03-16 03:49:32', '2021-03-16 03:49:32'),
 (169, 8, '<p>Ota</p>', 'files/muro_media/8/20210315231555.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:15:55', '2021-03-16 04:15:55'),
-(170, 8, '<p>FFFF</p>', 'files/muro_media/8/20210315235538.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:55:39', '2021-03-16 04:55:39');
+(170, 8, '<p>FFFF</p>', 'files/muro_media/8/20210315235538.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:55:39', '2021-03-16 04:55:39'),
+(171, 8, '<p>Hola</p>', 'files/muro_media/8/20210326151303.jpg', NULL, NULL, 1, NULL, '2021-03-26 20:13:04', '2021-03-26 20:13:04');
 
 -- --------------------------------------------------------
 
@@ -9809,7 +9810,8 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (19, 'Administración General', 'Contacto', '2021-03-01 12:28:26', '2021-03-01 12:28:26'),
 (20, 'Administración General', 'Perfiles', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
 (21, 'Administración General', 'Configuracion', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
-(22, 'Fondo Rotatorio', 'Créditos', '2021-03-23 23:25:24', '2021-03-23 23:25:24');
+(22, 'Fondo Rotatorio', 'Créditos', '2021-03-23 23:25:24', '2021-03-23 23:25:24'),
+(23, 'Administración General', 'Usuarios', '2021-03-14 07:12:13', '2021-03-14 07:12:13');
 
 -- --------------------------------------------------------
 
@@ -9819,14 +9821,16 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 
 CREATE TABLE `usuarios` (
   `id` int(10) NOT NULL,
+  `tipo_documento` varchar(2) NOT NULL,
+  `cedula` varchar(100) NOT NULL,
   `nombres` varchar(100) NOT NULL,
   `apellidos` varchar(100) NOT NULL,
-  `cedula` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `rol_id` int(11) DEFAULT NULL,
+  `celular` varchar(30) DEFAULT NULL,
+  `perfil_id` int(5) DEFAULT NULL,
   `organizacion_id` int(11) DEFAULT NULL,
   `finca_id` int(10) DEFAULT NULL,
-  `contrasena` varchar(255) NOT NULL,
+  `contrasena` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -9836,10 +9840,12 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `rol_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Christian Alejandro', 'Orregos Herrera', '1093217141', 'info@mbrain.co', 0, 8, 5, '', '0000-00-00 00:00:00', '2021-01-12 20:59:52', NULL),
-(2, 'Miguel', 'Herrera', '999', 'miguel@agregandovalor.com', 0, NULL, NULL, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL),
-(3, 'Pepito', 'Perez', '1093217142', 'pepito@mbrain.co', 0, NULL, NULL, '', '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18');
+INSERT INTO `usuarios` (`id`, `tipo_documento`, `cedula`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'CC', '12345678', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', NULL, 1, 8, 5, NULL, '0000-00-00 00:00:00', '2021-03-26 20:58:34', NULL),
+(2, '', '', 'Miguel', 'Herrera', 'miguel@agregandovalor.com', '', 0, NULL, NULL, '', '0000-00-00 00:00:00', '2021-03-24 21:11:43', NULL),
+(3, '', '', 'Pepito', 'Perez', 'pepito@mbrain.co', '', 0, NULL, NULL, '', '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18'),
+(4, 'CC', '1115467893', 'Angel', 'Herrera', 'migangel@utp.edu.co', '3105544852', 1, 8, NULL, 'eyJpdiI6InhTMHExOXZMM1lSMDNMQXpZK2F2Y2c9PSIsInZhbHVlIjoidU10SSt0am9PNHlPVEk3K1dtbW9VUT09IiwibWFjIjoiOGRkOGIwMGFkNWY1NzhlNWMzOTdmZjliZDY3MTkzNzhmMjJkNjBkNTIzNGI5MDNlMzA2MmY4NzYwZjVjYzlmZiJ9', '2021-03-26 19:24:23', '2021-03-26 19:25:13', NULL),
+(5, 'TI', '0000', 'Nuevo', 'Apen', 'nuevoco@gmail.com', '32134343', 2, 8, NULL, 'eyJpdiI6ImhrZGZGdEw3RkZwZ2FtckZBVXhNbVE9PSIsInZhbHVlIjoiYnpYRW9ZRFJKOWZva0NLaGJoOUdxUT09IiwibWFjIjoiYWRkYjZmOTM3ZThlNmMzM2JhZmU2YzUyOTdjYWU2ZjkyZTg4MWI2MWIzZTg2MjNiNTIxODNhMTJlNTAxMmZiYyJ9', '2021-03-26 19:40:04', '2021-03-26 19:40:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -10138,7 +10144,7 @@ ALTER TABLE `organizaciones`
 -- AUTO_INCREMENT de la tabla `organizaciones_muro_secciones`
 --
 ALTER TABLE `organizaciones_muro_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
@@ -10168,13 +10174,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `zonas`
