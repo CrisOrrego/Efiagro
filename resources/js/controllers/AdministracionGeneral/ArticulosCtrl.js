@@ -57,6 +57,16 @@ angular.module('ArticulosCtrl', [])
 			});
 		}
 
+		//INICIO DEV ANGÉLICA ---> Filtro de búsqueda 
+		Ctrl.suppressSpecialCharacters = (word) => { // suprimir algunos caracteres especiales -  funcion para buscar con tiltes
+			return word.toLowerCase()
+			.replace("é", "e")
+			.replace("á", "a")
+			.replace("í", "i")
+			.replace("ó", "o")
+			.replace("ú", "u");
+		}
+
 		Ctrl.filterArticulos = () => {
 			//Filtro de linea productiva
 			Ctrl.Articuloscopy = Ctrl.ArticulosCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
@@ -66,7 +76,7 @@ angular.module('ArticulosCtrl', [])
 			//Filtro para autor
 			if (Ctrl.filterAutor && Ctrl.filterAutor.length > 2){
 				//toUpperCase() --> Para pasarlo a mayúscula
-				Ctrl.Articuloscopy = Ctrl.Articuloscopy.filter(articulo => articulo.autor.nombre.toUpperCase().indexOf(Ctrl.filterAutor.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+				Ctrl.Articuloscopy = Ctrl.Articuloscopy.filter(articulo => Ctrl.suppressSpecialCharacters(articulo.autor.nombre).indexOf(Ctrl.suppressSpecialCharacters(Ctrl.filterAutor))> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
 			}
 			//Filtro de palabras clave, los chips
 			if(Ctrl.filterKeys && Ctrl.filterKeys.length>0){
@@ -94,9 +104,9 @@ angular.module('ArticulosCtrl', [])
 			if (Ctrl.filterTitulo && Ctrl.filterTitulo.length > 2){
 				console.log(Ctrl.Articuloscopy);
 				//toUpperCase() --> Para pasarlo a mayúscula
-				Ctrl.Articuloscopy = Ctrl.Articuloscopy.filter(articulo => articulo.titulo.toUpperCase().indexOf(Ctrl.filterTitulo.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+				Ctrl.Articuloscopy = Ctrl.Articuloscopy.filter(articulo => Ctrl.suppressSpecialCharacters(articulo.titulo).indexOf(Ctrl.suppressSpecialCharacters(Ctrl.filterTitulo))> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
 			}
-		}
+		} //FIN  DEV ANGÉLICA
 
 
 	}

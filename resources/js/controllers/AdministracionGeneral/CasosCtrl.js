@@ -177,6 +177,6 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
 				//toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
 				Ctrl.Casoscopy = Ctrl.Casoscopy.filter(caso => caso.asignados.toUpperCase().indexOf(Ctrl.filterLlevacaso.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
 			}
-        }
+        } //FIN DEV ANGÉLICA
     }
 ]);
