@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-03-2021 a las 05:53:45
+-- Tiempo de generación: 24-03-2021 a las 04:59:18
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -44,9 +44,9 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`, `estado`, `permisos`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '5 formas de evitar la roya en su cultivo', 'roya,cultivo', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-12 20:06:53'),
+(1, 1, '5 formas de evitar la roya en su cultivo', 'roya,cultivo,formas', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-22 23:17:59'),
 (2, 2, 'Ultimas guias de la OMS para el cuidado de sus vacas', 'oms,cuidado', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-12 20:07:09'),
-(3, 3, 'Mauris dapibus non nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', 'morbi,finibus', 'Activo', '', 2, '0000-00-00 00:00:00', '2021-03-12 20:07:19'),
+(3, 3, 'Mauris dapibus non formas nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', 'morbi,finibus,formas', 'Activo', '', 2, '0000-00-00 00:00:00', '2021-03-22 23:17:00'),
 (4, 2, '3 nuevas semillas de platano', 'platano,semillas,sed,otra', 'Activo', NULL, 1, '2020-11-20 01:52:22', '2021-03-12 20:19:07');
 
 -- --------------------------------------------------------
@@ -234,6 +234,7 @@ INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_i
 CREATE TABLE `labores` (
   `id` int(11) NOT NULL,
   `labor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zona_id` int(11) NOT NULL,
   `linea_productiva_id` int(11) NOT NULL,
   `frecuencia` int(11) NOT NULL,
   `semana_inicio` int(11) DEFAULT NULL,
@@ -246,24 +247,25 @@ CREATE TABLE `labores` (
 -- Volcado de datos para la tabla `labores`
 --
 
-INSERT INTO `labores` (`id`, `labor`, `linea_productiva_id`, `frecuencia`, `semana_inicio`, `margen`, `created_at`, `updated_at`) VALUES
-(2, 'RESIEMBRA CON CABEZA DE TORO', 2, 1, NULL, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
-(3, 'APLICACIÓN MATERIA ORGANICA 300g', 3, 12, NULL, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
-(4, 'FERTILIZACION QUIMICA Y PLATEO', 1, 2, NULL, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
-(5, 'DESHOJE, CIRUGIA  Y PODA TEMPRANA', 2, 1, NULL, 2500, '2021-02-19 22:28:39', '2021-02-19 22:28:39'),
-(6, 'CONTROL SIGATOKA QUIMICO (Según evaluación) de 6 a 9:30 a.m.', 3, 0, NULL, 3000, '2021-02-19 22:29:04', '2021-02-19 22:29:04'),
-(7, 'CONTROL ARVENSES POR PARCHEO', 1, 3, NULL, 3800, '2021-02-19 22:29:51', '2021-02-19 22:29:51'),
-(8, 'DESHIJE Y ESTIMULO', 2, 6, NULL, 2000, '2021-02-19 22:30:20', '2021-02-19 22:30:20'),
-(9, 'CONTROL DE PICUDO - DESGUASQUE Y PINTURA', 3, 6, NULL, 2000, '2021-02-19 22:30:49', '2021-02-19 22:30:49'),
-(10, 'EMBOLSE PREMATURO Y ENCINTADO', 1, 1, NULL, 150, '2021-02-19 22:31:10', '2021-02-19 22:31:10'),
-(11, 'AMARRE O APUNTALADO', 2, 1, NULL, 150, '2021-02-19 22:31:35', '2021-02-19 22:31:35'),
-(12, 'DESMANE O DESFLORE', 3, 1, NULL, 150, '2021-02-19 22:31:54', '2021-02-19 22:31:54'),
-(13, 'COSECHA Y POSCOSECHA', 1, 1, NULL, 0, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
-(14, 'DESTRONQUE', 2, 1, NULL, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
-(15, 'REGISTRO DE LA INFORMACION', 3, 1, NULL, 0, '2021-02-19 22:34:48', '2021-02-19 22:34:48'),
-(16, 'NUEVA LABOR', 1, 3, 2, 55555, '2021-03-15 11:41:00', '2021-03-17 02:51:35'),
-(17, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 1, 1, NULL, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04'),
-(19, 'Aquiiiii', 3, 10, 10, 10, '2021-03-15 19:41:30', '2021-03-17 03:12:33');
+INSERT INTO `labores` (`id`, `labor`, `zona_id`, `linea_productiva_id`, `frecuencia`, `semana_inicio`, `margen`, `created_at`, `updated_at`) VALUES
+(2, 'RESIEMBRA CON CABEZA DE TORO', 1, 2, 1, NULL, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
+(3, 'APLICACIÓN MATERIA ORGANICA 300g', 2, 3, 12, NULL, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
+(4, 'FERTILIZACION QUIMICA Y PLATEO', 3, 1, 2, NULL, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
+(5, 'DESHOJE, CIRUGIA  Y PODA TEMPRANA', 2, 2, 1, NULL, 2500, '2021-02-19 22:28:39', '2021-02-19 22:28:39'),
+(6, 'CONTROL SIGATOKA QUIMICO (Según evaluación) de 6 a 9:30 a.m.', 2, 3, 0, NULL, 3000, '2021-02-19 22:29:04', '2021-02-19 22:29:04'),
+(7, 'CONTROL ARVENSES POR PARCHEO', 1, 1, 3, NULL, 3800, '2021-02-19 22:29:51', '2021-02-19 22:29:51'),
+(8, 'DESHIJE Y ESTIMULO', 2, 2, 6, NULL, 2000, '2021-02-19 22:30:20', '2021-02-19 22:30:20'),
+(9, 'CONTROL DE PICUDO - DESGUASQUE Y PINTURA', 3, 3, 6, NULL, 2000, '2021-02-19 22:30:49', '2021-02-19 22:30:49'),
+(10, 'EMBOLSE PREMATURO Y ENCINTADO', 1, 1, 1, NULL, 150, '2021-02-19 22:31:10', '2021-02-19 22:31:10'),
+(11, 'AMARRE O APUNTALADO', 2, 2, 1, NULL, 150, '2021-02-19 22:31:35', '2021-02-19 22:31:35'),
+(12, 'DESMANE O DESFLORE', 3, 3, 1, NULL, 150, '2021-02-19 22:31:54', '2021-02-19 22:31:54'),
+(13, 'COSECHA Y POSCOSECHA', 2, 1, 1, NULL, 0, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
+(14, 'DESTRONQUE', 1, 2, 1, NULL, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
+(15, 'REGISTRO DE LA INFORMACION', 2, 3, 1, NULL, 0, '2021-02-19 22:34:48', '2021-02-19 22:34:48'),
+(16, 'NUEVA LABOR', 3, 1, 3, 2, 55555, '2021-03-15 11:41:00', '2021-03-17 02:51:35'),
+(17, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 3, 1, 1, NULL, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04'),
+(19, 'Aquiiiii', 1, 2, 10, 10, 10, '2021-03-15 19:41:30', '2021-03-20 14:24:34'),
+(20, 'Mi nueva labor', 1, 1, 5, 6, 9, '2021-03-24 02:41:35', '2021-03-24 02:41:35');
 
 -- --------------------------------------------------------
 
@@ -9806,7 +9808,8 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (18, 'Mi Técnico Amigo', 'Solicitudes', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (19, 'Administración General', 'Contacto', '2021-03-01 12:28:26', '2021-03-01 12:28:26'),
 (20, 'Administración General', 'Perfiles', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
-(21, 'Administración General', 'Configuracion', '2021-01-17 23:25:24', '2021-01-17 23:25:24');
+(21, 'Administración General', 'Configuracion', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
+(22, 'Fondo Rotatorio', 'Créditos', '2021-03-23 23:25:24', '2021-03-23 23:25:24');
 
 -- --------------------------------------------------------
 
@@ -9841,10 +9844,10 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `cedula`, `correo`, `rol_i
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `zonas_agroambientales`
+-- Estructura de tabla para la tabla `zonas`
 --
 
-CREATE TABLE `zonas_agroambientales` (
+CREATE TABLE `zonas` (
   `id` int(11) NOT NULL,
   `linea_productiva_id` int(11) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
@@ -9864,14 +9867,14 @@ CREATE TABLE `zonas_agroambientales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `zonas_agroambientales`
+-- Volcado de datos para la tabla `zonas`
 --
 
-INSERT INTO `zonas_agroambientales` (`id`, `linea_productiva_id`, `descripcion`, `temperatura_min`, `temperatura_max`, `humedad_relativa_min`, `humedad_relativa_max`, `precipitacion_min`, `precipitacion_max`, `altimetria_min`, `altimetria_max`, `brillo_solar_min`, `brillo_solar_max`, `pendiente`, `created_at`, `updated_at`) VALUES
+INSERT INTO `zonas` (`id`, `linea_productiva_id`, `descripcion`, `temperatura_min`, `temperatura_max`, `humedad_relativa_min`, `humedad_relativa_max`, `precipitacion_min`, `precipitacion_max`, `altimetria_min`, `altimetria_max`, `brillo_solar_min`, `brillo_solar_max`, `pendiente`, `created_at`, `updated_at`) VALUES
 (1, 1, 'ZONA 1', 23, 0, 79, 0, 2094, 0, 1500, 2000, 1566, 0, 0, '2021-02-18 18:44:33', '2021-02-18 18:44:33'),
 (2, 2, 'ZONA 2', 22, 0, 77, 0, 2268, 0, 1300, 1500, 1224, 0, 0, '2021-02-18 18:45:16', '2021-02-18 18:45:16'),
 (3, 2, 'ZONA 3', 21, 0, 82, 0, 2261, 0, 0, 1300, 1511, 0, 0, '2021-02-18 18:45:51', '2021-03-17 04:44:41'),
-(5, 3, 'ZONA 4', 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, '2021-03-17 04:21:23', '2021-03-17 04:44:19');
+(4, 2, 'ZONA 4', 50, 50, 50, 50, 50, 50, 50, 10, 50, 50, 50, '2021-03-17 04:21:23', '2021-03-20 14:18:02');
 
 --
 -- Índices para tablas volcadas
@@ -9928,7 +9931,8 @@ ALTER TABLE `fincas`
 --
 ALTER TABLE `labores`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `linea_productiva_id` (`linea_productiva_id`);
+  ADD KEY `linea_productiva_id` (`linea_productiva_id`),
+  ADD KEY `zonas_id` (`zona_id`);
 
 --
 -- Indices de la tabla `lineas_productivas`
@@ -10042,9 +10046,9 @@ ALTER TABLE `usuarios`
   ADD KEY `finca_id` (`finca_id`);
 
 --
--- Indices de la tabla `zonas_agroambientales`
+-- Indices de la tabla `zonas`
 --
-ALTER TABLE `zonas_agroambientales`
+ALTER TABLE `zonas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `linea_productiva_id` (`linea_productiva_id`);
 
@@ -10092,7 +10096,7 @@ ALTER TABLE `fincas`
 -- AUTO_INCREMENT de la tabla `labores`
 --
 ALTER TABLE `labores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `lineas_productivas`
@@ -10164,7 +10168,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -10173,9 +10177,9 @@ ALTER TABLE `usuarios`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `zonas_agroambientales`
+-- AUTO_INCREMENT de la tabla `zonas`
 --
-ALTER TABLE `zonas_agroambientales`
+ALTER TABLE `zonas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -10220,13 +10224,14 @@ ALTER TABLE `casos_novedades`
 --
 ALTER TABLE `fincas`
   ADD CONSTRAINT `fincas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas_agroambientales` (`id`);
+  ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
 
 --
 -- Filtros para la tabla `labores`
 --
 ALTER TABLE `labores`
-  ADD CONSTRAINT `labores_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
+  ADD CONSTRAINT `labores_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`),
+  ADD CONSTRAINT `labores_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
 
 --
 -- Filtros para la tabla `listas_detalle`
@@ -10277,10 +10282,10 @@ ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`);
 
 --
--- Filtros para la tabla `zonas_agroambientales`
+-- Filtros para la tabla `zonas`
 --
-ALTER TABLE `zonas_agroambientales`
-  ADD CONSTRAINT `zonas_agroambientales_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
+ALTER TABLE `zonas`
+  ADD CONSTRAINT `zonas_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
