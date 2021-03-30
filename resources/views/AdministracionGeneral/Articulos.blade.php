@@ -30,6 +30,52 @@
 						</mat-form-field>
 					</md-input-container>
 
+					<md-input-container>
+						<label>Título</label>
+						<input ng-change="filterArticulos()" type="text" ng-model="filterTitulo" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
+					</md-input-container>
+
+					<md-input-container>
+						<label>Palabras clave</label>
+						<md-chips md-on-add="filterArticulos()" md-on-remove="filterArticulos()" ng-model="filterKeys" readonly="readonly" md-removable="removable">
+						</md-chips>
+					</md-input-container>
+
+					<md-input-container>
+						<label>Autor</label>
+						<input ng-change="filterArticulos()" type="text" ng-model="filterAutor" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
+					</md-input-container>
+				</div>
+			</md-card>
+		</div>
+
+		<md-card flex class="no-margin-top">
+		<md-table-container class="border-bottom">
+		<table md-table>
+			<thead md-head>
+			<tr md-row>
+				<th md-column></th>
+				<th md-column>Titulo</th>
+				<th md-column>Autor</th>
+				<th md-column>Creado</th>
+				<th md-column>Actualizado</th>
+			</tr>
+			</thead>
+			<tbody md-body>
+			<tr md-row ng-repeat="A in Articuloscopy">
+				<td md-cell><md-button class="md-icon-button" ng-click="editarArticulo(A)">
+					<md-icon md-font-icon="fa-edit"></md-icon>
+				</md-button></td>
+				<td md-cell>@{{ A.titulo }}</td>
+				<td md-cell>@{{ A.autor.nombre }}</td>
+				<td md-cell>@{{ A.created_at }}</td>
+				<td md-cell>@{{ A.updated_at }}</td>
+			</tr>
+			</tbody>
+		</table>
+		</md-table-container>
+		</md-card>
+	</div>
 </div>
 
 

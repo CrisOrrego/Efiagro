@@ -43,7 +43,7 @@
 					</tr>
 				</thead>
 				<tbody md-body>
-					<tr md-row ng-repeat="C in Lista.listadetalle">
+					<tr md-row ng-repeat="C in Lista.listadetalle"> 
 						<td md-cell>
 							<!--<md-button class="md-icon-button" ng-click="editarLista(C)">
 								<md-icon md-font-icon="fa-edit"></md-icon>
