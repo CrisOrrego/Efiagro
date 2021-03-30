@@ -27,6 +27,10 @@
                         <md-option ng-repeat="(k, Op) in Field.Options.options" ng-value="k">{{ Op }}</md-option>
                     </md-select>
 
+                    <md-switch ng-if="Field.Type == 'bool'" ng-model="Obj[Field.Field]" ng-required="Field.Required" ng-class="Field.Class" class="w100p">
+
+					</md-switch>
+					
                     <md-switch ng-if="Field.Type == 'bool'" ng-model="Obj[Field.Field]" ng-required="Field.Required" ng-class="Field.Class" class="w100p"></md-switch>
                 </md-input-container>
             </div>
