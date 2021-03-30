@@ -19,8 +19,8 @@ class Lista extends Model
     {
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
-            ['lista',            'lista',                   null, true, true, null, 100],
-            ['autoincremental',  'autoincremental',     'bool', true, false, null, 100],
+            ['lista',            'lista',               null, true, false, null, 100],
+            ['autoincremental',  'autoincremental',     null, true, false, null, 100],
         ];
     }
 
