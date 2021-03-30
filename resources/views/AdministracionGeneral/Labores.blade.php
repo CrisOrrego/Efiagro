@@ -53,7 +53,7 @@
 			<td md-cell>@{{ L.zona_id }}</td>
 			<td md-cell>@{{ L.linea_productiva_id }} </td> 
             <td md-cell><span>CADA</span> <b>@{{ L.frecuencia }}</b> <span>SEMANAS</span></td>
-            <td md-cell><span>SEMANA</span> <b>@{{ L.semana_inicio }}</td>
+            <td md-cell>@{{ L.semana_inicio }}</td>
             <td md-cell><b>@{{ L.margen }}</b> <span>SEMANAS</span></td>
 			<td md-cell>
 				<md-button class="md-icon-button" ng-click="editarLabor(L)">

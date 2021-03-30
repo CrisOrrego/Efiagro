@@ -38,14 +38,4 @@ class UsuarioController extends Controller
         return $Usuario;
     }
 
-
-    public function postBuscarUsuario()
-    {
-        $query = request('query');
-        return Usuario::where('nombres',   'LIKE', "%$query%")
-                    ->orWhere('apellidos', 'LIKE', "%$query%")
-                    ->orWhere('cedula',    'LIKE', "$query%")
-                    ->get();
-    }
-
 }
