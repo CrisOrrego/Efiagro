@@ -129,15 +129,24 @@ angular.module('MiTecnicoAmigoCtrl', [])
             // Novedad Caso :: Finaliza Luigi
 
             //INICIO DEV ANGÉLICA ---> Filtro de búsqueda 
+            Ctrl.suppressSpecialCharacters = (word) => { // funcion para buscar con tiltes
+                return word.toLowerCase().replace(" de ", " ")
+                .replace(" en ", " ")
+                .replace(" para ", " ")
+                .replace(" por ", " ")
+                .replace(" la ", " ")
+                .replace("é", "e")
+                .replace("á", "a")
+                .replace("í", "i")
+                .replace("ó", "o")
+                .replace("ú", "u")
+                .replace(" y ", " ");
+            }
             Ctrl.searchChange = function() {
                 let filtro = Ctrl.filtroArticulos;
                 if (!filtro) return Ctrl.Buscando = false;
-                filtro = filtro.toLowerCase().replace(" de ", " ")
-                    .replace(" en ", " ")
-                    .replace(" para ", " ")
-                    .replace(" por ", " ")
-                    .replace(" la ", " ")
-                    .replace(" y ", " ");
+                filtro = Ctrl.suppressSpecialCharacters(filtro);
+
 
                 if (filtro == "") return Ctrl.Buscando = false;
 
@@ -148,7 +157,8 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 Ctrl.Articulos.forEach(function(articulo) {
                     articulo.contador = 0;
                     keys.forEach(function(key) {
-                        if (articulo.titulo.toLowerCase().indexOf(key) > 0) {
+                        
+                        if (Ctrl.suppressSpecialCharacters(articulo.titulo).indexOf(key) > 0) {
                             articulo.contador++;
                         }
                     });
