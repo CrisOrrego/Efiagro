@@ -58,7 +58,7 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
                         List: Ctrl.UsuariosCRUD.rows,
                         Required: false,
                         Item_Val: "id",
-                        Item_Show: "nombre"
+                        Item_Show: "nombres"
                     },
                     {
                         Nombre: "Tipo de Caso",
@@ -103,7 +103,7 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
                         List: Ctrl.UsuariosCRUD.rows,
                         Required: false,
                         Item_Val: "id",
-                        Item_Show: "nombre"
+                        Item_Show: "nombres"
                     },
                     {
                         Nombre: "Tipo de Caso",

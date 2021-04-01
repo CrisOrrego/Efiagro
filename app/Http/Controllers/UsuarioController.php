@@ -19,7 +19,7 @@ class UsuarioController extends Controller
     public function postLogin()
     {
     	$Credenciales = request('Credenciales');
-    	$Usuario = Usuario::where('correo', $Credenciales['Correo'])->orWhere('cedula', $Credenciales['Correo'])->first();
+    	$Usuario = Usuario::where('correo', $Credenciales['Correo'])->orWhere('documento', $Credenciales['Correo'])->first();
     	if($Usuario){
     		return Crypt::encrypt($Usuario->id);
     	}else{
@@ -37,14 +37,23 @@ class UsuarioController extends Controller
 
         return $Usuario;
     }
+    // Medoto para la actualizacion solo de la clave del usuario.
+    public function postActualizarClave()
+    {
+        $usuario_id = request('usuario_id');
+        $contrasena = request('contrasena');
 
+        $usuario = Usuario::where('id', $usuario_id)->first();
+        $usuario->contrasena = Crypt::encrypt($contrasena);
+        $usuario->save();
+    }
 
     public function postBuscarUsuario()
     {
         $query = request('query');
         return Usuario::where('nombres',   'LIKE', "%$query%")
                     ->orWhere('apellidos', 'LIKE', "%$query%")
-                    ->orWhere('cedula',    'LIKE', "$query%")
+                    ->orWhere('documento',    'LIKE', "$query%")
                     ->get();
     }
 
