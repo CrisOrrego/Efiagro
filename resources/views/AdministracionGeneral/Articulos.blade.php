@@ -69,7 +69,7 @@
 					<md-icon md-font-icon="fa-edit"></md-icon>
 				</md-button></td>
 				<td md-cell>@{{ A.titulo }}</td>
-				<td md-cell>@{{ A.autor.nombre }}</td>
+				<td md-cell>@{{ A.autor.nombres }}</td>
 				<td md-cell>@{{ A.created_at }}</td>
 				<td md-cell>@{{ A.updated_at }}</td>
 			</tr>

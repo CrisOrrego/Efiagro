@@ -66,62 +66,9 @@
                         </div>
                         <div flex="">
 
-                            <script>
-                                var map;
-
-                                function initMap() {
-                                    map = new google.maps.Map(document.getElementById('map'), {
-                                        center: {
-                                            lat: 4.814922,
-                                            lng: -75.707020
-                                        },
-                                        mapTypeId: 'satellite',
-                                        zoom: 18,
-                                        disableDefaultUI: true
-                                    });
-                                    // Definir los puntos del Polígono
-                                    const GCCoords = [{
-                                            lat: 4.814954,
-                                            lng: -75.707070
-                                        },
-                                        {
-                                            lat: 4.814992,
-                                            lng: -75.706985
-                                        },
-                                        {
-                                            lat: 4.814894,
-                                            lng: -75.706993
-                                        },
-                                        {
-                                            lat: 4.814897,
-                                            lng: -75.707047
-                                        },
-                                    ];
-                                    // Construir el polígono.
-                                    const GClocation = new google.maps.Polygon({
-                                        paths: GCCoords,
-                                        strokeColor: "#FF0000",
-                                        strokeOpacity: 0.8,
-                                        strokeWeight: 3,
-                                        fillColor: "#00ff31",
-                                        fillOpacity: 0.35,
-                                    });
-                                    GClocation.setMap(map); // Asiganr el Polígono al mapa
-                                    var marker = new google.maps.Marker({
-                                        position: {
-                                            lat: 4.814922,
-                                            lng: -75.707020
-                                        },
-                                        map: map
-                                    })
-                                }
-
-                            </script>
-                            <script async defer
-                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjjB89k3h2YU7w4NTNQ6euTDtuQ8IeH7g&callback=initMap">
-                            </script>
-                            <div id="map" style="width: 100%;height: 242px;overflow: hidden;"></div>
-                            </md-card-content>
+<div mapa id="map" style="width: 500px;height: 500px;overflow: hidden;"></div>
+                           
+                           
                         </div>
                     </div>
                 </md-content>

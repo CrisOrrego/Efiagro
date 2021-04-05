@@ -14,6 +14,8 @@
 
 		<script type="application/javascript" src="/js/libs.min.js"></script>
 		<script defer type="application/javascript" src="/js/app.min.js?202010051927"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjjB89k3h2YU7w4NTNQ6euTDtuQ8IeH7g">
+		</script>
 	</head>
 
 	<body layout ui-view></body>
