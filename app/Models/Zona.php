@@ -32,7 +32,10 @@ class Zona extends Model
 
         ];
     }
-
+    public function linea_productiva()
+    {
+        return $this->belongsTo('App\Models\LineaProductiva', 'linea_productiva_id');
+    }
     public function scopeId($q, $id)
     {
         return $q->where('id', $id);

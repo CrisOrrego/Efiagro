@@ -19,7 +19,7 @@
 			  <table md-table>
 				<thead md-head>
 				  <tr md-row>
-					<th md-column>ID</th>
+					{{-- <th md-column>ID</th> --}}
 					{{-- <th md-column>Usuario</th> --}}
 					<th md-column>Finca</th>
 					<th md-column>Dirección</th>
@@ -46,7 +46,7 @@
 				<tbody md-body>
 				  <tr md-row ng-repeat="F in FincasCRUD.rows | filter:filterFincas">
 					
-                    <td md-cell>@{{ F.id }}</td>
+                    {{-- <td md-cell>@{{ F.id }}</td> --}}
                     {{-- <td md-cell>@{{ F.usuario_id }}</td> --}}
 					<td md-cell>@{{ F.nombre }}</td>
 					<td md-cell>@{{ F.direccion }}</td>

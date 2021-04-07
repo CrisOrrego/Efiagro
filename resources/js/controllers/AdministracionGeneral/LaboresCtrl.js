@@ -20,7 +20,7 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             limit: 1000,
             add_append: "refresh",
             order_by: ["-created_at"],
-            query_with:['zona']
+            query_with:['linea_productiva', 'zona']
         });
 
         Ctrl.getLabores = () => {

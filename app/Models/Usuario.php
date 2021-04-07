@@ -14,7 +14,7 @@ class Usuario extends Model
 
     protected $table = 'usuarios';
     protected $guarded = ['id'];
-    // protected $appends = [ 'nombre' ];
+    protected $appends = [ 'nombre' ];
 
     public function columns()
     {

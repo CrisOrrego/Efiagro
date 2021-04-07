@@ -41,12 +41,12 @@ class Labor extends Model
         return $q->where('linea_productiva_id', $linea_productiva_id);
      }
 
+    public function linea_productiva()
+    {
+        return $this->belongsTo('App\Models\LineaProductiva',  'linea_productiva_id');
+    }
     public function zona()
     {
         return $this->belongsTo('App\Models\Zona',  'zona_id');
-    }
-    public function lineaproductiva()
-    {
-        return $this->belongsTo('App\Models\LineaProductiva',  'linea_productivaid');
     }
 }

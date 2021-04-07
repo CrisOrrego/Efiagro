@@ -25,7 +25,8 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
             base_url: "/api/lotes/lotes",
             limit: 1000,
             add_append: "refresh",
-            order_by: ["-created_at"]
+            order_by: ["-created_at"],
+            query_with:['finca', 'organizacion', 'linea_productiva', 'labor']
         });
 
         Ctrl.getLotes = () => {
