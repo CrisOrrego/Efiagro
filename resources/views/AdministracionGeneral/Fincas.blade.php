@@ -25,6 +25,7 @@
 					<th md-column>Dirección</th>
 					<th md-column>Departamento</th>
 					<th md-column>Municipio</th>
+					<th md-column>Zona</th>
 					<th md-column>Área total</th>
 					<th md-column>Cultivo</th>
 					<th md-column>Total de lotes</th>
@@ -33,7 +34,6 @@
 					<th md-column>Longitud</th>
 				    <th md-column>Hectareas</th>
 					<th md-column>Sitios</th>
-					<th md-column>Zona</th>
 					<th md-column>Temperatura </th>
 					<th md-column>Humedad Relativa </th>
 					<th md-column>Precipitación </th>
@@ -52,6 +52,7 @@
 					<td md-cell>@{{ F.direccion }}</td>
 					<td md-cell>@{{ F.departamento_id }}</td>
 					<td md-cell>@{{ F.municipio_id }}</td>
+					<td md-cell>@{{ F.zona.descripcion }}</td>
 					<td md-cell>@{{ F.area_total }} <span>cm²</span></td>
 					<td md-cell>@{{ F.tipo_cultivo }}</td>
 					<td md-cell>@{{ F.total_lotes }}</td>
@@ -60,7 +61,6 @@
                     <td md-cell>@{{ F.longitud }}</td>
                     <td md-cell>@{{ F.hectareas }}</td>
                     <td md-cell>@{{ F.sitios }}</td>
-					<td md-cell>@{{ F.zona_id }}</td>
 					<td md-cell>@{{ F.temperatura }} <span>C°</span></td>
 					<td md-cell>@{{ F.humedad_relativa }} <span>%</span></td>
 					<td md-cell>@{{ F.precipitacion }} <span>Mm</span></td>
