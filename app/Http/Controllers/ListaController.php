@@ -29,6 +29,18 @@ class ListaController extends Controller
 		return $L;
 	}
 
+	public function getDepartamentos()
+	{
+		$L = ListaDetalle::where("lista_id", 2)->get();
+		foreach($L as $listadetalles){
+			$LM = ListaDetalle::where("lista_id", 3) //LM = LISTA MUNICIPIOS
+			->where("op1",$listadetalles->codigo)
+			->get(); 
+			$listadetalles->municipios=$LM;
+		}
+		return $L;
+	}
+
 	public function postActualizar(Request $req)
 	{
 		$lista=$req->Lista;

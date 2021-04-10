@@ -15,6 +15,8 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
 
         Ctrl.Salir = $mdDialog.cancel;
 
+        Ctrl.value = 0;
+
         Ctrl.LaboresCRUD = $injector.get("CRUD").config({
             base_url: "/api/labores/labores",
             limit: 1000,
@@ -22,6 +24,7 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             order_by: ["-created_at"],
             query_with:['zona']
         });
+
 
         Ctrl.getLabores = () => {
             console.log(Ctrl.zona_select);
@@ -54,6 +57,8 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
         //     });
         // };
 // 
+
+
 Ctrl.nuevaLabor = () => {
     Rs.BasicDialog({
         Flex: 30,

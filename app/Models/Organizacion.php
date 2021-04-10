@@ -15,6 +15,9 @@ class Organizacion extends Model
 
     public function columns()
     {
+        $departamento = [
+            '66' => 'Risaralda', 'CE' => 'Cedula Extranjeria', 'TI' => 'Tarjeta Identidad', 'PA' => 'Pasaporte', 'RC' => 'Registro Civil', 'NI' => 'NIT'
+        ];
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
             ['nombre',                      'Nombre:',                       null, true,         false, null, 100],
@@ -23,8 +26,8 @@ class Organizacion extends Model
             ['latitud',                     'Latitud:',                      null, false,        false, null, 100],
             ['longitud',                    'Longitud:',                     null, false,        false, null, 100],
             ['direccion',                   'Dirección:',                    null, true,         false, null, 100],
-            ['departamento',                'Departamento:',                 'select', true,         false, null, 100],
-            ['municipio',                   'Municipio:',                    null, true,         false, null, 100],
+            ['departamento',                'Departamento:',                 'select', true,         false, null, 100, [ 'options' => [] ]],
+            ['municipio',                   'Municipio:',                    'select', true,         false, null, 100, [ 'options' => [] ]],
             ['telefono',                    'Teléfono:',                     null, true,         false, null, 100],
             ['correo',                      'Correo:',                       'email', true,      false, null, 100],
             ['total_asociados',             'Asociados:',                    'integer', true,    false, null, 100],
