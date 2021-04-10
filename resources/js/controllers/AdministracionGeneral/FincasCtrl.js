@@ -447,7 +447,8 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
             base_url: "/api/lotes/lotes",
             limit: 1000,
             add_append: "refresh",
-            order_by: ["-created_at"]
+            order_by: ["-created_at"],
+            query_with:['linea_productiva']
         });
 
         Ctrl.getLotes = () => {
@@ -503,9 +504,8 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
                 fullscreen: false
             });
         };
-
-
         
+ 
     }
 ])
 .directive("mapa",function(){

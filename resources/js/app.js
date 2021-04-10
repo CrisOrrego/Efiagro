@@ -58,7 +58,7 @@ angular.module('App', [
 
     'FincasCtrl',
     'FincaDiagCtrl',
-    'TareaDiagCtrl',
+    'Lotes_LaborCtrl',
     'PerfilesCtrl', // Luigi
 
     // 'PerfilesCtrl',

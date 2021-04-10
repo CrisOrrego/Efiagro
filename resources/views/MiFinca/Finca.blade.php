@@ -42,7 +42,7 @@
 
                             <div class="seccion_texto">
                                 <label class="texto_title">Zona:</label>
-                                <label class="no-margin">@{{ Finca . zona_id }}</label>
+                                <label class="no-margin">@{{ Finca . zona . descripcion }}</label>
                             </div>
                             <div class="seccion_texto">
                                 <label class="texto_title">Hectareas:</label>
@@ -66,9 +66,9 @@
                         </div>
                         <div flex="">
 
-<div mapa id="map" style="width: 500px;height: 500px;overflow: hidden;"></div>
-                           
-                           
+                            <div mapa id="map" style="width: 500px;height: 500px;overflow: hidden;"></div>
+
+
                         </div>
                     </div>
                 </md-content>
@@ -85,7 +85,7 @@
                     </md-input-container>
 
                     <span flex></span>
-                   
+
                 </div>
                 <md-content class="md-padding">
 
@@ -97,7 +97,7 @@
                             <div flex="" class="lotes_content">
                                 <div>
                                     <label class="texto_title">Lote</label> #@{{ L . id }} / <label
-                                        class="texto_title">Linea Productiva</label> @{{ L . linea_productiva_id }}
+                                        class="texto_title">LP</label> @{{ L . linea_productiva . nombre }}
                                     {{-- <h3 class="md-title no-margin">@{{ L . finca_id }}</h3> --}}
                                 </div>
                                 <div>
@@ -115,27 +115,38 @@
                         </div>
                         <div layout="row">
                             <div flex="">
-                                <md-card class="seccion_labores">
-                                    
-                                    ESTA SECCIÓN LABORES
-                                    <md-checkbox >
-                                        @{{ L . sitios }}
+                                <md-card class="seccion_labores" ng-controller="LaboresCtrl">
+
+
+                                    <md-checkbox ng-controller="LaboresCtrl">
+                                        <ul>@{{ L . labor . labor }}</ul>
                                     </md-checkbox>
-                                <md-input-container ng-controller="LaboresCtrl">
+
+                                    <md-input-container ng-controller="LaboresCtrl">
+                                        <label>AGREGAR LABORES</label>
+                                        <md-select ng-model="LotesCtrl">
+                                            <md-option ng-value="labores_id" ng-repeat="L in LaboresCRUD.rows">
+                                                @{{ L . labor }}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    {{-- <md-button class="md-raised md-primary boton-principal" ng-click="addLabores()">Añadir Labores</md-button> --}}
+
+                                    {{-- <md-input-container ng-controller="LaboresCtrl">
                                     <label>AGREGAR LABORES</label>
                                         <md-select ng-model="LotesCtrl">
                                             <md-option ng-value="labores_id" ng-repeat="L in LaboresCRUD.rows">@{{ L . labor }}</md-option>
                                         </md-select>
-                                  </md-input-container>
- 
+                                  </md-input-container> --}}
+
                             </div>
-                                </md-card>
-    
-                            <div flex="">
-                                <md-card>
-                                    SECCIÓN GRAFICOS
-                                </md-card>
-                            </div>
+                    </md-card>
+
+                    <div flex="">
+                        <md-card>
+                            SECCIÓN GRAFICOS
+                        </md-card>
+                    </div>
 </div>
 </md-card>
 </md-content>
@@ -204,7 +215,7 @@
     }
 
     md-tabs {
-        background-image: url("/../imgs/finca.jpg");
+        /* background-image: url("/../imgs/finca.jpg"); */
         background-repeat: no-repeat;
         background-size: cover;
 
