@@ -36,11 +36,11 @@
 						<input ng-change="filterArticulos()" type="text" ng-model="filterTitulo" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
 					</md-input-container>
 
-					<md-input-container>
+					{{-- <md-input-container>
 						<label>Palabras clave</label>
 						<md-chips md-on-add="filterArticulos()" md-on-remove="filterArticulos()" ng-model="filterKeys" readonly="readonly" md-removable="removable">
 						</md-chips>
-					</md-input-container>
+					</md-input-container> --}}
 
 					<md-input-container>
 						<label>Autor</label>
