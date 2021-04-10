@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2021 a las 00:22:18
+-- Tiempo de generación: 11-04-2021 a las 00:29:23
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -238,9 +238,9 @@ CREATE TABLE `labores` (
   `labor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `zona_id` int(11) NOT NULL,
   `linea_productiva_id` int(11) NOT NULL,
-  `frecuencia` int(11) NOT NULL,
-  `inicio` int(11) DEFAULT NULL,
-  `margen` int(11) DEFAULT NULL,
+  `frecuencia` int(11) NOT NULL DEFAULT 0,
+  `inicio` int(11) NOT NULL DEFAULT 0,
+  `margen` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -250,21 +250,21 @@ CREATE TABLE `labores` (
 --
 
 INSERT INTO `labores` (`id`, `labor`, `zona_id`, `linea_productiva_id`, `frecuencia`, `inicio`, `margen`, `created_at`, `updated_at`) VALUES
-(2, 'RESIEMBRA CON CABEZA DE TORO', 1, 2, 1, NULL, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
-(3, 'APLICACIÓN MATERIA ORGANICA 300g', 2, 3, 12, NULL, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
-(4, 'FERTILIZACION QUIMICA Y PLATEO', 3, 1, 2, NULL, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
-(5, 'DESHOJE, CIRUGIA  Y PODA TEMPRANA', 2, 2, 1, NULL, 2500, '2021-02-19 22:28:39', '2021-02-19 22:28:39'),
-(6, 'CONTROL SIGATOKA QUIMICO (Según evaluación) de 6 a 9:30 a.m.', 2, 3, 0, NULL, 3000, '2021-02-19 22:29:04', '2021-02-19 22:29:04'),
-(7, 'CONTROL ARVENSES POR PARCHEO', 1, 1, 3, NULL, 3800, '2021-02-19 22:29:51', '2021-02-19 22:29:51'),
-(8, 'DESHIJE Y ESTIMULO', 2, 2, 6, NULL, 2000, '2021-02-19 22:30:20', '2021-02-19 22:30:20'),
-(9, 'CONTROL DE PICUDO - DESGUASQUE Y PINTURA', 3, 3, 6, NULL, 2000, '2021-02-19 22:30:49', '2021-02-19 22:30:49'),
+(2, 'RESIEMBRA CON CABEZA DE TORO', 1, 2, 1, 0, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
+(3, 'APLICACIÓN MATERIA ORGANICA 300g', 2, 3, 12, 0, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
+(4, 'FERTILIZACION QUIMICA Y PLATEO', 3, 1, 2, 0, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
+(5, 'DESHOJE, CIRUGIA  Y PODA TEMPRANA', 2, 2, 1, 0, 2500, '2021-02-19 22:28:39', '2021-02-19 22:28:39'),
+(6, 'CONTROL SIGATOKA QUIMICO (Según evaluación) de 6 a 9:30 a.m.', 2, 3, 0, 0, 3000, '2021-02-19 22:29:04', '2021-02-19 22:29:04'),
+(7, 'CONTROL ARVENSES POR PARCHEO', 1, 1, 3, 0, 3800, '2021-02-19 22:29:51', '2021-02-19 22:29:51'),
+(8, 'DESHIJE Y ESTIMULO', 2, 2, 6, 0, 2000, '2021-02-19 22:30:20', '2021-02-19 22:30:20'),
+(9, 'CONTROL DE PICUDO - DESGUASQUE Y PINTURA', 3, 3, 6, 0, 2000, '2021-02-19 22:30:49', '2021-02-19 22:30:49'),
 (10, 'EMBOLSE PREMATURO Y ENCINTADO', 1, 2, 1, 6, 150, '2021-02-19 22:31:10', '2021-04-10 04:17:57'),
-(11, 'AMARRE O APUNTALADO', 2, 2, 1, NULL, 150, '2021-02-19 22:31:35', '2021-02-19 22:31:35'),
-(12, 'DESMANE O DESFLORE', 3, 3, 1, NULL, 150, '2021-02-19 22:31:54', '2021-02-19 22:31:54'),
-(13, 'COSECHA Y POSCOSECHA', 2, 1, 1, NULL, 0, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
-(14, 'DESTRONQUE', 1, 2, 1, NULL, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
-(15, 'REGISTRO DE LA INFORMACION', 2, 3, 1, NULL, 0, '2021-02-19 22:34:48', '2021-02-19 22:34:48'),
-(17, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 3, 1, 1, NULL, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04');
+(11, 'AMARRE O APUNTALADO', 2, 2, 1, 0, 150, '2021-02-19 22:31:35', '2021-02-19 22:31:35'),
+(12, 'DESMANE O DESFLORE', 3, 3, 1, 0, 150, '2021-02-19 22:31:54', '2021-02-19 22:31:54'),
+(13, 'COSECHA Y POSCOSECHA', 2, 1, 1, 0, 0, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
+(14, 'DESTRONQUE', 1, 2, 1, 0, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
+(15, 'REGISTRO DE LA INFORMACION', 2, 3, 1, 0, 0, '2021-02-19 22:34:48', '2021-02-19 22:34:48'),
+(17, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 3, 1, 1, 0, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04');
 
 -- --------------------------------------------------------
 
@@ -8488,17 +8488,17 @@ CREATE TABLE `lotes_cosechas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `lotes_labor`
+-- Estructura de tabla para la tabla `lotes_labores`
 --
 
-CREATE TABLE `lotes_labor` (
+CREATE TABLE `lotes_labores` (
   `id` int(11) NOT NULL,
   `lote_id` int(11) NOT NULL,
   `labor_id` int(11) DEFAULT NULL,
   `labor` varchar(255) DEFAULT NULL,
-  `inicio` int(11) NOT NULL,
-  `frecuencia` int(11) NOT NULL,
-  `margen` int(11) NOT NULL,
+  `inicio` int(11) NOT NULL DEFAULT 0,
+  `frecuencia` int(11) NOT NULL DEFAULT 0,
+  `margen` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -10021,9 +10021,9 @@ ALTER TABLE `lotes_cosechas`
   ADD KEY `lote_id` (`lote_id`);
 
 --
--- Indices de la tabla `lotes_labor`
+-- Indices de la tabla `lotes_labores`
 --
-ALTER TABLE `lotes_labor`
+ALTER TABLE `lotes_labores`
   ADD PRIMARY KEY (`id`),
   ADD KEY `lote_id` (`lote_id`),
   ADD KEY `labor_id` (`labor_id`);
@@ -10187,9 +10187,9 @@ ALTER TABLE `lotes_cosechas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `lotes_labor`
+-- AUTO_INCREMENT de la tabla `lotes_labores`
 --
-ALTER TABLE `lotes_labor`
+ALTER TABLE `lotes_labores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
