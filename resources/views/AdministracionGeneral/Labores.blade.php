@@ -62,7 +62,7 @@
 			<td md-cell>@{{ L.zona.descripcion }}</td>
 			<td md-cell>@{{ L.linea_productiva.nombre }} </td> 
             <td md-cell><span>CADA</span> <b>@{{ L.frecuencia }}</b> <span>SEMANAS</span></td>
-            <td md-cell>@{{ L.semana_inicio }}</td>
+            <td md-cell>@{{ L.inicio }}</td>
             <td md-cell><b>@{{ L.margen }}</b> <span>SEMANAS</span></td>
 			
 	      </tr>

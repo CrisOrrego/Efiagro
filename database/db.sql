@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-04-2021 a las 17:23:49
+-- Tiempo de generación: 11-04-2021 a las 00:22:18
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -239,7 +239,7 @@ CREATE TABLE `labores` (
   `zona_id` int(11) NOT NULL,
   `linea_productiva_id` int(11) NOT NULL,
   `frecuencia` int(11) NOT NULL,
-  `semana_inicio` int(11) DEFAULT NULL,
+  `inicio` int(11) DEFAULT NULL,
   `margen` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
@@ -249,7 +249,7 @@ CREATE TABLE `labores` (
 -- Volcado de datos para la tabla `labores`
 --
 
-INSERT INTO `labores` (`id`, `labor`, `zona_id`, `linea_productiva_id`, `frecuencia`, `semana_inicio`, `margen`, `created_at`, `updated_at`) VALUES
+INSERT INTO `labores` (`id`, `labor`, `zona_id`, `linea_productiva_id`, `frecuencia`, `inicio`, `margen`, `created_at`, `updated_at`) VALUES
 (2, 'RESIEMBRA CON CABEZA DE TORO', 1, 2, 1, NULL, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
 (3, 'APLICACIÓN MATERIA ORGANICA 300g', 2, 3, 12, NULL, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
 (4, 'FERTILIZACION QUIMICA Y PLATEO', 3, 1, 2, NULL, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
@@ -8494,7 +8494,13 @@ CREATE TABLE `lotes_cosechas` (
 CREATE TABLE `lotes_labor` (
   `id` int(11) NOT NULL,
   `lote_id` int(11) NOT NULL,
-  `labor_id` int(11) NOT NULL
+  `labor_id` int(11) DEFAULT NULL,
+  `labor` varchar(255) DEFAULT NULL,
+  `inicio` int(11) NOT NULL,
+  `frecuencia` int(11) NOT NULL,
+  `margen` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -9640,6 +9646,22 @@ INSERT INTO `municipios` (`id_departamento`, `id_municipio`, `municipio`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `opciones`
+--
+
+CREATE TABLE `opciones` (
+  `id` int(11) NOT NULL,
+  `organizacion_id` int(11) NOT NULL,
+  `opcion` varchar(255) NOT NULL,
+  `tipo` varchar(255) NOT NULL,
+  `valor` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `organizaciones`
 --
 
@@ -10013,6 +10035,12 @@ ALTER TABLE `municipios`
   ADD PRIMARY KEY (`id_municipio`);
 
 --
+-- Indices de la tabla `opciones`
+--
+ALTER TABLE `opciones`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `organizaciones`
 --
 ALTER TABLE `organizaciones`
@@ -10162,6 +10190,12 @@ ALTER TABLE `lotes_cosechas`
 -- AUTO_INCREMENT de la tabla `lotes_labor`
 --
 ALTER TABLE `lotes_labor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `opciones`
+--
+ALTER TABLE `opciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
