@@ -14,7 +14,9 @@ class Usuario extends Model
 
     protected $table = 'usuarios';
     protected $guarded = ['id'];
-    // protected $appends = [ 'nombre' ];
+    protected $appends = [ 
+        'nombre'
+    ];
 
     public function columns()
     {
@@ -22,23 +24,25 @@ class Usuario extends Model
         $tipodocumento = [
             'CC' => 'Cedula Ciudadania', 'CE' => 'Cedula Extranjeria', 'TI' => 'Tarjeta Identidad', 'PA' => 'Pasaporte', 'RC' => 'Registro Civil', 'NI' => 'NIT'
         ];
+        // Obtener informacion de los perfiles, y luego almacenarlo en formato de arreglo.
         $perfiles = \App\Models\Perfil::all()->keyBy('id')->map( function($p){
             return $p['perfil'];
         })->toArray();
         
-                //Name,         Desc,               Type,   Required, Unique, Default, Width, Options
-                return [
-                    [ 'tipo_documento', 'Tipo Documento',   'select',   true,   false, null, 30, [ 'options' => $tipodocumento ]],
-                    [ 'documento',      'Documento',        null, 	    true,   false, null, 70 ],
-                    [ 'nombres',        'Nombres',          null, 	    true,   false, null, 100 ],
-                    [ 'apellidos',      'Apellidos',        null, 	    true,   false, null, 100 ],
-                    [ 'correo',         'Correo electrónico', 'email',  false,  false,  null, 100 ],
-                    [ 'celular',        'Celular',          'string',   false,  false,  null, 45 ],
-                    [ 'perfil_id',      'Perfil',           'select',   true,   false,  null, 50, ['options' => $perfiles] ],
-                    [ 'organizacion_id','Organización',     'select',   false,  false,  null, 50 ],
-                    [ 'finca_id',       'Finca',            'select',   false,  false,  null, 50 ]
-                ];
-            }
+        //Name,         Desc,               Type,   Required, Unique, Default, Width, Options
+        return [
+            [ 'tipo_documento', 'Tipo Documento',   'select',   true,   false, null, 30, [ 'options' => $tipodocumento ]],
+            [ 'documento',      'Documento',        null, 	    true,   false, null, 70 ],
+            [ 'nombres',        'Nombres',          null, 	    true,   false, null, 100 ],
+            [ 'apellidos',      'Apellidos',        null, 	    true,   false, null, 100 ],
+            [ 'correo',         'Correo electrónico', 'email',  false,  false,  null, 100 ],
+            [ 'celular',        'Celular',          'string',   false,  false,  null, 45 ],
+            [ 'perfil_id',      'Perfil',           'select',   true,   false,  null, 50, ['options' => $perfiles] ],
+            [ 'organizacion_id','Organización',     'select',   false,  false,  null, 50 ],
+            [ 'finca_id',       'Finca',            'select',   false,  false,  null, 50 ]
+        ];
+    }
+    
     public function scopeLaorganizacion( $q, $organizacion_id) {
         return $q->where('organizacion_id', $organizacion_id);
     }
@@ -52,16 +56,17 @@ class Usuario extends Model
     {
         return $this->hasMany('App\Models\Organizacion', 'usuario_id');
     }
+    
     public function perfil()
     {
         return $this->belongsTo('App\Models\Perfil', 'perfil_id');
-        // return $this->hasMany('App\Models\Perfil');
     }
 
     public function getNombreAttribute()
     {
     	return $this->nombres .' '. $this->apellidos;
     }
+    
     // Metodo para encriptar la clave del usuario.
     public static function boot()
     {

@@ -5,25 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Seccion;
-use App\Models\PerfilSeccion;
 
 use Image;
 use File;
-use App\Functions\Helper;
 
 class MainController extends Controller
 {
     public function postObtenerSecciones()
     {
-        $usuario = Helper::getUsuario();
-
-    	$SeccionesPerfil = PerfilSeccion::where('perfil_id', $usuario->perfil_id)
-            ->where('nivel', 10)
-            ->get();
-        
-    	$Secciones = Seccion::whereIn('id', $SeccionesPerfil->pluck('seccion_id'))
-            ->get()
-            ->groupBy('seccion_slug');
+    	$Secciones = Seccion::get()->groupBy('seccion_slug');
     	return $Secciones;
     }
 
