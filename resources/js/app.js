@@ -67,6 +67,7 @@ angular.module('App', [
     'LaboresCtrl',
     'LaboresDiagCtrl',
     'LotesCtrl',
+    'LoteDiagCtrl',
     'Labores_LaborEditorCtrl',
 
     'FondoRotatorio_CreditosCtrl', //CAOH
