@@ -390,10 +390,6 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
 
                 };
 
-            // Ctrl.FincasCRUD.dialog(F, {
-            //     title: "Editar Finca" + F.nombre
-            // }).then(r => {
-            //     if (r == "DELETE") return Ctrl.FincasCRUD.delete(F);
                 Ctrl.FincasCRUD.update(FincaEditada).then(() => {
                     Rs.showToast("Finca actualizada");
                 });
@@ -409,11 +405,6 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
             });
         };
 
-        // $http.post("api/fincas/obtener", {}).then(r => {
-        //     Ctrl.Fincas = r.data;
-        //     Ctrl.abrirFinca(Ctrl.Fincas[3]); //FIX
-        // });
-
         Ctrl.abrirFinca = F => {
             $mdDialog.show({
                 templateUrl: "Frag/MiFinca.FincaDiag",
@@ -423,16 +414,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
             });
         };
 
-        Ctrl.abrirOrganizacion = O => {
-            $mdDialog.show({
-                templateUrl: "Frag/GestionOrganizacion.Organizacion",
-                controller: "FincasCtrl",
-                locals: { Finca: O },
-                fullscreen: false
-            });
-        };
-
-        //Prueba de Lista
+            //Prueba de Lista
         $http
             .post("api/main/obtener-lista", {
                 Lista: "Departamentos",
@@ -441,40 +423,6 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
             .then(r => {
                 console.log(r.data);
             });
-
-        // LOTES
-        Ctrl.LotesCRUD = $injector.get("CRUD").config({
-            base_url: "/api/lotes/lotes",
-            limit: 1000,
-            add_append: "refresh",
-            order_by: ["-created_at"],
-            query_with:['linea_productiva']
-        });
-
-        Ctrl.getLotes = () => {
-            Ctrl.LotesCRUD.get().then(() => {
-                //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
-            });
-        };
-
-        Ctrl.getLotes();
-
-        // //Prueba de Mapa
-        // $http.post('map.html').then(r => {
-        //     Ctrl.mapa = r.data;
-        // });
-
-        Ctrl.nuevoLote = () => {
-            Ctrl.LotesCRUD.dialog({
-                Flex: 10,
-                Title: "Crear Lote",
-
-                Confirm: { Text: "Crear Lote" }
-            }).then(r => {
-                if (!r) return;
-                Ctrl.LotesCRUD.add(r);
-            });
-        };
 
         Ctrl.editarLote = L => {
             Ctrl.LotesCRUD.dialog(L, {
@@ -494,17 +442,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
                 if (!d) return;
                 Ctrl.LotesCRUD.delete(L);
             });
-        };
-
-        Ctrl.abrirLabores = L => {
-            $mdDialog.show({
-                templateUrl: "Frag/MiFinca.LaboresDiag",
-                controller: "LaboresDiagCtrl",
-                locals: { Labor: L },
-                fullscreen: false
-            });
-        };
-        
+        };      
  
     }
 ])

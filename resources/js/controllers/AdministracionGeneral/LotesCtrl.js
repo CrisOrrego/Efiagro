@@ -12,15 +12,6 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
        
         Ctrl.Salir = $mdDialog.cancel;
 
-        // Ctrl.getLote = () => {
-        //     // Ctrl.LotesCRUD.setScope("id", Rs.Usuario.finca_id); //Me trae las fincas del usuario
-        //     Ctrl.LotesCRUD.get().then(() => {
-        //         Ctrl.Lote = Ctrl.LotesCRUD.rows[0];
-        //         //Ctrl.editarFinca(Ctrl.LotesCRUD.rows[0]);
-        //     });
-        // };
-      
-        // LOTES
         Ctrl.LotesCRUD = $injector.get("CRUD").config({
             base_url: "/api/lotes/lotes",
             limit: 1000,
@@ -36,11 +27,6 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
         };
 
         Ctrl.getLotes();
-
-        // //Prueba de Mapa
-        // $http.post('map.html').then(r => {
-        //     Ctrl.mapa = r.data;
-        // });
 
         Ctrl.nuevoLote = () => {
             Ctrl.LotesCRUD.dialog({
@@ -92,13 +78,8 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
         //                 Rs.showToast('Usuario creado');
         //             });
         //     });
-           
-
-           
+  
         // };
-
-
-
 
 
         // LABORES
