@@ -16,7 +16,6 @@ class Organizacion extends Model
     public function columns()
     {
         $departamento = [
-            '66' => 'Risaralda', 'CE' => 'Cedula Extranjeria', 'TI' => 'Tarjeta Identidad', 'PA' => 'Pasaporte', 'RC' => 'Registro Civil', 'NI' => 'NIT'
         ];
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [

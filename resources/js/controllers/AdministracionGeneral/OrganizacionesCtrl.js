@@ -67,19 +67,28 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         //INICIO DEV ANGPELICA
         loadDepartamentos = (col_departamento) => {
-            departamentos.forEach(departamento => {
+
+            col_departamento.Options.options = departamentos;
+
+            /*departamentos.forEach(departamento => {
                 let codigo = departamento.codigo;
                 let descripcion = departamento.descripcion;
                 col_departamento.Options.options = {...col_departamento.Options.options, 
-                    //[codigo]: descripcion ----> si quiero que en la base de datos se vea por codigos en departamento y municipio
-                    [descripcion]: descripcion // si quiero que en la base de datos se vea por nombres(descripcion) en departamento y municipio
+                    [codigo]: descripcion // si quiero que en la base de datos se vea por codigos en departamento y municipio
+                    //[descripcion]: descripcion // si quiero que en la base de datos se vea por nombres(descripcion) en departamento y municipio
                 };
             });//Llena el select de departamentos
+            */
         }
 
-        loadMunicipios = (departamento, col_municipio) => {
+        loadMunicipios = (valorDepartamento, col_municipio) => {
             col_municipio.Options.options = {}; //limpia el select de municipios
-            departamento.municipios.forEach(municipio => {
+            console.log(valorDepartamento);
+
+            $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: valorDepartamento }).then((r)=>{
+                col_municipio.Options.options = r.data;
+			});
+            /*departamento.municipios.forEach(municipio => {
                 let codigo = municipio.codigo;
                 let descripcion = municipio.descripcion;
                 col_municipio.Options.options = {...col_municipio.Options.options, 
@@ -87,6 +96,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                     [descripcion]: descripcion // si quiero que en la base de datos se vea por nombres(descripcion) en departamento y municipio
                 };
             }); //se trae los municipios del departamento escogido
+            */
         }
 
         inicializarListaDepartamentoMunicipio = () => {
@@ -95,9 +105,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
     
             col_departamento.Options.onChangeFn = (valorDepartamento) => {
                 let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
-                const departamento = departamentos.find(d => d.codigo == valorDepartamento); //se obtiene solo un departamento escogido
-    
-                loadMunicipios(departamento, col_municipio);
+                loadMunicipios(valorDepartamento, col_municipio);
             }                        
 
         }
@@ -119,7 +127,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
        
 
         Ctrl.getDepartamentos = () => {
-			$http.get ('api/departamentos').then((r)=>{
+			$http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
                 departamentos = r.data;
                 console.log(departamentos);
 			});
