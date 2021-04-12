@@ -25,7 +25,8 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
             base_url: "/api/lotes/lotes",
             limit: 1000,
             add_append: "refresh",
-            order_by: ["-created_at"]
+            order_by: ["-created_at"],
+            query_with:['finca', 'organizacion', 'linea_productiva', 'labor']
         });
 
         Ctrl.getLotes = () => {
@@ -50,6 +51,7 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
             }).then(r => {
                 if (!r) return;
                 Ctrl.LotesCRUD.add(r);
+                Rs.showToast('Lote Creado');
             });
         };
 
@@ -73,14 +75,31 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
             });
         };
 
-        //    Ctrl.abrirLote = (L) => {
-        //         $mdDialog.show({
-        //             templateUrl: "Frag/MiFinca.FincaDiag",
-        //             controller: "FincaDiagCtrl",
-        //             locals: { Lote: L },
-        //             fullscreen: false,
-        //         });
-        //     };
+        // Ctrl.addLabores = () => {
+        //     Ctrl.UsuariosCRUD.dialog({ 
+        //         tipo_documento: 'CC', 
+        //         organizacion_id: Rs.Usuario.organizacion_id
+        //     }, {
+        //         title: 'Agregar Usuario',
+        //         except: [
+        //             'finca_id',
+        //             'organizacion_id',
+        //         ],
+        //     }).then(U => {
+        //         if ( !U ) return;
+        //         Ctrl.UsuariosCRUD.add(U)
+        //             .then(() => {
+        //                 Rs.showToast('Usuario creado');
+        //             });
+        //     });
+           
+
+           
+        // };
+
+
+
+
 
         // LABORES
         Ctrl.abrirLabores = L => {

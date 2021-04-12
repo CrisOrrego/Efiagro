@@ -36,11 +36,11 @@
 						<input ng-change="filterArticulos()" type="text" ng-model="filterTitulo" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
 					</md-input-container>
 
-					<md-input-container>
+					{{-- <md-input-container>
 						<label>Palabras clave</label>
 						<md-chips md-on-add="filterArticulos()" md-on-remove="filterArticulos()" ng-model="filterKeys" readonly="readonly" md-removable="removable">
 						</md-chips>
-					</md-input-container>
+					</md-input-container> --}}
 
 					<md-input-container>
 						<label>Autor</label>
@@ -69,7 +69,7 @@
 					<md-icon md-font-icon="fa-edit"></md-icon>
 				</md-button></td>
 				<td md-cell>@{{ A.titulo }}</td>
-				<td md-cell>@{{ A.autor.nombre }}</td>
+				<td md-cell>@{{ A.autor.nombres }}</td>
 				<td md-cell>@{{ A.created_at }}</td>
 				<td md-cell>@{{ A.updated_at }}</td>
 			</tr>

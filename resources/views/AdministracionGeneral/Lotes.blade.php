@@ -19,7 +19,7 @@
 			  <table md-table>
 				<thead md-head>
 				  <tr md-row>
-					<th md-column>ID</th>
+					{{-- <th md-column>ID</th> --}}
 					<th md-column>Finca</th>
 					<th md-column>Organización</th>
 					<th md-column>Linea Productiva</th>
@@ -32,13 +32,13 @@
 				</thead>
 				<tbody md-body>
 				  <tr md-row ng-repeat="L in LotesCRUD.rows | filter:filterLotes">
-                    <td md-cell>@{{ L.id }}</td>
-                    <td md-cell>@{{ L.finca_id }}</td>
-					<td md-cell>@{{ L.organizacion_id }}</td>
-					<td md-cell>@{{ L.linea_productiva_id }}</td>
-					<td md-cell>@{{ L.labores_id }}</td>
-					<td md-cell>@{{ L.hectareas }}</td>
-                    <td md-cell>@{{ L.sitios }}</td>
+                    {{-- <td md-cell>@{{ L.id }}</td> --}}
+                    <td md-cell>@{{ L.finca.nombre }}</td>
+					<td md-cell>@{{ L.organizacion.nombre }}</td>
+					<td md-cell>@{{ L.linea_productiva.nombre }}</td>
+					<td md-cell>@{{ L.labor.labor }}</td>
+					<td md-cell>@{{ L.hectareas }} <span>Hectareas</span></td>
+                    <td md-cell>@{{ L.sitios }} <span>Sitios</span></td>
 					{{-- <td md-cell>@{{ O.created_at }}</td> --}}
 					{{-- <td md-cell>@{{ O.updated_at }}</td> --}}
 					<td md-cell>

@@ -20,7 +20,7 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             limit: 1000,
             add_append: "refresh",
             order_by: ["-created_at"],
-            query_with:['zona']
+            query_with:['linea_productiva', 'zona']
         });
 
         Ctrl.getLabores = () => {
@@ -108,7 +108,7 @@ Ctrl.nuevaLabor = () => {
             zona_id: r.Fields[1].Value,
             linea_productiva_id: r.Fields[2].Value,
             frecuencia: r.Fields[3].Value,
-            semana_inicio: r.Fields[4].Value,
+            inicio: r.Fields[4].Value,
             margen: r.Fields[5].Value,
             
 

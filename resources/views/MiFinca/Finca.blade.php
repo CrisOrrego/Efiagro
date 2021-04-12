@@ -42,7 +42,7 @@
 
                             <div class="seccion_texto">
                                 <label class="texto_title">Zona:</label>
-                                <label class="no-margin">@{{ Finca . zona_id }}</label>
+                                <label class="no-margin">@{{ Finca . zona . descripcion }}</label>
                             </div>
                             <div class="seccion_texto">
                                 <label class="texto_title">Hectareas:</label>
@@ -66,62 +66,9 @@
                         </div>
                         <div flex="">
 
-                            <script>
-                                var map;
+                            <div mapa id="map" style="width: 500px;height: 500px;overflow: hidden;"></div>
 
-                                function initMap() {
-                                    map = new google.maps.Map(document.getElementById('map'), {
-                                        center: {
-                                            lat: 4.814922,
-                                            lng: -75.707020
-                                        },
-                                        mapTypeId: 'satellite',
-                                        zoom: 18,
-                                        disableDefaultUI: true
-                                    });
-                                    // Definir los puntos del Polígono
-                                    const GCCoords = [{
-                                            lat: 4.814954,
-                                            lng: -75.707070
-                                        },
-                                        {
-                                            lat: 4.814992,
-                                            lng: -75.706985
-                                        },
-                                        {
-                                            lat: 4.814894,
-                                            lng: -75.706993
-                                        },
-                                        {
-                                            lat: 4.814897,
-                                            lng: -75.707047
-                                        },
-                                    ];
-                                    // Construir el polígono.
-                                    const GClocation = new google.maps.Polygon({
-                                        paths: GCCoords,
-                                        strokeColor: "#FF0000",
-                                        strokeOpacity: 0.8,
-                                        strokeWeight: 3,
-                                        fillColor: "#00ff31",
-                                        fillOpacity: 0.35,
-                                    });
-                                    GClocation.setMap(map); // Asiganr el Polígono al mapa
-                                    var marker = new google.maps.Marker({
-                                        position: {
-                                            lat: 4.814922,
-                                            lng: -75.707020
-                                        },
-                                        map: map
-                                    })
-                                }
 
-                            </script>
-                            <script async defer
-                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjjB89k3h2YU7w4NTNQ6euTDtuQ8IeH7g&callback=initMap">
-                            </script>
-                            <div id="map" style="width: 100%;height: 242px;overflow: hidden;"></div>
-                            </md-card-content>
                         </div>
                     </div>
                 </md-content>
@@ -138,7 +85,7 @@
                     </md-input-container>
 
                     <span flex></span>
-                   
+
                 </div>
                 <md-content class="md-padding">
 
@@ -150,7 +97,7 @@
                             <div flex="" class="lotes_content">
                                 <div>
                                     <label class="texto_title">Lote</label> #@{{ L . id }} / <label
-                                        class="texto_title">Linea Productiva</label> @{{ L . linea_productiva_id }}
+                                        class="texto_title">LP</label> @{{ L . linea_productiva . nombre }}
                                     {{-- <h3 class="md-title no-margin">@{{ L . finca_id }}</h3> --}}
                                 </div>
                                 <div>
@@ -168,27 +115,38 @@
                         </div>
                         <div layout="row">
                             <div flex="">
-                                <md-card class="seccion_labores">
-                                    
-                                    ESTA SECCIÓN LABORES
-                                    <md-checkbox >
-                                        @{{ L . sitios }}
+                                <md-card class="seccion_labores" ng-controller="LaboresCtrl">
+
+
+                                    <md-checkbox ng-controller="LaboresCtrl">
+                                        <ul>@{{ L . labor . labor }}</ul>
                                     </md-checkbox>
-                                <md-input-container ng-controller="LaboresCtrl">
+
+                                    <md-input-container ng-controller="LaboresCtrl">
+                                        <label>AGREGAR LABORES</label>
+                                        <md-select ng-model="LotesCtrl">
+                                            <md-option ng-value="labores_id" ng-repeat="L in LaboresCRUD.rows">
+                                                @{{ L . labor }}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    {{-- <md-button class="md-raised md-primary boton-principal" ng-click="addLabores()">Añadir Labores</md-button> --}}
+
+                                    {{-- <md-input-container ng-controller="LaboresCtrl">
                                     <label>AGREGAR LABORES</label>
                                         <md-select ng-model="LotesCtrl">
                                             <md-option ng-value="labores_id" ng-repeat="L in LaboresCRUD.rows">@{{ L . labor }}</md-option>
                                         </md-select>
-                                  </md-input-container>
- 
+                                  </md-input-container> --}}
+
                             </div>
-                                </md-card>
-    
-                            <div flex="">
-                                <md-card>
-                                    SECCIÓN GRAFICOS
-                                </md-card>
-                            </div>
+                    </md-card>
+
+                    <div flex="">
+                        <md-card>
+                            SECCIÓN GRAFICOS
+                        </md-card>
+                    </div>
 </div>
 </md-card>
 </md-content>
@@ -257,7 +215,7 @@
     }
 
     md-tabs {
-        background-image: url("/../imgs/finca.jpg");
+        /* background-image: url("/../imgs/finca.jpg"); */
         background-repeat: no-repeat;
         background-size: cover;
 

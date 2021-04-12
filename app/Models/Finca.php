@@ -25,7 +25,6 @@ class Finca extends Model
             ['tipo_cultivo', 'Tipo de cultivo', null, false, false, null, 100],
             ['total_lotes', 'Total Lotes', null, false, false, null, 100],
             ['tipo_suelo', 'Tipo de suelo', null, false, false, null, 100],
-            
             ['zona_id', 'Zona', null, false, false, null, 100],
             ['latitud', 'Latitud', null, true, false, null, 100],
             ['longitud', 'Longitud', null, true, false, null, 100],
@@ -37,6 +36,7 @@ class Finca extends Model
             ['altimetria_min',      'Altimetria Minima (Mt):',       null, false,    false, null, 100],
             ['altimetria_max',      'Altimetria Maxima (Mt):',       null, true,     false, null, 100],
             ['brillo_solar',        'Brillo Solar (H):',         null, true,     false, null, 100],
+           
         ];
 
     }
@@ -46,9 +46,9 @@ class Finca extends Model
         return $q->where('id', $id);
     }
 
-    public function zonas()
+    public function zona()
     {
-        return $this->hasMany('App\Models\Zona', 'id');
+        return $this->belongsTo('App\Models\Zona',  'zona_id');
     }
 
 }

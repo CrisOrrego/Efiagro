@@ -44,10 +44,10 @@
 			<thead md-head>
 			<tr md-row>
 				<th md-column></th>
-				<th md-column>Caso</th>
-				<th md-column>Asociado</th>
+				{{-- <th md-column>Caso</th> --}}
 				<th md-column>Tipo</th>
 				<th md-column>Titulo</th>
+				<th md-column>Asociado</th>
 				<th md-column>Creado</th>
 				<th md-column>Actualizado</th>
 			</tr>
@@ -65,10 +65,10 @@
 						<md-icon md-font-icon="fa-trash"></md-icon>
 					</md-button> -->
 				</td>
-				<td md-cell>@{{ C.id }}</td>
-				<td md-cell>@{{ C.solicitante.nombre }}</td>
+				{{-- <td md-cell>@{{ C.id }}</td> --}}
 				<td md-cell>@{{ C.tipo }}</td>
 				<td md-cell>@{{ C.titulo }}</td>
+				<td md-cell>@{{ C.solicitante.nombre }}</td>
 				<td md-cell>@{{ C.created_at }}</td>
 				<td md-cell>@{{ C.updated_at }}</td>
 			</tr>

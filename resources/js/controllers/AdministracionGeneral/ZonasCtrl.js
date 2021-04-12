@@ -15,7 +15,8 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
             base_url: "/api/zonas/zonas",
             limit: 1000,
             add_append: "refresh",
-            order_by: ["-created_at"]
+            order_by: ["-created_at"],
+            query_with:['linea_productiva']
         });
 
         Ctrl.getZona = () => {
