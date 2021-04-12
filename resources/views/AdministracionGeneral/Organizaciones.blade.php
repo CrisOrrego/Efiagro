@@ -9,6 +9,11 @@
 		</md-input-container>
 		
 		<span flex></span>
+		<!--<md-select ng-change="selectChanged()" ng-model="value">
+			<md-option value="1">Algo</md-option>
+			<md-option value="2">Algo 2</md-option>
+			<md-option value="3">Algo 3</md-option>
+		</md-select>-->
 		<md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="nuevaOrganizacion()">
 			<md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Organización
 		</md-button>

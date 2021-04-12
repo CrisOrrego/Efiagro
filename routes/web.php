@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ListaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::post("/api/upload", [FileController::class, 'upload']);
 //Inicio Dev ANGÉLICA
 Route::post("/api/lista", [ListaController::class, 'Actualizar']);
 Route::get("/api/lista/{id}",  [ListaController::class, 'Lista']);
+Route::get("/api/departamentos",  [ListaController::class, 'getDepartamentos']);
 Route::post("/api/lista",  [ListaController::class, 'Delete']);
 //FIN Dev ANGÉLICA
 

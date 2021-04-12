@@ -16,7 +16,11 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 
             Ctrl.Articulo = angular.copy(Articulo);
             //INICIO DEV ANGÉLICA -- Lists of palabras clave en chips 
-            Ctrl.keyWords = Ctrl.Articulo.palabras_clave.split(",");
+            if(Ctrl.Articulo.palabras_clave){
+                Ctrl.keyWords = Ctrl.Articulo.palabras_clave.split(",");
+            }else{
+                Ctrl.keyWords = [];
+            }
             //FIN DEV ANGÉLICA
 
             //INCIO DEV ANGÉLICA --> Lineas productivas
