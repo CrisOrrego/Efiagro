@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2021 a las 00:29:23
+-- Tiempo de generación: 12-04-2021 a las 23:45:25
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -350,7 +350,10 @@ INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, 
 (32, 2, '95', 'guaviare', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (33, 2, '97', 'vaupés', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(35, 4, 'Mi', 'Miguel', '1', '2', '3', '4', '5', 'A', '2021-03-16 04:03:07', '2021-03-16 04:03:07');
+(35, 4, 'Mi', 'Miguel', '1', '2', '3', '4', '5', 'A', '2021-03-16 04:03:07', '2021-03-16 04:03:07'),
+(37, 3, '66001', 'PEREIRA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:22:23', '2021-04-12 21:22:23'),
+(38, 3, '66045', 'APÍA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:24:46', '2021-04-12 21:24:46'),
+(39, 3, '66075', 'BALBOA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:25:20', '2021-04-12 21:25:20');
 
 -- --------------------------------------------------------
 
@@ -9797,6 +9800,14 @@ CREATE TABLE `perfiles_secciones` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `perfiles_secciones`
+--
+
+INSERT INTO `perfiles_secciones` (`id`, `perfil_id`, `seccion_id`, `nivel`, `created_at`, `updated_at`) VALUES
+(1, 4, 1, 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 4, 19, 10, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -9878,12 +9889,15 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'CC', '1234567', 'Christian', 'Orregos', 'info@mbrain.com', '3107664444', 2, 8, 5, 'eyJpdiI6InlPOVY0VSs1blF2YTlTTUJsSjlwd1E9PSIsInZhbHVlIjoiamFPSmlsU2szS3NDMm5jOU9jY1lTcEw3bjN6NTFva2FiREF5a3ZtVXcwND0iLCJtYWMiOiI3ZmRiOTE4MjBlNmY2NmM0MDdkNGZhZWI2M2RlZDRkN2Q0MjAwZTk0NDMwMTJhOWQ3ZTRlYTJjM2IxYjhlMzk0In0=', '0000-00-00 00:00:00', '2021-04-01 02:58:11', NULL),
-(2, '', '', 'Miguel', 'Herrera', 'miguel@agregandovalor.com', '', 0, NULL, NULL, '', '0000-00-00 00:00:00', '2021-03-24 21:11:43', NULL),
-(3, '', '', 'Pepito', 'Perez', 'pepito@mbrain.co', '', 0, NULL, NULL, '', '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18'),
-(4, 'CC', '1115467893', 'Angel', 'Herrera', 'migangel@utp.edu.co', '3105544852', 1, 8, NULL, 'eyJpdiI6InhTMHExOXZMM1lSMDNMQXpZK2F2Y2c9PSIsInZhbHVlIjoidU10SSt0am9PNHlPVEk3K1dtbW9VUT09IiwibWFjIjoiOGRkOGIwMGFkNWY1NzhlNWMzOTdmZjliZDY3MTkzNzhmMjJkNjBkNTIzNGI5MDNlMzA2MmY4NzYwZjVjYzlmZiJ9', '2021-03-26 19:24:23', '2021-03-26 19:25:13', NULL),
-(5, 'TI', '0000', 'Nuevo', 'Apen', 'nuevoco@gmail.com', '32134343', 2, 8, NULL, 'eyJpdiI6ImhrZGZGdEw3RkZwZ2FtckZBVXhNbVE9PSIsInZhbHVlIjoiYnpYRW9ZRFJKOWZva0NLaGJoOUdxUT09IiwibWFjIjoiYWRkYjZmOTM3ZThlNmMzM2JhZmU2YzUyOTdjYWU2ZjkyZTg4MWI2MWIzZTg2MjNiNTIxODNhMTJlNTAxMmZiYyJ9', '2021-03-26 19:40:04', '2021-03-26 19:40:04', NULL),
-(6, 'CC', '00000000', 'Juan', 'Masss', 'juanmass@gmail.com', '3195544362', 2, 8, NULL, 'eyJpdiI6IkNoWFdENmxseVpmRitzS0NtV3RqL2c9PSIsInZhbHVlIjoicHUvOTdDNGw0WHB2SmYrRVpJL1lvZz09IiwibWFjIjoiNjJjOTcwNDE4OThlNjJhZTE4ZTNmMGM0NTdmM2QxZTNjMzYxNDliOGYzZGQzZTE3MGYxMjNjMGE2ODllZGZjOSJ9', '2021-04-05 21:30:48', '2021-04-05 21:30:57', NULL);
+(1, 'CC', '1044444', 'Christian Alejandro4', 'Orregos Herrera4', 'info@mbrain.co', '3103103104', 4, 15, 3, 'eyJpdiI6IjNveWdaekNldFljZVQvMHJINnRkaWc9PSIsInZhbHVlIjoiUnUwaVVsdWdORkpuMlRmdWZ4N015UT09IiwibWFjIjoiM2E3ZjRiODBlMDA5YzM1ZTMyYTU2NjhiMTkxZmNmOTQ4Y2Y2MTUwYzg0NGM3YTM0OTg0Njc0ZDg1Yjk5OWNlYSJ9', '2021-03-01 08:06:04', '2021-04-10 22:22:47', NULL),
+(2, 'RC', '123456222', 'Miguel', 'Herrera', 'miguel@agregandovalor.com', '159487159', 2, 8, 4, '111', '2021-03-01 08:06:04', '2021-03-26 04:29:02', NULL),
+(3, 'PA', '1093217142', 'Pepito', 'Perez', 'pepito@mbrain.co', '8568568568', 2, 8, NULL, 'eyJpdiI6IndMNWNRVTAxSnJZUHVRZ0tHVXoxY3c9PSIsInZhbHVlIjoiM01UbmZDUkpodm1WSGhuNUdQQ1ljZz09IiwibWFjIjoiOWNjNzgxODQ0ZDFjNGE0NGNiNzlmNjFlMTdkN2NmMzJkM2NiOTZmMjNmMzliNDU0MTkxM2U3YWI3MDIxZGQ3ZCJ9', '2020-11-18 23:02:36', '2021-03-26 04:29:07', NULL),
+(4, 'CC', '1234123', 'Carlos Amparo', 'Mapiripan', '', '3333', 2, 13, NULL, 'eyJpdiI6IjVvRnlKRXExbVlIWjc4VDYxYVRwTnc9PSIsInZhbHVlIjoiWm0rZ3FpNUxIVXQyYmhyNEJKNHdCZz09IiwibWFjIjoiOGRhMzVjYzc1YjczZTE1MmRjOGY1NWYwNDA0ZTQ4ZGQzYTQ2YzZhNmM5ZDFhY2QwMzc1NmE0OWIxOTVjNGFjOCJ9', '2021-03-20 14:30:56', '2021-03-26 04:28:31', NULL),
+(5, 'CC', '33333', '3333', '3333', 'correo@c3.com', '333333', 3, 13, NULL, 'eyJpdiI6InZXVXYrM3RCUkFsYkdTZkZTK010WFE9PSIsInZhbHVlIjoiTStESFNyb0FDU25VWFpDU0VOUGlkZz09IiwibWFjIjoiZjIwYmE1OGZmYzE0Y2U2ZDExZjA4MTg4YzJjZjQwNDc5YzE1ZmViYzc0ZTYyYTQ2YTYzNjY3MjVhMTFhYzFiOCJ9', '2021-03-24 01:13:28', '2021-03-26 04:28:06', NULL),
+(6, 'CC', '4444', '44444', '44444', '', NULL, 2, 13, NULL, 'eyJpdiI6IlA1YzdBRmlNNWQyMCtEbUdJaWNnaHc9PSIsInZhbHVlIjoia0FRWDNaeVpWOHFxVjJ1Y3FQeDN3UT09IiwibWFjIjoiODM2ZTU0ODY4ZGI1YzhjODQ3MWM1NjM5MmFhMzE2NGRiZTFiNjlhNzRhMTQxMjc5MGZmOTYxY2M5ZWVkMmRiNyJ9', '2021-03-24 01:13:47', '2021-03-26 04:28:16', NULL),
+(7, 'CC', '88888', 'ocho', 'el ocho', '', NULL, 3, 13, NULL, 'eyJpdiI6IkZRdmZvSEM0cW1wL1daRmdhWDBHVHc9PSIsInZhbHVlIjoiMk9NRlVEQ1c4V0VqbFUrSEJDTWtTQT09IiwibWFjIjoiODZiOTE0NGNmMzliMDM4NzAyODA0M2RmMmFmZDBjMTEzMjUzNmYzNmVhMDhlODZkZDljNDIxOWE2N2I1ZTA2YiJ9', '2021-03-24 12:40:30', '2021-03-24 12:40:30', NULL),
+(8, 'TI', '45454545', 'Carlos Amparo', 'pipipipipip', 'sin@coreo.com', '33333', 3, 14, NULL, 'eyJpdiI6IkxsaVNKNGdtUzcxM2ZmNmhrR1l3VkE9PSIsInZhbHVlIjoidTJpNzJ3WXB3M1Qzem9WeTNtZWpnQT09IiwibWFjIjoiN2I4NDYyMTc4MGVlMTA5MTEzOTc3MGE1YmVkZjNhN2U2MjY4OTMwY2RmZDZlNWQxYjdhNTRkOWEwOWFjMzA0YSJ9', '2021-03-26 14:38:32', '2021-03-26 14:40:08', NULL),
+(9, 'CC', '1111796644', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 1, 15, NULL, 'eyJpdiI6IjEzVjhUckRFL3ZRNncwdW9EazFDOVE9PSIsInZhbHVlIjoia2VhRmRhc2dud0luY1RmblFjcFU1Zz09IiwibWFjIjoiY2Q4NTg1MWRiZDc3ZDMwNDVjNTNlMmU1ZmQxMWQwYjAzYzVkZGFkNzIxYmVmZjZhMTM5M2EyZmRiYmMyMjYxMyJ9', '2021-04-12 21:41:56', '2021-04-12 21:42:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -10166,7 +10180,7 @@ ALTER TABLE `lineas_productivas`
 -- AUTO_INCREMENT de la tabla `listas_detalle`
 --
 ALTER TABLE `listas_detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `listas_indice`
@@ -10226,7 +10240,7 @@ ALTER TABLE `perfiles`
 -- AUTO_INCREMENT de la tabla `perfiles_secciones`
 --
 ALTER TABLE `perfiles_secciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -10244,7 +10258,7 @@ ALTER TABLE `secciones`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `zonas`
