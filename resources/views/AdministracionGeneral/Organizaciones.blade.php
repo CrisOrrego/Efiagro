@@ -24,7 +24,6 @@
 			<table md-table>
 			<thead md-head>
 				<tr md-row>
-				
 				<th md-column>ID</th>
 				<th md-column>Nombre</th>
 				<th md-column>NIT</th>
