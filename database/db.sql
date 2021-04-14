@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-04-2021 a las 21:53:23
+-- Tiempo de generación: 14-04-2021 a las 22:51:58
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -9937,14 +9937,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 15, 3, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-04-14 19:19:25', NULL),
-(2, 'RC', '123456222', 'Miguel', 'Herrera', 'miguel@agregandovalor.com', '159487159', 2, 8, 4, '111', '2021-03-01 08:06:04', '2021-03-26 04:29:02', NULL),
-(3, 'PA', '1093217142', 'Pepito', 'Perez', 'pepito@mbrain.co', '8568568568', 2, 8, NULL, 'eyJpdiI6IndMNWNRVTAxSnJZUHVRZ0tHVXoxY3c9PSIsInZhbHVlIjoiM01UbmZDUkpodm1WSGhuNUdQQ1ljZz09IiwibWFjIjoiOWNjNzgxODQ0ZDFjNGE0NGNiNzlmNjFlMTdkN2NmMzJkM2NiOTZmMjNmMzliNDU0MTkxM2U3YWI3MDIxZGQ3ZCJ9', '2020-11-18 23:02:36', '2021-03-26 04:29:07', NULL),
-(4, 'CC', '1234123', 'Carlos Amparo', 'Mapiripan', '', '3333', 2, 13, NULL, 'eyJpdiI6IjVvRnlKRXExbVlIWjc4VDYxYVRwTnc9PSIsInZhbHVlIjoiWm0rZ3FpNUxIVXQyYmhyNEJKNHdCZz09IiwibWFjIjoiOGRhMzVjYzc1YjczZTE1MmRjOGY1NWYwNDA0ZTQ4ZGQzYTQ2YzZhNmM5ZDFhY2QwMzc1NmE0OWIxOTVjNGFjOCJ9', '2021-03-20 14:30:56', '2021-03-26 04:28:31', NULL),
-(5, 'CC', '33333', '3333', '3333', 'correo@c3.com', '333333', 3, 13, NULL, 'eyJpdiI6InZXVXYrM3RCUkFsYkdTZkZTK010WFE9PSIsInZhbHVlIjoiTStESFNyb0FDU25VWFpDU0VOUGlkZz09IiwibWFjIjoiZjIwYmE1OGZmYzE0Y2U2ZDExZjA4MTg4YzJjZjQwNDc5YzE1ZmViYzc0ZTYyYTQ2YTYzNjY3MjVhMTFhYzFiOCJ9', '2021-03-24 01:13:28', '2021-03-26 04:28:06', NULL),
-(6, 'CC', '4444', '44444', '44444', '', NULL, 2, 13, NULL, 'eyJpdiI6IlA1YzdBRmlNNWQyMCtEbUdJaWNnaHc9PSIsInZhbHVlIjoia0FRWDNaeVpWOHFxVjJ1Y3FQeDN3UT09IiwibWFjIjoiODM2ZTU0ODY4ZGI1YzhjODQ3MWM1NjM5MmFhMzE2NGRiZTFiNjlhNzRhMTQxMjc5MGZmOTYxY2M5ZWVkMmRiNyJ9', '2021-03-24 01:13:47', '2021-03-26 04:28:16', NULL),
-(7, 'CC', '88888', 'ocho', 'el ocho', '', NULL, 3, 13, NULL, 'eyJpdiI6IkZRdmZvSEM0cW1wL1daRmdhWDBHVHc9PSIsInZhbHVlIjoiMk9NRlVEQ1c4V0VqbFUrSEJDTWtTQT09IiwibWFjIjoiODZiOTE0NGNmMzliMDM4NzAyODA0M2RmMmFmZDBjMTEzMjUzNmYzNmVhMDhlODZkZDljNDIxOWE2N2I1ZTA2YiJ9', '2021-03-24 12:40:30', '2021-03-24 12:40:30', NULL),
-(8, 'TI', '45454545', 'Carlos Amparo', 'pipipipipip', 'sin@coreo.com', '33333', 3, 14, NULL, 'eyJpdiI6IkxsaVNKNGdtUzcxM2ZmNmhrR1l3VkE9PSIsInZhbHVlIjoidTJpNzJ3WXB3M1Qzem9WeTNtZWpnQT09IiwibWFjIjoiN2I4NDYyMTc4MGVlMTA5MTEzOTc3MGE1YmVkZjNhN2U2MjY4OTMwY2RmZDZlNWQxYjdhNTRkOWEwOWFjMzA0YSJ9', '2021-03-26 14:38:32', '2021-03-26 14:40:08', NULL),
-(9, 'CC', '1111796644', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 15, 1, 'eyJpdiI6IlN4Yy90YXh1d2J6bk0vZlcyVE1YQ2c9PSIsInZhbHVlIjoibUJzb3VNS29UcjhsajlLRHhIU3NwZz09IiwibWFjIjoiNWI1OGNjYzBlZjE5ODEyMDEyNGYzMTUxNTc0OTRmY2M2NmM0MzZiMTNmNzk2YmIxZTVlZjQ3YTIwZDE1YmM3OSJ9', '2021-04-12 21:41:56', '2021-04-14 01:58:14', NULL);
+(2, 'CC', '123456789', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 1, 15, NULL, 'eyJpdiI6InFXbzA3UTZtZmZtbHQwdHRCSUJwSEE9PSIsInZhbHVlIjoidlJTVWYxdDVTWThKSlNzWWkzZkdPUT09IiwibWFjIjoiNDhhOWJjZGFjZjEwN2FhYTUwZWE2ZjhlNWMyMjZmYzdmYzhlODJhMTY0NTdhMDhjYmVmMjEzNzZmNTQwZjk2OCJ9', '2021-04-14 20:51:06', '2021-04-14 20:51:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -10306,7 +10299,7 @@ ALTER TABLE `secciones`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `zonas`
@@ -10319,105 +10312,10 @@ ALTER TABLE `zonas`
 --
 
 --
--- Filtros para la tabla `articulos`
---
-ALTER TABLE `articulos`
-  ADD CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
 -- Filtros para la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
   ADD CONSTRAINT `articulos_secciones_ibfk_1` FOREIGN KEY (`articulo_id`) REFERENCES `articulos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `asignaciones`
---
-ALTER TABLE `asignaciones`
-  ADD CONSTRAINT `asignaciones_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `asignaciones_ibfk_2` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `asignaciones_ibfk_3` FOREIGN KEY (`perfil_id`) REFERENCES `perfiles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `casos`
---
-ALTER TABLE `casos`
-  ADD CONSTRAINT `casos_ibfk_1` FOREIGN KEY (`solicitante_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `casos_novedades`
---
-ALTER TABLE `casos_novedades`
-  ADD CONSTRAINT `casos_novedades_ibfk_1` FOREIGN KEY (`caso_id`) REFERENCES `casos` (`id`),
-  ADD CONSTRAINT `casos_novedades_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `fincas`
---
-ALTER TABLE `fincas`
-  ADD CONSTRAINT `fincas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
-
---
--- Filtros para la tabla `labores`
---
-ALTER TABLE `labores`
-  ADD CONSTRAINT `labores_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`),
-  ADD CONSTRAINT `labores_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
-
---
--- Filtros para la tabla `listas_detalle`
---
-ALTER TABLE `listas_detalle`
-  ADD CONSTRAINT `listas_detalle_ibfk_1` FOREIGN KEY (`lista_id`) REFERENCES `listas_indice` (`id`);
-
---
--- Filtros para la tabla `lotes`
---
-ALTER TABLE `lotes`
-  ADD CONSTRAINT `lotes_ibfk_1` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`),
-  ADD CONSTRAINT `lotes_ibfk_2` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
-  ADD CONSTRAINT `lotes_ibfk_3` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`),
-  ADD CONSTRAINT `lotes_ibfk_4` FOREIGN KEY (`labores_id`) REFERENCES `labores` (`id`);
-
---
--- Filtros para la tabla `lotes_cosechas`
---
-ALTER TABLE `lotes_cosechas`
-  ADD CONSTRAINT `lotes_cosechas_ibfk_1` FOREIGN KEY (`lote_id`) REFERENCES `lotes` (`id`);
-
---
--- Filtros para la tabla `organizaciones`
---
-ALTER TABLE `organizaciones`
-  ADD CONSTRAINT `organizaciones_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `organizaciones_muro`
---
-ALTER TABLE `organizaciones_muro`
-  ADD CONSTRAINT `organizaciones_muro_ibfk_1` FOREIGN KEY (`organizaciones_id`) REFERENCES `organizaciones` (`id`),
-  ADD CONSTRAINT `organizaciones_muro_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `organizacion_lineas_productivas`
---
-ALTER TABLE `organizacion_lineas_productivas`
-  ADD CONSTRAINT `organizacion_lineas_productivas_ibfk_1` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
-  ADD CONSTRAINT `organizacion_lineas_productivas_ibfk_2` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
-  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`);
-
---
--- Filtros para la tabla `zonas`
---
-ALTER TABLE `zonas`
-  ADD CONSTRAINT `zonas_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
