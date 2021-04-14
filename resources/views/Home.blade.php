@@ -2,7 +2,7 @@
 	
 	<div class="h40 bg-primary" layout layout-align="center center"
 		style="padding-left: 30px">
-		<div>PACO</div>
+		<div ng-click="navegarHome()" >PACO</div>
 		<div class="w30"></div>
 		<md-select ng-model="Usuario.organizacion_id" class="no-margin" aria-label="Organizacion">
 			<md-option ng-value="O.id" ng-repeat="O in Usuario.organizaciones">@{{ O.nombre }}</md-option>
@@ -12,7 +12,7 @@
 		</md-select>
 
 		<span flex></span>
-		<div>@{{ Usuario.nombre }}</div>
+		<div>@{{ Usuario.nombre }} </div>
 		<md-button class="md-icon-button" ng-click="Logout()">
 			<md-icon md-font-icon="fa-power-off fa-lg"></md-icon>
 			<md-tooltip>Cerrar Sesion</md-tooltip>
@@ -20,7 +20,6 @@
 	</div>
 
 	<div flex ui-view layout=column class="overflow-y">
-		
 		<div flex layout layout-align="space-around center" layout-wrap>
 			<a ng-repeat="S in Secciones" href="#/Home/@{{ S[0].seccion_slug }}/@{{ S[0].subseccion_slug }}"
 				class="seccion_icono no-underline" layout=column>
@@ -30,7 +29,6 @@
 			<div flex=100 class="h50"></div>
 		</div>	
 	</div>
-
 </div>
 
 <style type="text/css">

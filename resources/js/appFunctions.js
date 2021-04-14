@@ -8,16 +8,9 @@ angular.module('appFunctions', [])
 		Rs.stateChanged = function(){
 			Rs.State = $state.current;
 			Rs.State.route = $location.path().split('/');
-
-			/*if(Rs.State.route.length > 2){
-				Rs.State.tabSelected = Rs.Sections[Rs.State.route[2]]['No'];
-			};*/
-
 		};
 		Rs.navTo = function(Dir, params){ $state.go(Dir, params); };
 		Rs.Refresh = function() { $state.go($state.current, $state.params, {reload: true}); };
-
-
 
 		//Helpers
 		Rs.def = function(arg, def) {
