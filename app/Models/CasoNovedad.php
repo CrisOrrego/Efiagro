@@ -11,7 +11,7 @@ class CasoNovedad extends Model
 
     protected $table = 'casos_novedades';
     protected $guarded = ['id'];
-    protected $appends = [];
+    protected $appends = ['novedad'];
     protected $cast = [
         //'objeto' => 'array'
     ];
@@ -56,7 +56,7 @@ class CasoNovedad extends Model
 
     public function autor()
     {
-        return $this->belongsTo('App\Models\Usuario', 'usuario_id', 'id');
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id');
     }
 
 }

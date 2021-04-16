@@ -2,7 +2,10 @@
 	
 	<div class="h40 bg-primary" layout layout-align="center center"
 		style="padding-left: 30px">
-		<div ng-click="navegarHome()" >PACO</div>
+		<md-button class="margin-10" href="#/Home" >
+			PACO
+		</md-button>
+		{{-- <div ng-click="navegarHome()" ></div> --}}
 		<div class="w30"></div>
 		<md-select ng-model="Usuario.organizacion_id" class="no-margin" aria-label="Organizacion">
 			<md-option ng-value="O.id" ng-repeat="O in Usuario.organizaciones">@{{ O.nombre }}</md-option>

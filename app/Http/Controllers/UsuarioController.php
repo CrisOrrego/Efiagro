@@ -19,17 +19,12 @@ class UsuarioController extends Controller
     public function postLogin()
     {
     	$Credenciales = request('Credenciales');
-        $claveSesion = $Credenciales['Password']; // Crypt::decrypt($Credenciales['Password']); // 
+        $claveSesion = $Credenciales['Password'];
         $usuarioSesion = $Credenciales['Correo'];
-        //dd(Crypt::encrypt($Credenciales['Password'])); die;
-        
     	$Usuario = Usuario::where('correo', $usuarioSesion)
             ->orWhere('documento', $usuarioSesion)
             ->first();
         $dato = Crypt::encrypt($Usuario['contrasena']);
-        // dd($dato);
-        // dd(Crypt::decrypt($Usuario['contrasena']));
-        // echo "{$Usuario['contrasena']} == $claveSesion"; die;
     	if ( $Usuario ) {
             
             if ( Crypt::decryptString($Usuario['contrasena']) == $claveSesion ) {
@@ -57,10 +52,8 @@ class UsuarioController extends Controller
     {
         $usuario_id = request('usuario_id');
         $contrasena = request('contrasena');
-
         $usuario = Usuario::where('id', $usuario_id)->first();
-        // $usuario->contrasena = Crypt::encrypt(trim($contrasena), false); // $contrasena; //
-        $usuario->contrasena = Crypt::encryptString(trim($contrasena), false); // $contrasena; //
+        $usuario->contrasena = Crypt::encryptString(trim($contrasena), false);
         $usuario->save();
     }
 
