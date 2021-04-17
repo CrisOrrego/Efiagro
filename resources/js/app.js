@@ -55,7 +55,7 @@ angular.module('App', [
 
     'OrganizacionesCtrl',
     'OrganizacionDiagCtrl',
-
+    'CultivosCtrl',
     'FincasCtrl',
     'FincaDiagCtrl',
     'PerfilesCtrl', // Luigi
