@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2021 a las 00:29:23
+-- Tiempo de generación: 14-04-2021 a las 22:51:58
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -221,9 +221,9 @@ CREATE TABLE `fincas` (
 --
 
 INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_id`, `municipio_id`, `area_total`, `tipo_cultivo`, `total_lotes`, `tipo_suelo`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Cafetal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
+(1, 9, 'Cafetal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
 (2, 1, 'Platanal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
-(3, 1, 'La Esperanza', '', '', '', 0, '', 0, '', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
+(3, 9, 'La Esperanza', '', '', '', 0, '', 0, '', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
 (4, 1, 'Nuevo Cerre', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 15, 50, 0, 0, 0, 0, 0, 0, '2021-02-03 19:21:08', '2021-02-03 19:21:08'),
 (5, 1, 'Florestal', 'Carrera 8 Bis N° 34 – 14', 'Risaralda', 'Pereira', 345, 'MONOCULTIVO', 453, 'UNIDAD AMAGÁ', 1, '7.76472000', '-80.27483000', 35, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-28 18:38:39');
 
@@ -350,7 +350,10 @@ INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, 
 (32, 2, '95', 'guaviare', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (33, 2, '97', 'vaupés', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(35, 4, 'Mi', 'Miguel', '1', '2', '3', '4', '5', 'A', '2021-03-16 04:03:07', '2021-03-16 04:03:07');
+(35, 4, 'Mi', 'Miguel', '1', '2', '3', '4', '5', 'A', '2021-03-16 04:03:07', '2021-03-16 04:03:07'),
+(37, 3, '66001', 'PEREIRA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:22:23', '2021-04-12 21:22:23'),
+(38, 3, '66045', 'APÍA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:24:46', '2021-04-12 21:24:46'),
+(39, 3, '66075', 'BALBOA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:25:20', '2021-04-12 21:25:20');
 
 -- --------------------------------------------------------
 
@@ -9692,9 +9695,9 @@ INSERT INTO `organizaciones` (`id`, `usuario_id`, `nombre`, `nit`, `sigla`, `lat
 (6, 1, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
 (7, 1, 'Nacional Mi Organizacion', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:33'),
 (8, 1, 'Autoridad Nacional de Acuicultura y Pesca', '8300728574', 'AUNAP', '4.81492200', '-75.70702000', 'Edificio UGI Calle 40A No. 13-09 Piso 6,14,15', 'Bogotá - Colombia', 'Nuevo', '+57(1) 377 0500', 'atencionalciudadano@aunap.gov.co', 45, '2021-01-03T05:00:00.000Z', '2021-01-13 01:33:13', '2021-01-13 01:45:49'),
-(13, 1, 'Tierras de las Flores', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:57'),
-(14, 1, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
-(15, 1, 'Campestre Agro Mas', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:17:28');
+(13, 9, 'Tierras de las Flores', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:57'),
+(14, 9, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
+(15, 9, 'Campestre Agro Mas', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:17:28');
 
 -- --------------------------------------------------------
 
@@ -9738,8 +9741,8 @@ CREATE TABLE `organizaciones_muro_secciones` (
 INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
 (165, 8, '<p>Hola</p><ul><li>​</li></ul><ol><li><br/></li></ol>', 'files/muro_media/8/20210311031015.jpg', NULL, NULL, 1, NULL, '2021-03-11 08:10:17', '2021-03-11 08:10:17'),
 (166, 8, '<p><b>EL CULTIVO DEL PLÁTANO EN ALTAS DENSIDADES DE SIEMBRA<br/>UNA NUEVA CONCEPCIÓN TECNOLÓGICA DE PRODUCCIÓN</b></p><p><!--EndFragment--><br/><br/><!--StartFragment-->INTRODUCCIÓN<br/>En Colombia existen actualmente mas de 400,000 ha cultivadas con plátano, de<br/>las cuales 280,600 ha se encuentran en la zona central cafetera, cuyo volumen<br/>de producción es del orden de 1.7 millones de toneladas al año, con un<br/>rendimiento promedio de 6.1 ton/ha. Este rendimiento se considera<br/>relativamente bajo, por cuanto si se utilizan las nuevas tecnologías de<br/>producción, es posible alcanzar niveles de 50.1 ton/ha.</p><ul><li>IMPORTANCIA ECONÓMICA</li></ul><ol><li>VENTAJAS ECONÓMICAS <!--EndFragment--><br/><br/><br/></li></ol><p><br/></p><p><br/></p><p><br/></p><p><br/></p>', 'files/muro_media/8/20210311034719.jpg', NULL, NULL, 1, NULL, '2021-03-11 08:47:19', '2021-03-11 08:47:19'),
-(167, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224917.jpg', NULL, NULL, 1, NULL, '2021-03-16 03:49:17', '2021-03-16 03:49:17'),
-(168, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224932.jpg', NULL, NULL, 1, NULL, '2021-03-16 03:49:32', '2021-03-16 03:49:32'),
+(167, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224917.jpg', NULL, NULL, 9, NULL, '2021-03-16 03:49:17', '2021-03-16 03:49:17'),
+(168, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224932.jpg', NULL, NULL, 9, NULL, '2021-03-16 03:49:32', '2021-03-16 03:49:32'),
 (169, 8, '<p>Ota</p>', 'files/muro_media/8/20210315231555.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:15:55', '2021-03-16 04:15:55'),
 (170, 8, '<p>FFFF</p>', 'files/muro_media/8/20210315235538.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:55:39', '2021-03-16 04:55:39'),
 (171, 8, '<p>Hola</p>', 'files/muro_media/8/20210326151303.jpg', NULL, NULL, 1, NULL, '2021-03-26 20:13:04', '2021-03-26 20:13:04'),
@@ -9797,6 +9800,58 @@ CREATE TABLE `perfiles_secciones` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `perfiles_secciones`
+--
+
+INSERT INTO `perfiles_secciones` (`id`, `perfil_id`, `seccion_id`, `nivel`, `created_at`, `updated_at`) VALUES
+(126, 1, 1, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(127, 1, 2, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(128, 1, 3, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(129, 1, 4, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(130, 1, 5, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(131, 1, 6, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(132, 1, 7, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(133, 1, 8, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(134, 1, 9, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(135, 1, 11, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(136, 1, 12, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(137, 1, 13, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(138, 1, 16, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(139, 1, 17, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(140, 1, 18, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(141, 1, 19, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(142, 1, 20, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(143, 1, 21, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(144, 1, 22, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(145, 1, 23, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(146, 1, 25, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(147, 1, 26, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(148, 1, 27, 10, '2021-04-14 19:48:33', '2021-04-14 19:48:33'),
+(149, 4, 1, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(150, 4, 2, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(151, 4, 3, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(152, 4, 4, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(153, 4, 5, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(154, 4, 6, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(155, 4, 7, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(156, 4, 8, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(157, 4, 9, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(158, 4, 11, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(159, 4, 12, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(160, 4, 13, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(161, 4, 16, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(162, 4, 17, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(163, 4, 18, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(164, 4, 19, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(165, 4, 20, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(166, 4, 21, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(167, 4, 22, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(168, 4, 23, 0, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(169, 4, 25, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(170, 4, 26, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49'),
+(171, 4, 27, 10, '2021-04-14 19:51:49', '2021-04-14 19:51:49');
+
 -- --------------------------------------------------------
 
 --
@@ -9848,7 +9903,10 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (20, 'Administración General', 'Perfiles', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
 (21, 'Administración General', 'Configuracion', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
 (22, 'Fondo Rotatorio', 'Créditos', '2021-03-23 23:25:24', '2021-03-23 23:25:24'),
-(23, 'Administración General', 'Usuarios', '2021-03-14 07:12:13', '2021-03-14 07:12:13');
+(23, 'Administración General', 'Usuarios', '2021-03-14 07:12:13', '2021-03-14 07:12:13'),
+(25, 'Mi Finca', 'Lotes', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 'Mi Finca', 'Eventos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 'Mi Finca', 'Organización', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -9878,12 +9936,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'CC', '1234567', 'Christian', 'Orregos', 'info@mbrain.com', '3107664444', 2, 8, 5, 'eyJpdiI6InlPOVY0VSs1blF2YTlTTUJsSjlwd1E9PSIsInZhbHVlIjoiamFPSmlsU2szS3NDMm5jOU9jY1lTcEw3bjN6NTFva2FiREF5a3ZtVXcwND0iLCJtYWMiOiI3ZmRiOTE4MjBlNmY2NmM0MDdkNGZhZWI2M2RlZDRkN2Q0MjAwZTk0NDMwMTJhOWQ3ZTRlYTJjM2IxYjhlMzk0In0=', '0000-00-00 00:00:00', '2021-04-01 02:58:11', NULL),
-(2, '', '', 'Miguel', 'Herrera', 'miguel@agregandovalor.com', '', 0, NULL, NULL, '', '0000-00-00 00:00:00', '2021-03-24 21:11:43', NULL),
-(3, '', '', 'Pepito', 'Perez', 'pepito@mbrain.co', '', 0, NULL, NULL, '', '2020-11-18 23:02:36', '2020-11-20 01:17:18', '2020-11-20 01:17:18'),
-(4, 'CC', '1115467893', 'Angel', 'Herrera', 'migangel@utp.edu.co', '3105544852', 1, 8, NULL, 'eyJpdiI6InhTMHExOXZMM1lSMDNMQXpZK2F2Y2c9PSIsInZhbHVlIjoidU10SSt0am9PNHlPVEk3K1dtbW9VUT09IiwibWFjIjoiOGRkOGIwMGFkNWY1NzhlNWMzOTdmZjliZDY3MTkzNzhmMjJkNjBkNTIzNGI5MDNlMzA2MmY4NzYwZjVjYzlmZiJ9', '2021-03-26 19:24:23', '2021-03-26 19:25:13', NULL),
-(5, 'TI', '0000', 'Nuevo', 'Apen', 'nuevoco@gmail.com', '32134343', 2, 8, NULL, 'eyJpdiI6ImhrZGZGdEw3RkZwZ2FtckZBVXhNbVE9PSIsInZhbHVlIjoiYnpYRW9ZRFJKOWZva0NLaGJoOUdxUT09IiwibWFjIjoiYWRkYjZmOTM3ZThlNmMzM2JhZmU2YzUyOTdjYWU2ZjkyZTg4MWI2MWIzZTg2MjNiNTIxODNhMTJlNTAxMmZiYyJ9', '2021-03-26 19:40:04', '2021-03-26 19:40:04', NULL),
-(6, 'CC', '00000000', 'Juan', 'Masss', 'juanmass@gmail.com', '3195544362', 2, 8, NULL, 'eyJpdiI6IkNoWFdENmxseVpmRitzS0NtV3RqL2c9PSIsInZhbHVlIjoicHUvOTdDNGw0WHB2SmYrRVpJL1lvZz09IiwibWFjIjoiNjJjOTcwNDE4OThlNjJhZTE4ZTNmMGM0NTdmM2QxZTNjMzYxNDliOGYzZGQzZTE3MGYxMjNjMGE2ODllZGZjOSJ9', '2021-04-05 21:30:48', '2021-04-05 21:30:57', NULL);
+(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 15, 3, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-04-14 19:19:25', NULL),
+(2, 'CC', '123456789', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 1, 15, NULL, 'eyJpdiI6InFXbzA3UTZtZmZtbHQwdHRCSUJwSEE9PSIsInZhbHVlIjoidlJTVWYxdDVTWThKSlNzWWkzZkdPUT09IiwibWFjIjoiNDhhOWJjZGFjZjEwN2FhYTUwZWE2ZjhlNWMyMjZmYzdmYzhlODJhMTY0NTdhMDhjYmVmMjEzNzZmNTQwZjk2OCJ9', '2021-04-14 20:51:06', '2021-04-14 20:51:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -10081,7 +10135,8 @@ ALTER TABLE `perfiles`
 -- Indices de la tabla `perfiles_secciones`
 --
 ALTER TABLE `perfiles_secciones`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `seccion_id` (`seccion_id`);
 
 --
 -- Indices de la tabla `roles`
@@ -10166,7 +10221,7 @@ ALTER TABLE `lineas_productivas`
 -- AUTO_INCREMENT de la tabla `listas_detalle`
 --
 ALTER TABLE `listas_detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `listas_indice`
@@ -10226,7 +10281,7 @@ ALTER TABLE `perfiles`
 -- AUTO_INCREMENT de la tabla `perfiles_secciones`
 --
 ALTER TABLE `perfiles_secciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -10238,13 +10293,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `zonas`
@@ -10257,105 +10312,10 @@ ALTER TABLE `zonas`
 --
 
 --
--- Filtros para la tabla `articulos`
---
-ALTER TABLE `articulos`
-  ADD CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
 -- Filtros para la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
   ADD CONSTRAINT `articulos_secciones_ibfk_1` FOREIGN KEY (`articulo_id`) REFERENCES `articulos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `asignaciones`
---
-ALTER TABLE `asignaciones`
-  ADD CONSTRAINT `asignaciones_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `asignaciones_ibfk_2` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `asignaciones_ibfk_3` FOREIGN KEY (`perfil_id`) REFERENCES `perfiles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `casos`
---
-ALTER TABLE `casos`
-  ADD CONSTRAINT `casos_ibfk_1` FOREIGN KEY (`solicitante_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `casos_novedades`
---
-ALTER TABLE `casos_novedades`
-  ADD CONSTRAINT `casos_novedades_ibfk_1` FOREIGN KEY (`caso_id`) REFERENCES `casos` (`id`),
-  ADD CONSTRAINT `casos_novedades_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `fincas`
---
-ALTER TABLE `fincas`
-  ADD CONSTRAINT `fincas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `fincas_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
-
---
--- Filtros para la tabla `labores`
---
-ALTER TABLE `labores`
-  ADD CONSTRAINT `labores_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`),
-  ADD CONSTRAINT `labores_ibfk_2` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
-
---
--- Filtros para la tabla `listas_detalle`
---
-ALTER TABLE `listas_detalle`
-  ADD CONSTRAINT `listas_detalle_ibfk_1` FOREIGN KEY (`lista_id`) REFERENCES `listas_indice` (`id`);
-
---
--- Filtros para la tabla `lotes`
---
-ALTER TABLE `lotes`
-  ADD CONSTRAINT `lotes_ibfk_1` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`),
-  ADD CONSTRAINT `lotes_ibfk_2` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
-  ADD CONSTRAINT `lotes_ibfk_3` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`),
-  ADD CONSTRAINT `lotes_ibfk_4` FOREIGN KEY (`labores_id`) REFERENCES `labores` (`id`);
-
---
--- Filtros para la tabla `lotes_cosechas`
---
-ALTER TABLE `lotes_cosechas`
-  ADD CONSTRAINT `lotes_cosechas_ibfk_1` FOREIGN KEY (`lote_id`) REFERENCES `lotes` (`id`);
-
---
--- Filtros para la tabla `organizaciones`
---
-ALTER TABLE `organizaciones`
-  ADD CONSTRAINT `organizaciones_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `organizaciones_muro`
---
-ALTER TABLE `organizaciones_muro`
-  ADD CONSTRAINT `organizaciones_muro_ibfk_1` FOREIGN KEY (`organizaciones_id`) REFERENCES `organizaciones` (`id`),
-  ADD CONSTRAINT `organizaciones_muro_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `organizacion_lineas_productivas`
---
-ALTER TABLE `organizacion_lineas_productivas`
-  ADD CONSTRAINT `organizacion_lineas_productivas_ibfk_1` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
-  ADD CONSTRAINT `organizacion_lineas_productivas_ibfk_2` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`),
-  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`);
-
---
--- Filtros para la tabla `zonas`
---
-ALTER TABLE `zonas`
-  ADD CONSTRAINT `zonas_ibfk_1` FOREIGN KEY (`linea_productiva_id`) REFERENCES `lineas_productivas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,6 +9,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         console.info("OrganizacionesCtrl");
         var Ctrl = $scope;
         var Rs = $rootScope;
+        var departamentos = [];
 
         Ctrl.Salir = $mdDialog.cancel;
 		
@@ -19,6 +20,8 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             add_append: "refresh",
             order_by: ["-created_at"]
         });
+
+        Ctrl.value = 0;
 
         Ctrl.myHTML =
         'I am an <code>HTML</code>string with ' +
@@ -33,6 +36,12 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			order_by: [ '-created_at' ]
 		});
         console.log(Ctrl.OrganizacionesmuroseccionesCRUD);
+
+        /*
+        Ctrl.selectChanged = function ()  {
+            debugger;
+            alert('Hola Mundo');
+        }*/
 
         Ctrl.obtenerSecciones = (organizacion_id) => {
             // console.log('nos mostrara algo?');
@@ -56,19 +65,78 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         Ctrl.getOrganizacion();
 
-        Ctrl.nuevaOrganizacion = () => {
+        //INICIO DEV ANGPELICA
+        loadDepartamentos = (col_departamento) => {
+
+            col_departamento.Options.options = departamentos;
+
+            /*departamentos.forEach(departamento => {
+                let codigo = departamento.codigo;
+                let descripcion = departamento.descripcion;
+                col_departamento.Options.options = {...col_departamento.Options.options, 
+                    [codigo]: descripcion // si quiero que en la base de datos se vea por codigos en departamento y municipio
+                    //[descripcion]: descripcion // si quiero que en la base de datos se vea por nombres(descripcion) en departamento y municipio
+                };
+            });//Llena el select de departamentos
+            */
+        }
+
+        loadMunicipios = (valorDepartamento, col_municipio) => {
+            col_municipio.Options.options = {}; //limpia el select de municipios
+            console.log(valorDepartamento);
+
+            $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: valorDepartamento }).then((r)=>{
+                col_municipio.Options.options = r.data;
+			});
+            /*departamento.municipios.forEach(municipio => {
+                let codigo = municipio.codigo;
+                let descripcion = municipio.descripcion;
+                col_municipio.Options.options = {...col_municipio.Options.options, 
+                    //[codigo]: descripcion ----> si quiero que en la base de datos se vea por codigos en departamento y municipio
+                    [descripcion]: descripcion // si quiero que en la base de datos se vea por nombres(descripcion) en departamento y municipio
+                };
+            }); //se trae los municipios del departamento escogido
+            */
+        }
+
+        inicializarListaDepartamentoMunicipio = () => {
+            let col_departamento = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'departamento');
+            loadDepartamentos(col_departamento);
+    
+            col_departamento.Options.onChangeFn = (valorDepartamento) => {
+                let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
+                loadMunicipios(valorDepartamento, col_municipio);
+            }                        
+
+        }
+        //FIN DEV ANGÉLICA
+
+        //INICIO DEV ANGÉLICA
+        Ctrl.nuevaOrganizacion = () => {  //Esta es una función que me crea automaticamente la modal y lleva la informacion a la BD desde la modal de CRUD
+            inicializarListaDepartamentoMunicipio();
+        //FIN DEV ANGÉLICA  
             Ctrl.OrganizacionesCRUD.dialog({
                 Flex: 10,
-				Title: 'Crear Organización',
-				
-				Confirm: { Text: 'Crear Organizacion' },
+                Title: 'Crear Organización',
+                Confirm: { Text: 'Crear Organizacion' },
             }).then(r => {
                 if (!r) return;
                 Ctrl.OrganizacionesCRUD.add(r);
             });
         };
+       
+
+        Ctrl.getDepartamentos = () => {
+			$http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
+                departamentos = r.data;
+                console.log(departamentos);
+			});
+		}
+
+		Ctrl.getDepartamentos();
 
         Ctrl.editarOrganizacion = (O) => {
+            inicializarListaDepartamentoMunicipio();
 			Ctrl.OrganizacionesCRUD.dialog(O, {
 				title: 'Editar Organización' + O.nombre
 			}).then(r => {

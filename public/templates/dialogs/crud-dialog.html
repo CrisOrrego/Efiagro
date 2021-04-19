@@ -23,7 +23,8 @@
 
                     <md-datepicker ng-if="Field.Type == 'date'" ng-model="Obj[Field.Field]" md-autofocus="$first" ng-required="Field.Required" ng-class="Field.Class"></md-datepicker>
 
-                    <md-select ng-if="Field.Type == 'select'" ng-model="Obj[Field.Field]" md-autofocus="$first" ng-required="Field.Required" ng-class="Field.Class" class="w100p">
+                    <md-select ng-if="Field.Type == 'select'" ng-model="Obj[Field.Field]" md-autofocus="$first" ng-required="Field.Required" ng-class="Field.Class" class="w100p" 
+                        ng-change="Field.Options.onChangeFn(Obj[Field.Field])">
                         <md-option ng-repeat="(k, Op) in Field.Options.options" ng-value="k">{{ Op }}</md-option>
                     </md-select>
 
@@ -32,6 +33,7 @@
 					</md-switch>
 					
                 </md-input-container>
+        
             </div>
             <div class="h10"></div>
         </md-dialog-content>
