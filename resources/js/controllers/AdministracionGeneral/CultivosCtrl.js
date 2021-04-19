@@ -8,6 +8,8 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         console.info("CultivosCtrl");
         var Ctrl = $scope;
         var Rs = $rootScope;
+
+        Ctrl.zona_select = null;
         
         Ctrl.Salir = $mdDialog.cancel;
 
@@ -20,12 +22,15 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         });
 
         Ctrl.getCultivos = () => {
+            // console.log(Ctrl.zona_select);
+            // Ctrl.LaboresCRUD.setScope('lazona', Ctrl.zona_select);
             Ctrl.CultivosCRUD.get().then(() => {
-                // Ctrl.Cultivos = Ctrl.CultivosCRUD.rows[0];
+                Ctrl.Cultivo = Ctrl.CultivosCRUD.rows[0];
             });
         };
 
         Ctrl.getCultivos();
+        
 
         Ctrl.nuevoCultivo = () => {
             Ctrl.CultivosCRUD.dialog({

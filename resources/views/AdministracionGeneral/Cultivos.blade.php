@@ -34,9 +34,9 @@
 	      </tr>
 	    </thead>
 	    <tbody md-body>
-			<tr md-row ng-repeat="C in CultivosCRUD.rows | filter:filtercultivos">
+			<tr md-row ng-repeat="C in CultivosCRUD.rows | filter:filterCultivos">
 				<td md-cell>
-					<md-button class="md-icon-button" ng-click="editarCultivos(C)">
+					<md-button class="md-icon-button" ng-click="editarCultivo(C)">
 						<md-icon md-font-icon="fa-edit"></md-icon>
 					</md-button>
 					<md-button class="md-icon-button md-warn" ng-click="eliminarCultivo(C)">

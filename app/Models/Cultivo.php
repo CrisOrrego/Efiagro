@@ -20,7 +20,7 @@ class Cultivo extends Model
 
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
-            ['fechas',                      'Fechas',                  null, false, false, null, 255],
+            ['fechas',                      'Fechas',                  'date', false, false, null, 255],
             ['zona_id',                     'Zona',                   'select',   true,   false,  null, 50, ['options' => $zonas] ],
             ['produccion',                  'Produccion',              null, false, false, null, 255],
             ['produccion_estimada',          'Producion Estimada',      null, false, false, null, 100],
@@ -30,10 +30,10 @@ class Cultivo extends Model
         ];
     }
 
-     // public function scopeLalineaproductiva($q, $linea_productiva_id){
-    //     return $q->where('linea_productiva_id', $linea_productiva_id);
-    //  }
-
+    public function scopeLazona($q, $zona_id){
+        return $q->where('zona_id', $zona_id);
+     }
+     
     // public function linea_productiva()
     // {
     //     return $this->belongsTo('App\Models\LineaProductiva',  'linea_productiva_id');
