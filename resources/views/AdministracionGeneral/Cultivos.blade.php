@@ -43,14 +43,14 @@
 						<md-icon md-font-icon="fa-trash"></md-icon>
 					</md-button>
 				</td>
-			{{-- <td md-cell>@{{ L.id }} </td> --}}
-	        <td md-cell>@{{ C.fechas }}</td>
-			<td md-cell>@{{ C.zona.descripcion }}</td>
-			<td md-cell>@{{ C.produccion }}<span>kg</span></td> 
-            <td md-cell>@{{ C.produccion_estimada }}<span>kg</span></td>
-            <td md-cell>@{{ C.eventos }}</td>
-            <td md-cell>@{{ C.creditos_colocados }}</td>
-            <td md-cell>@{{ C.cartera_vencida }}</td>
+				{{-- <td md-cell>@{{ L.id }} </td> --}}
+				<td md-cell>@{{ C.fechas }}</td>
+				<td md-cell>@{{ C.zona.descripcion }}</td>
+				<td md-cell>@{{ C.produccion }}<span>kg</span></td> 
+				<td md-cell>@{{ C.produccion_estimada }}<span>kg</span></td>
+				<td md-cell>@{{ C.eventos }}</td>
+				<td md-cell>@{{ C.creditos_colocados }}</td>
+				<td md-cell>@{{ C.cartera_vencida }}</td>
 	      </tr>
 	    </tbody>
 	  </table>
