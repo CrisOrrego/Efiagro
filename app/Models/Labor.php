@@ -28,7 +28,7 @@ class Labor extends Model
             ['zona_id',             'Zona:',                                            null, true, false, null, 100],
             ['linea_productiva_id', 'Linea productiva (1-Platano, 2-Café, 3-Mora):',    null, true, false, null, 255],
             ['frecuencia',          'Frecuencia:',                                      null, true, false, null, 100],
-            ['semana_inicio',       'Semana de inicio:',                                null, false, false, null, 100],
+            ['inicio',       'Semana de inicio:',                                null, false, false, null, 100],
             ['margen',              'Margen:',                                          null, false, false, null, 100],   
         ];
     }
@@ -41,12 +41,12 @@ class Labor extends Model
         return $q->where('linea_productiva_id', $linea_productiva_id);
      }
 
+    public function linea_productiva()
+    {
+        return $this->belongsTo('App\Models\LineaProductiva',  'linea_productiva_id');
+    }
     public function zona()
     {
         return $this->belongsTo('App\Models\Zona',  'zona_id');
-    }
-    public function lineaproductiva()
-    {
-        return $this->belongsTo('App\Models\LineaProductiva',  'linea_productivaid');
     }
 }

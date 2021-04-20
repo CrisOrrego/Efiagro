@@ -25,9 +25,11 @@ class UsuarioController extends Controller
             ->orWhere('documento', $usuarioSesion)
             ->first();
         $dato = Crypt::encrypt($Usuario['contrasena']);
+        // $dato = $Usuario['contrasena'];
     	if ( $Usuario ) {
             
             if ( Crypt::decryptString($Usuario['contrasena']) == $claveSesion ) {
+            // if ( $Usuario['contrasena'] == $claveSesion ) {
                 return Crypt::encrypt($Usuario->id);
             } else {
                 return response()->json(['Msg' => 'Error en la contraseña registrada'], 500);
@@ -47,6 +49,7 @@ class UsuarioController extends Controller
 
         return $Usuario;
     }
+    
     // Medoto para la actualizacion solo de la clave del usuario.
     public function postActualizarClave()
     {
@@ -64,6 +67,17 @@ class UsuarioController extends Controller
                     ->orWhere('apellidos', 'LIKE', "%$query%")
                     ->orWhere('documento',    'LIKE', "$query%")
                     ->get();
+    }
+
+    // Medoto para la actualizacion solo de la clave del usuario.
+    public function postActualizarcampo()
+    {
+        $usuario_id = 1; //request('usuario_id');
+        $campo      = request('campo');
+        $valor      = request('valor');
+        $usuario = Usuario::where('id', $usuario_id)->first();
+        $usuario->$campo = $valor;
+        $usuario->save();
     }
 
 }

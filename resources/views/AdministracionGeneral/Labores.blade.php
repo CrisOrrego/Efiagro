@@ -36,33 +36,35 @@
 	  <table md-table>
 	    <thead md-head>
 	      <tr md-row>
-			<th md-column>ID</th>
+			<th md-column>Acción</th>
+			{{-- <th md-column>ID</th> --}}
 	        <th md-column>Labor</th>
 			<th md-column>Zona</th>
 			<th md-column>Linea Productiva</th>
 	        <th md-column>Frecuencia</th>
 	        <th md-column>Semana de Inicio</th>
 	        <th md-column>Margen</th>
-			<th md-column>Acción</th>
+			
 	      </tr>
 	    </thead>
 	    <tbody md-body>
 			<tr md-row ng-repeat="L in LaboresCRUD.rows | filter:filterLabores">
-			<td md-cell>@{{ L.id }} </td>
+				<td md-cell>
+					<md-button class="md-icon-button" ng-click="editarLabor(L)">
+						<md-icon md-font-icon="fa-edit"></md-icon>
+					</md-button>
+					<md-button class="md-icon-button md-warn" ng-click="eliminarLabor(L)">
+						<md-icon md-font-icon="fa-trash"></md-icon>
+					</md-button>
+				</td>
+			{{-- <td md-cell>@{{ L.id }} </td> --}}
 	        <td md-cell>@{{ L.labor }}</td>
-			<td md-cell>@{{ L.zona_id }}</td>
-			<td md-cell>@{{ L.linea_productiva_id }} </td> 
+			<td md-cell>@{{ L.zona.descripcion }}</td>
+			<td md-cell>@{{ L.linea_productiva.nombre }} </td> 
             <td md-cell><span>CADA</span> <b>@{{ L.frecuencia }}</b> <span>SEMANAS</span></td>
-            <td md-cell>@{{ L.semana_inicio }}</td>
+            <td md-cell>@{{ L.inicio }}</td>
             <td md-cell><b>@{{ L.margen }}</b> <span>SEMANAS</span></td>
-			<td md-cell>
-				<md-button class="md-icon-button" ng-click="editarLabor(L)">
-					<md-icon md-font-icon="fa-edit"></md-icon>
-				</md-button>
-				<md-button class="md-icon-button md-warn" ng-click="eliminarLabor(L)">
-					<md-icon md-font-icon="fa-trash"></md-icon>
-				</md-button>
-			</td>
+			
 	      </tr>
 	    </tbody>
 	  </table>

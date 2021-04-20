@@ -22,7 +22,7 @@
             </md-input-container>
             <md-input-container >
                 <label>Semana de inicio</label> 
-                <input class="inputEditLabor" type="text" ng-model="Labor.semana_inicio">
+                <input class="inputEditLabor" type="text" ng-model="Labor.inicio">
                </md-input-container>
                <md-input-container > 
                 <label>Margen</label> 

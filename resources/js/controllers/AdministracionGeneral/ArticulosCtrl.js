@@ -80,18 +80,21 @@ angular.module('ArticulosCtrl', [])
 			}
 			//Filtro de palabras clave, los chips
 			if(Ctrl.filterKeys && Ctrl.filterKeys.length>0){
+				debugger;
 				let index = 0; //Se necesita el índice del artículo que se está recorriendo
 				let L = Ctrl.Articuloscopy.length;
 				for (i = 0; i<L; i++){
 					let found = false; //verificar si el articulo tiene la palabra clave, si la tiene no hace nada porque el articulo está en la lista, si no la tiene hay que eliminarlo
-					const keys = Ctrl.Articuloscopy[index].palabras_clave.split(",");
-					keys.forEach(palabraClave => {
-						Ctrl.filterKeys.forEach(key => {
-							if (palabraClave.toUpperCase() === key.toUpperCase()){
-								found = true;
-							}
-						})
-					});
+					if(Ctrl.Articuloscopy[index].palabras_clave){
+						const keys = Ctrl.Articuloscopy[index].palabras_clave.split(",");
+						keys.forEach(palabraClave => {
+							Ctrl.filterKeys.forEach(key => {
+								if (palabraClave.toUpperCase() === key.toUpperCase()){
+									found = true;
+								}
+							})
+						});
+					}
 					if (!found){
 						Ctrl.Articuloscopy.splice(index, 1);
 					}else{

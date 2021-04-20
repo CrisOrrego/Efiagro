@@ -15,13 +15,16 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
 
         Ctrl.Salir = $mdDialog.cancel;
 
+        Ctrl.value = 0;
+
         Ctrl.LaboresCRUD = $injector.get("CRUD").config({
             base_url: "/api/labores/labores",
             limit: 1000,
             add_append: "refresh",
             order_by: ["-created_at"],
-            query_with:['zona']
+            query_with:['linea_productiva', 'zona']
         });
+
 
         Ctrl.getLabores = () => {
             console.log(Ctrl.zona_select);
@@ -54,6 +57,8 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
         //     });
         // };
 // 
+
+
 Ctrl.nuevaLabor = () => {
     Rs.BasicDialog({
         Flex: 30,
@@ -108,7 +113,7 @@ Ctrl.nuevaLabor = () => {
             zona_id: r.Fields[1].Value,
             linea_productiva_id: r.Fields[2].Value,
             frecuencia: r.Fields[3].Value,
-            semana_inicio: r.Fields[4].Value,
+            inicio: r.Fields[4].Value,
             margen: r.Fields[5].Value,
             
 
