@@ -69,7 +69,7 @@ class UsuarioController extends Controller
                     ->get();
     }
 
-    // Medoto para la actualizacion solo de la clave del usuario.
+    // Medoto para la actualizacion de cualquier campo de la tabla del usuario.
     public function postActualizarcampo()
     {
         $usuario_id = 1; //request('usuario_id');

@@ -31,7 +31,6 @@ Route::post("/api/lista",  [ListaController::class, 'Delete']);
 
 AdvancedRoute::controller('/api/main',      'MainController');
 AdvancedRoute::controller('/api/usuario',   'UsuarioController');
-// AdvancedRoute::controller('/api/usuario/actualizarcampo', 'UsuarioController');   // Luigi
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');
 
 // AdvancedRoute::controller('/api/perfiles', 'perfilController');
