@@ -9,6 +9,10 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         var Ctrl = $scope;
         var Rs = $rootScope;
 
+        // 
+        
+    // 
+
         Ctrl.zona_select = null;
         
         Ctrl.Salir = $mdDialog.cancel;
@@ -77,6 +81,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         ]).then(() => {
             Ctrl.getCultivos();
         });
+        
 	
     }
 ]);
