@@ -1,7 +1,7 @@
 
 <div id="GestionCultivos" ng-controller="CultivosCtrl" flex layout=column>
 <div>
-    <div mapa id="map" style="width:800px; height: 400px;overflow: hidden;"></div>
+    <div mapa id="map" class="divMap"></div>
             <md-card class="divInfo">
                 <div><md-input-container >
                     <md-select class="divZona" ng-model="zona_select" ng-change="getCultivos()">
@@ -336,7 +336,13 @@
     }
 
     .divMap {
-        padding: 30px;
+        padding: 300px;
+        background: no-repeat center center fixed;
+
+        /* width:800px; 
+        height: 400px;
+        overflow: hidden;" */
+
 
     }
 
