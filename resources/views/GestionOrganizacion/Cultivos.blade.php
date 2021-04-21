@@ -332,7 +332,7 @@
     }
 
     .divInfo {
-        width: 20%;  
+        width: 200PX;  
     }
 
     .divMap {
