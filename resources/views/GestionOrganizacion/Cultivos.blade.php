@@ -20,27 +20,12 @@
         </div>
         <div id="container">
             <div id="sideMenu">
-                <div class="meNu">
-                
+                <div class="meNuIz">
                     <ul class="menu">
                         <li>Fincas Seleccionadas <span class="notification">4</span></li>
                         <li>Lotes Seleccionados <span class="notification">9</span></li>
                         <li>Kg en Producción <span class="notification">56.780</span></li>
                         <li>Kg por Recolectar <span class="notification">2.356</span></li>
-                    </ul>
-                
-                    <ul class="menu">
-                        <li>Account</li>
-                        <li>Activity</li>
-                        <li>Messages <span class="notification">4</span></li>
-                        <li>Downloads</li>
-                    </ul>
-                
-                    <ul class="menu">
-                        <li>Categories</li>
-                        <li>Credit Sales <span class="colorIcon red"></span></li>
-                        <li>Channel Sales <span class="colorIcon orange"></span></li>
-                        <li>Direct Sales <span class="colorIcon green"></span></li>
                     </ul>
                 </div>
             </div>
@@ -48,58 +33,66 @@
                 <div id="titleBar">
                     <h2>Dashboard</h2>
                 </div>
-            
+    
                 <div class="mainChart">
-                    <canvas id="salesData"></canvas>
-                    <h2>Total Sales</h2>
-            
-                    <div class="clearFix"></div>
-            
                     <div id="totalSales">
                     <div class="col">
-                        <div id="creditSales" class="progressBar"></div>
-                        <h3>$36,059</h3>
-                        <span class="progressTitle">Credit Sales</span>
+                        AQUI CHART
+                    </div>
+                    
+                    <div class="col">
+                        AQUI CHART
                     </div>
                     <div class="col">
-                        <div id="channelSales" class="progressBar"></div>
-                        <h3>$24,834</h3>
-                        <span class="progressTitle">Channel Sales</span>
+                        AQUI CHART
                     </div>
                     <div class="col">
-                        <div id="directSales" class="progressBar"></div>
-                        <h3>$15,650</h3>
-                        <span class="progressTitle">Direct Sales</span>
+                        AQUI CHART
+                    </div>
+                    <div class="col">
+                        AQUI CHART
+                    </div>
+                    <div class="col">
+                        AQUI CHART
+                    </div>
+                    <div class="col">
+                        AQUI CHART
+                    </div>
+                    <div class="col">
+                        AQUI CHART
+                    </div>
+                    <div class="col">
+                        AQUI CHART
                     </div>
                     </div>
             
                     <table>
                     <tr>
-                        <th>November Sales</th>
-                        <th>Quantity</th>
+                        <th>OTROS RESUMEN</th>
+                        <th>CANTIDAD</th>
                         <th>Total</th>
                     </tr>
             
                     <tr>
-                        <td>Dallas Oak Dining Chair</td>
+                        <td>Racimos por Lotes</td>
                         <td>20</td>
                         <td>$1,342</td>
                     </tr>
             
                     <tr>
-                        <td>Benmore Glass Coffee Table</td>
+                        <td>Cantodad enbolsados</td>
                         <td>18</td>
                         <td>$1,550</td>
                     </tr>
             
                     <tr>
-                        <td>Aoraki Leather Sofa</td>
+                        <td>Cortes Semanal</td>
                         <td>15</td>
                         <td>$4,170</td>
                     </tr>
             
                     <tr>
-                        <td>Bali Outdoor Wicker Chair</td>
+                        <td>Producción Ventas</td>
                         <td>25</td>
                         <td>$2,974</td>
                     </tr>
@@ -129,23 +122,22 @@
     }
     #container {
     display: table;
-    /* width: 1200px; */
+    width: 100%;
     background: #2c2d2e;
     margin: 60px auto;
     border-radius: 4px;
     }
-
     /* Side Bar */
-    .meNu{
+    .meNuIz{
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        width: 250px;
+        width: 230px;
         padding: 20px;
         background: #3c3d3d;
     }
     #sideMenu {
-    width: 250px;
+    width: 230px;
     height: 100%;
-    padding: 30px;
+    padding: 20px;
     border-right: 1px solid #111;
     display: table-cell;
     vertical-align: top;
@@ -153,7 +145,7 @@
     }
     .menu {
     list-style: none;
-    margin:  24px 0;
+    margin:  14px 0;
     padding: 0;
     }
     .menu li {
@@ -168,6 +160,13 @@
     }
     .menu li:hover {
     color: #239ae3;
+    }
+    .col{
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        padding: 20px;
+        margin: 0.5%;
+        background: #3c3d3d;
+
     }
   
     /* Content */
@@ -214,12 +213,12 @@
     width: 33.33%;
     height: 100%;
     }
-    #totalSales .col .progressTitle {
+    /* #totalSales .col .progressTitle {
     float: left;
     margin-left: 20px;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.4);
-    }
+    } */
     .progressBar {
     float: left;
     height: 120px;
