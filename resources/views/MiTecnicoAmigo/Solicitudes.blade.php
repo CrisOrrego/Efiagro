@@ -41,7 +41,7 @@
 					<h3 class="md-title no-margin">@{{ Caso.titulo }} @{{Caso.tipo}}</h3>
 				</div>
 				<div>
-					<md-icon md-font-icon="fa-edit fa-lg" ng-click="novedadesCaso(Caso)" class="fa fa-edit fa-lg" role="img" aria-label="fa-edit fa-lg"></md-icon>
+					<md-icon md-font-icon="fa-edit fa-lg" class="fa fa-edit fa-lg" role="img" aria-label="fa-edit fa-lg"></md-icon>
 				</div>
 			</div>
 			<div class="text-darkgreen text-bold text-14px">

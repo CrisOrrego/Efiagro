@@ -37,6 +37,7 @@ angular.module('SolicitudesDetalleCtrl', [])
             // Obtenemos la infromación de un caso especifico con el ID
             Ctrl.getNovedades = () => {
                 Ctrl.NovedadesCRUD.setScope('elcaso', Caso.id).get();
+                console.log(Ctrl.NovedadesCRUD);
             }
 
             Ctrl.getNovedades();
