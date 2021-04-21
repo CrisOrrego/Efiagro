@@ -4,7 +4,7 @@
     <div mapa id="map" style="width:800px; height: 400px;overflow: hidden;"></div>
             <md-card class="divInfo">
                 <div><md-input-container >
-                    <md-select class="divZona" ng-model="zona_select" ng-change="getCultivos()">
+                    <md-select class="divZona_" ng-model="zona_select" ng-change="getCultivos()">
                         <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
                     </mat-select>
                 </md-input-container>
