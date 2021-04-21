@@ -2,22 +2,27 @@
 <div id="GestionCultivos" ng-controller="CultivosCtrl" flex layout=column>
 <div>
     <div mapa id="map" style="width:800px; height: 400px;overflow: hidden;"></div>
-    
-        <div>
-			<md-card class="divInfo">
-				<div class="seccion_texto" >
-					<ul ><label class="texto_title">Fechas</label> <span class="textoInfo">@{{ Cultivo.fechas }}</span></ul>
-					<ul ><label class="texto_title">Zona</label> <span class="textoInfo">@{{ Cultivo.zona_id }}</span></ul>
-					<ul ><label class="texto_title">Producción</label> <span class="textoInfo">@{{ Cultivo.produccion }}<span>kg</span></span></ul>
-					<ul ><label class="texto_title">Producción Estimada</label> <span class="textoInfo">@{{ Cultivo.produccion_estimada }}<span>kg</span></span></ul>
-					<ul ><label class="texto_title">Eventos</label> <span class="textoInfo">@{{ Cultivo.eventos }}</span></ul>
-					<ul ><label class="texto_title">Creditos Colocados</label> <span class="textoInfo">@{{ Cultivo.creditos_colocados }}</span></ul>
-					<ul ><label class="texto_title">Cartera Vencida</label> <span class="textoInfo">@{{ Cultivo.cartera_vencida }}</span></ul>
+            <md-card class="divInfo">
+                <div><md-input-container >
+                    <md-select class="divZona" ng-model="zona_select" ng-change="getCultivos()">
+                        <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
+                    </mat-select>
+                </md-input-container>
+                </div>
+                <div>
+				<div md-row ng-repeat="C in CultivosCRUD.rows" class="seccion_texto">
+					<ul ><label class="texto_title">Fechas</label> <span class="textoInfo">@{{ C.fechas }}</span></ul>
+					<ul ><label class="texto_title">Producción</label> <span class="textoInfo">@{{ C.produccion }}<span>kg</span></span></ul>
+					<ul ><label class="texto_title">Producción Estimada</label> <span class="textoInfo">@{{ C.produccion_estimada }}<span>kg</span></span></ul>
+					<ul ><label class="texto_title">Eventos</label> <span class="textoInfo">@{{ C.eventos }}</span></ul>
+					<ul ><label class="texto_title">Creditos Colocados</label> <span class="textoInfo">@{{ C.creditos_colocados }}</span></ul>
+					<ul ><label class="texto_title">Cartera Vencida</label> <span class="textoInfo">@{{ C.cartera_vencida }}</span></ul>
 					{{-- @{{Articulo.linea_productiva_id}} --}}
 				</div>
-				
+                
 			</md-card>
         </div>
+</div>
         <div id="container">
             <div id="sideMenu">
                 <div class="meNuIz">
@@ -30,40 +35,30 @@
                 </div>
             </div>
             <div id="content">
-                <div id="titleBar">
-                    <h2>Dashboard</h2>
-                </div>
-    
+                
                 <div class="mainChart">
                     <div id="totalSales">
+                    <div class="col">
+                        <div ng-controller="CultivosCtrl">
+                            <angular-chart options="options" instance="instance"></angular-chart>
+                        </div>
+                    </div>
+                    <div class="col">
+                        AQUI CHART
+                    </div>
+                    <div class="col">
+                        AQUI CHART
+                    </div>
+                    <div class="col">
+                        AQUI CHART
+                    </div>
+                    <div class="col">
+                        AQUI CHART
+                    </div>
                     <div class="col">
                         AQUI CHART
                     </div>
                     
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
                     </div>
             
                     <table>
@@ -80,7 +75,7 @@
                     </tr>
             
                     <tr>
-                        <td>Cantodad enbolsados</td>
+                        <td>Cantodad embolsados</td>
                         <td>18</td>
                         <td>$1,550</td>
                     </tr>
@@ -101,6 +96,8 @@
             </div>
         </div>
     </div>
+    
+    
 </div>
 
 <style type="text/css">
@@ -138,7 +135,7 @@
     width: 230px;
     height: 100%;
     padding: 20px;
-    border-right: 1px solid #111;
+    border-right: 0.5px solid #111;
     display: table-cell;
     vertical-align: top;
     color: #fff;
@@ -161,14 +158,7 @@
     .menu li:hover {
     color: #239ae3;
     }
-    .col{
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        padding: 20px;
-        margin: 0.5%;
-        background: #3c3d3d;
-
-    }
-  
+    
     /* Content */
     #content {
     width: calc(100% - 240px);
@@ -176,11 +166,6 @@
     padding: 25px;
     display: table-cell;
     }
-    #titleBar {
-    height: 36px;
-    margin-bottom: 30px;
-    }
-
     .controls {
     display: block;
     width: 70px;
@@ -210,8 +195,16 @@
     }
     #totalSales .col {
     float: left;
-    width: 33.33%;
-    height: 100%;
+    width: 32%;
+    height: 150px;
+    }
+    .col{
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        padding: 10px;
+        margin: 0.5%;
+        background: #3c3d3d;
+        /* height: 49%; */
+
     }
     /* #totalSales .col .progressTitle {
     float: left;
@@ -354,6 +347,14 @@
     .texto_title {
         font-weight: bold;
     }  
+
+    .divZona{
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        width: 200%;
+        font-weight: bold;
+        border-radius: 10px;
+
+    }
 
     .textoInfo {
         /* color: rgb(0, 0, 0); */

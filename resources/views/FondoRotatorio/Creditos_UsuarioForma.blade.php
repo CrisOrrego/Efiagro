@@ -3,7 +3,7 @@
 </md-input-container>
 
 <md-input-container class="margin-bottom-5">
-	<input type="text" ng-model="Asociado.cedula" placeholder="Cedula" readonly>
+	<input type="text" ng-model="Asociado.documento" placeholder="Cedula" readonly>
 </md-input-container>
 
 <md-input-container class="margin-bottom-5">

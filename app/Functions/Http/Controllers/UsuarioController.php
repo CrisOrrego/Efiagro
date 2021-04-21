@@ -54,7 +54,7 @@ class UsuarioController extends Controller
         $query = request('query');
         return Usuario::where('nombres',   'LIKE', "%$query%")
                     ->orWhere('apellidos', 'LIKE', "%$query%")
-                    ->orWhere('cedula',    'LIKE', "$query%")
+                    ->orWhere('documento',    'LIKE', "$query%")
                     ->get();
     }
 

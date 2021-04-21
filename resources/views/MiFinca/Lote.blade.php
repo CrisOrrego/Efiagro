@@ -28,7 +28,7 @@
 					</md-button></td>
 					<td md-cell>@{{ U.nombres }}</td>
 					<td md-cell>@{{ U.apellidos }}</td>
-					<td md-cell>@{{ U.cedula }}</td>
+					<td md-cell>@{{ U.documento }}</td>
 					<td md-cell>@{{ U.correo }}</td>
 				</tr>
 				</tbody>

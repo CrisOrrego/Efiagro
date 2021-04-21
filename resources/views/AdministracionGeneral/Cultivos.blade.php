@@ -3,6 +3,14 @@
 	<div layout class="padding-0-10" layout-align="center center">
 		<div class="md-title">Gestion Cultivos</div>
 		<span flex></span>
+		<div>
+			<md-input-container >
+                <md-select ng-model="zona_select" ng-change="getCultivos()">
+                    <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
+                </mat-select>
+			</md-input-container>
+           
+		</div>
 	
 		<span flex></span>
 

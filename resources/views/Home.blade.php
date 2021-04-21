@@ -1,4 +1,4 @@
-<div style="position:absolute;bottom:35px;left:15px;z-index:0;"><img src="imgs/logo_pacosoft.png" /></div>
+<div style="position:absolute;bottom:50px;left:15px;z-index:0;"><img src="imgs/logo_pacosoft.png" /></div>
 <div flex id="Home" ng-controller="HomeCtrl" layout=column>
 	
 	<div class="h40 bg-primary" layout layout-align="center center"

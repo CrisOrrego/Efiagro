@@ -37,28 +37,6 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             });
         };
 
-        // $scope.update = function() {
-        //     // Ctrl.LaboresCRUD.setScope('lazona', Rs.Labor.zona_id);
-        //     $scope.item.size.code = $scope.selectedItem.code
-        //     // use $scope.selectedItem.code and $scope.selectedItem.name here
-        //  }
-
-       
-        // Ctrl.getLabor();
-
-        // Ctrl.nuevaLabor = () => {
-        //     Ctrl.LaboresCRUD.dialog({
-        //         Flex: 10,
-        //         Title: "Crear Labor",
-        //         Confirm: { Text: "Crear Labor" }
-        //     }).then(r => {
-        //         if (!r) return;
-        //         Ctrl.LaboresCRUD.add(r);
-        //     });
-        // };
-// 
-
-
 Ctrl.nuevaLabor = () => {
     Rs.BasicDialog({
         Flex: 30,
@@ -121,8 +99,6 @@ Ctrl.nuevaLabor = () => {
         Ctrl.LaboresCRUD.add(nuevaLabor);
     });
 };
-
-// 
         
         Ctrl.editarLabor = (L) => {
             console.log(L);
@@ -165,6 +141,5 @@ Ctrl.nuevaLabor = () => {
         ]).then(() => {
             Ctrl.getLabores();
         });
-	
     }
 ]);
