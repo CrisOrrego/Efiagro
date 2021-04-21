@@ -5,34 +5,53 @@
                 <div id="sideMenu">
                     <md-card class="divInfo">
                     <div>
-                        <md-input-container >
+                        <md-input-container>
                             <md-select class="divZona" ng-model="zona_select" ng-change="getCultivos()">
                                 <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
                             </md-select>
                         </md-input-container>
                     </div>
-                    
-                     <div md-row ng-repeat="C in CultivosCRUD.rows" class="seccion_texto">
-                        <ul ><label ></label> <md-icon md-font-icon="fas fa-chart-bar"></md-icon><span class="texto_title ">@{{ C.zona.descripcion }}</span></ul>
-                        <ul ><label class="texto_title">Fechas:</label> <span class="textoInfo">@{{ C.fechas | date:'yyyy-MM-dd'}}</span></ul>
-                        <ul ><label class="texto_title">Producción:</label> <span class="textoInfo">@{{ C.produccion }}<span>kg</span></span></ul>
-                        <ul ><label class="texto_title">Producción Estimada:</label> <span class="textoInfo">@{{ C.produccion_estimada }}<span>kg</span></span></ul>
-                        <ul ><label class="texto_title">Eventos:</label> <span class="textoInfo">@{{ C.eventos }}</span></ul>
-                        <ul ><label class="texto_title">Creditos Colocados:</label> <span class="textoInfo">@{{ C.creditos_colocados }}</span></ul>
-                        <ul ><label class="texto_title">Cartera Vencida:</label> <span class="textoInfo">@{{ C.cartera_vencida }}</span></ul>
-                        <br>
-                    </div>
+                    {{-- <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr> --}}
+                    <md-container>
+                        <table md-table>
+                         
+                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
+                                <th></th>
+                                    <td md-cell><label></label> <md-icon md-font-icon="fas fa-chart-bar"></md-icon><span class="texto_title ">@{{ C.zona.descripcion }}</span></td>
+                              </tr>
+                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
+                                <th></th>
+                                <td md-cell><label class="texto_title">Fechas:</label> <span class="textoInfo">@{{ C.fechas | date:'yyyy-MM-dd'}}</span></td>
+                              </tr>
+                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
+                                <th></th>
+                                <td md-cell><label class="texto_title">Producción:</label> <span class="textoInfo">@{{ C.produccion }}<span>kg</span></span></td>
+                              </tr>
+                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
+                                <th></th>
+                                <td md-cell><label class="texto_title">Producción Estimada:</label> <span class="textoInfo">@{{ C.produccion_estimada }}<span>kg</span></span></td>
+                              </tr>
+                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
+                                <th></th>
+                                <td md-cell><label class="texto_title">Eventos:</label> <span class="textoInfo">@{{ C.eventos }}</span></td>
+                              </tr>
+                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
+                                <th></th>
+                                <td md-cell><label class="texto_title">Creditos Colocados:</label> <span class="textoInfo">@{{ C.creditos_colocados }}</span></td>
+                              </tr>
+                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
+                                 <th></th>
+                                <td md-cell><label class="texto_title">Cartera Vencida:</label> <span class="textoInfo">@{{ C.cartera_vencida }}</span></td>
+                            </tr>
+                          
+                        </table>
+                      </md-container>
                 </md-card>
-
-
-                    {{-- <div class="meNuIz">
-                        <ul class="menu">
-                            <li>Fincas Seleccionadas <span class="notification">4</span></li>
-                            <li>Lotes Seleccionados <span class="notification">9</span></li>
-                            <li>Kg en Producción <span class="notification">56.780</span></li>
-                            <li>Kg por Recolectar <span class="notification">2.356</span></li>
-                        </ul>
-                    </div> --}}
                 </div>
 
                 <div id="content">
@@ -47,31 +66,31 @@
                         <tr>
                             <th>OTROS RESUMEN</th>
                             <th>CANTIDAD</th>
-                            <th>Total</th>
+                            <th>TOTAL</th>
                         </tr>
                 
                         <tr>
                             <td>Racimos por Lotes</td>
                             <td>20</td>
-                            <td>$1,342</td>
+                            <td>$500.000</td>
                         </tr>
                 
                         <tr>
-                            <td>Cantodad embolsados</td>
+                            <td>Cantidad embolsados</td>
                             <td>18</td>
-                            <td>$1,550</td>
+                            <td>$430.000</td>
                         </tr>
                 
                         <tr>
                             <td>Cortes Semanal</td>
                             <td>15</td>
-                            <td>$4,170</td>
+                            <td>$300.000</td>
                         </tr>
                 
                         <tr>
                             <td>Producción Ventas</td>
-                            <td>25</td>
-                            <td>$2,974</td>
+                            <td>17</td>
+                            <td>$825.000</td>
                         </tr>
                         </table>
                     </div>
