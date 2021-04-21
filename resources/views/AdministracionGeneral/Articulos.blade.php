@@ -70,8 +70,8 @@
 				</md-button></td>
 				<td md-cell>@{{ A.titulo }}</td>
 				<td md-cell>@{{ A.autor.nombres }}</td>
-				<td md-cell>@{{ A.created_at }}</td>
-				<td md-cell>@{{ A.updated_at }}</td>
+				<td md-cell>@{{ A.created_at | date:'yyyy-MM-dd'}}</td>
+				<td md-cell>@{{ A.updated_at | date:'yyyy-MM-dd'}}</td>
 			</tr>
 			</tbody>
 		</table>

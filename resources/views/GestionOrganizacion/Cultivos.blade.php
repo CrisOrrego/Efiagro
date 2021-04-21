@@ -1,63 +1,45 @@
 
 <div id="GestionCultivos" ng-controller="CultivosCtrl" flex layout=column>
-    <div>
-        <div mapa id="map" class="divMap"></div>
-                <md-card class="divInfo">
-                    <div><md-input-container >
-                        <md-select class="divZona" ng-model="zona_select" ng-change="getCultivos()">
-                            <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
-                        </mat-select>
-                    </md-input-container>
-                    </div>
-                    <div>
-                    <div md-row ng-repeat="C in CultivosCRUD.rows" class="seccion_texto">
-                        <ul ><label class="texto_title">Fechas</label> <span class="textoInfo">@{{ C.fechas }}</span></ul>
-                        <ul ><label class="texto_title">Producción</label> <span class="textoInfo">@{{ C.produccion }}<span>kg</span></span></ul>
-                        <ul ><label class="texto_title">Producción Estimada</label> <span class="textoInfo">@{{ C.produccion_estimada }}<span>kg</span></span></ul>
-                        <ul ><label class="texto_title">Eventos</label> <span class="textoInfo">@{{ C.eventos }}</span></ul>
-                        <ul ><label class="texto_title">Creditos Colocados</label> <span class="textoInfo">@{{ C.creditos_colocados }}</span></ul>
-                        <ul ><label class="texto_title">Cartera Vencida</label> <span class="textoInfo">@{{ C.cartera_vencida }}</span></ul>
-                        {{-- @{{Articulo.linea_productiva_id}} --}}
-                    </div>
-                    
-                </md-card>
-            </div>
-    </div>
+              
             <div id="container">
                 <div id="sideMenu">
-                    <div class="meNuIz">
+                    <md-card class="divInfo">
+                    <div>
+                        <md-input-container >
+                            <md-select class="divZona" ng-model="zona_select" ng-change="getCultivos()">
+                                <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    
+                     <div md-row ng-repeat="C in CultivosCRUD.rows" class="seccion_texto">
+                        <ul ><label ></label> <md-icon md-font-icon="fas fa-chart-bar"></md-icon><span class="texto_title ">@{{ C.zona.descripcion }}</span></ul>
+                        <ul ><label class="texto_title">Fechas:</label> <span class="textoInfo">@{{ C.fechas | date:'yyyy-MM-dd'}}</span></ul>
+                        <ul ><label class="texto_title">Producción:</label> <span class="textoInfo">@{{ C.produccion }}<span>kg</span></span></ul>
+                        <ul ><label class="texto_title">Producción Estimada:</label> <span class="textoInfo">@{{ C.produccion_estimada }}<span>kg</span></span></ul>
+                        <ul ><label class="texto_title">Eventos:</label> <span class="textoInfo">@{{ C.eventos }}</span></ul>
+                        <ul ><label class="texto_title">Creditos Colocados:</label> <span class="textoInfo">@{{ C.creditos_colocados }}</span></ul>
+                        <ul ><label class="texto_title">Cartera Vencida:</label> <span class="textoInfo">@{{ C.cartera_vencida }}</span></ul>
+                        <br>
+                    </div>
+                </md-card>
+
+
+                    {{-- <div class="meNuIz">
                         <ul class="menu">
                             <li>Fincas Seleccionadas <span class="notification">4</span></li>
                             <li>Lotes Seleccionados <span class="notification">9</span></li>
                             <li>Kg en Producción <span class="notification">56.780</span></li>
                             <li>Kg por Recolectar <span class="notification">2.356</span></li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
+
                 <div id="content">
                     
                     <div class="mainChart">
                         <div id="totalSales">
-                        <div class="col">
-                            <div ng-controller="CultivosCtrl">
-                                <angular-chart options="options" instance="instance"></angular-chart>
-                            </div>
-                        </div>
-                        <div class="col">
-                            AQUI CHART
-                        </div>
-                        <div class="col">
-                            AQUI CHART
-                        </div>
-                        <div class="col">
-                            AQUI CHART
-                        </div>
-                        <div class="col">
-                            AQUI CHART
-                        </div>
-                        <div class="col">
-                            AQUI CHART
-                        </div>
+                            <div mapa id="map" class="col"></div>
                         
                         </div>
                 
@@ -95,10 +77,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-        
-    </div>
+</div>
+    
     
     <style type="text/css">
     @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
@@ -121,20 +101,20 @@
         display: table;
         width: 100%;
         background: #2c2d2e;
-        margin: 60px auto;
-        border-radius: 4px;
+        /* margin: 60px auto; */
+        /* border-radius: 4px; */
         }
         /* Side Bar */
         .meNuIz{
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            width: 230px;
+            width: 200px;
             padding: 20px;
             background: #3c3d3d;
         }
         #sideMenu {
-        width: 230px;
+        width: 100px;
         height: 100%;
-        padding: 20px;
+        padding: 10px;
         border-right: 0.5px solid #111;
         display: table-cell;
         vertical-align: top;
@@ -163,7 +143,7 @@
         #content {
         width: calc(100% - 240px);
         height: 100%;
-        padding: 25px;
+        /* padding: 25px; */
         display: table-cell;
         }
         .controls {
@@ -195,14 +175,16 @@
         }
         #totalSales .col {
         float: left;
-        width: 32%;
-        height: 150px;
+        
+        
         }
         .col{
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            padding: 10px;
-            margin: 0.5%;
-            background: #3c3d3d;
+            height: 300%;
+            width: 100%;
+            /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
+            /* padding: 10px; */
+            margin: 1%;
+            /* background: #3c3d3d; */ */
             /* height: 49%; */
     
         }
@@ -332,18 +314,16 @@
         }
     
         .divInfo {
-            width: 200px;  
+            width: 300px;  
+            padding: 10px;
         }
     
         .divMap {
-            padding: 300px;
+            padding: 200px;
             background: no-repeat center center fixed;
-    
             /* width:800px; 
             height: 400px;
-            overflow: hidden;" */
-    
-    
+            overflow: hidden; */    
         }
     
         .seccion_texto {
@@ -355,12 +335,15 @@
         }  
     
         .divZona{
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            width: 200%;
+            /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            width: 200%; */
             font-weight: bold;
-            border-radius: 10px;
-    
+            /* border-radius: 10px; */
         }
+        /* Color incon */
+        /* .fas{
+            color: rgba(38, 240, 20, 0);
+        } */
     
         .textoInfo {
             /* color: rgb(0, 0, 0); */

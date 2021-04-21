@@ -39,8 +39,8 @@
 			<td md-cell>@{{ C.tipo }}</td>
             <td md-cell>@{{ C.titulo }}</td>
             <td md-cell>@{{ C.solicitante.nombre }}</td>
-	        <td md-cell>@{{ C.created_at }}</td>
-	        <td md-cell>@{{ C.updated_at }}</td>
+	        <td md-cell>@{{ C.created_at | date:'yyyy-MM-dd'}}</td>
+	        <td md-cell>@{{ C.updated_at | date:'yyyy-MM-dd'}}</td>
 	      </tr>
 	    </tbody>
 	  </table>
