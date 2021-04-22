@@ -22,6 +22,7 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
 
         Ctrl.getLotes = () => {
             Ctrl.LotesCRUD.get().then(() => {
+                Ctrl.Lote = Ctrl.LotesCRUD.rows[0];
                 //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
             });
         };
@@ -58,6 +59,15 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
             }).then(d => {
                 if (!d) return;
                 Ctrl.LotesCRUD.delete(L);
+            });
+        };
+
+        Ctrl.abrirLabores = L => {
+            $mdDialog.show({
+                templateUrl: "Frag/MiFinca.LaboresDiag",
+                controller: "LaboresDiagCtrl",
+                locals: { Labor: L },
+                fullscreen: false
             });
         };
 

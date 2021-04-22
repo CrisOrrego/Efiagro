@@ -55,7 +55,7 @@ angular.module('App', [
 
     'OrganizacionesCtrl',
     'OrganizacionDiagCtrl',
-
+    'CultivosCtrl',
     'FincasCtrl',
     'FincaDiagCtrl',
     'PerfilesCtrl', // Luigi
@@ -67,6 +67,7 @@ angular.module('App', [
     'LaboresCtrl',
     'LaboresDiagCtrl',
     'LotesCtrl',
+    'LoteDiagCtrl',
     'Labores_LaborEditorCtrl',
 
     'FondoRotatorio_CreditosCtrl', //CAOH
