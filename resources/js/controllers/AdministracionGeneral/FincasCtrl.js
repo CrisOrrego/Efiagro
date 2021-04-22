@@ -9,8 +9,9 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
         var Ctrl = $scope;
         var Rs = $rootScope;
 
+        //INICIO DEV ANGÉLICA
         var TiposSuelo = [
-             "UNIDAD AMAGÁ",
+             /*"UNIDAD AMAGÁ",
              "UNIDAD ARMENIA",
              "UNIDAD CASCARERO",
              "UNIDAD CARTAGENITA",
@@ -42,14 +43,16 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
              "UNIDAD TABLAZO",
              "UNIDAD TIMBÍO",
              "UNIDAD VENECIA",
-             "UNIDAD VILLETA",             
+             "UNIDAD VILLETA",*/             
         ];
 
         var TiposCultivo  = [
-            "MONOCULTIVO",
-            "ASOCIADO",
+            /*"MONOCULTIVO",
+            "ASOCIADO",*/
         ];
+        //FIN DEV ANGELICA
 
+        //INICIO DEV ANGÉLICA
         var Departamentos = [];
 
         Ctrl.Salir = $mdDialog.cancel;
@@ -72,6 +75,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
 
         Ctrl.getFinca();
 
+        //Obtener el elemento de la lista
         Ctrl.getDepartamentos = () => {
 			$http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
                 Departamentos = r.data;
@@ -79,6 +83,28 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
 		}
 
 		Ctrl.getDepartamentos();
+
+
+        //Obtener el elemento de la lista
+        Ctrl.getTiposSuelo = () => {
+			$http.post ('api/lista/obtener', { lista: 'TiposSuelo' }).then((r)=>{
+                TiposSuelo = r.data;
+                console.log(TiposSuelo);
+			});
+		}
+
+		Ctrl.getTiposSuelo();
+
+        //Obtener el elemento de la lista
+        Ctrl.getTiposCultivo = () => {
+			$http.post ('api/lista/obtener', { lista: 'TiposCultivo' }).then((r)=>{
+                TiposCultivo = r.data;
+                console.log(TiposCultivo);
+			});
+		}
+
+		Ctrl.getTiposCultivo();
+        //FIN DEV ANGELICA
 
 
         
@@ -108,7 +134,13 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
 
         }
 
-        inicializarListaDepartamentoMunicipio = () => {
+        inicializarListas = () => {
+            let col_TiposSuelo = Ctrl.FincasCRUD.columns.find(c => c.Field == 'tipo_suelo');
+            col_TiposSuelo.Options.options = TiposSuelo;
+
+            let col_TiposCultivo = Ctrl.FincasCRUD.columns.find(c => c.Field == 'tipo_cultivo');
+            col_TiposCultivo.Options.options = TiposCultivo;
+
             let col_departamento = Ctrl.FincasCRUD.columns.find(c => c.Field == 'departamento_id');
             loadDepartamentos(col_departamento);
     
@@ -122,7 +154,7 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
 
         //INICIO DEV ANGÉLICA
         Ctrl.nuevaFinca = () => { //Esta es una función que me crea automaticamente la modal y lleva la informacion a la BD desde la modal de CRUD
-            inicializarListaDepartamentoMunicipio();
+            inicializarListas();
             Ctrl.FincasCRUD.dialog({
                 Flex: 50,
                 Title: 'Crear Finca',
@@ -299,8 +331,9 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
         };
 
         //INICIO DEV ANGÉLICA
-        Ctrl.editarFinca = (O) => {
-            inicializarListaDepartamentoMunicipio();
+        Ctrl.editarFinca = (O) => { //La variable O tiene la información de la Finca actual que se está editando
+            console.log(O);
+            inicializarListas(); 
 			Ctrl.FincasCRUD.dialog(O, {
 				title: 'Editar Finca' + O.nombre
 			}).then(r => {
@@ -309,6 +342,8 @@ angular.module("FincasCtrl", []).controller("FincasCtrl", [
 					Rs.showToast('Finca actualizada');
 				});
 			});
+            let col_municipio = Ctrl.FincasCRUD.columns.find(c => c.Field == 'municipio_id');
+            loadMunicipios(O.departamento_id, col_municipio); //obtengo la lista de los municipios asociados al departamento de la finca (la variable O)
 		}//FIN DEV ANGÉLICA
 
         /*
