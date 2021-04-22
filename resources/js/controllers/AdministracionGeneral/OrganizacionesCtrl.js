@@ -55,9 +55,10 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         //FIN DEV ANGÉLICA
 
         Ctrl.getOrganizacion = () => {
+            console.log(Rs.Usuario.organizacion_id);
             // Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id); //Me trae las organizaciones por usuario
             Ctrl.OrganizacionesCRUD.get().then(() => {
-                Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows[0];
+                Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows.find(O => O.id === Rs.Usuario.organizacion_id);
                 Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
                 //Ctrl.editarOrganizacion(Ctrl.OrganizacionesCRUD.rows[0]);
             });
