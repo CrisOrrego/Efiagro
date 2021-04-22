@@ -1,6 +1,7 @@
 <div id="Login" ng-controller="LoginCtrl" flex layout layout-align="center top">
 
 <div class="login">
+	<img src="imgs/logo_home.png" style="display: block;margin: 0 auto;" />
 	<md-card class="mw300" layout="column">
 	<form flex layout=column ng-submit="enviarLogin($event)">
 		<md-card-content flex layout=column>

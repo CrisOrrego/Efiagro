@@ -58,9 +58,10 @@
                     
                     <div class="mainChart">
                         <div id="totalSales">
+                            {{-- <div class="col">AQUI CHART</div> --}}
                             <div mapa id="map" class="col"></div>
-                        
                         </div>
+                        
                 
                         <table>
                         <tr>
@@ -194,13 +195,23 @@
         }
         #totalSales .col {
         float: left;
-        
-        
+
+        }
+        #totalSalesDiv{
+            height: 300%;
+            width: 50%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            /* padding: 10px; */
+            margin: 1%;
+            /* background: #3c3d3d; */ */
+            /* height: 49%; */
+    
+
         }
         .col{
             height: 300%;
             width: 100%;
-            /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             /* padding: 10px; */
             margin: 1%;
             /* background: #3c3d3d; */ */
