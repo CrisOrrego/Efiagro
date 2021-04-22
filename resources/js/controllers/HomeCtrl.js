@@ -41,9 +41,19 @@ angular.module('HomeCtrl', [])
                 });
             };
 
-            Rs.navegarHome = () => {
-                $state.go();
-            };
+            // Rs.navegarHome = () => {
+            //     $state.go();
+            // };
+
+            // Función para actualizar un campo en la tabla del usuario.
+            Rs.actualizarUsuario = ( campo, valor ) => {
+                $http.post('api/usuario/actualizarcampo', {
+                    campo: campo, 
+                    valor: valor
+                }).then( () => {
+                    $state.reload();
+                });
+            }
 
             Rs.$on("$stateChangeSuccess", Rs.cambioEstado);
 

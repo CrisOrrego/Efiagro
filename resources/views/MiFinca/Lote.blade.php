@@ -1,70 +1,41 @@
-<div ng-cloak id="MiLote" ng-controller="LotesCtrl" class="divMiLote w650">
+<div id="GestionLotes" flex layout=column ng-controller="LotesCtrl">
+	
+	<div layout class="padding-0-10" layout-align="center center">
+		<div class="md-title margin-right-20">Gestión de Lotes</div>
+		<md-input-container class="no-margin md-icon-float" md-no-float>
+			<md-icon md-font-icon="fa-search fa-fw"></md-icon>
+			<input type="text" ng-model="filterLotes" placeholder="Buscar...">
+		</md-input-container>
+		<span flex></span>
+	</div>
 
-    {{-- SECCIÓN LOTES --}}
-    <md-tab label="Lotes">
-        <div layout class="padding-0-10" layout-align="center center">
-            {{-- <div class="md-title">Gestion de Fincas</div> --}}
-            {{-- <span flex></span> --}}
-            <md-input-container class="no-margin md-icon-float" md-no-float>
-                <md-icon md-font-icon="fa-search fa-fw"></md-icon>
-                <input type="text" ng-model="filterLotes" placeholder="Buscar...">
-            </md-input-container>
+	<md-card flex class="no-margin-top">
+		<md-table-container class="border-bottom">
+			<table md-table>
+				<thead md-head>
+				<tr md-row>
+					<th md-column></th>
+					<th md-column>Nombres</th>
+					<th md-column>Apellidos</th>
+					<th md-column>Cédula</th>
+					<th md-column>Correo</th>
+				</tr>
+				</thead>
+				<tbody md-body>
+				<tr md-row ng-repeat="L in LotesCRUD.rows | filter:filterLotes ">
+					<td md-cell><md-button class="md-icon-button" ng-click="editarLote(U)">
+						<md-icon md-font-icon="fa-edit"></md-icon>
+					</md-button></td>
+					<td md-cell>@{{ U.nombres }}</td>
+					<td md-cell>@{{ U.apellidos }}</td>
+					<td md-cell>@{{ U.documento }}</td>
+					<td md-cell>@{{ U.correo }}</td>
+				</tr>
+				</tbody>
+			</table>
+		</md-table-container>
+	</md-card>
 
-            <span flex></span>
-
-        </div>
-        <md-content class="md-padding">
-
-            <md-card class="seccion_lotes" ng-repeat="L in LotesCRUD.rows | filter:filterLotes">
-                <div layout="row">
-                    <div flex="10" class="lotes_content">
-                        <img class="img-lote" src="/../imgs/platano.png" alt="iconlote">
-                    </div>
-                    <div flex="" class="lotes_content">
-                        <div>
-                            <label class="texto_title">Lote</label> #@{{ L . id }} / <label
-                                class="texto_title">LP</label> @{{ L . linea_productiva . nombre }}
-                            {{-- <h3 class="md-title no-margin">@{{ L . finca_id }}</h3> --}}
-                        </div>
-                        <div>
-                            @{{ L . hectareas }} <label class="texto_title">Hectareas</label> / <label
-                                class="texto_title">Sitios</label> @{{ L . sitios }}
-                        </div>
-                        <div>
-                            <label class="texto_tarea"> @{{ L . titulo . length() }} Tareas</label>
-                        </div>
-                        {{-- <div>
-                        <label class="texto_title">Coordenadas</label>
-                        <h3 class="md-title no-margin">@{{ L . coordenadas }}</h3>
-                    </div> --}}
-                    </div>
-                </div>
-                <div layout="row">
-                    <div flex="">
-                        <md-card class="seccion_labores" ng-controller="LaboresCtrl">
-
-
-                            <md-checkbox ng-controller="LaboresCtrl">
-                                <ul>@{{ L . labor . labor }}</ul>
-                            </md-checkbox>
-
-                            <md-input-container ng-controller="LaboresCtrl">
-                                <label>AGREGAR LABORES</label>
-                                <md-select ng-model="LotesCtrl">
-                                    <md-option ng-value="labores_id" ng-repeat="L in LaboresCRUD.rows">
-                                        @{{ L . labor }}</md-option>
-                                </md-select>
-                            </md-input-container>
-                    </div>
-            </md-card>
-
-            <div flex="">
-                <md-card>
-                    SECCIÓN GRAFICOS
-                </md-card>
-            </div>
-        </md-content>
-    </md-tab>
 </div>
 
 <style type="text/css">

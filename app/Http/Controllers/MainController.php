@@ -18,7 +18,7 @@ class MainController extends Controller
         $usuario = Helper::getUsuario();
 
     	$SeccionesPerfil = PerfilSeccion::where('perfil_id', $usuario->perfil_id)
-            ->where('nivel', 10)
+            ->whereIn('nivel', array(10, 20, 30, 40, 50))
             ->get();
         
     	$Secciones = Seccion::whereIn('id', $SeccionesPerfil->pluck('seccion_id'))
