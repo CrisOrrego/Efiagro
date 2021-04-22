@@ -72,7 +72,7 @@
                             <!--
                             <label class="texto_title">@{{M.usuario.nombre}} - @{{ DarFormatoFecha(M.created_at) }} </label>
                             -->
-                            <label class="texto_title">@{{M.usuario.nombre}} - @{{ M.created_at }}  @{{ Darformatofecha(M.created_at) }} </label>
+                            <label class="texto_title">@{{M.usuario.nombre}} - @{{ M.created_at | date:'yyyy-MM-dd' }}  @{{ Darformatofecha(M.created_at) }} </label>
                         </div>
 
                         <!--Para dar formato al contenido-->
