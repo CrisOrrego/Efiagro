@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2021 a las 17:36:54
+-- Tiempo de generación: 22-04-2021 a las 06:32:05
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -208,8 +208,9 @@ CREATE TABLE `cultivos` (
 --
 
 INSERT INTO `cultivos` (`id`, `fechas`, `zona_id`, `produccion`, `produccion_estimada`, `eventos`, `creditos_colocados`, `cartera_vencida`, `created_at`, `updated_at`) VALUES
-(1, '23-45-67', 4, 45, 3435, 'Otra', 4, 1, '2021-04-19 19:59:37', '2021-04-19 19:59:37'),
-(2, '2021-03-10T05:00:00.000Z', 2, 4563, 345, 'NUEVO EVENTO', 3, 2, '2021-04-19 20:04:18', '2021-04-19 20:04:18');
+(1, '2021-04-14T05:00:00.000Z', 4, 45, 3435, 'Ahoyado', 4, 1, '2021-04-19 19:59:37', '2021-04-21 23:49:06'),
+(3, '2021-04-22T05:00:00.000Z', 1, 453, 45, 'Cosecha', 2, 0, '2021-04-21 23:44:30', '2021-04-21 23:44:30'),
+(4, '2021-04-22T05:00:00.000Z', 2, 456, 345, 'Cosecha', 2, 0, '2021-04-21 23:55:02', '2021-04-21 23:55:02');
 
 -- --------------------------------------------------------
 
@@ -252,7 +253,8 @@ INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_i
 (2, 1, 'Platanal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
 (3, 9, 'La Esperanza', '', '', '', 0, '', 0, '', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
 (4, 1, 'Nuevo Cerre', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 15, 50, 0, 0, 0, 0, 0, 0, '2021-02-03 19:21:08', '2021-02-03 19:21:08'),
-(5, 1, 'Florestal', 'Carrera 8 Bis N° 34 – 14', 'Risaralda', 'Pereira', 345, 'MONOCULTIVO', 453, 'UNIDAD AMAGÁ', 1, '7.76472000', '-80.27483000', 35, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-28 18:38:39');
+(5, 1, 'Florestal', 'Carrera 8 Bis N° 34 – 14', 'Risaralda', 'Pereira', 345, 'MONOCULTIVO', 453, 'UNIDAD AMAGÁ', 1, '7.76472000', '-80.27483000', 35, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-28 18:38:39'),
+(6, 1, 'OTRA VEZZZZZZZ', 'CALLE 30', '66', '66075', 232, 'ASOCIADOS', 545, 'UNIDAD AMAGÁ', 4, '23.00000000', '45.00000000', 56, 5, 23, 34, 34, 34, 34, 5, '2021-04-22 04:22:29', '2021-04-22 04:23:26');
 
 -- --------------------------------------------------------
 
@@ -367,7 +369,6 @@ INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, 
 (22, 2, '68', 'santander', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (23, 2, '70', 'sucre', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (24, 2, '73', 'tolima', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(25, 2, '76', 'valle del cauca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (26, 2, '81', 'arauca', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (27, 2, '85', 'casanare', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (28, 2, '86', 'putumayo', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -377,10 +378,14 @@ INSERT INTO `listas_detalle` (`id`, `lista_id`, `codigo`, `descripcion`, `op1`, 
 (32, 2, '95', 'guaviare', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (33, 2, '97', 'vaupés', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (34, 2, '99', 'vichada', 'COL', NULL, NULL, NULL, NULL, 'A', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(35, 4, 'Mi', 'Miguel', '1', '2', '3', '4', '5', 'A', '2021-03-16 04:03:07', '2021-03-16 04:03:07'),
 (37, 3, '66001', 'PEREIRA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:22:23', '2021-04-12 21:22:23'),
 (38, 3, '66045', 'APÍA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:24:46', '2021-04-12 21:24:46'),
-(39, 3, '66075', 'BALBOA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:25:20', '2021-04-12 21:25:20');
+(39, 4, 'UNIDAD AMAGÁ', 'UNIDAD AMAGÁ ', '', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:25:20', '2021-04-12 21:25:20'),
+(40, 3, '66001', 'PEREIRA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:25:20', '2021-04-12 21:25:20'),
+(41, 3, '66045', 'APÍA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:25:20', '2021-04-12 21:25:20'),
+(42, 3, '66075', 'BALBOA', '66', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:25:20', '2021-04-12 21:25:20'),
+(43, 5, 'MONOCULTIVO', 'MONOCULTIVO', 'COL', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:25:20', '2021-04-12 21:25:20'),
+(44, 5, 'ASOCIADOS', 'ASOCIADOS', 'COL', NULL, NULL, NULL, NULL, 'A', '2021-04-12 21:25:20', '2021-04-12 21:25:20');
 
 -- --------------------------------------------------------
 
@@ -407,8 +412,8 @@ INSERT INTO `listas_indice` (`id`, `lista`, `autoincremental`, `clave_automatica
 (1, 'Paises', 0, 0, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37', NULL),
 (2, 'Departamentos', 0, 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37', NULL),
 (3, 'Municipios', 0, 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37', NULL),
-(4, 'Migue', 1, 1, 0, '2021-03-16 04:02:39', '2021-03-16 04:04:10', '2021-03-16 04:04:10'),
-(5, '6', 1, 1, 0, '2021-04-10 01:18:37', '2021-04-10 01:18:37', NULL);
+(4, 'TiposSuelo', 1, 1, 0, '2021-03-16 04:02:39', '2021-03-16 04:04:10', NULL),
+(5, 'TiposCultivo', 1, 1, 0, '2021-04-10 01:18:37', '2021-04-10 01:18:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -9720,7 +9725,7 @@ CREATE TABLE `organizaciones` (
 
 INSERT INTO `organizaciones` (`id`, `usuario_id`, `nombre`, `nit`, `sigla`, `latitud`, `longitud`, `direccion`, `departamento`, `municipio`, `telefono`, `correo`, `total_asociados`, `fecha_constitucion`, `created_at`, `updated_at`) VALUES
 (6, 1, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
-(7, 1, 'Nacional Mi Organizacion', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:33'),
+(7, 1, 'Mi Organización AQUI', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', '66', '66001', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-04-22 04:24:44'),
 (8, 1, 'Autoridad Nacional de Acuicultura y Pesca', '8300728574', 'AUNAP', '4.81492200', '-75.70702000', 'Edificio UGI Calle 40A No. 13-09 Piso 6,14,15', 'Bogotá - Colombia', 'Nuevo', '+57(1) 377 0500', 'atencionalciudadano@aunap.gov.co', 45, '2021-01-03T05:00:00.000Z', '2021-01-13 01:33:13', '2021-01-13 01:45:49'),
 (13, 9, 'Tierras de las Flores', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:57'),
 (14, 9, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
@@ -9967,7 +9972,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 8, 2, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-04-21 11:33:50', NULL),
+(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 8, 5, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-04-22 04:26:11', NULL),
 (2, 'CC', '123456789', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 1, 15, NULL, 'eyJpdiI6InFXbzA3UTZtZmZtbHQwdHRCSUJwSEE9PSIsInZhbHVlIjoidlJTVWYxdDVTWThKSlNzWWkzZkdPUT09IiwibWFjIjoiNDhhOWJjZGFjZjEwN2FhYTUwZWE2ZjhlNWMyMjZmYzdmYzhlODJhMTY0NTdhMDhjYmVmMjEzNzZmNTQwZjk2OCJ9', '2021-04-14 20:51:06', '2021-04-14 20:51:15', NULL);
 
 -- --------------------------------------------------------
@@ -10241,13 +10246,13 @@ ALTER TABLE `casos_novedades`
 -- AUTO_INCREMENT de la tabla `cultivos`
 --
 ALTER TABLE `cultivos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `fincas`
 --
 ALTER TABLE `fincas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `labores`
@@ -10265,7 +10270,7 @@ ALTER TABLE `lineas_productivas`
 -- AUTO_INCREMENT de la tabla `listas_detalle`
 --
 ALTER TABLE `listas_detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `listas_indice`
