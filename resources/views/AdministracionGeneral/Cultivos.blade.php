@@ -4,7 +4,7 @@
 		<div class="md-title">Gestion Cultivos</div>
 		<span flex></span>
 		<div>
-			<md-input-container >
+			<md-input-container>
                 <md-select ng-model="zona_select" ng-change="getCultivos()">
                     <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
                 </mat-select>
@@ -52,7 +52,7 @@
 					</md-button>
 				</td>
 				{{-- <td md-cell>@{{ L.id }} </td> --}}
-				<td md-cell>@{{ C.fechas }}</td>
+				<td md-cell>@{{ C.fechas | date:'yyyy-MM-dd'}}</td>
 				<td md-cell>@{{ C.zona.descripcion }}</td>
 				<td md-cell>@{{ C.produccion }}<span>kg</span></td> 
 				<td md-cell>@{{ C.produccion_estimada }}<span>kg</span></td>
