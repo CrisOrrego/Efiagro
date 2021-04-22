@@ -55,8 +55,10 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         //FIN DEV ANGÉLICA
 
         Ctrl.getOrganizacion = () => {
-            // Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id); //Me trae las organizaciones por usuario
+            console.log(Rs.Usuario.organizacion_id);
+            Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id); //con el setScope estoy haciendo un filtro en la BD para que él nos traiga sólo un registro
             Ctrl.OrganizacionesCRUD.get().then(() => {
+                //Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows.find(O => O.id === Rs.Usuario.organizacion_id);
                 Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows[0];
                 Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
                 //Ctrl.editarOrganizacion(Ctrl.OrganizacionesCRUD.rows[0]);
