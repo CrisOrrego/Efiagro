@@ -10,7 +10,8 @@ angular
             console.info("FincasCtrl");
             var Ctrl = $scope;
             var Rs = $rootScope;
-// INICIO ANGELICA
+
+            // INICIO ANGELICA 
             var TiposSuelo = [
                 // "UNIDAD AMAGÁ",
                 // "UNIDAD ARMENIA",
