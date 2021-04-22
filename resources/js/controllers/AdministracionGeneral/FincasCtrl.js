@@ -233,7 +233,7 @@ angular
                     mapTypeId: 'satellite',
                     zoom: 16,
                     disableDefaultUI: false
-                });
+                });                
             
                 $scope.map = map;
                 
@@ -243,42 +243,9 @@ angular
                     icon: iconBase + "finca-icono.png",
                     }
                 };
-                const datosFincas = {
-                    finca1 : {
-                        centro : {lat: 4.852147911841803, lng: -75.5747982566813},
-                        hectareas : 1.2,
-                    },
-                    finca2: {
-                        centro : { lat: 4.852843  , lng: -75.572138 },
-                        hectareas : 0.75,
-                    },
-                    finca3: {
-                        centro : { lat: 4.854233  , lng: -75.577974 },
-                        hectareas : 1,
-                    },
-                    finca4: {
-                        centro : { lat: 4.848726  , lng: -75.573670 },
-                        hectareas : 0.85,
-                    },
-                }
-            
-                for(const datoFinca in datosFincas){
-                    const circulo = new google.maps.Circle({
-                        strokeColor: "#f2bf30",
-                        strokeOpacity: 0.8,
-                        strokeWeight: 2,
-                        fillColor: "#f27e30",
-                        fillOpacity: 0.45,
-                        map,
-                        center: datosFincas[datoFinca].centro,
-                        radius: datosFincas[datoFinca].hectareas*100,
-                      });
-                    
-                      var markerFincas = new google.maps.Marker({position: datosFincas[datoFinca].centro, icon: icons["finca"].icon, map: map});
-                }
-                
+
                 var marker = new google.maps.Marker({position: {lat: 4.852147911841803, lng: -75.5747982566813}, icon: icons["finca"].icon, map: map});
-            
+        
                 const infoMarker = `<b>Esta es la prueba de la información para Julian y Juan</b>`;
                 const infoWindow = new google.maps.InfoWindow({
                     content: infoMarker,
@@ -290,16 +257,7 @@ angular
             
                 // const GCCoords = JSON.parse(coordenadas);
                 // Construct the polygon.
-                const GClocation = new google.maps.Polygon({
-                    paths: GCCoords,
-                    strokeColor: "#a3e5b2",
-                    strokeOpacity: 0.8,
-                    strokeWeight: 2,
-                    fillColor: "#a3e5b2",
-                    fillOpacity: 0.45,
-                  });
-                  GClocation.setMap(map);
-                 const GCCoords = [
+                const GCCoords = [
                     { "lat": 4.850726639851928  , "lng": -75.575134148821235  },
                     { "lat": 4.850728400051594  , "lng": -75.575136328116059  },
                     { "lat": 4.850811045616865  , "lng": -75.575285442173481  },
@@ -384,7 +342,15 @@ angular
                     { "lat": 4.850911879912019  , "lng": -75.574868693947792  },
                     { "lat": 4.850728651508689  , "lng": -75.575131885707378 }
                   ];
-            
+                const GClocation = new google.maps.Polygon({
+                    paths: GCCoords,
+                    strokeColor: "#a3e5b2",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#a3e5b2",
+                    fillOpacity: 0.45,
+                  });
+                GClocation.setMap(map);
                 
         }
     }
