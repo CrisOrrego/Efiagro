@@ -1,6 +1,5 @@
 
-<div id="GestionCultivos" ng-controller="CultivosCtrl" flex layout=column>
-              
+<div id="GestionCultivos" ng-controller="CultivosCtrl" flex layout=column>    
             <div id="container">
                 <div id="sideMenu">
                     <md-card class="divInfo">
@@ -11,12 +10,6 @@
                             </md-select>
                         </md-input-container>
                     </div>
-                    {{-- <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr> --}}
                     <md-container>
                         <table md-table>
                          
@@ -55,58 +48,65 @@
                 </div>
 
                 <div id="content">
+                            <div mapa id="map" class="colDiv"></div>                      
+                        <div id="totalSales">                            
+                            <div class="col">
+                                AQUI CHART
+                                {{-- <img src="imgs/charts/chart1.png" class="imgChart"> --}}
+                            </div>
+                            <div class="col">
+                                AQUI CHART
+                            </div>
+                            <div class="col">
+                                AQUI CHART
+                            </div>
+                            <div class="col">
+                                AQUI CHART
+                            </div>
+                            <div class="col">
+                                AQUI CHART
+                            </div>
+                            <div class="col">
+                                AQUI CHART
+                            </div>
+                            
+                            <table>
+                            <tr>
+                                <th>OTROS RESUMEN</th>
+                                <th>CANTIDAD</th>
+                                <th>TOTAL</th>
+                            </tr>
                     
-                    <div class="mainChart">
-                        <div id="totalSales">
-                            {{-- <div class="col">AQUI CHART</div> --}}
-                            <div mapa id="map" class="col"></div>
-                        </div>
-                        
-                
-                        <table>
-                        <tr>
-                            <th>OTROS RESUMEN</th>
-                            <th>CANTIDAD</th>
-                            <th>TOTAL</th>
-                        </tr>
-                
-                        <tr>
-                            <td>Racimos por Lotes</td>
-                            <td>20</td>
-                            <td>$500.000</td>
-                        </tr>
-                
-                        <tr>
-                            <td>Cantidad embolsados</td>
-                            <td>18</td>
-                            <td>$430.000</td>
-                        </tr>
-                
-                        <tr>
-                            <td>Cortes Semanal</td>
-                            <td>15</td>
-                            <td>$300.000</td>
-                        </tr>
-                
-                        <tr>
-                            <td>Producción Ventas</td>
-                            <td>17</td>
-                            <td>$825.000</td>
-                        </tr>
-                        </table>
+                            <tr>
+                                <td>Racimos por Lotes</td>
+                                <td>20</td>
+                                <td>$500.000</td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Cantidad embolsados</td>
+                                <td>18</td>
+                                <td>$430.000</td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Cortes Semanal</td>
+                                <td>15</td>
+                                <td>$300.000</td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Producción Ventas</td>
+                                <td>17</td>
+                                <td>$825.000</td>
+                            </tr>
+                            </table>
                     </div>
                 </div>
             </div>
 </div>
     
-    
-    <style type="text/css">
-    @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
-    
-        html {
-        height: 100%;
-        font-family: 'Lato', sans-serif;
-        }
+<style type="text/css">
         body {
         height: 100%;
         margin: 0;
@@ -121,15 +121,6 @@
         display: table;
         width: 100%;
         background: #2c2d2e;
-        /* margin: 60px auto; */
-        /* border-radius: 4px; */
-        }
-        /* Side Bar */
-        .meNuIz{
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            width: 200px;
-            padding: 20px;
-            background: #3c3d3d;
         }
         #sideMenu {
         width: 100px;
@@ -140,147 +131,42 @@
         vertical-align: top;
         color: #fff;
         }
-        .menu {
-        list-style: none;
-        margin:  14px 0;
-        padding: 0;
-        }
-        .menu li {
-        display: block;
-        height: 30px;
-        width: 100%;
-        line-height: 30px;
-        /* font-size: 14px; */
-        /* font-weight: 200; */
-        color: rgba(255, 255, 255, .6);
-        position: relative;
-        }
-        .menu li:hover {
-        color: #239ae3;
-        }
-        
-        /* Content */
         #content {
         width: calc(100% - 240px);
-        height: 100%;
-        /* padding: 25px; */
+        height: 900px;
         display: table-cell;
         }
-        .controls {
-        display: block;
-        width: 70px;
-        height: 20px;
-        color: rgba(255, 255, 255, 0.4);
-        font-size: 10px;
-        font-weight: 300;
-        text-transform: uppercase;
-        text-align: center;
-        line-height: 20px;
-        float: right;
-        border-radius: 20px;
-        }
-        .activeControl {
-        background: rgba(255, 255, 255, 0.9);
-        color: #202b33;
-        font-weight: 600;
-        }
-        #salesData {
-        margin-bottom: 60px;
-        }
         #totalSales {
-        height: 120px;
         position: relative;
         margin-top: 24px;
         margin-bottom: 50px;
         }
+        .imgChart{
+            height: 120px;
+            width: 300px;
+            position: relative;
+            margin: 10px;
+            float: left;
+
+        }
+        .colDiv{
+            height: 400px;
+            width: 97%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            margin: 1.5%;
+        }
         #totalSales .col {
         float: left;
-
-        }
-        #totalSalesDiv{
-            height: 300%;
-            width: 50%;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            /* padding: 10px; */
-            margin: 1%;
-            /* background: #3c3d3d; */ */
-            /* height: 49%; */
-    
-
         }
         .col{
-            height: 300%;
-            width: 100%;
+            height: 150px;
+            width: 330px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            /* padding: 10px; */
-            margin: 1%;
-            /* background: #3c3d3d; */ */
-            /* height: 49%; */
-    
+            padding: 10px;
+            margin:1.5%;
+            background: #8e8f8f;     
         }
-        /* #totalSales .col .progressTitle {
-        float: left;
-        margin-left: 20px;
-        font-weight: 300;
-        color: rgba(255, 255, 255, 0.4);
-        } */
-        .progressBar {
-        float: left;
-        height: 120px;
-        width: 120px;
-        font-size: 40px;
-        text-align: center;
-        line-height: 120px;
-        }
-    
-        /* Icons */
-        .notification {
-        /* display: block; */
-        /* width: 30px;
-        height: 30px; */
-        color: #ffffff;
-        font-weight: 600;
-        /* line-height: 20px; */
-        text-align: center;
-        /* border-radius: 50%; */
-        /* background: rgba(255, 255, 255, .6); */
-        position: absolute;
-        top: 0; bottom: 0; right: 2%;
-        margin: auto;
-        }
-        .colorIcon {
-        display: block;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        position: absolute;
-        top: 0; bottom: 0; right: 2%;
-        margin: auto;
-        }
-        .plus {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        color: #202b33;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 8px;
-        padding: 4px;
-        margin-right: 6px;
-        border: 2px solid rgba(255, 255, 255, .2);
-        border-radius: 50%;
-        color: rgba(255, 255, 255, .2);
-        }
-        .red {
-        background: #ec1561;
-        }
-        .orange {
-        background: #ff9939;
-        }
-        .green {
-        background: #2bab51;
-        }
-    
+  
         /* Table */
         table {
         width: 100%;
@@ -314,80 +200,22 @@
         text-transform: uppercase;
         margin: 0;
         }
-        h2 {
-        float: left;
-        font-size: 19px;
-        font-weight: 200;
-        letter-spacing: 1px;
-        margin: 0;
-        color: rgba(255, 255, 255, .8);
-        }
-        h3 {
-        float: left;
-        color: #fff;
-        font-size: 32px;
-        font-weight: 300;
-        margin: 0;
-        margin-top: 8%;
-        margin-left: 20px;
-        margin-bottom: 6px;
-        }
-        .clearFix {
-        clear: both;
-        }
-        /*  */
-        .divFinca {
-            margin: 10px;
-            padding: 10px;
-            background: rgb(250, 250, 250);
-            background: linear-gradient(0deg, rgba(250, 250, 250, 1) 0%, rgba(255, 255, 255, 0.4066001400560224) 20%, rgba(255, 255, 255, 1) 100%);
-        }
-    
         .divInfo {
             width: 300px;  
             padding: 10px;
         }
-    
-        .divMap {
-            padding: 200px;
-            background: no-repeat center center fixed;
-            /* width:800px; 
-            height: 400px;
-            overflow: hidden; */    
-        }
-    
-        .seccion_texto {
-            white-space: normal;
-            word-wrap: break-word;
-        }
         .texto_title {
             font-weight: bold;
         }  
-    
         .divZona{
-            /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            width: 200%; */
             font-weight: bold;
-            /* border-radius: 10px; */
-        }
-        /* Color incon */
-        /* .fas{
-            color: rgba(38, 240, 20, 0);
-        } */
-    
+        }  
         .textoInfo {
             /* color: rgb(0, 0, 0); */
             color: rgb(58, 57, 57);
        }
-       .img-lote {
-            width: 50px;
-            height: 50px;
-            /* border-radius: 500px; */
-        }
-    
+
     </style>
-    
-    {{--  --}}
-    
+
     
     
