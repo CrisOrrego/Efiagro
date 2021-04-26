@@ -59,6 +59,16 @@ angular
             Ctrl.Salir = $mdDialog.cancel;
 
 
+            //Obtener el elemento de la lista
+            Ctrl.getDepartamentos = () => {
+                $http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
+                    Departamentos = r.data;
+                    console.log(Departamentos);
+                });
+            }
+
+            Ctrl.getDepartamentos();
+
             Ctrl.FincasCRUD = $injector.get("CRUD").config({
                 base_url: "/api/fincas/fincas",
                 limit: 1000,
@@ -67,23 +77,19 @@ angular
                 query_with: ["zona"]
             });
 
+
             Ctrl.getFinca = () => {
-                // Ctrl.FincasCRUD.setScope("id", Rs.Usuario.finca_id); //Me trae las fincas del usuario
+                Ctrl.FincasCRUD.setScope("id", Rs.Usuario.finca_id); //Me trae las fincas del usuario
                 Ctrl.FincasCRUD.get().then(() => {
                     Ctrl.Finca = Ctrl.FincasCRUD.rows[0];
                     //Ctrl.editarFinca(Ctrl.FincasCRUD.rows[0]);
+                    if (Ctrl.Finca.departamento_id && Departamentos) {
+                        Ctrl.Finca.nombreDepartamento = Departamentos[Ctrl.Finca.departamento_id];                        
+                    }
                 });
             };
 
             Ctrl.getFinca();
-            //Obtener el elemento de la lista
-        Ctrl.getDepartamentos = () => {
-			$http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
-                Departamentos = r.data;
-			});
-		}
-
-		Ctrl.getDepartamentos();
 
 
         //Obtener el elemento de la lista
