@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2021 a las 23:51:48
+-- Tiempo de generación: 26-04-2021 a las 18:44:06
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -9972,7 +9972,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 8, 2, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-04-22 21:35:14', NULL),
+(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 6, 5, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-04-26 16:41:23', NULL),
 (11, 'CC', '1111796644', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 8, NULL, 'eyJpdiI6IkMxS0haaVIrT2RvVllyb2xjTkhhY0E9PSIsInZhbHVlIjoiMXhlbWttZjl1azkxT1dEdlUzeWo4dz09IiwibWFjIjoiNTc5MWRkMTA0YTcxODEzZTEzMmVmYTc4NTVhODI3Zjk1NjkyMTI5MDExOTY1OTAzMWQ5OTk2MWNmM2M1NDAyMSJ9', '2021-04-22 20:07:55', '2021-04-22 20:08:21', NULL),
 (12, 'CC', '1111796644', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 7, NULL, 'eyJpdiI6IlpabVBzZ0ZZcktwT0pjL1h1clZQNFE9PSIsInZhbHVlIjoiMnNiNkxXZkhKRmZXd2V4b09rZ1VLdz09IiwibWFjIjoiODAzZGU4NTlhN2QyODliNWE4ZWY1YWE0MDUzNDIwYjY0MTE1MDY4ZTZkNGZjOTE5MWUwZGE1OTliZDczYTM0YiJ9', '2021-04-22 20:39:44', '2021-04-22 20:39:52', NULL);
 

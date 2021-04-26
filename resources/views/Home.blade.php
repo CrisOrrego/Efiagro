@@ -29,7 +29,7 @@
 			<a ng-repeat="S in Secciones" href="#/Home/@{{ S[0].seccion_slug }}/@{{ S[0].subseccion_slug }}"
 				class="seccion_icono no-underline" layout=column>
 				<div class="seccion_icono_img">
-					{{-- <img src="imgs/icono_@{{ S[0].id }}.png" /> --}}
+					<img src="imgs/icono_@{{ S[0].id }}.png" />
 				</div>
 				<div class="seccion_icono_texto">@{{ S[0].seccion }}</div>
 			</a>
