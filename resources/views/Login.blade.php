@@ -40,11 +40,7 @@
 </div>
 
 <style type="text/css">
-/* .spacer {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-} */
+
 .logos{
 	position: absolute;
 	bottom: 0;

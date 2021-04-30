@@ -3,47 +3,50 @@
             <div id="container">
                 <div id="sideMenu">
                     <md-card class="divInfo">
-                    <div>
-                        <md-input-container>
-                            <md-select class="divZona" ng-model="zona_select" ng-change="getCultivos()">
-                                <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
-                            </md-select>
-                        </md-input-container>
-                    </div>
-                    <md-container>
-                        <table md-table>
-                         
-                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
-                                <th></th>
-                                    <td md-cell><label></label> <md-icon md-font-icon="fas fa-chart-bar"></md-icon><span class="texto_title ">@{{ C.zona.descripcion }}</span></td>
-                              </tr>
-                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
-                                <th></th>
-                                <td md-cell><label class="texto_title">Fechas:</label> <span class="textoInfo">@{{ C.fechas | date:'yyyy-MM-dd'}}</span></td>
-                              </tr>
-                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
-                                <th></th>
-                                <td md-cell><label class="texto_title">Producción:</label> <span class="textoInfo">@{{ C.produccion }}<span>kg</span></span></td>
-                              </tr>
-                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
-                                <th></th>
-                                <td md-cell><label class="texto_title">Producción Estimada:</label> <span class="textoInfo">@{{ C.produccion_estimada }}<span>kg</span></span></td>
-                              </tr>
-                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
-                                <th></th>
-                                <td md-cell><label class="texto_title">Eventos:</label> <span class="textoInfo">@{{ C.eventos }}</span></td>
-                              </tr>
-                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
-                                <th></th>
-                                <td md-cell><label class="texto_title">Creditos Colocados:</label> <span class="textoInfo">@{{ C.creditos_colocados }}</span></td>
-                              </tr>
-                              <tr md-row ng-repeat="C in CultivosCRUD.rows">
-                                 <th></th>
-                                <td md-cell><label class="texto_title">Cartera Vencida:</label> <span class="textoInfo">@{{ C.cartera_vencida }}</span></td>
-                            </tr>
-                          
-                        </table>
-                      </md-container>
+                        <div>
+                            <md-input-container>
+                                <md-select class="divZona" ng-model="zona_select" ng-change="getCultivos()">
+                                    <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                        <md-container ng-repeat="C in CultivosCRUD.rows">
+                            <table md-table>
+                                <tr md-row>
+                                    <div class="container">
+                                            <div>
+                                                <th></th>
+                                                <label></label> <md-icon md-font-icon="fas fa-chart-bar"></md-icon><span class="texto_title ">@{{ C.zona.descripcion }}</span>
+                                            <div>
+                                            <div>
+                                                <th></th>
+                                                <label class="texto_title">Fechas:</label> <span class="textoInfo">@{{ C.fechas | date:'yyyy-MM-dd'}}</span>
+                                            </div>
+                                            <div>
+                                                <th></th>
+                                                <label class="texto_title">Producción:</label> <span class="textoInfo">@{{ C.produccion }}<span>kg</span></span>
+                                            </div>
+                                                <div>
+                                                <th></th>
+                                                <label class="texto_title">Producción Estimada:</label> <span class="textoInfo">@{{ C.produccion_estimada }}<span>kg</span></span>
+                                            </div>
+                                            <div>
+                                                <th></th>
+                                                <label class="texto_title">Eventos:</label> <span class="textoInfo">@{{ C.eventos }}</span>
+                                            </div>
+                                                <div>
+                                                <th></th>
+                                                <label class="texto_title">Creditos Colocados:</label> <span class="textoInfo">@{{ C.creditos_colocados }}</span>
+                                            </div>
+                                            <div>
+                                                <th></th>
+                                                <label class="texto_title">Cartera Vencida:</label> <span class="textoInfo">@{{ C.cartera_vencida }}</span>
+                                            </div>
+                                      
+                                    </div>
+                                </tr>  
+                            </table>
+                        </md-container>
                 </md-card>
                 </div>
 
@@ -52,7 +55,6 @@
                         <div id="totalSales">                            
                             <div class="col">
                                 AQUI CHART
-                                {{-- <img src="imgs/charts/chart1.png" class="imgChart"> --}}
                             </div>
                             <div class="col">
                                 AQUI CHART
