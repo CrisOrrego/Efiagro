@@ -15,7 +15,7 @@ angular.module('UsuariosCtrl', [])
 
             Ctrl.getUsuarios = () => {
                 // Asignar organizacion por defecto y obtener la informacion del usuario
-                Ctrl.UsuariosCRUD.setScope('laorganizacion', Rs.Usuario.organizacion_id);
+                // Ctrl.UsuariosCRUD.setScope('laorganizacion', Rs.Usuario.organizacion_id);
                 Ctrl.UsuariosCRUD.get().then(() => {});
             };
             Ctrl.getUsuarios();
