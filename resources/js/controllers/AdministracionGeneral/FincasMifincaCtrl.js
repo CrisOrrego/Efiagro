@@ -1,68 +1,26 @@
 angular
-    .module("FincasCtrl", [])
-    .controller("FincasCtrl", [
+    .module("FincasMifincaCtrl", [])
+    .controller("FincasMifincaCtrl", [
         "$scope",
         "$rootScope",
         "$http",
         "$injector",
         "$mdDialog",
         function($scope, $rootScope, $http, $injector, $mdDialog) {
-            console.info("FincasCtrl");
+            console.info("FincasMifincaCtrl");
             var Ctrl = $scope;
             var Rs = $rootScope;
 
-            // INICIO ANGELICA 
-            var TiposSuelo = [
-                // "UNIDAD AMAGÁ",
-                // "UNIDAD ARMENIA",
-                // "UNIDAD CASCARERO",
-                // "UNIDAD CARTAGENITA",
-                // "UNIDAD CINCHO",
-                // "UNIDAD CHANCHÓN",
-                // "UNIDAD CHINCHINÁ",
-                // "UNIDAD CHUSCAL",
-                // "UNIDAD DOÑA JUANA",
-                // "UNIDAD DOSCIENTOS",
-                // "UNIDAD EL PALMAR",
-                // "UNIDAD FONDESA",
-                // "UNIDAD FRESNO",
-                // "UNIDAD GUADALUPE",
-                // "UNIDAD LA MONTAÑA",
-                // "UNIDAD LIBANO",
-                // "UNIDAD LLANO DE PALMAS",
-                // "UNIDAD MALABAR",
-                // "UNIDAD MONTENEGRO",
-                // "UNIDAD NORTE",
-                // "UNIDAD PERIJÁ",
-                // "UNIDAD PAUJIL",
-                // "UNIDAD PIENDAMÓ",
-                // "UNIDAD QUINDÍO",
-                // "UNIDAD ROPERO",
-                // "UNIDAD SALGAR",
-                // "UNIDAD SAN SIMÓN",
-                // "UNIDAD SUÁREZ",
-                // "UNIDAD SUROESTE",
-                // "UNIDAD TABLAZO",
-                // "UNIDAD TIMBÍO",
-                // "UNIDAD VENECIA",
-                // "UNIDAD VILLETA"
-            ];
 
-            var TiposCultivo = [
-                // "MONOCULTIVO", "ASOCIADO"
-                ];
-                // FIN ANGELICA
-
-                //INICIO DEV ANGÉLICA
+            //INICIO DEV ANGÉLICA
             var Departamentos = [];
-
-            Ctrl.Salir = $mdDialog.cancel;
 
 
             //Obtener el elemento de la lista
             Ctrl.getDepartamentos = () => {
                 $http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
                     Departamentos = r.data;
+                    Ctrl.getFinca();
                 });
             }
 
@@ -78,152 +36,28 @@ angular
 
 
             Ctrl.getFinca = () => {
+                Ctrl.FincasCRUD.setScope("id", Rs.Usuario.finca_id); //Me trae las fincas del usuario
                 Ctrl.FincasCRUD.get().then(() => {
                     Ctrl.Finca = Ctrl.FincasCRUD.rows[0];
                     //Ctrl.editarFinca(Ctrl.FincasCRUD.rows[0]);
                     if (Ctrl.Finca.departamento_id && Departamentos) {
-                        Ctrl.Finca.nombreDepartamento = Departamentos[Ctrl.Finca.departamento_id];                   
+                        Ctrl.Finca.nombreDepartamento = Departamentos[Ctrl.Finca.departamento_id];   
+                        Ctrl.getMunicipio(Ctrl.Finca.municipio_id);                     
                     }
                 });
             };
 
-            Ctrl.getFinca();
+            //Ctrl.getFinca();
 
 
-            //Obtener el elemento de la lista
-            Ctrl.getTiposSuelo = () => {
-                $http.post ('api/lista/obtener', { lista: 'TiposSuelo' }).then((r)=>{
-                    TiposSuelo = r.data;
-                });
-            }
+        //Obtener el elemento de la lista
+        Ctrl.getMunicipio = (codigo) => {
+			$http.post ('api/lista/obtenerdetalle', { lista_id: 3, codigo}).then((r)=>{
+                Ctrl.Finca.nombreMunicipio = r.data.descripcion;
+			});
+		}
+        //FIN DEV ANGELICA
 
-            Ctrl.getTiposSuelo();
-
-
-            //Obtener el elemento de la lista
-            Ctrl.getTiposCultivo = () => {
-                $http.post ('api/lista/obtener', { lista: 'TiposCultivo' }).then((r)=>{
-                    TiposCultivo = r.data;
-                    console.log(TiposCultivo);
-                });
-            }
-
-            Ctrl.getTiposCultivo();
-            //FIN DEV ANGELICA
-            //INICIO DEV ANGPELICA
-            loadDepartamentos = (col_departamento) => {
-
-                col_departamento.Options.options = Departamentos;
-            }
-
-            loadMunicipios = (valorDepartamento, col_municipio) => {
-                col_municipio.Options.options = {}; //limpia el select de municipios
-                console.log(valorDepartamento);
-
-                $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: valorDepartamento }).then((r)=>{
-                    col_municipio.Options.options = r.data;
-                });
-
-            }
-
-            inicializarListas = () => {
-                let col_TiposSuelo = Ctrl.FincasCRUD.columns.find(c => c.Field == 'tipo_suelo');
-                col_TiposSuelo.Options.options = TiposSuelo;
-
-                let col_TiposCultivo = Ctrl.FincasCRUD.columns.find(c => c.Field == 'tipo_cultivo');
-                col_TiposCultivo.Options.options = TiposCultivo;
-
-                let col_departamento = Ctrl.FincasCRUD.columns.find(c => c.Field == 'departamento_id');
-                loadDepartamentos(col_departamento);
-        
-                col_departamento.Options.onChangeFn = (valorDepartamento) => {
-                    let col_municipio = Ctrl.FincasCRUD.columns.find(c => c.Field == 'municipio_id');
-                    loadMunicipios(valorDepartamento, col_municipio);
-                }                        
-
-            }
-            //FIN DEV ANGÉLICA
-
-            //INICIO DEV ANGÉLICA
-            Ctrl.nuevaFinca = () => { //Esta es una función que me crea automaticamente la modal y lleva la informacion a la BD desde la modal de CRUD
-                inicializarListas();
-                Ctrl.FincasCRUD.dialog({
-                    Flex: 50,
-                    Title: 'Crear Finca',
-                    Confirm: { Text: 'Crear Finca' },
-                }).then(r => {
-                    if (!r) return;
-                    Ctrl.FincasCRUD.add(r);
-                });
-            };
-            //FIN DEV ANGÉLICA
-
-            //INICIO DEV ANGÉLICA
-            Ctrl.editarFinca = (O) => { //La variable O tiene la información de la Finca actual que se está editando
-                inicializarListas(); 
-                Ctrl.FincasCRUD.dialog(O, {
-                    title: 'Editar Finca' + O.nombre
-                }).then(r => {
-                    if(r == 'DELETE') return Ctrl.FincasCRUD.delete(O);
-                    Ctrl.FincasCRUD.update(r).then(() => {
-                        Rs.showToast('Finca actualizada');
-                    });
-                });
-                let col_municipio = Ctrl.FincasCRUD.columns.find(c => c.Field == 'municipio_id');
-                loadMunicipios(O.departamento_id, col_municipio); //obtengo la lista de los municipios asociados al departamento de la finca (la variable O)
-            }
-            //FIN DEV ANGÉLICA
-
-           
-
-
-            Ctrl.eliminarFinca = F => {
-                Rs.confirmDelete({
-                    Title: "¿Eliminar Finca #" + F.id + "?"
-                }).then(d => {
-                    if (!d) return;
-                    Ctrl.FincasCRUD.delete(F);
-                });
-            };
-
-            Ctrl.abrirFinca = F => {
-                $mdDialog.show({
-                    templateUrl: "Frag/MiFinca.FincaDiag",
-                    controller: "FincaDiagCtrl",
-                    locals: { Finca: F },
-                    fullscreen: false
-                });
-            };
-
-            //Prueba de Lista
-            $http
-                .post("api/main/obtener-lista", {
-                    Lista: "Departamentos",
-                    op1: "COL"
-                })
-                .then(r => {
-                    console.log(r.data);
-                });
-
-            Ctrl.editarLote = L => {
-                Ctrl.LotesCRUD.dialog(L, {
-                    title: "Editar Lote" + L.id
-                }).then(r => {
-                    if (r == "DELETE") return Ctrl.LotesCRUD.delete(L);
-                    Ctrl.LotesCRUD.update(r).then(() => {
-                        Rs.showToast("Lote actualizado");
-                    });
-                });
-            };
-
-            Ctrl.eliminarLote = L => {
-                Rs.confirmDelete({
-                    Title: "¿Eliminar Lote #" + L.id + "?"
-                }).then(d => {
-                    if (!d) return;
-                    Ctrl.LotesCRUD.delete(L);
-                });
-            };
         }
     ])
     .directive("mapa", function() {

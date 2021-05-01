@@ -1,4 +1,4 @@
-<div id="MiFinca" class="divFinca" ng-controller="FincasCtrl" flex layout="column" class="mxw1000">
+<div id="MiFinca" class="divFinca" ng-controller="FincasMifincaCtrl" flex layout="column" class="mxw1000">
 
     {{-- SECCIÓN MI FINCA --}}
 
@@ -6,8 +6,8 @@
         <div class="divInfo" flex="" layout layout-wrap>
             <div class="seccion_texto">
                 <ul ><label class="texto_title">Dirección:</label> <span class="textoInfo">@{{ Finca.direccion }}</span></ul>
-                <ul ><label class="texto_title">Departamento:</label> <span class="textoInfo">@{{ Finca.nombreDepartamento }}</span></ul>
-                <ul ><label class="texto_title">Municipio:</label> <span class="textoInfo">@{{ Finca.municipio_id }}</span></ul>
+                <ul ><label class="texto_title">Departamento:</label> <span class="textoInfo">@{{ Finca.departamento_id }} - @{{ Finca.nombreDepartamento }}</span></ul>
+                <ul ><label class="texto_title">Municipio:</label> <span class="textoInfo">@{{ Finca.municipio_id }} - @{{ Finca.nombreMunicipio }}</span></ul>
                 <ul ><label class="texto_title">Área total:</label> <span class="textoInfo">@{{ Finca.area_total }}</span></ul>
                 <ul ><label class="texto_title">Tipo Cultivo:</label> <span class="textoInfo">@{{ Finca.tipo_cultivo }}</span></ul>
                 <ul ><label class="texto_title">Total de lotes:</label> <span class="textoInfo">@{{ Finca.total_lotes }}</span></ul>
