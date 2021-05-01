@@ -10,7 +10,7 @@ angular.module('LoginCtrl', [])
 
 		Rs.Usuario = {
 			Correo: 'info@mbrain.co',
-			Password: '123'
+			Password: '12345'
 		};
 
 		Rs.enviarLogin = (ev) => {
