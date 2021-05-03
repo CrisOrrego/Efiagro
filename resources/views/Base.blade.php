@@ -16,6 +16,7 @@
 		<script defer type="application/javascript" src="/js/app.min.js?202010051927"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjjB89k3h2YU7w4NTNQ6euTDtuQ8IeH7g">
 		</script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
 	
 	</head>
 
