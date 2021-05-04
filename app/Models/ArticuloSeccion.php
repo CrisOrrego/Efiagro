@@ -34,10 +34,10 @@ class ArticuloSeccion extends Model
     	return $this->belongsTo('App\Models\Articulo', 'articulo_id', 'id');
     }
 
-    public function scopeElarticulo($q, $id_articulo)
+    public function scopeElarticulo($q, $articulo_id)
     {
         // Se agrega ordenamiento por el campo indice.
-    	return $q->where('articulo_id', $id_articulo)->orderBy('indice', 'ASC');
+    	return $q->where('articulo_id', $articulo_id)->orderBy('indice', 'ASC');
     }
 
     public static function boot()
