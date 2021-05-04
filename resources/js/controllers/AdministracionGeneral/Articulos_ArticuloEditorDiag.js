@@ -187,6 +187,7 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
                 console.log(N);
                 console.log(S);
             };
+            console.log(Ctrl.moverSeccion);
             
 
 

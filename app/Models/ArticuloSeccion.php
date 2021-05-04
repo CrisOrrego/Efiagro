@@ -12,7 +12,8 @@ class ArticuloSeccion extends Model
     protected $table = 'articulos_secciones';
     protected $guarded = ['id'];
     protected $appends = [];
-    protected $cast = [
+    protected $casts = [
+        'indice' => 'integer'
         //'objeto' => 'array'
     ];
 
