@@ -115,9 +115,9 @@
     var myChartLine = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Lote 1', 'Lote 2', 'Lote 3', 'Lote 4', 'Lote 5', 'Lote 6'],
             datasets: [{
-                label: '# of Votes',
+                label: '# Cultivos',
                 data: [3, 2, 5, 3, 19, 12],
                 backgroundColor: [
                     'rgba(97,11,235, 0.5)',
@@ -151,25 +151,25 @@
     var myCharBarras = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Purple', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Zona 1', 'Zona 2', 'Zona 3', 'Zona 4', 'Zona 5', 'Zona 6'],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: '# Producción',
+                data: [12, 19, 3, 5, 10, 3],
                 backgroundColor: [
                     'rgba(97,11,235,0.5)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
                 ],
                 borderColor: [
-                    'rgba(109,37,224, 1)',
                     'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
                 ],
                 borderWidth: 1
             }]
@@ -187,15 +187,14 @@
     var myCharCirculo = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Purple','Red','Blue'],
+            labels: ['Plátano','Café','Mora'],
   datasets: [{
-    label: 'My First Dataset',
+    label: 'Mi Finca',
     data: [300, 50, 100],
     backgroundColor: [
-     'rgba(97,11,235, 0.5)',
-      'rgb(255, 99, 132, 0.5)',
-      'rgb(54, 162, 235, 0.5)',
-    //   'rgb(255, 205, 86, 0.5)'
+        'rgba(97,11,235, 0.5)',
+        'rgb(255, 99, 132, 0.5)',
+        'rgb(54, 162, 235, 0.5)',
     ],
     hoverOffset: 4
   }]
@@ -214,7 +213,7 @@
     var myCharCirculo = new Chart(ctx, {
         type: 'polarArea',
         data: {
-        labels: ['Red','Green','Yellow','Grey','Blue'],
+        labels: ['Usuario 1','Usuario 2','Usuario 3','Usuario 4','Usuario 5'],
         datasets: [{
             label: 'My First Dataset',
             data: [11, 16, 7, 3, 14],
@@ -241,9 +240,9 @@
     var myCharRadar = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ['Eating','Drinking','Sleeping','Designing','Coding','Cycling','Running'],
+            labels: ['Usuarios','Fincas','Casos','Notificaciones','Eventos','Lotes','Zonas'],
         datasets: [{
-            label: 'My First Dataset',
+            label: 'Organización 1',
             data: [65, 59, 90, 81, 56, 55, 40],
             fill: true,
             backgroundColor: 'rgba(97,11,235,0.5)',
@@ -253,7 +252,7 @@
             pointHoverBackgroundColor: '#fff',
             pointHoverBorderColor: 'rgb(255, 99, 132)'
         }, {
-            label: 'My Second Dataset',
+            label: 'Organización 2',
             data: [28, 48, 40, 19, 96, 27, 100],
             fill: true,
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -273,45 +272,8 @@
         }
     });
 
-    // 
-    var ctx = document.getElementById('myCharRando').getContext('2d');
-    var myCharRando = new Chart(ctx, {
-        type: 'Randomize',
-        data: {
-            labels: ['Eating','Drinking','Sleeping','Designing','Coding','Cycling','Running'],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [65, 59, 90, 81, 56, 55, 40],
-            fill: true,
-            backgroundColor: 'rgba(97,11,235,0.5)',
-            borderColor: 'rgb(255, 99, 132)',
-            pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(255, 99, 132)'
-        }, {
-            label: 'My Second Dataset',
-            data: [28, 48, 40, 19, 96, 27, 100],
-            fill: true,
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgb(54, 162, 235)',
-            pointBackgroundColor: 'rgb(54, 162, 235)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(54, 162, 235)'
-        }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-      
-    </script>
+          
+</script>
             {{-- FIN  --}}
 </div>
     
