@@ -37,3 +37,4 @@ mix.scripts([
 	'resources/js/directives/**/*.js',
 
 ], 'public/js/app.min.js');
+

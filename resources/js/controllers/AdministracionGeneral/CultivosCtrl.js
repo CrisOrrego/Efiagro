@@ -15,6 +15,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
 
         Ctrl.value = 0;
 
+
            Ctrl.CultivosCRUD = $injector.get("CRUD").config({
             base_url: "/api/cultivos/cultivos",
             limit: 1000,
@@ -31,7 +32,6 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
             });
            
         };
-
 
         Ctrl.nuevoCultivo = () => {
             Ctrl.CultivosCRUD.dialog({
@@ -72,6 +72,9 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
                 
             });
         }
+        // 
+
+        // 
 
         Promise.all([
             Ctrl.obtener_zonas()

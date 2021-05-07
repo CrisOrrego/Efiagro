@@ -52,7 +52,7 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
                 //INICIO DEV ANGELICA -- Actualización de palabras clave en chips
                 Ctrl.Articulo.palabras_clave = Ctrl.keyWords.join();
                 Ctrl.$parent.ArticulosCRUD.update(Ctrl.Articulo).then(() => {
-                    var SeccionesCambiadas = Ctrl.SeccionesCRUD.rows.filter(s => s.changed);
+                    var SeccionesCambiadas = Ctrl.SeccionesCRUD.rows.filter(S => S.changed);
                     if (SeccionesCambiadas.length > 0) {
                         Ctrl.SeccionesCRUD.updateMultiple(SeccionesCambiadas).then(() => {
                             console.log('Secciones Actualizadas');
@@ -165,9 +165,9 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
             }
 
             // Luigi :: Funcion para mover el indice, aumentar o decrementar.
-            Ctrl.moverSeccion = (S, n) => {
+            Ctrl.moverSeccion = (S, N) => {
                 // Luigi :: declaramos variables para almacenar valores necesarios en el proceso.
-                var nuevoIndice = S.indice + n;
+                var nuevoIndice = S.indice + N;
                 var elementoObjetivo;
                 // Luigi :: Ciclo para validar el numero de indice
                 for (let i = 0; i < Ctrl.SeccionesCRUD.rows.length; i++) {
@@ -180,11 +180,15 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
 
                 // Luigi :: Almacenamos el valor del nuevo indice.
                 S.indice = nuevoIndice;
-                elementoObjetivo.indice = nuevoIndice - n;
+                elementoObjetivo.indice = nuevoIndice - N;
                 // Luigi :: Guardamos todos los registros modificados.
                 S.changed = true;
                 elementoObjetivo.changed = true;
+                console.log(N);
+                console.log(S);
             };
+            console.log(Ctrl.moverSeccion);
+            
 
 
         }

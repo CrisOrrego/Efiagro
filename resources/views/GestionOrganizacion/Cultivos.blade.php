@@ -1,5 +1,7 @@
 
-<div id="GestionCultivos" ng-controller="CultivosCtrl" flex layout=column>    
+
+<div id="GestionCultivos" ng-controller="CultivosCtrl" flex layout=column>   
+    
             <div id="container">
                 <div id="sideMenu">
                     <md-card class="divInfo">
@@ -54,22 +56,22 @@
                             <div mapa id="map" class="colDiv"></div>                      
                         <div id="totalSales">                            
                             <div class="col">
-                                AQUI CHART
+                                <canvas id="myChartLine" width="320" height="320"></canvas>
                             </div>
                             <div class="col">
-                                AQUI CHART
+                                <canvas id="myCharBarras" width="320" height="320"></canvas>
                             </div>
                             <div class="col">
-                                AQUI CHART
+                                <canvas id="myCharCirculo" width="320" height="320"></canvas>
                             </div>
                             <div class="col">
-                                AQUI CHART
+                                <canvas id="myCharPolar" width="320" height="320"></canvas>
                             </div>
                             <div class="col">
-                                AQUI CHART
+                                <canvas id="myCharRadar" width="320" height="320"></canvas>
                             </div>
                             <div class="col">
-                                AQUI CHART
+                               
                             </div>
                             
                             <table>
@@ -106,6 +108,173 @@
                     </div>
                 </div>
             </div>
+            {{-- CHATS --}}
+               
+<script>
+    var ctx = document.getElementById('myChartLine').getContext('2d');
+    var myChartLine = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Lote 1', 'Lote 2', 'Lote 3', 'Lote 4', 'Lote 5', 'Lote 6'],
+            datasets: [{
+                label: '# Cultivos',
+                data: [3, 2, 5, 3, 19, 12],
+                backgroundColor: [
+                    'rgba(97,11,235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(109,37,224, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                // borderWidth: 1
+            }]
+        },
+        // options: {
+        //     scales: {
+        //         y: {
+        //             beginAtZero: true
+        //         }
+        //     }
+        // }
+    });
+    // 
+    var ctx = document.getElementById('myCharBarras').getContext('2d');
+    var myCharBarras = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Zona 1', 'Zona 2', 'Zona 3', 'Zona 4', 'Zona 5', 'Zona 6'],
+            datasets: [{
+                label: '# Producción',
+                data: [12, 19, 3, 5, 10, 3],
+                backgroundColor: [
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    // 
+    var ctx = document.getElementById('myCharCirculo').getContext('2d');
+    var myCharCirculo = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Plátano','Café','Mora'],
+  datasets: [{
+    label: 'Mi Finca',
+    data: [300, 50, 100],
+    backgroundColor: [
+        'rgba(97,11,235, 0.5)',
+        'rgb(255, 99, 132, 0.5)',
+        'rgb(54, 162, 235, 0.5)',
+    ],
+    hoverOffset: 4
+  }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // 
+    var ctx = document.getElementById('myCharPolar').getContext('2d');
+    var myCharCirculo = new Chart(ctx, {
+        type: 'polarArea',
+        data: {
+        labels: ['Usuario 1','Usuario 2','Usuario 3','Usuario 4','Usuario 5'],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [11, 16, 7, 3, 14],
+            backgroundColor: [
+            'rgb(255, 99, 132, 0.5)',
+            'rgb(75, 192, 192, 0.5)',
+            'rgb(255, 205, 86, 0.5)',
+            'rgb(201, 203, 207, 0.5)',
+            'rgb(54, 162, 235, 0.5)'
+            ]
+        }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // 
+    var ctx = document.getElementById('myCharRadar').getContext('2d');
+    var myCharRadar = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['Usuarios','Fincas','Casos','Notificaciones','Eventos','Lotes','Zonas'],
+        datasets: [{
+            label: 'Organización 1',
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: 'rgba(97,11,235,0.5)',
+            borderColor: 'rgb(255, 99, 132)',
+            pointBackgroundColor: 'rgb(255, 99, 132)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(255, 99, 132)'
+        }, {
+            label: 'Organización 2',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgb(54, 162, 235)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+          
+</script>
+            {{-- FIN  --}}
 </div>
     
 <style type="text/css">
@@ -122,7 +291,7 @@
         #container {
         display: table;
         width: 100%;
-        background: #2c2d2e;
+        background: #1e1c2c;
         }
         #sideMenu {
         width: 100px;
@@ -161,12 +330,12 @@
         float: left;
         }
         .col{
-            height: 150px;
+            height: 330px;
             width: 330px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             padding: 10px;
             margin:1.5%;
-            background: #8e8f8f;     
+            background:#2e2941;     
         }
   
         /* Table */
@@ -216,6 +385,7 @@
             /* color: rgb(0, 0, 0); */
             color: rgb(58, 57, 57);
        }
+ 
 
     </style>
 
