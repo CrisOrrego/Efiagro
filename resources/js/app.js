@@ -40,6 +40,7 @@ angular.module('App', [
     'SolicitudesDetalleCtrl',
 
     'UsuariosCtrl',
+    'UsuarioFincaCtrl',     // Luigi
     'ArticulosCtrl',
     'Articulos_ArticuloEditorCtrl',
     'CasosCtrl', // Luigi

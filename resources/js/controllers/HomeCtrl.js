@@ -17,10 +17,6 @@ angular.module('HomeCtrl', [])
             };
 
             Ctrl.obtenerSecciones = () => {
-                // var perfil = Rs.Usuario['perfil_id'];
-                // $http.post('api/main/obtener-secciones-perfil', { perfil: perfil }).then(r => {
-                //     Rs.Secciones = r.data;
-                // });
                 $http.post('api/main/obtener-secciones', {}).then(r => {
                     Rs.Secciones = r.data;
                 });
@@ -48,6 +44,8 @@ angular.module('HomeCtrl', [])
             // Función para actualizar un campo en la tabla del usuario.
             Rs.actualizarUsuario = ( campo, valor ) => {
                 $http.post('api/usuario/actualizarcampo', {
+                    //usuario: Rs.Usuario['id'],
+                    usuario: 1,
                     campo: campo, 
                     valor: valor
                 }).then( () => {

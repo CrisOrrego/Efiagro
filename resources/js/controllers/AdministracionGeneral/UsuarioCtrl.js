@@ -15,7 +15,8 @@ angular.module('UsuariosCtrl', [])
 
             Ctrl.getUsuarios = () => {
                 // Asignar organizacion por defecto y obtener la informacion del usuario
-                // Ctrl.UsuariosCRUD.setScope('laorganizacion', Rs.Usuario.organizacion_id);
+                // 20210505 Se quita funcion de filtrar por Organizacion.
+                // Ctrl.UsuariosCRUD.setScope('laorganizacion', Rs.Usuario.organizacion_id); 
                 Ctrl.UsuariosCRUD.get().then(() => {});
             };
             Ctrl.getUsuarios();
@@ -76,7 +77,7 @@ angular.module('UsuariosCtrl', [])
                     if (!u) return;
 
                     var nuevaclave = u.Fields[0].Value;
-                    console.log(U.id);
+                    // console.log(U.id);
                     if ( nuevaclave.trim() != '' ) {
                         var ClaveCambiada = {
                             usuario_id: U.id,
@@ -90,6 +91,18 @@ angular.module('UsuariosCtrl', [])
                     } else {
                         Rs.showToast("Se envio la clave en blanco. No se modifica.");
                     }
+                });
+            };
+
+            // Modal para la carga de las fincas y las zonas del usuario seleccionado.
+            Ctrl.cargarFincas = ( U ) => {
+                $mdDialog.show({
+                    templateUrl: 'Frag/AdministracionGeneral.UsuarioFincas',
+                    controller: 'UsuarioFincaCtrl',
+                    locals: { 
+                        DatosUsuario: U 
+                    },
+                    fullscreen: false,
                 });
             };
         }

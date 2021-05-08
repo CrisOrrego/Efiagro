@@ -4,7 +4,7 @@
 	<div class="h40 bg-primary" layout layout-align="center center"
 		style="padding-left: 30px">
 		<md-button class="margin-10" href="#/Home" >
-			<img src="imgs/logo_pequeno_main_nav.png">
+			<img src="imgs/logo_pequeno_main_nav.png" aria-label="">
 		</md-button>
 		<div class="w30"></div>
 		<md-select ng-model="Usuario.organizacion_id" class="no-margin" 
@@ -29,7 +29,7 @@
 		<div flex layout layout-align="space-around center" layout-wrap>
 			<a ng-repeat="S in Secciones" href="#/Home/@{{ S[0].seccion_slug }}/@{{ S[0].subseccion_slug }}"
 				class="seccion_icono no-underline" layout=column>
-				<div class="seccion_icono_img"><img src="imgs/icono_@{{ S[0].id }}.png" /></div>
+				{{-- <div class="seccion_icono_img"><img src="imgs/icono_@{{ S[0].id }}.png" /></div> --}}
 				<div class="seccion_icono_texto">@{{ S[0].seccion }}</div>
 			</a>
 			<div flex=100 class="h50"></div>
