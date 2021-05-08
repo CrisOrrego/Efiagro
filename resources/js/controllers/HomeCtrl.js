@@ -24,7 +24,7 @@ angular.module('HomeCtrl', [])
 
             Ctrl.obtenerSecciones();
 
-            //Gestion del Estado
+            // Gestion del Estado
             Rs.cambioEstado = function() {
                 Rs.Estado = $state.current;
                 Rs.Estado.ruta = $location.path().split('/');
@@ -37,15 +37,11 @@ angular.module('HomeCtrl', [])
                 });
             };
 
-            // Rs.navegarHome = () => {
-            //     $state.go();
-            // };
-
             // Función para actualizar un campo en la tabla del usuario.
             Rs.actualizarUsuario = ( campo, valor ) => {
                 $http.post('api/usuario/actualizarcampo', {
-                    //usuario: Rs.Usuario['id'],
-                    usuario: 1,
+                    usuario: Rs.Usuario['id'],
+                    // usuario: 1,
                     campo: campo, 
                     valor: valor
                 }).then( () => {
