@@ -5,7 +5,6 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
     "$injector",
     "$mdDialog",
     function($scope, $rootScope, $http, $injector, $mdDialog) {
-        console.info("ZonasCtrl");
         var Ctrl = $scope;
         var Rs = $rootScope;
 
@@ -46,7 +45,6 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
         };
 
         Ctrl.editarZona = (Z) => {
-            console.log(Z);
 			$mdDialog.show( {
 				templateUrl: 'Frag/AdministracionGeneral.Zonas_ZonaEditorDiag',
 				controller: 'Zonas_ZonaEditorCtrl',
@@ -77,7 +75,6 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
         };
 
         Ctrl.abrirOrganigrama = Z => {
-            // console.log(O);
             $mdDialog.show({
                 templateUrl: "Frag/GestionZona.OrganigramaDiag",
                 controller: "ZonaDiagCtrl",

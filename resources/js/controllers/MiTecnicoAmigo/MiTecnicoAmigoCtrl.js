@@ -62,9 +62,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 Ctrl.CasosCRUD.setScope('tipo');
 
                 Ctrl.CasosCRUD.get();
-                /*let filter = Ctrl.CasosCRUD.rows.filter(caso=>caso.tipo==='tipo');
-                  console.log('Ctrl.CasosCRUD.rows', Ctrl.CasosCRUD.rows);
-                  console.log('filtro', filter);*/
+            
                 //Fin Dev Angélica
             }
             Ctrl.getCasos();
@@ -166,13 +164,13 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 keys.forEach(function (palabra){
                     // Separa cada una de las pabras clave del artuculo
                     let keys = articulo.palabras_clave && articulo.palabras_clave.split(",");
-                console.log(keys);
+                // console.log(keys);
                     // Buscamos si la palabra del filtro esta en la lista de palabras clave
                     if (keys && keys.includes(palabra)) {
                         articulo.contador++; 
                         Ctrl.SelectedKey = true;
                         Ctrl.keys.push(palabra);
-                        console.log(articulo.palabras_clave, palabra);
+                        // console.log(articulo.palabras_clave, palabra);
                     }
                 });
 
@@ -191,7 +189,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 Ctrl.key = key;
                 Ctrl.Articulos.forEach(function(articulo) {
                     articulo.contador = 0;
-                    console.log(articulo.palabras_clave);
+                    // console.log(articulo.palabras_clave);
                     if (articulo.palabras_clave && articulo.palabras_clave.indexOf(key) >= 0) {
                         articulo.contador++;
                     }

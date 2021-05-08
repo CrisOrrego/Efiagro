@@ -2,8 +2,6 @@ angular.module('LoginCtrl', [])
 .controller('LoginCtrl', ['$rootScope', '$http', '$state', '$localStorage', '$mdToast', 
 	function($rootScope, $http, $state, $localStorage, $mdToast){
 
-		console.log('LoginCtrl');
-
 		var Rs = $rootScope;
 
 		delete $localStorage.token;

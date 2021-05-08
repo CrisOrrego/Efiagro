@@ -105,18 +105,6 @@ angular.module('ImportCtrl', [])
 				Ctrl.finishSync('No se encontraron cambios', 'Alert');
 			};
 
-			
-
-			/*$http.post(Ctrl.Config.VerifyUrl, { Config: Ctrl.Config }).then(function(r){
-				var Msgs = r.data;
-				console.log(Msgs);
-				if(Msgs.length == 0){
-					Ctrl.Config.Paso = 3;
-				}else{ //Hubo errores en la verificacion
-					Ctrl.Config.Paso = 5;
-					Ctrl.Errores = Msgs;
-				}
-			});*/
 		}
 
 		Ctrl.viewAcciones = (kA) => {
@@ -159,10 +147,7 @@ angular.module('ImportCtrl', [])
 			Rs.DownloadExcel(e);
 		};
 
-		//console.log(Ctrl.Config.PlantillaUrl);
-
 		if(Ctrl.Config.testUpload) Ctrl.testUpload(); //FIX
-		//Ctrl.finishSync('Sincronización terminada exitosamente');
 
 	}
 ]);

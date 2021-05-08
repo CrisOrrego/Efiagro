@@ -4,7 +4,6 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
     .controller('Articulos_ArticuloEditorCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Articulo',
         function($scope, $rootScope, $http, $injector, $mdDialog, Articulo) {
 
-            console.info('Articulos_ArticuloEditorCtrl');
             var Ctrl = $scope;
             var Rs = $rootScope;
 
@@ -26,7 +25,7 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
             //INCIO DEV ANGÉLICA --> Lineas productivas
 		    $http.post('api/lineasproductivas/obtener', {}).then(r => {
 			Ctrl.lineas_productivas = r.data;
-			//console.log(r.data);
+		
 		    });
 		    //FIN DEV ANGÉLICA
 
@@ -55,7 +54,6 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
                     var SeccionesCambiadas = Ctrl.SeccionesCRUD.rows.filter(S => S.changed);
                     if (SeccionesCambiadas.length > 0) {
                         Ctrl.SeccionesCRUD.updateMultiple(SeccionesCambiadas).then(() => {
-                            console.log('Secciones Actualizadas');
                         });
                     }
                 });
@@ -184,12 +182,6 @@ angular.module('Articulos_ArticuloEditorCtrl', [])
                 // Luigi :: Guardamos todos los registros modificados.
                 S.changed = true;
                 elementoObjetivo.changed = true;
-                console.log(N);
-                console.log(S);
-            };
-            console.log(Ctrl.moverSeccion);
-            
-
-
+            };     
         }
     ]);

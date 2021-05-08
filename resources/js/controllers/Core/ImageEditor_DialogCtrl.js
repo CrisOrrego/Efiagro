@@ -67,9 +67,9 @@ angular.module('ImageEditor_DialogCtrl', [])
 		}
 
 		Ctrl.$watch('Ctrl.cropper.sourceImage', function(nv, ov){
-			if(nv){
-				console.log('Imagen Cargada');
-			}
+			// if(nv){
+			// 	// console.log('Imagen Cargada');
+			// }
 		});
 
 		Ctrl.SendImage = function(){
@@ -109,8 +109,6 @@ angular.module('ImageEditor_DialogCtrl', [])
 			});
 
 		}
-
-		//console.log(angular.element(document.querySelector('#Canvas')));
 	}
 
 ]);

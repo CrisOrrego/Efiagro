@@ -7,7 +7,7 @@ angular
         "$injector",
         "$mdDialog",
         function($scope, $rootScope, $http, $injector, $mdDialog) {
-            console.info("FincasMifincaCtrl");
+
             var Ctrl = $scope;
             var Rs = $rootScope;
 

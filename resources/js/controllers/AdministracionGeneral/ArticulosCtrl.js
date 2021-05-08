@@ -2,7 +2,6 @@ angular.module('ArticulosCtrl', [])
 .controller('ArticulosCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 
 	function($scope, $rootScope, $http, $injector, $mdDialog) {
 
-		console.info('ArticulosCtrl');
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 		Ctrl.idLineaproductiva = undefined;
@@ -105,7 +104,6 @@ angular.module('ArticulosCtrl', [])
 			}
 			//Filtro para titulo (podria implementarse el autocompletar y el hamburguer icon)
 			if (Ctrl.filterTitulo && Ctrl.filterTitulo.length > 2){
-				console.log(Ctrl.Articuloscopy);
 				//toUpperCase() --> Para pasarlo a mayúscula
 				Ctrl.Articuloscopy = Ctrl.Articuloscopy.filter(articulo => Ctrl.suppressSpecialCharacters(articulo.titulo).indexOf(Ctrl.suppressSpecialCharacters(Ctrl.filterTitulo))> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
 			}

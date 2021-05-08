@@ -23,7 +23,6 @@ angular.module('UsuarioFincaCtrl', [])
                 id: 2
             }).then((r)=>{
                 Ctrl.Departamentos = r.data;
-                // console.log(Ctrl.Departamentos);
 			});
 
             $http.post ('api/lista/listacompleta', { 

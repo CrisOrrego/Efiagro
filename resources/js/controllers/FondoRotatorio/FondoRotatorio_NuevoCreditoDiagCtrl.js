@@ -70,7 +70,7 @@ angular.module('FondoRotatorio_NuevoCreditoDiagCtrl', [])
 
 			$http.post('/api/Credito/Creditos/add', Daten).then(function(res){
 				//Ctrl.Creditos = res.data;
-				console.log('CredAdded', res.data);
+				// console.log('CredAdded', res.data);
 				Ctrl.ConfirmAction('Crédito Creado', res.data);
 				//Ctrl.ViewCredit(Ctrl.Creditos[0]); //REMOVE
 			});

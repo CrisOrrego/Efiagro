@@ -5,7 +5,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
     "$injector",
     "$mdDialog",
     function($scope, $rootScope, $http, $injector, $mdDialog) {
-        console.info("CultivosCtrl");
+
         var Ctrl = $scope;
         var Rs = $rootScope;
 
@@ -25,7 +25,6 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         });
 
         Ctrl.getCultivos = () => {
-            console.log(Ctrl.zona_select);
             Ctrl.CultivosCRUD.setScope('lazona', Ctrl.zona_select);  
             Ctrl.CultivosCRUD.get().then(() => {
                    

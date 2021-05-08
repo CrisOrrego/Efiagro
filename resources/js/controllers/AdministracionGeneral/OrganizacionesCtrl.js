@@ -6,7 +6,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
     "$mdDialog",
     "Upload",  //DEV ANGÉLICA --> 
     function($scope, $rootScope, $http, $injector, $mdDialog, Upload) {
-        console.info("OrganizacionesCtrl");
+ 
         var Ctrl = $scope;
         var Rs = $rootScope;
         var departamentos = [];
@@ -35,8 +35,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             query_with: ['usuario'],
 			order_by: [ '-created_at' ]
 		});
-        console.log(Ctrl.OrganizacionesmuroseccionesCRUD);
-
         /*
         Ctrl.selectChanged = function ()  {
             debugger;
@@ -44,18 +42,11 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         }*/
 
         Ctrl.obtenerSecciones = (organizacion_id) => {
-            // console.log('nos mostrara algo?');
-            // console.log(Ctrl.OrganizacionesCRUD);
             Ctrl.OrganizacionesmuroseccionesCRUD.setScope('elorganizacion', organizacion_id).get();
 		};
-        //console.log(Ctrl.obtenerSecciones);
-
-        //console.log(Ctrl.OrganizacionesmuroseccionesCRUD);
-
         //FIN DEV ANGÉLICA
         
         Ctrl.getOrganizacion = () => {
-            console.log(Rs.Usuario.organizacion_id);
             Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id); //con el setScope estoy haciendo un filtro en la BD para que él nos traiga sólo un registro
             Ctrl.OrganizacionesCRUD.get().then(() => {
                 Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows.find(O => O.id === Rs.Usuario.organizacion_id);
@@ -85,8 +76,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         loadMunicipios = (valorDepartamento, col_municipio) => {
             col_municipio.Options.options = {}; //limpia el select de municipios
-            console.log(valorDepartamento);
-
             $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: valorDepartamento }).then((r)=>{
                 col_municipio.Options.options = r.data;
 			});
@@ -131,7 +120,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         Ctrl.getDepartamentos = () => {
 			$http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
                 departamentos = r.data;
-                console.log(departamentos);
 			});
 		}
 
@@ -161,7 +149,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         //INICIO DEV ANGÉLICA
 
         /*Ctrl.abrirMuroDialog = () => {
-            //console.log('es el caso ' + C.id);
             $mdDialog.show({
                 templateUrl: 'Frag/GestionOrganizacion.OrganigramaDiag',
                 //templateUrl: 'Frag/GestionOrganizacion.',
@@ -178,7 +165,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         //Abre el modal de publicaciones del muro 
 
 		Ctrl.abrirOrganigrama = (O) => {
-            // console.log(O);
 			$mdDialog.show({
 				templateUrl: 'Frag/GestionOrganizacion.OrganigramaDiag',
 				controller: 'OrganizacionDiagCtrl',
@@ -191,7 +177,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
     //INICIO DEV ANGÉLICA 
         //Abre el modal del un articulo de un muro de la organizacion
         Ctrl.abrirArticulomuro = (A) => {
-            console.log(A);
 			$mdDialog.show({
 				//templateUrl: 'Frag/GestionOrganizacion.OrganizacionesmuroEditorDiag',
                 templateUrl: 'templates/dialogs/image-editor.html',               
@@ -211,16 +196,13 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                             Ancho: 560, Alto: 300, Quality: 90
                         }
                     }).then(function (resp) {
-                        console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
                     }, function (resp) {
-                        console.log('Error status: ' + resp.status);
-                    });
+                     });
                 }
         
             
         //Abre el modal del un articulo de un muro de la organizacion
         Ctrl.nuevoArticuloMuro = (O) => {
-            console.log(O);
 			$mdDialog.show({
 				templateUrl: 'Frag/GestionOrganizacion.OrganizacionesmuroEditorDiag',
 				controller: 'ArticulomuroEditDialogCtrl',

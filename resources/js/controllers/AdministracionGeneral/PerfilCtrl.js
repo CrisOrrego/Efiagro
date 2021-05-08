@@ -1,7 +1,7 @@
 angular.module('PerfilesCtrl', [])
     .controller('PerfilesCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog',
         function($scope, $rootScope, $http, $injector, $mdDialog) {
-            //console.info('PerfilesCtrl');
+     
             var Ctrl = $scope;
             var Rs = $rootScope;
 

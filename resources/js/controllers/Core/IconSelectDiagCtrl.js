@@ -16,7 +16,7 @@ angular.module('IconSelectDiagCtrl', [])
 		Ctrl.filterCat = (C) => { Ctrl.CatSel = C; Ctrl.filterIconos(); }
 
 		Ctrl.filterIconos = () => {
-			console.log(Ctrl.CatSel, Ctrl.filter);
+			// console.log(Ctrl.CatSel, Ctrl.filter);
 			if(Ctrl.CatSel == null && Ctrl.filter == ''){ Ctrl.Iconos = []; }
 			else if(Ctrl.filter !== ''){   Ctrl.Iconos = $filter('filter')(Ctrl.IconosRaw, Ctrl.filter) }
 			else if(Ctrl.CatSel !== null){ Ctrl.Iconos = $filter('filter')(Ctrl.IconosRaw, { Categoria: Ctrl.CatSel }) };

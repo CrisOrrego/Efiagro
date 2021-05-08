@@ -7,7 +7,7 @@ angular
         "$injector",
         "$mdDialog",
         function($scope, $rootScope, $http, $injector, $mdDialog) {
-            console.info("FincasCtrl");
+
             var Ctrl = $scope;
             var Rs = $rootScope;
     // INICIO ANGELICA
@@ -103,7 +103,6 @@ angular
             Ctrl.getTiposCultivo = () => {
                 $http.post ('api/lista/obtener', { lista: 'TiposCultivo' }).then((r)=>{
                     TiposCultivo = r.data;
-                    console.log(TiposCultivo);
                 });
             }
 
@@ -117,8 +116,6 @@ angular
 
             loadMunicipios = (valorDepartamento, col_municipio) => {
                 col_municipio.Options.options = {}; //limpia el select de municipios
-                console.log(valorDepartamento);
-
                 $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: valorDepartamento }).then((r)=>{
                     col_municipio.Options.options = r.data;
                 });
@@ -201,7 +198,6 @@ angular
                     op1: "COL"
                 })
                 .then(r => {
-                    console.log(r.data);
                 });
 
             Ctrl.editarLote = L => {

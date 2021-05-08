@@ -9,9 +9,7 @@ angular.module('SolicitudesDetalleCtrl', [])
 
             // Creamos copia de Caso
             Ctrl.Caso = angular.copy(Caso);
-            //console.log(Ctrl.Caso);
-
-            // Activamos el evento Cancel, para cerrar modales
+             // Activamos el evento Cancel, para cerrar modales
             Ctrl.Cancel = $mdDialog.cancel;
 
             // Obtenemos los datos de novedades por caso, en NovedaesCRUD
