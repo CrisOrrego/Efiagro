@@ -2,18 +2,17 @@
 	<img src="imgs/logo_pacosoft.png" /></div>
 	
 <div flex id="Home" ng-controller="HomeCtrl" layout=column>
-	
 	<div class="h40 bg-primary" layout layout-align="center center"
 		style="padding-left: 30px">
 		<md-button class="margin-10" href="#/Home" >
 			<img src="imgs/logo_pequeno_main_nav.png" aria-label="">
 		</md-button>
 		<div class="w30"></div>
-		<md-select ng-model="Usuario.organizacion_id" class="no-margin" 
+		<md-select ng-show="listaOrganizacion" ng-model="Usuario.organizacion_id" class="no-margin" 
 			aria-label="Organizacion" ng-change="actualizarUsuario('organizacion_id', Usuario.organizacion_id)">
 			<md-option ng-value="O.id" ng-repeat="O in Usuario.organizaciones">@{{ O.nombre }}</md-option>
 		</md-select>
-		<md-select ng-model="Usuario.finca_id" class="no-margin" 
+		<md-select ng-show="listaFinca" ng-model="Usuario.finca_id" class="no-margin" 
 			aria-label="Finca" ng-change="actualizarUsuario('finca_id', Usuario.finca_id)">
 			<md-option ng-value="F.id" ng-repeat="F in Usuario.fincas">@{{ F.nombre }}</md-option>
 		</md-select>
