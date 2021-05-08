@@ -93,6 +93,15 @@ class ListaController extends Controller
 		/*$L = Lista::with ("listadetalle")->findOrFail($id); 
 		return $L;*/
 	}
+
+	// Funcion para traer todos los registros de una tabla 
+	// con un solo criterio de consulta y ordenado por la descripcion
+	public function postListacompleta(Request $req)
+	{
+		return ListaDetalle::where("lista_id", $req->id)
+			->orderBy('descripcion')
+			->get();
+	}
 	
 }
 //fIN Dev ANGÉLICA
