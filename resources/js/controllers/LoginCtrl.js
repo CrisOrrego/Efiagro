@@ -4,11 +4,14 @@ angular.module('LoginCtrl', [])
 
 		var Rs = $rootScope;
 		delete $localStorage.token;
+
+		// Formulario de inicio: cargar datos en blanco.
 		Rs.Usuario = {
 			Correo:'', // 'info@mbrain.co',
 			Password: '' // '123'
 		};
 
+		// Funcion para enviar datos al server y validar la sesion del usuario.
 		Rs.enviarLogin = (ev) => {
 			ev.preventDefault();
 			$http.post('/api/usuario/login', { Credenciales: Rs.Usuario })
@@ -17,6 +20,7 @@ angular.module('LoginCtrl', [])
 				$localStorage.token = token;
 				$state.go('Home');
 			}).catch( resp => {
+				// Retorno de mensaje, en caso de datos NO validos.
 				Rs.showToast(resp.data.Msg);
 			});
 		}
@@ -25,6 +29,7 @@ angular.module('LoginCtrl', [])
 			return (typeof arg == 'undefined' ? def : arg);
 		};
 
+		// Configuracion de TOAST para la carga de mensajes.
 		Rs.showToast = function(Msg, Type, Delay = 5000, Position){
 			var Type = Rs.def(Type, 'Normal');
 			var Position = Rs.def(Position, 'bottom left')

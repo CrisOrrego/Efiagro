@@ -1,5 +1,6 @@
-<div style="position:absolute;bottom:50px;left:15px;z-index:0;">
+<div style="position:absolute;bottom:50px;left:15px;z-index:0;" ng-show="Estado.ruta.length == 2" >
 	<img src="imgs/logo_pacosoft.png" /></div>
+	
 <div flex id="Home" ng-controller="HomeCtrl" layout=column>
 	
 	<div class="h40 bg-primary" layout layout-align="center center"
@@ -29,7 +30,7 @@
 		<div flex layout layout-align="space-around center" layout-wrap>
 			<a ng-repeat="S in Secciones" href="#/Home/@{{ S[0].seccion_slug }}/@{{ S[0].subseccion_slug }}"
 				class="seccion_icono no-underline" layout=column>
-				{{-- <div class="seccion_icono_img"><img src="imgs/icono_@{{ S[0].id }}.png" /></div> --}}
+				<div class="seccion_icono_img"><img ng-src="imgs/icono_@{{ S[0].id }}.png" /></div>
 				<div class="seccion_icono_texto">@{{ S[0].seccion }}</div>
 			</a>
 			<div flex=100 class="h50"></div>

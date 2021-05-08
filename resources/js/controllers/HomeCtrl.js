@@ -17,11 +17,12 @@ angular.module('HomeCtrl', [])
             };
 
             Ctrl.obtenerSecciones = () => {
-                $http.post('api/main/obtener-secciones', {}).then(r => {
-                    Rs.Secciones = r.data;
-                });
+                Ctrl.logoInicio = true;
+                $http.post('api/main/obtener-secciones', {})
+                    .then(r => {
+                        Rs.Secciones = r.data;
+                    });
             };
-
             Ctrl.obtenerSecciones();
 
             // Gestion del Estado
@@ -36,7 +37,8 @@ angular.module('HomeCtrl', [])
                     subseccion: Subseccion 
                 });
             };
-
+            console.log(Rs.Usuario);
+            
             // Función para actualizar un campo en la tabla del usuario.
             Rs.actualizarUsuario = ( campo, valor ) => {
                 $http.post('api/usuario/actualizarcampo', {
