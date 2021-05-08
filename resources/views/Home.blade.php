@@ -9,6 +9,7 @@
 		<div class="w30"></div>
 		<md-select ng-model="Usuario.organizacion_id" class="no-margin" 
 			aria-label="Organizacion" ng-change="actualizarUsuario('organizacion_id', Usuario.organizacion_id)">
+			<md-option ng-value="" >Sin Organización</md-option>
 			<md-option ng-value="O.id" ng-repeat="O in Usuario.organizaciones">@{{ O.nombre }}</md-option>
 		</md-select>
 		<md-select ng-model="Usuario.finca_id" class="no-margin" 
