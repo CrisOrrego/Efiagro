@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2021 a las 01:11:41
+-- Tiempo de generación: 08-05-2021 a las 14:37:13
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -39,18 +39,6 @@ CREATE TABLE `articulos` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `articulos`
---
-
-INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`, `estado`, `permisos`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '5 formas de evitar la roya en su cultivo', 'roya,cultivo,formas', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-22 23:17:59'),
-(2, 2, 'Ultimas guias de la OMS para el cuidado de sus vacas', 'oms,cuidado', 'Activo', '', 1, '0000-00-00 00:00:00', '2021-03-12 20:07:09'),
-(3, 3, 'Mauris dapibus non formas nisi ac condimentum. Morbi tempus dui lacus, vel tempus sem bibendum vel. Nulla neque augue, malesuada ac turpis pharetra, pellentesque imperdiet lorem. Nulla ligula est, consectetur vitae ante tempus, hendrerit sagittis ex. Nulla nec quam feugiat, finibus.', 'morbi,finibus,formas', 'Activo', '', 2, '0000-00-00 00:00:00', '2021-03-22 23:17:00'),
-(4, 3, '3 nuevas semillas de platano', '', 'Activo', NULL, 1, '2020-11-20 01:52:22', '2021-04-05 21:11:26'),
-(5, NULL, 'Hola mundo', '\'\'', 'Borrador', NULL, 1, '2021-04-10 14:48:45', '2021-04-10 14:48:45'),
-(6, NULL, 'MUNDO', '\'\'', 'Borrador', NULL, 1, '2021-04-10 14:49:12', '2021-04-10 14:49:12');
-
 -- --------------------------------------------------------
 
 --
@@ -67,20 +55,6 @@ CREATE TABLE `articulos_secciones` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `articulos_secciones`
---
-
-INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `indice`, `tipo`, `contenido`, `ruta`, `created_at`, `updated_at`) VALUES
-(20, 1, 1, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2020-12-16 23:01:30', '2020-12-16 23:01:30'),
-(23, 1, 2, 'Parrafo', NULL, NULL, '2020-12-22 01:24:06', '2020-12-22 01:27:43'),
-(25, 4, 3, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-02-10 19:35:45', '2021-02-28 18:44:58'),
-(26, 4, 1, 'Imagen', NULL, 'files/articulos_media/4/20210228134406.jpg', '2021-02-28 18:44:20', '2021-03-15 15:58:08'),
-(27, 4, 2, 'Parrafo', 'Esto es una forma reciente de siembra', NULL, '2021-02-28 18:44:25', '2021-03-15 15:58:07'),
-(28, 3, 1, 'Imagen', NULL, 'files/articulos_media/3/20210312150721.jpg', '2021-03-12 20:07:55', '2021-03-12 20:07:55'),
-(29, 3, 3, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-03-12 20:08:02', '2021-03-12 20:08:29'),
-(30, 3, 2, 'Parrafo', 'Este es un nuevo contenido', NULL, '2021-03-12 20:08:05', '2021-03-12 20:08:29');
 
 -- --------------------------------------------------------
 
@@ -113,43 +87,6 @@ CREATE TABLE `casos` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `casos`
---
-
-INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Como se maneja estooo', 'Consulta General', '[Angelica]', '2020-12-22 02:13:35', '2021-01-11 00:44:03'),
-(3, 1, 'Esta es un caso', 'Consulta General', '[]', '2021-01-20 21:18:15', '2021-01-20 21:18:15'),
-(4, 1, 'Nueva', 'Consulta General', '[]', '2021-01-21 20:38:32', '2021-01-21 20:38:32'),
-(5, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-06 14:45:30', '2021-02-06 14:45:30'),
-(6, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-06 14:45:38', '2021-02-06 14:45:38'),
-(7, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-06 14:45:47', '2021-02-06 14:45:47'),
-(8, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-06 14:45:54', '2021-02-06 14:45:54'),
-(9, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:28:43', '2021-02-10 19:28:43'),
-(10, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:28:47', '2021-02-10 19:28:47'),
-(11, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:29:01', '2021-02-10 19:29:01'),
-(12, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:54:51', '2021-02-10 19:54:51'),
-(13, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 19:54:53', '2021-02-10 19:54:53'),
-(14, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:58:42', '2021-02-10 19:58:42'),
-(15, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 19:59:04', '2021-02-10 19:59:04'),
-(16, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:00:10', '2021-02-10 20:00:10'),
-(17, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:00:13', '2021-02-10 20:00:13'),
-(18, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:04:32', '2021-02-10 20:04:32'),
-(19, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-10 20:07:08', '2021-02-10 20:07:08'),
-(20, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 20:07:11', '2021-02-10 20:07:11'),
-(21, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:07:14', '2021-02-10 20:07:14'),
-(22, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:15:36', '2021-02-10 20:15:36'),
-(23, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:15:42', '2021-02-10 20:15:42'),
-(24, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:16:09', '2021-02-10 20:16:09'),
-(25, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-02-10 20:16:52', '2021-02-10 20:16:52'),
-(26, 1, 'Boton Contacto', 'SMS', '[]', '2021-02-10 20:16:57', '2021-02-10 20:16:57'),
-(27, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-02-10 20:17:03', '2021-02-10 20:17:03'),
-(28, 2, 'Cosecha exitosa', 'Contar Experiencia', '[]', '2021-02-19 20:08:41', '2021-03-29 21:52:03'),
-(29, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-03-11 08:36:27', '2021-03-11 08:36:27'),
-(30, 1, 'Boton Contacto', 'SMS', '[]', '2021-03-11 08:36:35', '2021-03-11 08:36:35'),
-(31, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-03-11 08:36:45', '2021-03-11 08:36:45'),
-(32, 1, 'Otro caso', 'Consulta General', '[]', '2021-03-11 08:37:32', '2021-03-30 02:21:33');
-
 -- --------------------------------------------------------
 
 --
@@ -166,23 +103,6 @@ CREATE TABLE `casos_novedades` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `casos_novedades`
---
-
-INSERT INTO `casos_novedades` (`id`, `usuario_id`, `caso_id`, `tipo`, `novedad`, `solucion`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Texto', 'Nuevo daño', 0, '2021-01-20 21:17:46', '2021-01-20 21:17:46'),
-(2, 1, 3, 'Texto', 'Nueva', 0, '2021-01-20 21:18:22', '2021-01-20 21:18:22'),
-(3, 1, 1, 'Texto', 'Otra vez', 0, '2021-01-21 02:14:39', '2021-01-21 02:14:39'),
-(4, 1, 1, 'Texto', 'Ao', 0, '2021-01-21 20:38:00', '2021-01-21 20:38:00'),
-(5, 1, 4, 'Texto', 'A', 0, '2021-01-21 20:38:52', '2021-01-21 20:38:52'),
-(6, 1, 4, 'Imagen', 'files/casos_media/4/20210205142638.jpg', 0, '2021-02-05 19:26:48', '2021-02-05 19:26:48'),
-(7, 1, 4, 'Texto', 'HOLA', 0, '2021-02-05 19:26:50', '2021-02-05 19:26:50'),
-(8, 1, 8, 'Imagen', 'files/casos_media/8/20210206100359.jpg', 0, '2021-02-06 15:04:11', '2021-02-06 15:04:11'),
-(9, 1, 8, 'Texto', 'gG', 0, '2021-02-06 15:04:15', '2021-02-06 15:04:15'),
-(10, 1, 1, 'Texto', 'GGGG', 0, '2021-03-16 04:52:41', '2021-03-16 04:52:41'),
-(11, 1, 1, 'Imagen', 'files/casos_media/1/20210315235244.jpg', 0, '2021-03-16 04:52:51', '2021-03-16 04:52:51');
 
 -- --------------------------------------------------------
 
@@ -202,15 +122,6 @@ CREATE TABLE `cultivos` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `cultivos`
---
-
-INSERT INTO `cultivos` (`id`, `fechas`, `zona_id`, `produccion`, `produccion_estimada`, `eventos`, `creditos_colocados`, `cartera_vencida`, `created_at`, `updated_at`) VALUES
-(1, '2021-04-14T05:00:00.000Z', 4, 45, 3435, 'Ahoyado', 4, 1, '2021-04-19 19:59:37', '2021-04-21 23:49:06'),
-(3, '2021-04-22T05:00:00.000Z', 1, 453, 45, 'Cosecha', 2, 0, '2021-04-21 23:44:30', '2021-04-21 23:44:30'),
-(4, '2021-04-22T05:00:00.000Z', 2, 456, 345, 'Cosecha', 2, 0, '2021-04-21 23:55:02', '2021-04-21 23:55:02');
 
 -- --------------------------------------------------------
 
@@ -244,18 +155,6 @@ CREATE TABLE `fincas` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `fincas`
---
-
-INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_id`, `municipio_id`, `area_total`, `tipo_cultivo`, `total_lotes`, `tipo_suelo`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
-(1, 9, 'Cafetal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:38:41', '2021-01-18 18:37:41'),
-(2, 1, 'Platanal', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 100, 30, 0, 0, 0, 0, 0, 0, '2021-01-17 23:55:39', '2021-01-18 18:37:30'),
-(3, 9, 'La Esperanza', '', '', '', 0, '', 0, '', 1, '6.76472000', '3.76472000', 5, 3444, 0, 0, 0, 0, 0, 0, '2021-01-18 05:12:22', '2021-01-18 18:36:48'),
-(4, 1, 'Nuevo Cerre', '', '', '', 0, '', 0, '', 1, '7.76472000', '-80.27483000', 15, 50, 0, 0, 0, 0, 0, 0, '2021-02-03 19:21:08', '2021-02-03 19:21:08'),
-(5, 1, 'Florestal', 'Carrera 8 Bis N° 34 – 14', 'Risaralda', 'Pereira', 345, 'MONOCULTIVO', 453, 'UNIDAD AMAGÁ', 1, '7.76472000', '-80.27483000', 35, 250, 23, 76, 2094, 1500, 200, 1566, '2021-02-18 18:56:22', '2021-02-28 18:38:39'),
-(6, 1, 'OTRA VEZZZZZZZ', 'CALLE 30', '66', '66075', 232, 'ASOCIADOS', 545, 'UNIDAD AMAGÁ', 4, '23.00000000', '45.00000000', 56, 5, 23, 34, 34, 34, 34, 5, '2021-04-22 04:22:29', '2021-04-22 04:23:26');
-
 -- --------------------------------------------------------
 
 --
@@ -274,27 +173,6 @@ CREATE TABLE `labores` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `labores`
---
-
-INSERT INTO `labores` (`id`, `labor`, `zona_id`, `linea_productiva_id`, `frecuencia`, `inicio`, `margen`, `created_at`, `updated_at`) VALUES
-(2, 'RESIEMBRA CON CABEZA DE TORO', 1, 2, 1, 0, 40, '2021-02-19 22:25:49', '2021-02-19 22:25:49'),
-(3, 'APLICACIÓN MATERIA ORGANICA 300g', 2, 3, 12, 0, 2500, '2021-02-19 22:27:42', '2021-02-19 22:27:42'),
-(4, 'FERTILIZACION QUIMICA Y PLATEO', 3, 1, 2, 0, 3000, '2021-02-19 22:28:14', '2021-02-19 22:28:14'),
-(5, 'DESHOJE, CIRUGIA  Y PODA TEMPRANA', 2, 2, 1, 0, 2500, '2021-02-19 22:28:39', '2021-02-19 22:28:39'),
-(6, 'CONTROL SIGATOKA QUIMICO (Según evaluación) de 6 a 9:30 a.m.', 2, 3, 0, 0, 3000, '2021-02-19 22:29:04', '2021-02-19 22:29:04'),
-(7, 'CONTROL ARVENSES POR PARCHEO', 1, 1, 3, 0, 3800, '2021-02-19 22:29:51', '2021-02-19 22:29:51'),
-(8, 'DESHIJE Y ESTIMULO', 2, 2, 6, 0, 2000, '2021-02-19 22:30:20', '2021-02-19 22:30:20'),
-(9, 'CONTROL DE PICUDO - DESGUASQUE Y PINTURA', 3, 3, 6, 0, 2000, '2021-02-19 22:30:49', '2021-02-19 22:30:49'),
-(10, 'EMBOLSE PREMATURO Y ENCINTADO', 1, 2, 1, 6, 150, '2021-02-19 22:31:10', '2021-04-10 04:17:57'),
-(11, 'AMARRE O APUNTALADO', 2, 2, 1, 0, 150, '2021-02-19 22:31:35', '2021-02-19 22:31:35'),
-(12, 'DESMANE O DESFLORE', 3, 3, 1, 0, 150, '2021-02-19 22:31:54', '2021-02-19 22:31:54'),
-(13, 'COSECHA Y POSCOSECHA', 2, 1, 1, 0, 0, '2021-02-19 22:34:09', '2021-02-19 22:34:09'),
-(14, 'DESTRONQUE', 1, 2, 1, 0, 500, '2021-02-19 22:34:33', '2021-02-19 22:34:33'),
-(15, 'REGISTRO DE LA INFORMACION', 2, 3, 1, 0, 0, '2021-02-19 22:34:48', '2021-02-19 22:34:48'),
-(17, 'TRAZADO HOYADO SIEMBRA INCORPORACION DE MATERIA ORGANICA', 3, 1, 1, 0, 60, '0000-00-00 00:00:00', '2021-02-19 22:25:04');
-
 -- --------------------------------------------------------
 
 --
@@ -309,15 +187,6 @@ CREATE TABLE `lineas_productivas` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `lineas_productivas`
---
-
-INSERT INTO `lineas_productivas` (`id`, `nombre`, `palabras_clave`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Plátano', 'plátano', '2021-01-12 16:13:21', '2021-02-15 21:10:49', NULL),
-(2, 'Café', 'café', '2021-01-12 16:13:37', '2021-02-15 21:10:50', NULL),
-(3, 'Mora', 'mora', '2021-02-15 20:35:30', '2021-02-15 20:35:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -8492,19 +8361,6 @@ CREATE TABLE `lotes` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `lotes`
---
-
-INSERT INTO `lotes` (`id`, `finca_id`, `organizacion_id`, `linea_productiva_id`, `labores_id`, `hectareas`, `sitios`, `coordenadas`, `created_at`, `updated_at`) VALUES
-(4, 4, 14, 2, 6, 100, 30, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-04-30 15:28:09'),
-(5, 3, 8, 1, 2, 30, 310, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
-(6, 2, 7, 1, 3, 50, 10, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },\r\n { \"lat\": 4.814992, \"lng\": -75.706985 },\r\n { \"lat\": 4.814894, \"lng\": -75.706993 },\r\n { \"lat\": 4.814897, \"lng\": -75.707047 },\r\n];', '2021-02-03 13:15:04', '2021-02-03 13:15:04'),
-(10, 5, 8, 2, 4, 345, 234, '[{ \"lat\": 4.814954, \"lng\": -75.707070 },  { \"lat\": 4.814992, \"lng\": -75.706985 },  { \"lat\": 4.814894, \"lng\": -75.706993 },  { \"lat\": 4.814897, \"lng\": -75.707047 }, ];', '2021-03-01 20:57:32', '2021-04-30 15:27:54'),
-(11, 1, 8, 1, 5, 4567, 342, '[{ \"lat\": 4.814954, \"lng\": -75.707070 }, { \"lat\": 4.814992, \"lng\": -75.706985 }, { \"lat\": 4.814894, \"lng\": -75.706993 }, { \"lat\": 4.814897, \"lng\": -75.707047 },];', '2021-03-02 22:51:57', '2021-03-02 22:54:03'),
-(12, 2, 13, 3, 4, 53533, 645, '[                 { lat: 4.850726639851928  , lng: -75.575134148821235  },                 { lat: 4.850728400051594  , lng: -75.575136328116059  },                 { lat: 4.850811045616865  , lng: -75.575285442173481  },                 { lat: 4.850812889635563  , lng: -75.575296422466636  },                 { lat: 4.850881118327379  , lng: -75.5754105001688  },                 { lat: 4.850978180766106  , lng: -75.575610073283315  },                 { lat: 4.850978180766106  , lng: -75.575612252578139  },                 { lat: 4.851046409457922  , lng: -75.575732868164778  },                 { lat: 4.85116945579648  , lng: -75.575770167633891  },                 { lat: 4.851228799670935  , lng: -75.575770167633891  },                 { lat: 4.851261069998145  , lng: -75.575794307515025  },                 { lat: 4.851345559582114  , lng: -75.575781147927046  },                 { lat: 4.851345559582114  , lng: -75.57578332722187  },                 { lat: 4.851390486583114  , lng: -75.575798666104674  },                 { lat: 4.851440778002143  , lng: -75.575864464044571  },                 { lat: 4.851500038057566  , lng: -75.575844682753086  },                 { lat: 4.851552173495293  , lng: -75.575772346928716  },                 { lat: 4.851552173495293  , lng: -75.575770167633891  },                 { lat: 4.851584527641535  , lng: -75.575730688869953  },                 { lat: 4.851586287841201  , lng: -75.575730688869953  },                 { lat: 4.851634819060564  , lng: -75.575737226754427  },                 { lat: 4.851728277280927  , lng: -75.575844682753086  },                 { lat: 4.851789297536016  , lng: -75.575824985280633  },                 { lat: 4.851789297536016  , lng: -75.575822805985808  },                 { lat: 4.851827016100287  , lng: -75.575792044401169  },                 { lat: 4.851858532056212  , lng: -75.575729599222541  },                 { lat: 4.851858532056212  , lng: -75.575720882043242  },                 { lat: 4.85189801082015  , lng: -75.57567042298615  },                 { lat: 4.851973447948694  , lng: -75.575600266456604  },                 { lat: 4.8520543333143  , lng: -75.575560787692666  },                 { lat: 4.852109989151359  , lng: -75.575538827106357  },                 { lat: 4.852140583097935  , lng: -75.575519045814872  },                 { lat: 4.852224988862872  , lng: -75.575424749404192  },                 { lat: 4.852307634428144  , lng: -75.575347971171141  },                 { lat: 4.852307634428144  , lng: -75.575345791876316  },                 { lat: 4.852334624156356  , lng: -75.575321651995182  },                 { lat: 4.852334624156356  , lng: -75.575242694467306  },                 { lat: 4.852357925847173  , lng: -75.57518133893609  },                 { lat: 4.852453144267201  , lng: -75.575168179348111  },                 { lat: 4.85253126360476  , lng: -75.575197767466307  },                 { lat: 4.852599492296577  , lng: -75.575215285643935  },                 { lat: 4.852730669081211  , lng: -75.575138507410884  },                 { lat: 4.852797137573361  , lng: -75.575048653408885  },                 { lat: 4.852834856137633  , lng: -75.574952093884349  },                 { lat: 4.852834856137633  , lng: -75.574949914589524  },                 { lat: 4.852861845865846  , lng: -75.574901634827256  },                 { lat: 4.852901324629784  , lng: -75.57485343888402  },                 { lat: 4.852948011830449  , lng: -75.574816139414907  },                 { lat: 4.853025292977691  , lng: -75.574800800532103  },                 { lat: 4.853023532778025  , lng: -75.574800800532103  },                 { lat: 4.85317088663578  , lng: -75.5747733078897  },                 { lat: 4.85317088663578  , lng: -75.574771128594875  },                 { lat: 4.853284126147628  , lng: -75.574760148301721  },                 { lat: 4.853343386203051  , lng: -75.574720669537783  },                 { lat: 4.853370292112231  , lng: -75.574714047834277  },                 { lat: 4.853402646258473  , lng: -75.574705330654979  },                 { lat: 4.853363167494535  , lng: -75.574657050892711  },                 { lat: 4.853361323475838  , lng: -75.574654871597886  },                 { lat: 4.853298459202051  , lng: -75.574582451954484  },                 { lat: 4.853258896619082  , lng: -75.574492514133453  },                 { lat: 4.853226626291871  , lng: -75.574389500543475  },                 { lat: 4.853214053437114  , lng: -75.574312722310424  },                 { lat: 4.853212209418416  , lng: -75.574312722310424  },                 { lat: 4.853185303509235  , lng: -75.574152627959847  },                 { lat: 4.853199636563659  , lng: -75.574034191668034  },                 { lat: 4.853208689019084  , lng: -75.573920197784901  },                 { lat: 4.853208689019084  , lng: -75.573762282729149  },                 { lat: 4.853201564401388  , lng: -75.573635045439005  },                 { lat: 4.853215897455812  , lng: -75.573582407087088  },                 { lat: 4.852939210832119  , lng: -75.57362406514585  },                 { lat: 4.852757742628455  , lng: -75.573689863085747  },                 { lat: 4.852755982428789  , lng: -75.573689863085747  },                 { lat: 4.852480133995414  , lng: -75.573856579139829  },                 { lat: 4.852042766287923  , lng: -75.574178947135806  },                 { lat: 4.851759793236852  , lng: -75.574416909366846  },                 { lat: 4.851539684459567  , lng: -75.574608854949474  },                 { lat: 4.851218992844224  , lng: -75.57467021048069  },                 { lat: 4.851070884615183  , lng: -75.57471077889204  },                 { lat: 4.851068202406168  , lng: -75.57471077889204  },                 { lat: 4.850981952622533  , lng: -75.574770038947463  },                 { lat: 4.850979270413518  , lng: -75.5747733078897  },                 { lat: 4.850911879912019  , lng: -75.574868693947792  },                 { lat: 4.850728651508689  , lng: -75.575131885707378 },               ];', '2021-04-10 04:49:18', '2021-04-10 04:49:18'),
-(13, 6, 13, 1, 6, 786, 87, '[                 { lat: 4.850726639851928  , lng: -75.575134148821235  },                 { lat: 4.850728400051594  , lng: -75.575136328116059  },                 { lat: 4.850811045616865  , lng: -75.575285442173481  },                 { lat: 4.850812889635563  , lng: -75.575296422466636  },                 { lat: 4.850881118327379  , lng: -75.5754105001688  },                 { lat: 4.850978180766106  , lng: -75.575610073283315  },                 { lat: 4.850978180766106  , lng: -75.575612252578139  },                 { lat: 4.851046409457922  , lng: -75.575732868164778  },                 { lat: 4.85116945579648  , lng: -75.575770167633891  },                 { lat: 4.851228799670935  , lng: -75.575770167633891  },                 { lat: 4.851261069998145  , lng: -75.575794307515025  },                 { lat: 4.851345559582114  , lng: -75.575781147927046  },                 { lat: 4.851345559582114  , lng: -75.57578332722187  },                 { lat: 4.851390486583114  , lng: -75.575798666104674  },                 { lat: 4.851440778002143  , lng: -75.575864464044571  },                 { lat: 4.851500038057566  , lng: -75.575844682753086  },                 { lat: 4.851552173495293  , lng: -75.575772346928716  },                 { lat: 4.851552173495293  , lng: -75.575770167633891  },                 { lat: 4.851584527641535  , lng: -75.575730688869953  },                 { lat: 4.851586287841201  , lng: -75.575730688869953  },                 { lat: 4.851634819060564  , lng: -75.575737226754427  },                 { lat: 4.851728277280927  , lng: -75.575844682753086  },                 { lat: 4.851789297536016  , lng: -75.575824985280633  },                 { lat: 4.851789297536016  , lng: -75.575822805985808  },                 { lat: 4.851827016100287  , lng: -75.575792044401169  },                 { lat: 4.851858532056212  , lng: -75.575729599222541  },                 { lat: 4.851858532056212  , lng: -75.575720882043242  },                 { lat: 4.85189801082015  , lng: -75.57567042298615  },                 { lat: 4.851973447948694  , lng: -75.575600266456604  },                 { lat: 4.8520543333143  , lng: -75.575560787692666  },                 { lat: 4.852109989151359  , lng: -75.575538827106357  },                 { lat: 4.852140583097935  , lng: -75.575519045814872  },                 { lat: 4.852224988862872  , lng: -75.575424749404192  },                 { lat: 4.852307634428144  , lng: -75.575347971171141  },                 { lat: 4.852307634428144  , lng: -75.575345791876316  },                 { lat: 4.852334624156356  , lng: -75.575321651995182  },                 { lat: 4.852334624156356  , lng: -75.575242694467306  },                 { lat: 4.852357925847173  , lng: -75.57518133893609  },                 { lat: 4.852453144267201  , lng: -75.575168179348111  },                 { lat: 4.85253126360476  , lng: -75.575197767466307  },                 { lat: 4.852599492296577  , lng: -75.575215285643935  },                 { lat: 4.852730669081211  , lng: -75.575138507410884  },                 { lat: 4.852797137573361  , lng: -75.575048653408885  },                 { lat: 4.852834856137633  , lng: -75.574952093884349  },                 { lat: 4.852834856137633  , lng: -75.574949914589524  },                 { lat: 4.852861845865846  , lng: -75.574901634827256  },                 { lat: 4.852901324629784  , lng: -75.57485343888402  },                 { lat: 4.852948011830449  , lng: -75.574816139414907  },                 { lat: 4.853025292977691  , lng: -75.574800800532103  },                 { lat: 4.853023532778025  , lng: -75.574800800532103  },                 { lat: 4.85317088663578  , lng: -75.5747733078897  },                 { lat: 4.85317088663578  , lng: -75.574771128594875  },                 { lat: 4.853284126147628  , lng: -75.574760148301721  },                 { lat: 4.853343386203051  , lng: -75.574720669537783  },                 { lat: 4.853370292112231  , lng: -75.574714047834277  },                 { lat: 4.853402646258473  , lng: -75.574705330654979  },                 { lat: 4.853363167494535  , lng: -75.574657050892711  },                 { lat: 4.853361323475838  , lng: -75.574654871597886  },                 { lat: 4.853298459202051  , lng: -75.574582451954484  },                 { lat: 4.853258896619082  , lng: -75.574492514133453  },                 { lat: 4.853226626291871  , lng: -75.574389500543475  },                 { lat: 4.853214053437114  , lng: -75.574312722310424  },                 { lat: 4.853212209418416  , lng: -75.574312722310424  },                 { lat: 4.853185303509235  , lng: -75.574152627959847  },                 { lat: 4.853199636563659  , lng: -75.574034191668034  },                 { lat: 4.853208689019084  , lng: -75.573920197784901  },                 { lat: 4.853208689019084  , lng: -75.573762282729149  },                 { lat: 4.853201564401388  , lng: -75.573635045439005  },                 { lat: 4.853215897455812  , lng: -75.573582407087088  },                 { lat: 4.852939210832119  , lng: -75.57362406514585  },                 { lat: 4.852757742628455  , lng: -75.573689863085747  },                 { lat: 4.852755982428789  , lng: -75.573689863085747  },                 { lat: 4.852480133995414  , lng: -75.573856579139829  },                 { lat: 4.852042766287923  , lng: -75.574178947135806  },                 { lat: 4.851759793236852  , lng: -75.574416909366846  },                 { lat: 4.851539684459567  , lng: -75.574608854949474  },                 { lat: 4.851218992844224  , lng: -75.57467021048069  },                 { lat: 4.851070884615183  , lng: -75.57471077889204  },                 { lat: 4.851068202406168  , lng: -75.57471077889204  },                 { lat: 4.850981952622533  , lng: -75.574770038947463  },                 { lat: 4.850979270413518  , lng: -75.5747733078897  },                 { lat: 4.850911879912019  , lng: -75.574868693947792  },                 { lat: 4.850728651508689  , lng: -75.575131885707378 },               ];', '2021-04-10 04:53:28', '2021-04-30 15:27:17');
-
 -- --------------------------------------------------------
 
 --
@@ -9714,22 +9570,10 @@ CREATE TABLE `organizaciones` (
   `telefono` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `total_asociados` int(100) NOT NULL,
-  `fecha_constitucion` varchar(100) NOT NULL,
+  `fecha_constitucion` varchar(100) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `organizaciones`
---
-
-INSERT INTO `organizaciones` (`id`, `usuario_id`, `nombre`, `nit`, `sigla`, `latitud`, `longitud`, `direccion`, `departamento`, `municipio`, `telefono`, `correo`, `total_asociados`, `fecha_constitucion`, `created_at`, `updated_at`) VALUES
-(6, 1, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', '66', '66001', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-04-30 12:10:23'),
-(7, 1, 'Mi Organización AQUI', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', '66', '66001', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-04-22 04:24:44'),
-(8, 1, 'Autoridad Nacional de Acuicultura y Pesca', '8300728574', 'AUNAP', '4.81492200', '-75.70702000', 'Edificio UGI Calle 40A No. 13-09 Piso 6,14,15', 'Bogotá - Colombia', 'Nuevo', '+57(1) 377 0500', 'atencionalciudadano@aunap.gov.co', 45, '2021-01-03T05:00:00.000Z', '2021-01-13 01:33:13', '2021-01-13 01:45:49'),
-(13, 9, 'Tierras de las Flores', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:16:57'),
-(14, 9, 'Agencia de Desarrollo Rural', '9001274376', 'ADR', '4.81492200', '-75.70702000', 'Calle 43 # 57 - 41 Piso 1 CAN', 'Bogotá', 'NN', '168341665', 'atencionalciudadano@adr.gov.co', 50, '2021-01-12T05:00:00.000Z', '2021-01-13 01:29:09', '2021-01-13 01:29:09'),
-(15, 9, 'Campestre Agro Mas', '9003076621', 'ANT', '4.81492200', '-75.70702000', 'Calle 43 No.57-41', 'Bogotá', 'NN', '018000933881', 'atencionalciudadano@agenciadetierras.gov.co', 150, '2021-01-12T05:00:00.000Z', '2021-01-13 01:31:25', '2021-01-21 04:17:28');
 
 -- --------------------------------------------------------
 
@@ -9765,20 +9609,6 @@ CREATE TABLE `organizaciones_muro_secciones` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `organizaciones_muro_secciones`
---
-
-INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
-(165, 8, '<p>Hola</p><ul><li>​</li></ul><ol><li><br/></li></ol>', 'files/muro_media/8/20210311031015.jpg', NULL, NULL, 1, NULL, '2021-03-11 08:10:17', '2021-03-11 08:10:17'),
-(166, 8, '<p><b>EL CULTIVO DEL PLÁTANO EN ALTAS DENSIDADES DE SIEMBRA<br/>UNA NUEVA CONCEPCIÓN TECNOLÓGICA DE PRODUCCIÓN</b></p><p><!--EndFragment--><br/><br/><!--StartFragment-->INTRODUCCIÓN<br/>En Colombia existen actualmente mas de 400,000 ha cultivadas con plátano, de<br/>las cuales 280,600 ha se encuentran en la zona central cafetera, cuyo volumen<br/>de producción es del orden de 1.7 millones de toneladas al año, con un<br/>rendimiento promedio de 6.1 ton/ha. Este rendimiento se considera<br/>relativamente bajo, por cuanto si se utilizan las nuevas tecnologías de<br/>producción, es posible alcanzar niveles de 50.1 ton/ha.</p><ul><li>IMPORTANCIA ECONÓMICA</li></ul><ol><li>VENTAJAS ECONÓMICAS <!--EndFragment--><br/><br/><br/></li></ol><p><br/></p><p><br/></p><p><br/></p><p><br/></p>', 'files/muro_media/8/20210311034719.jpg', NULL, NULL, 1, NULL, '2021-03-11 08:47:19', '2021-03-11 08:47:19'),
-(167, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224917.jpg', NULL, NULL, 9, NULL, '2021-03-16 03:49:17', '2021-03-16 03:49:17'),
-(168, 8, '<p>Hola</p>', 'files/muro_media/8/20210315224932.jpg', NULL, NULL, 9, NULL, '2021-03-16 03:49:32', '2021-03-16 03:49:32'),
-(169, 8, '<p>Ota</p>', 'files/muro_media/8/20210315231555.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:15:55', '2021-03-16 04:15:55'),
-(170, 8, '<p>FFFF</p>', 'files/muro_media/8/20210315235538.jpg', NULL, NULL, 1, NULL, '2021-03-16 04:55:39', '2021-03-16 04:55:39'),
-(171, 8, '<p>Hola</p>', 'files/muro_media/8/20210326151303.jpg', NULL, NULL, 1, NULL, '2021-03-26 20:13:04', '2021-03-26 20:13:04'),
-(172, 8, '<p>hA</p>', 'files/muro_media/8/20210410101118.jpg', NULL, NULL, 1, NULL, '2021-04-10 15:11:18', '2021-04-10 15:11:18');
 
 -- --------------------------------------------------------
 
@@ -9972,9 +9802,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 8, 5, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-05-01 21:28:51', NULL),
-(11, 'CC', '1111796644', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 8, NULL, 'eyJpdiI6IkMxS0haaVIrT2RvVllyb2xjTkhhY0E9PSIsInZhbHVlIjoiMXhlbWttZjl1azkxT1dEdlUzeWo4dz09IiwibWFjIjoiNTc5MWRkMTA0YTcxODEzZTEzMmVmYTc4NTVhODI3Zjk1NjkyMTI5MDExOTY1OTAzMWQ5OTk2MWNmM2M1NDAyMSJ9', '2021-04-22 20:07:55', '2021-04-22 20:08:21', NULL),
-(12, 'CC', '1111796644', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 7, NULL, 'eyJpdiI6IlpabVBzZ0ZZcktwT0pjL1h1clZQNFE9PSIsInZhbHVlIjoiMnNiNkxXZkhKRmZXd2V4b09rZ1VLdz09IiwibWFjIjoiODAzZGU4NTlhN2QyODliNWE4ZWY1YWE0MDUzNDIwYjY0MTE1MDY4ZTZkNGZjOTE5MWUwZGE1OTliZDczYTM0YiJ9', '2021-04-22 20:39:44', '2021-04-22 20:39:52', NULL);
+(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 7, 4, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -10000,16 +9828,6 @@ CREATE TABLE `zonas` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `zonas`
---
-
-INSERT INTO `zonas` (`id`, `linea_productiva_id`, `descripcion`, `temperatura_min`, `temperatura_max`, `humedad_relativa_min`, `humedad_relativa_max`, `precipitacion_min`, `precipitacion_max`, `altimetria_min`, `altimetria_max`, `brillo_solar_min`, `brillo_solar_max`, `pendiente`, `created_at`, `updated_at`) VALUES
-(1, 1, 'ZONA 1', 23, 0, 79, 0, 2094, 0, 1500, 2000, 1566, 0, 0, '2021-02-18 18:44:33', '2021-02-18 18:44:33'),
-(2, 2, 'ZONA 2', 22, 0, 77, 0, 2268, 0, 1300, 1500, 1224, 0, 0, '2021-02-18 18:45:16', '2021-02-18 18:45:16'),
-(3, 2, 'ZONA 3', 21, 0, 82, 0, 2261, 0, 0, 1300, 1511, 0, 0, '2021-02-18 18:45:51', '2021-03-17 04:44:41'),
-(4, 2, 'ZONA 4', 50, 50, 50, 50, 50, 50, 50, 10, 50, 50, 50, '2021-03-17 04:21:23', '2021-03-20 14:18:02');
 
 --
 -- Índices para tablas volcadas
@@ -10217,13 +10035,13 @@ ALTER TABLE `zonas`
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaciones`
@@ -10325,7 +10143,7 @@ ALTER TABLE `organizacion_lineas_productivas`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `perfiles_secciones`
