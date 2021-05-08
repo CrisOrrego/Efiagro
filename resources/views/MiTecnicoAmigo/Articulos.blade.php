@@ -19,23 +19,26 @@
 	<!--INICIO DEV ANGÉLICA-->
 	<!--Se muestra la lista de palabras clave en la vista-->
 	<br>
-	<div class="padding-0-10" layout layout-align="left" >
-        <md-card flex class="no-margin-top mxw200">	
-			<div ng-if="!SelectedKey" >
+	<div class="padding-0-10" layout layout-align="left"  >
+        <md-card flex class="no-margin-top mxw200"> 	
+			<div ng-if="!SelectedKey" style="cursor:pointer;" >
 				<ul>
 				<li ng-repeat="A in PalabrasClave" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33 ng-click="searchKeyWords(A)">
 				@{{A}}
 				</li>
 				</ul>
 			</div>
-			<div  ng-if="SelectedKey">
+			<br>
+			<div  ng-if="SelectedKey" layout="row" flex="" layout layout-wrap>
 				<ul>
 					<li ng-repeat="A in keys" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33>
 					@{{A}}
 					</li>
 				</ul>
 				<label> @{{key}} </label>
-				<button ng-click="cleanFilter()">X</button>
+				<div>
+					<button ng-click="cleanFilter()" class=close>  </button>
+				</div>
 			</div>
 		</md-card>
 
@@ -67,3 +70,32 @@
 	</md-button*/ ?>
 
 </div>	
+
+<style type="text/css">
+	.close {
+	position: fixed;
+	left: 170px;
+	top: 175px;
+	width: 23px;
+	height: 23px;
+	opacity: 0.3;
+	}
+	.close:hover {
+	opacity: 1;
+	}
+	.close:before, .close:after {
+	position: fixed;
+	left: 180px;
+	top: 175px;
+	content: ' ';
+	height: 21px;
+	width: 2px;
+	background-color: #333;
+	}
+	.close:before {
+	transform: rotate(45deg);
+	}
+	.close:after {
+	transform: rotate(-45deg);
+	}
+</style>

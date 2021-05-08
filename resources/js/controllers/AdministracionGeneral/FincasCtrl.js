@@ -62,7 +62,6 @@ angular
             Ctrl.getDepartamentos = () => {
                 $http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
                     Departamentos = r.data;
-                    console.log(Departamentos);
                 });
             }
 
@@ -78,12 +77,11 @@ angular
 
 
             Ctrl.getFinca = () => {
-                Ctrl.FincasCRUD.setScope("id", Rs.Usuario.finca_id); //Me trae las fincas del usuario
                 Ctrl.FincasCRUD.get().then(() => {
                     Ctrl.Finca = Ctrl.FincasCRUD.rows[0];
                     //Ctrl.editarFinca(Ctrl.FincasCRUD.rows[0]);
                     if (Ctrl.Finca.departamento_id && Departamentos) {
-                        Ctrl.Finca.nombreDepartamento = Departamentos[Ctrl.Finca.departamento_id];                        
+                        Ctrl.Finca.nombreDepartamento = Departamentos[Ctrl.Finca.departamento_id];                   
                     }
                 });
             };
@@ -91,100 +89,92 @@ angular
             Ctrl.getFinca();
 
 
-        //Obtener el elemento de la lista
-        Ctrl.getTiposSuelo = () => {
-			$http.post ('api/lista/obtener', { lista: 'TiposSuelo' }).then((r)=>{
-                TiposSuelo = r.data;
-                console.log(TiposSuelo);
-			});
-		}
+            //Obtener el elemento de la lista
+            Ctrl.getTiposSuelo = () => {
+                $http.post ('api/lista/obtener', { lista: 'TiposSuelo' }).then((r)=>{
+                    TiposSuelo = r.data;
+                });
+            }
 
-		Ctrl.getTiposSuelo();
+            Ctrl.getTiposSuelo();
 
-        //Obtener el elemento de la lista
-        Ctrl.getTiposCultivo = () => {
-			$http.post ('api/lista/obtener', { lista: 'TiposCultivo' }).then((r)=>{
-                TiposCultivo = r.data;
-                console.log(TiposCultivo);
-			});
-		}
 
-		Ctrl.getTiposCultivo();
-        //FIN DEV ANGELICA
-        //INICIO DEV ANGPELICA
-        loadDepartamentos = (col_departamento) => {
+            //Obtener el elemento de la lista
+            Ctrl.getTiposCultivo = () => {
+                $http.post ('api/lista/obtener', { lista: 'TiposCultivo' }).then((r)=>{
+                    TiposCultivo = r.data;
+                    console.log(TiposCultivo);
+                });
+            }
 
-            col_departamento.Options.options = Departamentos;
+            Ctrl.getTiposCultivo();
+            //FIN DEV ANGELICA
+            //INICIO DEV ANGPELICA
+            loadDepartamentos = (col_departamento) => {
 
-            /*departamentos.forEach(departamento => {
-                let codigo = departamento.codigo;
-                let descripcion = departamento.descripcion;
-                col_departamento.Options.options = {...col_departamento.Options.options, 
-                    [codigo]: descripcion // si quiero que en la base de datos se vea por codigos en departamento y municipio
-                    //[descripcion]: descripcion // si quiero que en la base de datos se vea por nombres(descripcion) en departamento y municipio
-                };
-            });//Llena el select de departamentos
-            */
-        }
+                col_departamento.Options.options = Departamentos;
+            }
 
-        loadMunicipios = (valorDepartamento, col_municipio) => {
-            col_municipio.Options.options = {}; //limpia el select de municipios
-            console.log(valorDepartamento);
+            loadMunicipios = (valorDepartamento, col_municipio) => {
+                col_municipio.Options.options = {}; //limpia el select de municipios
+                console.log(valorDepartamento);
 
-            $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: valorDepartamento }).then((r)=>{
-                col_municipio.Options.options = r.data;
-			});
+                $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: valorDepartamento }).then((r)=>{
+                    col_municipio.Options.options = r.data;
+                });
 
-        }
+            }
 
-        inicializarListas = () => {
-            let col_TiposSuelo = Ctrl.FincasCRUD.columns.find(c => c.Field == 'tipo_suelo');
-            col_TiposSuelo.Options.options = TiposSuelo;
+            inicializarListas = () => {
+                let col_TiposSuelo = Ctrl.FincasCRUD.columns.find(c => c.Field == 'tipo_suelo');
+                col_TiposSuelo.Options.options = TiposSuelo;
 
-            let col_TiposCultivo = Ctrl.FincasCRUD.columns.find(c => c.Field == 'tipo_cultivo');
-            col_TiposCultivo.Options.options = TiposCultivo;
+                let col_TiposCultivo = Ctrl.FincasCRUD.columns.find(c => c.Field == 'tipo_cultivo');
+                col_TiposCultivo.Options.options = TiposCultivo;
 
-            let col_departamento = Ctrl.FincasCRUD.columns.find(c => c.Field == 'departamento_id');
-            loadDepartamentos(col_departamento);
-    
-            col_departamento.Options.onChangeFn = (valorDepartamento) => {
-                let col_municipio = Ctrl.FincasCRUD.columns.find(c => c.Field == 'municipio_id');
-                loadMunicipios(valorDepartamento, col_municipio);
-            }                        
+                let col_departamento = Ctrl.FincasCRUD.columns.find(c => c.Field == 'departamento_id');
+                loadDepartamentos(col_departamento);
+        
+                col_departamento.Options.onChangeFn = (valorDepartamento) => {
+                    let col_municipio = Ctrl.FincasCRUD.columns.find(c => c.Field == 'municipio_id');
+                    loadMunicipios(valorDepartamento, col_municipio);
+                }                        
 
-        }
-        //FIN DEV ANGÉLICA
+            }
+            //FIN DEV ANGÉLICA
 
             //INICIO DEV ANGÉLICA
-        Ctrl.nuevaFinca = () => { //Esta es una función que me crea automaticamente la modal y lleva la informacion a la BD desde la modal de CRUD
-            inicializarListas();
-            Ctrl.FincasCRUD.dialog({
-                Flex: 50,
-                Title: 'Crear Finca',
-                Confirm: { Text: 'Crear Finca' },
-            }).then(r => {
-                if (!r) return;
-                Ctrl.FincasCRUD.add(r);
-            });
-        //FIN DEV ANGÉLICA
-             
-            //INICIO DEV ANGÉLICA
-        Ctrl.editarFinca = (O) => { //La variable O tiene la información de la Finca actual que se está editando
-            console.log(O);
-            inicializarListas(); 
-			Ctrl.FincasCRUD.dialog(O, {
-				title: 'Editar Finca' + O.nombre
-			}).then(r => {
-				if(r == 'DELETE') return Ctrl.FincasCRUD.delete(O);
-				Ctrl.FincasCRUD.update(r).then(() => {
-					Rs.showToast('Finca actualizada');
-				});
-			});
-            let col_municipio = Ctrl.FincasCRUD.columns.find(c => c.Field == 'municipio_id');
-            loadMunicipios(O.departamento_id, col_municipio); //obtengo la lista de los municipios asociados al departamento de la finca (la variable O)
-		}//FIN DEV ANGÉLICA
-
+            Ctrl.nuevaFinca = () => { //Esta es una función que me crea automaticamente la modal y lleva la informacion a la BD desde la modal de CRUD
+                inicializarListas();
+                Ctrl.FincasCRUD.dialog({
+                    Flex: 50,
+                    Title: 'Crear Finca',
+                    Confirm: { Text: 'Crear Finca' },
+                }).then(r => {
+                    if (!r) return;
+                    Ctrl.FincasCRUD.add(r);
+                });
             };
+            //FIN DEV ANGÉLICA
+
+            //INICIO DEV ANGÉLICA
+            Ctrl.editarFinca = (O) => { //La variable O tiene la información de la Finca actual que se está editando
+                inicializarListas(); 
+                Ctrl.FincasCRUD.dialog(O, {
+                    title: 'Editar Finca' + O.nombre
+                }).then(r => {
+                    if(r == 'DELETE') return Ctrl.FincasCRUD.delete(O);
+                    Ctrl.FincasCRUD.update(r).then(() => {
+                        Rs.showToast('Finca actualizada');
+                    });
+                });
+                let col_municipio = Ctrl.FincasCRUD.columns.find(c => c.Field == 'municipio_id');
+                loadMunicipios(O.departamento_id, col_municipio); //obtengo la lista de los municipios asociados al departamento de la finca (la variable O)
+            }
+            //FIN DEV ANGÉLICA
+
+           
+
 
             Ctrl.eliminarFinca = F => {
                 Rs.confirmDelete({

@@ -1,11 +1,13 @@
-<div flex layout=column ng-controller="MiTecnicoAmigoCtrl">
-	<div layout class="margin-top" >
-		<?php /*div flex>
+<div flex layout=column ng-controller="MiTecnicoAmigoCtrl" layout-align="center center">
+	
+	<div layout layout-align="center center" class="padding-top">
+		<!--<div flex>
 			<md-button class="md-raised" ng-click="Subseccion = 'Articulos'">
 				<md-icon md-font-icon="fa-arrow-left fa-fw" ></md-icon>
 				Volver a Articulos
 			</md-button>
-		</div */ ?>
+		</div>-->
+
 		<md-button class="md-raised md-primary boton-principal" ng-click="crearCaso()">Crear Nueva Solicitud</md-button>
 		<!--INICIO DEV ANGELICA-->
 		<div flex>
@@ -19,9 +21,10 @@
 				href="https://api.whatsapp.com/send?phone=3173562730&text=Hola%20Ingenieros%20de%20GC%20">
 				<img src="imgs/contacto/wpp.png" alt="" width="45" height="45" HSPACE="10" VSPACE="10" />
 			</a>
-			<!--FIN DEV ANGELICA--> 	
+		<!--FIN DEV ANGELICA--> 	
 		</div>
 	</div>
+	
 	<div layout=column flex layout-align="start center" class="padding">
 		<md-card ng-repeat="Caso in CasosCRUD.rows" layout=column class="padding w100p mxw600 pointer"
 			ng-click="novedadesCaso(Caso)">
