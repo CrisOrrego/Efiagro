@@ -6,7 +6,11 @@
 	<form flex layout=column ng-submit="enviarLogin($event)">
 		<md-card-content flex layout=column>
 
-			<div class="s120 border-rounded" style="background-color: lightgray; margin: 0 auto 10px;"></div>
+			<div class="border-rounded" style="background-color: lightgray; margin: auto;">
+				<div align="center">
+					<img class="" src="imgs/default-section-icon.jpg"  alt="" >
+				</div>
+			</div>
 
 			<md-input-container class="md-icon-float">
 				<label>Correo o Cedula</label>
