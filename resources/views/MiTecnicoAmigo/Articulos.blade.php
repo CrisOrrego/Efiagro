@@ -56,7 +56,8 @@
 		<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="Buscando">
 			<div ng-repeat="A in ArticulosBuscados" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33 ng-click="abrirArticulo(A)">
 				<md-card class="padding no-margin">
-					<div md-highlight-text="filtroArticulos" md-highlight-flags="i">@{{ A.titulo }}</div>
+					<div md-highlight-text="filtroArticulos" md-highlight-flags="i" class="md-title margin-bottom-5" md-truncate>@{{ A.titulo }}</div>
+					<div class="md-subheader">Por @{{ A.autor.nombre }}</div>
 				</md-card>
 			</div>
 

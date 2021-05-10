@@ -20,13 +20,15 @@ angular.module('MiTecnicoAmigoCtrl', [])
                     //Inicio Dev Angélica -- seleccionar las palabras claves
                     let keys = [];
                     Ctrl.Articulos.forEach(function(articulo) {
-                        if (articulo.palabras_clave) {
+                        if (articulo.palabras_clave && articulo.palabras_clave.length > 3) {
                             keys.push(...articulo.palabras_clave.split(","));
                         }
                     });
+                    console.log(keys);
                     keys = keys.sort().filter(function(item, pos, ary) {
                         return !pos || item != ary[pos - 1];
                     });
+                    console.log(keys);
                     Ctrl.PalabrasClave = keys;
                 });
             //Fin Dev Angélica 
@@ -135,28 +137,28 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 filtro = Ctrl.suppressSpecialCharacters(filtro);
 
                 if (filtro == "") return Ctrl.Buscando = false;
-                let keys = filtro.split(" ");
+                let keys = filtro.toLowerCase().split(" ");
                 Ctrl.keys = [];//nuevo
                 var ArticulosBuscados = [];
                 Ctrl.Buscando = true;
                 Ctrl.Articulos.forEach(function(articulo) {
                     articulo.contador = 0;
                     keys.forEach(function(key) {
-                        if (Ctrl.suppressSpecialCharacters(articulo.titulo).indexOf(key) > 0) {
+                        if (Ctrl.suppressSpecialCharacters(articulo.titulo.toLowerCase()).indexOf(key) >= 0) {
                             articulo.contador++;
                         }
                     });
                     // Recorre cada una de las palabras digitadas en el filtro
-                keys.forEach(function (palabra){
-                    // Separa cada una de las pabras clave del artuculo
-                    let keys = articulo.palabras_clave && articulo.palabras_clave.split(",");
-                    // Buscamos si la palabra del filtro esta en la lista de palabras clave
-                    if (keys && keys.includes(palabra)) {
-                        articulo.contador++; 
-                        Ctrl.SelectedKey = true;
-                        Ctrl.keys.push(palabra);
-                    }
-                });
+                    keys.forEach(function (palabra){
+                        // Separa cada una de las pabras clave del artuculo
+                        let keys = articulo.palabras_clave && articulo.palabras_clave.toLowerCase().split(",");
+                        // Buscamos si la palabra del filtro esta en la lista de palabras clave
+                        if (keys && keys.includes(palabra)) {
+                            articulo.contador++; 
+                            Ctrl.SelectedKey = true;
+                            Ctrl.keys.push(palabra);
+                        }
+                    });                    
                     if (articulo.contador > 0) ArticulosBuscados.push(articulo);
                 });
                 Ctrl.ArticulosBuscados = ArticulosBuscados;
