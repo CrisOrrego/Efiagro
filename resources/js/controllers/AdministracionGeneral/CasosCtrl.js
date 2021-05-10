@@ -5,7 +5,6 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
     "$injector",
     "$mdDialog",
     function($scope, $rootScope, $http, $injector, $mdDialog) {
-        console.info("CasosCtrl");
         var Ctrl = $scope;
         var Rs = $rootScope;
 
@@ -28,7 +27,6 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
             order_by: ["-created_at"]
         });
         //Inicio Dev Angélica
-        //Filtra el tipo (sólo muestra los casos que deben aparecer en pantalla)-->'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia'[ver archivo Caso.php]
         Ctrl.CasosCRUD.setScope("tipo");
         //Fin Dev Angélica
 
@@ -87,7 +85,6 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
                 };
 
                 Ctrl.CasosCRUD.add(NuevoCaso);
-                //Ctrl.Casoscopy.add(NuevoCaso);
             });
         };
 

@@ -44,11 +44,9 @@
 			<thead md-head>
 			<tr md-row>
 				<th md-column></th>
-				{{-- <th md-column>Caso</th> --}}
 				<th md-column>Tipo</th>
 				<th md-column>Titulo</th>
 				<th md-column>Asociado</th>
-				<th md-column>Creado</th>
 				<th md-column>Actualizado</th>
 			</tr>
 			</thead>
@@ -61,16 +59,11 @@
 					<md-button class="md-icon-button text-ocean" ng-click="novedadesCaso(C)">
 						<md-icon md-font-icon="fa-align-justify"></md-icon>
 					</md-button>
-					<!-- <md-button class="md-icon-button md-warn" ng-click="eliminarCaso(C)">
-						<md-icon md-font-icon="fa-trash"></md-icon>
-					</md-button> -->
 				</td>
-				{{-- <td md-cell>@{{ C.id }}</td> --}}
 				<td md-cell>@{{ C.tipo }}</td>
 				<td md-cell>@{{ C.titulo }}</td>
 				<td md-cell>@{{ C.solicitante.nombre }}</td>
-				<td md-cell>@{{ C.created_at }}</td>
-				<td md-cell>@{{ C.updated_at }}</td>
+				<td md-cell>@{{ C.updated_at | date:'yyyy-MM-dd' }}</td>
 			</tr>
 			</tbody>
 		</table>
