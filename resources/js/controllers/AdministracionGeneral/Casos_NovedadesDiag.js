@@ -61,7 +61,7 @@ angular.module('Casos_NovedadesCtrl', [])
                         }
                     });
                     novedad = Imagen.Msg;
-                 }
+                }
                 if (tipo == 'Texto') {
                     Ctrl.detallecaso = '';
                 }
