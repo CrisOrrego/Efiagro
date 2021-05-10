@@ -24,11 +24,11 @@ angular.module('MiTecnicoAmigoCtrl', [])
                             keys.push(...articulo.palabras_clave.split(","));
                         }
                     });
-                    console.log(keys);
+                    // console.log(keys);
                     keys = keys.sort().filter(function(item, pos, ary) {
                         return !pos || item != ary[pos - 1];
                     });
-                    console.log(keys);
+                    // console.log(keys);
                     Ctrl.PalabrasClave = keys;
                 });
             //Fin Dev Angélica 
