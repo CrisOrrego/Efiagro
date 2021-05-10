@@ -33,6 +33,7 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             Ctrl.LaboresCRUD.get().then(() => {
                                
             });
+            // console.log(Ctrl.linea_lp_select.nombre);
         };
 
 Ctrl.nuevaLabor = () => {
@@ -68,7 +69,7 @@ Ctrl.nuevaLabor = () => {
                 Required: true
             },
             {
-                Nombre: "Semana iInicio",
+                Nombre: "Semana Inicio",
                 Value: "",
                 Type: "string",
                 Required: true

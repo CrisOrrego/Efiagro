@@ -13,7 +13,7 @@
                 <ul ><label class="texto_title">Total de lotes:</label> <span class="textoInfo">@{{ Finca.total_lotes }}</span></ul>
                 <ul ><label class="texto_title">Tipo de suelo:</label> <span class="textoInfo">@{{ Finca.tipo_suelo }}</span></ul>
                 <ul ><label class="texto_title">Zona:</label> <span class="textoInfo">@{{ Finca . zona.descripcion }}</span></ul>
-                <ul ><label class="texto_title">Hectareas:</label> <span class="textoInfo">@{{ Finca.latitud }}</span></ul>
+                <ul ><label class="texto_title">Hectareas:</label> <span class="textoInfo">@{{ Finca.hectareas }}</span></ul>
                 <ul ><label class="texto_title">Latitud:</label> <span class="textoInfo">@{{ Finca.latitud }}</span></ul>
                 <ul ><label class="texto_title">Longitud:</label> <span class="textoInfo">@{{ Finca.longitud }}</span></ul>
                 <ul ><label class="texto_title">Sitio:</label> <span class="textoInfo">@{{ Finca.sitios }}</span></ul>

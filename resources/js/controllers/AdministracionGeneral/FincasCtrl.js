@@ -72,7 +72,7 @@ angular
                 limit: 1000,
                 add_append: "refresh",
                 order_by: ["-created_at"],
-                query_with: ["zona"]
+                query_with: ["zona", 'usuarios']
             });
 
 

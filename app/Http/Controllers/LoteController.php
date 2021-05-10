@@ -15,15 +15,4 @@ class LoteController extends Controller
         return $CRUD->call(request()->fn, request()->ops);
 	}
 	
-	public function postTareasLote()
- 	{
- 		$CRUD = new CRUD('App\Models\LoteTarea');
-        return $CRUD->call(request()->fn, request()->ops);
-	}
-	
-	public function postObtener()
-	{
-		$Lotes = TareasLotes::with(['tarea'])->activos()->accesibles()->get();
-		return $Lotes;
-	} 
 }
