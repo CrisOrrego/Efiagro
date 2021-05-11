@@ -22,7 +22,7 @@
 				</tr>
 				</thead>
 				<tbody md-body>
-				<tr md-row ng-repeat="S in secciones ">
+				<tr md-row ng-repeat="S in secciones">
 					<td md-cell>@{{ S.seccion }}</td>
 					<td md-cell>@{{ S.subseccion }}</td>
 					<td md-cell>
