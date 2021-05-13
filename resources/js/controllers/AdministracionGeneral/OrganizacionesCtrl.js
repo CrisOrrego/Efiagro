@@ -6,7 +6,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
     "$mdDialog",
     "Upload",  //DEV ANGÉLICA --> 
     function($scope, $rootScope, $http, $injector, $mdDialog, Upload) {
- 
+        
         var Ctrl = $scope;
         var Rs = $rootScope;
         var departamentos = [];
@@ -35,17 +35,12 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             query_with: ['usuario'],
 			order_by: [ '-created_at' ]
 		});
-        /*
-        Ctrl.selectChanged = function ()  {
-            debugger;
-            alert('Hola Mundo');
-        }*/
-
+        
         Ctrl.obtenerSecciones = (organizacion_id) => {
             Ctrl.OrganizacionesmuroseccionesCRUD.setScope('elorganizacion', organizacion_id).get();
 		};
-        //FIN DEV ANGÉLICA
         
+        //FIN DEV ANGÉLICA
         Ctrl.getOrganizacion = () => {
             // Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id); //con el setScope estoy haciendo un filtro en la BD para que él nos traiga sólo un registro
             Ctrl.OrganizacionesCRUD.get().then(() => {
@@ -76,6 +71,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         loadMunicipios = (valorDepartamento, col_municipio) => {
             col_municipio.Options.options = {}; //limpia el select de municipios
+
             $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: valorDepartamento }).then((r)=>{
                 col_municipio.Options.options = r.data;
 			});
@@ -146,24 +142,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			});
         }
 
-        //INICIO DEV ANGÉLICA
-
-        /*Ctrl.abrirMuroDialog = () => {
-            $mdDialog.show({
-                templateUrl: 'Frag/GestionOrganizacion.OrganigramaDiag',
-                //templateUrl: 'Frag/GestionOrganizacion.',
-                controller: 'OrganizacionDiagCtrl',
-                locals: {
-                },
-                //scope: Ctrl.$update()
-            });
-        };*/
-
-
-        //FIN DEV ANGÉLICA
-
         //Abre el modal de publicaciones del muro 
-
 		Ctrl.abrirOrganigrama = (O) => {
 			$mdDialog.show({
 				templateUrl: 'Frag/GestionOrganizacion.OrganigramaDiag',
@@ -178,29 +157,29 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         //Abre el modal del un articulo de un muro de la organizacion
         Ctrl.abrirArticulomuro = (A) => {
 			$mdDialog.show({
-				//templateUrl: 'Frag/GestionOrganizacion.OrganizacionesmuroEditorDiag',
                 templateUrl: 'templates/dialogs/image-editor.html',               
 				controller: 'ImageEditor_DialogCtrl',
 				locals: {Organizacionesmurosecciones: A},
 			});
         }
 
-                //Carga imagen al servidor
-                Ctrl.subirImagen = ($file) => {
-                    if(!$file) return;
-        
-                    Upload.upload({
-                        url: 'api/main/upload-imagen',
-                        data: {file: $file,
-                            Path: 'files/muro_media/' + Rs.Usuario.organizacion_id + '/' + moment().format('YYYYMMDDHHmmss') + '.jpg',
-                            Ancho: 560, Alto: 300, Quality: 90
-                        }
-                    }).then(function (resp) {
-                    }, function (resp) {
-                     });
+        //Carga imagen al servidor
+        Ctrl.subirImagen = ($file) => {
+            if(!$file) return;
+
+            Upload.upload({
+                url: 'api/main/upload-imagen',
+                data: {file: $file,
+                    Path: 'files/muro_media/' + Rs.Usuario.organizacion_id + '/' + moment().format('YYYYMMDDHHmmss') + '.jpg',
+                    Ancho: 560, Alto: 300, Quality: 90
                 }
+            }).then(function (resp) {
+                respuesta = 'Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data;
+            }, function (resp) {
+                respuesta = 'Error status: ' + resp.status;
+            });
+        }
         
-            
         //Abre el modal del un articulo de un muro de la organizacion
         Ctrl.nuevoArticuloMuro = (O) => {
 			$mdDialog.show({
@@ -211,7 +190,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			}).then(function (resp) {
                 Ctrl.OrganizacionesmuroseccionesCRUD.setScope('elorganizacion', Rs.Usuario.organizacion_id).get();
             }, function (resp) {
-                console.log('Error status: ' + resp.status); 
+                respuesta = 'Error status: ' + resp.status; 
             });
 
         }
@@ -223,10 +202,8 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         }
 
         Ctrl.DarFormatoFecha = (fecha) => {
-            debugger;
             const dias = fecha.diff(now(), 'days');
 
-            debugger;
             if (dias === 0) {
                 return 'Publicado hoy';
             } else {
@@ -239,7 +216,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         }
 
         Ctrl.Update = () => {
-            alert("Update");
+            //alert("Update");
         }
     //FIN DEV ANGÉLICA
 
