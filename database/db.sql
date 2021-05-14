@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2021 a las 15:35:59
+-- Tiempo de generación: 13-05-2021 a las 17:21:18
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -130,7 +130,11 @@ CREATE TABLE `casos` (
 --
 
 INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `created_at`, `updated_at`) VALUES
-(33, 2, 'Buena practica de cultivo', 'Contar Experiencia', '[]', '2021-05-10 13:25:49', '2021-05-10 13:25:49');
+(33, 2, 'Buena practica de cultivo', 'Contar Experiencia', '[]', '2021-05-10 13:25:49', '2021-05-10 13:25:49'),
+(34, 2, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-05-10 14:20:30', '2021-05-10 14:20:30'),
+(35, 2, 'Boton Contacto', 'SMS', '[]', '2021-05-10 14:20:42', '2021-05-10 14:20:42'),
+(36, 2, 'Boton Contacto', 'Whatsapp', '[]', '2021-05-10 14:20:50', '2021-05-10 14:20:50'),
+(37, 1, 'Esta es una petición', 'Whatsapp', '[]', '2021-05-10 14:22:38', '2021-05-10 14:22:38');
 
 -- --------------------------------------------------------
 
@@ -214,6 +218,23 @@ CREATE TABLE `fincas` (
 INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_id`, `municipio_id`, `area_total`, `tipo_cultivo`, `total_lotes`, `tipo_suelo`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
 (9, 1, 'La Cosecha', 'Calle 34', '66', '66001', 345, 'ASOCIADOS', 3, 'UNIDAD AMAGÁ', 7, '34.87549320', '43.87645832', 2342, 3, 324, 234, 234, 234, 23, 234, '2021-05-10 04:35:04', '2021-05-10 04:35:04'),
 (10, 2, 'Nuevo Sol', 'Cra 3 #42-34', '66', '66001', 254, 'ASOCIADOS', 3, 'UNIDAD AMAGÁ', 7, '34.65647329', '23.54362734', 104, 3, 31, 25, 43, 32, 43, 18, '2021-05-10 13:29:56', '2021-05-10 13:29:56');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `finca_eventos`
+--
+
+CREATE TABLE `finca_eventos` (
+  `id` int(11) NOT NULL,
+  `finca_id` int(11) NOT NULL,
+  `evento_id` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `gravedad` int(11) NOT NULL,
+  `observacion` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -8483,6 +8504,22 @@ CREATE TABLE `lotes_labores` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `lotes_labores_realizadas`
+--
+
+CREATE TABLE `lotes_labores_realizadas` (
+  `id` int(11) NOT NULL,
+  `lote_id` int(11) NOT NULL,
+  `labor_id` int(11) NOT NULL,
+  `cumplimiento` decimal(3,2) NOT NULL,
+  `fecha` date NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `municipios`
 --
 
@@ -9703,6 +9740,14 @@ CREATE TABLE `organizaciones_muro_secciones` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `organizaciones_muro_secciones`
+--
+
+INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 18, '<p><br/></p><p><br/></p><!--StartFragment--><div class=\"titulo-ppal\" style=\"color: rgba(0, 0, 0, 0.87);font-size: 3.5em;vertical-align: baseline;\">AGREGANDO VALOR</div><div class=\"parrafo\" style=\"color: rgba(0, 0, 0, 0.87);font-size: 1.2em;vertical-align: baseline;\">Es una sociedad comercial de carácter privado cuyo objeto social es la prestación de servicios profesionales de consultoría bajo estándares de calidad, cumplimiento y responsabilidad, implementando acciones estratégicas cooperadas desde los actores sociales y de desarrollo (Públicos, Privados y Sociales) que permitan su promoción hacia nuevos escenarios competitivos, sostenibles y sustentables económica, ambiental y socialmente, con principios incluyentes, democráticos y participativos.</div><ul style=\"color: rgba(0, 0, 0, 0.87);font-size: medium;\"><li>​<span class=\"negrilla\" style=\"font-size: 16.8px;vertical-align: baseline;text-align: left;\">Agregamos Valor</span><span style=\"font-size: 16.8px;text-align: left;float: none;\"> a la gestión pública como instrumentos de promoción del estado para el logro efectivo de la rentabilidad social.</span></li><li><span class=\"negrilla\" style=\"font-size: 16.8px;vertical-align: baseline;\">Agregamos Valor</span><span style=\"font-size: 16.8px;\"> mediante el reconocimiento de las capacidades colectivas como factor del desarrollo.</span><br/></li></ul><ol style=\"color: rgba(0, 0, 0, 0.87);font-size: medium;\"><li>​<span class=\"negrilla\" style=\"font-size: 16.8px;vertical-align: baseline;text-align: left;\">Agregamos Valor</span><span style=\"font-size: 16.8px;text-align: left;float: none;\"> a la gestión pública como instrumentos de promoción del estado para el logro efectivo de la rentabilidad social.</span></li><li><font color=\"#000000\"></font><p><span class=\"negrilla\" style=\"font-size: 16.8px;vertical-align: baseline;text-align: left;\">Agregamos Valor</span><span style=\"font-size: 16.8px;text-align: left;float: none;\"> forjando el desarrollo en un entorno armónico y sostenible.</span></p></li></ol><!--EndFragment--><p><br/></p><p><br/></p>', 'files/muro_media/18/20210510090358.jpg', 'http://www.agregandovalor.org/', NULL, 1, NULL, '2021-05-10 14:03:59', '2021-05-10 14:03:59'),
+(175, 18, '<p><br/></p><p><span style=\"float: none;\"></span><div style=\"font-size: 49px;\">¿Cómo lo hacemos?​<span style=\"font-size: 21px;text-align: center;\">Moderación Grupal</span></div><div><p><span style=\"font-size: 16.8px;text-align: center;float: none;\"></span></p><ul><li>Promovemos los aprendizajes colaborativos generando sistemas de relacionamiento horizontal.</li></ul><p><br/><br/><!--StartFragment--><span style=\"font-size: 21px;text-align: center;float: none;\">Herramientas TIC</span><!--EndFragment--><br/><br/></p><ul><li><span style=\"font-size: 16.8px;text-align: center;float: none;\">Incorporamos la eficiencia en el uso de la información en las acciones que implementamos.</span></li></ul><div><br/><br/><!--StartFragment--><span style=\"font-size: 21px;text-align: center;float: none;\">Técnicas de visualización</span><!--EndFragment--><br/><br/><ul><li><font color=\"#1e3348\"><span style=\"font-size: 16.8px;text-align: center;float: none;\">Integramos estrategias para la construcción colectiva bajo el uso de elementos didácticos y pedagógicos.</span></font></li></ul><div><br/><br/><!--StartFragment--><span style=\"font-size: 21px;text-align: center;float: none;\">Construcción Participativa</span><!--EndFragment--><br/><br/><ul><li><font color=\"#1e3348\"><span style=\"font-size: 16.8px;text-align: center;float: none;\">Reconocemos los saberes previos como elementos estructurales para la gestión del conocimiento.</span></font></li></ul><div><font color=\"#1e3348\"><br/></font></div></div></div><p></p><!--EndFragment--><br/><br/><br/><p></p></div></p><!--EndFragment--><p><br/></p><p><br/></p><p><br/></p>', 'files/muro_media/18/20210510091353.jpg', NULL, NULL, 2, NULL, '2021-05-10 14:13:53', '2021-05-10 14:13:53');
+
 -- --------------------------------------------------------
 
 --
@@ -9999,6 +10044,12 @@ ALTER TABLE `fincas`
   ADD KEY `zona_id` (`zona_id`);
 
 --
+-- Indices de la tabla `finca_eventos`
+--
+ALTER TABLE `finca_eventos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `labores`
 --
 ALTER TABLE `labores`
@@ -10055,6 +10106,12 @@ ALTER TABLE `lotes_labores`
   ADD PRIMARY KEY (`id`),
   ADD KEY `lote_id` (`lote_id`),
   ADD KEY `labor_id` (`labor_id`);
+
+--
+-- Indices de la tabla `lotes_labores_realizadas`
+--
+ALTER TABLE `lotes_labores_realizadas`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `municipios`
@@ -10171,7 +10228,7 @@ ALTER TABLE `asignaciones`
 -- AUTO_INCREMENT de la tabla `casos`
 --
 ALTER TABLE `casos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `casos_novedades`
@@ -10190,6 +10247,12 @@ ALTER TABLE `cultivos`
 --
 ALTER TABLE `fincas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `finca_eventos`
+--
+ALTER TABLE `finca_eventos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `labores`
@@ -10234,6 +10297,12 @@ ALTER TABLE `lotes_labores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `lotes_labores_realizadas`
+--
+ALTER TABLE `lotes_labores_realizadas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
@@ -10249,7 +10318,7 @@ ALTER TABLE `organizaciones`
 -- AUTO_INCREMENT de la tabla `organizaciones_muro_secciones`
 --
 ALTER TABLE `organizaciones_muro_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
