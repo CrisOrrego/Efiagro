@@ -2,19 +2,50 @@
 
     {{-- SECCIÓN MI FINCA --}}
 
-    <div ng-repeat="Lote in LotesCRUD.rows" flex>
+    <div ng-repeat="Lote in LotesCRUD.rows">
 
         <md-card >
-                <div layout="row" flex="" layout layout-wrap>
-                    <div layout class="w100p mxw600 bg-white padding-5-20 border-rounded">
+            <div layout="row" ng-click = "clickOnCard(Lote)" layout-align="space-between center" style="cursor:pointer;">
+                <div layout class="w100p mxw600 bg-white padding-5-20 border-rounded">
                     <img ng-src="files/lineasproductivas_media/@{{ Lote.linea_productiva_id }}.jpg" alt="" width="60" height="60">
-                        <div class="seccion_texto">
-                            <ul ><label class="texto_title">Lineas Productivas: </label> <span class="textoInfo">@{{ Lote.linea_productiva.nombre }}</span></ul>
-                            <ul ><span class="textoInfo">@{{ Lote.hectareas }}</span><label class="texto_title"> Hectareas</label>  / <span class="textoInfo">@{{ Lote.sitios }}</span> <label class="texto_title"> Sitios</label></ul> 
-                            <ul ><label class="texto_title">Tipo de suelo: </label> <span class="textoInfo">@{{ Lote.finca.tipo_suelo }}</span></ul>                    
-                        </div>
+                    <div class="seccion_texto">
+                        <ul ><label class="texto_title">Lineas Productivas: </label> <span class="textoInfo">@{{ Lote.linea_productiva.nombre }}</span></ul>
+                        <ul ><span class="textoInfo">@{{ Lote.hectareas }}</span><label class="texto_title"> Hectareas</label>  / <span class="textoInfo">@{{ Lote.sitios }}</span> <label class="texto_title"> Sitios</label></ul> 
+                        <ul ><label class="texto_title">Tipo de suelo: </label> <span class="textoInfo">@{{ Lote.finca.tipo_suelo }}</span></ul>                    
                     </div>
                 </div>
+                <div class="padding-5-20 border-rounded">
+                    <i ng-show="!Lote.checked" class="fas fa-chevron-down"></i>
+                    <i ng-show="Lote.checked" class="fas fa-chevron-up"></i>                        
+                </div>
+            </div>
+            <div class="check-element" ng-if="Lote.checked" layout="colums" layout-align="center start">
+                <md-card class="w100p mxw900 bg-white padding-5-20 border-rounded">
+                    <div layout="column" layout-align="space-between none">
+                        <div flex >
+                            <h6>Labores</h6>
+                        </div>
+                        <div layout layout-align="center center"> 
+                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="">
+                                <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon> Agregar Labor
+                            </md-button>                
+                        </div>
+                    </div>
+                </md-card>
+                
+                <md-card class="w100p mxw900 bg-white padding-5-20 border-rounded">
+                    <div layout="column" layout-align="space-between none">
+                        <div flex >
+                            <h6>Cosechas</h6>
+                        </div>
+                        <div layout layout-align="center center"> 
+                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="">
+                                <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon> Agregar Cosecha
+                            </md-button>                
+                        </div>
+                    </div>
+                </md-card>
+            </div>
         </md-card>
     </div>
 </div>
@@ -52,5 +83,18 @@
         height: 50px;
         /* border-radius: 500px; */
     }
+
+
+    body {
+    overflow: hidden;
+    perspective: 1000px;
+    }
+
+    .check-element {
+    /*border: 1px solid black;*/
+    opacity: 1;
+    padding: 10px;
+    }
+
 
 </style>

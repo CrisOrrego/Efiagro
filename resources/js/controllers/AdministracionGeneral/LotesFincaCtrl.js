@@ -8,7 +8,6 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
 
         var Ctrl = $scope;
         var Rs = $rootScope;
-
        
         Ctrl.Salir = $mdDialog.cancel;
 
@@ -30,6 +29,24 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
 
         Ctrl.getLotes();
 
+        Ctrl.clickOnCard = (lote) => {
+            //Las siguientes lineas cierran todos los paneles y deja abierto solo el panel seleccionado
+            if(lote.checked){
+                lote.checked = false;
+            }else{
+                Ctrl.Lotes.forEach(L => {
+                    L.checked = false;
+                });
+                lote.checked = true; 
+            }
+            /*
+            //Estas líneas solo abren o cierran el panel seleccionado, es decir, deja visualizar varios a la vez
+            if(!lote.checked){
+                lote.checked = true;
+            }else{
+                lote.checked = !lote.checked;
+            }*/
+        }
           
     }
 ]);
