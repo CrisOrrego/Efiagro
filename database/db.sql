@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2021 a las 17:21:18
+-- Tiempo de generación: 14-05-2021 a las 02:16:14
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -217,7 +217,8 @@ CREATE TABLE `fincas` (
 
 INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_id`, `municipio_id`, `area_total`, `tipo_cultivo`, `total_lotes`, `tipo_suelo`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria_min`, `altimetria_max`, `brillo_solar`, `created_at`, `updated_at`) VALUES
 (9, 1, 'La Cosecha', 'Calle 34', '66', '66001', 345, 'ASOCIADOS', 3, 'UNIDAD AMAGÁ', 7, '34.87549320', '43.87645832', 2342, 3, 324, 234, 234, 234, 23, 234, '2021-05-10 04:35:04', '2021-05-10 04:35:04'),
-(10, 2, 'Nuevo Sol', 'Cra 3 #42-34', '66', '66001', 254, 'ASOCIADOS', 3, 'UNIDAD AMAGÁ', 7, '34.65647329', '23.54362734', 104, 3, 31, 25, 43, 32, 43, 18, '2021-05-10 13:29:56', '2021-05-10 13:29:56');
+(10, 2, 'Nuevo Sol', 'Cra 3 #42-34', '66', '66001', 254, 'ASOCIADOS', 3, 'UNIDAD AMAGÁ', 7, '34.65647329', '23.54362734', 104, 3, 31, 25, 43, 32, 43, 18, '2021-05-10 13:29:56', '2021-05-10 13:29:56'),
+(11, 2, 'Playa Floresta', 'Mz 34 Casa 32', '66', '66001', 234, 'ASOCIADOS', 4, 'UNIDAD AMAGÁ', 6, '23.34534253', '12.34321234', 1234, 5, 23, 45, 21, 4356, 43, 56, '2021-05-13 23:06:51', '2021-05-13 23:06:51');
 
 -- --------------------------------------------------------
 
@@ -9943,7 +9944,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 18, 9, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL),
-(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 18, 10, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-05-10 13:33:28', NULL);
+(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 18, 11, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-05-14 00:14:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -10246,7 +10247,7 @@ ALTER TABLE `cultivos`
 -- AUTO_INCREMENT de la tabla `fincas`
 --
 ALTER TABLE `fincas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `finca_eventos`
