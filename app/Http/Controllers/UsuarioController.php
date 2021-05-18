@@ -28,7 +28,7 @@ class UsuarioController extends Controller
         // $dato = $Usuario['contrasena'];
 
     	if ( $Usuario ) {
-            if ( Crypt::decryptString($Usuario['contrasena']) == $claveSesion ) {
+            if ( Crypt::decrypt($Usuario['contrasena']) == $claveSesion ) {
             // if ( $Usuario['contrasena'] == $claveSesion ) {
                 return Crypt::encrypt($Usuario->id);
             } else {
@@ -38,6 +38,11 @@ class UsuarioController extends Controller
     		return response()->json(['Msg' => 'Error en el usuario registrado'], 500);
     	}
     }
+
+    /*public function getEncriptar($texto)
+    {
+        return Crypt::encrypt($texto);
+    }*/
  
     public function postRevisarToken()
     {
