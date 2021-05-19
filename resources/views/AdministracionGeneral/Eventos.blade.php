@@ -20,10 +20,12 @@
 				  <tr md-row>
 					<th md-column>Acción</th>
 					{{-- <th md-column>ID</th> --}}
+					<th md-column>Imagen</th>
+					<th md-column>Cambiar</th>
 					<th md-column>Evento</th>
-					
+					<th md-column>Creado</th>
+                    <th md-column>Actualizado</th>
 				  </tr>
-				  
 				</thead>
 				<tbody md-body>
 				  <tr md-row ng-repeat="E in EventosCRUD.rows | filter:filterEventos">
@@ -36,7 +38,17 @@
 						</md-button>
 					</td>
                     {{-- <td md-cell>@{{ E.id }}</td> --}}
+					<td md-cell>
+						<img ng-src="files/eventos_media/@{{ E.id }}.jpg" alt="" width="30">
+					</td>
+					<td md-cell>
+						<md-button class="md-icon-button pointer" >
+							<md-icon md-font-icon="fa-image" ng-click="cargarImagen(E)"></md-icon>
+						</md-button>
+					</td>
                     <td md-cell>@{{ E.evento }}</td>
+					<td md-cell>@{{E.created_at | date:'yyyy-MM-dd' }}</td>
+                    <td md-cell>@{{E.updated_at | date:'yyyy-MM-dd' }}</td>
 					
 				  </tr>
 				</tbody>
