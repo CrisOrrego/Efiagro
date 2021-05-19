@@ -63,6 +63,7 @@ angular.module('App', [
     'FincasCtrl',
     'FincaDiagCtrl',
     'PerfilesCtrl', // Luigi
+    'EventosCtrl',
     
     // 'PerfilesCtrl',
     // Zonas Agroambientales

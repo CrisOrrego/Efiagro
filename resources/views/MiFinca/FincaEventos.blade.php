@@ -1,6 +1,5 @@
-<div ng-cloak id="Eventos" ng-controller="FincasCtrl" class="divEventos w650">
+<div ng-cloak id="Eventos" ng-controller="EventosCtrl" class="divEventos w650">
     {{-- SECCIÓN EVENTOS --}}
-    <md-tab label="Eventos">
         <md-content class="md-padding">
             <md-card class="seccion_eventos">
                 <div>
