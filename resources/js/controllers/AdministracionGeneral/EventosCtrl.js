@@ -8,20 +8,17 @@ angular.module("EventosCtrl", []).controller("EventosCtrl", [
 
         var Ctrl = $scope;
         var Rs = $rootScope;
-
-        Ctrl.zona_select = null;
-        
+     
         Ctrl.Salir = $mdDialog.cancel;
 
         Ctrl.value = 0;
-
 
            Ctrl.EventosCRUD = $injector.get("CRUD").config({
             base_url: "/api/eventos/eventos",
             limit: 1000,
             add_append: "refresh",
             order_by: ["-created_at"],
-            query_with:['zona']
+            // query_with:['']
         });
 
         Ctrl.getEventos = () => {
@@ -46,7 +43,7 @@ angular.module("EventosCtrl", []).controller("EventosCtrl", [
             });
         };
         Ctrl.editarEvento = E => {
-            Ctrl.EventosCRUD.dialog(C, {
+            Ctrl.EventosCRUD.dialog(E, {
                 title: "Editar Evento" + E.id
             }).then(r => {
                 if (r == "DELETE") return Ctrl.EventosCRUD.delete(E);
@@ -55,12 +52,12 @@ angular.module("EventosCtrl", []).controller("EventosCtrl", [
                 });
             });
         };
-        Ctrl.eliminareVENTO = E => {
+        Ctrl.eliminarEvento = E => {
             Rs.confirmDelete({
                 Title: "¿Eliminar Lote #" + E.id + "?"
             }).then(d => {
                 if (!d) return;
-                Ctrl.LotesCRUD.delete(E);
+                Ctrl.EventosCRUD.delete(E);
             });
         };
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lote extends Model
+class Evento extends Model
 {
     use HasFactory;
     protected $table = 'eventos';
@@ -22,6 +22,10 @@ class Lote extends Model
             
         ];
 
+    }
+    public function scopeId($q, $id)
+    {
+        return $q->where('id', $id);
     }
 
    
