@@ -55,3 +55,4 @@ AdvancedRoute::controller('/api/perfiles',          'PerfilesController');      
 AdvancedRoute::controller('/api/secciones',         'SeccionesController');         // Luigi
 
 //CAOH
+AdvancedRoute::controller('/api/creditos',         'CreditosController'); 

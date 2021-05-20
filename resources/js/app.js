@@ -72,6 +72,7 @@ angular.module('App', [
 
     'FondoRotatorio_CreditosCtrl', //CAOH
     'FondoRotatorio_NuevoCreditoDiagCtrl', //CAOH
-    'CreditoSrv',
+    'FondoRotatorio_Creditos_PayDialogCtrl', //CAOH
+    'CreditoSrv', //CAOH
 
 ]);

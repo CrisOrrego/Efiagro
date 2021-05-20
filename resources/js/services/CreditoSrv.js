@@ -1,6 +1,6 @@
 angular.module('CreditoSrv', []).factory('CreditoSrv', [
   function (){
-  	var Srv = {};
+  	let Srv = {};
 
   	Srv.Scales = {
 		 '1_M': { key:  '1_M', Nombre: 'Mensuales',		  Meses:  1,  PeriodosAno: 12 },
@@ -23,34 +23,36 @@ angular.module('CreditoSrv', []).factory('CreditoSrv', [
   	//Funcion de calculo de cuotas
 	Srv.CalcCuotas = function(Monto, Interes, Scale, Periodos, Periodos_Gracia, Primer_Pago, Start_Pago){
 
-		var Amortable = [];
-		var AmortableRes = { Capital: 0, Interes: 0, Ajuste: 0, Total: 0 };
+		let Amortable = [];
+		let AmortableRes = { Capital: 0, Interes: 0, Ajuste: 0, Total: 0 };
 
-		var Meses = Srv.Scales[Scale].Meses;
-		var PeriodosAno = Srv.Scales[Scale].PeriodosAno;
+		let Meses = Srv.Scales[Scale].Meses;
+		let PeriodosAno = Srv.Scales[Scale].PeriodosAno;
 		//console.log('Interes', Interes);
-		var TasaPer = Math.pow( (1 + (Interes) ), (1/PeriodosAno) ) - 1;
-		var Periodos_Pago = Periodos - Periodos_Gracia;
-		var FacAnu = TasaPer / (1 - ( 1/ ( Math.pow( ( 1 + TasaPer ), Periodos_Pago ) )  ));
-		var Fec = angular.copy(moment(Primer_Pago)); //Fecha Inicial, Hoy
+		let TasaPer = Math.pow( (1 + (Interes) ), (1/PeriodosAno) ) - 1;
+		let Periodos_Pago = Periodos - Periodos_Gracia;
+		let FacAnu = TasaPer / (1 - ( 1/ ( Math.pow( ( 1 + TasaPer ), Periodos_Pago ) )  ));
+		let Fec = angular.copy(moment(Primer_Pago)); //Fecha Inicial, Hoy
 
-		var Deuda = angular.copy(Monto);
+		let Deuda = angular.copy(Monto);
 
-		var CuotaPer = Math.ceil(Monto * FacAnu);
+		let CuotaPer = Math.ceil(Monto * FacAnu);
 
-		var Cuota = 0;
+		let Cuota = 0;
 
-		for (var i = Start_Pago; i < (Periodos+Start_Pago); i++) {
+		
+
+		for (let i = Start_Pago; i < (Periodos+Start_Pago); i++) {
 			
-			Fec.add(Meses, 'M');
-
-			var Am = {
+			let Am = {
 				Num_Pago: i,
 				Capital: 0,
 				Interes: 0,
 				Total:   0,
 				Deuda:   0,
 			};
+
+			Fec = Fec.add(Meses, 'M');
 
 			Am.Fecha = Fec.format("YYYY-MM-DD");
 			Am.Interes = Math.ceil( Deuda * TasaPer );
