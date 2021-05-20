@@ -19,6 +19,7 @@
 								<thead md-head>
 									<tr md-row>
 										<th md-column></th>
+										<th md-column>id</th>
 										<th md-column>Lista</th>
 										<th md-column>Autoincremental</th>
 									</tr>

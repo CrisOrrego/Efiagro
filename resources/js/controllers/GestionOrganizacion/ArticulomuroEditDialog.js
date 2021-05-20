@@ -31,7 +31,6 @@ angular.module('ArticulomuroEditDialogCtrl', [])
 				var SeccionesCambiadas = Ctrl.SeccionesCRUD.rows.filter(s => s.changed);
 				if(SeccionesCambiadas.length > 0){
 					Ctrl.SeccionesCRUD.updateMultiple(SeccionesCambiadas).then(() => {
-						console.log('Secciones Actualizadas');
 					});
 				}
 			});

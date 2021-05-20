@@ -2,7 +2,6 @@ angular.module('Organizaciones_OrganizacionEditorCtrl', [])
 .controller('Organizaciones_OrganizacionEditorCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Articulo',
 	function($scope, $rootScope, $http, $injector, $mdDialog, Articulo) {
 
-		console.info('Organizaciones_OrganizacionEditorCtrl');
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 

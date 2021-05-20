@@ -2,14 +2,12 @@
 angular.module('SolicitudesDetalleCtrl', [])
     .controller('SolicitudesDetalleCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Caso',
         function($scope, $rootScope, $http, $injector, $mdDialog, Caso) {
-
             // Creamos y asignamos la variables Ctrl y scope
             var Ctrl = $scope;
             var Rs = $rootScope;
 
             // Creamos copia de Caso
             Ctrl.Caso = angular.copy(Caso);
-            //console.log(Ctrl.Caso);
 
             // Activamos el evento Cancel, para cerrar modales
             Ctrl.Cancel = $mdDialog.cancel;
@@ -37,7 +35,6 @@ angular.module('SolicitudesDetalleCtrl', [])
             // Obtenemos la infromación de un caso especifico con el ID
             Ctrl.getNovedades = () => {
                 Ctrl.NovedadesCRUD.setScope('elcaso', Caso.id).get();
-                console.log(Ctrl.NovedadesCRUD);
             }
 
             Ctrl.getNovedades();
@@ -72,7 +69,6 @@ angular.module('SolicitudesDetalleCtrl', [])
                         }
                     });
                     novedad = Imagen.Msg;
-                    //console.log(Imagen);
                 }
                 if (tipo == 'Texto') {
                     Ctrl.detallecaso = '';

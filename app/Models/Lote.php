@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Lote extends Model
 {
     use HasFactory;
-    use HasFactory;
     protected $table = 'lotes';
     protected $guarded = ['id'];
     protected $appends = [];
+    
     public function columns()
     {
         $labores = \App\Models\Labor::all()->keyBy('id')->map( function($l){
@@ -33,13 +33,18 @@ class Lote extends Model
             ['finca_id',            'Finca',            'select',   true,   false,  null, 50, ['options' => $fincas] ],
             ['organizacion_id',     'Organización',     'select',   true,   false,  null, 50, ['options' => $organizaciones] ],
             ['linea_productiva_id', 'Linea Productiva', 'select',   true,   false,  null, 50, ['options' => $lineasproductivas] ],
-            ['labores_id',          'Labores',         'select',   true,   false,  null, 50, ['options' => $labores] ], 
-            ['hectareas',           'Hectareas',        null, true,     false,  null,       100],
-            ['sitios',              'Sitios',           null, true,     false,  null,       100],
-            ['coordenadas',         'Coordenadas',      null, true,     false,  null,       100],
+            ['labores_id',          'Labores',         'select',    true,   false,  null, 50, ['options' => $labores] ], 
+            ['hectareas',           'Hectareas',        null,       true,     false,  null,       100],
+            ['sitios',              'Sitios',           null,       true,     false,  null,       100],
+            ['coordenadas',         'Coordenadas',      null,       true,     false,  null,       100],
             
         ];
 
+    }
+
+    public function scopeFinca_id($q, $id)
+    {
+        return $q->where('finca_id', $id);
     }
 
     public function finca()

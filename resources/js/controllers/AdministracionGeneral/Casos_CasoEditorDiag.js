@@ -2,7 +2,6 @@ angular.module('Casos_CasoEditorCtrl', [])
     .controller('Casos_CasoEditorCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Articulo',
         function($scope, $rootScope, $http, $injector, $mdDialog, Articulo) {
 
-            console.info('Casos_CasoEditorCtrl');
             var Ctrl = $scope;
             var Rs = $rootScope;
 

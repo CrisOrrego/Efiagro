@@ -2,7 +2,6 @@ angular.module('Labores_LaborEditorCtrl', [])
 .controller('Labores_LaborEditorCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Labor',
 	function($scope, $rootScope, $http, $injector, $mdDialog, Labor) {
 
-		console.info('Labores_LaborEditorCtrl');
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 

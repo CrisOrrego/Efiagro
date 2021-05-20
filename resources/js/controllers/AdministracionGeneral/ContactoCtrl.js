@@ -3,7 +3,6 @@ angular.module('ContactoCtrl', [])
 .controller('ContactoCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 
 	function($scope, $rootScope, $http, $injector, $mdDialog) {
 
-		console.info('ContactoCtrl');
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 		

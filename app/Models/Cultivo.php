@@ -14,7 +14,7 @@ class Cultivo extends Model
     public function columns()
     {
         $zonas = \App\Models\Zona::all()->keyBy('id')->map(function($z){
-            return $z['zona'];
+            return $z['descripcion'];
         })->toArray();
         // // dd($zonas);
 

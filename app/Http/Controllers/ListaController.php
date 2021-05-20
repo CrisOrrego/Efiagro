@@ -29,6 +29,16 @@ class ListaController extends Controller
 		return $L;
 	}
 
+	//
+	public function postObtenerdetalle()
+	{
+		$lista_id = request('lista_id');
+		$codigo = request('codigo');
+		//$L = Lista:: with ("listadetalle") -> where ("id", 1); // me trae la lista con los detalles donde el id sea 1
+		$D = ListaDetalle::where("lista_id", $lista_id)->where("codigo", $codigo)->first();
+		return $D;
+	}
+	//
 
 	public function postObtener()
 	{
@@ -92,6 +102,15 @@ class ListaController extends Controller
 		$listadetalle->delete();
 		/*$L = Lista::with ("listadetalle")->findOrFail($id); 
 		return $L;*/
+	}
+
+	// Funcion para traer todos los registros de una tabla 
+	// con un solo criterio de consulta y ordenado por la descripcion
+	public function postListacompleta(Request $req)
+	{
+		return ListaDetalle::where("lista_id", $req->id)
+			->orderBy('descripcion')
+			->get();
 	}
 	
 }

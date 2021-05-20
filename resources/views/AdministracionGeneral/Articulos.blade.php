@@ -61,6 +61,7 @@
 				<th md-column>Autor</th>
 				<th md-column>Creado</th>
 				<th md-column>Actualizado</th>
+				<th md-column>Estado</th>
 			</tr>
 			</thead>
 			<tbody md-body>
@@ -70,8 +71,9 @@
 				</md-button></td>
 				<td md-cell>@{{ A.titulo }}</td>
 				<td md-cell>@{{ A.autor.nombres }}</td>
-				<td md-cell>@{{ A.created_at }}</td>
-				<td md-cell>@{{ A.updated_at }}</td>
+				<td md-cell>@{{ A.created_at | date:'yyyy-MM-dd'}}</td>
+				<td md-cell>@{{ A.updated_at | date:'yyyy-MM-dd'}}</td>
+				<td md-cell>@{{ A.estado}}</td>
 			</tr>
 			</tbody>
 		</table>

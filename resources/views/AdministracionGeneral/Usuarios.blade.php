@@ -27,6 +27,7 @@
                     <tr md-row>
                         <th md-column>Editar</th>
                         <th md-column>Clave</th>
+                        <th md-column>Fincas</th>
                         <th md-column>TD</th>
                         <th md-column>Documento</th>
                         <th md-column>Nombre</th>
@@ -46,6 +47,11 @@
                             <td md-cell>
                                 <md-button class="md-icon-button" ng-click="cambiarClave(U)">
                                     <md-icon md-font-icon="fa-key"></md-icon>
+                                </md-button>
+                            </td>
+                            <td md-cell>
+                                <md-button class="md-icon-button" ng-click="cargarFincas(U)">
+                                    <md-icon md-font-icon="fa-chart-area"></md-icon>
                                 </md-button>
                             </td>
                             <td md-cell>@{{ U.tipo_documento }}</td>

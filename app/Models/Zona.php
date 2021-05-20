@@ -14,10 +14,13 @@ class Zona extends Model
 
     public function columns()
     {
+        $lineasproductivas= \App\Models\LineaProductiva::all()->keyBy('id')->map( function($lp){
+            return $lp['nombre'];
+        })->toArray();
         //Name, Desc, Type, Required, Unique, Default, Width, Options linea_productiva_id
         return [
             ['descripcion',             'Descripcion:',                                     null, true,     false, null, 100],
-            ['linea_productiva_id',     'Linea productiva (1-Platano, 2-Café, 3-Mora):',    null, true,     false, null, 255],
+            ['linea_productiva_id', 'Linea Productiva', 'select',   true,   false,  null, 50, ['options' => $lineasproductivas] ],
             ['temperatura_min',         'Temperatura Min (C°):',                            null, false,    false, null, 100],
             ['temperatura_max',         'Temperatura Max (C°):',                            null, false,    false, null, 100],
             ['humedad_relativa_min',    'Humedad Relativa Min (%):',                        null, true,     false, null, 100],
@@ -45,6 +48,5 @@ class Zona extends Model
     {
         return $this->hasMany('App\Models\Labor', 'zona_id');
     }
-
 
 }

@@ -1,7 +1,7 @@
 angular.module('LineasProductivasCtrl', [])
     .controller('LineasProductivasCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog',
         function($scope, $rootScope, $http, $injector, $mdDialog) {
-            //console.info('LineasProductivasCtrl');
+
             var Ctrl = $scope;
             var Rs = $rootScope;
 
@@ -10,8 +10,6 @@ angular.module('LineasProductivasCtrl', [])
                 limit: 1000,
                 add_append: 'refresh',
             });
-            //console.log(Ctrl.LineasProductivasCRUD);
-
             Ctrl.getLineasProductivas = () => {
                 Ctrl.LineasProductivasCRUD.get().then(() => {});
                 //Ctrl.nuevo();
@@ -36,7 +34,6 @@ angular.module('LineasProductivasCtrl', [])
                 }).then(dato => {
                     if (dato == 'DELETE')
                         return Ctrl.LineasProductivasCRUD.delete(LP);
-                    //console.log(dato);
                     Ctrl.LineasProductivasCRUD.update(dato)
                         .then(() => {
                             Rs.showToast('Linea productiva actualizada')
@@ -49,7 +46,6 @@ angular.module('LineasProductivasCtrl', [])
             }
 
             Ctrl.cargarImagen = async(LP) => {
-                //console.log('id ' + LP.id);
                 var Imagen = await $mdDialog.show({
                     templateUrl: 'templates/dialogs/image-editor.html',
                     controller: 'ImageEditor_DialogCtrl',

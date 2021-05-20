@@ -26,8 +26,8 @@ class UsuarioController extends Controller
             ->first();
         $dato = Crypt::encrypt($Usuario['contrasena']);
         // $dato = $Usuario['contrasena'];
+
     	if ( $Usuario ) {
-            
             if ( Crypt::decryptString($Usuario['contrasena']) == $claveSesion ) {
             // if ( $Usuario['contrasena'] == $claveSesion ) {
                 return Crypt::encrypt($Usuario->id);
@@ -69,10 +69,10 @@ class UsuarioController extends Controller
                     ->get();
     }
 
-    // Medoto para la actualizacion de cualquier campo de la tabla del usuario.
+    // Medoto para la actualizacion de cualquier campo de la tabla del usuario. // Luigi
     public function postActualizarcampo()
     {
-        $usuario_id = 1; //request('usuario_id');
+        $usuario_id = request('usuario');
         $campo      = request('campo');
         $valor      = request('valor');
         $usuario = Usuario::where('id', $usuario_id)->first();

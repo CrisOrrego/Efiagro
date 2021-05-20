@@ -5,6 +5,7 @@ angular.module('HomeCtrl', [])
             var Ctrl = $scope;
             var Rs = $rootScope;
 
+            // Controlador para validar al momento de cerrar la session del usuario.
             Ctrl.Logout = () => {
                 let confirm = $mdDialog.confirm()
                     .title('¿Desea salir del aplicativo?')
@@ -16,43 +17,70 @@ angular.module('HomeCtrl', [])
                 });
             };
 
+            // Cargar el listado de secciones
             Ctrl.obtenerSecciones = () => {
-                // var perfil = Rs.Usuario['perfil_id'];
-                // $http.post('api/main/obtener-secciones-perfil', { perfil: perfil }).then(r => {
-                //     Rs.Secciones = r.data;
-                // });
-                $http.post('api/main/obtener-secciones', {}).then(r => {
-                    Rs.Secciones = r.data;
-                });
+                Ctrl.logoInicio = true;
+                $http.post('api/main/obtener-secciones', {})
+                    .then(r => {
+                        Rs.Secciones = r.data;
+                    });
             };
-
             Ctrl.obtenerSecciones();
 
-            //Gestion del Estado
+            // Gestion del Estado
             Rs.cambioEstado = function() {
                 Rs.Estado = $state.current;
                 Rs.Estado.ruta = $location.path().split('/');
             };
 
+            // Carga del menu segund la seccion cargada
             Rs.navegarSubseccion = (Seccion, Subseccion) => {
                 $state.go('Home.Seccion.Subseccion', { 
                     seccion: Seccion, 
                     subseccion: Subseccion 
                 });
             };
-
-            // Rs.navegarHome = () => {
-            //     $state.go();
-            // };
-
+            
             // Función para actualizar un campo en la tabla del usuario.
             Rs.actualizarUsuario = ( campo, valor ) => {
                 $http.post('api/usuario/actualizarcampo', {
+                    usuario: Rs.Usuario['id'],
+                    // usuario: 1,
                     campo: campo, 
                     valor: valor
                 }).then( () => {
                     $state.reload();
                 });
+            }
+            
+            // Validar el rol para cargar opciones de organizaciones y fincas
+            // Administrador: 1 | Operaor: 2 | Soporte: 3 | Productor: 4 
+            switch( Rs.Usuario['perfil_id'] ) {
+                case 1:
+                    Ctrl.listaOrganizacion = false;
+                    Ctrl.listaFinca = false;
+                    break;
+                    
+                case 2:
+                    Ctrl.listaOrganizacion = true;
+                    Ctrl.listaFinca = false;
+                    break;
+                    
+                case 3:
+                    Ctrl.listaOrganizacion = false;
+                    Ctrl.listaFinca = false;
+                    break;
+                    
+                case 4:
+                    Ctrl.listaOrganizacion = true;
+                    Ctrl.listaFinca = true;
+                    break;
+
+                default:
+                    Ctrl.listaOrganizacion = false;
+                    Ctrl.listaFinca = false;
+                    break;
+                    
             }
 
             Rs.$on("$stateChangeSuccess", Rs.cambioEstado);

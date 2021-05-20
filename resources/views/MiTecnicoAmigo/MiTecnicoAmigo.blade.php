@@ -1,6 +1,6 @@
 <div flex layout=column ng-controller="MiTecnicoAmigoCtrl">
 
-	<div  class="div_bienvenida md-title padding-top padding-left">
+	<div class="div_bienvenida md-title padding-top padding-left">
         ¡Bienvenido!, ¿Cómo le puedo ayudar? 
     </div>
     <div layout=column flex layout-align="start center" class="padding">
@@ -14,15 +14,6 @@
                 Contactar a Técnico Amigo
             </md-button>
         </div>
-    <!-- <div layout layout-align="space-around stretch" >
-        <div >
-        
-        </div> -->
-        
-        <!-- <div >
-            
-        </div>
-    </div> -->
 </div>
 <img ng-src="imgs/farmer-cartoon.png" alt="" >
 
@@ -34,7 +25,7 @@
 		text-shadow: 1px 1px 1px #00000066;
 	}
     .div_bienvenida{
-        color: aliceblue;
+        /* color: aliceblue; */
         font-size: 2em;
     }
 </style>

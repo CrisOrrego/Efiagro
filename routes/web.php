@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ListaController;
+use App\Http\Controllers\FincaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ Route::post("/api/upload", [FileController::class, 'upload']);
 //Inicio Dev ANGÉLICA
 Route::post("/api/lista", [ListaController::class, 'Actualizar']);
 Route::get("/api/lista/{id}",  [ListaController::class, 'Lista']);
+Route::get("/api/lista/{id}",   [ListaController::class, 'Listacompleta']); // Luigi
+// Route::post("/api/finca",       [FincaController::class, 'Actualizar']);    // Luigi
+
 Route::get("/api/departamentos",  [ListaController::class, 'getDepartamentos']);
 Route::post("/api/lista",  [ListaController::class, 'Delete']);
 //FIN Dev ANGÉLICA
@@ -32,8 +36,6 @@ Route::post("/api/lista",  [ListaController::class, 'Delete']);
 AdvancedRoute::controller('/api/main',      'MainController');
 AdvancedRoute::controller('/api/usuario',   'UsuarioController');
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');
-
-// AdvancedRoute::controller('/api/perfiles', 'perfilController');
 
 //Inicio Dev ANGÉLICA
 AdvancedRoute::controller('/api/contacto',                        'ContactoController');

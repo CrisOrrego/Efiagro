@@ -1,7 +1,6 @@
 angular.module('PerfilesCtrl', [])
     .controller('PerfilesCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog',
         function($scope, $rootScope, $http, $injector, $mdDialog) {
-            //console.info('PerfilesCtrl');
             var Ctrl = $scope;
             var Rs = $rootScope;
 
@@ -23,28 +22,25 @@ angular.module('PerfilesCtrl', [])
                 add_append: 'refresh',
                 order_by: ['seccion_id']
             });
+            // Ejecutar el metodo para cargar los registros al controlador
             Ctrl.getPerfilesSeccion = () => {
                 Ctrl.PerfilesSeccionesCRUD.get().then(() => {});
             };
 
-            // Ejecutar el metodo para cargar los registros al controlador
-            // Ctrl.getPerfiles();
-
             // Obtener la información de las secciones existentes.
             Ctrl.SeccionesCRUD = $injector.get('CRUD').config({
                 base_url: '/api/secciones/secciones',
-                // base_url: '/api/secciones/seccionesPerfil',
                 limit: 100,
                 add_append: 'refresh',
-                //order_by: ['seccion']
+                order_by: ['seccion', 'subseccion']
             });
             Ctrl.getSecciones = () => {
                 return Ctrl.SeccionesCRUD.get().then(() => {
-                    var secciones = {};
-                    Ctrl.SeccionesCRUD.rows.forEach(S => {
-                        secciones[S.id] = S;
-                    });
-                    Ctrl.secciones = secciones;
+                    Ctrl.secciones = angular.copy(Ctrl.SeccionesCRUD.rows);
+                    // Ctrl.SeccionesCRUD.rows.forEach(S => {
+                    //     secciones[S.id] = S;
+                    // });
+                    // Ctrl.secciones = secciones;
                 });
             };
 
@@ -70,10 +66,11 @@ angular.module('PerfilesCtrl', [])
                         S.nivel = 0;
                     });
                     angular.forEach(Ctrl.PerfilesSeccionesCRUD.rows, PS => {
-                        Ctrl.secciones[PS.seccion_id].nivel = PS.nivel;
+                        var seccion = Ctrl.secciones.find( S => S.id == PS.seccion_id )
+                        seccion.nivel = PS.nivel;
+                        // Ctrl.secciones[PS.seccion_id].nivel = PS.nivel;
                     });
                 });
-
             };
 
             Ctrl.guardarPermisos = () => {

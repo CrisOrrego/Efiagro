@@ -307,7 +307,6 @@ angular.module('appFunctions', [])
 
 		Rs.getItemsVal = (Items, Comparator, Prop) => {
 			var Elm = $filter('filter')(Rs[Items],Comparator)[0];
-			//console.log(Items,Comparator,Elm);
 			return Elm[Prop];
 		};
 
@@ -356,8 +355,7 @@ angular.module('appFunctions', [])
     			
 	    	});
 
-	    	//console.log(fs);
-
+	    	
 	    	return fs;
 		};
 
@@ -399,7 +397,7 @@ angular.module('appFunctions', [])
 		    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
 		    hsp = Math.sqrt( 0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b) );
 		    var textColor = (hsp>127.5) ? 'black' : 'white';
-		    console.log(base_color, hsp, textColor);
+		
 		    return textColor;
 		};
 

@@ -2,8 +2,6 @@
 angular.module('ConfiguracionCtrl', [])
 .controller('ConfiguracionCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 
 	function($scope, $rootScope, $http, $injector, $mdDialog) {
-
-		console.info('ConfiguracionCtrl');
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 		
@@ -49,6 +47,9 @@ angular.module('ConfiguracionCtrl', [])
 				],
 				Confirm: { Text: 'Crear Lista' },*/
 			}).then(r => {
+				if(!r.autoincremental){
+					r.autoincremental = false;
+				}
 				Ctrl.ListaCRUD.add(r).then(() => {
 					Rs.showToast('Lista creada');
 				});
@@ -74,7 +75,6 @@ angular.module('ConfiguracionCtrl', [])
 			}).then(function (resp) {
 				//Ctrl.OrganizacionesmuroseccionesCRUD.setScope('elorganizacion', Rs.Usuario.organizacion_id).get();
 			}, function (resp) {
-				console.log('Error status: ' + resp.status); 
 			});
 
 		}

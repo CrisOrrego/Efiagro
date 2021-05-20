@@ -2,7 +2,7 @@ angular.module('ArticuloDiagCtrl', [])
     .controller('ArticuloDiagCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Articulo',
         function($scope, $rootScope, $http, $injector, $mdDialog, Articulo) {
 
-            console.info('ArticuloDiagCtrl');
+            //console.info('ArticuloDiagCtrl');
             var Ctrl = $scope;
             var Rs = $rootScope;
 
