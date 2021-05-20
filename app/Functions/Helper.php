@@ -24,7 +24,7 @@ class Helper
 
     public static function getUsuarioId()
     {
-    	$Usuario = $this->getUsuario();
+    	$Usuario = self::getUsuario();
         return $Usuario->id;
     }
 
