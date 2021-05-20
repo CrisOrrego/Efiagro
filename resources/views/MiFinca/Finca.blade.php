@@ -1,22 +1,22 @@
-<div id="MiFinca" class="divFinca" ng-controller="FincasCtrl" flex layout="column" class="mxw1000">
+<div id="MiFinca" class="divFinca" ng-controller="FincasMifincaCtrl" flex layout="column" class="mxw1000">
 
     {{-- SECCIÓN MI FINCA --}}
 
     <div layout="row" >
         <div class="divInfo" flex="" layout layout-wrap>
             <div class="seccion_texto">
-                <ul ><label class="texto_title">Dirección:</label> <span class="textoInfo">@{{ Finca . direccion }}</span></ul>
-                <ul ><label class="texto_title">Departamento:</label> <span class="textoInfo">@{{ Finca . departamento_id }}</span></ul>
-                <ul ><label class="texto_title">Municipio:</label> <span class="textoInfo">@{{ Finca . municipio_id }}</span></ul>
-                <ul ><label class="texto_title">Área total:</label> <span class="textoInfo">@{{ Finca . area_total }}</span></ul>
-                <ul ><label class="texto_title">Tipo Cultivo:</label> <span class="textoInfo">@{{ Finca . tipo_cultivo }}</span></ul>
-                <ul ><label class="texto_title">Total de lotes:</label> <span class="textoInfo">@{{ Finca . total_lotes }}</span></ul>
-                <ul ><label class="texto_title">Tipo de suelo:</label> <span class="textoInfo">@{{ Finca . tipo_suelo }}</span></ul>
-                <ul ><label class="texto_title">Zona:</label> <span class="textoInfo">@{{ Finca . zona . descripcion }}</span></ul>
-                <ul ><label class="texto_title">Hectareas:</label> <span class="textoInfo">@{{ Finca . latitud }}</span></ul>
-                <ul ><label class="texto_title">Latitud:</label> <span class="textoInfo">@{{ Finca . latitud }}</span></ul>
-                <ul ><label class="texto_title">Longitud:</label> <span class="textoInfo">@{{ Finca . longitud }}</span></ul>
-                <ul ><label class="texto_title">Sitio:</label> <span class="textoInfo">@{{ Finca . sitios }}</span></ul>
+                <ul ><label class="texto_title">Dirección:</label> <span class="textoInfo">@{{ Finca.direccion }}</span></ul>
+                <ul ><label class="texto_title">Departamento:</label> <span class="textoInfo">@{{ Finca.departamento_id }} - @{{ Finca.nombreDepartamento }}</span></ul>
+                <ul ><label class="texto_title">Municipio:</label> <span class="textoInfo">@{{ Finca.municipio_id }} - @{{ Finca.nombreMunicipio }}</span></ul>
+                <ul ><label class="texto_title">Área total:</label> <span class="textoInfo">@{{ Finca.area_total }}</span></ul>
+                <ul ><label class="texto_title">Tipo Cultivo:</label> <span class="textoInfo">@{{ Finca.tipo_cultivo }}</span></ul>
+                <ul ><label class="texto_title">Total de lotes:</label> <span class="textoInfo">@{{ Finca.total_lotes }}</span></ul>
+                <ul ><label class="texto_title">Tipo de suelo:</label> <span class="textoInfo">@{{ Finca.tipo_suelo }}</span></ul>
+                <ul ><label class="texto_title">Zona:</label> <span class="textoInfo">@{{ Finca . zona.descripcion }}</span></ul>
+                <ul ><label class="texto_title">Hectareas:</label> <span class="textoInfo">@{{ Finca.hectareas }}</span></ul>
+                <ul ><label class="texto_title">Latitud:</label> <span class="textoInfo">@{{ Finca.latitud }}</span></ul>
+                <ul ><label class="texto_title">Longitud:</label> <span class="textoInfo">@{{ Finca.longitud }}</span></ul>
+                <ul ><label class="texto_title">Sitio:</label> <span class="textoInfo">@{{ Finca.sitios }}</span></ul>
             </div>
         </div>
 

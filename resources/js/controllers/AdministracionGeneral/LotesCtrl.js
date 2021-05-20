@@ -5,7 +5,6 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
     "$injector",
     "$mdDialog",
     function($scope, $rootScope, $http, $injector, $mdDialog) {
-        console.info("LotesCtrl");
         var Ctrl = $scope;
         var Rs = $rootScope;
 

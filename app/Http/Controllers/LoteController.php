@@ -16,6 +16,7 @@ class LoteController extends Controller
         return $CRUD->call(request()->fn, request()->ops);
 	}
 	
+<<<<<<< HEAD
 	public function postTareasLote()
  	{
  		$CRUD = new CRUD('App\Models\LoteTarea');
@@ -68,4 +69,6 @@ class LoteController extends Controller
             $lote->coordenadas      	= $campos['coordenadas'];
         $lote->save();
 	}
+=======
+>>>>>>> 0d654d3d864c9d58c3c80c8cfd0c6455403f99cb
 }

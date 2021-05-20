@@ -3,7 +3,6 @@ angular.module('ListaEditDialogCtrl', [])
 .controller('ListaEditDialogCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Lista',
 	function($scope, $rootScope, $http, $injector, $mdDialog, Lista) {
 
-		console.info('ListaEditDialogCtrl');
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 
@@ -11,7 +10,6 @@ angular.module('ListaEditDialogCtrl', [])
 		// debugger;
 		Ctrl.Cancel = $mdDialog.cancel;
 		Ctrl.Lista = angular.copy(Lista);
-		console.log(Ctrl.Lista);
 		Ctrl.url = '';
 		Ctrl.Hide = $mdDialog.hide;
 		//Ctrl.Autoincremental = false;
@@ -50,7 +48,6 @@ angular.module('ListaEditDialogCtrl', [])
 
 		Ctrl.getLista = () => {
 			$http.get ('api/lista/lista/'+ Ctrl.Lista.id, {}).then((r)=>{
-				console.log(r);
 				Ctrl.Lista = r.data;
 				Ctrl.Autoincremental = Ctrl.Lista.autoincremental ===1 ; 
 				Ctrl.addListadetalle();
@@ -62,7 +59,6 @@ angular.module('ListaEditDialogCtrl', [])
 		Ctrl.guardarLista = () => {
 			$http.post('api/lista/actualizar', {Lista: Ctrl.Lista}).then((r)=>{
 				Ctrl.Lista = r.data;
-				console.log(Ctrl.Lista);
 			})
 		}
 

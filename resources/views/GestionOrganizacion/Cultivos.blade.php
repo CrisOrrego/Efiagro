@@ -1,372 +1,393 @@
 
-<div id="GestionCultivos" ng-controller="CultivosCtrl" flex layout=column>
-<div>
-    <div mapa id="map" style="width:800px; height: 400px;overflow: hidden;"></div>
-            <md-card class="divInfo">
-                <div><md-input-container >
-                    <md-select class="divZona_" ng-model="zona_select" ng-change="getCultivos()">
-                        <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
-                    </mat-select>
-                </md-input-container>
-                </div>
-                <div>
-				<div md-row ng-repeat="C in CultivosCRUD.rows" class="seccion_texto">
-					<ul ><label class="texto_title">Fechas</label> <span class="textoInfo">@{{ C.fechas }}</span></ul>
-					<ul ><label class="texto_title">Producción</label> <span class="textoInfo">@{{ C.produccion }}<span>kg</span></span></ul>
-					<ul ><label class="texto_title">Producción Estimada</label> <span class="textoInfo">@{{ C.produccion_estimada }}<span>kg</span></span></ul>
-					<ul ><label class="texto_title">Eventos</label> <span class="textoInfo">@{{ C.eventos }}</span></ul>
-					<ul ><label class="texto_title">Creditos Colocados</label> <span class="textoInfo">@{{ C.creditos_colocados }}</span></ul>
-					<ul ><label class="texto_title">Cartera Vencida</label> <span class="textoInfo">@{{ C.cartera_vencida }}</span></ul>
-					{{-- @{{Articulo.linea_productiva_id}} --}}
-				</div>
-                
-			</md-card>
-        </div>
-</div>
-        <div id="container">
-            <div id="sideMenu">
-                <div class="meNuIz">
-                    <ul class="menu">
-                        <li>Fincas Seleccionadas <span class="notification">4</span></li>
-                        <li>Lotes Seleccionados <span class="notification">9</span></li>
-                        <li>Kg en Producción <span class="notification">56.780</span></li>
-                        <li>Kg por Recolectar <span class="notification">2.356</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="content">
-                
-                <div class="mainChart">
-                    <div id="totalSales">
-                    <div class="col">
-                        <div ng-controller="CultivosCtrl">
-                            <angular-chart options="options" instance="instance"></angular-chart>
+
+<div id="GestionCultivos" ng-controller="CultivosCtrl" flex layout=column>   
+    
+            <div id="container">
+                <div id="sideMenu">
+                    <md-card class="divInfo">
+                        <div>
+                            <md-input-container>
+                                <md-select class="divZona" ng-model="zona_select" ng-change="getCultivos()">
+                                    <md-option  ng-repeat="za in zonas" ng-value="za.id">@{{za.descripcion}}</md-option>
+                                </md-select>
+                            </md-input-container>
                         </div>
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
-                    <div class="col">
-                        AQUI CHART
-                    </div>
+                        <md-container ng-repeat="C in CultivosCRUD.rows">
+                            <table md-table>
+                                <tr md-row>
+                                    <div class="container">
+                                            <div>
+                                                <th></th>
+                                                <label></label> <md-icon md-font-icon="fas fa-chart-bar"></md-icon><span class="texto_title ">@{{ C.zona.descripcion }}</span>
+                                            <div>
+                                            <div>
+                                                <th></th>
+                                                <label class="texto_title">Fechas:</label> <span class="textoInfo">@{{ C.fechas | date:'yyyy-MM-dd'}}</span>
+                                            </div>
+                                            <div>
+                                                <th></th>
+                                                <label class="texto_title">Producción:</label> <span class="textoInfo">@{{ C.produccion }}<span>kg</span></span>
+                                            </div>
+                                                <div>
+                                                <th></th>
+                                                <label class="texto_title">Producción Estimada:</label> <span class="textoInfo">@{{ C.produccion_estimada }}<span>kg</span></span>
+                                            </div>
+                                            <div>
+                                                <th></th>
+                                                <label class="texto_title">Eventos:</label> <span class="textoInfo">@{{ C.eventos }}</span>
+                                            </div>
+                                                <div>
+                                                <th></th>
+                                                <label class="texto_title">Creditos Colocados:</label> <span class="textoInfo">@{{ C.creditos_colocados }}</span>
+                                            </div>
+                                            <div>
+                                                <th></th>
+                                                <label class="texto_title">Cartera Vencida:</label> <span class="textoInfo">@{{ C.cartera_vencida }}</span>
+                                            </div>
+                                      
+                                    </div>
+                                </tr>  
+                            </table>
+                        </md-container>
+                </md-card>
+                </div>
+
+                <div id="content">
+                            <div mapa id="map" class="colDiv"></div>                      
+                        <div id="totalSales">                            
+                            <div class="col">
+                                <canvas id="myChartLine" width="320" height="320"></canvas>
+                            </div>
+                            <div class="col">
+                                <canvas id="myCharBarras" width="320" height="320"></canvas>
+                            </div>
+                            <div class="col">
+                                <canvas id="myCharCirculo" width="320" height="320"></canvas>
+                            </div>
+                            <div class="col">
+                                <canvas id="myCharPolar" width="320" height="320"></canvas>
+                            </div>
+                            <div class="col">
+                                <canvas id="myCharRadar" width="320" height="320"></canvas>
+                            </div>
+                            <div class="col">
+                               
+                            </div>
+                            
+                            <table>
+                            <tr>
+                                <th>OTROS RESUMEN</th>
+                                <th>CANTIDAD</th>
+                                <th>TOTAL</th>
+                            </tr>
                     
+                            <tr>
+                                <td>Racimos por Lotes</td>
+                                <td>20</td>
+                                <td>$500.000</td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Cantidad embolsados</td>
+                                <td>18</td>
+                                <td>$430.000</td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Cortes Semanal</td>
+                                <td>15</td>
+                                <td>$300.000</td>
+                            </tr>
+                    
+                            <tr>
+                                <td>Producción Ventas</td>
+                                <td>17</td>
+                                <td>$825.000</td>
+                            </tr>
+                            </table>
                     </div>
-            
-                    <table>
-                    <tr>
-                        <th>OTROS RESUMEN</th>
-                        <th>CANTIDAD</th>
-                        <th>Total</th>
-                    </tr>
-            
-                    <tr>
-                        <td>Racimos por Lotes</td>
-                        <td>20</td>
-                        <td>$1,342</td>
-                    </tr>
-            
-                    <tr>
-                        <td>Cantodad embolsados</td>
-                        <td>18</td>
-                        <td>$1,550</td>
-                    </tr>
-            
-                    <tr>
-                        <td>Cortes Semanal</td>
-                        <td>15</td>
-                        <td>$4,170</td>
-                    </tr>
-            
-                    <tr>
-                        <td>Producción Ventas</td>
-                        <td>25</td>
-                        <td>$2,974</td>
-                    </tr>
-                    </table>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    
+            {{-- CHATS --}}
+               
+<script>
+    var ctx = document.getElementById('myChartLine').getContext('2d');
+    var myChartLine = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Lote 1', 'Lote 2', 'Lote 3', 'Lote 4', 'Lote 5', 'Lote 6'],
+            datasets: [{
+                label: '# Cultivos',
+                data: [3, 2, 5, 3, 19, 12],
+                backgroundColor: [
+                    'rgba(97,11,235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(109,37,224, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                // borderWidth: 1
+            }]
+        },
+        // options: {
+        //     scales: {
+        //         y: {
+        //             beginAtZero: true
+        //         }
+        //     }
+        // }
+    });
+    // 
+    var ctx = document.getElementById('myCharBarras').getContext('2d');
+    var myCharBarras = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Zona 1', 'Zona 2', 'Zona 3', 'Zona 4', 'Zona 5', 'Zona 6'],
+            datasets: [{
+                label: '# Producción',
+                data: [12, 19, 3, 5, 10, 3],
+                backgroundColor: [
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                    'rgba(97,11,235,0.5)',
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    // 
+    var ctx = document.getElementById('myCharCirculo').getContext('2d');
+    var myCharCirculo = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Plátano','Café','Mora'],
+  datasets: [{
+    label: 'Mi Finca',
+    data: [300, 50, 100],
+    backgroundColor: [
+        'rgba(97,11,235, 0.5)',
+        'rgb(255, 99, 132, 0.5)',
+        'rgb(54, 162, 235, 0.5)',
+    ],
+    hoverOffset: 4
+  }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // 
+    var ctx = document.getElementById('myCharPolar').getContext('2d');
+    var myCharCirculo = new Chart(ctx, {
+        type: 'polarArea',
+        data: {
+        labels: ['Usuario 1','Usuario 2','Usuario 3','Usuario 4','Usuario 5'],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [11, 16, 7, 3, 14],
+            backgroundColor: [
+            'rgb(255, 99, 132, 0.5)',
+            'rgb(75, 192, 192, 0.5)',
+            'rgb(255, 205, 86, 0.5)',
+            'rgb(201, 203, 207, 0.5)',
+            'rgb(54, 162, 235, 0.5)'
+            ]
+        }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // 
+    var ctx = document.getElementById('myCharRadar').getContext('2d');
+    var myCharRadar = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['Usuarios','Fincas','Casos','Notificaciones','Eventos','Lotes','Zonas'],
+        datasets: [{
+            label: 'Organización 1',
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: 'rgba(97,11,235,0.5)',
+            borderColor: 'rgb(255, 99, 132)',
+            pointBackgroundColor: 'rgb(255, 99, 132)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(255, 99, 132)'
+        }, {
+            label: 'Organización 2',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgb(54, 162, 235)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+          
+</script>
+            {{-- FIN  --}}
 </div>
-
-<style type="text/css">
-@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
-
-    html {
-    height: 100%;
-    font-family: 'Lato', sans-serif;
-    }
-    body {
-    height: 100%;
-    margin: 0;
-    /* background: linear-gradient(135deg, rgba(65,131,155,1) 0%,rgba(51,98,123,1) 100%); */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    }
-    * {
-    box-sizing: border-box;
-    }
-    #container {
-    display: table;
-    width: 100%;
-    background: #2c2d2e;
-    margin: 60px auto;
-    border-radius: 4px;
-    }
-    /* Side Bar */
-    .meNuIz{
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        width: 230px;
-        padding: 20px;
-        background: #3c3d3d;
-    }
-    #sideMenu {
-    width: 230px;
-    height: 100%;
-    padding: 20px;
-    border-right: 0.5px solid #111;
-    display: table-cell;
-    vertical-align: top;
-    color: #fff;
-    }
-    .menu {
-    list-style: none;
-    margin:  14px 0;
-    padding: 0;
-    }
-    .menu li {
-    display: block;
-    height: 30px;
-    width: 100%;
-    line-height: 30px;
-    /* font-size: 14px; */
-    /* font-weight: 200; */
-    color: rgba(255, 255, 255, .6);
-    position: relative;
-    }
-    .menu li:hover {
-    color: #239ae3;
-    }
     
-    /* Content */
-    #content {
-    width: calc(100% - 240px);
-    height: 100%;
-    padding: 25px;
-    display: table-cell;
-    }
-    .controls {
-    display: block;
-    width: 70px;
-    height: 20px;
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 10px;
-    font-weight: 300;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 20px;
-    float: right;
-    border-radius: 20px;
-    }
-    .activeControl {
-    background: rgba(255, 255, 255, 0.9);
-    color: #202b33;
-    font-weight: 600;
-    }
-    #salesData {
-    margin-bottom: 60px;
-    }
-    #totalSales {
-    height: 120px;
-    position: relative;
-    margin-top: 24px;
-    margin-bottom: 50px;
-    }
-    #totalSales .col {
-    float: left;
-    width: 32%;
-    height: 150px;
-    }
-    .col{
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+<style type="text/css">
+        body {
+        height: 100%;
+        margin: 0;
+        /* background: linear-gradient(135deg, rgba(65,131,155,1) 0%,rgba(51,98,123,1) 100%); */
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        }
+        * {
+        box-sizing: border-box;
+        }
+        #container {
+        display: table;
+        width: 100%;
+        background: #1e1c2c;
+        }
+        #sideMenu {
+        width: 100px;
+        height: 100%;
         padding: 10px;
-        margin: 0.5%;
-        background: #3c3d3d;
-        /* height: 49%; */
+        border-right: 0.5px solid #111;
+        display: table-cell;
+        vertical-align: top;
+        color: #fff;
+        }
+        #content {
+        width: calc(100% - 240px);
+        height: 900px;
+        display: table-cell;
+        }
+        #totalSales {
+        position: relative;
+        margin-top: 24px;
+        margin-bottom: 50px;
+        }
+        .imgChart{
+            height: 120px;
+            width: 300px;
+            position: relative;
+            margin: 10px;
+            float: left;
 
-    }
-    /* #totalSales .col .progressTitle {
-    float: left;
-    margin-left: 20px;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.4);
-    } */
-    .progressBar {
-    float: left;
-    height: 120px;
-    width: 120px;
-    font-size: 40px;
-    text-align: center;
-    line-height: 120px;
-    }
+        }
+        .colDiv{
+            height: 400px;
+            width: 97%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            margin: 1.5%;
+        }
+        #totalSales .col {
+        float: left;
+        }
+        .col{
+            height: 330px;
+            width: 330px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            padding: 10px;
+            margin:1.5%;
+            background:#2e2941;     
+        }
+  
+        /* Table */
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+        th {
+        text-align: left;
+        color: #fff;
+        font-weight: 400;
+        font-size: 13px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0 10px;
+        padding-bottom: 14px;
+        }
+        tr:not(:first-child):hover {
+        background: rgba(255, 255, 255, 0.1);
+        }
+        td {
+        height: 40px;
+        line-height: 40px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.4);
+        padding: 0 10px;
+        }
+        /* Headers */
+        h1 {
+        font-size: 13px;
+        font-weight: 200;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 0;
+        }
+        .divInfo {
+            width: 300px;  
+            padding: 10px;
+        }
+        .texto_title {
+            font-weight: bold;
+        }  
+        .divZona{
+            font-weight: bold;
+        }  
+        .textoInfo {
+            /* color: rgb(0, 0, 0); */
+            color: rgb(58, 57, 57);
+       }
+ 
 
-    /* Icons */
-    .notification {
-    /* display: block; */
-    /* width: 30px;
-    height: 30px; */
-    color: #ffffff;
-    font-weight: 600;
-    /* line-height: 20px; */
-    text-align: center;
-    /* border-radius: 50%; */
-    /* background: rgba(255, 255, 255, .6); */
-    position: absolute;
-    top: 0; bottom: 0; right: 2%;
-    margin: auto;
-    }
-    .colorIcon {
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    position: absolute;
-    top: 0; bottom: 0; right: 2%;
-    margin: auto;
-    }
-    .plus {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    color: #202b33;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 8px;
-    padding: 4px;
-    margin-right: 6px;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 50%;
-    color: rgba(255, 255, 255, .2);
-    }
-    .red {
-    background: #ec1561;
-    }
-    .orange {
-    background: #ff9939;
-    }
-    .green {
-    background: #2bab51;
-    }
+    </style>
 
-    /* Table */
-    table {
-    width: 100%;
-    border-collapse: collapse;
-    }
-    th {
-    text-align: left;
-    color: #fff;
-    font-weight: 400;
-    font-size: 13px;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0 10px;
-    padding-bottom: 14px;
-    }
-    tr:not(:first-child):hover {
-    background: rgba(255, 255, 255, 0.1);
-    }
-    td {
-    height: 40px;
-    line-height: 40px;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.4);
-    padding: 0 10px;
-    }
-    /* Headers */
-    h1 {
-    font-size: 13px;
-    font-weight: 200;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin: 0;
-    }
-    h2 {
-    float: left;
-    font-size: 19px;
-    font-weight: 200;
-    letter-spacing: 1px;
-    margin: 0;
-    color: rgba(255, 255, 255, .8);
-    }
-    h3 {
-    float: left;
-    color: #fff;
-    font-size: 32px;
-    font-weight: 300;
-    margin: 0;
-    margin-top: 8%;
-    margin-left: 20px;
-    margin-bottom: 6px;
-    }
-    .clearFix {
-    clear: both;
-    }
-    /*  */
-    .divFinca {
-        margin: 10px;
-        padding: 10px;
-        background: rgb(250, 250, 250);
-        background: linear-gradient(0deg, rgba(250, 250, 250, 1) 0%, rgba(255, 255, 255, 0.4066001400560224) 20%, rgba(255, 255, 255, 1) 100%);
-    }
-
-    .divInfo {
-        width: 200px;  
-    }
-
-    .divMap {
-        padding: 30px;
-
-    }
-
-    .seccion_texto {
-        white-space: normal;
-        word-wrap: break-word;
-    }
-    .texto_title {
-        font-weight: bold;
-    }  
-
-    .divZona{
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        width: 200%;
-        font-weight: bold;
-        border-radius: 10px;
-
-    }
-
-    .textoInfo {
-        /* color: rgb(0, 0, 0); */
-        color: rgb(58, 57, 57);
-   }
-   .img-lote {
-        width: 50px;
-        height: 50px;
-        /* border-radius: 500px; */
-    }
-
-</style>
-
-{{--  --}}
-
+    
+    

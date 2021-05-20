@@ -1,8 +1,6 @@
 angular.module('Zonas_ZonaEditorCtrl', [])
 .controller('Zonas_ZonaEditorCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'Zona',
 	function($scope, $rootScope, $http, $injector, $mdDialog, Zona) {
-
-		console.info('Zonas_ZonaEditorCtrl');
 		var Ctrl = $scope;
 		var Rs = $rootScope;
 

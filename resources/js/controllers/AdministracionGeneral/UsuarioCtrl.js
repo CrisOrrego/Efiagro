@@ -1,7 +1,7 @@
 angular.module('UsuariosCtrl', [])
     .controller('UsuariosCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog',
         function($scope, $rootScope, $http, $injector, $mdDialog) {
-            //console.info('UsuariosCtrl');
+         
             var Ctrl = $scope;
             var Rs = $rootScope; 
 
@@ -77,7 +77,6 @@ angular.module('UsuariosCtrl', [])
                     if (!u) return;
 
                     var nuevaclave = u.Fields[0].Value;
-                    // console.log(U.id);
                     if ( nuevaclave.trim() != '' ) {
                         var ClaveCambiada = {
                             usuario_id: U.id,

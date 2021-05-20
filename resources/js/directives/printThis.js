@@ -4,8 +4,6 @@ angular.module('printThis', []).directive('printThis',
     return function (scope, element, attrs) {
       element.bind('click', function (event) {
           event.preventDefault();
-          //console.log(_config);
-
           //return false;
 
           $(attrs.printThis).printThis({

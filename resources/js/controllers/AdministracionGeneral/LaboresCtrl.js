@@ -5,7 +5,7 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
     "$injector",
     "$mdDialog",
     function($scope, $rootScope, $http, $injector, $mdDialog) {
-        console.info("LaboresCtrl");
+
         var Ctrl = $scope;
         var Rs = $rootScope;
         
@@ -27,14 +27,13 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
 
 
         Ctrl.getLabores = () => {
-            console.log(Ctrl.zona_select);
-            console.log(Ctrl.linea_lp_select);
             Ctrl.LaboresCRUD.setScope('lazona', Ctrl.zona_select);
             Ctrl.LaboresCRUD.setScope('lalineaproductiva', Ctrl.linea_lp_select);
             
             Ctrl.LaboresCRUD.get().then(() => {
                                
             });
+            // console.log(Ctrl.linea_lp_select.nombre);
         };
 
 Ctrl.nuevaLabor = () => {
@@ -70,7 +69,7 @@ Ctrl.nuevaLabor = () => {
                 Required: true
             },
             {
-                Nombre: "Semana iInicio",
+                Nombre: "Semana Inicio",
                 Value: "",
                 Type: "string",
                 Required: true
@@ -101,7 +100,6 @@ Ctrl.nuevaLabor = () => {
 };
         
         Ctrl.editarLabor = (L) => {
-            console.log(L);
 			$mdDialog.show( { 
 				templateUrl: 'Frag/AdministracionGeneral.Labores_LaborEditorDiag',
 				controller: 'Labores_LaborEditorCtrl',

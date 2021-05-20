@@ -28,6 +28,12 @@ class FincaController extends Controller
         return $Fincas;
     }
 
+    public function postObtener()
+	{
+		$Finca = Finca::All();
+		return $Finca;
+	} 
+
     public function postActualizar(Request $req)
 	{
 		$campos = $req->Datos;

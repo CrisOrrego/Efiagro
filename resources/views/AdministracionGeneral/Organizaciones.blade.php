@@ -42,7 +42,6 @@
 			</thead>
 			<tbody md-body>
 				<tr md-row ng-repeat="O in OrganizacionesCRUD.rows | filter:filterOrganizaciones">
-				
 				<td md-cell>@{{ O.id }}</td>
 				<td md-cell>@{{ O.nombre }}</td>
 				<td md-cell>@{{ O.nit }}</td>

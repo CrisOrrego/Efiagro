@@ -121,7 +121,7 @@
 	</mat-select>
 	</mat-form-field>
 	<!--FIN DEV ANGÉLICA-->
-
+	
 	<div layout class="border-top">
 		<span flex></span>
 		<md-button class="md-raised md-primary" ng-click="guardarArticulo()">
