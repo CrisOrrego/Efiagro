@@ -20,10 +20,9 @@ angular.module('HomeCtrl', [])
             // Cargar el listado de secciones
             Ctrl.obtenerSecciones = () => {
                 Ctrl.logoInicio = true;
-                $http.post('api/main/obtener-secciones', {})
-                    .then(r => {
-                        Rs.Secciones = r.data;
-                    });
+                $http.post('api/main/obtener-secciones', {}).then(r => {
+                    Rs.Secciones = r.data;
+                });
             };
             Ctrl.obtenerSecciones();
 
@@ -49,7 +48,7 @@ angular.module('HomeCtrl', [])
                     campo: campo, 
                     valor: valor
                 }).then( () => {
-                    $state.reload();
+                    //$state.reload();
                 });
             }
             
