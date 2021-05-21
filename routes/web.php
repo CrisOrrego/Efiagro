@@ -48,6 +48,9 @@ AdvancedRoute::controller('/api/fincas',            'FincaController');
 AdvancedRoute::controller('/api/cultivos',            'CultivoController');
 AdvancedRoute::controller('/api/lotes',             'LoteController');
 AdvancedRoute::controller('/api/eventos',             'EventoController');
+AdvancedRoute::controller('/api/fincaeventos',             'FincaEventoController');
+
+
 // AdvancedRoute::controller('/api/laboreslotes',      'LoteLaborController');
 AdvancedRoute::controller('/api/zonas',             'ZonasController');
 AdvancedRoute::controller('/api/labores',           'LaboresController');

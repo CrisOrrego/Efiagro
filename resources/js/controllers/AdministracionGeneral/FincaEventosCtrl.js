@@ -1,4 +1,4 @@
-angular.module("EventosCtrl", []).controller("EventosCtrl", [
+angular.module("FincaEventosCtrl", []).controller("FincaEventosCtrl", [
     "$scope",
     "$rootScope",
     "$http",
@@ -13,54 +13,55 @@ angular.module("EventosCtrl", []).controller("EventosCtrl", [
 
         Ctrl.value = 0;
 
-           Ctrl.EventosCRUD = $injector.get("CRUD").config({
-            base_url: "/api/eventos/eventos",
+        // FINCA EVENTOS
+        Ctrl.FincaEventosCRUD = $injector.get("CRUD").config({
+            base_url: "/api/fincaeventos/fincaeventos",
             limit: 1000,
             add_append: "refresh",
             order_by: ["-created_at"],
-            // query_with:['']
+            query_with:['finca', 'evento']
         });
 
-        Ctrl.getEventos = () => {
-            Ctrl.EventosCRUD.get().then(() => {
-                Ctrl.Evento = Ctrl.EventosCRUD.rows[0];
+        Ctrl.getFincaEventos = () => {
+            Ctrl.FincaEventosCRUD.get().then(() => {
+                Ctrl.FincaEventos = Ctrl.FincaEventosCRUD.rows[0];
                 //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
             });
         };
 
-        Ctrl.getEventos();
+        Ctrl.getFincaEventos();
 
-        Ctrl.nuevoEvento = () => {
-            Ctrl.EventosCRUD.dialog({
+        Ctrl.nuevoFincaEvento = () => {
+            Ctrl.FincaEventosCRUD.dialog({
                 Flex: 10,
                 Title: "Crear Evento",
 
                 Confirm: { Text: "Crear Evento" }
             }).then(r => {
                 if (!r) return;
-                Ctrl.EventosCRUD.add(r);
-                Rs.showToast('Evento Creado');
+                Ctrl.FincaEventosCRUD.add(r);
+                Rs.showToast('Evento Reportado');
             });
         };
-        Ctrl.editarEvento = E => {
-            Ctrl.EventosCRUD.dialog(E, {
-                title: "Editar Evento" + E.id
+        Ctrl.editarFincaEvento = FE => {
+            Ctrl.FincaEventosCRUD.dialog(FE, {
+                title: "Editar Evento Reportado" + FE.id
             }).then(r => {
-                if (r == "DELETE") return Ctrl.EventosCRUD.delete(E);
-                Ctrl.EventosCRUD.update(r).then(() => {
-                    Rs.showToast("Evento actualizado");
+                if (r == "DELETE") return Ctrl.FincaEventosCRUD.delete(FE);
+                Ctrl.FincaEventosCRUD.update(r).then(() => {
+                    Rs.showToast("Evento Atualizado");
                 });
             });
         };
-        Ctrl.eliminarEvento = E => {
+        Ctrl.eliminarFincaEvento = FE => {
             Rs.confirmDelete({
-                Title: "¿Eliminar Lote #" + E.id + "?"
+                Title: "¿Eliminar Evento Reportado #" + FE.id + "?"
             }).then(d => {
                 if (!d) return;
-                Ctrl.EventosCRUD.delete(E);
+                Ctrl.FincaEventosCRUD.delete(FE);
             });
         };
-        Ctrl.cargarImagen = async(E) => {
+        Ctrl.cargarImagen = async(FE) => {
             var Imagen = await $mdDialog.show({
                 templateUrl: 'templates/dialogs/image-editor.html',
                 controller: 'ImageEditor_DialogCtrl',
@@ -77,12 +78,13 @@ angular.module("EventosCtrl", []).controller("EventosCtrl", [
                         KeepAspect: true,
                         Preview: false,
                         Daten: {
-                            Path: 'files/eventos_media/' + E.id + '.jpg'
+                            Path: 'files/eventos_media/' + FE.id + '.jpg'
                         }
                     }
                 }
             });
         };
+
 
     }
 ]);
