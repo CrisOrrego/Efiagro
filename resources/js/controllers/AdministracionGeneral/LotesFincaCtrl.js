@@ -8,6 +8,19 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
 
         var Ctrl = $scope;
         var Rs = $rootScope;
+        Ctrl.indice = 0;
+        
+        Ctrl.semanas = [
+            {
+                id:1, semana:'semana 01', fechaInicial:'2021-01-07', fechaFinal:'2021 2021-12-15'
+            },
+            {
+                id:2, semana:'semana 02', fechaInicial:'2021-01-08', fechaFinal:'2021 2021-12-15'
+            },
+            {
+                id:3, semana:'semana 03', fechaInicial:'2021-01-15', fechaFinal:'2021 2021-12-15'
+            }
+        ];
        
         Ctrl.Salir = $mdDialog.cancel;
 
@@ -29,6 +42,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
 
         Ctrl.getLotes();
 
+        //INICIO DEV ANGÉLICA
         Ctrl.clickOnCard = (lote) => {
             //Las siguientes lineas cierran todos los paneles y deja abierto solo el panel seleccionado
             if(lote.checked){
@@ -47,6 +61,23 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                 lote.checked = !lote.checked;
             }*/
         }
+        //FIN DEV ANGELICA
+
+        //INICIO DEV ANGÉLICA
+        //O = Orientación de las flechas - si la orientacion es derecha el indice debe incrementarse en 1, si es izq 
+        //D = Derecha
+        Ctrl.clickOnRow = (O) => {
+            if(O === 'D') {
+                if(Ctrl.indice < Ctrl.semanas.length-1){
+                    Ctrl.indice ++;
+                }
+            }else{
+                if(Ctrl.indice > 0){
+                    Ctrl.indice --;
+                }
+            }
+        }
+        //FIN DEV ANGELICA
           
     }
 ]);
