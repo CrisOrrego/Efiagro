@@ -25,6 +25,21 @@
                         <div flex >
                             <h6>Labores</h6>
                         </div>
+
+                         <div layout="row" layout-align="space-around center">
+                            <div>
+                                <i ng-show="indice > 0" ng-click = "clickOnRow('I')" class="fas fa-chevron-left"></i>                         
+                            </div>
+                            <div>
+                                @{{semanas[indice].semana}}
+                                <br/>
+                                @{{semanas[indice].fechaInicial}} a
+                                @{{semanas[indice].fechaFinal}}
+                            </div>
+                            <div>
+                                <i ng-show="indice < semanas.length -1" ng-click = "clickOnRow('D')" class="fas fa-chevron-right"></i>                                                 
+                            </div>
+                        </div>
                         <div layout layout-align="center center"> 
                             <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="">
                                 <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon> Agregar Labor
