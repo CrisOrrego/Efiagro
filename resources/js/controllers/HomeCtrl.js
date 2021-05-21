@@ -49,7 +49,7 @@ angular.module('HomeCtrl', [])
                     campo: campo, 
                     valor: valor
                 }).then( () => {
-                    $state.reload();
+                    //$state.reload();
                 });
             }
             
@@ -83,8 +83,8 @@ angular.module('HomeCtrl', [])
                     
             }
 
-            Rs.$on("$stateChangeSuccess", Rs.cambioEstado);
+            //Rs.$on("$stateChangeSuccess", Rs.cambioEstado);
 
-            Rs.cambioEstado();
+            //Rs.cambioEstado();
         }
     ]);

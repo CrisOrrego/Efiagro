@@ -8,7 +8,7 @@
 	</div>
     <md-content>
         <md-tabs class="" >
-            <md-tab ng-repeat="F in Fincas" label="@{{ F.nombre }}">
+            <md-tab ng-repeat="F in Fincas" label="@{{ F.nombre }}" ng-click="cargarLotes(F.id)">
                 <md-content class="md-padding">
                     <div>
                         <md-input-container>
@@ -204,5 +204,79 @@
             </md-tab>
         </md-tabs>
         
+    </md-content>
+
+    <div class="text-clear padding" flex>Lotes de la finca</div>
+    <md-content>
+        <md-tabs class="">
+            <md-tab ng-repeat="L in Lotes" label="Lote @{{ $index + 1 }}">
+                <md-content class="md-padding">
+                    <div>
+                        <md-input-container>
+                            <label>Linea Productiva</label>
+                            <md-select ng-model="L.linea_productiva_id" class="no-margin" style="min-width: 150px;"
+                            aria-label="linea_productiva_id">
+                            <md-option ng-value="LP.id" ng-repeat="LP in Lineasproductivas">@{{ LP.nombre }}</md-option>
+                        </md-select>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Labores</label>
+                            <md-select ng-model="L.labores_id" class="no-margin" 
+                                aria-label="Labores" >
+                                <md-option ng-value="La.id" ng-repeat="La in Labores">@{{ La.labor }}</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Hectareas</label>
+                            <input ng-model="L.hectareas" type="text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Sitios</label>
+                            <input ng-model="L.sitios" type="text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Coordenadas</label>
+                            <input ng-model="L.coordenadas" type="text" />
+                        </md-input-container>
+                        <md-button class="md-raised md-primary" ng-click="guardarLote(L, L.finca_id)">
+                            <md-icon md-font-icon="fa-save"></md-icon>Guardar Lote @{{ $index + 1 }}
+                        </md-button>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="+" >
+                <div>
+                    <md-input-container>
+                        <label>Linea Productiva</label>
+                        <md-select ng-model="L.linea_productiva_id" class="no-margin" style="min-width: 150px;"
+                            aria-label="linea_productiva_id">
+                            <md-option ng-value="LP.id" ng-repeat="LP in Lineasproductivas">@{{ LP.nombre }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Labores</label>
+                        <md-select ng-model="L.labores_id" class="no-margin" 
+                            aria-label="labores" >
+                            <md-option ng-value="La.id" ng-repeat="La in Labores">@{{ La.labor }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Hectareas</label>
+                        <input ng-model="L.hectareas" type="text" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Sitios</label>
+                        <input ng-model="L.sitios" type="text" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Coordenadas</label>
+                        <input ng-model="L.coordenadas" type="text" />
+                    </md-input-container>
+                    <md-button class="md-raised md-primary" ng-click="nuevoLote(L, L.finca_id)">
+                        <md-icon md-font-icon="fa-save"></md-icon>Crear Lote
+                    </md-button>
+                </div>
+            </md-tab>
+        </md-tabs>
     </md-content>
 </md-dialog>

@@ -9,13 +9,15 @@
 		</md-button>
 		<div class="w30"></div>
 		<md-select ng-show="listaOrganizacion" ng-model="Usuario.organizacion_id" class="no-margin" 
-			aria-label="Organizacion" ng-mouseup="actualizarUsuario('organizacion_id', Usuario.organizacion_id)">
+			aria-label="Organizacion" >
 			<md-option ng-value="" >Sin Organización</md-option>
-			<md-option ng-value="O.id" ng-repeat="O in Usuario.organizaciones">@{{ O.nombre }}</md-option>
+			<md-option ng-value="O.id" ng-mouseup="actualizarUsuario('organizacion_id', Usuario.organizacion_id)"
+				ng-repeat="O in Usuario.organizaciones">@{{ O.nombre }}</md-option>
 		</md-select>
 		<md-select ng-show="listaFinca" ng-model="Usuario.finca_id" class="no-margin" 
-			aria-label="Finca" ng-mouseup="actualizarUsuario('finca_id', Usuario.finca_id)">
-			<md-option ng-value="F.id" ng-repeat="F in Usuario.fincas">@{{ F.nombre }}</md-option>
+			aria-label="Finca" >
+			<md-option ng-value="F.id" ng-mouseup="actualizarUsuario('finca_id', Usuario.finca_id)"
+				ng-repeat="F in Usuario.fincas">@{{ F.nombre }}</md-option>
 		</md-select>
 
 		<span flex></span>
