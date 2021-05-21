@@ -62,11 +62,11 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 		}
 
 		//Testing
-		Rs.http('api/usuario/buscar-usuario', { 'query': '1093' }).then(r => {
+		/*Rs.http('api/usuario/buscar-usuario', { 'query': '1093' }).then(r => {
 			Ctrl.Asociado =  r[0];
 			Ctrl.LoadCreditos();
 			//Ctrl.nuevoCredito();
-		});
+		});*/
 
 	}
 ]);
