@@ -47,7 +47,7 @@ angular.module('HomeCtrl', [])
                     campo: campo, 
                     valor: valor
                 }).then( () => {
-                    $state.reload();
+                    // $state.reload();
                 });
             }
             

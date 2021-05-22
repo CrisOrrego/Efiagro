@@ -1,4 +1,4 @@
-<div id="FincaEvento" class="divFinca" ng-controller="EventosCtrl" flex layout="column" class="mxw1000">
+<div id="FincaEventos" class="divFinca" ng-controller="FincaEventosCtrl" flex layout="column" class="mxw1000">
 
     <div ng-repeat="FE in FincaEventosCRUD.rows">
 
@@ -8,8 +8,10 @@
                     <img ng-src="files/eventos_media/@{{ FE.id }}.jpg" alt="" width="60" height="60">
                     <div class="seccion_texto">
                         
-                        <ul ><span class="textoInfo">@{{ FE.evento }}</span><label class="texto_title"> Hectareas</label>  / <span class="textoInfo">@{{ Lote.sitios }}</span> <label class="texto_title"> Sitios</label></ul> 
-                        <ul ><span class="textoInfo">@{{ FE.nombre }}</span><label class="texto_title"> Hectareas</label>  / <span class="textoInfo">@{{ Lote.sitios }}</span> <label class="texto_title"> Sitios</label></ul> 
+                        <ul ><span class="textoInfo">@{{ FE.fecha }}</span><label class="texto_title"> @{{ FE.evento }}</label></ul> 
+                        <ul ><span class="textoInfo"></span><label class="texto_title"> @{{ FE.finca_id }}</label></ul> 
+                        <ul ><span class="textoInfo"></span><label class="texto_title"> @{{ FE.gravedad }}</label></ul> 
+                        <ul ><span class="textoInfo"></span><label class="texto_title"> @{{ FE.observacion }}</label></ul> 
                                   
                     </div>
                 </div>
