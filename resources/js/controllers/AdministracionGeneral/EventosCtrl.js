@@ -84,6 +84,24 @@ angular.module("EventosCtrl", []).controller("EventosCtrl", [
             });
         };
 
+        // 
+        Ctrl.FincaEventosCRUD = $injector.get("CRUD").config({
+            base_url: "/api/eventos/eventos",
+            limit: 1000,
+            add_append: "refresh",
+            order_by: ["-created_at"],
+            // query_with:['finca', 'evento']
+        });
+
+        Ctrl.getFincaEventos = () => {
+            Ctrl.FincaEventosCRUD.get().then(() => {
+                Ctrl.FincaEvento = Ctrl.FincaEventosCRUD.rows[0];
+                //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
+            });
+        };
+
+        Ctrl.getFincaEventos();
+
 
     }
 ]);
