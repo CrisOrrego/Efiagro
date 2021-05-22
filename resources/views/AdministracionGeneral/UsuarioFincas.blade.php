@@ -238,6 +238,22 @@
                             <label>Coordenadas</label>
                             <input ng-model="L.coordenadas" type="text" />
                         </md-input-container>
+                        <md-input-container>
+                            <label>Fec. Establecimiento</label>
+                            <input ng-model="L.fecha_establecimiento" type="date" value="@{{ L.fecha_establecimiento }}"/>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>KG P_promedio</label>
+                            <input ng-model="L.kg_promedio" type="text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label>UND. Promedio</label>
+                            <input ng-model="L.un_promedio" type="text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Frec. Corte</label>
+                            <input ng-model="L.frec_corte" type="text" />
+                        </md-input-container>
                         <md-button class="md-raised md-primary" ng-click="guardarLote(L, L.finca_id)">
                             <md-icon md-font-icon="fa-save"></md-icon>Guardar Lote @{{ $index + 1 }}
                         </md-button>
@@ -271,6 +287,22 @@
                     <md-input-container>
                         <label>Coordenadas</label>
                         <input ng-model="L.coordenadas" type="text" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Fec. Establecimiento</label>
+                        <input ng-model="L.fecha_establecimiento" type="date" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>KG P_promedio</label>
+                        <input ng-model="L.kg_promedio" type="text" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>UND. Promedio</label>
+                        <input ng-model="L.un_promedio" type="text" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Frec. Corte</label>
+                        <input ng-model="L.frec_corte" type="text" />
                     </md-input-container>
                     <md-button class="md-raised md-primary" ng-click="nuevoLote(L, L.finca_id)">
                         <md-icon md-font-icon="fa-save"></md-icon>Crear Lote

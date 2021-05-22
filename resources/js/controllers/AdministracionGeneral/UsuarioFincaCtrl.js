@@ -89,6 +89,7 @@ angular.module('UsuarioFincaCtrl', [])
                 $http.post('api/lotes/actualizar', {
                     Datos: L
                 });
+                Ctrl.Cancel();
             }
 
             // Agregar registro de lote
