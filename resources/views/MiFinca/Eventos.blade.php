@@ -5,11 +5,12 @@
         <md-card >
             <div layout="row" ng-click = "clickOnCard(FE)" layout-align="space-between center" style="cursor:pointer;">
                 <div layout class="w100p mxw600 bg-white padding-5-20 border-rounded">
-                    {{-- <img ng-src="files/lineasproductivas_media/@{{ Lote.linea_productiva_id }}.jpg" alt="" width="60" height="60"> --}}
+                    <img ng-src="files/eventos_media/@{{ FE.id }}.jpg" alt="" width="60" height="60">
                     <div class="seccion_texto">
                         
                         <ul ><span class="textoInfo">@{{ FE.evento }}</span><label class="texto_title"> Hectareas</label>  / <span class="textoInfo">@{{ Lote.sitios }}</span> <label class="texto_title"> Sitios</label></ul> 
-                                     
+                        <ul ><span class="textoInfo">@{{ FE.nombre }}</span><label class="texto_title"> Hectareas</label>  / <span class="textoInfo">@{{ Lote.sitios }}</span> <label class="texto_title"> Sitios</label></ul> 
+                                  
                     </div>
                 </div>
               

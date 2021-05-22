@@ -84,12 +84,13 @@ angular.module("EventosCtrl", []).controller("EventosCtrl", [
             });
         };
 
+        // 
         Ctrl.FincaEventosCRUD = $injector.get("CRUD").config({
             base_url: "/api/eventos/eventos",
             limit: 1000,
             add_append: "refresh",
             order_by: ["-created_at"],
-            // query_with:['']
+            // query_with:['finca', 'evento']
         });
 
         Ctrl.getFincaEventos = () => {
