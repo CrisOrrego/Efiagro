@@ -44,11 +44,10 @@ angular.module('HomeCtrl', [])
             Rs.actualizarUsuario = ( campo, valor ) => {
                 $http.post('api/usuario/actualizarcampo', {
                     usuario: Rs.Usuario['id'],
-                    // usuario: 1,
                     campo: campo, 
                     valor: valor
                 }).then( () => {
-                    //$state.reload();
+                    $state.reload();
                 });
             }
             
