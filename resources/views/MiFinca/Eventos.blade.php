@@ -1,19 +1,22 @@
-<div id="FincaEventos" class="divFinca" ng-controller="FincaEventosCtrl" flex layout="column" class="mxw1000">
+<div id="FincaEventos" ng-controller="FincaEventosCtrl" flex layout="column" class="mxw1000">
 
     <div ng-repeat="FE in FincaEventosCRUD.rows">
 
         <md-card >
-            <div layout="row" ng-click = "clickOnCard(FE)" layout-align="space-between center" style="cursor:pointer;">
+            <div layout="row"  layout-align="space-between center" >
                 <div layout class="w100p mxw600 bg-white padding-5-20 border-rounded">
-                    <img ng-src="files/eventos_media/@{{ FE.id }}.jpg" alt="" width="60" height="60">
+                    <img ng-src="files/eventos_media/@{{ FE.evento_id }}.jpg" alt="" width="60" height="60">
                     <div class="seccion_texto">
                         
-                        <ul ><span class="textoInfo">@{{ FE.fecha }}</span><label class="texto_title"> @{{ FE.evento }}</label></ul> 
-                        <ul ><span class="textoInfo"></span><label class="texto_title"> @{{ FE.finca_id }}</label></ul> 
-                        <ul ><span class="textoInfo"></span><label class="texto_title"> @{{ FE.gravedad }}</label></ul> 
-                        <ul ><span class="textoInfo"></span><label class="texto_title"> @{{ FE.observacion }}</label></ul> 
+                        <ul ><span class="textoInfo">@{{ FE.fecha | date:'yyyy-MM-dd'}}/</span><label class="texto_title"> @{{ FE.evento.evento }}</label></ul> 
+                        <ul ><span class="textoInfo">Finca/</span><label class="texto_title"> @{{ FE.finca.nombre }}</label></ul> 
+                        <ul ><span class="textoInfo"></span><label class="textoInfo"> @{{ FE.observacion }}</label></ul> 
                                   
                     </div>
+                <div>
+                    <ul ><span class="textoInfo">Gravedad</span><label class="texto_title"> @{{ FE.gravedad }}</label></ul>
+
+                </div>
                 </div>
               
             </div>
@@ -27,23 +30,21 @@
                             </md-button>                
                         </div>
                     </div>
-                </md-card>
-                
-                
+                </md-card>  
             </div>
         </md-card>
+        
+    </div>
+    <div class="mxw900">
+        <md-button class="md-raised md-primary" aria-label="Nueva" ng-click="nuevoEvento()">
+            <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Evento
+        </md-button>
     </div>
 
 </div>
 
 <style type="text/css">
-    .divFinca {
-        margin: 10px;
-        padding: 10px;
-        background: rgb(250, 250, 250);
-        background: linear-gradient(0deg, rgba(250, 250, 250, 1) 0%, rgba(255, 255, 255, 0.4066001400560224) 20%, rgba(255, 255, 255, 1) 100%);
-    }
-
+   
     .divInfo {
         padding: 30px;
     }

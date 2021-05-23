@@ -14,6 +14,10 @@ class FincaEvento extends Model
     
     public function columns()
     {
+        $gravedad = [
+            'Alta' => 'Alta', 'Media' => 'Media', 'Baja' => 'Baja'
+        ];
+        
     
         $fincas = \App\Models\Finca::all()->keyBy('id')->map( function($f){
             return $f['nombre'];
@@ -26,9 +30,10 @@ class FincaEvento extends Model
         return [
            
             ['finca_id',            'Finca',                'select',   true,   false,  null, 50, ['options' => $fincas] ],
-            ['evento_id',           'evento_id',            'select',   true,   false,  null, 50, ['options' => $eventos] ],
-            ['fecha',               'fecha',                null,       true,     false,  null,       100],
-            ['gravedad',            'gravedad',             null,       true,     false,  null,       100],   
+            ['evento_id',           'Selecionar Evento',    'select',   true,   false,  null, 50, ['options' => $eventos] ],
+            ['fecha',               'Fecha',                'date',     true,   false,  null, 100],
+            ['observacion',         'Observacion',           null,     true,   false,  null, 100],
+            ['gravedad',            'Gravedad',             'select',   true,   false,  null, 100, [ 'options' => $gravedad ]],   
         ];
 
     }

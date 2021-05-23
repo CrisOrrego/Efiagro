@@ -1,7 +1,7 @@
 <div id="GestionFincaEventos" ng-controller="FincaEventosCtrl" flex layout=column>
 	
 	<div layout class="padding-0-10" layout-align="center center">
-		<div class="md-title">Gestion de Eventos</div>
+		<div class="md-title">Eventos Reportados</div>
 		<span flex></span>
 	
 		
@@ -13,9 +13,7 @@
 		</md-input-container>
 		
 		<span flex></span>
-		<md-button class="md-raised md-primary" aria-label="Nueva" ng-click="nuevoEvento()">
-			<md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Labor
-		</md-button>
+		
 	</div>
 	<md-card flex class="no-margin-top">
 	<md-table-container class="border-bottom">
@@ -35,16 +33,16 @@
 	    <tbody md-body>
 			<tr md-row ng-repeat="FE in FincaEventosCRUD.rows | filter:filterEventos">
 				<td md-cell>
-					<md-button class="md-icon-button" ng-click="editarEventos(FE)">
+					<md-button class="md-icon-button" ng-click="editarEvento(FE)">
 						<md-icon md-font-icon="fa-edit"></md-icon>
 					</md-button>
-					<md-button class="md-icon-button md-warn" ng-click="eliminarEventos(FE)">
+					<md-button class="md-icon-button md-warn" ng-click="eliminarEvento(FE)">
 						<md-icon md-font-icon="fa-trash"></md-icon>
 					</md-button>
 				</td>
-	        <td md-cell>@{{ FE.finca_id }}</td>
-			<td md-cell>@{{ FE.evento_id }}</td>
-			<td md-cell>@{{ FE.fecha }} </td> 
+	        <td md-cell>@{{ FE.finca.nombre }}</td>
+			<td md-cell>@{{ FE.evento.evento }}</td>
+			<td md-cell>@{{ FE.fecha | date:'yyyy-MM-dd'}} </td> 
             <td md-cell>@{{ FE.gravedad }} </td> 
             <td md-cell>@{{ FE.observacion }} </td> 
             
