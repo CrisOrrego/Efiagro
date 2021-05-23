@@ -52,6 +52,7 @@ AdvancedRoute::controller('/api/fincaeventos',    'FincaEventosController');
 // AdvancedRoute::controller('/api/laboreslotes',      'LoteLaborController');
 AdvancedRoute::controller('/api/zonas',             'ZonasController');
 AdvancedRoute::controller('/api/labores',           'LaboresController');
+AdvancedRoute::controller('/api/lotelabores',           'LoteLaboresController');
 
 AdvancedRoute::controller('/api/casos',             'CasosController');             // Luigi
 AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController'); // Luigi

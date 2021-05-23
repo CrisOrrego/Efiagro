@@ -20,18 +20,7 @@
                 </div>
               
             </div>
-            <div class="check-element" ng-if="Lote.checked" layout="colums" layout-align="center start">
-                <md-card class="w100p mxw900 bg-white padding-5-20 border-rounded">
-                    <div layout="column" layout-align="space-between none">
-                      
-                        <div layout layout-align="center center"> 
-                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="">
-                                <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon> Agregar Evento
-                            </md-button>                
-                        </div>
-                    </div>
-                </md-card>  
-            </div>
+           
         </md-card>
         
     </div>
