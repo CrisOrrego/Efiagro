@@ -71,9 +71,6 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
                 
             });
         }
-        // 
-
-        // 
 
         Promise.all([
             Ctrl.obtener_zonas()
