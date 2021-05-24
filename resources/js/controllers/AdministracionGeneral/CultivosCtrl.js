@@ -21,7 +21,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
             limit: 1000,
             add_append: "refresh",
             order_by: ["-created_at"],
-            query_with:['zona']
+            query_with:['zona', 'evento']
         });
 
         Ctrl.getCultivos = () => {

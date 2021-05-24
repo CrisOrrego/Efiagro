@@ -25,7 +25,7 @@
 			<th md-column>Evento</th>
 			<th md-column>Fecha</th>
 	        <th md-column>Gravedad</th>
-            <th md-column>Observación</th>
+            <th md-column>Observación/Reporte</th>
 	        
 			
 	      </tr>
