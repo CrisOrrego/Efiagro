@@ -24,11 +24,11 @@ class Cultivo extends Model
 
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
-            ['fechas',                      'Fechas',                  'date', false, false, null, 255],
+            ['fechas',                      'Fechas',                 'date', false, false, null, 255],
             ['zona_id',                     'Zona',                   'select',   true,   false,  null, 50, ['options' => $zonas] ],
             ['produccion',                  'Produccion',              null, false, false, null, 255],
             ['produccion_estimada',         'Producion Estimada',      null, false, false, null, 100],
-            ['eventos',                     'Selecionar Evento',    'select',   true,   false,  null, 50, ['options' => $eventos] ],
+            ['eventos',                     'Selecionar Evento',      'select',   true,   false,  null, 50, ['options' => $eventos] ],
             ['creditos_colocados',          'Creditos Colocados',      null, false, false, null, 100], 
             ['cartera_vencida',             'Cartera Vencida',         null, false, false, null, 100],     
         ];
