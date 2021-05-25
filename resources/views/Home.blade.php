@@ -1,5 +1,6 @@
 <div style="position:absolute;bottom:50px;left:15px;z-index:0;" ng-show="Estado.ruta.length == 2" >
 	<img src="imgs/logo_pacosoft.png" /></div>
+	{{-- Home --}}
 	
 <div flex id="Home" ng-controller="HomeCtrl" layout=column>
 	<div class="h40 bg-primary" layout layout-align="center center"
