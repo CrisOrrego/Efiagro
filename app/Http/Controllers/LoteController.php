@@ -53,6 +53,10 @@ class LoteController extends Controller
             $lote->hectareas 			= $campos['hectareas'];
             $lote->sitios    			= $campos['sitios'];
             $lote->coordenadas      	= $campos['coordenadas'];
+            $lote->fecha_establecimiento= substr($campos['fecha_establecimiento'], 0, 10);
+            $lote->kg_promedio			= $campos['kg_promedio'];
+            $lote->un_promedio			= $campos['un_promedio'];
+            $lote->frec_corte			= $campos['frec_corte'];
         $lote->save();
 	}
 
@@ -67,6 +71,10 @@ class LoteController extends Controller
             $lote->hectareas 			= $campos['hectareas'];
             $lote->sitios    			= $campos['sitios'];
             $lote->coordenadas      	= $campos['coordenadas'];
+            $lote->fecha_establecimiento= substr($campos['fecha_establecimiento'], 0, 10);
+            $lote->kg_promedio			= $campos['kg_promedio'];
+            $lote->un_promedio			= $campos['un_promedio'];
+            $lote->frec_corte			= $campos['frec_corte'];
         $lote->save();
 	}
 

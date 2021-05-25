@@ -21,7 +21,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
             limit: 1000,
             add_append: "refresh",
             order_by: ["-created_at"],
-            query_with:['zona']
+            query_with:['zona', 'evento']
         });
 
         Ctrl.getCultivos = () => {
@@ -81,7 +81,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
             Ctrl.getCultivos();
         });
 
-        Ctrl.crearMapa = function(coordenadas){
+        Ctrl.crearMapa = function(){
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 4.852147911841803, lng: -75.5747982566813},
                 mapTypeId: 'satellite',
@@ -91,7 +91,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         
             $scope.map = map;
             
-            const iconBase = "http://efiagro.local/imgs/";
+            const iconBase = "http://pacosoft/imgs/";
             const icons = {
                 finca: {
                 icon: iconBase + "finca-icono.png",
@@ -143,17 +143,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
             // Define the LatLng coordinates for the polygon.
         
             // const GCCoords = JSON.parse(coordenadas);
-            // Construct the polygon.
-            const GClocation = new google.maps.Polygon({
-                paths: GCCoords,
-                strokeColor: "#a3e5b2",
-                strokeOpacity: 0.8,
-                strokeWeight: 2,
-                fillColor: "#a3e5b2",
-                fillOpacity: 0.45,
-              });
-              GClocation.setMap(map);
-             const GCCoords = [
+            const GCCoords = [
                 { "lat": 4.850726639851928  , "lng": -75.575134148821235  },
                 { "lat": 4.850728400051594  , "lng": -75.575136328116059  },
                 { "lat": 4.850811045616865  , "lng": -75.575285442173481  },
@@ -239,12 +229,21 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
                 { "lat": 4.850728651508689  , "lng": -75.575131885707378 }
               ];
         
-            
+            // Construct the polygon.
+            const GClocation = new google.maps.Polygon({
+                paths: GCCoords,
+                strokeColor: "#a3e5b2",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#a3e5b2",
+                fillOpacity: 0.45,
+              });
+              GClocation.setMap(map);
         }
         
 	
-    }
-]).directive("mapa",[function(){
+}])
+.directive("mapa",[function(){
     return {
         restrict : "A",
         link : function($scope, element, attrs){

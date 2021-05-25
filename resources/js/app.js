@@ -64,7 +64,8 @@ angular.module('App', [
     'FincaDiagCtrl',
     'PerfilesCtrl', // Luigi
     'EventosCtrl',
-    
+    'FincaEventosCtrl',
+       
     // 'PerfilesCtrl',
     // Zonas Agroambientales
     'ZonasCtrl',
@@ -74,7 +75,7 @@ angular.module('App', [
     'LotesCtrl',
     'LoteDiagCtrl',
     'Labores_LaborEditorCtrl',
-
+    
     'FondoRotatorio_CreditosCtrl', //CAOH
     'FondoRotatorio_NuevoCreditoDiagCtrl', //CAOH
     'FondoRotatorio_Creditos_PayDialogCtrl', //CAOH

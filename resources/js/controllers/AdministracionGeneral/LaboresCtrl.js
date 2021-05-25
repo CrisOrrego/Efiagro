@@ -107,7 +107,7 @@ Ctrl.nuevaLabor = () => {
 				scope: Ctrl.$new()
 			});
 		}
-
+        
         Ctrl.eliminarLabor = L => {
             Rs.confirmDelete({
                 Title: "¿Eliminar Labor #" + L.id + "?"
@@ -116,7 +116,7 @@ Ctrl.nuevaLabor = () => {
                 Ctrl.LaboresCRUD.delete(L);
             });
         };
-
+        
         Ctrl.obtener_lp = () =>{
             return $http.post('api/lineasproductivas/obtener', {}).then(r => {
                 Ctrl.lineas_productivas = r.data;
