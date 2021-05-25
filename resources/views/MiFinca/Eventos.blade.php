@@ -1,7 +1,11 @@
 <div id="FincaEventos" ng-controller="FincaEventosCtrl" flex layout="column" class="mxw1000">
-
+<div class="mxw900">
+            <md-button class="md-raised md-primary" aria-label="Nueva" ng-click="nuevoEvento()">
+                <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Evento
+            </md-button>
+        </div>
     <div ng-repeat="FE in FincaEventosCRUD.rows">
-
+    
         <md-card >
             <div layout="row"  layout-align="space-between center" >
                 <div layout class="w100p mxw600 bg-white padding-5-20 border-rounded">
@@ -24,11 +28,7 @@
         </md-card>
         
     </div>
-    <div class="mxw900">
-        <md-button class="md-raised md-primary" aria-label="Nueva" ng-click="nuevoEvento()">
-            <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon>Agregar Evento
-        </md-button>
-    </div>
+    
 
 </div>
 
