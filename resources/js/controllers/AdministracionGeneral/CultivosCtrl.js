@@ -91,7 +91,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         
             $scope.map = map;
             
-            const iconBase = "http://pacosoft/imgs/";
+            const iconBase = "http://efiagro.local/imgs/";
             const icons = {
                 finca: {
                 icon: iconBase + "finca-icono.png",
