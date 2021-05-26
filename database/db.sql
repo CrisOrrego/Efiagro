@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2021 a las 01:51:11
+-- Tiempo de generación: 27-05-2021 a las 01:53:37
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -8677,8 +8677,9 @@ CREATE TABLE `lotes` (
 --
 
 INSERT INTO `lotes` (`id`, `finca_id`, `organizacion_id`, `linea_productiva_id`, `labores_id`, `hectareas`, `sitios`, `coordenadas`, `fecha_establecimiento`, `kg_promedio`, `un_promedio`, `frec_corte`, `created_at`, `updated_at`) VALUES
-(18, 9, 19, 6, NULL, 34, 4, '23523', '2021-05-23T05:00:00.000Z', '43.0', 54, '32', '2021-05-23 16:53:53', '2021-05-23 16:55:28'),
-(19, 10, 19, 5, NULL, 565, 2, '54565', '2021-05-24T05:00:00.000Z', '56.0', 34, '54', '2021-05-24 15:09:25', '2021-05-24 15:09:25');
+(18, 9, 19, 6, NULL, 34, 4, '23523', '2021-05-26', '43.0', 54, '32', '2021-05-23 16:53:53', '2021-05-26 23:50:03'),
+(19, 10, 19, 5, NULL, 565, 2, '54565', '2021-05-26', '56.0', 34, '54', '2021-05-24 15:09:25', '2021-05-26 23:50:11'),
+(20, 9, 18, 5, 23, 23, 23, '23', '2021-05-26T05:00:00.000Z', '23.0', 23, '23', '2021-05-26 00:20:16', '2021-05-26 23:50:30');
 
 -- --------------------------------------------------------
 
@@ -10185,7 +10186,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 18, 9, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL),
-(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 19, 10, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-05-22 14:34:57', NULL);
+(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 19, 11, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-05-25 23:53:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -10595,7 +10596,7 @@ ALTER TABLE `listas_indice`
 -- AUTO_INCREMENT de la tabla `lotes`
 --
 ALTER TABLE `lotes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_cosechas`

@@ -56,14 +56,14 @@ angular.module('UsuarioFincaCtrl', [])
 
             // Obtener los datos de la lista 6: Tipo de Cultivo
             $http.post ('api/lista/listacompleta', { 
-                id: 6
+                id: 5
             }).then((r)=>{
                 Ctrl.TipoCultivo = r.data;
 			});
 
             // Obtener los datos de la lista 7: Tipos de Suelo
             $http.post ('api/lista/listacompleta', { 
-                id: 7
+                id: 4
             }).then((r)=>{
                 Ctrl.TipoSuelo = r.data;
 			});
