@@ -5,15 +5,13 @@ angular.module("FincaEventosCtrl", []).controller("FincaEventosCtrl", [
     "$injector",
     "$mdDialog",
     function($scope, $rootScope, $http, $injector, $mdDialog) {
-
+    console.log('Este es Finca Eventos');
         var Ctrl = $scope;
         var Rs = $rootScope;
      
         Ctrl.Salir = $mdDialog.cancel;
 
         Ctrl.value = 0;
-
-        // FINCA EVENTOS
         Ctrl.FincaEventosCRUD = $injector.get("CRUD").config({
             base_url: "/api/fincaeventos/fincaeventos",
             limit: 1000,
@@ -24,14 +22,14 @@ angular.module("FincaEventosCtrl", []).controller("FincaEventosCtrl", [
 
         Ctrl.getFincaEventos = () => {
             Ctrl.FincaEventosCRUD.get().then(() => {
-                Ctrl.FincaEventos = Ctrl.FincaEventosCRUD.rows[0];
+                Ctrl.FincaEvento = Ctrl.FincaEventosCRUD.rows[0];
                 //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
             });
         };
 
         Ctrl.getFincaEventos();
 
-        Ctrl.nuevoFincaEvento = () => {
+        Ctrl.nuevoEvento = () => {
             Ctrl.FincaEventosCRUD.dialog({
                 Flex: 10,
                 Title: "Crear Evento",
@@ -40,22 +38,22 @@ angular.module("FincaEventosCtrl", []).controller("FincaEventosCtrl", [
             }).then(r => {
                 if (!r) return;
                 Ctrl.FincaEventosCRUD.add(r);
-                Rs.showToast('Evento Reportado');
+                Rs.showToast('Evento Creado');
             });
         };
-        Ctrl.editarFincaEvento = FE => {
+        Ctrl.editarEvento = FE => {
             Ctrl.FincaEventosCRUD.dialog(FE, {
-                title: "Editar Evento Reportado" + FE.id
+                title: "Editar Evento" + FE.id
             }).then(r => {
                 if (r == "DELETE") return Ctrl.FincaEventosCRUD.delete(FE);
                 Ctrl.FincaEventosCRUD.update(r).then(() => {
-                    Rs.showToast("Evento Atualizado");
+                    Rs.showToast("Evento actualizado");
                 });
             });
         };
-        Ctrl.eliminarFincaEvento = FE => {
+        Ctrl.eliminarEvento = FE => {
             Rs.confirmDelete({
-                Title: "¿Eliminar Evento Reportado #" + FE.id + "?"
+                Title: "¿Eliminar Lote #" + FE.id + "?"
             }).then(d => {
                 if (!d) return;
                 Ctrl.FincaEventosCRUD.delete(FE);
@@ -84,6 +82,7 @@ angular.module("FincaEventosCtrl", []).controller("FincaEventosCtrl", [
                 }
             });
         };
+
 
 
     }

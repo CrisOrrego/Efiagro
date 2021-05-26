@@ -78,6 +78,56 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
             }
         }
         //FIN DEV ANGELICA
+
+        // LOTE LABORES
+        Ctrl.LoteLaboresCRUD = $injector.get("CRUD").config({
+            base_url: "/api/lotelabores/lotelabores",
+            limit: 1000,
+            add_append: "refresh",
+            order_by: ["-created_at"],
+            query_with:['labor', 'lote']
+        });
+
+        Ctrl.getLoteLabores = () => {
+            Ctrl.LoteLaboresCRUD.get().then(() => {
+                Ctrl.LoteLabor = Ctrl.LoteLaboresCRUD.rows[0];
+                //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
+            });
+        };
+
+        Ctrl.getLoteLabores();
+
+        Ctrl.nuevoLoteLabor = () => {
+            Ctrl.LoteLaboresCRUD.dialog({
+                Flex: 10,
+                Title: "Agregar Labor",
+
+                Confirm: { Text: "Agregar Labor" }
+            }).then(r => {
+                if (!r) return;
+                Ctrl.LoteLaboresCRUD.add(r);
+                Rs.showToast('Labor Agregada');
+            });
+        };
+        Ctrl.editarLoteLabor = LB => {
+            Ctrl.LoteLaboresCRUD.dialog(LB, {
+                title: "Editar Evento" + LB.id
+            }).then(r => {
+                if (r == "DELETE") return Ctrl.LoteLaboresCRUD.delete(LB);
+                Ctrl.LoteLaboresCRUD.update(r).then(() => {
+                    Rs.showToast("Evento actualizado");
+                });
+            });
+        };
+        Ctrl.eliminarLoteLabor = LB => {
+            Rs.confirmDelete({
+                Title: "¿Eliminar Lote #" + LB.id + "?"
+            }).then(d => {
+                if (!d) return;
+                Ctrl.LoteLaboresCRUD.delete(LB);
+            });
+        };
+        // FIN
           
     }
 ]);
