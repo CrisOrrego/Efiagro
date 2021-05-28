@@ -20,6 +20,7 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
         });
 
         Ctrl.getLotes = () => {
+            // Ctrl.LotesCRUD.setScope("id", Rs.Usuario.lote_id); //Me trae las fincas del usuario
             Ctrl.LotesCRUD.get().then(() => {
                 Ctrl.Lote = Ctrl.LotesCRUD.rows[0];
                 //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);

@@ -75,8 +75,9 @@ angular
                 query_with: ["zona", 'usuarios']
             });
 
-
+        
             Ctrl.getFinca = () => {
+                // Ctrl.FincasCRUD.setScope("id", Rs.Usuario.finca_id); //Me trae las fincas del usuario
                 Ctrl.FincasCRUD.get().then(() => {
                     Ctrl.Finca = Ctrl.FincasCRUD.rows[0];
                     //Ctrl.editarFinca(Ctrl.FincasCRUD.rows[0]);
@@ -87,7 +88,6 @@ angular
             };
 
             Ctrl.getFinca();
-
 
             //Obtener el elemento de la lista
             Ctrl.getTiposSuelo = () => {
