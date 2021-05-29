@@ -9,13 +9,20 @@
 			<img src="imgs/logo_pequeno_main_nav.png" aria-label="">
 		</md-button>
 		<div class="w30"></div>
-		<md-select ng-show="listaOrganizacion" ng-model="Usuario.organizacion_id" class="no-margin" aria-label="Organizacion" >
+		<md-select  ng-show="listaOrganizacion" 
+					ng-change="actualizarUsuario('organizacion_id', Usuario.organizacion_id)"
+					ng-model="Usuario.organizacion_id" class="no-margin" aria-label="Organizacion" >
 			<md-option ng-value="" >Sin Organización</md-option>
-			<md-option ng-value="O.id" ng-mouseup="actualizarUsuario('organizacion_id', Usuario.organizacion_id)"
-				ng-repeat="O in Usuario.organizaciones">@{{ O.nombre }}</md-option>
+			<md-option 
+					ng-value="O.id" 
+					ng-repeat="O in Usuario.organizaciones">@{{ O.nombre }}</md-option>
 		</md-select>
-		<md-select ng-show="listaFinca" ng-model="Usuario.finca_id" class="no-margin" aria-label="Finca" >
-			<md-option ng-value="F.id" ng-mouseup="actualizarUsuario('finca_id', Usuario.finca_id)" ng-repeat="F in Usuario.fincas">@{{ F.nombre }}</md-option>
+		<md-select 	ng-show="listaFinca" 
+					ng-model="Usuario.finca_id" 
+					ng-change="actualizarUsuario('finca_id', Usuario.finca_id)" class="no-margin" aria-label="Finca" >
+			<md-option 
+					ng-value="F.id"
+					ng-repeat="F in Usuario.fincas">@{{ F.nombre }}</md-option>
 		</md-select>
 
 		<span flex></span>
