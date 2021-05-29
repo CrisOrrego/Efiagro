@@ -73,11 +73,12 @@ class UsuarioController extends Controller
     public function postActualizarcampo()
     {
         // dd(request('valor'));
+        //extract(request()->all());
         $usuario = request('usuario');
         $campo   = request('campo');
         $valor   = request('valor');
         $usuario = Usuario::where('id', $usuario)->first();
-        $usuario->$campo = $valor;
+        $usuario[$campo] = $valor;
         $usuario->save();
     }
 
