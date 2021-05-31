@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2021 a las 01:53:37
+-- Tiempo de generación: 31-05-2021 a las 03:31:52
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -440,7 +440,8 @@ INSERT INTO `finca_eventos` (`id`, `finca_id`, `evento_id`, `fecha`, `gravedad`,
 (4, 9, 4, '2021-05-20T05:00:00.000Z', 'Alta', 'Se identifican placas en las cosechas', '2021-05-23 05:05:15', '2021-05-23 05:05:15'),
 (5, 9, 6, '2021-05-23T05:00:00.000Z', 'Media', 'Derrumbes en la zona', '2021-05-23 16:08:22', '2021-05-23 16:08:22'),
 (6, 9, 5, '2021-05-24T05:00:00.000Z', 'Alta', 'Robo de cosecha', '2021-05-24 14:58:44', '2021-05-24 14:58:44'),
-(7, 10, 9, '2021-05-24T05:00:00.000Z', 'Alta', 'Hubo robo', '2021-05-24 14:59:38', '2021-05-24 14:59:38');
+(7, 10, 9, '2021-05-24T05:00:00.000Z', 'Alta', 'Hubo robo', '2021-05-24 14:59:38', '2021-05-24 14:59:38'),
+(8, 12, 3, '2021-05-30T05:00:00.000Z', 'Media', 'Nueva  Inundación', '2021-05-31 01:17:53', '2021-05-31 01:17:53');
 
 -- --------------------------------------------------------
 
@@ -8753,7 +8754,8 @@ INSERT INTO `lote_labores` (`id`, `labores_id`, `estado`, `created_at`, `updated
 (1, 2, 'Terminado', '2021-05-23 10:31:32', '2021-05-23 10:31:32', 17),
 (2, 1, 'Pendiente', '2021-05-23 16:27:58', '2021-05-23 16:27:58', 17),
 (3, 2, 'Asignado', '2021-05-23 16:56:05', '2021-05-23 16:56:05', 18),
-(4, 23, 'Asignado', '2021-05-24 15:01:49', '2021-05-24 15:01:49', 18);
+(4, 23, 'Asignado', '2021-05-24 15:01:49', '2021-05-24 15:01:49', 18),
+(5, 23, 'Pendiente', '2021-05-31 01:17:08', '2021-05-31 01:17:08', 18);
 
 -- --------------------------------------------------------
 
@@ -9985,7 +9987,7 @@ CREATE TABLE `organizaciones_muro_secciones` (
 
 INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
 (1, 18, '<p><br/></p><p><br/></p><!--StartFragment--><div class=\"titulo-ppal\" style=\"color: rgba(0, 0, 0, 0.87);font-size: 3.5em;vertical-align: baseline;\">AGREGANDO VALOR</div><div class=\"parrafo\" style=\"color: rgba(0, 0, 0, 0.87);font-size: 1.2em;vertical-align: baseline;\">Es una sociedad comercial de carácter privado cuyo objeto social es la prestación de servicios profesionales de consultoría bajo estándares de calidad, cumplimiento y responsabilidad, implementando acciones estratégicas cooperadas desde los actores sociales y de desarrollo (Públicos, Privados y Sociales) que permitan su promoción hacia nuevos escenarios competitivos, sostenibles y sustentables económica, ambiental y socialmente, con principios incluyentes, democráticos y participativos.</div><ul style=\"color: rgba(0, 0, 0, 0.87);font-size: medium;\"><li>​<span class=\"negrilla\" style=\"font-size: 16.8px;vertical-align: baseline;text-align: left;\">Agregamos Valor</span><span style=\"font-size: 16.8px;text-align: left;float: none;\"> a la gestión pública como instrumentos de promoción del estado para el logro efectivo de la rentabilidad social.</span></li><li><span class=\"negrilla\" style=\"font-size: 16.8px;vertical-align: baseline;\">Agregamos Valor</span><span style=\"font-size: 16.8px;\"> mediante el reconocimiento de las capacidades colectivas como factor del desarrollo.</span><br/></li></ul><ol style=\"color: rgba(0, 0, 0, 0.87);font-size: medium;\"><li>​<span class=\"negrilla\" style=\"font-size: 16.8px;vertical-align: baseline;text-align: left;\">Agregamos Valor</span><span style=\"font-size: 16.8px;text-align: left;float: none;\"> a la gestión pública como instrumentos de promoción del estado para el logro efectivo de la rentabilidad social.</span></li><li><font color=\"#000000\"></font><p><span class=\"negrilla\" style=\"font-size: 16.8px;vertical-align: baseline;text-align: left;\">Agregamos Valor</span><span style=\"font-size: 16.8px;text-align: left;float: none;\"> forjando el desarrollo en un entorno armónico y sostenible.</span></p></li></ol><!--EndFragment--><p><br/></p><p><br/></p>', 'files/muro_media/18/20210510090358.jpg', 'http://www.agregandovalor.org/', NULL, 1, NULL, '2021-05-10 14:03:59', '2021-05-10 14:03:59'),
-(175, 18, '<p><br/></p><p><span style=\"float: none;\"></span><div style=\"font-size: 49px;\">¿Cómo lo hacemos?​<span style=\"font-size: 21px;text-align: center;\">Moderación Grupal</span></div><div><p><span style=\"font-size: 16.8px;text-align: center;float: none;\"></span></p><ul><li>Promovemos los aprendizajes colaborativos generando sistemas de relacionamiento horizontal.</li></ul><p><br/><br/><!--StartFragment--><span style=\"font-size: 21px;text-align: center;float: none;\">Herramientas TIC</span><!--EndFragment--><br/><br/></p><ul><li><span style=\"font-size: 16.8px;text-align: center;float: none;\">Incorporamos la eficiencia en el uso de la información en las acciones que implementamos.</span></li></ul><div><br/><br/><!--StartFragment--><span style=\"font-size: 21px;text-align: center;float: none;\">Técnicas de visualización</span><!--EndFragment--><br/><br/><ul><li><font color=\"#1e3348\"><span style=\"font-size: 16.8px;text-align: center;float: none;\">Integramos estrategias para la construcción colectiva bajo el uso de elementos didácticos y pedagógicos.</span></font></li></ul><div><br/><br/><!--StartFragment--><span style=\"font-size: 21px;text-align: center;float: none;\">Construcción Participativa</span><!--EndFragment--><br/><br/><ul><li><font color=\"#1e3348\"><span style=\"font-size: 16.8px;text-align: center;float: none;\">Reconocemos los saberes previos como elementos estructurales para la gestión del conocimiento.</span></font></li></ul><div><font color=\"#1e3348\"><br/></font></div></div></div><p></p><!--EndFragment--><br/><br/><br/><p></p></div></p><!--EndFragment--><p><br/></p><p><br/></p><p><br/></p>', 'files/muro_media/18/20210510091353.jpg', NULL, NULL, 2, NULL, '2021-05-10 14:13:53', '2021-05-10 14:13:53');
+(175, 19, '<p><br/></p><p><span style=\"float: none;\"></span><div style=\"font-size: 49px;\">¿Cómo lo hacemos?​<span style=\"font-size: 21px;text-align: center;\">Moderación Grupal</span></div><div><p><span style=\"font-size: 16.8px;text-align: center;float: none;\"></span></p><ul><li>Promovemos los aprendizajes colaborativos generando sistemas de relacionamiento horizontal.</li></ul><p><br/><br/><!--StartFragment--><span style=\"font-size: 21px;text-align: center;float: none;\">Herramientas TIC</span><!--EndFragment--><br/><br/></p><ul><li><span style=\"font-size: 16.8px;text-align: center;float: none;\">Incorporamos la eficiencia en el uso de la información en las acciones que implementamos.</span></li></ul><div><br/><br/><!--StartFragment--><span style=\"font-size: 21px;text-align: center;float: none;\">Técnicas de visualización</span><!--EndFragment--><br/><br/><ul><li><font color=\"#1e3348\"><span style=\"font-size: 16.8px;text-align: center;float: none;\">Integramos estrategias para la construcción colectiva bajo el uso de elementos didácticos y pedagógicos.</span></font></li></ul><div><br/><br/><!--StartFragment--><span style=\"font-size: 21px;text-align: center;float: none;\">Construcción Participativa</span><!--EndFragment--><br/><br/><ul><li><font color=\"#1e3348\"><span style=\"font-size: 16.8px;text-align: center;float: none;\">Reconocemos los saberes previos como elementos estructurales para la gestión del conocimiento.</span></font></li></ul><div><font color=\"#1e3348\"><br/></font></div></div></div><p></p><!--EndFragment--><br/><br/><br/><p></p></div></p><!--EndFragment--><p><br/></p><p><br/></p><p><br/></p>', 'files/muro_media/18/20210510091353.jpg', NULL, NULL, 2, NULL, '2021-05-10 14:13:53', '2021-05-10 14:13:53');
 
 -- --------------------------------------------------------
 
@@ -10186,7 +10188,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 18, 9, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL),
-(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 19, 11, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-05-25 23:53:48', NULL);
+(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 19, 12, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-05-31 01:30:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -10566,7 +10568,7 @@ ALTER TABLE `fincas`
 -- AUTO_INCREMENT de la tabla `finca_eventos`
 --
 ALTER TABLE `finca_eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `labores`
@@ -10620,7 +10622,7 @@ ALTER TABLE `lotes_labores_realizadas`
 -- AUTO_INCREMENT de la tabla `lote_labores`
 --
 ALTER TABLE `lote_labores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `opciones`
