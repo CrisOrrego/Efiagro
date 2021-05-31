@@ -42,9 +42,11 @@ angular.module('HomeCtrl', [])
             
             // Función para actualizar un campo en la tabla del usuario.
             Rs.actualizarUsuario = ( campo, valor ) => {
-                if(!campo || !valor) return;
+                if ( !campo || !valor )
+                    return;
+                
                 $http.post('api/usuario/actualizarcampo', {
-                    usuario: Rs.Usuario['id'],
+                    usuarioid: Rs.Usuario['id'],
                     campo: campo, 
                     valor: valor
                 }).then( () => {

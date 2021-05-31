@@ -72,13 +72,9 @@ class UsuarioController extends Controller
     // Medoto para la actualizacion de cualquier campo de la tabla del usuario. // Luigi
     public function postActualizarcampo()
     {
-        // dd(request('valor'));
-        //extract(request()->all());
-        $usuario = request('usuario');
-        $campo   = request('campo');
-        $valor   = request('valor');
-        $usuario = Usuario::where('id', $usuario)->first();
-        $usuario[$campo] = $valor;
+        extract(request()->all());
+        $usuario = Usuario::where('id', $usuarioid)->first();
+        $usuario->$campo = $valor;
         $usuario->save();
     }
 

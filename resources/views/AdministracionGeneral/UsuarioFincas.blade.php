@@ -240,7 +240,7 @@
                         </md-input-container>
                         <md-input-container>
                             <label>Fec. Establecimiento</label>
-                            <input ng-model="L.fecha_establecimiento" type="date" value="@{{ L.fecha_establecimiento }}"/>
+                            <md-datepicker ng-model="L.fecha_establecimiento" ></md-datepicker>
                         </md-input-container>
                         <md-input-container>
                             <label>KG P_promedio</label>
