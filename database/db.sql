@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2021 a las 03:31:52
+-- Tiempo de generación: 03-06-2021 a las 02:53:43
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -134,7 +134,8 @@ INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `cre
 (34, 2, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-05-10 14:20:30', '2021-05-10 14:20:30'),
 (35, 2, 'Boton Contacto', 'SMS', '[]', '2021-05-10 14:20:42', '2021-05-10 14:20:42'),
 (36, 2, 'Boton Contacto', 'Whatsapp', '[]', '2021-05-10 14:20:50', '2021-05-10 14:20:50'),
-(37, 1, 'Esta es una petición', 'Whatsapp', '[]', '2021-05-10 14:22:38', '2021-05-10 14:22:38');
+(37, 1, 'Esta es una petición', 'Whatsapp', '[]', '2021-05-10 14:22:38', '2021-05-10 14:22:38'),
+(38, 2, 'Como cosechar moras?', 'Apoyo Técnico', '[]', '2021-05-31 01:34:32', '2021-05-31 01:34:32');
 
 -- --------------------------------------------------------
 
@@ -152,6 +153,15 @@ CREATE TABLE `casos_novedades` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `casos_novedades`
+--
+
+INSERT INTO `casos_novedades` (`id`, `usuario_id`, `caso_id`, `tipo`, `novedad`, `solucion`, `created_at`, `updated_at`) VALUES
+(12, 2, 38, 'Imagen', 'files/casos_media/38/20210530203450.jpg', 0, '2021-05-31 01:35:05', '2021-05-31 01:35:05'),
+(13, 2, 38, 'Texto', 'Paso 1', 0, '2021-05-31 01:35:09', '2021-05-31 01:35:09'),
+(14, 2, 38, 'Texto', 'Otra', 0, '2021-05-31 01:37:21', '2021-05-31 01:37:21');
 
 -- --------------------------------------------------------
 
@@ -341,7 +351,8 @@ CREATE TABLE `cultivos` (
 
 INSERT INTO `cultivos` (`id`, `fechas`, `zona_id`, `produccion`, `produccion_estimada`, `eventos`, `creditos_colocados`, `cartera_vencida`, `created_at`, `updated_at`) VALUES
 (5, '2021-05-09T05:00:00.000Z', 6, 78, 45, 8, 3, 1, '2021-05-10 04:02:55', '2021-05-24 14:47:38'),
-(6, '2021-05-24T05:00:00.000Z', 7, 34, 45, 0, 3, 1, '2021-05-24 14:39:07', '2021-05-24 14:39:07');
+(6, '2021-05-24T05:00:00.000Z', 7, 34, 45, 0, 3, 1, '2021-05-24 14:39:07', '2021-05-24 14:39:07'),
+(7, '2021-06-02T05:00:00.000Z', 8, 23, 23, 8, 2, 0, '2021-06-03 00:53:05', '2021-06-03 00:53:05');
 
 -- --------------------------------------------------------
 
@@ -10188,7 +10199,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 18, 9, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL),
-(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 19, 12, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-05-31 01:30:37', NULL);
+(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 19, 12, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-05-31 01:33:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -10210,7 +10221,8 @@ CREATE TABLE `zonas` (
   `altimetria_max` float NOT NULL,
   `brillo_solar_min` int(11) NOT NULL,
   `brillo_solar_max` int(11) NOT NULL,
-  `pendiente` int(100) NOT NULL,
+  `pendiente_min` int(100) NOT NULL,
+  `pendiente_max` int(100) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -10219,9 +10231,10 @@ CREATE TABLE `zonas` (
 -- Volcado de datos para la tabla `zonas`
 --
 
-INSERT INTO `zonas` (`id`, `linea_productiva_id`, `descripcion`, `temperatura_min`, `temperatura_max`, `humedad_relativa_min`, `humedad_relativa_max`, `precipitacion_min`, `precipitacion_max`, `altimetria_min`, `altimetria_max`, `brillo_solar_min`, `brillo_solar_max`, `pendiente`, `created_at`, `updated_at`) VALUES
-(6, 5, 'Zona Norte', 2342, 4323, 32342, 23423, 234, 324243, 34523, 4432, 44343, 4343, 23424, '2021-05-10 02:25:22', '2021-05-10 02:25:22'),
-(7, 6, 'Zona Sur', 54, 343, 34, 34, 54, 44, 45, 56, 56, 65, 76, '2021-05-10 02:37:23', '2021-05-10 02:37:23');
+INSERT INTO `zonas` (`id`, `linea_productiva_id`, `descripcion`, `temperatura_min`, `temperatura_max`, `humedad_relativa_min`, `humedad_relativa_max`, `precipitacion_min`, `precipitacion_max`, `altimetria_min`, `altimetria_max`, `brillo_solar_min`, `brillo_solar_max`, `pendiente_min`, `pendiente_max`, `created_at`, `updated_at`) VALUES
+(6, 5, 'Zona Norte', 2342, 4323, 32342, 23423, 234, 324243, 34523, 4432, 44343, 4343, 23, 30, '2021-05-10 02:25:22', '2021-06-03 00:47:20'),
+(7, 6, 'Zona Sur', 54, 343, 34, 34, 54, 44, 45, 56, 56, 65, 76, 80, '2021-05-10 02:37:23', '2021-06-03 00:46:49'),
+(8, 6, 'Zona Sureste', 23, 30, 21, 24, 12, 15, 234, 345, 12, 24, 5, 15, '2021-06-03 00:49:49', '2021-06-03 00:49:49');
 
 --
 -- Índices para tablas volcadas
@@ -10514,13 +10527,13 @@ ALTER TABLE `asignaciones`
 -- AUTO_INCREMENT de la tabla `casos`
 --
 ALTER TABLE `casos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `casos_novedades`
 --
 ALTER TABLE `casos_novedades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `credito__abonos`
@@ -10550,7 +10563,7 @@ ALTER TABLE `credito__saldos`
 -- AUTO_INCREMENT de la tabla `cultivos`
 --
 ALTER TABLE `cultivos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
@@ -10682,7 +10695,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `zonas`
 --
 ALTER TABLE `zonas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
