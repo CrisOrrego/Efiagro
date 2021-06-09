@@ -51,13 +51,14 @@
                     </div>
                 </md-card>
                 
+                <!--INICIO DEV ANGELICA-->
                 <md-card class="w100p mxw900 bg-white padding-5-20 border-rounded">
                     <div layout="column" layout-align="space-between none">
                         <div flex >
                             <h6>Cosechas</h6>
                         </div>
                         <div layout="row" layout-align="center center">
-                            <div class="w320p mxw320 bg-white padding-5-20 border-rounded">
+                            <div class="w320p mxw340 bg-white padding-5-20 border-rounded">
                                 <canvas id="myChart" ></canvas>
 
                                 <script>

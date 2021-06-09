@@ -35,6 +35,7 @@ angular.module('ConfiguracionCtrl', [])
 			});
 		}*/
 
+		//INICIO DEV ANGELICA
 		Ctrl.nuevaLista = () => {
 
 			Ctrl.ListaCRUD.dialog({}, {
@@ -63,6 +64,7 @@ angular.module('ConfiguracionCtrl', [])
 			});
 
 		};
+		//FIN DEV ANGELICA
 
 		//INICIO DEV ANGÉLICA 
 		//Abre el modal para editar una lista

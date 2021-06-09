@@ -1,17 +1,37 @@
 <?php
-
 namespace App\Http\Controllers;
+
 
 use Illuminate\Http\Request;
 use App\Functions\CRUD;
 use App\Models\Finca;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 
 class FincaController extends Controller
 {
     public function postFincas()
  	{
  		$CRUD = new CRUD('App\Models\Finca');
-        return $CRUD->call(request()->fn, request()->ops);
+         /*$spreadsheet = new Spreadsheet();
+         $sheet = $spreadsheet->getActiveSheet();
+         $sheet->setCellValue('A1', 'Hello World !');
+ 
+         $writer = new Xlsx($spreadsheet);
+         $writer->save('helloworld.xlsx');*/
+
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+        $spreadsheet = $reader->load("coordenadas.xlsx");
+
+        $datos=$spreadsheet->getActiveSheet()->toArray();
+
+        foreach($datos as $row){
+            foreach($row as $cell){                
+            }
+        }
+         
+         return $CRUD->call(request()->fn, request()->ops);
 	}
 
 	public function zonasFincas()
@@ -30,8 +50,8 @@ class FincaController extends Controller
 
     public function postObtener()
 	{
-		$Finca = Finca::All();
-		return $Finca;
+		$Finca = Finca::All();               
+        return $Finca;
 	} 
 
     public function postActualizar(Request $req)

@@ -33,10 +33,14 @@ class Lote extends Model
             ['finca_id',            'Finca',            'select',   true,   false,  null, 50, ['options' => $fincas] ],
             ['organizacion_id',     'Organización',     'select',   true,   false,  null, 50, ['options' => $organizaciones] ],
             ['linea_productiva_id', 'Linea Productiva', 'select',   true,   false,  null, 50, ['options' => $lineasproductivas] ],
-            ['labores_id',          'Labores',         'select',    true,   false,  null, 50, ['options' => $labores] ], 
+            // ['labores_id',          'Labores',         'select',    true,   false,  null, 50, ['options' => $labores] ], 
             ['hectareas',           'Hectareas',        null,       true,     false,  null,       100],
             ['sitios',              'Sitios',           null,       true,     false,  null,       100],
             ['coordenadas',         'Coordenadas',      null,       true,     false,  null,       100],
+            ['fecha_establecimiento', 'Fec. Estable.',  'date',       true,     false,  null,       100],
+            ['kg_promedio',         'KG Promedio',      null,       true,     false,  null,       100],
+            ['un_promedio',         'UN Promedio',      null,       true,     false,  null,       100],
+            ['frec_corte',          'Frec. Corte',      null,       true,     false,  null,       100],
             
         ];
 
