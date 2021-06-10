@@ -235,8 +235,14 @@
                             <input ng-model="L.sitios" type="text" />
                         </md-input-container>
                         <md-input-container>
-                            <label>Coordenadas</label>
+                            <label>Coordenadas XX</label>
                             <input ng-model="L.coordenadas" type="text" />
+                        </md-input-container>
+                        <md-input-container>
+                            <input type="file" ngf-select="SelectFile($file)" />
+                            <md-button class="md-raised md-primary" ng-click="Upload(L)">
+                                <md-icon md-font-icon="fa-save" ></md-icon>Upload
+                            </md-button>
                         </md-input-container>
                         <md-input-container>
                             <label>Fec. Establecimiento</label>
@@ -285,9 +291,15 @@
                         <input ng-model="L.sitios" type="text" />
                     </md-input-container>
                     <md-input-container>
-                        <label>Coordenadas</label>
-                        <input ng-model="L.coordenadas" type="text" />
+                        <label>Coordenadas YY</label>
+                        <input ng-model="L.coordenadas" type="text"  />
                     </md-input-container>
+                    <md-input-container>
+                        <input type="file" ngf-select="SelectFile($file)" />
+                            <md-button class="md-raised md-primary" ng-click="Upload(L)">
+                                <md-icon md-font-icon="fa-save" ></md-icon>Upload
+                            </md-button>                    
+                        </md-input-container>
                     <md-input-container>
                         <label>Fec. Establecimiento</label>
                         <input ng-model="L.fecha_establecimiento" type="date" />
