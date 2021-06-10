@@ -8,7 +8,7 @@
 	</div>
     <md-content>
         <md-tabs class="" >
-            <md-tab ng-repeat="F in Fincas" label="@{{ F.nombre }}" ng-click="cargarLotes(F.id)">
+            <md-tab ng-repeat="F in Fincas" label="@{{ F.nombre }}" ng-click="cargarLotes(F)">
                 <md-content class="md-padding">
                     <div>
                         <md-input-container>
@@ -203,7 +203,6 @@
                 </md-content>
             </md-tab>
         </md-tabs>
-        
     </md-content>
 
     <div class="text-clear padding" flex>Lotes de la finca</div>
@@ -215,9 +214,9 @@
                         <md-input-container>
                             <label>Linea Productiva</label>
                             <md-select ng-model="L.linea_productiva_id" class="no-margin" style="min-width: 150px;"
-                            aria-label="linea_productiva_id">
-                            <md-option ng-value="LP.id" ng-repeat="LP in Lineasproductivas">@{{ LP.nombre }}</md-option>
-                        </md-select>
+                                aria-label="linea_productiva_id">
+                                <md-option ng-value="LP.id" ng-repeat="LP in Lineasproductivas">@{{ LP.nombre }}</md-option>
+                            </md-select>
                         </md-input-container>
                         <md-input-container>
                             <label>Labores</label>
@@ -311,4 +310,6 @@
             </md-tab>
         </md-tabs>
     </md-content>
+
+    <div class="text-clear padding" flex ng-model="zonaprimaria"></div>
 </md-dialog>
