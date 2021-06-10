@@ -112,23 +112,23 @@ angular.module('UsuarioFincaCtrl', [])
                 Ctrl.zonas = r.data;
 			});
 
+            Ctrl.recalcularZona = ( data ) => {
+                if ( data['temperatura'] > 0 && data['humedad_relativa'] > 0 && data['precipitacion'] > 0 && data['altimetria_min'] > 0 && data['altimetria_max'] > 0 && data['brillo_solar'] > 0 ) {
+                    calcularZona = ( data )
+                }
+                //console.log(data);
+            };
+
             calcularZona = (Finca) => {
-                // recorrer las zonas y filtrar las que tengan el mismo valor en lote.linea_productiva_id
                 // recorrer las zonas y validar los valores contra la finca, para obtener porcentajes
-                // Ctrl.zonas
-                // console.log(Finca);
-                // console.log(Ctrl.Lineasproductivas);
                 zonaprimaria = [];
                 angular.forEach(Ctrl.zonas, function( data ) {
                     var contadorzona = 0;
-                    // console.log(data['temperatura_min'], Finca['temperatura'], data['temperatura_max'], Finca['temperatura']);
+
                     if ( data['temperatura_min'] <= Finca['temperatura'] && data['temperatura_max'] >= Finca['temperatura'] ) {
                         contadorzona++;
                     }
                     if ( data['humedad_relativa_min'] <= Finca['humedad_relativa'] && data['humedad_relativa_max'] >= Finca['humedad_relativa'] ) {
-                        contadorzona++;
-                    }
-                    if ( data['precipitacion_min'] <= Finca['precipitacion'] && data['precipitacion_max'] >= Finca['precipitacion'] ) {
                         contadorzona++;
                     }
                     if ( data['precipitacion_min'] <= Finca['precipitacion'] && data['precipitacion_max'] >= Finca['precipitacion'] ) {
@@ -150,13 +150,9 @@ angular.module('UsuarioFincaCtrl', [])
                     });
                 });
                 zonaprimaria.reverse( (a, b) => a.participacion < b.participacion);
-                Ctrl.zonaprimaria = ( zonaprimaria[0].participacion < 70 )
-                    ? 'Subzona de ' + zonaprimaria[0].descripcion + ': Coincidencia del ' + zonaprimaria[0].participacion + '%'
-                    : 'Zona de ' + zonaprimaria[0].descripcion + ': Coincidencia del ' + zonaprimaria[0].participacion + '%';
-                console.log(Ctrl.zonaprimaria);
-
-                // funcion para calcular valores y hallar el promedio.
-                // revisar archivo Excel.
+                var text = zonaprimaria[0].descripcion + ': Coincidencia del ' + zonaprimaria[0].participacion + '%';
+                Ctrl.zp = ( zonaprimaria[0].participacion < 70 ) ? 'Subzona de ' + text : 'Zona de ' + text;
+                //console.log(Ctrl.zonaprimaria);
             };
         }
     ]

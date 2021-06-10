@@ -77,27 +77,27 @@
                         </md-input-container>
                         <md-input-container>
                             <label>Temperatura (C°)</label>
-                            <input ng-model="F.temperatura" type="text" />
+                            <input ng-model="F.temperatura" type="text" ng-change="recalcularZona(F)" />
                         </md-input-container>
                         <md-input-container>
                             <label>Humedad Relativa (%)</label>
-                            <input ng-model="F.humedad_relativa" type="text" />
+                            <input ng-model="F.humedad_relativa" type="text" ng-change="recalcularZona(F)" />
                         </md-input-container>
                         <md-input-container>
                             <label>Precipitacion Mn</label>
-                            <input ng-model="F.precipitacion" type="text" />
+                            <input ng-model="F.precipitacion" type="text" ng-change="recalcularZona(F)" />
                         </md-input-container>
                         <md-input-container>
                             <label>Altimetría Mínima (Mts)</label>
-                            <input ng-model="F.altimetria_min" type="text" />
+                            <input ng-model="F.altimetria_min" type="text" ng-change="recalcularZona(F)" />
                         </md-input-container>
                         <md-input-container>
                             <label>Altimetría Máxima (Mts)</label>
-                            <input ng-model="F.altimetria_max" type="text" />
+                            <input ng-model="F.altimetria_max" type="text" ng-change="recalcularZona(F)" />
                         </md-input-container>
                         <md-input-container>
                             <label>Brillo solar</label>
-                            <input ng-model="F.brillo_solar" type="text" />
+                            <input ng-model="F.brillo_solar" type="text" ng-change="recalcularZona(F)" />
                         </md-input-container>
                         <md-button class="md-raised md-primary" ng-click="guardarFinca(F)">
                             <md-icon md-font-icon="fa-save"></md-icon>Actualizar
@@ -311,5 +311,5 @@
         </md-tabs>
     </md-content>
 
-    <div class="text-clear padding" flex ng-model="zonaprimaria"></div>
+    <div class="text-clear padding" flex ng-model="zp">@{{ zp }}</div>
 </md-dialog>
