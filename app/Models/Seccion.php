@@ -15,7 +15,7 @@ class Seccion extends Model
     protected $appends = [ 'seccion_slug', 'subseccion_slug' ];
 
     public function columns()
-    {
+    { 
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
             ['seccion',     'Seccion',      null, true, false, null, 100],

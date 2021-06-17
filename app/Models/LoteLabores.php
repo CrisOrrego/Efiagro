@@ -17,7 +17,7 @@ class LoteLabores extends Model
         $estado = [
             'Fincalizado' => 'Finalizado', 'Pendiente' => 'Pendiente', 'Asignado' => 'Asignado'
         ];
-        
+         
     
         $labores = \App\Models\Labor::all()->keyBy('id')->map( function($lb){
             return $lb['labor'];
@@ -26,7 +26,7 @@ class LoteLabores extends Model
             return $l['id'];
         })->toArray();
         
-
+ 
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
             ['lote_id',           'Lotes',                'select',   true,   false,  null, 50, ['options' => $lotes] ],

@@ -13,7 +13,7 @@ class Zona extends Model
     protected $appends = [];
 
     public function columns()
-    {
+    { 
         $lineasproductivas= \App\Models\LineaProductiva::all()->keyBy('id')->map( function($lp){
             return $lp['nombre'];
         })->toArray();

@@ -16,7 +16,7 @@ class FincaEvento extends Model
     {
         $gravedad = [
             'Alta' => 'Alta', 'Media' => 'Media', 'Baja' => 'Baja'
-        ];
+        ]; 
         
     
         $fincas = \App\Models\Finca::all()->keyBy('id')->map( function($f){

@@ -7,7 +7,7 @@
 		<md-button class="margin-10" href="#/Home" >
 			<img src="imgs/logo_pequeno_main_nav.png" aria-label="">
 		</md-button>
-		<div class="w30"></div>
+		<div class="w30"></div>   
 		<md-select  ng-show="listaOrganizacion" 
 					ng-change="actualizarUsuario('organizacion_id', Usuario.organizacion_id)"
 					ng-model="Usuario.organizacion_id" class="no-margin" aria-label="Organizacion" >

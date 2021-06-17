@@ -16,7 +16,7 @@ class Labor extends Model
 
 
     public function columns()
-    {
+    { 
         $zonas = \App\Models\Zona::all()->keyBy('id')->map(function($z){
             return $z['zona'];
         })->toArray();

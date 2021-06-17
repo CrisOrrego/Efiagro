@@ -15,8 +15,8 @@ class Organizacion extends Model
 
     public function columns()
     {
-        $departamento = [
-        ];
+        // $departamento = [
+        // ];
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
             ['nombre',                      'Nombre:',                       null, true,         false, null, 100],

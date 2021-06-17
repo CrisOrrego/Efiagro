@@ -13,10 +13,10 @@ class Lote extends Model
     protected $appends = [];
     
     public function columns()
-    {
-        $labores = \App\Models\Labor::all()->keyBy('id')->map( function($l){
-            return $l['labor'];
-        })->toArray();
+    { 
+        // $labores = \App\Models\Labor::all()->keyBy('id')->map( function($l){
+        //     return $l['labor'];
+        // })->toArray();
 
         $fincas = \App\Models\Finca::all()->keyBy('id')->map( function($f){
             return $f['nombre'];

@@ -12,16 +12,21 @@ class Articulo extends Model
     protected $table = 'articulos';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'linea_productiva_id' => 'integer',
+        'usuario_id' => 'integer'
+        //'objeto' => 'array'
+    ];
 
-    public function columns()
+    public function columns() 
     {
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
-            [ 'titulo',          'Titulo',          null,    true,  false, null,  100 ],
+            [ 'titulo',                 'Titulo',          null,    true,  false, null,  100 ],
             [ 'linea_productiva_id',    'linea_prodecutiva_id',          null,    true,  false, null,  100 ],
-            [ 'palabras_clave',  'Palabras Clave',  null,    false,  false, null, 100 ],
-            [ 'estado',          'Estado',          null,    true,  false, null,  100 ],
-            [ 'usuario_id',      'usuario_id',      null,    true,  false, null,  100 ],
+            [ 'palabras_clave',         'Palabras Clave',  null,    false,  false, null, 100 ],
+            [ 'estado',                 'Estado',          null,    true,  false, null,  100 ],
+            [ 'usuario_id',             'usuario_id',      null,    true,  false, null,  100 ],
         ];
     }
 

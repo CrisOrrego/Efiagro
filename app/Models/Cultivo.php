@@ -12,7 +12,7 @@ class Cultivo extends Model
     protected $guarded = ['id'];
     protected $appends = [];
     public function columns()
-    {
+    { 
         $zonas = \App\Models\Zona::all()->keyBy('id')->map(function($z){
             return $z['descripcion'];
         })->toArray();

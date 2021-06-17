@@ -10,7 +10,7 @@ class ArticuloSeccion extends Model
     use HasFactory;
 
     protected $table = 'articulos_secciones';
-    protected $guarded = ['id'];
+    protected $guarded = ['id']; 
     protected $appends = [];
     protected $casts = [
         'indice' => 'integer'

@@ -10,7 +10,7 @@ class Finca extends Model
     use HasFactory;
     protected $table = 'fincas';
     protected $guarded = ['id'];
-    protected $appends = [];
+    protected $appends = []; 
 
     public function columns()
     { $usuarios = \App\Models\Usuario::all()->keyBy('id')->map(function($u){

@@ -17,9 +17,12 @@ class Usuario extends Model
     protected $appends = [ 
         'nombre'
     ];
+    protected $casts = [
+        'perfil_id' => 'integer'
+    ];
 
     public function columns()
-    {
+    { 
         // Arreglo para la carga de Tipos de documentos.
         $tipodocumento = [
             'CC' => 'Cedula Ciudadania', 'CE' => 'Cedula Extranjeria', 'TI' => 'Tarjeta Identidad', 'PA' => 'Pasaporte', 'RC' => 'Registro Civil', 'NI' => 'NIT'

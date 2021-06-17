@@ -17,7 +17,7 @@ class CasoNovedad extends Model
     ];
 
     public function columns()
-    {
+    { 
         //      Name,       Desc,       Type,   Required, Unique, Default, Width, Options
         return [
             [ 'usuario_id', 'usuario_id',   null,   true,  false, null, 11 ],
