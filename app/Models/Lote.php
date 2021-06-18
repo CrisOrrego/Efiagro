@@ -11,6 +11,11 @@ class Lote extends Model
     protected $table = 'lotes';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'finca_id' => 'integer',
+        'organizacion_id' => 'integer',
+        'linea_productiva_id' => 'integer',
+         ];
     
     public function columns()
     { 

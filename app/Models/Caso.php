@@ -12,6 +12,9 @@ class Caso extends Model
     protected $table = 'casos';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'solicitante_id' => 'integer'
+         ]; 
 
     public function columns()
     {

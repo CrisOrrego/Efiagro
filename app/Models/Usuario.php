@@ -18,7 +18,9 @@ class Usuario extends Model
         'nombre'
     ];
     protected $casts = [
-        'perfil_id' => 'integer'
+        'perfil_id' => 'integer',
+        'organizacion_id' => 'integer',
+        'finca_id' => 'integer'
     ];
 
     public function columns()
