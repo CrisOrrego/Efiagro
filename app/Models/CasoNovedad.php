@@ -12,9 +12,10 @@ class CasoNovedad extends Model
     protected $table = 'casos_novedades';
     protected $guarded = ['id'];
     protected $appends = ['novedad'];
-    protected $cast = [
-        //'objeto' => 'array'
-    ];
+    protected $casts = [
+        'usuario_id' => 'integer',
+        'caso_id' => 'integer'
+         ]; 
 
     public function columns()
     { 

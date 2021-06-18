@@ -12,6 +12,10 @@ class Labor extends Model
     protected $table = 'labores';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'zona_id' => 'integer',
+        'linea_productiva_id' => 'integer'
+         ];
 
 
 

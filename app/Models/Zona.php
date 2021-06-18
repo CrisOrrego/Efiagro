@@ -11,6 +11,9 @@ class Zona extends Model
     protected $table = 'zonas';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'linea_productiva_id' => 'integer',
+         ]; 
 
     public function columns()
     { 

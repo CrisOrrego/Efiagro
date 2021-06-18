@@ -13,6 +13,10 @@ class PerfilSeccion extends Model
     protected $table = 'perfiles_secciones';
     protected $guarded = ['id'];
     protected $appends = [ ];
+    protected $casts = [
+        'perfil_id' => 'integer',
+        'seccion_id' => 'integer'
+         ];
 
     public function columns()
     { 

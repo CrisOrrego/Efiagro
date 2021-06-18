@@ -11,6 +11,10 @@ class LoteLabores extends Model
     protected $table = 'lote_labores';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'lote_id' => 'integer',
+        'labores_id' => 'integer'
+         ];
     
     public function columns()
     {

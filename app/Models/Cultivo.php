@@ -11,6 +11,12 @@ class Cultivo extends Model
     protected $table = 'cultivos';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'zona_id' => 'integer'
+         ]; 
+    
+
+
     public function columns()
     { 
         $zonas = \App\Models\Zona::all()->keyBy('id')->map(function($z){

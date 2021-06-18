@@ -11,6 +11,10 @@ class FincaEvento extends Model
     protected $table = 'finca_eventos';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'finca_id' => 'integer',
+        'evento_id' => 'integer'
+         ];
     
     public function columns()
     {

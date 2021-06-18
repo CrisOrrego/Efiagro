@@ -12,6 +12,7 @@ class Organizacion extends Model
     protected $table = 'organizaciones';
     protected $guarded = ['id'];
     protected $appends = [];
+    
 
     public function columns()
     {
