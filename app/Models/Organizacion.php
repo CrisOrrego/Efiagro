@@ -32,7 +32,6 @@ class Organizacion extends Model
             ['total_asociados',             'Asociados:',                    'integer', true,    false, null, 100],
             ['fecha_constitucion',          'Fecha Constitución:',           'date', true,       false, null, 100],         
         ];
-        
     }
 
     public function scopeId($q, $id)

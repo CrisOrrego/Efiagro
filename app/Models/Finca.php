@@ -55,6 +55,7 @@ class Finca extends Model
     {
         return $this->belongsTo('App\Models\Zona', 'zona_id');
     }
+    
     public function usuarios()
     {
         return $this->belongsTo('App\Models\Usuario', 'usuario_id');

@@ -48,4 +48,14 @@ class Caso extends Model
         return $q->whereIn('tipo', ['Whatsapp', 'SMS', 'Llamada telefonica']);
     }
     //Fin Dev Angélica
+
+    public function usuarios()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id');
+    }
+
+    public function autor()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id', 'id');
+    }
 }
