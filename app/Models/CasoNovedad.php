@@ -11,11 +11,11 @@ class CasoNovedad extends Model
 
     protected $table = 'casos_novedades';
     protected $guarded = ['id'];
-    protected $appends = ['novedad'];
     protected $casts = [
         'usuario_id' => 'integer',
         'caso_id' => 'integer'
          ]; 
+    // protected $appends = ['novedad'];  // Crea conflicto para mostrar el campo NOVEDAD en la vista SOLICITUDES
 
     public function columns()
     { 
@@ -56,6 +56,11 @@ class CasoNovedad extends Model
     }
 
     public function autor()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id');
+    }
+
+    public function usuarios()
     {
         return $this->belongsTo('App\Models\Usuario', 'usuario_id');
     }
