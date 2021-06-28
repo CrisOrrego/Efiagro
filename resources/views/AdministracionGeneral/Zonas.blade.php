@@ -32,7 +32,8 @@
 					<th md-column>Altimetria Max</th>
 					<th md-column>Brillo Solar Min</th>
 					<th md-column>Brillo Solar Max</th>
-					<th md-column>Pendiente</th>
+					<th md-column>Pendiente Min</th>
+					<th md-column>Pendiente Max</th>
 					<th md-column>Acción</th>
 				  </tr>
 				</thead>
@@ -52,7 +53,8 @@
 					<td md-cell>@{{ Z.altimetria_max }} <span>Mt</span></td>
 					<td md-cell>@{{ Z.brillo_solar_min }} <span>H</span></td>
 					<td md-cell>@{{ Z.brillo_solar_max }} <span>H</span></td>
-					<td md-cell>@{{ Z.pendiente }} <span>H</span></td>
+					<td md-cell>@{{ Z.pendiente_min }} <span>H</span></td>
+					<td md-cell>@{{ Z.pendiente_max }} <span>H</span></td>
 
 					<td md-cell>
 						<md-button class="md-icon-button" ng-click="editarZona(Z)">

@@ -5,6 +5,7 @@
     <div layout="row" >
         <div class="divInfo" flex="" layout layout-wrap>
             <div class="seccion_texto">
+                <ul ><label class="texto_title">Dirección:</label> <span class="textoInfo">@{{ Finca.nombre }}</span></ul>
                 <ul ><label class="texto_title">Dirección:</label> <span class="textoInfo">@{{ Finca.direccion }}</span></ul>
                 <ul ><label class="texto_title">Departamento:</label> <span class="textoInfo">@{{ Finca.departamento_id }} - @{{ Finca.nombreDepartamento }}</span></ul>
                 <ul ><label class="texto_title">Municipio:</label> <span class="textoInfo">@{{ Finca.municipio_id }} - @{{ Finca.nombreMunicipio }}</span></ul>

@@ -11,7 +11,10 @@ class SeccionesController extends Controller
     public function postSecciones()
  	{
  		$CRUD = new CRUD('App\Models\Seccion');
-        return $CRUD->call(request()->fn, request()->ops);
+        return $CRUD->call(
+			request()->fn, 
+			request()->ops
+		);
  	} 
 
     

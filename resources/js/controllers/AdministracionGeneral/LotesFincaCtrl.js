@@ -8,39 +8,74 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
 
         var Ctrl = $scope;
         var Rs = $rootScope;
+        //INICIO DEV ANGÉLICA
         Ctrl.indice = 0;
         
-        Ctrl.semanas = [
-            {
-                id:1, semana:'semana 01', fechaInicial:'2021-01-07', fechaFinal:'2021 2021-12-15'
-            },
-            {
-                id:2, semana:'semana 02', fechaInicial:'2021-01-08', fechaFinal:'2021 2021-12-15'
-            },
-            {
-                id:3, semana:'semana 03', fechaInicial:'2021-01-15', fechaFinal:'2021 2021-12-15'
-            }
-        ];
-       
-        Ctrl.Salir = $mdDialog.cancel;
-
-        Ctrl.LotesCRUD = $injector.get("CRUD").config({
-            base_url: "/api/lotes/lotes",
-            limit: 1000,
-            add_append: "refresh",
-            order_by: ["-created_at"],
-            query_with:['finca', 'organizacion', 'linea_productiva', 'labor']
-        });
-
-        Ctrl.getLotes = () => {
-            Ctrl.LotesCRUD.setScope("finca_id", Rs.Usuario.finca_id); //Me trae los lotes de una finca
-            Ctrl.LotesCRUD.get().then(() => {
-                Ctrl.Lotes = Ctrl.LotesCRUD.rows;
-                //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
-            });
+        Ctrl.semanas = [];
+        Ctrl.LotesLabores = [];
+        //FIN DEV ANGELICA
+        
+        //INICIO DEV ANGELICA
+        Ctrl.getLoteLabores = (lote, lineaproductiva, semana) => {
+            Ctrl.LotesLabores = [];
+            
+            $http.get ('api/lotelabores/lotelaborsemana/'+ lote + '/' + lineaproductiva + '/' + semana, {}).then((r)=>{
+				Ctrl.LotesLabores = r.data;
+			});
         };
 
+        Ctrl.generarSemanas = () => {
+
+            var curr = new Date((new Date()).getFullYear(), 0, 1); // get current date
+            var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+            var last = first + 7; // last day is the first day + 6
+
+            let fecha = new Date(curr.setDate(last));
+
+            let hoy = new Date();
+
+            hoy.setHours(0,0,0,0);
+
+            let numeroSemanasLote = 0
+            
+            for(i=1; i < numeroSemanasLote + 52; i++) {
+                const f = fecha;
+
+                let fechacontresdiasmas= f.getTime() + (6*24*60*60*1000);  
+                let segundaFecha = new Date(fechacontresdiasmas);
+                
+                if (i >= numeroSemanasLote) {
+                    Ctrl.semanas.push({id: i - numeroSemanasLote, fechaInicial: f, fechaFinal: segundaFecha, semana: i});
+                    if(segundaFecha.getTime() >= hoy.getTime() && f.getTime() <= hoy.getTime()){
+                        Ctrl.indice = Ctrl.semanas.length -1;
+                    }
+                }
+
+                fecha = new Date(segundaFecha.getTime() + (1*24*60*60*1000));  
+            }
+        }
+
+        Ctrl.generarSemanas();
+                Ctrl.Salir = $mdDialog.cancel;
+
+                Ctrl.LotesCRUD = $injector.get("CRUD").config({
+                    base_url: "/api/lotes/lotes",
+                    limit: 1000,
+                    add_append: "refresh",
+                    order_by: ["-created_at"],
+                    query_with:['finca', 'organizacion', 'linea_productiva', 'labor']
+                });
+
+                Ctrl.getLotes = () => {
+                    Ctrl.LotesCRUD.setScope("finca_id", Rs.Usuario.finca_id); //Me trae los lotes de una finca
+                    Ctrl.LotesCRUD.get().then(() => {
+                        Ctrl.Lotes = Ctrl.LotesCRUD.rows;
+                        //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
+                    });
+                };
+
         Ctrl.getLotes();
+        //FIN DEV ANGELICA
 
         //INICIO DEV ANGÉLICA
         Ctrl.clickOnCard = (lote) => {
@@ -52,6 +87,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                     L.checked = false;
                 });
                 lote.checked = true; 
+                Ctrl.getLoteLabores(lote.id, lote.linea_productiva.id, Ctrl.semanas[Ctrl.indice].semana);
             }
             /*
             //Estas líneas solo abren o cierran el panel seleccionado, es decir, deja visualizar varios a la vez
@@ -64,20 +100,67 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
         //FIN DEV ANGELICA
 
         //INICIO DEV ANGÉLICA
+
         //O = Orientación de las flechas - si la orientacion es derecha el indice debe incrementarse en 1, si es izq 
         //D = Derecha
-        Ctrl.clickOnRow = (O) => {
+        Ctrl.clickOnRow = (O, lote) => {
             if(O === 'D') {
                 if(Ctrl.indice < Ctrl.semanas.length-1){
-                    Ctrl.indice ++;
+                    Ctrl.indice++;
+                    Ctrl.getLoteLabores(lote.id, lote.linea_productiva.id, Ctrl.semanas[Ctrl.indice].semana);
                 }
             }else{
                 if(Ctrl.indice > 0){
-                    Ctrl.indice --;
+                    Ctrl.indice--;
+                    Ctrl.getLoteLabores(lote.id, lote.linea_productiva.id, Ctrl.semanas[Ctrl.indice].semana);
                 }
             }
         }
         //FIN DEV ANGELICA
+
+
+        // LOTE LABORES
+        Ctrl.LoteLaboresCRUD = $injector.get("CRUD").config({
+            base_url: "/api/lotelabores/lotelabores",
+            limit: 1000,
+            add_append: "refresh",
+            order_by: ["-created_at"],
+            query_with:['labor', 'lote']
+        });
+
+
+        Ctrl.nuevoLoteLabor = () => {
+            Ctrl.LoteLaboresCRUD.dialog({
+                Flex: 10,
+                Title: "Agregar Labor",
+
+                Confirm: { Text: "Agregar Labor" }
+            }).then(r => {
+                if (!r) return;
+                Ctrl.LoteLaboresCRUD.add(r);
+                Rs.showToast('Labor Agregada');
+            });
+        };
+        Ctrl.editarLoteLabor = LB => {
+            Ctrl.LoteLaboresCRUD.dialog(LB, {
+                title: "Editar Evento" + LB.id
+            }).then(r => {
+                if (r == "DELETE") return Ctrl.LoteLaboresCRUD.delete(LB);
+                Ctrl.LoteLaboresCRUD.update(r).then(() => {
+                    Rs.showToast("Evento actualizado");
+                });
+            });
+        };
+
+        Ctrl.eliminarLoteLabor = LB => {
+            Rs.confirmDelete({
+                Title: "¿Eliminar Lote #" + LB.id + "?"
+            }).then(d => {
+                if (!d) return;
+                Ctrl.LoteLaboresCRUD.delete(LB);
+            });
+        };
+        // FIN
           
     }
 ]);

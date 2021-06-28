@@ -15,7 +15,7 @@
             </md-button>
         </div>
 </div>
-<img ng-src="imgs/farmer-cartoon.png" alt="" >
+<img ng-src="imgs/paco.png" alt="" >
 
 <style type="text/css">
 	.boton-principal{

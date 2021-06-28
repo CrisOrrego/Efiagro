@@ -36,68 +36,66 @@ angular.module("LaboresCtrl", []).controller("LaboresCtrl", [
             // console.log(Ctrl.linea_lp_select.nombre);
         };
 
-Ctrl.nuevaLabor = () => {
-    Rs.BasicDialog({
-        Flex: 30,
-        Title: "Crear Labor",
-        Fields: [
-            
-            {
-                Nombre: "Labor",
-                Value: "",
-                Type: "string",
-                Required: true
-            },
-            {
-                Nombre: "Zona",
-                Value: Ctrl.zona_select,
-                Type: "string",
-                // List: zona_select,
-                Required: true
-            },
-            {
-                Nombre: "Linea Productiva",
-                Value: Ctrl.linea_lp_select,
-                Type: "string",
-                // List: zona_select,
-                Required: true
-            },
-            {
-                Nombre: "Frecuencia",
-                Value: "",
-                Type: "string",
-                Required: true
-            },
-            {
-                Nombre: "Semana Inicio",
-                Value: "",
-                Type: "string",
-                Required: true
-            },
-            {
-                Nombre: "Margen",
-                Value: "",
-                Type: "string",
-                Required: true
-            }
-        ],
+        Ctrl.nuevaLabor = () => {
+            Rs.BasicDialog({
+                Flex: 30,
+                Title: "Crear Labor",
+                Fields: [
+                    
+                    {
+                        Nombre: "Labor",
+                        Value: "",
+                        Type: "string",
+                        Required: true
+                    },
+                    {
+                        Nombre: "Zona",
+                        Value: Ctrl.zona_select,
+                        Type: "string",
+                        // List: zona_select,
+                        Required: true
+                    },
+                    {
+                        Nombre: "Linea Productiva",
+                        Value: Ctrl.linea_lp_select,
+                        Type: "string",
+                        // List: zona_select,
+                        Required: true
+                    },
+                    {
+                        Nombre: "Frecuencia",
+                        Value: "",
+                        Type: "string",
+                        Required: true
+                    },
+                    {
+                        Nombre: "Semana Inicio",
+                        Value: "",
+                        Type: "string",
+                        Required: true
+                    },
+                    {
+                        Nombre: "Margen",
+                        Value: "",
+                        Type: "string",
+                        Required: true
+                    }
+                ],
 
-        Confirm: { Text: "Crear Labor" }
-    }).then(r => {
-        if (!r) return;
-        var nuevaLabor = {
-            labor : r.Fields[0].Value,
-            zona_id: r.Fields[1].Value,
-            linea_productiva_id: r.Fields[2].Value,
-            frecuencia: r.Fields[3].Value,
-            inicio: r.Fields[4].Value,
-            margen: r.Fields[5].Value,
-            
-
+                Confirm: { Text: "Crear Labor" }
+                }).then(r => {
+                    if (!r) return;
+                        var nuevaLabor = {
+                            labor : r.Fields[0].Value,
+                            zona_id: r.Fields[1].Value,
+                            linea_productiva_id: r.Fields[2].Value,
+                            frecuencia: r.Fields[3].Value,
+                            inicio: r.Fields[4].Value,
+                            margen: r.Fields[5].Value,
+                };
+                Ctrl.LaboresCRUD.add(nuevaLabor);
+            });
         };
-        Ctrl.LaboresCRUD.add(nuevaLabor);
-    });
-};
         
         Ctrl.editarLabor = (L) => {
 			$mdDialog.show( { 
@@ -107,7 +105,7 @@ Ctrl.nuevaLabor = () => {
 				scope: Ctrl.$new()
 			});
 		}
-
+        
         Ctrl.eliminarLabor = L => {
             Rs.confirmDelete({
                 Title: "¿Eliminar Labor #" + L.id + "?"
@@ -116,7 +114,7 @@ Ctrl.nuevaLabor = () => {
                 Ctrl.LaboresCRUD.delete(L);
             });
         };
-
+        
         Ctrl.obtener_lp = () =>{
             return $http.post('api/lineasproductivas/obtener', {}).then(r => {
                 Ctrl.lineas_productivas = r.data;

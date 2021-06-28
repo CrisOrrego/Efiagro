@@ -71,8 +71,12 @@
                 <input class="inputEdit" type="text" ng-model="Zona.brillo_solar_max">
             </md-input-container>
             <md-input-container  >
-                <label>Pendiente</label> 
-                <input class="inputEdit" type="text" ng-model="Zona.pendiente">
+                <label>Pendiente Min</label> 
+                <input class="inputEdit" type="text" ng-model="Zona.pendiente_min">
+            </md-input-container>
+            <md-input-container  >
+                <label>Pendiente Max</label> 
+                <input class="inputEdit" type="text" ng-model="Zona.pendiente_max">
             </md-input-container>
         </div>
     </div>

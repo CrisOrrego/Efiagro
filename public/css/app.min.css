@@ -12,6 +12,10 @@ body {
   background-position: center center;
 }
 
+#Home {
+  z-index: 2;
+}
+
 .bg-primary {
   background-color: #316756;
   color: white;
@@ -153,6 +157,10 @@ body {
 
 .block {
   display: block;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .vert-align-middle {
@@ -7376,6 +7384,10 @@ body {
   opacity: 0.7;
 }
 
+.Pointer {
+  cursor: pointer;
+}
+
 md-card {
   border-radius: 4px !important;
 }
@@ -7449,6 +7461,19 @@ md-toolbar.md-short .md-button.md-icon-button,
 div.md-short .md-button.md-icon-button {
   padding: 0px;
   width: 30px;
+}
+
+.md-tabs-fullheight md-tab-content > div {
+  height: 100%;
+}
+
+.md-tabs-fullheight md-tab-content > div > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-x: hidden;
 }
 
 #ImageEditor md-dialog-content {

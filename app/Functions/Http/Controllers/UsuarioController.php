@@ -19,11 +19,23 @@ class UsuarioController extends Controller
     public function postLogin()
     {
     	$Credenciales = request('Credenciales');
-    	$Usuario = Usuario::where('correo', $Credenciales['Correo'])->orWhere('documento', $Credenciales['Correo'])->first();
-    	if($Usuario){
-    		return Crypt::encrypt($Usuario->id);
-    	}else{
-    		return response()->json(['Msg' => 'Error en usuario o contraseña'], 500);
+        $claveSesion = $Credenciales['Password'];
+        $usuarioSesion = $Credenciales['Correo'];
+    	$Usuario = Usuario::where('correo', $usuarioSesion)
+            ->orWhere('documento', $usuarioSesion)
+            ->first();
+        $dato = Crypt::encrypt($Usuario['contrasena']);
+        // $dato = $Usuario['contrasena'];
+
+    	if ( $Usuario ) {
+            if ( Crypt::decryptString($Usuario['contrasena']) == $claveSesion ) {
+            // if ( $Usuario['contrasena'] == $claveSesion ) {
+                return Crypt::encrypt($Usuario->id);
+            } else {
+                return response()->json(['Msg' => 'Error en la contraseña registrada'], 500);
+            }
+    	} else {
+    		return response()->json(['Msg' => 'Error en el usuario registrado'], 500);
     	}
     }
  
@@ -37,18 +49,17 @@ class UsuarioController extends Controller
 
         return $Usuario;
     }
-
+    
     // Medoto para la actualizacion solo de la clave del usuario.
     public function postActualizarClave()
     {
         $usuario_id = request('usuario_id');
         $contrasena = request('contrasena');
-
         $usuario = Usuario::where('id', $usuario_id)->first();
-        $usuario->contrasena = Crypt::encrypt($contrasena);
+        $usuario->contrasena = Crypt::encryptString(trim($contrasena), false);
         $usuario->save();
     }
-    
+
     public function postBuscarUsuario()
     {
         $query = request('query');
@@ -56,6 +67,18 @@ class UsuarioController extends Controller
                     ->orWhere('apellidos', 'LIKE', "%$query%")
                     ->orWhere('documento',    'LIKE', "$query%")
                     ->get();
+    }
+
+    // Medoto para la actualizacion de cualquier campo de la tabla del usuario. // Luigi
+    public function postActualizarcampo()
+    {
+    
+        $usuario = request('usuario');
+        $campo   = request('campo');
+        $valor   = request('valor');
+        $usuario = Usuario::where('id', $usuario)->first();
+        $usuario->$campo = $valor;
+        $usuario->save();
     }
 
 }

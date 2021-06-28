@@ -31,7 +31,9 @@
                     <md-switch ng-if="Field.Type == 'bool'" ng-model="Obj[Field.Field]" ng-required="Field.Required" ng-class="Field.Class" class="w100p">
 
 					</md-switch>
-					
+                    <textarea class="w100p" ng-model="Field.Value" ng-if="Field.Type == 'textarea'"
+                    rows="{{Field.opts.rows}}" ng-required="Field.Required"></textarea>
+                
                 </md-input-container>
         
             </div>

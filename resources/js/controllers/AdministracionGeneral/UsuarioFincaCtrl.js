@@ -1,4 +1,4 @@
-angular.module('UsuarioFincaCtrl', ['ngFileUpload'])
+angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
     .controller('UsuarioFincaCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'DatosUsuario', 
         function($scope, $rootScope, $http, $injector, $mdDialog, DatosUsuario) {
             
@@ -13,39 +13,63 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])
                 Ctrl.SelectedFile = file;
             };
             Ctrl.Upload = (L) => {
-                debugger;
-                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+                var reader = new FileReader();
+                //For Browsers other than IE.
+                var regex;
+
+                regex = /^([a-zA-Z0-9\s_\\.\-:])+(.gpx)$/;
                 if (regex.test(Ctrl.SelectedFile.name.toLowerCase())) {
                     if (typeof (FileReader) != "undefined") {
                         var reader = new FileReader();
-                        //For Browsers other than IE.
-                        if (reader.readAsBinaryString) {
-                            reader.onload = function (e) {
-                                Ctrl.ProcessExcel(e.target.result, L);
-                            };
-                            reader.readAsBinaryString(Ctrl.SelectedFile);
-                        } else {
-                            //For IE Browser.
-                            reader.onload = function (e) {
-                                var data = "";
-                                var bytes = new Uint8Array(e.target.result);
-                                for (var i = 0; i < bytes.byteLength; i++) {
-                                    data += String.fromCharCode(bytes[i]);
-                                }
-                                Ctrl.ProcessExcel(data, L);
-                            };
-                            reader.readAsArrayBuffer(Ctrl.SelectedFile);
-                        }
+                        //For Browsers other than IE.                       
+                        reader.readAsText(Ctrl.SelectedFile); // lee el archivo de texto con contenido en XML
+
+                        reader.onload = function() {
+                          console.log(reader.result);
+                          Ctrl.convertXml2JSon (reader.result, L);
+                        };
+                      
+                        reader.onerror = function() {
+                          console.log(reader.error);
+                        };
+
                     } else {
-                        $window.alert("This browser does not support HTML5.");
+                        alert("This browser does not support HTML5.");
                     }
                 } else {
-                    $window.alert("Please upload a valid Excel file.");
+                    regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+                    if (regex.test(Ctrl.SelectedFile.name.toLowerCase())) {
+                        if (typeof (FileReader) != "undefined") {
+                            var reader = new FileReader();
+                            //For Browsers other than IE.
+                            if (reader.readAsBinaryString) {  // Es un archivo binario en formato excel
+                                reader.onload = function (e) {
+                                    Ctrl.ProcessExcel(e.target.result, L);
+                                };
+                                reader.readAsBinaryString(Ctrl.SelectedFile);
+                            } else {
+                                //For IE Browser.
+                                reader.onload = function (e) {
+                                    var data = "";
+                                    var bytes = new Uint8Array(e.target.result);
+                                    for (var i = 0; i < bytes.byteLength; i++) {
+                                        data += String.fromCharCode(bytes[i]);
+                                    }
+                                    Ctrl.ProcessExcel(data, L);
+                                };
+                                reader.readAsArrayBuffer(Ctrl.SelectedFile);
+                            }
+                        } else {
+                            alert("This browser does not support HTML5.");
+                        }
+                    } else {
+                        alert("Please upload a valid Excel file.");
+                    }
                 }
+
             };
      
             Ctrl.ProcessExcel = function (data, L) {
-                debugger;
                 //Read the Excel File data.
                 var workbook = XLSX.read(data, {
                     type: 'binary'
@@ -64,6 +88,18 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])
                 });
                 L.coordenadas = '[' + L.coordenadas + ']';
             };
+
+            Ctrl.convertXml2JSon = function (xml, L) {
+                var x2js = new X2JS();
+                let datos = x2js.xml_str2json(xml);
+                let coordenadas = datos.gpx.trk[0].trkseg.trkpt;
+                L.coordenadas = '';
+                coordenadas.forEach(element => {
+                    L.coordenadas += '{"lat":' + element._lat + ', "long":' + element._long + '},';  
+                    
+                });
+                L.coordenadas = '[' + L.coordenadas + ']';
+            }
             //FIN DEV ANGELICA
             
             // Cargar las fincas del usuario seleccionado
@@ -115,14 +151,14 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])
 
             // Obtener los datos de la lista 6: Tipo de Cultivo
             $http.post ('api/lista/listacompleta', { 
-                id: 6
+                id: 5
             }).then((r)=>{
                 Ctrl.TipoCultivo = r.data;
 			});
 
             // Obtener los datos de la lista 7: Tipos de Suelo
             $http.post ('api/lista/listacompleta', { 
-                id: 7
+                id: 4
             }).then((r)=>{
                 Ctrl.TipoSuelo = r.data;
 			});
@@ -145,7 +181,6 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])
 
             // Guardar / Actualizar lote de la finca.
             Ctrl.guardarLote = (L) => {
-                debugger;
                 $http.post('api/lotes/actualizar', {
                     Datos: L
                 });
@@ -154,7 +189,6 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])
 
             // Agregar registro de lote
             Ctrl.nuevoLote = (L) => {
-                debugger;
                 $http.post('api/lotes/crear', {
                     Datos:          L,
                     finca:          fincaDefault,

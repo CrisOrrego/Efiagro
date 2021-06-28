@@ -20,10 +20,9 @@ angular.module('HomeCtrl', [])
             // Cargar el listado de secciones
             Ctrl.obtenerSecciones = () => {
                 Ctrl.logoInicio = true;
-                $http.post('api/main/obtener-secciones', {})
-                    .then(r => {
-                        Rs.Secciones = r.data;
-                    });
+                $http.post('api/main/obtener-secciones', {}).then(r => {
+                    Rs.Secciones = r.data;
+                });
             };
             Ctrl.obtenerSecciones();
 
@@ -43,9 +42,11 @@ angular.module('HomeCtrl', [])
             
             // Función para actualizar un campo en la tabla del usuario.
             Rs.actualizarUsuario = ( campo, valor ) => {
+                if ( !campo || !valor )
+                    return;
+                
                 $http.post('api/usuario/actualizarcampo', {
-                    usuario: Rs.Usuario['id'],
-                    // usuario: 1,
+                    usuarioid: Rs.Usuario['id'],
                     campo: campo, 
                     valor: valor
                 }).then( () => {
