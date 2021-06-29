@@ -16,8 +16,10 @@ angular.module('SolicitudesDetalleCtrl', [])
             Ctrl.NovedadesCRUD = $injector.get('CRUD').config({
                 base_url: '/api/casos/novedades',
                 limit: 1000,
+                query_with: ['autor'],
                 add_append: 'refresh',
             });
+            //console.log(Ctrl.NovedadesCRUD);
 
             // Obtenemos los datos de casos, en CasosCRUD
             Ctrl.CasosCRUD = $injector.get('CRUD').config({
