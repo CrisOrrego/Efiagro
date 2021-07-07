@@ -45,7 +45,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                 let segundaFecha = new Date(fechacontresdiasmas);
                 
                 if (i >= numeroSemanasLote) {
-                    Ctrl.semanas.push({id: i - numeroSemanasLote, fechaInicial: f, fechaFinal: segundaFecha, semana: i});
+                    Ctrl.semanas.push({id: i - numeroSemanasLote, fechaInicial: f.toISOString().slice(0, 10), fechaFinal: segundaFecha.toISOString().slice(0, 10), semana: i});
                     if(segundaFecha.getTime() >= hoy.getTime() && f.getTime() <= hoy.getTime()){
                         Ctrl.indice = Ctrl.semanas.length -1;
                     }

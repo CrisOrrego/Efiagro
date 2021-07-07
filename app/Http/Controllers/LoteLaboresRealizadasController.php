@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Functions\CRUD;
 use App\Models\LoteLabores;
-use App\Models\LotesLabores;
+use App\Models\LotesLaboresRealizadas;
 use App\Functions\Helper;
 
-class LoteLaboresController extends Controller
+class LoteLaboresRealizadasController extends Controller
 {
     public function postlotelabores()
  	{
@@ -27,7 +27,7 @@ class LoteLaboresController extends Controller
 		//var_dump($loteid); die(); 
 		$result = array();
 		$L = LotesLabores::join('labores','lotes_labores.labor_id', '=', 'labores.id')
-		->select('lotes_labores.labor', 'lotes_labores.inicio', 'lotes_labores.frecuencia', 'labores.labor AS otraLabor', 'lotes_labores.margen')
+		->select('lotes_labores.labor', 'lotes_labores.inicio', 'lotes_labores.frecuencia', 'labores.labor AS otraLabor')
 		->where('labores.linea_productiva_id', $lineaproductivaid)
 		->where('lote_id', $loteid)->get();
 
@@ -36,25 +36,9 @@ class LoteLaboresController extends Controller
 		foreach($L as $lotelabor){
 			if($numsemana - $lotelabor->inicio >= 0){
 				if(($numsemana - $lotelabor->inicio) % $lotelabor->frecuencia==0){
-					$lotelabor->delta=0;  //Hace variable delta referencia a la margen
 					array_push($result, $lotelabor);
 				}
 			}
-			if($lotelabor->margen!=0){
-				if(($numsemana - $lotelabor->margen) - $lotelabor->inicio >= 0){
-					if((($numsemana- $lotelabor->margen) - $lotelabor->inicio) % $lotelabor->frecuencia==0){
-						$lotelabor->delta= -1; //Hace variable delta referencia a la margen
-						array_push($result, $lotelabor);
-					}
-				}
-				if(($numsemana + $lotelabor->margen) - $lotelabor->inicio >= 0){
-					if((($numsemana + $lotelabor->margen) - $lotelabor->inicio) % $lotelabor->frecuencia==0){
-						$lotelabor->delta= +1; //Hace variable delta referencia a la margen
-						array_push($result, $lotelabor);
-					}
-				}
-			}
-
 		}
 		return $result;
 	 }

@@ -46,7 +46,9 @@
                         </div>
                         <div ng-repeat="LB in LotesLabores">
                             <ul >
-                            @{{ LB.otraLabor }} - <label class="texto_title">@{{ LB.labor }} </label> <br> <span class="textoInfo">Inicio:  @{{ LB.inicio }} <br> Frecuencia:  @{{ LB.frecuencia }}</span>
+                            <md-checkbox>                            
+                                @{{ LB.otraLabor }} - <label class="texto_title">@{{ LB.labor }} </label> <br> <span class="textoInfo">Inicio:  @{{ LB.inicio }} <br> Frecuencia:  @{{ LB.frecuencia }} @{{LB.delta}} </span>
+                            </md-checkbox>
                             </ul>
                         </div>
                         

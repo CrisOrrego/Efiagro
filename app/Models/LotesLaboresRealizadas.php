@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LotesLabores extends Model
 {
     use HasFactory;
-    protected $table = 'lotes_labores';
+    protected $table = 'lotes_labores_realizadas';
     protected $guarded = ['id'];
     protected $appends = [];
     
@@ -31,9 +31,8 @@ class LotesLabores extends Model
         return [
             ['lote_id',         'Lotes',             'select',   true,   false,  null, 50, ['options' => $lotes] ],
             ['labor_id',        'Labores',           'select',   true,   false,  null, 50, ['options' => $labores] ],
-            ['inicio',          'Inicio',            'select',   true,   false,  null, 100, [ 'options' => $estado ]], 
-            ['frecuencia',      'Frecuencia',        'select',   true,   false,  null, 100, [ 'options' => $estado ]], 
-            ['margen',          'Margen',            'select',   true,   false,  null, 100, [ 'options' => $estado ]]  
+            ['cumplimiento',    'Cumplimientos',     'select',   true,   false,  null, 100, [ 'options' => $cumplimiento ]], 
+            ['fecha',           'Fechas',            'select',   true,   false,  null, 100, [ 'options' => $fecha ]]
         ];
 
     }

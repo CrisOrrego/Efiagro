@@ -20,6 +20,7 @@ class CreditoSaldo extends Model
         'abonadomora',
         'pendiente',
     ];
+
     protected $dates = ['created_at', 'updated_at', 'fecha'];
 
     public function columns()
@@ -93,7 +94,7 @@ class CreditoSaldo extends Model
         $this->mora = $ValMora - $this->abonadomora;
         if($this->mora < 0){ $this->mora = 0; }
     }
-
+    
     public function getPendienteAttribute()
     {
         return $this->total - $this->abonado;
