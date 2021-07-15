@@ -24,7 +24,7 @@
 					<th md-column>Organización</th>
 					<th md-column>Linea Productiva</th>
 					<th md-column>Labores</th>
-					<th md-column>Hectareas</th>
+					<th md-column>Hectareas</th> 
 					<th md-column>Sitios</th>
 					<th md-column>Acción</th>
 				  </tr>

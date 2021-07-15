@@ -64,7 +64,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 });
                 L.coordenadas = '[' + L.coordenadas + ']';
             };
-            //FIN DEV ANGELICA
+            //FIN DEV ANGELICA 
             
             // Cargar las fincas del usuario seleccionado
             $http.post('api/fincas/usuario', { 

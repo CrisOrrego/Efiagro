@@ -7,9 +7,9 @@
                     <div align="center" class="content_nombre_organizacion ">
                         <img class="img-organizacion" src="/../imgs/organizacion1.jpg" alt="iconOrganizacion">
                         <h2>@{{ Organizacion . nombre }}</h2>
-                        <h4 class="openOrganigrama pointer" ng-click="abrirOrganigrama(O)">
+                        {{-- <h4 class="openOrganigrama pointer" ng-click="abrirOrganigrama(O)">
                             Ver Organigrama
-                        </h4>
+                        </h4> --}}
                     </div>
 
                 </div>

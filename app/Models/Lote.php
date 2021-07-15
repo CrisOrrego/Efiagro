@@ -15,13 +15,14 @@ class Lote extends Model
         'finca_id' => 'integer',
         'organizacion_id' => 'integer',
         'linea_productiva_id' => 'integer',
+        'labores_id' => 'integer',
          ];
     
     public function columns()
     { 
-        // $labores = \App\Models\Labor::all()->keyBy('id')->map( function($l){
-        //     return $l['labor'];
-        // })->toArray();
+        $labores = \App\Models\Labor::all()->keyBy('id')->map( function($l){
+            return $l['labor'];
+        })->toArray();
 
         $fincas = \App\Models\Finca::all()->keyBy('id')->map( function($f){
             return $f['nombre'];
@@ -38,7 +39,7 @@ class Lote extends Model
             ['finca_id',            'Finca',            'select',   true,   false,  null, 50, ['options' => $fincas] ],
             ['organizacion_id',     'Organización',     'select',   true,   false,  null, 50, ['options' => $organizaciones] ],
             ['linea_productiva_id', 'Linea Productiva', 'select',   true,   false,  null, 50, ['options' => $lineasproductivas] ],
-            // ['labores_id',          'Labores',         'select',    true,   false,  null, 50, ['options' => $labores] ], 
+            ['labores_id',          'Labores',         'select',    true,   false,  null, 50, ['options' => $labores] ], 
             ['hectareas',           'Hectareas',        null,       true,     false,  null,       100],
             ['sitios',              'Sitios',           null,       true,     false,  null,       100],
             ['coordenadas',         'Coordenadas',      null,       true,     false,  null,       100],
