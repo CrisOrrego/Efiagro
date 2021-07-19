@@ -54,15 +54,17 @@ class FincaController extends Controller
             $finca->temperatura     = $campos['temperatura'];
             $finca->humedad_relativa= $campos['humedad_relativa'];
             $finca->precipitacion   = $campos['precipitacion'];
-            $finca->altimetria_min  = $campos['altimetria_min'];
-            $finca->altimetria_max  = $campos['altimetria_max'];
+            $finca->altimetria      = $campos['altimetria'];
+            $finca->pendiente       = $campos['pendiente'];
             $finca->brillo_solar    = $campos['brillo_solar'];
         $finca->save();
 	}
 
     public function postCrear(Request $req)
 	{
+        // echo 'hola';
 		$campos = $req->Datos;
+        // dd($campos['nombre']);
         $finca = new Finca();
             $finca->usuario_id      = $req->usuario;
             $finca->nombre          = $campos['nombre'];
@@ -81,8 +83,8 @@ class FincaController extends Controller
             $finca->temperatura     = $campos['temperatura'];
             $finca->humedad_relativa= $campos['humedad_relativa'];
             $finca->precipitacion   = $campos['precipitacion'];
-            $finca->altimetria_min  = $campos['altimetria_min'];
-            $finca->altimetria_max  = $campos['altimetria_max'];
+            $finca->altimetria      = $campos['altimetria'];
+            $finca->pendiente       = $campos['pendiente'];
             $finca->brillo_solar    = $campos['brillo_solar'];
         $finca->save();
 	}
