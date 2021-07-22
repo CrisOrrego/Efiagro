@@ -62,7 +62,9 @@ class LoteController extends Controller
 
 	public function postCrear(Request $req)
 	{
+        // dd($req);
 		$campos = $req->Datos;
+        //dd($campos['fecha_establecimiento']);
         $lote = new Lote();
             $lote->finca_id      		= $req->finca;
             $lote->organizacion_id   	= $req->organizacion;

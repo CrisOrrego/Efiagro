@@ -177,7 +177,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                         articulo.contador++;
                     }
                     if (articulo.contador > 0) ArticulosBuscados.push(articulo);
-                })
+                });
                 Ctrl.ArticulosBuscados = ArticulosBuscados;
             };
 
@@ -187,7 +187,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                 Ctrl.Buscando = false;
                 Ctrl.ArticulosBuscados = [];
                 Ctrl.keys = [];
-            }
+            };
 
             //FIN DEV ANGÉLICA
 

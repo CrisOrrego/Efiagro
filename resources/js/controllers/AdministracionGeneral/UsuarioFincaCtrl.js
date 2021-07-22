@@ -7,6 +7,11 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
             Ctrl.Cancel = $mdDialog.cancel;
             Ctrl.UsuarioFinca = DatosUsuario;
 
+            // Datos por defecto para personalizacion de labores
+            var zonaSeleccionada = 0;
+            var lineaSeleccionada = 0;
+            var loteSeleccionado = 0;
+
             //INICIO DEV ANGÉLICA
             //Para leer un archivo de excel
             Ctrl.SelectFile = function (file) {
@@ -80,16 +85,51 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
             // Cargar los lotes de la finca seleccionada
             var fincaDefault = 0;
             Ctrl.cargarLotes = (F) => {
+                Ctrl.F = F;
+                loteSeleccionado = 0;
+                lineaSeleccionada = 0;
                 $http.post('api/lotes/finca', { 
                     finca: F.id
                 }).then( res => {
                     Ctrl.Lotes = res.data;
-                    //console.log(F);
-                    
-                    // calcular zonas
+                    //console.log('Informacion de lote: ', Ctrl.Lotes[0]);
                     calcularZona(F);
+                    // Ctrl.LoteSeleccionado = Ctrl.Lotes[0];
+                    
+                    if ( Ctrl.Lotes[0] ) {
+                        // console.log(Ctrl.Lotes[0]);
+                        Ctrl.cargarLote(Ctrl.Lotes[0]);
+                        loteSeleccionado = Ctrl.Lotes[0].id;
+                        lineaSeleccionada = Ctrl.Lotes[0].linea_productiva_id;
+                    } else {
+                        Ctrl.L = 0;
+                        console.log('No hay lotes en la finca');
+                    }
+                    // if ( Ctrl.LoteSeleccionado ) {
+                    //     console.log('Lote: ' + Ctrl.LoteSeleccionado.id);
+                    // } else {
+                    //     console.log('No existe lote.');
+                    // }
                 });
                 fincaDefault = F;
+            };
+
+            Ctrl.formularioNuevaFinca = () => {
+                Ctrl.F = null;
+                fincaDefault = null;
+            };
+
+            // Funcion para la carga de informacion de cada lote por Finca
+            Ctrl.cargarLote = (L) => {
+                console.log(L);
+                Ctrl.L = L;
+                loteSeleccionado = L.id;
+                lineaSeleccionada = L.linea_productiva_id;
+                //console.log('Informacion de otro lote: ', L);
+            };
+
+            Ctrl.formularioNuevoLote = () => {
+                Ctrl.L = null;
             };
 
             // Obtener el listado de las lineas productivas
@@ -141,9 +181,9 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
             };
             
             // Agregar registro de finca.
-            Ctrl.nuevaFinca = (F) => {
+            Ctrl.nuevaFinca = (Fn) => {
                 $http.post('api/fincas/crear', {
-                    Datos: F,
+                    Datos: Fn,
                     usuario: Ctrl.UsuarioFinca.id
                 });
                 Ctrl.Cancel();
@@ -160,9 +200,9 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
             // Agregar registro de lote
             Ctrl.nuevoLote = (L) => {
                 $http.post('api/lotes/crear', {
-                    Datos:          L,
-                    finca:          fincaDefault,
-                    organizacion:   Ctrl.UsuarioFinca.organizacion_id
+                    Datos: L,
+                    finca: fincaDefault.id,
+                    organizacion: 1
                 });
                 Ctrl.Cancel();
             };
@@ -173,15 +213,13 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
 			});
 
             Ctrl.recalcularZona = ( data ) => {
-                console.log(data);
-                if ( data['temperatura'] > 0 && data['humedad_relativa'] > 0 && data['precipitacion'] > 0 && data['altimetria_min'] > 0 && data['altimetria_max'] > 0 && data['brillo_solar'] > 0 ) {
+                if ( data['temperatura'] > 0 && data['humedad_relativa'] > 0 && data['precipitacion'] > 0 && data['altimetria'] > 0 && data['pendiente'] > 0 && data['brillo_solar'] > 0 ) {
                     calcularZona = ( data );
                 }
-                //console.log(data);
             };
 
             calcularZona = (Finca) => {
-                console.log(Finca);
+                // console.log('Finca: ', Finca);
                 // recorrer las zonas y validar los valores contra la finca, para obtener porcentajes
                 zonaprimaria = [];
                 angular.forEach(Ctrl.zonas, function( data ) {
@@ -196,25 +234,56 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                     if ( data['precipitacion_min'] <= Finca['precipitacion'] && data['precipitacion_max'] >= Finca['precipitacion'] ) {
                         contadorzona++;
                     }
-                    if ( data['altimetria_min'] <= Finca['altimetria_min'] && data['altimetria_max'] >= Finca['altimetria_min'] ) {
+                    if ( data['altimetria_min'] <= Finca['altimetria'] && data['altimetria_max'] >= Finca['altimetria'] ) {
                         contadorzona++;
                     }
-                    if ( data['altimetria_min'] <= Finca['altimetria_max'] && data['altimetria_max'] >= Finca['altimetria_max'] ) {
+                    if ( data['pendiente_min'] <= Finca['pendiente'] && data['pendiente_max'] >= Finca['pendiente'] ) {
                         contadorzona++;
                     }
                     if ( data['brillo_solar_min'] <= Finca['brillo_solar'] && data['brillo_solar_max'] >= Finca['brillo_solar'] ) {
                         contadorzona++;
                     }
                     zonaprimaria.push({
+                        'average': parseInt(contadorzona / 6 * 100),
+                        'zona_id': data['id'],
                         'description': data['descripcion'],
-                        'amount': contadorzona,
-                        'average': parseInt(contadorzona / 6 * 100)
+                        'amount': contadorzona
                     });
                 });
-                zonaprimaria.reverse( (a, b) => a.average < b.average);
+                zonaprimaria.reverse( (a, b) => a.average > b.average);
+                // console.log(zonaprimaria);
                 var text = zonaprimaria[0].description + ': Coincidencia del ' + zonaprimaria[0].average + '%';
                 Ctrl.zp = ( zonaprimaria[0].average < 70 ) ? 'Subzona de ' + text : 'Zona de ' + text;
-                //console.log(Ctrl.zonaprimaria);
+                zonaSeleccionada = zonaprimaria[0].zona_id;
+                // console.log('Zona primaria: ', zonaprimaria);
+            };
+
+            Ctrl.personalizarLabores = () => {
+                // console.log(`zona ${zonaSeleccionada}, Linea ${lineaSeleccionada}, Lote ${loteSeleccionado}`);
+                if ( zonaSeleccionada > 0 && lineaSeleccionada > 0 && loteSeleccionado > 0 ) {
+                    $http.post('api/loteslabores/personalizar', {
+                        Datos: {
+                            'lote': loteSeleccionado,
+                            'linea': lineaSeleccionada,
+                            'zona': zonaSeleccionada
+                        }
+                    });
+                    // Ctrl.Cancel();
+                } else {
+                    console.log('Aun no se crea Lote para la finca.');
+                }
+                // console.log('Lote: ' + Lote.id, Labor);
+                // $http.post('api/loteslabores/crear', {
+                //     Datos: {
+                //         'lote': 20, // Lote['id'],
+                //         'labor': 23, // Labor['id'],
+                //         'labor_des': 'CORTADO CNSTANTE', // Labor['labor'],
+                //         'inicio': 15, // Lote['inicio'],
+                //         'frecuencia': 35, // Lote['frecuencia'],
+                //         'margen': 3  // Lote['margen']
+                //     }
+                // });
+                // Ctrl.Cancel();
             };
         }
     ]
