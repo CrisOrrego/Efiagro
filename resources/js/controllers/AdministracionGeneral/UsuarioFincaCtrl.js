@@ -69,6 +69,10 @@ angular.module('UsuarioFincaCtrl', [])
                 //console.log('Informacion de otro lote: ', L);
             };
 
+            Ctrl.formularioNuevoLote = () => {
+                Ctrl.L = null;
+            };
+
             // Obtener el listado de las lineas productivas
             $http.post('api/lineasproductivas/obtener', {})
                 .then( res => {
@@ -137,9 +141,9 @@ angular.module('UsuarioFincaCtrl', [])
             // Agregar registro de lote
             Ctrl.nuevoLote = (L) => {
                 $http.post('api/lotes/crear', {
-                    Datos:          L,
-                    finca:          fincaDefault,
-                    organizacion:   Ctrl.UsuarioFinca.organizacion_id
+                    Datos: L,
+                    finca: fincaDefault.id,
+                    organizacion: 1
                 });
                 Ctrl.Cancel();
             };

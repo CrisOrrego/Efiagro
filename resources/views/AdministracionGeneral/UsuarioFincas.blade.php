@@ -115,10 +115,10 @@
         <md-tabs class="" >
             <md-tab ng-show="L" ng-repeat="L in Lotes" label="Lote @{{ $index + 1 }}" 
                 ng-click="cargarLote(L)"></md-tab>
-            <md-tab ng-click="" label="+"></md-tab>
+            <md-tab ng-click="formularioNuevoLote()" label="+"></md-tab>
         </md-tabs>
 
-        <div layout layout-wrap ng-show="L">
+        <div layout layout-wrap >
             <md-input-container>
                 <label>Linea Productiva</label>
                 <md-select ng-model="L.linea_productiva_id" class="no-margin" style="min-width: 150px;"
@@ -147,7 +147,8 @@
             </md-input-container>
             <md-input-container>
                 <label>Fec. Establecimiento</label>
-                <md-datepicker ng-model="L.fecha_establecimiento" ></md-datepicker>
+                {{-- <md-datepicker name="fecha_establecimiento" ng-model="L.fecha_establecimiento" ></md-datepicker> --}}
+                <input ng-model="L.fecha_establecimiento" placeholder="AAAA-MM-DD"/>
             </md-input-container>
             <md-input-container>
                 <label>KG P_promedio</label>
@@ -161,8 +162,11 @@
                 <label>Frec. Corte</label>
                 <input ng-model="L.frec_corte" type="text" />
             </md-input-container>
-            <md-button class="md-raised md-primary" ng-click="guardarLote(L, L.LP)">
+            <md-button ng-show="L.id > 0" class="md-raised md-primary" ng-click="guardarLote(L, L.LP)">
                 <md-icon md-font-icon="fa-save"></md-icon>Guardar Lote @{{ $index + 1 }}
+            </md-button>
+            <md-button ng-show="!L.id" class="md-raised md-primary" ng-click="nuevoLote(L)">
+                <md-icon md-font-icon="fa-save"></md-icon>Nuevo Lote
             </md-button>
         </div>
 

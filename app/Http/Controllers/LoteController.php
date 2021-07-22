@@ -64,8 +64,9 @@ class LoteController extends Controller
 	{
         // dd($req);
 		$campos = $req->Datos;
+        //dd($campos['fecha_establecimiento']);
         $lote = new Lote();
-            $lote->finca_id      		= $req->finca['id'];
+            $lote->finca_id      		= $req->finca;
             $lote->organizacion_id   	= $req->organizacion;
             $lote->linea_productiva_id 	= $campos['linea_productiva_id'];
             $lote->labores_id       	= $campos['labores_id'];
