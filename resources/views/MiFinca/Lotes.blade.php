@@ -11,7 +11,7 @@
                     <img ng-src="files/lineasproductivas_media/@{{ Lote.linea_productiva_id }}.jpg" alt="" width="60" height="60">
                     <div class="seccion_texto">
                         <ul ><label class="texto_title">LOTE: </label> <span class="textoInfo">@{{ Lote.id }}</span></ul>
-                        <ul ><label class="texto_title">Lineas Productivas: </label> <span class="textoInfo">@{{ Lote.linea_productiva.nombre }}</span></ul>
+                        <ul ><label class="texto_title">Lineas Productivas: </label> <span> @{{ Lote.linea_productiva.nombre }}</span></ul>
                         <ul ><span class="textoInfo">@{{ Lote.hectareas }}</span><label class="texto_title"> Hectareas</label>  / <span class="textoInfo">@{{ Lote.sitios }}</span> <label class="texto_title"> Sitios</label></ul> 
                         <ul ><label class="texto_title">Tipo de suelo: </label> <span class="textoInfo">@{{ Lote.finca.tipo_suelo }}</span></ul>                    
                     </div>
@@ -27,26 +27,41 @@
                         
                          <div layout="row" layout-align="space-around center">
                             <div>
-                                <i ng-show="indice > 0" ng-click = "clickOnRow('I')" class="fas fa-chevron-left"></i>                         
+                                <i ng-show="indice > 0" ng-click = "clickOnRow('I', Lote)"  class="fas fa-chevron-left"></i>                         
                             </div>
                             <div>
                                 <h5>
-                                    @{{semanas[indice].semana}}
-                                    <br/>
-                                    @{{semanas[indice].fechaInicial}} a
-                                    @{{semanas[indice].fechaFinal}}                                
-                                </h5>
+                                        @{{semanas[indice].semana}}
+                                        <br/>
+                                        @{{semanas[indice].semana}} - 
+                                        @{{semanas[indice].fechaInicial}} a
+                                        @{{semanas[indice].fechaFinal}}                                
+                                </h5>                                
                             </div>
                             <div>
-                                <i ng-show="indice < semanas.length -1" ng-click = "clickOnRow('D')" class="fas fa-chevron-right"></i>                                                 
+                                <i ng-show="indice < semanas.length -1" ng-click = "clickOnRow('D', Lote)" class="fas fa-chevron-right"></i>                                                 
                             </div>
                         </div>
                         <div flex >
                             <h6>Labores</h6>
                         </div>
-                        <div ng-repeat="LB in LoteLaboresCRUD.rows">
-                            <ul ><label class="texto_title">@{{ LB.labor.labor }} </label> <span class="textoInfo">@{{ LB.estado }}</span></ul>
-                        </div>
+                        <div ng-repeat="LB in LotesLabores">
+                            <ul >
+                            <md-checkbox ng-disabled="LB.encontrado || !editable" ng-model="LB.encontrado" ng-click = "guardarLaborRealizada(Lote, LB.labor_id, LB.delta)"> 
+                            <div ng-if="LB.delta === -1" style="color: blue">
+                                @{{ LB.otraLabor }} 
+                            </div>   
+                            <div ng-if="LB.delta === 0" style="color: green">
+                                @{{ LB.otraLabor }} 
+                            </div>                        
+                            <div  ng-if="LB.delta === 1" style="color: red">
+                                @{{ LB.otraLabor }} 
+                            </div>
+                            <label class="texto_title">@{{ LB.labor }} </label> <br> <span class="textoInfo">Inicio:  @{{ LB.inicio }} <br> Frecuencia:  @{{ LB.frecuencia }} @{{LB.delta}} </span>
+
+                            </md-checkbox>
+                            </ul>                       
+                         </div>
                         
                         <div layout layout-align="center center" > 
                             <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="nuevoLoteLabor()">
@@ -55,14 +70,16 @@
                         </div>
                     </div>
                 </md-card>
+                <!--FIN DEV ANGELICA-->
                 
+                <!--INICIO DEV ANGELICA-->   
                 <md-card class="w100p mxw900 bg-white padding-5-20 border-rounded">
                     <div layout="column" layout-align="space-between none">
                         <div flex >
                             <h6>Cosechas</h6>
                         </div>
                         <div layout="row" layout-align="center center">
-                            <div class="w320p mxw320 bg-white padding-5-20 border-rounded">
+                            <div class="w320p mxw340 bg-white padding-5-20 border-rounded">
                                 <canvas id="myChart" ></canvas>
 
                                 <script>

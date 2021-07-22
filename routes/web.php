@@ -28,12 +28,11 @@ Route::post("/api/upload", [FileController::class, 'upload']);
 Route::post("/api/lista", [ListaController::class, 'Actualizar']);
 Route::get("/api/lista/{id}",  [ListaController::class, 'Lista']);
 Route::get("/api/lista/{id}",   [ListaController::class, 'Listacompleta']); // Luigi
-// Route::post("/api/finca",       [FincaController::class, 'Actualizar']);    // Luigi
-
+Route::get("/api/lotelaborsemana/{loteid}/{lineaproductivaid}/{numsemana}",   [LoteLaboresController::class, 'Lotelaborsemana']);
 Route::get("/api/departamentos",  [ListaController::class, 'getDepartamentos']);
 Route::post("/api/lista",  [ListaController::class, 'Delete']);
 //FIN Dev ANGÉLICA
-
+// Route::post("/api/finca",       [FincaController::class, 'Actualizar']);    // Luigi
 AdvancedRoute::controller('/api/main',      'MainController');
 AdvancedRoute::controller('/api/usuario',   'UsuarioController');
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');
@@ -42,6 +41,7 @@ AdvancedRoute::controller('/api/articulos', 'ArticulosController');
 AdvancedRoute::controller('/api/contacto',                        'ContactoController');
 AdvancedRoute::controller('/api/organizacionesmurosecciones',     'OrganizacionesMuroSeccionesController');
 AdvancedRoute::controller('/api/lista',                           'ListaController');
+AdvancedRoute::controller('/api/lotelaboresrealizadas',           'LoteLaboresRealizadasController');
 //FIN Dev ANGÉLICA
 
 AdvancedRoute::controller('/api/organizaciones',    'OrganizacionController');
