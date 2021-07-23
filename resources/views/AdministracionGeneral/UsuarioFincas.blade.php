@@ -146,6 +146,12 @@
                 <input ng-model="L.coordenadas" type="text" />
             </md-input-container>
             <md-input-container>
+                <input type="file" ngf-select="SelectFile($file)" />
+                <md-button class="md-raised md-primary" ng-click="Upload(L)">
+                    <md-icon md-font-icon="fa-save" ></md-icon>Upload
+                </md-button>
+            </md-input-container>
+            <md-input-container>
                 <label>Fec. Establecimiento</label>
                 {{-- <md-datepicker name="fecha_establecimiento" ng-model="L.fecha_establecimiento" ></md-datepicker> --}}
                 <input ng-model="L.fecha_establecimiento" placeholder="AAAA-MM-DD"/>
@@ -169,123 +175,6 @@
                 <md-icon md-font-icon="fa-save"></md-icon>Nuevo Lote
             </md-button>
         </div>
-    <div class="text-clear padding" flex>Lotes de la finca</div>
-    <md-content>
-        <md-tabs class="">
-            <md-tab ng-repeat="L in Lotes" label="Lote @{{ $index + 1 }}">
-                <md-content class="md-padding">
-                    <div>
-                        <md-input-container>
-                            <label>Linea Productiva</label>
-                            <md-select ng-model="L.linea_productiva_id" class="no-margin" style="min-width: 150px;"
-                                aria-label="linea_productiva_id">
-                                <md-option ng-value="LP.id" ng-repeat="LP in Lineasproductivas">@{{ LP.nombre }}</md-option>
-                            </md-select>
-                        </md-input-container>
-                        <md-input-container>
-                            <label>Labores</label>
-                            <md-select ng-model="L.labores_id" class="no-margin" 
-                                aria-label="Labores" >
-                                <md-option ng-value="La.id" ng-repeat="La in Labores">@{{ La.labor }}</md-option>
-                            </md-select>
-                        </md-input-container>
-                        <md-input-container>
-                            <label>Hectareas</label>
-                            <input ng-model="L.hectareas" type="text" />
-                        </md-input-container>
-                        <md-input-container>
-                            <label>Sitios</label>
-                            <input ng-model="L.sitios" type="text" />
-                        </md-input-container>
-                        <md-input-container>
-                            <label>Coordenadas XX</label>
-                            <input ng-model="L.coordenadas" type="text" />
-                        </md-input-container>
-                        <md-input-container>
-                            <input type="file" ngf-select="SelectFile($file)" />
-                            <md-button class="md-raised md-primary" ng-click="Upload(L)">
-                                <md-icon md-font-icon="fa-save" ></md-icon>Upload
-                            </md-button>
-                        </md-input-container>
-                        <md-input-container>
-                            <label>Fec. Establecimiento</label>
-                            <md-datepicker ng-model="L.fecha_establecimiento" ></md-datepicker>
-                        </md-input-container>
-                        <md-input-container>
-                            <label>KG P_promedio</label>
-                            <input ng-model="L.kg_promedio" type="text" />
-                        </md-input-container>
-                        <md-input-container>
-                            <label>UND. Promedio</label>
-                            <input ng-model="L.un_promedio" type="text" />
-                        </md-input-container>
-                        <md-input-container>
-                            <label>Frec. Corte</label>
-                            <input ng-model="L.frec_corte" type="text" />
-                        </md-input-container>
-                        <md-button class="md-raised md-primary" ng-click="guardarLote(L, L.finca_id)">
-                            <md-icon md-font-icon="fa-save"></md-icon>Guardar Lote @{{ $index + 1 }}
-                        </md-button>
-                    </div>
-                </md-content>
-            </md-tab>
-            <md-tab label="+" >
-                <div>
-                    <md-input-container>
-                        <label>Linea Productiva</label>
-                        <md-select ng-model="L.linea_productiva_id" class="no-margin" style="min-width: 150px;"
-                            aria-label="linea_productiva_id">
-                            <md-option ng-value="LP.id" ng-repeat="LP in Lineasproductivas">@{{ LP.nombre }}</md-option>
-                        </md-select>
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Labores</label>
-                        <md-select ng-model="L.labores_id" class="no-margin" 
-                            aria-label="labores" >
-                            <md-option ng-value="La.id" ng-repeat="La in Labores">@{{ La.labor }}</md-option>
-                        </md-select>
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Hectareas</label>
-                        <input ng-model="L.hectareas" type="text" />
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Sitios</label>
-                        <input ng-model="L.sitios" type="text" />
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Coordenadas YY</label>
-                        <input ng-model="L.coordenadas" type="text"  />
-                    </md-input-container>
-                    <md-input-container>
-                        <input type="file" ngf-select="SelectFile($file)" />
-                            <md-button class="md-raised md-primary" ng-click="Upload(L)">
-                                <md-icon md-font-icon="fa-save" ></md-icon>Upload
-                            </md-button>                    
-                        </md-input-container>
-                    <md-input-container>
-                        <label>Fec. Establecimiento</label>
-                        <input ng-model="L.fecha_establecimiento" type="date" />
-                    </md-input-container>
-                    <md-input-container>
-                        <label>KG P_promedio</label>
-                        <input ng-model="L.kg_promedio" type="text" />
-                    </md-input-container>
-                    <md-input-container>
-                        <label>UND. Promedio</label>
-                        <input ng-model="L.un_promedio" type="text" />
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Frec. Corte</label>
-                        <input ng-model="L.frec_corte" type="text" />
-                    </md-input-container>
-                    <md-button class="md-raised md-primary" ng-click="nuevoLote(L, L.finca_id)">
-                        <md-icon md-font-icon="fa-save"></md-icon>Crear Lote
-                    </md-button>
-                </div>
-            </md-tab>
-        </md-tabs>
-    </md-content>
 
         <div ng-show="L">
             <div class="text-clear padding" ng-model="zp" >@{{ zp }}</div>
