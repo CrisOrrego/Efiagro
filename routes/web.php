@@ -61,5 +61,7 @@ AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController
 AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          // Luigi
 AdvancedRoute::controller('/api/secciones',         'SeccionesController');         // Luigi
 
+AdvancedRoute::controller('/api/opciones',         'OpcionesController');       
+
 //CAOH
 AdvancedRoute::controller('/api/creditos',          'CreditosController'); 
