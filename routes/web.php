@@ -38,10 +38,11 @@ AdvancedRoute::controller('/api/usuario',   'UsuarioController');
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');
 
 //Inicio Dev ANGÉLICA
-AdvancedRoute::controller('/api/contacto',          'ContactoController');
+AdvancedRoute::controller('/api/contacto',                        'ContactoController');
 AdvancedRoute::controller('/api/organizacionesmurosecciones',     'OrganizacionesMuroSeccionesController');
 AdvancedRoute::controller('/api/lista',                           'ListaController');
 AdvancedRoute::controller('/api/lotelaboresrealizadas',           'LoteLaboresRealizadasController');
+AdvancedRoute::controller('/api/lotecosechas',                    'LoteCosechasController');
 //FIN Dev ANGÉLICA
 
 AdvancedRoute::controller('/api/organizaciones',    'OrganizacionController');
@@ -49,11 +50,11 @@ AdvancedRoute::controller('/api/fincas',            'FincaController');
 AdvancedRoute::controller('/api/cultivos',          'CultivoController');
 AdvancedRoute::controller('/api/lotes',             'LoteController');
 AdvancedRoute::controller('/api/eventos',           'EventoController');
-AdvancedRoute::controller('/api/fincaeventos',      'FincaEventosController');
+AdvancedRoute::controller('/api/fincaeventos',    'FincaEventosController');
 // AdvancedRoute::controller('/api/laboreslotes',      'LoteLaborController');
 AdvancedRoute::controller('/api/zonas',             'ZonasController');
 AdvancedRoute::controller('/api/labores',           'LaboresController');
-AdvancedRoute::controller('/api/lotelabores',       'LoteLaboresController');
+AdvancedRoute::controller('/api/lotelabores',         'LoteLaboresController');
 AdvancedRoute::controller('/api/loteslabores',      'LotesLaboresController');      // Luigi
 
 AdvancedRoute::controller('/api/casos',             'CasosController');             // Luigi

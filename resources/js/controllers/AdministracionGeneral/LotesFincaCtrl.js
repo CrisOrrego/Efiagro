@@ -10,6 +10,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
         var Rs = $rootScope;
         //INICIO DEV ANGÉLICA
         Ctrl.indice = 0;
+        var myChart;
         
         Ctrl.semanas = [];
         Ctrl.LotesLabores = [];
@@ -25,6 +26,141 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                 console.log(Ctrl.editable);
 			});
         };
+
+        // Definición de LOTE LABORES
+        Ctrl.LoteLaboresCRUD = $injector.get("CRUD").config({
+            base_url: "/api/lotelabores/lotelabores",
+            limit: 1000,
+            add_append: "refresh",
+            order_by: ["-created_at"],
+            query_with:['labor', 'lote']
+        });
+
+        //Definición de lote cosechas
+        Ctrl.CosechasCRUD = $injector.get("CRUD").config({
+            base_url: "/api/lotecosechas/lotecosechas",
+            limit: 1000,
+            add_append: "refresh"
+        });
+
+        Ctrl.getLoteCosechas = (lote, fecha) => {
+            Ctrl.LotesLabores = [];
+            let datos = [];
+            let labels = [];
+            let colors = [];
+            let suma = 0;
+            let sumaKg = 0; 
+            $http.get ('api/lotecosechas/cosechalote/'+ lote + '/' + fecha , {}).then((r)=>{
+				Ctrl.LotesCosechas = r.data;
+                Ctrl.LotesCosechas.forEach(loteCosecha => {
+                    datos.push(loteCosecha.cantidad);
+                    labels.push([loteCosecha.fecha, loteCosecha.cantidad, loteCosecha.kilogramo, loteCosecha.tipo]);
+                    colors.push('rgba(13, 139, 22, 1)');
+                    suma = suma + loteCosecha.cantidad;
+                    sumaKg = sumaKg + loteCosecha.kilogramo;
+                });
+                datos.push(suma / Ctrl.LotesCosechas.length);
+                labels.push(["Prom", suma / Ctrl.LotesCosechas.length, sumaKg / Ctrl.LotesCosechas.length, ""]);
+                colors.push('rgba(51, 68, 255, 1)');
+                Ctrl.chart(datos, labels, colors, suma); //llamando a la gráfica de cosechas -> llamo a la función que me dibuja la gráfica de cosechas
+			});
+        };
+
+
+        Ctrl.chart = (datos, labels, colors, suma) => {
+            var ctx = document.getElementById('myChart')?.getContext('2d');
+            if(ctx){
+                if (myChart) {
+                    myChart.destroy(); //se debe destruir la gráfica existente para volver a construir una nueva
+                }
+                myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,   
+                        datasets: [{
+                            label: "# de cosechas" /*suma + " cosechas en total"*/,
+                            data: datos,
+                            backgroundColor: colors,
+                            borderColor: [
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+
+        //INICIO DEV ANGÉLICA
+        //Creación de ventana modal para agregar cosechas
+        Ctrl.nuevaCosecha = (lote) => {
+            /*Ctrl.CosechasCRUD.dialog({
+                Flex: 10,
+                Title: 'Crear Organización',
+                Confirm: { Text: 'Crear Organizacion' },
+            }).then(r => {
+                if (!r) return;
+                Ctrl.CosechasCRUD.add(r);
+            });*/
+            Rs.BasicDialog({
+                Flex: 30,
+                Title: "Crear Nueva Cosecha",
+                Fields: [
+                    {
+                        Nombre: "Fecha",
+                        Value: null,
+                        Type: "date",
+                        Required: true
+                    },
+                    {
+                        Nombre: "Cantidad",
+                        Value: "",
+                        Type: "textarea",
+                        Required: true
+                    },
+                    {
+                        Nombre: "Kilogramo",
+                        Value: "",
+                        Type: "textarea",
+                        Required: true
+                    },
+                    {
+                        Nombre: "Tipo",
+                        Value: null,
+                        Type: "simplelist",
+                        List: ['Racimo', 'Bulto', 'Canastilla', 'Timbo', 'Bolsa'],
+                        Required: true
+                    }
+                ],
+                Confirm: { Text: "Crear Cosecha" }
+            }).then(r => {
+                if (!r) return;
+
+                var NuevaCosecha = {
+                    lote_id: lote.id,
+                    fecha: r.Fields[0].Value.toISOString().slice(0, 10),
+                    cantidad: r.Fields[1].Value,
+                    kilogramo: r.Fields[2].Value,
+                    tipo: r.Fields[3].Value
+                };
+                
+                Ctrl.CosechasCRUD.add(NuevaCosecha).then(() => {
+                    Rs.showToast("Cosecha agregada");                   
+                        Ctrl.getLoteCosechas(lote.id, 'x');
+                });
+            });
+        };
+        //FIN DEV ANGÉLICA 
+
 
         Ctrl.generarSemanas = () => {
 
@@ -78,7 +214,8 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
 
         Ctrl.getLotes();
         //FIN DEV ANGELICA
-                //INICIO DEV ANGÉLICA
+
+        //INICIO DEV ANGÉLICA
         Ctrl.clickOnCard = (lote) => {
             //Las siguientes lineas cierran todos los paneles y deja abierto solo el panel seleccionado
             if(lote.checked){
@@ -97,10 +234,11 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
             }else{
                 lote.checked = !lote.checked;
             }*/
+            Ctrl.getLoteCosechas(lote.id, 'fecha');            
         }
         //FIN DEV ANGELICA
 
-       //INICIO DEV ANGÉLICA
+        //INICIO DEV ANGÉLICA
 
         //O = Orientación de las flechas - si la orientacion es derecha el indice debe incrementarse en 1, si es izq 
         //D = Derecha
@@ -120,18 +258,8 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
         //FIN DEV ANGELICA
 
 
-        // LOTE LABORES
-        Ctrl.LoteLaboresCRUD = $injector.get("CRUD").config({
-            base_url: "/api/lotelabores/lotelabores",
-            limit: 1000,
-            add_append: "refresh",
-            order_by: ["-created_at"],
-            query_with:['labor', 'lote']
-        });
-
-        
-         //INICIO DEV ANGÉLICA ------> para hacer el evento del checkbox y que guarde en BD en la tabla lote_labores_realizadas
-         Ctrl.LoteLaboresRealizadasCRUD = $injector.get("CRUD").config({
+        //INICIO DEV ANGÉLICA ------> para hacer el evento del checkbox y que guarde en BD en la tabla lote_labores_realizadas
+        Ctrl.LoteLaboresRealizadasCRUD = $injector.get("CRUD").config({
             base_url: "/api/lotelaboresrealizadas/lotelaboresrealizadas",
             limit: 1000,
             add_append: "refresh",
@@ -143,11 +271,12 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                 lote_id: lote.id,
                 labor_id: labor_id,
                 cumplimiento: delta===0?1:0.5, 
-                fecha: (new Date()).toISOString().slice(0, 10)
+                fecha: (new Date()).toISOString().slice(0, 10) //slice es para hacer formato a la fecha y coger solo los 10 primeros
             });
         }
         //FIN DEV ANGÉLICA
 
+        //INICIO DEV ANGÉLICA ------> para hacer el modal agregar labor eventual de productor 
         Ctrl.nuevoLoteLabor = () => {
             Ctrl.LoteLaboresCRUD.dialog({
                 Flex: 10,
@@ -159,7 +288,38 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                 Ctrl.LoteLaboresCRUD.add(r);
                 Rs.showToast('Labor Agregada');
             });
-        };
+            /*Rs.BasicDialog({
+                Flex: 10,
+                Title: "Agregar Labor",
+                Fields: [
+                    {
+                        Nombre: "Agregue su labor de hoy",
+                        Value: "",
+                        Type: "textarea",
+                        Required: true
+                    },
+                ],
+                Confirm: { Text: "Agregar Labor" }
+            }).then(r => {
+                if (!r) return;
+        
+                var NuevaLabor = {
+                    lote_id: lote.id,
+                    fecha: r.Fields[0].Value.toISOString().slice(0, 10),
+                    cantidad: r.Fields[1].Value,
+                    kilogramo: r.Fields[2].Value,
+                    tipo: r.Fields[3].Value
+                };
+                
+                Ctrl.LoteLaboresCRUD.add(NuevaLabor).then(() => {
+                    Rs.showToast("Labor de hoy agregada");                   
+                        Ctrl.getLoteCosechas(lote.id, 'x');
+                });
+            });*/
+        };    
+        //FIN DEV ANGÉLICA 
+
+
         Ctrl.editarLoteLabor = LB => {
             Ctrl.LoteLaboresCRUD.dialog(LB, {
                 title: "Editar Evento" + LB.id
@@ -170,6 +330,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                 });
             });
         };
+
         Ctrl.eliminarLoteLabor = LB => {
             Rs.confirmDelete({
                 Title: "¿Eliminar Lote #" + LB.id + "?"
