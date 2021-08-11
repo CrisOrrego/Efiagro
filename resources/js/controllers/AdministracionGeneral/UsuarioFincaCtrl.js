@@ -269,7 +269,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                         }
                     });
                     // Ctrl.Cancel();
-                } else {
+                } else { 
                     console.log('Aun no se crea Lote para la finca.');
                 }
                 // console.log('Lote: ' + Lote.id, Labor);
