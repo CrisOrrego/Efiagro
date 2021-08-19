@@ -24,7 +24,7 @@ class OpcionesController extends Controller
 			if($Op->tipo == 'Correo') $Op->valor = intval($Op->valor);
 			return $Op;
 
-			if($Op->tipo == 'WhatsApp') $Op->valor = intval($Op->valor);
+			if($Op->tipo == 'Boolean') $Op->valor = intval($Op->valor);
 			return $Op;
 		});
 

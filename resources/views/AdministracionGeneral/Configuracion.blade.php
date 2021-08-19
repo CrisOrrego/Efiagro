@@ -28,7 +28,7 @@
                             @include('AdministracionGeneral.Configuracion_OpcionEditor')</div>
                     </div>
                     <div layout>
-                        <div class="text-bold">WhatsApp</div>
+                        <div class="text-bold">WhatsApp Habilitado</div>
                         <div ng-repeat="Op in [Opciones.WHATSAPP_SOLICITUD]">
                             @include('AdministracionGeneral.Configuracion_OpcionEditor')</div>
                     </div>
