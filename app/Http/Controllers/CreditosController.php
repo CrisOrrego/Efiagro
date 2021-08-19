@@ -9,6 +9,8 @@ use App\Models\CreditoSaldo;
 use App\Models\CreditoRecibo;
 use App\Models\CreditoAbono;
 
+use Carbon\Carbon;
+
 class CreditosController extends Controller
 {
 	/**
@@ -401,13 +403,12 @@ class CreditosController extends Controller
 	}
 
 	//Detalle de Creditos
-	public function postRepDetCreditos(Reps $Reps)
+	public function postRepDetCreditos()
 	{
 		$f = [ 'DateIni' => '1900-01-01', 'DateFin' => '2900-01-01', 'Incluir' => 'Activos', 'Asociado_id' => null, 'Credito_id' => null, 'orderBy' => 'Estado', 'orderSort' => 'ASC' ];
 		$f = array_merge($f, request()->input('f'));
 		$DateIni = Carbon::parse($f['DateIni']);
 		$DateFin = Carbon::parse($f['DateFin']);
-		$Sede = Auth::user()->sede_sel_id;
 		$R = [
 			'Titulo' => 'Creditos',
 			'Subtitulo' => $DateIni->format('d/m/Y').' a '.$DateFin->format('d/m/Y'),
@@ -430,16 +431,12 @@ class CreditosController extends Controller
 			'Documento' => 'Documento',
 			'Asociado' => 'Asociado',
 			'Email' => 'Email',
-			'Telefono' => 'Teléfono',
-			'Field_1' => 'Finca',
-			'Field_2' => 'Vereda',
-			'Field_3' => 'Distrito o Corregimiento',
-			'Field_4' => 'Municipio',
+			'Telefono' => 'Teléfono'
 		];
 
 		$Eliminated = ($f['Incluir'] == 'Eliminados');
 
-		$Creds = Credito::sede($Sede)->eliminated($Eliminated)->ofAsoc($f['Asociado_id'])->byId($f['Credito_id'])
+		$Creds = Credito::eliminated($Eliminated)->ofAsoc($f['Asociado_id'])->byId($f['Credito_id'])
 				 ->entre( $f['DateIni'], $f['DateFin'] )->orderBy($f['orderBy'], $f['orderSort'])
 				 ->get()->transform(function($Row){
 			//return $Row;
@@ -447,25 +444,21 @@ class CreditosController extends Controller
 			//dd($RowOpts);
 			$r = [];
 			$r['id'] = $Row->id;
-			$r['Estado'] = $Row->Estado;
-			$r['Linea'] = $Row->Linea;
-			$r['Monto'] = "$".number_format($Row->Monto,0);
-			$r['Interes'] = $Row->Interes."%";
-			$r['Pagos'] = $Row->Pagos;
-			$r['Periodos'] = $Row->Periodos;
-			$r['Periodos_Gracia'] = $Row->Periodos_Gracia;
-			$r['Cuota'] = "$".number_format($Row->Cuota,0);
-			$r['Saldo'] = "$".number_format($Row->Saldo,0);
-			$r['ProximoPago'] = $Row->ProximoPago;
+			$r['Estado'] = $Row->estado;
+			$r['Linea'] = $Row->linea;
+			$r['Monto'] = $Row->monto;
+			$r['Interes'] = $Row->interes."%";
+			$r['Pagos'] = $Row->pagos;
+			$r['Periodos'] = $Row->periodos;
+			$r['Periodos_Gracia'] = $Row->periodos_gracia;
+			$r['Cuota'] = $Row->cuota;
+			$r['Saldo'] = $Row->saldo;
+			$r['ProximoPago'] = $Row->proximo_pago;
 			$r['solicitado'] = $Row->solicitado;
-			$r['Documento'] = $Row->asociado->Documento;
-			$r['Asociado'] = $Row->asociado->Nombres . ' ' . $Row->asociado->Apellidos;
-			$r['Email'] = $Row->asociado->Email;
-			$r['Telefono'] = $Row->asociado->Telefono;
-			$r['Field_1'] = $Row->asociado->Field_1;
-			$r['Field_2'] = $Row->asociado->Field_2;
-			$r['Field_3'] = $Row->asociado->Field_3;
-			$r['Field_4'] = $Row->asociado->Field_4;
+			$r['Documento'] = $Row->asociado->documento;
+			$r['Asociado'] = $Row->asociado->nombre;
+			$r['Email'] = $Row->asociado->correo;
+			$r['Telefono'] = $Row->asociado->celular;
 
 			return [ 'opts' => $o, 'data' => $r ];
 			
@@ -480,7 +473,7 @@ class CreditosController extends Controller
 			[ 'Class' => 'md-icon-button', 'Name' => 'Pagos',  'Icon' => 'fa-usd',  'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-pagos' ],
 		];
 
-		$R['data'] = [ 'Headers' => $Headers, 'Rows' => $Creditos, 'RowOpts' => $RowOpts, 'Buttons' => $Buttons, 'Filename' => 'Creditos_'.$Sede, 'Ext' => 'xls' ];
+		$R['data'] = [ 'Headers' => $Headers, 'Rows' => $Creditos, 'RowOpts' => $RowOpts, 'Buttons' => $Buttons, 'Filename' => 'Creditos', 'Ext' => 'xls' ];
 
 		return $R;
 	}

@@ -66,6 +66,7 @@ class UsuarioController extends Controller
         return Usuario::where('nombres',   'LIKE', "%$query%")
                     ->orWhere('apellidos', 'LIKE', "%$query%")
                     ->orWhere('documento',    'LIKE', "$query%")
+                    ->with(['fincas'])
                     ->get();
     }
 
