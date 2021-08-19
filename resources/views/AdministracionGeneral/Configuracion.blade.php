@@ -9,31 +9,39 @@
 
     <div id="GestionOpciones" ng-controller="OpcionesCtrl">
         <br>
-        <div layout class="padding-0-10" layout-align="center center">
+        <div ng-show="listOpciones" layout class="padding-0-10" layout-align="center center">
 
             <md-card layout-align class="w100p mxw600 bg-white padding-5-20 border-rounded">
                 <div class="md-title margin-right-20">
                     Opciones
                 </div>
-                <div>
-					<ul ng-repeat="Ops in OpcionesCRUD.rows">
-						<b>Teléfono Técnico Amigo</b> @{{ Ops . valor }}
-					  </ul>
-					  <ul ng-repeat="Ops in OpcionesCRUD.rows">
-						<b>Opción</b> @{{ Ops . opcion }}
-					  </ul>
-                    <ul ng-repeat="Ops in OpcionesCRUD.rows">
-                      <b>Tipo</b> @{{ Ops . tipo }}
-                    </ul>
-					<ul>
-						 <md-switch md-invert ng-model="data.cb1" aria-label="Switch 1"><b>WhatsApp</b></md-switch> 
-					</ul>
-                 
+                <div layout=column>
+
+                    <div layout>
+                        <div class="text-bold">Celular Técnico Amigo</div>
+                        <div ng-repeat="Op in [Opciones.CELULAR_TECNICO_AMIGO]">
+                            @include('AdministracionGeneral.Configuracion_OpcionEditor')</div>
+                    </div>
+                    <div layout>
+                        <div class="text-bold">Correo Soporte</div>
+                        <div ng-repeat="Op in [Opciones.CORREO_SOPORTE]">
+                            @include('AdministracionGeneral.Configuracion_OpcionEditor')</div>
+                    </div>
+                    <div layout>
+                        <div class="text-bold">WhatsApp</div>
+                        <div ng-repeat="Op in [Opciones.WHATSAPP_SOLICITUD]">
+                            @include('AdministracionGeneral.Configuracion_OpcionEditor')</div>
+                    </div>
+                    <div>
+                        <md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="actualizarOpcion()">
+                            <md-icon md-font-icon=""></md-icon>Actualizar
+                        </md-button>
+                    </div>
+
                 </div>
 
             </md-card>
         </div>
-
 
     </div>
     <!--INICIO DEV ANGELICA-->

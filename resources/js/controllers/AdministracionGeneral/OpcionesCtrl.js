@@ -20,12 +20,15 @@ angular.module('OpcionesCtrl', []).controller('OpcionesCtrl', [
       order_by: ['-created_at'],
       // query_with:['']
     })
+  
 
     Ctrl.getOpciones = () => {
-      Ctrl.OpcionesCRUD.get().then(() => {
+    //  Ctrl.OpcionesCRUD.setScope('id', Rs.Usuario.organizacion_id[1]); //con el setScope estoy haciendo un filtro en la BD para que él nos traiga sólo un registro
+      /*Ctrl.OpcionesCRUD.get().then(() => {
         Ctrl.Opcion = Ctrl.OpcionesCRUD.rows[0]
         //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
-      })
+      })*/
+      Rs.http('/api/opciones', {}, Ctrl, 'Opciones');
     }
 
     Ctrl.getOpciones()
@@ -60,5 +63,28 @@ angular.module('OpcionesCtrl', []).controller('OpcionesCtrl', [
         Ctrl.OpcionesCRUD.delete(Ops)
       })
     }
+
+    Rs.actualizarOpcion = ( opcion, valor) => {
+      // console.log(opcion, valor, organizacion_id);
+      $http.post('api/opciones/actualizaropcion', {
+        Dato: {
+          usuarioid: Rs.Usuario['id'],
+          organizacion: 1,
+          opcion: opcion, 
+          valor: valor
+        }
+      }).then( () => {
+       alert('Opcion Actualizada')
+      
+      });
+  }
+  
+    // Validar Organización para cargar opciones
+            // Las opciones solo apareceran a usuarios con la organizacion ID 1
+            switch( parseInt(Rs.Usuario['organizacion_id']) ) {
+              case 1:
+                  Ctrl.listOpciones = true;
+                  break;           
+          }
   },
 ])
