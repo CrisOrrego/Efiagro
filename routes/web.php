@@ -43,6 +43,7 @@ AdvancedRoute::controller('/api/organizacionesmurosecciones',     'Organizacione
 AdvancedRoute::controller('/api/lista',                           'ListaController');
 AdvancedRoute::controller('/api/lotelaboresrealizadas',           'LoteLaboresRealizadasController');
 AdvancedRoute::controller('/api/lotecosechas',                    'LoteCosechasController');
+AdvancedRoute::controller('/api/loteslaboresproductor',           'LotesLaboresProductorController');
 //FIN Dev ANGÉLICA
 
 AdvancedRoute::controller('/api/organizaciones',    'OrganizacionController');

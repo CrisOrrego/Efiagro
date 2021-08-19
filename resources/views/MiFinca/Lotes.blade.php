@@ -62,16 +62,27 @@
                             </md-checkbox>
                             </ul>
                         </div>
+
+                        <div flex >
+                            <h6>Labores Prodcuctor</h6>
+                        </div>
+                        <div ng-repeat="LB in LaboresProductor">
+                            <ul >
+                                <div>
+                                    @{{ LB.labor }} 
+                                </div>
+                            </ul>
+                        </div>
                         
                         <div layout layout-align="center center" > 
-                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="nuevoLoteLabor()">
+                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="nuevaLaborProductor(Lote)">
                                 <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon> Agregar Labor
                             </md-button>                
                         </div>
                     </div>
                 </md-card>
                 <!--FIN DEV ANGELICA-->
-                
+
                 <!--INICIO DEV ANGELICA
                 gráfica de cosechas-->
                 <md-card class="w100p mxw900 bg-white padding-5-20 border-rounded">
