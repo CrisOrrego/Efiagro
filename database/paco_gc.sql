@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-08-2021 a las 23:07:30
+-- Tiempo de generación: 19-08-2021 a las 20:48:03
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -189,7 +189,19 @@ CREATE TABLE `credito__abonos` (
 INSERT INTO `credito__abonos` (`id`, `credito_id`, `recibo_id`, `saldo_id`, `paga`, `tipo`, `valor`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (13, 6, 5, NULL, 'Capital', 'Parcial', 887821, '2021-06-24 05:26:40', '2021-06-24 05:26:40', NULL),
 (14, 6, 6, NULL, 'Capital', 'Parcial', 300000, '2021-07-31 06:42:51', '2021-07-31 06:42:51', NULL),
-(15, 7, 7, NULL, 'Capital', 'Total', 200000, '2021-07-31 06:43:27', '2021-07-31 06:43:27', NULL);
+(15, 7, 7, NULL, 'Capital', 'Total', 200000, '2021-07-31 06:43:27', '2021-07-31 06:43:27', NULL),
+(16, 6, 8, 61, 'Cuota', 'Total', 448176, '2021-08-19 08:09:11', '2021-08-19 08:09:11', NULL),
+(17, 6, 8, 62, 'Cuota', 'Total', 448176, '2021-08-19 08:09:11', '2021-08-19 08:09:11', NULL),
+(18, 6, 8, 63, 'Cuota', 'Total', 448176, '2021-08-19 08:09:11', '2021-08-19 08:09:11', NULL),
+(19, 6, 8, 64, 'Cuota', 'Total', 448176, '2021-08-19 08:09:12', '2021-08-19 08:09:12', NULL),
+(20, 6, 8, 65, 'Cuota', 'Total', 448176, '2021-08-19 08:09:12', '2021-08-19 08:09:12', NULL),
+(21, 6, 8, 66, 'Cuota', 'Total', 448176, '2021-08-19 08:09:12', '2021-08-19 08:09:12', NULL),
+(22, 6, 8, 67, 'Cuota', 'Total', 448176, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL),
+(23, 6, 8, 68, 'Cuota', 'Total', 448176, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL),
+(24, 6, 8, 69, 'Cuota', 'Total', 448176, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL),
+(25, 6, 8, 70, 'Cuota', 'Total', 448176, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL),
+(26, 6, 8, 71, 'Cuota', 'Total', 448176, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL),
+(27, 6, 8, 72, 'Cuota', 'Total', 448173, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -223,8 +235,8 @@ CREATE TABLE `credito__creditos` (
 --
 
 INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado`, `estado_color`, `linea`, `monto`, `interes`, `pagos`, `periodos`, `periodos_gracia`, `cuota`, `saldo`, `proximo_pago`, `usuario_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(6, 18, 2, 'Normal', '#00695c', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-07-31 06:42:52', NULL),
-(7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-07-31 06:43:28', NULL);
+(6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-08-19 08:09:14', NULL),
+(7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-08-19 07:43:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -253,7 +265,8 @@ CREATE TABLE `credito__recibos` (
 INSERT INTO `credito__recibos` (`id`, `credito_id`, `user_id`, `medio`, `no_consignacion`, `valor_recibido`, `valor`, `valor_devuelto`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (5, 6, 1, 'Efectivo', NULL, 887821, 887821, 0, '2021-06-24 05:26:40', '2021-06-24 05:26:40', NULL),
 (6, 6, 1, 'Efectivo', NULL, 300000, 300000, 0, '2021-07-31 06:42:51', '2021-07-31 06:42:51', NULL),
-(7, 7, 1, 'Efectivo', NULL, 400000, 200000, 200000, '2021-07-31 06:43:27', '2021-07-31 06:43:27', NULL);
+(7, 7, 1, 'Efectivo', NULL, 400000, 200000, 200000, '2021-07-31 06:43:27', '2021-07-31 06:43:27', NULL),
+(8, 6, 1, 'Efectivo', NULL, 5378109, 5378109, 0, '2021-08-19 08:09:11', '2021-08-19 08:09:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -8654,7 +8667,7 @@ CREATE TABLE `lotes` (
 --
 
 INSERT INTO `lotes` (`id`, `finca_id`, `organizacion_id`, `linea_productiva_id`, `labores_id`, `hectareas`, `sitios`, `coordenadas`, `fecha_establecimiento`, `kg_promedio`, `un_promedio`, `frec_corte`, `created_at`, `updated_at`) VALUES
-(21, 13, 20, 6, 23, 234, 23, '[{\"lat\":4.876173763, \"lng\":-75.55123718},{\"lat\":4.876217265, \"lng\":-75.55127397},{\"lat\":4.876269819, \"lng\":-75.55133524},{\"lat\":4.87633897, \"lng\":-75.55137455},{\"lat\":4.876389597, \"lng\":-75.55144521},{\"lat\":4.876398649, \"lng\":-75.55143993},{\"lat\":4.87640854, \"lng\":-75.55143138},{\"lat\":4.876466962, \"lng\":-75.55149886},{\"lat\":4.876504932, \"lng\":-75.55154244},{\"lat\":4.876556061, \"lng\":-75.55160489},{\"lat\":4.87659202, \"lng\":-75.55170757},{\"lat\":4.876573747, \"lng\":-75.55180773},{\"lat\":4.876568634, \"lng\":-75.55190848},{\"lat\":4.876496298, \"lng\":-75.55195274},{\"lat\":4.876441732, \"lng\":-75.55189507},{\"lat\":4.876401667, \"lng\":-75.55185626},{\"lat\":4.876362775, \"lng\":-75.5519151},{\"lat\":4.8762751, \"lng\":-75.55192474},{\"lat\":4.876234783, \"lng\":-75.55192675},{\"lat\":4.876158172, \"lng\":-75.55195291},{\"lat\":4.876093799, \"lng\":-75.55196892},{\"lat\":4.876025068, \"lng\":-75.55197529},{\"lat\":4.87591845, \"lng\":-75.55201133},{\"lat\":4.875914175, \"lng\":-75.55201451},{\"lat\":4.875837481, \"lng\":-75.5520524},{\"lat\":4.875831613, \"lng\":-75.5520534},{\"lat\":4.87582298, \"lng\":-75.55205743},{\"lat\":4.875740334, \"lng\":-75.55209573},{\"lat\":4.875713345, \"lng\":-75.55206916},{\"lat\":4.875660874, \"lng\":-75.55206254},{\"lat\":4.875598932, \"lng\":-75.55202365},{\"lat\":4.875537911, \"lng\":-75.55199817},{\"lat\":4.875528524, \"lng\":-75.55198216},{\"lat\":4.875473287, \"lng\":-75.55192315},{\"lat\":4.875433305, \"lng\":-75.55185157},{\"lat\":4.875401203, \"lng\":-75.55174788},{\"lat\":4.875388965, \"lng\":-75.55164571},{\"lat\":4.875398856, \"lng\":-75.55156072},{\"lat\":4.875428779, \"lng\":-75.55141428},{\"lat\":4.875485189, \"lng\":-75.55129828},{\"lat\":4.875493739, \"lng\":-75.5512909},{\"lat\":4.875609744, \"lng\":-75.55121446},{\"lat\":4.875723654, \"lng\":-75.55113056},{\"lat\":4.875840666, \"lng\":-75.55114791},{\"lat\":4.876173763, \"lng\":-75.55123718},]', '2021-06-23', '345.0', 234, '45', '2021-06-23 23:51:35', '2021-07-23 02:42:53');
+(21, 13, 20, 6, 23, 231, 23, '[{\"lat\":4.876173763, \"lng\":-75.55123718},{\"lat\":4.876217265, \"lng\":-75.55127397},{\"lat\":4.876269819, \"lng\":-75.55133524},{\"lat\":4.87633897, \"lng\":-75.55137455},{\"lat\":4.876389597, \"lng\":-75.55144521},{\"lat\":4.876398649, \"lng\":-75.55143993},{\"lat\":4.87640854, \"lng\":-75.55143138},{\"lat\":4.876466962, \"lng\":-75.55149886},{\"lat\":4.876504932, \"lng\":-75.55154244},{\"lat\":4.876556061, \"lng\":-75.55160489},{\"lat\":4.87659202, \"lng\":-75.55170757},{\"lat\":4.876573747, \"lng\":-75.55180773},{\"lat\":4.876568634, \"lng\":-75.55190848},{\"lat\":4.876496298, \"lng\":-75.55195274},{\"lat\":4.876441732, \"lng\":-75.55189507},{\"lat\":4.876401667, \"lng\":-75.55185626},{\"lat\":4.876362775, \"lng\":-75.5519151},{\"lat\":4.8762751, \"lng\":-75.55192474},{\"lat\":4.876234783, \"lng\":-75.55192675},{\"lat\":4.876158172, \"lng\":-75.55195291},{\"lat\":4.876093799, \"lng\":-75.55196892},{\"lat\":4.876025068, \"lng\":-75.55197529},{\"lat\":4.87591845, \"lng\":-75.55201133},{\"lat\":4.875914175, \"lng\":-75.55201451},{\"lat\":4.875837481, \"lng\":-75.5520524},{\"lat\":4.875831613, \"lng\":-75.5520534},{\"lat\":4.87582298, \"lng\":-75.55205743},{\"lat\":4.875740334, \"lng\":-75.55209573},{\"lat\":4.875713345, \"lng\":-75.55206916},{\"lat\":4.875660874, \"lng\":-75.55206254},{\"lat\":4.875598932, \"lng\":-75.55202365},{\"lat\":4.875537911, \"lng\":-75.55199817},{\"lat\":4.875528524, \"lng\":-75.55198216},{\"lat\":4.875473287, \"lng\":-75.55192315},{\"lat\":4.875433305, \"lng\":-75.55185157},{\"lat\":4.875401203, \"lng\":-75.55174788},{\"lat\":4.875388965, \"lng\":-75.55164571},{\"lat\":4.875398856, \"lng\":-75.55156072},{\"lat\":4.875428779, \"lng\":-75.55141428},{\"lat\":4.875485189, \"lng\":-75.55129828},{\"lat\":4.875493739, \"lng\":-75.5512909},{\"lat\":4.875609744, \"lng\":-75.55121446},{\"lat\":4.875723654, \"lng\":-75.55113056},{\"lat\":4.875840666, \"lng\":-75.55114791},{\"lat\":4.876173763, \"lng\":-75.55123718},]', '2021-06-23', '345.0', 234, '44', '2021-06-23 23:51:35', '2021-08-11 21:12:24');
 
 -- --------------------------------------------------------
 
@@ -8678,9 +8691,9 @@ CREATE TABLE `lotes_cosechas` (
 --
 
 INSERT INTO `lotes_cosechas` (`id`, `lote_id`, `fecha`, `cantidad`, `kilogramo`, `tipo`, `created_at`, `updated_at`) VALUES
-(1, 21, '2021-08-11', 34, 45, '', '2021-08-11 17:39:51', '2021-08-11 17:39:51'),
-(2, 21, '2021-08-12', 33, 45, '', '2021-08-11 17:40:09', '2021-08-11 17:40:09'),
-(3, 21, '2021-08-11', 100, 23, '', '2021-08-11 17:41:26', '2021-08-11 17:41:26'),
+(1, 21, '2021-08-11', 34, 45, 'Racimo', '2021-08-11 17:39:51', '2021-08-11 17:39:51'),
+(2, 21, '2021-08-12', 33, 45, 'Canastilla', '2021-08-11 17:40:09', '2021-08-11 17:40:09'),
+(3, 21, '2021-08-11', 100, 23, 'Racimo', '2021-08-11 17:41:26', '2021-08-11 17:41:26'),
 (4, 21, '2021-08-12', 23, 90, 'Racimo', '2021-08-11 17:46:34', '2021-08-11 17:46:34'),
 (5, 21, '2021-08-18', 12, 23, 'Canastilla', '2021-08-11 21:06:01', '2021-08-11 21:06:01');
 
@@ -8710,6 +8723,29 @@ INSERT INTO `lotes_labores` (`id`, `lote_id`, `labor_id`, `labor`, `inicio`, `fr
 (1, 21, 24, 'EMBOLSAR PLATANO', 10, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
 (2, 21, 24, 'SIEMBRA CON CABEZA', 23, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
 (3, 21, 24, 'APLICACIÓN MATERIA ', 10, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lotes_labores_productor`
+--
+
+CREATE TABLE `lotes_labores_productor` (
+  `id` int(11) NOT NULL,
+  `lote_id` int(11) NOT NULL,
+  `labor` varchar(50) NOT NULL,
+  `fecha` varchar(50) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `lotes_labores_productor`
+--
+
+INSERT INTO `lotes_labores_productor` (`id`, `lote_id`, `labor`, `fecha`, `created_at`, `updated_at`) VALUES
+(1, 21, 'COSECHA', '2021-08-16', '2021-08-16 16:51:20', '2021-08-16 16:51:20'),
+(2, 21, 'Nueva labor', '2021-08-19', '2021-08-19 03:19:58', '2021-08-19 03:19:58');
 
 -- --------------------------------------------------------
 
@@ -9918,7 +9954,9 @@ CREATE TABLE `opciones` (
 --
 
 INSERT INTO `opciones` (`id`, `organizacion_id`, `opcion`, `tipo`, `valor`, `created_at`, `updated_at`) VALUES
-(1, 1, 'CELULAR_TECNICO_AMIGO', 'Número', '315544856', '2021-08-10 20:32:58', '2021-08-10 20:32:59');
+(1, 1, 'CELULAR_TECNICO_AMIGO', 'Numero', '315544856', '2021-08-10 20:32:58', '2021-08-10 20:32:59'),
+(2, 1, 'CORREO_SOPORTE', 'Texto', 'soporte@agregandovalor.org', '2021-08-10 20:32:58', '2021-08-10 20:32:59'),
+(3, 1, 'WHATSAPP_SOLICITUD', 'Numero', '312453643', '2021-08-10 20:32:58', '2021-08-10 20:32:59');
 
 -- --------------------------------------------------------
 
@@ -9978,7 +10016,9 @@ CREATE TABLE `organizaciones_muro_secciones` (
 --
 
 INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
-(176, 20, '<p><b>EVENTO DE INAGURACIÓN</b></p><ul><li>​Salida</li></ul><ol><li>​Campo</li></ol><p><br/></p>', 'files/muro_media/20/20210623192405.jpg', 'http://127.0.0.1:8000/#/Home/GestionOrganizacion/Organizacion', NULL, 2, NULL, '2021-06-24 00:24:05', '2021-06-24 00:24:05');
+(176, 20, '<p><b>EVENTO DE INAGURACIÓN</b></p><ul><li>​Salida</li></ul><ol><li>​Campo</li></ol><p><br/></p>', 'files/muro_media/20/20210623192405.jpg', 'http://127.0.0.1:8000/#/Home/GestionOrganizacion/Organizacion', NULL, 2, NULL, '2021-06-24 00:24:05', '2021-06-24 00:24:05'),
+(177, 20, '<p>otro</p><ul><li>​juuh</li></ul><ol><li>jhgg</li></ol>', 'files/muro_media/20/20210819132156.jpg', 'www.ggg.com', NULL, 2, NULL, '2021-08-19 18:21:56', '2021-08-19 18:21:56'),
+(178, 20, '<p>dsd</p><ul><li>​ds</li></ul><ol><li>sdfs</li></ol>', NULL, 'sd', NULL, 2, NULL, '2021-08-19 18:38:59', '2021-08-19 18:38:59');
 
 -- --------------------------------------------------------
 
@@ -10178,8 +10218,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 18, 9, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL),
-(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 20, 13, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-07-22 04:30:14', NULL);
+(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 1, 9, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL),
+(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 20, 13, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-07-22 04:30:14', NULL),
+(28, 'CC', '3212323421', 'Usuario Prueba', 'Opciones', 'opciones@gmail.com', '3212343234', 1, 21, NULL, 'eyJpdiI6IkZMWFZEMUI2ZUpTZGtpR3MzNThnZnc9PSIsInZhbHVlIjoiNGlGYmtkSXd6dmxvZUtKdTVHQzJjdz09IiwibWFjIjoiYmU2YTQyNmJlM2IxMzBiZTg0Y2E1OTk2ZjZiYmJlYTlmYWNmMGE5MWY1YjdlZjIyZTRiMDUyN2E3MWUzN2UzNCJ9', '2021-08-11 21:39:14', '2021-08-11 21:40:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -10373,6 +10414,12 @@ ALTER TABLE `lotes_labores`
   ADD KEY `labor_id` (`labor_id`);
 
 --
+-- Indices de la tabla `lotes_labores_productor`
+--
+ALTER TABLE `lotes_labores_productor`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `lotes_labores_realizadas`
 --
 ALTER TABLE `lotes_labores_realizadas`
@@ -10499,7 +10546,7 @@ ALTER TABLE `casos_novedades`
 -- AUTO_INCREMENT de la tabla `credito__abonos`
 --
 ALTER TABLE `credito__abonos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `credito__creditos`
@@ -10511,7 +10558,7 @@ ALTER TABLE `credito__creditos`
 -- AUTO_INCREMENT de la tabla `credito__recibos`
 --
 ALTER TABLE `credito__recibos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `credito__saldos`
@@ -10586,6 +10633,12 @@ ALTER TABLE `lotes_labores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `lotes_labores_productor`
+--
+ALTER TABLE `lotes_labores_productor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `lotes_labores_realizadas`
 --
 ALTER TABLE `lotes_labores_realizadas`
@@ -10601,7 +10654,7 @@ ALTER TABLE `lote_labores`
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `organizaciones`
@@ -10613,7 +10666,7 @@ ALTER TABLE `organizaciones`
 -- AUTO_INCREMENT de la tabla `organizaciones_muro_secciones`
 --
 ALTER TABLE `organizaciones_muro_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
@@ -10649,7 +10702,7 @@ ALTER TABLE `secciones`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `zonas`
