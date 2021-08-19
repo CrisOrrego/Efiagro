@@ -75,7 +75,7 @@
                         </div>
                         
                         <div layout layout-align="center center" > 
-                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="nuevaLaborProductor(Lote)">
+                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="nuevaLaborProductor(Lote, semanas[indice].semana)">
                                 <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon> Agregar Labor
                             </md-button>                
                         </div>

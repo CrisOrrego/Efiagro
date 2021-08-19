@@ -15,11 +15,10 @@ class LotesLaboresProductorController extends Controller
         return $CRUD->call(request()->fn, request()->ops);
 	}
 
-	public function getLoteslaboresproductor($lote, $fechaInicial, $fechaFinal)
+	public function getLoteslaboresproductor($lote, $semana_id)
 	 {
 		$Loteslaboresproductor = LotesLaboresProductor::where('lote_id', $lote)
-		->where('fecha', '>=', $fechaInicial)
-		->where('fecha', '<=', $fechaFinal)->get();
+		->where('semana_id', '=', $semana_id)->get();
 		return $Loteslaboresproductor;
 	 } 
 	/*public function postObtener()

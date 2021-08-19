@@ -22,7 +22,7 @@ class LotesLaboresProductor extends Model
         return [
             ['lote_id',         'Lotes',             null,   true,   false,  null, 50 ],
             ['labor',           'Labores',           null,   true,   false,  null, 50 ],
-            ['fecha',           'Fecha',             null,   true,   false,  null, 50 ],
+            ['semana_id',       'Semanas',             null,   true,   false,  null, 50 ],
         ];
 
     }
