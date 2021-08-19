@@ -1,5 +1,5 @@
 <md-dialog  aria-label="Dialog" flex="95">
-	<md-toolbar class="md-short md-Transparent">
+	<md-toolbar class="md-short bg-primary">
 		<div class="md-toolbar-tools">
 			<h2>@{{ Title }}</h2>
 			<span flex></span>
@@ -58,12 +58,12 @@
 			
 			<div class="only-on-print">
 				<h4 class="md-headline no-margin">Simulación de Crédito</h4>
-				<span class="md-title text-clear" layout>Fecha: @{{ Hoy }}<span flex>
-				<!--<p class="md-subhead"><b>Monto:</b> @{{ Credit.Monto | currency:'$':0 }} 
+				<span class="md-title text-clear" layout>Fecha: @{{ Hoy }}</span>
+				<p class="md-subhead"><b>Monto:</b> @{{ Credit.Monto | currency:'$':0 }} 
 					<br><b>Pago:</b> @{{ Credit.Periodos }} pagos @{{ Credit.Cada.Nombre }}
 					<br><b>Interés (E.A.):</b> @{{ Credit.Interes * 100 }}% 
 					<br><b>Cuota:</b> @{{ Credit.Cuota | currency:'$':0 }}.
-				</p>-->
+				</p>
 			</div>
 
 			<div  flex layout>

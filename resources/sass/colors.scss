@@ -1,8 +1,8 @@
 $primaryColor: rgb(49, 103, 86);
 $primaryText: white;
 .bg-primary {
-    background-color: $primaryColor;
-    color: $primaryText;
+    background-color: $primaryColor !important;
+    color: $primaryText !important;
 }
 
 .text-primary {
