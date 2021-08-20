@@ -7,6 +7,7 @@ use App\Models\LotesLabores;
 use App\Models\Labor as Labores;
 use App\Models\Lotes;
 use App\Functions\CRUD;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class LotesLaboresController extends Controller
 {
@@ -38,6 +39,15 @@ class LotesLaboresController extends Controller
         $this->obtenerLabores($fields['zona'], $fields['linea'], $fields['lote']);
 	}
 
+    // Obtener la informacion de labores unida con los datos del lote.
+    public function postLoteid(Request $req)
+	{
+		return LotesLabores::
+            join('lotes', 'lotes.id', '=', 'lote_id')
+            ->where("lote_id", $req->lote)
+            ->get();
+	}
+
     public function obtenerLabores($zona, $linea, $lote)
 	{
         // Consultamos las Labores para la Zona y Linea productiva
@@ -67,7 +77,6 @@ class LotesLaboresController extends Controller
                     $LotesLabores->margen           = $labor['margen'];
                 $LotesLabores->save();
             }
-
         } else {
             // Pendiente definir la actividad a realizar.
             // echo 'Sin labores';

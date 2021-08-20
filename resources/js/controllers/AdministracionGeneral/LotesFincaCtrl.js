@@ -8,20 +8,56 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
 
         var Ctrl = $scope;
         var Rs = $rootScope;
+        //INICIO DEV ANGÉLICA
         Ctrl.indice = 0;
         
-        Ctrl.semanas = [
-            {
-                id:1, semana:'semana 01', fechaInicial:'2021-01-07', fechaFinal:'2021 2021-12-15'
-            },
-            {
-                id:2, semana:'semana 02', fechaInicial:'2021-01-08', fechaFinal:'2021 2021-12-15'
-            },
-            {
-                id:3, semana:'semana 03', fechaInicial:'2021-01-15', fechaFinal:'2021 2021-12-15'
+        Ctrl.semanas = [];
+        Ctrl.LotesLabores = [];
+        //FIN DEV ANGELICA
+        
+        //INICIO DEV ANGELICA
+        Ctrl.getLoteLabores = (lote, lineaproductiva, semana, fechaInicial, fechaFinal) => {
+            Ctrl.LotesLabores = [];
+            
+            $http.get ('api/lotelabores/lotelaborsemana/'+ lote + '/' + lineaproductiva + '/' + semana, {}).then((r)=>{
+                Ctrl.editable = new Date().toISOString().slice(0, 10) >= fechaInicial && new Date().toISOString().slice(0, 10) <= fechaFinal;  
+				Ctrl.LotesLabores = r.data;
+                console.log(Ctrl.editable);
+			});
+        };
+
+        Ctrl.generarSemanas = () => {
+
+            var curr = new Date((new Date()).getFullYear(), 0, 1); // get current date
+            var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+            var last = first + 7; // last day is the first day + 6
+
+            let fecha = new Date(curr.setDate(last));
+
+            let hoy = new Date();
+
+            hoy.setHours(0,0,0,0);
+
+            let numeroSemanasLote = 0
+            
+            for(i=1; i < numeroSemanasLote + 52; i++) {
+                const f = fecha;
+
+                let fechacontresdiasmas= f.getTime() + (6*24*60*60*1000);  
+                let segundaFecha = new Date(fechacontresdiasmas);
+                
+                if (i >= numeroSemanasLote) {
+                    Ctrl.semanas.push({id: i - numeroSemanasLote, fechaInicial: f.toISOString().slice(0, 10), fechaFinal: segundaFecha.toISOString().slice(0, 10), semana: i});
+                    if(segundaFecha.getTime() >= hoy.getTime() && f.getTime() <= hoy.getTime()){
+                        Ctrl.indice = Ctrl.semanas.length -1;
+                    }
+                }
+
+                fecha = new Date(segundaFecha.getTime() + (1*24*60*60*1000));  
             }
-        ];
-       
+        }
+
+        Ctrl.generarSemanas();
         Ctrl.Salir = $mdDialog.cancel;
 
         Ctrl.LotesCRUD = $injector.get("CRUD").config({
@@ -41,8 +77,8 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
         };
 
         Ctrl.getLotes();
-
-        //INICIO DEV ANGÉLICA
+        //FIN DEV ANGELICA
+                //INICIO DEV ANGÉLICA
         Ctrl.clickOnCard = (lote) => {
             //Las siguientes lineas cierran todos los paneles y deja abierto solo el panel seleccionado
             if(lote.checked){
@@ -52,6 +88,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                     L.checked = false;
                 });
                 lote.checked = true; 
+                Ctrl.getLoteLabores(lote.id, lote.linea_productiva.id, Ctrl.semanas[Ctrl.indice].semana, Ctrl.semanas[Ctrl.indice].fechaInicial, Ctrl.semanas[Ctrl.indice].fechaFinal);
             }
             /*
             //Estas líneas solo abren o cierran el panel seleccionado, es decir, deja visualizar varios a la vez
@@ -63,21 +100,25 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
         }
         //FIN DEV ANGELICA
 
-        //INICIO DEV ANGÉLICA
+       //INICIO DEV ANGÉLICA
+
         //O = Orientación de las flechas - si la orientacion es derecha el indice debe incrementarse en 1, si es izq 
         //D = Derecha
-        Ctrl.clickOnRow = (O) => {
+        Ctrl.clickOnRow = (O, lote) => {
             if(O === 'D') {
                 if(Ctrl.indice < Ctrl.semanas.length-1){
-                    Ctrl.indice ++;
+                    Ctrl.indice++;
+                    Ctrl.getLoteLabores(lote.id, lote.linea_productiva.id, Ctrl.semanas[Ctrl.indice].semana, Ctrl.semanas[Ctrl.indice].fechaInicial, Ctrl.semanas[Ctrl.indice].fechaFinal);
                 }
             }else{
                 if(Ctrl.indice > 0){
-                    Ctrl.indice --;
+                    Ctrl.indice--;
+                    Ctrl.getLoteLabores(lote.id, lote.linea_productiva.id, Ctrl.semanas[Ctrl.indice].semana, Ctrl.semanas[Ctrl.indice].fechaInicial, Ctrl.semanas[Ctrl.indice].fechaFinal);
                 }
             }
         }
         //FIN DEV ANGELICA
+
 
         // LOTE LABORES
         Ctrl.LoteLaboresCRUD = $injector.get("CRUD").config({
@@ -88,14 +129,24 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
             query_with:['labor', 'lote']
         });
 
-        Ctrl.getLoteLabores = () => {
-            Ctrl.LoteLaboresCRUD.get().then(() => {
-                Ctrl.LoteLabor = Ctrl.LoteLaboresCRUD.rows[0];
-                //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
-            });
-        };
+        
+         //INICIO DEV ANGÉLICA ------> para hacer el evento del checkbox y que guarde en BD en la tabla lote_labores_realizadas
+         Ctrl.LoteLaboresRealizadasCRUD = $injector.get("CRUD").config({
+            base_url: "/api/lotelaboresrealizadas/lotelaboresrealizadas",
+            limit: 1000,
+            add_append: "refresh",
+        });
 
-        Ctrl.getLoteLabores();
+        Ctrl.guardarLaborRealizada = (lote, labor_id, delta) => {
+            console.log(labor_id);
+            Ctrl.LoteLaboresRealizadasCRUD.add({
+                lote_id: lote.id,
+                labor_id: labor_id,
+                cumplimiento: delta===0?1:0.5, 
+                fecha: (new Date()).toISOString().slice(0, 10)
+            });
+        }
+        //FIN DEV ANGÉLICA
 
         Ctrl.nuevoLoteLabor = () => {
             Ctrl.LoteLaboresCRUD.dialog({

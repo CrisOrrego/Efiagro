@@ -11,13 +11,14 @@ class CasoNovedad extends Model
 
     protected $table = 'casos_novedades';
     protected $guarded = ['id'];
+    protected $casts = [
+        'usuario_id' => 'integer',
+        'caso_id' => 'integer'
+         ]; 
     // protected $appends = ['novedad'];  // Crea conflicto para mostrar el campo NOVEDAD en la vista SOLICITUDES
-    protected $cast = [
-        //'objeto' => 'array'
-    ];
 
     public function columns()
-    {
+    { 
         //      Name,       Desc,       Type,   Required, Unique, Default, Width, Options
         return [
             [ 'usuario_id', 'usuario_id',   null,   true,  false, null, 11 ],

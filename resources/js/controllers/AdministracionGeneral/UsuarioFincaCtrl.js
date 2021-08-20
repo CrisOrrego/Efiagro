@@ -1,4 +1,4 @@
-angular.module('UsuarioFincaCtrl', [])
+angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
     .controller('UsuarioFincaCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'DatosUsuario', 
         function($scope, $rootScope, $http, $injector, $mdDialog, DatosUsuario) {
             
@@ -12,6 +12,65 @@ angular.module('UsuarioFincaCtrl', [])
             var lineaSeleccionada = 0;
             var loteSeleccionado = 0;
 
+            //INICIO DEV ANGÉLICA
+            //Para leer un archivo de excel
+            Ctrl.SelectFile = function (file) {
+                Ctrl.SelectedFile = file;
+            };
+            Ctrl.Upload = (L) => {
+                // debugger;
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+                if (regex.test(Ctrl.SelectedFile.name.toLowerCase())) {
+                    if (typeof (FileReader) != "undefined") {
+                        var reader = new FileReader();
+                        //For Browsers other than IE.
+                        if (reader.readAsBinaryString) {
+                            reader.onload = function (e) {
+                                Ctrl.ProcessExcel(e.target.result, L);
+                            };
+                            reader.readAsBinaryString(Ctrl.SelectedFile);
+                        } else {
+                            //For IE Browser.
+                            reader.onload = function (e) {
+                                var data = "";
+                                var bytes = new Uint8Array(e.target.result);
+                                for (var i = 0; i < bytes.byteLength; i++) {
+                                    data += String.fromCharCode(bytes[i]);
+                                }
+                                Ctrl.ProcessExcel(data, L);
+                            };
+                            reader.readAsArrayBuffer(Ctrl.SelectedFile);
+                        }
+                    } else {
+                        $window.alert("Este navegador no soporta HTML5");
+                    }
+                } else {
+                    $window.alert("Por favor subir un archivo de excel vàlido.");
+                }
+            };
+     
+            Ctrl.ProcessExcel = function (data, L) {
+                // debugger;
+                //Read the Excel File data.
+                var workbook = XLSX.read(data, {
+                    type: 'binary'
+                });
+     
+                //Fetch the name of First Sheet.
+                var firstSheet = workbook.SheetNames[0];
+     
+                //Read all rows from First Sheet into an JSON array.
+                var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
+                L.coordenadas = '';
+                excelRows.forEach(element => {
+                    //console.log(element.lat);
+                    L.coordenadas += '{"lat":' + element.lat + ', "lng":' + element.lng + '},';  
+                    
+                });
+                L.coordenadas = '[' + L.coordenadas + ']';
+            };
+            //FIN DEV ANGELICA
+            
             // Cargar las fincas del usuario seleccionado
             $http.post('api/fincas/usuario', { 
                 usuario: Ctrl.UsuarioFinca.id
@@ -62,11 +121,16 @@ angular.module('UsuarioFincaCtrl', [])
 
             // Funcion para la carga de informacion de cada lote por Finca
             Ctrl.cargarLote = (L) => {
-                console.log(L);
+                // console.log(L);
                 Ctrl.L = L;
                 loteSeleccionado = L.id;
                 lineaSeleccionada = L.linea_productiva_id;
+                // Ctrl.personalizarLabores();
                 //console.log('Informacion de otro lote: ', L);
+            };
+
+            Ctrl.formularioNuevoLote = () => {
+                Ctrl.L = null;
             };
 
             // Obtener el listado de las lineas productivas
@@ -137,9 +201,9 @@ angular.module('UsuarioFincaCtrl', [])
             // Agregar registro de lote
             Ctrl.nuevoLote = (L) => {
                 $http.post('api/lotes/crear', {
-                    Datos:          L,
-                    finca:          fincaDefault,
-                    organizacion:   Ctrl.UsuarioFinca.organizacion_id
+                    Datos: L,
+                    finca: fincaDefault.id,
+                    organizacion: 1 //Actualizar organizaciòn
                 });
                 Ctrl.Cancel();
             };
@@ -189,8 +253,8 @@ angular.module('UsuarioFincaCtrl', [])
                 });
                 zonaprimaria.reverse( (a, b) => a.average > b.average);
                 // console.log(zonaprimaria);
-                var text = zonaprimaria[0].description + ': Coincidencia del ' + zonaprimaria[0].average + '%';
-                Ctrl.zp = ( zonaprimaria[0].average < 70 ) ? 'Subzona de ' + text : 'Zona de ' + text;
+                var texto = zonaprimaria[0].description + ': Coincidencia del ' + zonaprimaria[0].average + '%';
+                Ctrl.zp = ( zonaprimaria[0].average < 70 ) ? 'Subzona de ' + texto : 'Zona de ' + texto;
                 zonaSeleccionada = zonaprimaria[0].zona_id;
                 // console.log('Zona primaria: ', zonaprimaria);
             };
@@ -205,7 +269,16 @@ angular.module('UsuarioFincaCtrl', [])
                             'zona': zonaSeleccionada
                         }
                     });
-                    // Ctrl.Cancel();
+                    //Ctrl.Cancel();
+                    $mdDialog.show({
+                        templateUrl: 'Frag/AdministracionGeneral.UsuarioLabores',
+                        controller: 'UsuarioLaboresCtrl',
+                        locals: { 
+                            DatosLote: loteSeleccionado
+                        },
+                        multiple: true,
+                        fullscreen: false,
+                    });
                 } else {
                     console.log('Aun no se crea Lote para la finca.');
                 }
@@ -222,6 +295,19 @@ angular.module('UsuarioFincaCtrl', [])
                 // });
                 // Ctrl.Cancel();
             };
+
+            // Modal para cargar el cronograma de labores.
+            // Ctrl.cargarCronograma = ( L ) => {
+            //     Ctrl.Cancel();
+            //     $mdDialog.show({
+            //         templateUrl: 'Frag/AdministracionGeneral.UsuarioLabores',
+            //         controller: 'UsuarioLaboresCtrl',
+            //         locals: { 
+            //             DatosLote: 'Labor bien bonita'
+            //         },
+            //         fullscreen: false,
+            //     });
+            // };
         }
     ]
 );

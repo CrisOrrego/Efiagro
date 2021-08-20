@@ -11,9 +11,14 @@ class Departamento extends Model
     protected $table = 'departamentos';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        
+        'id_departamento' => 'integer'
+         ]; 
+    
 
     public function columns()
-    {
+    { 
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
             ['id_departamento',             'ID',                       null, true,         false, null, 100],

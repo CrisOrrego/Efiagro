@@ -11,12 +11,16 @@ class FincaEvento extends Model
     protected $table = 'finca_eventos';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'finca_id' => 'integer',
+        'evento_id' => 'integer'
+         ];
     
     public function columns()
     {
         $gravedad = [
             'Alta' => 'Alta', 'Media' => 'Media', 'Baja' => 'Baja'
-        ];
+        ]; 
         
     
         $fincas = \App\Models\Finca::all()->keyBy('id')->map( function($f){

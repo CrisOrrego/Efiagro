@@ -12,6 +12,9 @@ class Caso extends Model
     protected $table = 'casos';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'solicitante_id' => 'integer'
+         ]; 
 
     public function columns()
     {
@@ -41,7 +44,7 @@ class Caso extends Model
     public function scopeTipo($q)
     {
         return $q->whereIn('tipo', ['tipo', 'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia']);
-    }
+    } 
 
     public function scopeTipocontacto($q)
     {

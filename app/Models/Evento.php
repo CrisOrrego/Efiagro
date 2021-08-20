@@ -13,7 +13,7 @@ class Evento extends Model
     protected $appends = [];
     
     public function columns()
-    {
+    { 
     
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [

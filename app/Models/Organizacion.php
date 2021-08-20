@@ -12,11 +12,12 @@ class Organizacion extends Model
     protected $table = 'organizaciones';
     protected $guarded = ['id'];
     protected $appends = [];
+    
 
     public function columns()
     {
-        $departamento = [
-        ];
+        // $departamento = [
+        // ];
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
             ['nombre',                      'Nombre:',                       null, true,         false, null, 100],

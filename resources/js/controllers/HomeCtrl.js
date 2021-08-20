@@ -51,12 +51,13 @@ angular.module('HomeCtrl', [])
                     valor: valor
                 }).then( () => {
                     $state.reload();
+                    // console.log("Recargando Pagina")
                 });
             }
             
             // Validar el rol para cargar opciones de organizaciones y fincas
             // Administrador: 1 | Operaor: 2 | Soporte: 3 | Productor: 4 
-            switch( Rs.Usuario['perfil_id'] ) {
+            switch( parseInt(Rs.Usuario['perfil_id']) ) {
                 case 1:
                     Ctrl.listaOrganizacion = false;
                     Ctrl.listaFinca = false;

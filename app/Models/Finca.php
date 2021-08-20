@@ -11,6 +11,12 @@ class Finca extends Model
     protected $table = 'fincas';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'usuario_id' => 'integer',
+        'departamento_id' => 'integer',
+        'municipio_id' => 'integer',
+        'zona_id' => 'integer'
+         ]; 
 
     public function columns()
     { $usuarios = \App\Models\Usuario::all()->keyBy('id')->map(function($u){

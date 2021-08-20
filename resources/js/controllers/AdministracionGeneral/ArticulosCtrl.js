@@ -79,7 +79,7 @@ angular.module('ArticulosCtrl', [])
 			}
 			//Filtro de palabras clave, los chips
 			if(Ctrl.filterKeys && Ctrl.filterKeys.length>0){
-				debugger;
+				// debugger;
 				let index = 0; //Se necesita el índice del artículo que se está recorriendo
 				let L = Ctrl.Articuloscopy.length;
 				for (i = 0; i<L; i++){
