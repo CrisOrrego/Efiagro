@@ -17,6 +17,7 @@ angular.module('App', [
     'angular-img-cropper',
     //'indexedDB',
     'enterStroke',
+    'printThis',
     'textAngular',
 
 
@@ -80,6 +81,9 @@ angular.module('App', [
     'FondoRotatorio_CreditosCtrl', //CAOH
     'FondoRotatorio_NuevoCreditoDiagCtrl', //CAOH
     'FondoRotatorio_Creditos_PayDialogCtrl', //CAOH
+    'FondoRotatorio__Creditos_CreditoDialogCtrl', //CAOH
+    'FondoRotatorio__Creditos_ReciboDialogCtrl', //CAOH
     'CreditoSrv', //CAOH
+    'OpcionesCtrl',
 
 ]);

@@ -116,7 +116,7 @@
             <md-tab ng-show="L" ng-repeat="L in Lotes" label="Lote @{{ $index + 1 }}" 
                 ng-click="cargarLote(L)"></md-tab>
             <md-tab ng-click="formularioNuevoLote()" label="+"></md-tab>
-        </md-tabs>
+        </md-tabs> 
 
         <div layout layout-wrap >
             <md-input-container>

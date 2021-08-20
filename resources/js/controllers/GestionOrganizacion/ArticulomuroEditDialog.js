@@ -50,7 +50,7 @@ angular.module('ArticulomuroEditDialogCtrl', [])
 			}).then(function (resp) {
 				//console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
 				if(Ctrl.file){ //si no hay archivo que no envíe la imagen
-
+					debugger;
 					Upload.upload({
 						url: 'api/main/upload-imagen',
 						data: {file: Ctrl.file,

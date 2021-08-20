@@ -62,12 +62,12 @@
 									<md-icon md-font-icon="fa-list" class=" fa-fw"></md-icon>Descargar Créditos
 								</md-button>
 							</md-menu-item>
-							<md-menu-item>
+							<md-menu-item ng-show="CredSel">
 								<md-button ng-click="PrintCredit($event)">
 									<md-icon md-font-icon="fa-print" class=" fa-fw"></md-icon>Imprimir Comprobante
 								</md-button>
 							</md-menu-item>
-							<md-menu-item>
+							<md-menu-item hide>
 								<md-button class="md-warn" ng-click="DeleteCredit($event)">
 									<md-icon md-font-icon="fa-trash" class=" fa-fw"></md-icon>Eliminar Crédito
 								</md-button>

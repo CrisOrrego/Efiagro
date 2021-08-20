@@ -31,12 +31,12 @@
                             </div>
                             <div>
                                 <h5>
-                                        @{{semanas[indice].semana}}
-                                        <br/>
-                                        @{{semanas[indice].semana}} - 
-                                        @{{semanas[indice].fechaInicial}} a
-                                        @{{semanas[indice].fechaFinal}}                                
-                                </h5>                                
+                                    <!--@{{semanas[indice].semana}}-->
+                                    <br/>
+                                    @{{semanas[indice].semana}} - 
+                                    @{{semanas[indice].fechaInicial}} a
+                                    @{{semanas[indice].fechaFinal}}                                
+                                </h5>
                             </div>
                             <div>
                                 <i ng-show="indice < semanas.length -1" ng-click = "clickOnRow('D', Lote)" class="fas fa-chevron-right"></i>                                                 
@@ -60,62 +60,45 @@
                             <label class="texto_title">@{{ LB.labor }} </label> <br> <span class="textoInfo">Inicio:  @{{ LB.inicio }} <br> Frecuencia:  @{{ LB.frecuencia }} @{{LB.delta}} </span>
 
                             </md-checkbox>
-                            </ul>                       
-                         </div>
+                            </ul>
+                        </div>
+
+                        <div flex >
+                            <h6>Labores Prodcuctor</h6>
+                        </div>
+                        <div ng-repeat="LB in LaboresProductor">
+                            <ul >
+                                <div>
+                                    @{{ LB.labor }} 
+                                </div>
+                            </ul>
+                        </div>
                         
                         <div layout layout-align="center center" > 
-                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="nuevoLoteLabor()">
+                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="nuevaLaborProductor(Lote, semanas[indice].semana)">
                                 <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon> Agregar Labor
                             </md-button>                
                         </div>
                     </div>
                 </md-card>
                 <!--FIN DEV ANGELICA-->
-                
-                <!--INICIO DEV ANGELICA-->   
+
+                <!--INICIO DEV ANGELICA
+                gráfica de cosechas-->
                 <md-card class="w100p mxw900 bg-white padding-5-20 border-rounded">
                     <div layout="column" layout-align="space-between none">
                         <div flex >
                             <h6>Cosechas</h6>
                         </div>
                         <div layout="row" layout-align="center center">
-                            <div class="w320p mxw340 bg-white padding-5-20 border-rounded">
+                            <div class="flex h325 w320p bg-white padding-5-20  border-rounded">
                                 <canvas id="myChart" ></canvas>
-
-                                <script>
-                                    var ctx = document.getElementById('myChart').getContext('2d');
-                                    var myChart = new Chart(ctx, {
-                                        type: 'bar',
-                                        data: {
-                                            labels: ['01 Ene', '18 Ene', '01 Feb', '18 Feb'],
-                                            datasets: [{
-                                                label: '# de cosechas',
-                                                data: [12, 19, 3, 5, 2, 3],
-                                                backgroundColor: [
-                                                    'rgba(54, 162, 235, 0.2)',
-                                                    'rgba(75, 192, 192, 0.2)'
-                                                ],
-                                                borderColor: [
-                                                    'rgba(54, 162, 235, 1)',
-                                                    'rgba(75, 192, 192, 1)'
-                                                ],
-                                                borderWidth: 1
-                                            }]
-                                        },
-                                        options: {
-                                            scales: {
-                                                y: {
-                                                    beginAtZero: true
-                                                }
-                                            }
-                                        }
-                                    });
-                                    </script>
+                                                                
                             </div>
                         
                         </div>
                         <div layout layout-align="center center"> 
-                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="">
+                            <md-button class="md-raised md-primary" aria-label="Agregar Labor" ng-click="nuevaCosecha(Lote)">
                                 <md-icon md-font-icon="fa-plus fa-lg fa-fw"></md-icon> Agregar Cosecha
                             </md-button>                
                         </div>
