@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-08-2021 a las 21:27:11
+-- Tiempo de generación: 20-08-2021 a las 22:00:24
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -238,7 +238,7 @@ INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado
 (6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-08-20 01:04:46', NULL),
 (7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-08-20 01:02:32', NULL),
 (8, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-08-20 01:05:44', NULL),
-(9, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-08-21 00:25:33', NULL);
+(9, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-08-21 00:57:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -8705,7 +8705,8 @@ CREATE TABLE `lotes_cosechas` (
 --
 
 INSERT INTO `lotes_cosechas` (`id`, `lote_id`, `fecha`, `cantidad`, `kilogramo`, `tipo`, `created_at`, `updated_at`) VALUES
-(1, 21, '2021-08-20', 45, 32, 'Bulto', '2021-08-20 19:15:07', '2021-08-20 19:15:07');
+(1, 21, '2021-08-20', 45, 32, 'Bulto', '2021-08-20 19:15:07', '2021-08-20 19:15:07'),
+(2, 21, '2021-08-31', 453, 23, 'Bolsa', '2021-08-20 19:59:04', '2021-08-20 19:59:04');
 
 -- --------------------------------------------------------
 
@@ -8730,9 +8731,9 @@ CREATE TABLE `lotes_labores` (
 --
 
 INSERT INTO `lotes_labores` (`id`, `lote_id`, `labor_id`, `labor`, `inicio`, `frecuencia`, `margen`, `created_at`, `updated_at`) VALUES
-(1, 21, 24, 'EMBOLSAR PLATANO', 10, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
-(2, 21, 24, 'SIEMBRA CON CABEZA', 23, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
-(3, 21, 24, 'APLICACIÓN MATERIA ', 10, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54');
+(1, 21, 24, 'EMBOLSAR PLATANO', 10, 10, 1, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
+(2, 21, 24, 'SIEMBRA CON CABEZA', 23, 10, 1, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
+(3, 21, 24, 'APLICACIÓN MATERIA ', 10, 10, 1, '2021-07-22 05:57:54', '2021-07-22 05:57:54');
 
 -- --------------------------------------------------------
 
@@ -8754,7 +8755,8 @@ CREATE TABLE `lotes_labores_productor` (
 --
 
 INSERT INTO `lotes_labores_productor` (`id`, `lote_id`, `labor`, `semana_id`, `created_at`, `updated_at`) VALUES
-(1, 21, 'Mi labor', 36, '2021-08-20 19:16:42', '2021-08-20 19:16:42');
+(1, 21, 'Mi labor', 36, '2021-08-20 19:16:42', '2021-08-20 19:16:42'),
+(2, 21, 'Cosecha', 33, '2021-08-20 19:58:45', '2021-08-20 19:58:45');
 
 -- --------------------------------------------------------
 
@@ -10625,7 +10627,7 @@ ALTER TABLE `lotes`
 -- AUTO_INCREMENT de la tabla `lotes_cosechas`
 --
 ALTER TABLE `lotes_cosechas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores`
@@ -10637,7 +10639,7 @@ ALTER TABLE `lotes_labores`
 -- AUTO_INCREMENT de la tabla `lotes_labores_productor`
 --
 ALTER TABLE `lotes_labores_productor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores_realizadas`
