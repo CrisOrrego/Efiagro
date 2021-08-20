@@ -16,7 +16,7 @@ class LoteCosechasController extends Controller
 	}
 	public function getCosechalote($lote, $fecha)
 	 {
-		$LoteCosechas = LoteCosechas::where('lote_id', $lote)->orderBy('fecha','Desc')->limit(4)->get();
+		$LoteCosechas = LoteCosechas::where('lote_id', $lote)->orderBy('fecha','Asc')->limit(4)->get();
 		return $LoteCosechas;
 	 } 
 
