@@ -40,12 +40,13 @@ angular.module('App', [
     'SolicitudesDetalleCtrl',
 
     'UsuariosCtrl',
-    'UsuarioFincaCtrl',     // Luigi
+    'UsuarioFincaCtrl',             // Luigi
+    'UsuarioLaboresCtrl',           // Luigi
     'ArticulosCtrl',
     'Articulos_ArticuloEditorCtrl',
-    'CasosCtrl', // Luigi
-    'Casos_NovedadesCtrl', // Luigi
-    'LineasProductivasCtrl', // Luigi
+    'CasosCtrl',                    // Luigi
+    'Casos_NovedadesCtrl',          // Luigi
+    'LineasProductivasCtrl',        // Luigi
     //'MitecnicoAmigoInicioCtrl', // Luigi
     
     //Inicio Dev Angélica
@@ -65,7 +66,7 @@ angular.module('App', [
     'PerfilesCtrl', // Luigi
     'EventosCtrl',
     'FincaEventosCtrl',
-       
+    
     // 'PerfilesCtrl',
     // Zonas Agroambientales
     'ZonasCtrl',

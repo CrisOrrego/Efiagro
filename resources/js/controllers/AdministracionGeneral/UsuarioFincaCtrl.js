@@ -63,7 +63,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
                 L.coordenadas = '';
                 excelRows.forEach(element => {
-                    console.log(element.lat);
+                    //console.log(element.lat);
                     L.coordenadas += '{"lat":' + element.lat + ', "lng":' + element.lng + '},';  
                     
                 });
@@ -121,10 +121,11 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
 
             // Funcion para la carga de informacion de cada lote por Finca
             Ctrl.cargarLote = (L) => {
-                console.log(L);
+                // console.log(L);
                 Ctrl.L = L;
                 loteSeleccionado = L.id;
                 lineaSeleccionada = L.linea_productiva_id;
+                // Ctrl.personalizarLabores();
                 //console.log('Informacion de otro lote: ', L);
             };
 
@@ -252,8 +253,8 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 });
                 zonaprimaria.reverse( (a, b) => a.average > b.average);
                 // console.log(zonaprimaria);
-                var text = zonaprimaria[0].description + ': Coincidencia del ' + zonaprimaria[0].average + '%';
-                Ctrl.zp = ( zonaprimaria[0].average < 70 ) ? 'Subzona de ' + text : 'Zona de ' + text;
+                var texto = zonaprimaria[0].description + ': Coincidencia del ' + zonaprimaria[0].average + '%';
+                Ctrl.zp = ( zonaprimaria[0].average < 70 ) ? 'Subzona de ' + texto : 'Zona de ' + texto;
                 zonaSeleccionada = zonaprimaria[0].zona_id;
                 // console.log('Zona primaria: ', zonaprimaria);
             };
@@ -268,7 +269,16 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                             'zona': zonaSeleccionada
                         }
                     });
-                    // Ctrl.Cancel();
+                    //Ctrl.Cancel();
+                    $mdDialog.show({
+                        templateUrl: 'Frag/AdministracionGeneral.UsuarioLabores',
+                        controller: 'UsuarioLaboresCtrl',
+                        locals: { 
+                            DatosLote: loteSeleccionado
+                        },
+                        multiple: true,
+                        fullscreen: false,
+                    });
                 } else {
                     console.log('Aun no se crea Lote para la finca.');
                 }
@@ -285,6 +295,19 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 // });
                 // Ctrl.Cancel();
             };
+
+            // Modal para cargar el cronograma de labores.
+            // Ctrl.cargarCronograma = ( L ) => {
+            //     Ctrl.Cancel();
+            //     $mdDialog.show({
+            //         templateUrl: 'Frag/AdministracionGeneral.UsuarioLabores',
+            //         controller: 'UsuarioLaboresCtrl',
+            //         locals: { 
+            //             DatosLote: 'Labor bien bonita'
+            //         },
+            //         fullscreen: false,
+            //     });
+            // };
         }
     ]
 );
