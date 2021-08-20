@@ -14,8 +14,7 @@ class LotesLaboresProductor extends Model
     protected $casts = [
         'lote_id' => 'integer',
         'labor' => 'string'
-         ];
-    
+         ];    
     public function columns()
     {
         //Name, Desc, Type, Required, Unique, Default, Width, Options
