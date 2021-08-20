@@ -17,8 +17,8 @@ body {
 }
 
 .bg-primary {
-  background-color: #316756 !important;
-  color: white !important;
+  background-color: #316756;
+  color: white;
 }
 
 .text-primary {
@@ -7147,28 +7147,6 @@ body {
 
 .pointer {
   cursor: pointer;
-}
-
-.only-on-print {
-  display: none;
-}
-
-@media print {
-  .not-on-print {
-    display: none;
-  }
-
-  .on-print {
-    display: initial !important;
-  }
-
-  .only-on-print {
-    display: initial;
-  }
-
-  .no-padding-on-print {
-    padding: 0 !important;
-  }
 }
 
 @font-face {
