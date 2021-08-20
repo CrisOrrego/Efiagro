@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-08-2021 a las 20:46:15
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.7
+-- Tiempo de generación: 20-08-2021 a las 21:27:11
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 7.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -235,8 +235,10 @@ CREATE TABLE `credito__creditos` (
 --
 
 INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado`, `estado_color`, `linea`, `monto`, `interes`, `pagos`, `periodos`, `periodos_gracia`, `cuota`, `saldo`, `proximo_pago`, `usuario_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-08-19 08:09:14', NULL),
-(7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-08-19 07:43:57', NULL);
+(6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-08-20 01:04:46', NULL),
+(7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-08-20 01:02:32', NULL),
+(8, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-08-20 01:05:44', NULL),
+(9, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-08-21 00:25:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -306,7 +308,19 @@ INSERT INTO `credito__saldos` (`id`, `credito_id`, `activo`, `tipo`, `num_pago`,
 (69, 6, 1, 'CREDITO', 9, '2023-09-21', 358541, 89635, 448176, 1203826, 1, '2021-07-31 06:42:51', '2021-07-31 06:42:51'),
 (70, 6, 1, 'CREDITO', 10, '2023-12-21', 379110, 69066, 448176, 824716, 1, '2021-07-31 06:42:51', '2021-07-31 06:42:51'),
 (71, 6, 1, 'CREDITO', 11, '2024-03-21', 400861, 47315, 448176, 423855, 1, '2021-07-31 06:42:51', '2021-07-31 06:42:51'),
-(72, 6, 1, 'CREDITO', 12, '2024-06-21', 423855, 24318, 448173, 0, 1, '2021-07-31 06:42:51', '2021-07-31 06:42:51');
+(72, 6, 1, 'CREDITO', 12, '2024-06-21', 423855, 24318, 448173, 0, 1, '2021-07-31 06:42:51', '2021-07-31 06:42:51'),
+(73, 8, 1, 'CREDITO', 1, '2021-09-19', 159016, 18770, 177786, 840984, 1, '2021-08-20 01:03:55', '2021-08-20 01:03:55'),
+(74, 8, 1, 'CREDITO', 2, '2021-10-19', 162001, 15785, 177786, 678983, 1, '2021-08-20 01:03:55', '2021-08-20 01:03:55'),
+(75, 8, 1, 'CREDITO', 3, '2021-11-19', 165041, 12745, 177786, 513942, 1, '2021-08-20 01:03:55', '2021-08-20 01:03:55'),
+(76, 8, 1, 'CREDITO', 4, '2021-12-19', 168139, 9647, 177786, 345803, 1, '2021-08-20 01:03:56', '2021-08-20 01:03:56'),
+(77, 8, 1, 'CREDITO', 5, '2022-01-19', 171295, 6491, 177786, 174508, 1, '2021-08-20 01:03:56', '2021-08-20 01:03:56'),
+(78, 8, 1, 'CREDITO', 6, '2022-02-19', 174508, 3276, 177784, 0, 1, '2021-08-20 01:03:56', '2021-08-20 01:03:56'),
+(79, 9, 1, 'CREDITO', 1, '2021-09-19', 159016, 18770, 177786, 840984, 1, '2021-08-20 01:04:41', '2021-08-20 01:04:41'),
+(80, 9, 1, 'CREDITO', 2, '2021-10-19', 162001, 15785, 177786, 678983, 1, '2021-08-20 01:04:41', '2021-08-20 01:04:41'),
+(81, 9, 1, 'CREDITO', 3, '2021-11-19', 165041, 12745, 177786, 513942, 1, '2021-08-20 01:04:41', '2021-08-20 01:04:41'),
+(82, 9, 1, 'CREDITO', 4, '2021-12-19', 168139, 9647, 177786, 345803, 1, '2021-08-20 01:04:42', '2021-08-20 01:04:42'),
+(83, 9, 1, 'CREDITO', 5, '2022-01-19', 171295, 6491, 177786, 174508, 1, '2021-08-20 01:04:42', '2021-08-20 01:04:42'),
+(84, 9, 1, 'CREDITO', 6, '2022-02-19', 174508, 3276, 177784, 0, 1, '2021-08-20 01:04:42', '2021-08-20 01:04:42');
 
 -- --------------------------------------------------------
 
@@ -8691,11 +8705,7 @@ CREATE TABLE `lotes_cosechas` (
 --
 
 INSERT INTO `lotes_cosechas` (`id`, `lote_id`, `fecha`, `cantidad`, `kilogramo`, `tipo`, `created_at`, `updated_at`) VALUES
-(1, 21, '2021-08-11', 34, 45, 'Racimo', '2021-08-11 17:39:51', '2021-08-11 17:39:51'),
-(2, 21, '2021-08-12', 33, 45, 'Canastilla', '2021-08-11 17:40:09', '2021-08-11 17:40:09'),
-(3, 21, '2021-08-11', 100, 23, 'Racimo', '2021-08-11 17:41:26', '2021-08-11 17:41:26'),
-(4, 21, '2021-08-12', 23, 90, 'Racimo', '2021-08-11 17:46:34', '2021-08-11 17:46:34'),
-(5, 21, '2021-08-18', 12, 23, 'Canastilla', '2021-08-11 21:06:01', '2021-08-11 21:06:01');
+(1, 21, '2021-08-20', 45, 32, 'Bulto', '2021-08-20 19:15:07', '2021-08-20 19:15:07');
 
 -- --------------------------------------------------------
 
@@ -8734,7 +8744,7 @@ CREATE TABLE `lotes_labores_productor` (
   `id` int(11) NOT NULL,
   `lote_id` int(11) NOT NULL,
   `labor` varchar(50) NOT NULL,
-  `fecha` varchar(50) NOT NULL,
+  `semana_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -8743,9 +8753,8 @@ CREATE TABLE `lotes_labores_productor` (
 -- Volcado de datos para la tabla `lotes_labores_productor`
 --
 
-INSERT INTO `lotes_labores_productor` (`id`, `lote_id`, `labor`, `fecha`, `created_at`, `updated_at`) VALUES
-(1, 21, 'COSECHA', '2021-08-16', '2021-08-16 16:51:20', '2021-08-16 16:51:20'),
-(2, 21, 'Nueva labor', '2021-08-19', '2021-08-19 03:19:58', '2021-08-19 03:19:58');
+INSERT INTO `lotes_labores_productor` (`id`, `lote_id`, `labor`, `semana_id`, `created_at`, `updated_at`) VALUES
+(1, 21, 'Mi labor', 36, '2021-08-20 19:16:42', '2021-08-20 19:16:42');
 
 -- --------------------------------------------------------
 
@@ -9956,7 +9965,7 @@ CREATE TABLE `opciones` (
 INSERT INTO `opciones` (`id`, `organizacion_id`, `opcion`, `tipo`, `valor`, `created_at`, `updated_at`) VALUES
 (1, 1, 'CELULAR_TECNICO_AMIGO', 'Numero', '315544856', '2021-08-10 20:32:58', '2021-08-10 20:32:59'),
 (2, 1, 'CORREO_SOPORTE', 'Texto', 'soporte@agregandovalor.org', '2021-08-10 20:32:58', '2021-08-10 20:32:59'),
-(3, 1, 'WHATSAPP_SOLICITUD', 'Numero', '312453643', '2021-08-10 20:32:58', '2021-08-10 20:32:59');
+(3, 1, 'WHATSAPP_SOLICITUD', 'Boolean', '1', '2021-08-10 20:32:58', '2021-08-10 20:32:59');
 
 -- --------------------------------------------------------
 
@@ -10016,9 +10025,7 @@ CREATE TABLE `organizaciones_muro_secciones` (
 --
 
 INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
-(176, 20, '<p><b>EVENTO DE INAGURACIÓN</b></p><ul><li>​Salida</li></ul><ol><li>​Campo</li></ol><p><br/></p>', 'files/muro_media/20/20210623192405.jpg', 'http://127.0.0.1:8000/#/Home/GestionOrganizacion/Organizacion', NULL, 2, NULL, '2021-06-24 00:24:05', '2021-06-24 00:24:05'),
-(177, 20, '<p>otro</p><ul><li>​juuh</li></ul><ol><li>jhgg</li></ol>', 'files/muro_media/20/20210819132156.jpg', 'www.ggg.com', NULL, 2, NULL, '2021-08-19 18:21:56', '2021-08-19 18:21:56'),
-(178, 20, '<p>dsd</p><ul><li>​ds</li></ul><ol><li>sdfs</li></ol>', NULL, 'sd', NULL, 2, NULL, '2021-08-19 18:38:59', '2021-08-19 18:38:59');
+(1, 20, '<p><b>Nuevo Muro</b></p><p><b><br/></b></p><p></p><ul><li><b>A</b></li></ul><p><b></b><ol><li>B</li></ol></p><p></p><p><br/></p>', 'files/muro_media/20/20210820142451.jpg', 'www.ab.com', NULL, 2, NULL, '2021-08-20 19:24:52', '2021-08-20 19:24:52');
 
 -- --------------------------------------------------------
 
@@ -10552,19 +10559,13 @@ ALTER TABLE `credito__abonos`
 -- AUTO_INCREMENT de la tabla `credito__creditos`
 --
 ALTER TABLE `credito__creditos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `credito__recibos`
 --
 ALTER TABLE `credito__recibos`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT de la tabla `credito__saldos`
---
-ALTER TABLE `credito__saldos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `cultivos`
@@ -10618,13 +10619,13 @@ ALTER TABLE `listas_indice`
 -- AUTO_INCREMENT de la tabla `lotes`
 --
 ALTER TABLE `lotes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_cosechas`
 --
 ALTER TABLE `lotes_cosechas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores`
@@ -10636,7 +10637,7 @@ ALTER TABLE `lotes_labores`
 -- AUTO_INCREMENT de la tabla `lotes_labores_productor`
 --
 ALTER TABLE `lotes_labores_productor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores_realizadas`
@@ -10666,7 +10667,7 @@ ALTER TABLE `organizaciones`
 -- AUTO_INCREMENT de la tabla `organizaciones_muro_secciones`
 --
 ALTER TABLE `organizaciones_muro_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
@@ -10678,7 +10679,7 @@ ALTER TABLE `organizacion_lineas_productivas`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `perfiles_secciones`
@@ -10709,48 +10710,6 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `zonas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `articulos_secciones`
---
-ALTER TABLE `articulos_secciones`
-  ADD CONSTRAINT `articulos_secciones_ibfk_1` FOREIGN KEY (`articulo_id`) REFERENCES `articulos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `cultivos`
---
-ALTER TABLE `cultivos`
-  ADD CONSTRAINT `cultivos_ibfk_1` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`);
-
---
--- Filtros para la tabla `finca_eventos`
---
-ALTER TABLE `finca_eventos`
-  ADD CONSTRAINT `finca_eventos_ibfk_1` FOREIGN KEY (`finca_id`) REFERENCES `fincas` (`id`),
-  ADD CONSTRAINT `finca_eventos_ibfk_2` FOREIGN KEY (`evento_id`) REFERENCES `eventos` (`id`);
-
---
--- Filtros para la tabla `lotes_labores`
---
-ALTER TABLE `lotes_labores`
-  ADD CONSTRAINT `lotes_labores_ibfk_1` FOREIGN KEY (`lote_id`) REFERENCES `lotes` (`id`),
-  ADD CONSTRAINT `lotes_labores_ibfk_2` FOREIGN KEY (`labor_id`) REFERENCES `labores` (`id`);
-
---
--- Filtros para la tabla `lote_labores`
---
-ALTER TABLE `lote_labores`
-  ADD CONSTRAINT `lote_labores_ibfk_1` FOREIGN KEY (`labores_id`) REFERENCES `labores` (`id`);
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`organizacion_id`) REFERENCES `organizaciones` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
