@@ -33,7 +33,7 @@
                             @include('AdministracionGeneral.Configuracion_OpcionEditor')</div>
                     </div>
                     <div>
-                        <md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="actualizarOpcion()">
+                        <md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="actualizarOpciones()">
                             <md-icon md-font-icon=""></md-icon>Actualizar
                         </md-button>
                     </div>

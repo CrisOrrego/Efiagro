@@ -30,8 +30,16 @@ class OpcionesController extends Controller
 
 		return $Opciones;
 	}
-	public function postActualizaropcion(Request $req)
+	public function postActualizar()
 	{
+		$Opciones = request('Opciones');
+		foreach($Opciones as $O){
+			$Opcion = Opcion::where('organizacion_id', 1)
+			->where('opcion', $O['opcion'])->first();
+			$Opcion->valor = $O['valor'];
+			$Opcion->save();
+
+		}
 		// dd($req);
 
 		// $opcion = Opcion::where('organizacion_id', $req['organizacion'])
