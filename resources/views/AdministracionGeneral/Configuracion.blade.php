@@ -15,8 +15,8 @@
                 <div class="md-title margin-right-20">
                     Opciones
                 </div>
+                <br>
                 <div layout=column>
-
                     <div layout>
                         <div class="text-bold">Celular Técnico Amigo</div>
                         <div ng-repeat="Op in [Opciones.CELULAR_TECNICO_AMIGO]">
@@ -34,7 +34,7 @@
                     </div>
                     <div>
                         <md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="actualizarOpciones()">
-                            <md-icon md-font-icon=""></md-icon>Actualizar
+                            Actualizar
                         </md-button>
                     </div>
 

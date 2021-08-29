@@ -10,8 +10,5 @@
 </div>
 <div ng-if="Op.tipo == 'Boolean'">
     <md-checkbox ng-model="Op.valor" ng-change="Op.changed = true">
-       
-      </md-checkbox>
+    </md-checkbox>
 </div>
-
-
