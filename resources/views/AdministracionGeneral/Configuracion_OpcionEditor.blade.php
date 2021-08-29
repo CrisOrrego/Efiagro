@@ -9,5 +9,9 @@
     </md-input-container>
 </div>
 <div ng-if="Op.tipo == 'Boolean'">
-    <md-switch type=boolean ng-model="boolean"></md-switch>
+    <md-checkbox ng-model="Op.valor" ng-change="Op.changed = true">
+       
+      </md-checkbox>
 </div>
+
+

@@ -40,13 +40,7 @@ class OpcionesController extends Controller
 			$Opcion->save();
 
 		}
-		// dd($req);
-
-		// $opcion = Opcion::where('organizacion_id', $req['organizacion'])
-		// 	->where('tipo', $req['opcion']);
-		// 	$opcion->valor = $req['valor'];
-		// 	$opcion->save('valor', $req['valor']);
-			
+		// dd($req);		
 	}
 		
 }
