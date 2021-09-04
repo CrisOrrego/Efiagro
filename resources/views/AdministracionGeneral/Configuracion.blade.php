@@ -32,6 +32,11 @@
                         <div ng-repeat="Op in [Opciones.WHATSAPP_SOLICITUD]">
                             @include('AdministracionGeneral.Configuracion_OpcionEditor')</div>
                     </div>
+                    <div layout>
+                        <div class="text-bold">Lineas de Credito </div>
+                        <div ng-repeat="Op in [Opciones.LINEAS_CREDITO]">
+                            @include('AdministracionGeneral.Configuracion_OpcionEditor')</div>
+                    </div>
                     <div>
                         <md-button class="md-raised md-primary" aria-label="Nuevo" ng-click="actualizarOpciones()">
                             Actualizar

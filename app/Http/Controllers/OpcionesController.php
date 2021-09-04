@@ -19,12 +19,10 @@ class OpcionesController extends Controller
 	{
 		$Opciones = Opcion::where('organizacion_id', 1)->get()->keyBy('opcion')->transform(function($Op){
 			if($Op->tipo == 'Numero') $Op->valor = intval($Op->valor);
-			return $Op;
-
-			if($Op->tipo == 'Correo') $Op->valor = intval($Op->valor);
-			return $Op;
-
+			
 			if($Op->tipo == 'Boolean') $Op->valor = intval($Op->valor);
+
+			if($Op->tipo == 'Lista') $Op->valor = json_decode($Op->valor);
 			return $Op;
 		});
 

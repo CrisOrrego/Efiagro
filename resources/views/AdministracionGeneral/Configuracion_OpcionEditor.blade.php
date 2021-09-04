@@ -12,3 +12,7 @@
     <md-checkbox ng-model="Op.valor" ng-change="Op.changed = true">
     </md-checkbox>
 </div>
+<div ng-if="Op.tipo == 'Lista'">
+    <md-chips ng-model="Op.valor" ng-change="Op.changed = true">
+    </md-chips>
+</div>
