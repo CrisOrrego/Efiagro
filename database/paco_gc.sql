@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-08-2021 a las 22:00:24
+-- Tiempo de generación: 07-09-2021 a las 03:56:49
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -235,10 +235,10 @@ CREATE TABLE `credito__creditos` (
 --
 
 INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado`, `estado_color`, `linea`, `monto`, `interes`, `pagos`, `periodos`, `periodos_gracia`, `cuota`, `saldo`, `proximo_pago`, `usuario_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-08-20 01:04:46', NULL),
-(7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-08-20 01:02:32', NULL),
-(8, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-08-20 01:05:44', NULL),
-(9, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-08-21 00:57:30', NULL);
+(6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-09-07 06:52:19', NULL),
+(7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-08-21 02:13:46', NULL),
+(8, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-08-21 02:13:42', NULL),
+(9, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-09-07 06:39:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -8706,7 +8706,10 @@ CREATE TABLE `lotes_cosechas` (
 
 INSERT INTO `lotes_cosechas` (`id`, `lote_id`, `fecha`, `cantidad`, `kilogramo`, `tipo`, `created_at`, `updated_at`) VALUES
 (1, 21, '2021-08-20', 45, 32, 'Bulto', '2021-08-20 19:15:07', '2021-08-20 19:15:07'),
-(2, 21, '2021-08-31', 453, 23, 'Bolsa', '2021-08-20 19:59:04', '2021-08-20 19:59:04');
+(2, 21, '2021-08-31', 453, 23, 'Bolsa', '2021-08-20 19:59:04', '2021-08-20 19:59:04'),
+(3, 21, '2021-09-01', 32, 67, 'Racimo', '2021-08-20 20:31:12', '2021-08-20 20:31:12'),
+(4, 21, '2021-10-12', 67, 12, 'Timbo', '2021-08-20 21:01:18', '2021-08-20 21:01:18'),
+(5, 21, '2021-08-20', 10, 10, 'Racimo', '2021-08-20 23:06:41', '2021-08-20 23:06:41');
 
 -- --------------------------------------------------------
 
@@ -8756,7 +8759,12 @@ CREATE TABLE `lotes_labores_productor` (
 
 INSERT INTO `lotes_labores_productor` (`id`, `lote_id`, `labor`, `semana_id`, `created_at`, `updated_at`) VALUES
 (1, 21, 'Mi labor', 36, '2021-08-20 19:16:42', '2021-08-20 19:16:42'),
-(2, 21, 'Cosecha', 33, '2021-08-20 19:58:45', '2021-08-20 19:58:45');
+(2, 21, 'Cosecha', 33, '2021-08-20 19:58:45', '2021-08-20 19:58:45'),
+(3, 21, 'Mi labor', 33, '2021-08-20 20:30:10', '2021-08-20 20:30:10'),
+(4, 21, 'Mi labor anterior', 32, '2021-08-20 20:30:26', '2021-08-20 20:30:26'),
+(5, 21, 'Nueva Coseca', 34, '2021-08-20 20:59:10', '2021-08-20 20:59:10'),
+(6, 21, 'Lavado', 33, '2021-08-20 20:59:39', '2021-08-20 20:59:39'),
+(7, 21, 'Prueba', 33, '2021-08-20 23:06:30', '2021-08-20 23:06:30');
 
 -- --------------------------------------------------------
 
@@ -9965,9 +9973,10 @@ CREATE TABLE `opciones` (
 --
 
 INSERT INTO `opciones` (`id`, `organizacion_id`, `opcion`, `tipo`, `valor`, `created_at`, `updated_at`) VALUES
-(1, 1, 'CELULAR_TECNICO_AMIGO', 'Numero', '315544856', '2021-08-10 20:32:58', '2021-08-10 20:32:59'),
-(2, 1, 'CORREO_SOPORTE', 'Texto', 'soporte@agregandovalor.org', '2021-08-10 20:32:58', '2021-08-10 20:32:59'),
-(3, 1, 'WHATSAPP_SOLICITUD', 'Boolean', '1', '2021-08-10 20:32:58', '2021-08-10 20:32:59');
+(1, 1, 'CELULAR_TECNICO_AMIGO', 'Numero', '3165555555', '2021-08-10 20:32:58', '2021-08-29 19:49:29'),
+(2, 1, 'CORREO_SOPORTE', 'Texto', 'soporte@gmail.com', '2021-08-10 20:32:58', '2021-08-27 02:19:06'),
+(3, 1, 'WHATSAPP_SOLICITUD', 'Boolean', '0', '2021-08-10 20:32:58', '2021-09-04 00:35:10'),
+(4, 1, 'LINEAS_CREDITO', 'Lista', '[\"Libre inversion\",\"Maquinaria\"]', '2021-08-10 20:32:58', '2021-09-04 00:50:56');
 
 -- --------------------------------------------------------
 
@@ -10110,7 +10119,7 @@ INSERT INTO `perfiles_secciones` (`id`, `perfil_id`, `seccion_id`, `nivel`, `cre
 (242, 4, 26, 10, '2021-05-10 13:34:09', '2021-05-10 13:34:09'),
 (243, 4, 27, 10, '2021-05-10 13:34:09', '2021-05-10 13:34:09'),
 (244, 4, 28, 10, '2021-05-10 13:34:09', '2021-05-10 13:34:09'),
-(245, 4, 29, 0, '2021-05-10 13:34:09', '2021-05-10 13:34:09'),
+(245, 4, 32, 10, '2021-05-10 13:34:09', '2021-05-10 13:34:09'),
 (272, 1, 7, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
 (273, 1, 8, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
 (274, 1, 21, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
@@ -10137,7 +10146,8 @@ INSERT INTO `perfiles_secciones` (`id`, `perfil_id`, `seccion_id`, `nivel`, `cre
 (295, 1, 27, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
 (296, 1, 17, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
 (297, 1, 1, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(298, 1, 18, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44');
+(298, 1, 18, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
+(299, 4, 33, 10, '2021-05-10 13:34:09', '2021-05-10 13:34:09');
 
 -- --------------------------------------------------------
 
@@ -10197,7 +10207,9 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_a
 (28, 'Gestión Organización', 'Cultivos', '2021-02-18 12:22:49', '2021-02-18 12:22:49'),
 (29, 'Administración General', 'Cultivos', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
 (30, 'Administración General', 'Eventos', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
-(31, 'Administración General', 'Finca Eventos', '2021-02-19 14:59:37', '2021-02-19 14:59:37');
+(31, 'Administración General', 'Finca Eventos', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
+(32, 'Fondo Rotatorio', 'Listado', '2021-09-06 14:59:37', '2021-09-06 14:59:37'),
+(33, 'Fondo Rotatorio', 'Mis Créditos', '2021-09-06 14:59:37', '2021-09-06 14:59:37');
 
 -- --------------------------------------------------------
 
@@ -10627,7 +10639,7 @@ ALTER TABLE `lotes`
 -- AUTO_INCREMENT de la tabla `lotes_cosechas`
 --
 ALTER TABLE `lotes_cosechas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores`
@@ -10639,7 +10651,7 @@ ALTER TABLE `lotes_labores`
 -- AUTO_INCREMENT de la tabla `lotes_labores_productor`
 --
 ALTER TABLE `lotes_labores_productor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores_realizadas`
@@ -10657,7 +10669,7 @@ ALTER TABLE `lote_labores`
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `organizaciones`
@@ -10687,7 +10699,7 @@ ALTER TABLE `perfiles`
 -- AUTO_INCREMENT de la tabla `perfiles_secciones`
 --
 ALTER TABLE `perfiles_secciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=299;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -10699,7 +10711,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
