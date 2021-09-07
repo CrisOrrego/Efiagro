@@ -107,3 +107,17 @@ md-toolbar.md-short, div.md-short{
 .table-col-compress th.md-column:last-child {
   padding: 0 15px 0 0 !important;
 }
+
+.md-cell-compress {
+  width: 1px;
+  white-space: nowrap;
+}
+
+.md-cell-compress > *:only-child {
+  display: table;
+  margin: 0 auto !important;
+}
+
+.md-cell-compress .md-icon-button {
+  margin: 0;
+}

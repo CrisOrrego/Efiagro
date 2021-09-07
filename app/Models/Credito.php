@@ -37,9 +37,9 @@ class Credito extends Model
         ];
     }
 
-	public function scopeSede($query, $Sede)
+	public function scopeOrganizacion($query, $Organizacion)
     {
-        return $query->where('sede_id', $Sede);
+        return $query->where('organizacion_id', $Organizacion);
     }
 
     public function scopeEntre($query, $DIni, $DFin)
@@ -52,6 +52,12 @@ class Credito extends Model
     public function scopeEliminated($query, $B)
     {
         return $B ? $query->onlyTrashed() : $query;
+    }
+
+    public function scopeMios($q)
+    {
+        $Usuario = \App\Functions\Helper::getUsuario();
+        return $q->where('afiliado_id', $Usuario->id);
     }
 
     public function scopeOfAsoc($query, $id)
@@ -90,6 +96,17 @@ class Credito extends Model
     {
         return $this->hasOne('App\Models\Usuario', 'id', 'afiliado_id')->first();
     }
+
+    public function afiliado()
+    {
+        return $this->hasOne('App\Models\Usuario', 'id', 'afiliado_id');
+    }
+
+    public function usuario()
+    {
+        return $this->hasOne('App\Models\Usuario', 'id', 'usuario_id');
+    }
+
 
     public function recibos()
     {
