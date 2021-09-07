@@ -8,11 +8,18 @@ use App\Models\Credito;
 use App\Models\CreditoSaldo;
 use App\Models\CreditoRecibo;
 use App\Models\CreditoAbono;
-
+use App\Functions\CRUD;
 use Carbon\Carbon;
 
 class CreditosController extends Controller
 {
+	public function postCrud()
+	{
+		$CRUD = new CRUD('App\Models\Credito');
+        return $CRUD->call(request()->fn, request()->ops);
+	}
+
+
 	/**
 	 * Obtener el listado de créditos
 	 * @return array Creditos

@@ -81,5 +81,7 @@ angular.module('App', [
     'FondoRotatorio__Creditos_CreditoDialogCtrl', //CAOH
     'FondoRotatorio__Creditos_ReciboDialogCtrl', //CAOH
     'CreditoSrv', //CAOH
+    'FondoRotatorio_ListadoCtrl', //CAOH
+    'FondoRotatorio_MisCreditosCtrl' //CAOH
 
 ]);
