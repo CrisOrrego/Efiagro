@@ -13,30 +13,30 @@
 	</div>
 
 	<md-card flex class="no-margin-top">
-	<md-table-container class="border-bottom">
-	  <table md-table>
-	    <thead md-head>
-	      <tr md-row>
-	        <th md-column></th>
-	        <th md-column>Nombres</th>
-	        <th md-column>Apellidos</th>
-	        <th md-column>Cédula</th>
-	        <th md-column>Correo</th>
-	      </tr>
-	    </thead>
-	    <tbody md-body>
-	      <tr md-row ng-repeat="U in UsuariosCRUD.rows | filter:filterUsuarios ">
-	        <td md-cell><md-button class="md-icon-button" ng-click="editarUsuario(U)">
-	        	<md-icon md-font-icon="fa-edit"></md-icon>
-	        </md-button></td>
-	        <td md-cell>@{{ U.nombres }}</td>
-	        <td md-cell>@{{ U.apellidos }}</td>
-	        <td md-cell>@{{ U.cedula }}</td>
-	        <td md-cell>@{{ U.correo }}</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	</md-table-container>
+		<md-table-container class="border-bottom">
+			<table md-table>
+				<thead md-head>
+				<tr md-row>
+					<th md-column></th>
+					<th md-column>Nombres</th>
+					<th md-column>Apellidos</th>
+					<th md-column>Cédula</th>
+					<th md-column>Correo</th>
+				</tr>
+				</thead>
+				<tbody md-body>
+				<tr md-row ng-repeat="U in UsuariosCRUD.rows | filter:filterUsuarios ">
+					<td md-cell><md-button class="md-icon-button" ng-click="editarUsuario(U)">
+						<md-icon md-font-icon="fa-edit"></md-icon>
+					</md-button></td>
+					<td md-cell>@{{ U.nombres }}</td>
+					<td md-cell>@{{ U.apellidos }}</td>
+					<td md-cell>@{{ U.documento }}</td>
+					<td md-cell>@{{ U.correo }}</td>
+				</tr>
+				</tbody>
+			</table>
+		</md-table-container>
 	</md-card>
 
 </div>

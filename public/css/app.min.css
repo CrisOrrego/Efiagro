@@ -12,9 +12,13 @@ body {
   background-position: center center;
 }
 
+#Home {
+  z-index: 2;
+}
+
 .bg-primary {
-  background-color: #388e3c;
-  color: white;
+  background-color: #316756 !important;
+  color: white !important;
 }
 
 .text-primary {
@@ -31,6 +35,57 @@ body {
 
 .bg-yellow {
   background-color: #ffffdc;
+}
+
+.bg-light-grey {
+  background-color: #e6e6e6;
+}
+
+.highlight {
+  background-color: #cdf1cd;
+}
+
+.text-black {
+  color: black !important;
+  fill: black !important;
+}
+
+.text-white {
+  color: white !important;
+  fill: white !important;
+}
+
+.text-red {
+  color: red !important;
+  fill: red !important;
+}
+
+.text-orange {
+  color: #ff5722 !important;
+  fill: #ff5722 !important;
+}
+
+.text-green {
+  color: #00695c !important;
+  fill: #00695c !important;
+}
+
+.text-green-bold {
+  color: #00695c !important;
+  fill: #00695c !important;
+  font-weight: 500;
+}
+
+.text-ocean {
+  color: #2b6086;
+}
+
+.text-warmblue {
+  color: #006bac;
+}
+
+.text-darkgreen {
+  color: #028f00 !important;
 }
 
 /**
@@ -102,6 +157,10 @@ body {
 
 .block {
   display: block;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .vert-align-middle {
@@ -7086,6 +7145,32 @@ body {
   border-left: 0 !important;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
+.only-on-print {
+  display: none;
+}
+
+@media print {
+  .not-on-print {
+    display: none;
+  }
+
+  .on-print {
+    display: initial !important;
+  }
+
+  .only-on-print {
+    display: initial;
+  }
+
+  .no-padding-on-print {
+    padding: 0 !important;
+  }
+}
+
 @font-face {
   font-family: "Roboto";
   src: url("/fonts/roboto/Roboto-Thin.woff") format("woff"), url("/fonts/roboto/Roboto-Thin.ttf") format("truetype");
@@ -7182,45 +7267,6 @@ body {
 .text-inherit {
   color: inherit !important;
   fill: inherit !important;
-}
-
-.text-black {
-  color: black !important;
-  fill: black !important;
-}
-
-.text-white {
-  color: white !important;
-  fill: white !important;
-}
-
-.text-red {
-  color: red !important;
-  fill: red !important;
-}
-
-.text-orange {
-  color: #ff5722 !important;
-  fill: #ff5722 !important;
-}
-
-.text-green {
-  color: #00695c !important;
-  fill: #00695c !important;
-}
-
-.text-green-bold {
-  color: #00695c !important;
-  fill: #00695c !important;
-  font-weight: 500;
-}
-
-.text-ocean {
-  color: #2b6086;
-}
-
-.text-warmblue {
-  color: #006bac;
 }
 
 .text-xs {
@@ -7360,6 +7406,10 @@ body {
   opacity: 0.7;
 }
 
+.Pointer {
+  cursor: pointer;
+}
+
 md-card {
   border-radius: 4px !important;
 }
@@ -7433,6 +7483,179 @@ md-toolbar.md-short .md-button.md-icon-button,
 div.md-short .md-button.md-icon-button {
   padding: 0px;
   width: 30px;
+}
+
+.md-tabs-fullheight md-tab-content > div {
+  height: 100%;
+}
+
+.md-tabs-fullheight md-tab-content > div > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-x: hidden;
+}
+
+.md-table-short thead.md-head > tr.md-row {
+  height: 30px !important;
+}
+
+.md-table-short tbody.md-body > tr.md-row,
+.md-table-short tfoot.md-foot > tr.md-row {
+  height: 30px !important;
+}
+
+.md-table-short .md-cell md-icon {
+  line-height: 26px;
+}
+
+.md-table-short .md-cell-avatar {
+  width: 25px;
+}
+
+.md-table-short .md-cell-avatar img {
+  width: 25px;
+  max-width: 25px;
+  border-radius: 50px;
+}
+
+.table-col-compress td.md-cell:first-child,
+.table-col-compress th.md-column:first-child {
+  padding: 0 15px !important;
+}
+
+.table-col-compress td.md-cell:nth-child(n+2):nth-last-child(n+2),
+.table-col-compress th.md-column:nth-child(n+2):nth-last-child(n+2) {
+  padding: 0 15px 0 0 !important;
+}
+
+.table-col-compress td.md-cell:last-child,
+.table-col-compress th.md-column:last-child {
+  padding: 0 15px 0 0 !important;
+}
+
+.md-cell-compress {
+  width: 1px;
+  white-space: nowrap;
+}
+
+.md-cell-compress > *:only-child {
+  display: table;
+  margin: 0 auto !important;
+}
+
+.md-cell-compress .md-icon-button {
+  margin: 0;
+}
+
+#Credito__Creditos .Cred,
+#Credito__Mis_Creditos .Cred {
+  position: relative;
+  cursor: pointer;
+  margin: 0px 8px 5px;
+  border-radius: 3px;
+  outline: none;
+}
+
+#Credito__Creditos .Cred md-card-title,
+#Credito__Mis_Creditos .Cred md-card-title {
+  padding: 10px !important;
+}
+
+#Credito__Creditos .Cred md-card-content,
+#Credito__Mis_Creditos .Cred md-card-content {
+  padding: 0 10px;
+}
+
+#Credito__Creditos .Cred md-input-container,
+#Credito__Mis_Creditos .Cred md-input-container {
+  margin: 15px 0 10px;
+}
+
+#Credito__Creditos .Cred md-input-container label,
+#Credito__Mis_Creditos .Cred md-input-container label {
+  transform: translate3d(0, 3px, 0) scale(0.75);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#Credito__Creditos #CredOptions,
+#Credito__Mis_Creditos #CredOptions {
+  background-color: transparent;
+}
+
+#Credito__Recibo_Print .Recibo {
+  page-break-inside: avoid;
+}
+
+#Credito__Recibo_Print .ReciboBody {
+  border: 1px solid #dcdcdc;
+  margin: 5px 0;
+  border-radius: 10px;
+}
+
+#Credito__Recibo_Print .ReciboBody .Row {
+  height: 38px;
+  border-top: 1px solid #dcdcdc;
+}
+
+#Credito__Recibo_Print .ReciboBody .Row .Cell {
+  border-left: 1px solid #dcdcdc;
+  padding: 3px 5px 0;
+}
+
+#Credito__Recibo_Print .ReciboBody .Row .Cell > * {
+  float: left;
+  clear: both;
+  width: 100%;
+  white-space: nowrap;
+}
+
+#Credito__Recibo_Print .ReciboBody .Row .Cell label {
+  font-size: 11px;
+  color: #00796a;
+}
+
+#Credito__Recibo_Print .ReciboBody .Row .Cell span {
+  font-size: 14px;
+}
+
+#Credito__Recibo_Print .ReciboBody .Row .Cell:first-child {
+  border-left: none;
+}
+
+#Credito__Recibo_Print .ReciboBody .Row:first-child {
+  border-top: none;
+}
+
+#Credito__Recibo_Print .ReciboFoot {
+  margin-top: 40px;
+}
+
+#Credito__Recibo_Print .border-bottom {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+#Credito__Recibo_Print md-divider {
+  margin: 20px 0;
+  border-top: 1px dashed black;
+}
+
+#Credito__Recibo_Print .border-top {
+  border-top: 1px solid #dcdcdc;
+}
+
+#Credito__Recibo_Print .Recibo_Copia,
+#Credito__Recibo_Print .receit_caption,
+#Credito__Recibo_Print md-divider {
+  display: none;
+}
+
+#Credito__Recibo_Print.conCopia .Recibo_Copia,
+#Credito__Recibo_Print.conCopia .receit_caption,
+#Credito__Recibo_Print.conCopia md-divider {
+  display: block;
 }
 
 #ImageEditor md-dialog-content {

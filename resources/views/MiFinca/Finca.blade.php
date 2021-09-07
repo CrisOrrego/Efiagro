@@ -1,129 +1,64 @@
-<div id="MiFinca" ng-controller="FincasCtrl" flex layout=column>
-	
-			{{-- <div layout class="padding-0-10" layout-align="center center">
-				<div class="md-title">Fincas</div>
-				<md-input-container class="no-margin md-icon-float" md-no-float>
-					<md-icon md-font-icon="fa-search fa-fw"></md-icon>
-					<input type="text" ng-model="filterFincas" placeholder="Buscar...">
-				</md-input-container>
-				<span flex></span>	
-			</div> --}}
-	
+<div id="MiFinca" class="divFinca" ng-controller="FincasMifincaCtrl" flex layout="column" class="mxw1000">
 
-			{{-- <div class='md-padding' layout="row"  layout-wrap> --}}
-				{{-- <md-card ng-repeat="F in FincasCRUD.rows | filter:filterFincas" class="seccion_finca" flex-sm="25" flex-gt-sm="30" flex="100">
-					
-						<div align="center"><img class="img-finca" src="/../imgs/finca.jpg"  alt="iconFinca" ></div>			
-					<md-card-title class="titilo-finca" >				
-						<h2>@{{ F.nombre }}</h2>
-					</md-card-title>
-			  							  
-					  <md-button class="md-raised md-primary" aria-label="Ver" ng-click="abrirFinca()">
-						<md-icon md-font-icon="open_with"></md-icon>Ver detalles
-					</md-button> --}}
-				{{-- </md-card> --}}
-			
-			{{-- </div> --}}
+    {{-- SECCIÓN MI FINCA --}}
 
+    <div layout="row" >
+        <div class="divInfo" flex="" layout layout-wrap>
+            <div class="seccion_texto">
+                <ul ><label class="texto_title">Dirección:</label> <span class="textoInfo">@{{ Finca.direccion }}</span></ul>
+                <ul ><label class="texto_title">Departamento:</label> <span class="textoInfo">@{{ Finca.departamento_id }} - @{{ Finca.nombreDepartamento }}</span></ul>
+                <ul ><label class="texto_title">Municipio:</label> <span class="textoInfo">@{{ Finca.municipio_id }} - @{{ Finca.nombreMunicipio }}</span></ul>
+                <ul ><label class="texto_title">Área total:</label> <span class="textoInfo">@{{ Finca.area_total }}</span></ul>
+                <ul ><label class="texto_title">Tipo Cultivo:</label> <span class="textoInfo">@{{ Finca.tipo_cultivo }}</span></ul>
+                <ul ><label class="texto_title">Total de lotes:</label> <span class="textoInfo">@{{ Finca.total_lotes }}</span></ul>
+                <ul ><label class="texto_title">Tipo de suelo:</label> <span class="textoInfo">@{{ Finca.tipo_suelo }}</span></ul>
+                <ul ><label class="texto_title">Zona:</label> <span class="textoInfo">@{{ Finca . zona.descripcion }}</span></ul>
+                <ul ><label class="texto_title">Hectareas:</label> <span class="textoInfo">@{{ Finca.hectareas }}</span></ul>
+                <ul ><label class="texto_title">Latitud:</label> <span class="textoInfo">@{{ Finca.latitud }}</span></ul>
+                <ul ><label class="texto_title">Longitud:</label> <span class="textoInfo">@{{ Finca.longitud }}</span></ul>
+                <ul ><label class="texto_title">Sitio:</label> <span class="textoInfo">@{{ Finca.sitios }}</span></ul>
+            </div>
+        </div>
 
-			<div align="center">
-				<md-card class="content"  >
-				
-				<md-card-title class="titilo-finca" >				
-					
-				</md-card-title>	
-				<md-content class="md-padding">
-					
-					<md-card-title class="titilo-finca" >				
-					
-					</md-card-title>
-					<md-nav-bar
-					  md-no-ink-bar="disableInkBar"
-					  md-selected-nav-item="currentNavItem"
-					  nav-bar-aria-label="navigation links">
-					  <md-nav-item md-nav-click="abrirFinca()" name="mi-finca">
-						Mis Fincas
-					  </md-nav-item>
-					  <md-nav-item md-nav-click="pagFinca('lotes')" name="lotes">
-						Lotes
-					  </md-nav-item>
-					  <md-nav-item md-nav-click="pagFinca('eventos')" name="eventos">
-						Eventos
-					  </md-nav-item>
-					  <md-nav-item md-nav-click="pagFinca('mi-organizacion')" name="mi-organizacion">
-						Mi Organización
-					  </md-nav-item>
-					  
-					</md-nav-bar>
-					
-					
-				  </md-content>
-			  
-			
-			  
-			  </md-card>
-			</div>
-			  <!--cerrar contenedor principal-->
+        <div flex="" layout layout-wrap class="divMap">
+            <div mapa id="map" style="width:800px; height: 400px;overflow: hidden;"></div>
+        </div>
+    </div>
 
-
-			
-		  
 </div>
 
-
 <style type="text/css">
-	
+    .divFinca {
+        margin: 10px;
+        padding: 10px;
+        background: rgb(250, 250, 250);
+        background: linear-gradient(0deg, rgba(250, 250, 250, 1) 0%, rgba(255, 255, 255, 0.4066001400560224) 20%, rgba(255, 255, 255, 1) 100%);
+    }
 
-	.seccion_finca{
-		transform: scale(0.95);
-		transition: all 0.3s;
-		
-	}
-	.titilo-finca{
-		text-align: center;
-	}
+    .divInfo {
+        padding: 30px;
+    }
 
-	.seccion_finca:hover{
-		transform: scale(1)	;
-	}
-	/* md-card{
-		min-height: 200px;
+    .divMap {
+        padding: 30px;
 
-	} */
-	.content{
-		background-image: url("/../imgs/finca.jpg");
-		width: 80%;
-		min-height: 200px;
-				
-	}
-	.img-finca{
-		width:100;
-		height: 100%;
-		/* border-radius: 500px; */
-	
+    }
 
-
-	}
-	.seccion_texto{
-		white-space:normal;
-		word-wrap: break-word;
-	}
-
-	.texto_title{
-		/* text-align: center;
-		height: 40px; */
-		color: rgb(199, 196, 196);
-		/* font-size: 1.2rem;
-		text-shadow: 0 0 5px black; */
-		
-		
-	}
-
-	.organizacion_icono{
-		background-color: grey;
-		margin: 5px;
-		border-radius: 1000px;
-		background-image: url("/../imgs/organizacion1.jpg");
-	}
+    .seccion_texto {
+        white-space: normal;
+        word-wrap: break-word;
+    }
+    .texto_title {
+        font-weight: bold;
+    }  
+    .textoInfo {
+        /* color: rgb(0, 0, 0); */
+        color: rgb(58, 57, 57);
+   }
+   .img-lote {
+        width: 50px;
+        height: 50px;
+        /* border-radius: 500px; */
+    }
 
 </style>

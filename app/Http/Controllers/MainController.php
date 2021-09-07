@@ -5,15 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Seccion;
+use App\Models\PerfilSeccion;
 
 use Image;
 use File;
+use App\Functions\Helper;
 
 class MainController extends Controller
 {
     public function postObtenerSecciones()
     {
-    	$Secciones = Seccion::get()->groupBy('seccion_slug');
+        $usuario = Helper::getUsuario();
+
+    	$SeccionesPerfil = PerfilSeccion::where('perfil_id', $usuario->perfil_id)
+            ->whereIn('nivel', array(10, 20, 30, 40, 50))
+            ->get();
+        
+    	$Secciones = Seccion::whereIn('id', $SeccionesPerfil->pluck('seccion_id'))
+            ->get()
+            ->groupBy('seccion_slug');
     	return $Secciones;
     }
 
@@ -47,8 +57,7 @@ class MainController extends Controller
         $Ruta = dirname($Path);
         if(!File::exists($Ruta)) File::makeDirectory($Ruta, 0775, true, true);
 
-        return $image->response('jpg', 70);
-
+        //return $image->response('jpg', 70);
 
         if(!$image->save($Path, $Quality)){
             return response()->json(['Msg' => 'No se pudo guardar la imagen'], 512);
@@ -56,5 +65,39 @@ class MainController extends Controller
             return response()->json(['Msg' => $Path ], 200);
         };
     }
+
+    public function postUploadImagen()
+    {
+        extract(request()->all()); //Path, Quality, Alto, Ancho
+
+        //dd(Input::file('file'));
+        $image = Image::make(request('file')->getRealPath());
+        
+        $Ruta = dirname($Path);
+        if(!File::exists($Ruta)) File::makeDirectory($Ruta, 0775, true, true);
+
+        $image->resize($Ancho, $Alto, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        //return $image->response('jpg', 70);
+
+        if(!$image->save($Path, $Quality)){
+            return response()->json(['Msg' => 'No se pudo guardar la imagen'], 512);
+        }else{
+            return response()->json(['Msg' => $Path ], 200);
+        };
+    }
+
+
+
+    public function postObtenerLista()
+    {
+        extract(request()->all()); //Lista, Op1
+        $Lista = \App\Models\Lista::where('lista', $Lista)->first();
+        $Lista->detalles = \App\Models\ListaDetalle::where('lista_id', $Lista->id)->get();
+        return $Lista;
+    }
+
 
 }

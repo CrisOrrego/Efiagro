@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class casoNovedad extends Model
+class CasoNovedad extends Model
 {
     use HasFactory;
 
     protected $table = 'casos_novedades';
     protected $guarded = ['id'];
-    protected $appends = [];
+    protected $appends = ['novedad'];
     protected $cast = [
         //'objeto' => 'array'
     ];
@@ -52,6 +52,11 @@ class casoNovedad extends Model
     {
         if($this->tipo == 'Tabla') return json_decode($novedad);
         return $novedad;
+    }
+
+    public function autor()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id');
     }
 
 }

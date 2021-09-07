@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\ListaController;
+use App\Http\Controllers\FincaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +22,39 @@ Route::get('/Home', function(){  return view('Home'); });
 Route::get('/Home/{seccion}', function(){  return view('Seccion'); });
 Route::get('/Home/{seccion}/{subseccion}', 'MainController@cargarSubseccion');
 Route::get('/Frag/{vista}',                'MainController@cargarFragmento');
+Route::post("/api/upload", [FileController::class, 'upload']);
+//Inicio Dev ANGÉLICA
+Route::post("/api/lista", [ListaController::class, 'Actualizar']);
+Route::get("/api/lista/{id}",  [ListaController::class, 'Lista']);
+Route::get("/api/lista/{id}",   [ListaController::class, 'Listacompleta']); // Luigi
+// Route::post("/api/finca",       [FincaController::class, 'Actualizar']);    // Luigi
+
+Route::get("/api/departamentos",  [ListaController::class, 'getDepartamentos']);
+Route::post("/api/lista",  [ListaController::class, 'Delete']);
+//FIN Dev ANGÉLICA
 
 AdvancedRoute::controller('/api/main',      'MainController');
 AdvancedRoute::controller('/api/usuario',   'UsuarioController');
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');
-AdvancedRoute::controller('/api/casos',     'CasosController');
-AdvancedRoute::controller('/api/organizaciones',  'OrganizacionController');
-AdvancedRoute::controller('/api/fincas',  'FincaController');
+
+//Inicio Dev ANGÉLICA
+AdvancedRoute::controller('/api/contacto',                        'ContactoController');
+AdvancedRoute::controller('/api/organizacionesmurosecciones',     'OrganizacionesMuroSeccionesController');
+AdvancedRoute::controller('/api/lista',                           'ListaController');
+//FIN Dev ANGÉLICA
+
+AdvancedRoute::controller('/api/organizaciones',    'OrganizacionController');
+AdvancedRoute::controller('/api/fincas',            'FincaController');
+AdvancedRoute::controller('/api/cultivos',            'CultivoController');
+AdvancedRoute::controller('/api/lotes',             'LoteController');
+// AdvancedRoute::controller('/api/laboreslotes',      'LoteLaborController');
+AdvancedRoute::controller('/api/zonas',             'ZonasController');
+AdvancedRoute::controller('/api/labores',           'LaboresController');
+
+AdvancedRoute::controller('/api/casos',             'CasosController');             // Luigi
+AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController'); // Luigi
+AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          // Luigi
+AdvancedRoute::controller('/api/secciones',         'SeccionesController');         // Luigi
+
+//CAOH
+AdvancedRoute::controller('/api/creditos',         'CreditosController'); 

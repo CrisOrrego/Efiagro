@@ -8,16 +8,9 @@ angular.module('appFunctions', [])
 		Rs.stateChanged = function(){
 			Rs.State = $state.current;
 			Rs.State.route = $location.path().split('/');
-
-			/*if(Rs.State.route.length > 2){
-				Rs.State.tabSelected = Rs.Sections[Rs.State.route[2]]['No'];
-			};*/
-
 		};
 		Rs.navTo = function(Dir, params){ $state.go(Dir, params); };
 		Rs.Refresh = function() { $state.go($state.current, $state.params, {reload: true}); };
-
-
 
 		//Helpers
 		Rs.def = function(arg, def) {
@@ -314,7 +307,6 @@ angular.module('appFunctions', [])
 
 		Rs.getItemsVal = (Items, Comparator, Prop) => {
 			var Elm = $filter('filter')(Rs[Items],Comparator)[0];
-			//console.log(Items,Comparator,Elm);
 			return Elm[Prop];
 		};
 
@@ -363,8 +355,7 @@ angular.module('appFunctions', [])
     			
 	    	});
 
-	    	//console.log(fs);
-
+	    	
 	    	return fs;
 		};
 
@@ -406,10 +397,31 @@ angular.module('appFunctions', [])
 		    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
 		    hsp = Math.sqrt( 0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b) );
 		    var textColor = (hsp>127.5) ? 'black' : 'white';
-		    console.log(base_color, hsp, textColor);
+		
 		    return textColor;
 		};
 
+		Rs.DownloadExcel = function(excel) {
+			var e = {
+        		filename: 'Archivo',
+        		ext: 'xls',
+        		sheets: [
+        			{
+        				name: 'Hoja1',
+        				headers: [],
+        				rows: [ ['Sin Datos'] ],
+        			}
+        		]
+			};
+
+			angular.extend(e, excel);
+			//console.log(e);return false;
+
+			$http.post('/api/Upload/make-excel', {E: e}, { responseType: 'arraybuffer' }).then(function(r) {
+        		var blob = new Blob([r.data], { type: "application/vnd.ms-excel; charset=UTF-8" });
+		        saveAs(blob, e.filename + '.' + e.ext);
+        	});
+		};
 
 
 		Rs.AnioActual = new Date().getFullYear();

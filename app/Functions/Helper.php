@@ -2,6 +2,7 @@
 
 namespace App\Functions;
 use Carbon\Carbon;
+use Crypt;
 
 class Helper
 {
@@ -16,14 +17,14 @@ class Helper
     {
         $token = request()->header('token');
         if(!$token) abort(412);
-        $Email = \Crypt::decrypt($token);
+        $id = Crypt::decrypt($token);
 
-        return $Usuario = \App\Models\Usuario::where('Email', $Email)->with($with)->first();
+        return $Usuario = \App\Models\Usuario::where('id', $id)->with($with)->first();
     }
 
     public static function getUsuarioId()
     {
-    	$Usuario = $this->getUsuario();
+    	$Usuario = self::getUsuario();
         return $Usuario->id;
     }
 
