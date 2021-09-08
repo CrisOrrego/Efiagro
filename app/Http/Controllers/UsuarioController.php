@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Functions\CRUD;
+use App\Functions\Helper;
 
 use Illuminate\Support\Facades\Crypt;
+use Hash;
 
 class UsuarioController extends Controller
 {
@@ -28,9 +30,8 @@ class UsuarioController extends Controller
         // $dato = $Usuario['contrasena'];
 
     	if ( $Usuario ) {
-            return Crypt::encrypt($Usuario->id);
-            if ( Crypt::decryptString($Usuario['contrasena']) == $claveSesion ) {
-            // if ( $Usuario['contrasena'] == $claveSesion ) {
+            //return Crypt::encrypt($Usuario->id);
+            if ( Hash::check($claveSesion, $Usuario->contrasena)) {
                 return Crypt::encrypt($Usuario->id);
             } else {
                 return response()->json(['Msg' => 'Error en la contraseña registrada'], 500);
@@ -57,8 +58,25 @@ class UsuarioController extends Controller
         $usuario_id = request('usuario_id');
         $contrasena = request('contrasena');
         $usuario = Usuario::where('id', $usuario_id)->first();
-        $usuario->contrasena = Crypt::encryptString(trim($contrasena), false);
+        $usuario->contrasena = Hash::make(trim($contrasena));
         $usuario->save();
+    }
+
+    public function postActualizarClaveUsuario()
+    {
+        $claveAnterior = request('claveAnterior');
+        $claveNueva = request('claveNueva');
+
+        $usuario = Helper::getUsuario();
+
+        //Validamos si la clave es correacta
+        if(Hash::check($claveAnterior, $usuario->contrasena)){
+            //CAmbiamos la clave
+            $usuario->contrasena = Hash::make($claveNueva);
+            $usuario->save();
+        }else{
+            return response()->json(['Msg' => 'Error en la contraseña registrada'], 500);
+        }
     }
 
     public function postBuscarUsuario()
@@ -78,6 +96,12 @@ class UsuarioController extends Controller
         $usuario = Usuario::where('id', $usuarioid)->first();
         $usuario->$campo = $valor;
         $usuario->save();
+    }
+
+    //Metodo para generar una clave
+    //http://127.0.0.1:8000/api/usuario/generar-clave/12345
+    public function getGenerarClave($texto){
+        return Hash::make($texto);
     }
 
 }

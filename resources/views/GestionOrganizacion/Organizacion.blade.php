@@ -124,7 +124,6 @@
         position: absolute;
         bottom:4em;
         right:4em;
-        background-color:#8F0005;
         border-radius:1.5em;
         color:white;
         text-transform:uppercase;
