@@ -24,7 +24,7 @@ class UsuarioController extends Controller
     	$Usuario = Usuario::where('correo', $usuarioSesion)
             ->orWhere('documento', $usuarioSesion)
             ->first();
-        $dato = Crypt::encrypt($Usuario['contrasena']);
+       // $dato = Crypt::encrypt($Usuario['contrasena']);
         // $dato = $Usuario['contrasena'];
 
     	if ( $Usuario ) {

@@ -7536,6 +7536,20 @@ div.md-short .md-button.md-icon-button {
   padding: 0 15px 0 0 !important;
 }
 
+.md-cell-compress {
+  width: 1px;
+  white-space: nowrap;
+}
+
+.md-cell-compress > *:only-child {
+  display: table;
+  margin: 0 auto !important;
+}
+
+.md-cell-compress .md-icon-button {
+  margin: 0;
+}
+
 #Credito__Creditos .Cred,
 #Credito__Mis_Creditos .Cred {
   position: relative;
