@@ -22,6 +22,15 @@
 						ng-if="!Field.Type || Field.Type == 'string'" name="{{ Field.Nombre }}" md-autofocus="kF == 0"
 						autocomplete="new-password">
 
+					<input ng-model="Field.Value" ng-required="Field.Required" class="w100p"
+						minlength="{{Field.MinLen}}" maxlength="{{Field.MaxLen}}"  type="{{ Field.showPassword ? 'text' : 'password' }}"
+						ng-if="Field.Type == 'password'" name="{{ Field.Nombre }}" md-autofocus="kF == 0"
+						autocomplete="new-password">
+						<md-icon ng-if="Field.Type == 'password' && Field.showPassword"  md-font-icon="Pointer fa-fw fa-eye-slash"    ng-click="Field.showPassword = false"><md-tooltip>Ocultar Contraseña</md-tooltip></md-icon>
+						<md-icon ng-if="Field.Type == 'password' && !Field.showPassword" md-font-icon="Pointer fa-fw fa-eye" 	      ng-click="Field.showPassword = true"><md-tooltip>Mostrar Contraseña</md-tooltip></md-icon>
+
+
+
 					<input ng-model="Field.Value" ng-required="Field.Required" class="w100p" min="{{Field.Min}}"
 						max="{{Field.Max}}" ng-if="Field.Type == 'number'" type="number">
 
