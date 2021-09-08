@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2021 a las 03:56:49
+-- Tiempo de generación: 08-09-2021 a las 22:37:39
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -235,10 +235,10 @@ CREATE TABLE `credito__creditos` (
 --
 
 INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado`, `estado_color`, `linea`, `monto`, `interes`, `pagos`, `periodos`, `periodos_gracia`, `cuota`, `saldo`, `proximo_pago`, `usuario_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-09-07 06:52:19', NULL),
-(7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-08-21 02:13:46', NULL),
-(8, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-08-21 02:13:42', NULL),
-(9, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-09-07 06:39:50', NULL);
+(6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-09-09 00:50:05', NULL),
+(7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-09-09 00:55:32', NULL),
+(8, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-09-09 00:55:37', NULL),
+(9, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-09-09 00:55:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -10036,7 +10036,8 @@ CREATE TABLE `organizaciones_muro_secciones` (
 --
 
 INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 20, '<p><b>Nuevo Muro</b></p><p><b><br/></b></p><p></p><ul><li><b>A</b></li></ul><p><b></b><ol><li>B</li></ol></p><p></p><p><br/></p>', 'files/muro_media/20/20210820142451.jpg', 'www.ab.com', NULL, 2, NULL, '2021-08-20 19:24:52', '2021-08-20 19:24:52');
+(1, 20, '<p><b>Nuevo Muro</b></p><p><b><br/></b></p><p></p><ul><li><b>A</b></li></ul><p><b></b><ol><li>B</li></ol></p><p></p><p><br/></p>', 'files/muro_media/20/20210820142451.jpg', 'www.ab.com', NULL, 2, NULL, '2021-08-20 19:24:52', '2021-08-20 19:24:52'),
+(2, 20, '<p>Esta publicación</p><ul><li>​Nueva </li></ul><ol><li>Mi blog</li></ol>', 'files/muro_media/20/20210908153331.jpg', 'http://127.0.0.1:8000/#/Home/GestionOrganizacion/Organizacion', NULL, 2, NULL, '2021-09-08 20:33:31', '2021-09-08 20:33:31');
 
 -- --------------------------------------------------------
 
@@ -10239,8 +10240,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 1, 9, 'eyJpdiI6InU5Ylg2NVAwc1hxTktkRlpNdXYwQkE9PSIsInZhbHVlIjoiWVU5M2tuUEkyYk5PTU5KeFl0Ri9Ndz09IiwibWFjIjoiMmVhMmJmYzZjNWNiZWUyNTc3NzBkY2VhOGQ2ZDU1MDdkOWY5ZjMyZTgyM2FlZTdjZTljMWRkM2FmOTc1ZWIzNSJ9', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL),
-(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 20, 13, 'eyJpdiI6IjIzNzVvQlhHckRMbXYrWFQyUGN0YUE9PSIsInZhbHVlIjoid1VtMEtoYlNIVFp1OXB3dWxyMjhXUT09IiwibWFjIjoiZDg0ZGFjNGUxOWYwNmMwOGUzZGQ2N2RkNjg2ZTE0NmMwMTQ2ZWVkYWY2ZWUxMzI0NmZhZjQ3ZGJiYWM2NDExYyJ9', '2021-05-10 13:21:39', '2021-07-22 04:30:14', NULL),
+(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 1, 9, '$2y$10$kVKw9xUQ0uA4D9rKr0BLAummvBhCTowxlPGIpIuQY.IBzQoEMHr2K', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL),
+(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 20, 13, '$2y$10$yWjyeV6QwUpa3qdrXjQHyOWRhA0ytPpiJh6Ii.0n1vNEH.ozOQQM.', '2021-05-10 13:21:39', '2021-09-08 20:36:55', NULL),
 (28, 'CC', '3212323421', 'Usuario Prueba', 'Opciones', 'opciones@gmail.com', '3212343234', 1, 21, NULL, 'eyJpdiI6IkZMWFZEMUI2ZUpTZGtpR3MzNThnZnc9PSIsInZhbHVlIjoiNGlGYmtkSXd6dmxvZUtKdTVHQzJjdz09IiwibWFjIjoiYmU2YTQyNmJlM2IxMzBiZTg0Y2E1OTk2ZjZiYmJlYTlmYWNmMGE5MWY1YjdlZjIyZTRiMDUyN2E3MWUzN2UzNCJ9', '2021-08-11 21:39:14', '2021-08-11 21:40:04', NULL);
 
 -- --------------------------------------------------------
@@ -10681,7 +10682,7 @@ ALTER TABLE `organizaciones`
 -- AUTO_INCREMENT de la tabla `organizaciones_muro_secciones`
 --
 ALTER TABLE `organizaciones_muro_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
