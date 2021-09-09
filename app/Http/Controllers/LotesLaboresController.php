@@ -25,7 +25,6 @@ class LotesLaboresController extends Controller
 
     public function postPersonalizar(Request $req)
 	{
-        //echo 'hola mono';
 		$fields = $req->Datos;
         // dd($fields);
         // $LotesLabores = new LotesLabores();
@@ -81,6 +80,19 @@ class LotesLaboresController extends Controller
             // Pendiente definir la actividad a realizar.
             // echo 'Sin labores';
         }
+	}
+
+    public function postCrear(Request $req)
+	{
+        // dd($req);
+        $LotesLabores = new LotesLabores();
+            $LotesLabores->lote_id          = $req['lote_id'];
+            $LotesLabores->labor_id         = $req['labor_id'];
+            $LotesLabores->labor            = $req['labor'];
+            $LotesLabores->inicio           = $req['inicio'];
+            $LotesLabores->frecuencia       = $req['frecuencia'];
+            $LotesLabores->margen           = $req['margen'];
+        $LotesLabores->save();
 	}
 
 }
