@@ -125,7 +125,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 Ctrl.L = L;
                 loteSeleccionado = L.id;
                 lineaSeleccionada = L.linea_productiva_id;
-                // Ctrl.personalizarLabores();
+                Ctrl.personalizarLabores(); //FIX
                 //console.log('Informacion de otro lote: ', L);
             };
 
