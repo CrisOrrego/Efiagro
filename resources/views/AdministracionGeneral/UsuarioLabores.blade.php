@@ -1,61 +1,70 @@
-<md-dialog flex=95 class="vh95 w95p" layout=column id="modallabores">
-    <div layout>
-        <div class=" padding-top padding-left">
-            <label for="">Seleccionar Año</label>
-            <md-select aria-label="anioSelected" ng-model="anioSelected" ng-change="cambiarAnio(anioSelected)">
-                <md-option ng-repeat="a in anios" ng-value="a"> @{{ a }}  </md-option>
-            </md-select>
-		</div>
-        <div class="text-clear text-center md-title" flex>
-            <p>Labores Registradas</p>
-            <br>
-        </div>
+<md-dialog flex=100 class="vh100" layout=column id="modallabores">
+    
+    <div layout layout-align="center center" class="padding-left border-bottom bg-white">
+        <div class="text-clear md-title" flex>Labores Registradas</div>
+        <div class="text-clear margin-right">Año:</div>
+        <md-select aria-label="anioSelected" ng-model="anioSelected" ng-change="cambiarAnio(anioSelected)" class="no-margin md-no-underline">
+            <md-option ng-repeat="a in anios" ng-value="a"> @{{ a }}  </md-option>
+        </md-select>
         <md-button ng-click="Cancel()" class="md-icon-button no-margin">
-			<md-icon md-font-icon="fa-times"></md-icon>
+			<md-icon md-svg-icon="md-close"></md-icon>
 		</md-button>
     </div>
 
-    <div flex layout>
-        <div class="w300" layout=column>
-            <md-table-container>
+    <div flex layout class="overflow-y">
+        <div class="w300 bg-light-grey">
+            <md-table-container class="border-bottom">
                 <table md-table >
                     <thead md-head >
                         <tr md-row>
-                            <th md-column >Datos
-                                <br>Labores
-                            </th>
-                            <th md-column style="padding: 3px; margin: 0; width: 10px;">In</th>
-                            <th md-column style="padding: 3px; margin: 0; width: 10px;">Fr</th>
-                            <th md-column style="padding: 3px; margin: 0; width: 10px;">Ma</th>
+                            <th md-column style="padding: 0 0 0 10px;">Labores</th>
+                            <th md-column class="no-padding w30 text-center">In</th>
+                            <th md-column class="no-padding w30 text-center">Fr</th>
+                            <th md-column class="no-padding w30 text-center">Ma</th>
                         </tr>
                     </thead>
                     <tbody md-body>
-                        <tr md-row ng-repeat="L in InfoLabores">
-                            <td md-cell >@{{ L.labor }}</td>
-                            <td md-cell style="padding: 3px; margin: 0; width: 10px;">
-                                <input type="number" value="@{{ L.inicio }}">
-                                </td>
-                            <td md-cell style="padding: 3px; margin: 0; width: 20px;">
-                                <md-input-container>
-                                    <input type="text" value="@{{ L.frecuencia }}">
+                        <tr md-row ng-repeat="L in InfoLabores" class="bg-light-grey">
+                            <td md-cell style="padding: 0 0 0 10px;">@{{ L.labor }}</td>
+                            <td md-cell class="no-padding w30">
+                                <md-input-container class="no-margin no-padding w100p md-no-underline">
+                                    <input type="text" ng-model="L.inicio" aria-label=i ui-number-mask=0 class="text-right" ng-blur="actualizarLabor(L)">
                                 </md-input-container>
                             </td>
-                            <td md-cell style="padding: 3px; margin: 0; width: 10px;">@{{ L.margen }}</td>
+                            <td md-cell class="no-padding w30">
+                                <md-input-container class="no-margin no-padding w100p md-no-underline">
+                                    <input type="text" ng-model="L.frecuencia" aria-label=i ui-number-mask=0 class="text-right" ng-blur="actualizarLabor(L)">
+                                </md-input-container>
+                            </td>
+                            <td md-cell class="no-padding w30">
+                                <md-input-container class="no-margin no-padding w100p md-no-underline">
+                                    <input type="text" ng-model="L.margen" aria-label=i ui-number-mask=0 class="text-right" ng-blur="actualizarLabor(L)">
+                                </md-input-container>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </md-table-container>
-            <md-input-container>
-                <label for="">Agregar Labor</label>
-                <input type="text" ng-model="nuevaLabor" enter-stroke="agregarLabor()" placeholder="Escriba la nueva labor" />
-            </md-input-container>
+
+            <div layout=column class="bg-light-grey padding-0-10 border-right"> 
+                
+                <div layout class="margin-top">
+                    <md-input-container flex>
+                        <label for="">Agregar Labor</label>
+                        <input type="text" ng-model="nuevaLabor" enter-stroke="agregarLabor()" placeholder="Escriba la nueva labor" />
+                    </md-input-container>
+                    <div><md-button class="md-primary md-raised" style="margin: 14px 0 0;">Agregar</md-button></div>
+                </div>
+                
+            </div>
+            
         </div>
-        <div flex>
-            <md-table-container>
-                <table md-table >
+        <div flex class="">
+            <md-table-container flex class="bg-white">
+                <table md-table>
                     <thead md-head >
                         <tr md-row>
-                            <th md-column ng-repeat="S in encabezado" style="text-align: center; padding: 3px; margin: 0">@{{ S.semana }}
+                            <th md-column ng-repeat="S in encabezado" style="text-align: center; padding: 3px">@{{ S.semana }}
                                 <br>@{{ S.fecha_corta }}
                             </th>
                         </tr>
@@ -70,27 +79,6 @@
         </div>
     </div>
     
-    <div layout hide>
-        <md-input-container>
-            <label>Descripcion de la Labor</label>
-            <input ng-model="labornombre" type="text" />
-        </md-input-container>
-        <md-input-container>
-            <label>Inicio</label>
-            <input ng-model="laborinicio" type="number" maxlength="52" min="1" />
-        </md-input-container>
-        <md-input-container>
-            <label>Frecuencia</label>
-            <input ng-model="laborfrecuencia" type="number" maxlength="52" min="2" />
-        </md-input-container>
-        <md-input-container>
-            <label>Margen</label>
-            <input ng-model="labormargen" type="number" maxlength="2" min="0" />
-        </md-input-container>
-        <md-button class="md-primary" ng-click="guardarLabor()">
-            <md-icon md-font-icon="fa-save"></md-icon>Guardar Labor
-        </md-button>
-    </div>
     <style>
         td.principal {
             background-color: #7BD8F9;
@@ -102,15 +90,23 @@
             background-color: #BEFFBC;
         }
         td, th{
-            border-right: 1px solid darkgrey;
-            border-bottom: 1px solid darkgrey;
-            font-size: 9px !important;
-            margin: 1px;
+            border-top: none !important;
+            border-right: 1px solid #d0d0d0;
+            border-bottom:  1px solid #d0d0d0;
         }
         .datolabor{
             padding: 3px; 
             margin: 0;
             width: 10px;
         }
+
+        .md-no-underline input{
+            border-bottom: none;
+        }
+
+        .border-right{
+            border-right: 1px solid #d0d0d0;
+        }
     </style>
+
 </md-dialog>

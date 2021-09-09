@@ -5,17 +5,17 @@ angular.module('UsuarioLaboresCtrl', [])
             var Ctrl = $scope;
             var Rs = $rootScope;
             Ctrl.Cancel = $mdDialog.cancel;
-            // var labor = 1;
-            Ctrl.anioSelected = 2021;
+            
+            let anioActual = new Date().getFullYear()
+            Ctrl.anioSelected = angular.copy(anioActual);
 
             // cargar listado de años, desde el 2021
-            var anioSiguiente = new Date().getFullYear() + 1;
-            // console.log(anioSiguiente);
-            Ctrl.anios = [];
-            for (var an = 2021; an <= anioSiguiente; an++) {
-                Ctrl.anios.push(an);
-            }
-            // console.log(Ctrl.anios);
+            Ctrl.anios = [
+                (anioActual-2),
+                (anioActual-1),
+                 anioActual,
+                (anioActual+1)
+            ];
 
             // Funcion para el numero de la semana de una fecha establecida.
             // TOMADO DE: https://es.stackoverflow.com/questions/110209/encontrar-semana-del-a%C3%B1o-con-javascript?newreg=e65a27537fe749d4ad4bad31604ae00f
@@ -201,6 +201,12 @@ angular.module('UsuarioLaboresCtrl', [])
                     Ctrl.cargarLabores();
                 });
             };
+
+            Ctrl.actualizarLabor = (L) => {
+                //TODO - Guardar labor en Bdd
+                
+                cronograma(Ctrl.anioSelected);
+            }
 
             Ctrl.cargarLabores();
         }
