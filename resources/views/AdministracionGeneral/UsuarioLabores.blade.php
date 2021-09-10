@@ -53,7 +53,7 @@
                         <label for="">Agregar Labor</label>
                         <input type="text" ng-model="nuevaLabor" enter-stroke="agregarLabor()" placeholder="Escriba la nueva labor" />
                     </md-input-container>
-                    <div><md-button class="md-primary md-raised" style="margin: 14px 0 0;">Agregar</md-button></div>
+                    <div><md-button class="md-primary md-raised" style="margin: 14px 0 0;" ng-click="agregarLabor()">Agregar</md-button></div>
                 </div>
                 
             </div>
