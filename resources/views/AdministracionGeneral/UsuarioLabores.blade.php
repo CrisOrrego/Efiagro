@@ -28,17 +28,17 @@
                             <td md-cell style="padding: 0 0 0 10px;">@{{ L.labor }}</td>
                             <td md-cell class="no-padding w30">
                                 <md-input-container class="no-margin no-padding w100p md-no-underline">
-                                    <input type="text" ng-model="L.inicio" aria-label=i ui-number-mask=0 class="text-right" ng-blur="actualizarLabor(L)">
+                                    <input type="text" ng-model="L.inicio" aria-label=i ui-number-mask=0 class="text-right" ng-change="actualizarLabor(L)">
                                 </md-input-container>
                             </td>
                             <td md-cell class="no-padding w30">
                                 <md-input-container class="no-margin no-padding w100p md-no-underline">
-                                    <input type="text" ng-model="L.frecuencia" aria-label=i ui-number-mask=0 class="text-right" ng-blur="actualizarLabor(L)">
+                                    <input type="text" ng-model="L.frecuencia" aria-label=i ui-number-mask=0 class="text-right" ng-change="actualizarLabor(L)">
                                 </md-input-container>
                             </td>
                             <td md-cell class="no-padding w30">
                                 <md-input-container class="no-margin no-padding w100p md-no-underline">
-                                    <input type="text" ng-model="L.margen" aria-label=i ui-number-mask=0 class="text-right" ng-blur="actualizarLabor(L)">
+                                    <input type="text" ng-model="L.margen" aria-label=i ui-number-mask=0 class="text-right" ng-change="actualizarLabor(L)">
                                 </md-input-container>
                             </td>
                         </tr>

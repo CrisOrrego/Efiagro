@@ -11,10 +11,9 @@ angular.module('UsuarioLaboresCtrl', [])
 
             // cargar listado de años, desde el 2021
             Ctrl.anios = [
-                (anioActual-2),
-                (anioActual-1),
-                 anioActual,
-                (anioActual+1)
+                (anioActual - 1),
+                anioActual,
+                (anioActual + 1)
             ];
 
             // Funcion para el numero de la semana de una fecha establecida.
@@ -40,7 +39,6 @@ angular.module('UsuarioLaboresCtrl', [])
 
             // Funcion para cargar los datos que se llevaran al cronograma
             cronograma = (anio) => {
-                // console.log(anio);
                 // obtenemos el primer dia del año, para saber los dias para el primer lunes del año.
                 var primerdiaanio = new Date(anio, 0, 1).getDay();
                 var numeroSemanasAnio = (primerdiaanio == 1) ? 53 : 52;
@@ -67,7 +65,6 @@ angular.module('UsuarioLaboresCtrl', [])
                     lunesSiguiente = new Date(lunesSiguiente.setDate(lunesSiguiente.getDate() + 7));
                 }
                 Ctrl.encabezado = encabezado;
-                // var establecimiento;
 
                 var detalle = [];
                 // validar el año de establecimiento contra el año de la consulta del cronograma de labores.
@@ -77,10 +74,8 @@ angular.module('UsuarioLaboresCtrl', [])
 
                 // Establecer la semana de inicio
                 var semanaInicio = numeroSemana(new Date(anioEstablecimiento, mesEstablecimiento - 1, diaEstablecimiento));
-                // console.log(anioEstablecimiento, Ctrl.anioSelected);
 
                 var residuo;
-
                 for (let d = 0; d < InfoLabores.length; d++) {
                     var frecuencia = InfoLabores[d]['frecuencia'];
                     var frecuenciaPrevia = frecuencia - 1;
@@ -116,17 +111,12 @@ angular.module('UsuarioLaboresCtrl', [])
                     } else if (anioEstablecimiento < Ctrl.anioSelected) {
                         // Establecer la diferencia de años para saber el inicio de periodicidad.
                         restaAnio = Ctrl.anioSelected - anioEstablecimiento;
-                        // console.log('Diferencia año', restaAnio, 'Semana inicial', semanaInicial, InfoLabores[d]['labor']);
                         var sem = semanaInicial;
                         for (var ra = 1; ra <= restaAnio; ra++) {
                             while (sem < numeroSemanasAnio) {
                                 sem += frecuencia;
-                                //console.log(ra, sem, numeroSemanasAnio);
                             }
                             sem = sem - numeroSemanasAnio;
-                            // console.log('ingresa ');
-                            // semanaInicial = semanaInicial - numeroSemanasAnio;
-                            // console.log('La semana a iniciar es ', sem);
                         }
                         var linea = [];
                         for (let j = 1; j <= numeroSemanasAnio; j++) {
@@ -153,49 +143,39 @@ angular.module('UsuarioLaboresCtrl', [])
 
                 Ctrl.detalle = detalle;
                 Ctrl.InfoLabores = InfoLabores;
-                // setTimeout(() => {
-                //     //window.addEventListener('resize', 
-                //     document.getElementById('modallabores').className = "vh100";
-                // }, 1000);
-
             };
 
             Ctrl.cambiarAnio = (a) => {
-                // console.log(a);
                 Ctrl.anioSelected = a;
                 cronograma(a);
             };
 
-            // setTimeout(() => {
-            //     cronograma(Ctrl.anioSelected);
-            // }, 1000);
-
             // Funcion para guardar la labor personalizada.
-            Ctrl.guardarLabor = () => {
-                $http.post('api/loteslabores/crear', {
-                    lote_id: 21,
-                    labor_id: 0,
-                    labor: Ctrl.labornombre,
-                    inicio: Ctrl.laborinicio,
-                    frecuencia: Ctrl.laborfrecuencia,
-                    margen: Ctrl.labormargen
-                });
-                cronograma(Ctrl.anioSelected);
-                // Ctrl.Cancel();
-                // $http.post('api/loteslabores/crear');
-            };
+            // Ctrl.guardarLabor = () => {
+            //     $http.post('api/loteslabores/crear', {
+            //         lote_id: 21,
+            //         labor_id: 0,
+            //         labor: Ctrl.labornombre,
+            //         inicio: Ctrl.laborinicio,
+            //         frecuencia: Ctrl.laborfrecuencia,
+            //         margen: Ctrl.labormargen
+            //     });
+            //     cronograma(Ctrl.anioSelected);
+            //     // Ctrl.Cancel();
+            //     // $http.post('api/loteslabores/crear');
+            // };
 
             Ctrl.agregarLabor = () => {
                 let nuevaLabor = angular.copy(Ctrl.nuevaLabor);
                 if (nuevaLabor.trim() == '') return;
 
                 $http.post('api/loteslabores/crear', {
-                    lote_id: 21,
+                    lote_id: DatosLote,
                     labor_id: null,
                     labor: nuevaLabor,
-                    inicio: 0,
+                    inicio: 1,
                     frecuencia: 1,
-                    margen: 0
+                    margen: 1
                 }).then(() => {
                     Ctrl.nuevaLabor = '';
                     Ctrl.cargarLabores();
@@ -203,15 +183,20 @@ angular.module('UsuarioLaboresCtrl', [])
             };
 
             Ctrl.actualizarLabor = (L) => {
-                //TODO - Guardar labor en Bdd
-                
+                // actualizar la labor.
+                $http.post('api/loteslabores/actualizar', {
+                    lote_id: DatosLote,
+                    labor: L.labor,
+                    inicio: L.inicio,
+                    frecuencia: L.frecuencia,
+                    margen: L.margen
+                });   
                 cronograma(Ctrl.anioSelected);
-            }
+            };
 
             Ctrl.cargarLabores();
         }
     ]);
-
 
 // Referencias
 // https://www.it-swarm-es.com/es/javascript/como-obtener-el-primer-dia-del-ano-actual-en-javascript/1071710421/
