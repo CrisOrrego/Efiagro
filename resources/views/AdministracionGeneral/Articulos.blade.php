@@ -8,7 +8,6 @@
 		</md-button>
 	</div>
 
-	<!--//INICIO DEV ANGÉLICA-->
 	<div class="padding-0-10" layout flex layout-align="center" >
 		<div layout=column class="padding-10-10">
 			<md-card layout=column class="no-margin-top mxw230">

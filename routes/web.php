@@ -56,14 +56,12 @@ AdvancedRoute::controller('/api/fincaeventos',    'FincaEventosController');
 AdvancedRoute::controller('/api/zonas',             'ZonasController');
 AdvancedRoute::controller('/api/labores',           'LaboresController');
 AdvancedRoute::controller('/api/lotelabores',         'LoteLaboresController');
-AdvancedRoute::controller('/api/loteslabores',      'LotesLaboresController');      // Luigi
+AdvancedRoute::controller('/api/loteslabores',      'LotesLaboresController');      
 
-AdvancedRoute::controller('/api/casos',             'CasosController');             // Luigi
-AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController'); // Luigi
-AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          // Luigi
-AdvancedRoute::controller('/api/secciones',         'SeccionesController');         // Luigi
+AdvancedRoute::controller('/api/casos',             'CasosController');             
+AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController'); 
+AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          
+AdvancedRoute::controller('/api/secciones',         'SeccionesController');         
 
 AdvancedRoute::controller('/api/opciones',         'OpcionesController');       
-
-//CAOH
 AdvancedRoute::controller('/api/creditos',          'CreditosController'); 
