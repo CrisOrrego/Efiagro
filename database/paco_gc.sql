@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-09-2021 a las 22:37:39
+-- Tiempo de generación: 17-09-2021 a las 05:55:06
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -8722,9 +8722,9 @@ CREATE TABLE `lotes_labores` (
   `lote_id` int(11) NOT NULL,
   `labor_id` int(11) DEFAULT NULL,
   `labor` varchar(255) DEFAULT NULL,
-  `inicio` int(11) NOT NULL DEFAULT 0,
-  `frecuencia` int(11) NOT NULL DEFAULT 0,
-  `margen` int(11) NOT NULL DEFAULT 0,
+  `inicio` int(11) DEFAULT 0,
+  `frecuencia` int(11) DEFAULT 0,
+  `margen` int(11) DEFAULT 0,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -8736,7 +8736,10 @@ CREATE TABLE `lotes_labores` (
 INSERT INTO `lotes_labores` (`id`, `lote_id`, `labor_id`, `labor`, `inicio`, `frecuencia`, `margen`, `created_at`, `updated_at`) VALUES
 (1, 21, 24, 'EMBOLSAR PLATANO', 10, 10, 1, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
 (2, 21, 24, 'SIEMBRA CON CABEZA', 23, 10, 1, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
-(3, 21, 24, 'APLICACIÓN MATERIA ', 10, 10, 1, '2021-07-22 05:57:54', '2021-07-22 05:57:54');
+(3, 21, 24, 'APLICACIÓN MATERIA ', 10, 10, 1, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
+(4, 21, NULL, 'Ahoyado', 6, 5, 1, '2021-09-09 23:58:49', '2021-09-17 03:51:01'),
+(5, 21, NULL, 'Cosecha', 7, 4, 2, '2021-09-10 00:10:43', '2021-09-17 03:53:45'),
+(6, 21, NULL, 'Nuevo', 10, 6, 1, '2021-09-11 21:53:52', '2021-09-17 03:51:22');
 
 -- --------------------------------------------------------
 
@@ -8764,7 +8767,8 @@ INSERT INTO `lotes_labores_productor` (`id`, `lote_id`, `labor`, `semana_id`, `c
 (4, 21, 'Mi labor anterior', 32, '2021-08-20 20:30:26', '2021-08-20 20:30:26'),
 (5, 21, 'Nueva Coseca', 34, '2021-08-20 20:59:10', '2021-08-20 20:59:10'),
 (6, 21, 'Lavado', 33, '2021-08-20 20:59:39', '2021-08-20 20:59:39'),
-(7, 21, 'Prueba', 33, '2021-08-20 23:06:30', '2021-08-20 23:06:30');
+(7, 21, 'Prueba', 33, '2021-08-20 23:06:30', '2021-08-20 23:06:30'),
+(8, 21, 'NuevaPrueba', 38, '2021-09-11 22:26:31', '2021-09-11 22:26:31');
 
 -- --------------------------------------------------------
 
@@ -10646,13 +10650,13 @@ ALTER TABLE `lotes_cosechas`
 -- AUTO_INCREMENT de la tabla `lotes_labores`
 --
 ALTER TABLE `lotes_labores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores_productor`
 --
 ALTER TABLE `lotes_labores_productor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores_realizadas`
