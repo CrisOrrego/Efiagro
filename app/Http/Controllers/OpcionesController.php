@@ -23,6 +23,8 @@ class OpcionesController extends Controller
 			if($Op->tipo == 'Boolean') $Op->valor = intval($Op->valor);
 
 			if($Op->tipo == 'Lista') $Op->valor = json_decode($Op->valor);
+
+			if($Op->tipo == 'Decimal') $Op->valor = json_decode($Op->valor);
 			return $Op;
 		});
 
