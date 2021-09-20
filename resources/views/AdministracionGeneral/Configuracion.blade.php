@@ -16,6 +16,7 @@
                             <div class="md-title margin-right-20">
                                 Opciones
                             </div>
+                            <br>
                             <div layout="row" layout-wrap>
                                 <md-container>
                                     <label>Celular Técnico Amigo</label>
