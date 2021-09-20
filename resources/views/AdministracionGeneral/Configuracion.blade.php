@@ -19,41 +19,41 @@
                             <br>
                             <div layout="row" layout-wrap>
                                 <md-container>
-                                    <label>Celular Técnico Amigo</label>
+                                    <label><strong>Celular Técnico Amigo</strong></label>
                                     <div ng-repeat="Op in [Opciones.CELULAR_TECNICO_AMIGO]">
                                         @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                     </div>
                                 </md-container>
                                 <md-container>
-                                    <label>Correo Soporte</label>
+                                    <label><strong>Correo Soporte</strong></label>
                                     <div ng-repeat="Op in [Opciones.CORREO_SOPORTE]">
                                         @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                     </div>
                                 </md-container>
                                 <md-container>
-                                    <label>Dato Decimal</label>
+                                    <label><strong>Dato Decimal</strong></label>
                                     <div ng-repeat="Op in [Opciones.DATOS_DECIMAL]">
                                         @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                     </div>
                                 </md-container>
                             </div>
-                            <div layout="row" layout-wrap>
-                                <md-container>
-                                    <div layout="row" layout-wrap>
-
-                                        <div><label>WhatsApp Habilitado </label></div>
-                                        <div ng-repeat="Op in [Opciones.WHATSAPP_SOLICITUD]">
-                                            @include('AdministracionGeneral.Configuracion_OpcionEditor')
-                                        </div>
-                                    </div>
-                                </md-container>
-                            </div>
-
                                 <div layout="row" layout-wrap>
                                     <md-container>
-                                        <label>Lineas de Credito</label>
+                                        <label><strong>Línea de crédito</strong></label>
                                         <div ng-repeat="Op in [Opciones.LINEAS_CREDITO]">
                                             @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                        </div>
+                                    </md-container>
+                                </div>
+                                <br>
+                                <div layout="row" layout-wrap>
+                                    <md-container>
+                                        <div layout="row" layout-wrap>
+    
+                                            <div><label><strong>WhatsApp Habilitado</strong></label> &nbsp; </div>
+                                            <div ng-repeat="Op in [Opciones.WHATSAPP_SOLICITUD]">
+                                                @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                            </div>
                                         </div>
                                     </md-container>
                                 </div>
