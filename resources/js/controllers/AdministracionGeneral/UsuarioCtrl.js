@@ -3,7 +3,8 @@ angular.module('UsuariosCtrl', [])
         function($scope, $rootScope, $http, $injector, $mdDialog) {
          
             var Ctrl = $scope;
-            var Rs = $rootScope; 
+            var Rs = $rootScope;
+            console.log('UsuariosCtrl');
 
             Ctrl.filterDocumento = "";
             Ctrl.filterNombre = "";
@@ -23,6 +24,7 @@ angular.module('UsuariosCtrl', [])
                 // Ctrl.UsuariosCRUD.setScope('laorganizacion', Rs.Usuario.organizacion_id); 
                 Ctrl.UsuariosCRUD.get().then(() => {
                     Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows.slice();
+                    //Ctrl.cargarFincas(Ctrl.UsuariosCRUD.rows[1]); //FIX
                 });
             };
             Ctrl.getUsuarios();

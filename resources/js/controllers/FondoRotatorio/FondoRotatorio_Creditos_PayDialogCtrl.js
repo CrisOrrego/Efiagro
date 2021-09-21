@@ -15,7 +15,7 @@ angular.module('FondoRotatorio_Creditos_PayDialogCtrl', [])
 			Valor: angular.copy(CredSel.total_pendiente),
 			Medio: "Efectivo",
 			NoConsignacion: null,
-			SobranteOp: 'Return',
+			SobranteOp: 'PagCuotas',
 			AbonadoCapital: 0,
 			Devolver: 0,
 			Num_Pago_Elim: null,
@@ -33,15 +33,12 @@ angular.module('FondoRotatorio_Creditos_PayDialogCtrl', [])
 
 	    //Opciones con el sobrante
 	    Ctrl.SobranteOps = {
-	    	'Return' : 'Devolver',
 	    	'PagCuotas' : 'Pago de Cuotas',
 	    	'PagCapital' : 'Abonar a Capital',
 	    };
 
 	    Ctrl.Pagos = [];
 	    Ctrl.CredSel = null;
-
-
 
 		Ctrl.$watchGroup(['Pago.Fecha','Pago.Valor','Pago.SobranteOp'], function(){
 			
@@ -104,11 +101,11 @@ angular.module('FondoRotatorio_Creditos_PayDialogCtrl', [])
 				angular.forEach(c.saldos, function(s){
 					if(s.mora > 0  && Disponible > 0){
 						if(s.mora > Disponible){ //alcanza para pago parcial
-							Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Parcial', Paga: 'Mora', Valor: Disponible, NoCuota: s.Num_Pago });
+							Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Parcial', Paga: 'Mora', Valor: Disponible, NoCuota: s.num_pago });
 							s.mora = s.mora - Disponible; 
 							Disponible = 0;
 						}else{ //alcanza para pagar la mora
-							Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Total', Paga: 'Mora', Valor: s.mora, NoCuota: s.Num_Pago });
+							Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Total', Paga: 'Mora', Valor: s.mora, NoCuota: s.num_pago });
 							Disponible = Disponible - s.mora;
 							s.mora = 0;
 						}
@@ -120,11 +117,11 @@ angular.module('FondoRotatorio_Creditos_PayDialogCtrl', [])
 			angular.forEach(c.saldos, function(s){
 				if(s.due && s.pendiente > 0 && Disponible > 0){
 					if(s.pendiente > Disponible){ //alcanza para pago parcial
-						Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Parcial', Paga: 'Cuota', Valor: Disponible, NoCuota: s.Num_Pago });
+						Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Parcial', Paga: 'Cuota', Valor: Disponible, NoCuota: s.num_pago });
 						s.pendiente = s.pendiente - Disponible; 
 						Disponible = 0;
 					}else{ //alcanza para pagar la pendiente
-						Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Total', Paga: 'Cuota', Valor: s.pendiente, NoCuota: s.Num_Pago });
+						Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Total', Paga: 'Cuota', Valor: s.pendiente, NoCuota: s.num_pago });
 						Disponible = Disponible - s.pendiente;
 						s.pendiente = 0;
 					}
@@ -150,13 +147,13 @@ angular.module('FondoRotatorio_Creditos_PayDialogCtrl', [])
 						if(s.estado.substr(0,9) == 'Pendiente' && Disponible > 0){
 							
 							if(s.pendiente > Disponible){ //alcanza para pago parcial
-								Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Parcial', Paga: 'Cuota', Valor: Disponible, NoCuota: s.Num_Pago });
+								Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Parcial', Paga: 'Cuota', Valor: Disponible, NoCuota: s.num_pago });
 								s.pendiente = s.pendiente - Disponible; 
 								s.estado = 'Pendiente Pago Parcial';
 								Disponible = 0;
 								Deuda = Deuda + s.pendiente;
 							}else{ //alcanza para pagar la pendiente
-								Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Total', Paga: 'Cuota', Valor: s.pendiente, NoCuota: s.Num_Pago });
+								Ctrl.Pagos.push({ credito_id: CredSel.id, saldo_id: s.id, Tipo: 'Total', Paga: 'Cuota', Valor: s.pendiente, NoCuota: s.num_pago });
 								Disponible = Disponible - s.pendiente;
 								s.estado = 'Pagado';
 								s.pendiente = 0;
@@ -220,11 +217,15 @@ angular.module('FondoRotatorio_Creditos_PayDialogCtrl', [])
 				if(s.due && s.mora == 0 && s.pendiente == 0){
 					s.estado = 'Pagado';	
 				}
-
 				s.estado_color = Ctrl.Colors[s.estado][0];
 			});
 
 			if(Disponible > 0) p.Devolver = Disponible;
+
+			//Fix el cliente no desea que se tengan valores devueltos
+			if(p.Devolver > 0){
+				p.Valor = p.Valor - p.Devolver;
+			}
 
 			//console.log(PendienteMora, Pendiente, PendienteMora+Pendiente);
 		});

@@ -19,9 +19,16 @@
 					
 					<div layout>
 						<md-input-container flex>
-							<input ng-model="Pago.Valor" class="md-headline" ui-money-mask="0" required min="0" placeholder="Valor" 
+							<input ng-model="Pago.Valor" class="md-headline" ui-money-mask="0" required min="0" max="@{{ CredSel.pago_total }}" placeholder="Valor" 
 							ng-model-options="{ debounce: 300 }">
 						</md-input-container>
+
+						<div>
+							<md-button ng-show="Pago.Valor < CredSel.pago_total" class="md-raised"
+								ng-click="Pago.Valor = CredSel.pago_total">
+								Pago Total: @{{ CredSel.pago_total | currency:'$':0 }}
+							</md-button>
+						</div>
 
 						<div class="md-input-container" ng-if="Parent.Vars.OP_CAMBIAR_FECHA_PAGO">
 							<label>Fecha de pago</label>

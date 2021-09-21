@@ -5,7 +5,7 @@
 		<span class="md-subhead margin" flex="30">@{{ Recibo.fecha }}</span>
 		<span flex></span>
 		<span class="md-title margin">@{{ Recibo.valor | currency:"$":0 }}</span>
-		<md-button class="md-icon-button" aria-label="Print" ng-click="PrintRecibo($event, Recibo)" hide>
+		<md-button class="md-icon-button" aria-label="Print" ng-click="PrintRecibo($event, Recibo)">
 			<md-tooltip md-direction="down">Imprimir Recibo</md-tooltip>
 			<md-icon md-font-icon="fa-print" class="fa-lg"><md-icon>
 		</md-button>
