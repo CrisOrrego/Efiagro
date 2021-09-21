@@ -64,8 +64,8 @@ angular.module('MiTecnicoAmigoCtrl', [])
 
             Ctrl.crearCaso = () => {
                 var OpcionesTipo = [
-                    ['Tengo una Duda General', 'Consulta General'],
-                    ['Necesito Ayuda Técnica', 'Apoyo Técnico'],
+                    //['Tengo una Duda General', 'Consulta General'],
+                    //['Necesito Ayuda Técnica', 'Apoyo Técnico'],
                     ['Quiero Contar Una Experiencia', 'Contar Experiencia']
                 ];
 

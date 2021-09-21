@@ -8,17 +8,28 @@
     </div>
 
     <div class="padding-0-10" layout flex layout-align="center" >
-        <div layout=column class="padding-10-10">
-            <md-card layout=column class="no-margin-top mxw200">
-                <div class="padding-20" layout=column>
-                    <label>Filtros</label>
+		<div layout=column class="padding-10-10">
+			<md-card layout=column class="no-margin-top mxw230">
+				<div class="padding-20" layout=column>
+					<label>Filtros de búsqueda</label>
+
+					<md-input-container>
+						<label>Documento</label>
+						<input ng-change="filterUsuarios()" type="text" ng-model="filterDocumento" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
+					</md-input-container>
+
                     <md-input-container>
-                        <label>Dato buscado</label>
-                        <input type="text" ng-model="filtroBuscar" placeholder="Buscar..." aria-label="Buscador" autocomplete="off">
-                    </md-input-container>
-                </div>
-            </md-card>
-        </div>
+						<label>Nombres</label>
+						<input ng-change="filterUsuarios()" type="text" ng-model="filterNombre" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
+					</md-input-container>
+
+					<md-input-container>
+						<label>Apellidos</label>
+						<input ng-change="filterUsuarios()" type="text" ng-model="filterApellido" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
+					</md-input-container>
+				</div>
+			</md-card>
+		</div>
 
         <md-card flex class="no-margin-top" >
             <md-table-container>
@@ -38,7 +49,7 @@
                     </tr>
                     </thead>
                     <tbody md-body >
-                        <tr md-row ng-repeat="U in UsuariosCRUD.rows | filter:filtroBuscar ">
+                        <tr md-row ng-repeat="U in Usuarioscopy ">
                             <td md-cell>
                                 <md-button class="md-icon-button" ng-click="editarUsuario(U)">
                                     <md-icon md-font-icon="fa-edit"></md-icon>

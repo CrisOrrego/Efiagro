@@ -21,6 +21,9 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             order_by: ["-created_at"]
         });
 
+        Ctrl.filterNombre = "";
+        Ctrl.filterNit = "";
+
         Ctrl.value = 0;
 
         Ctrl.myHTML =
@@ -48,6 +51,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                 
                 Ctrl.Organizacion = ( Ctrl.Organizacion ) ? Ctrl.OrganizacionesCRUD.rows[0] : [];
                 Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
+                Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice();
             });
         };
 
@@ -251,7 +255,24 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
     };
     //FIN DEV ANGELICA
 
+
+    //INICIO DEV ANGÉLICA
+    Ctrl.filterOrganizacion = () => {
+        //Filtro de tipo de organizacion
+        Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
+        //Filtro para nombre
+        if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2){
+            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+            Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(O => O.nombre.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+        }
+        //Filtro para buscar Nit
+        if (Ctrl.filterNit && Ctrl.filterNit.length > 2){
+            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+            Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(O => O.nit.toUpperCase().indexOf(Ctrl.filterNit.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+        }
+    } //FIN DEV ANGÉLICA
     }
+
 ]);
 
 
