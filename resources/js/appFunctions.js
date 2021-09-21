@@ -401,6 +401,27 @@ angular.module('appFunctions', [])
 		    return textColor;
 		};
 
+		Rs.DownloadExcel = function(excel) {
+			var e = {
+        		filename: 'Archivo',
+        		ext: 'xls',
+        		sheets: [
+        			{
+        				name: 'Hoja1',
+        				headers: [],
+        				rows: [ ['Sin Datos'] ],
+        			}
+        		]
+			};
+
+			angular.extend(e, excel);
+			//console.log(e);return false;
+
+			$http.post('/api/Upload/make-excel', {E: e}, { responseType: 'arraybuffer' }).then(function(r) {
+        		var blob = new Blob([r.data], { type: "application/vnd.ms-excel; charset=UTF-8" });
+		        saveAs(blob, e.filename + '.' + e.ext);
+        	});
+		};
 
 
 		Rs.AnioActual = new Date().getFullYear();

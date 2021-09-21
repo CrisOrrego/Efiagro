@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Carbon\Carbon;
+
 class Credito extends Model
 {
     use HasFactory;
@@ -13,7 +15,7 @@ class Credito extends Model
     
     protected $table = 'credito__creditos';
     protected $guarded = [];
-    protected $appends = [];
+    protected $appends = ['solicitado'];
 
     public function columns()
     {
@@ -35,9 +37,9 @@ class Credito extends Model
         ];
     }
 
-	public function scopeSede($query, $Sede)
+	public function scopeOrganizacion($query, $Organizacion)
     {
-        return $query->where('sede_id', $Sede);
+        return $query->where('organizacion_id', $Organizacion);
     }
 
     public function scopeEntre($query, $DIni, $DFin)
@@ -52,9 +54,15 @@ class Credito extends Model
         return $B ? $query->onlyTrashed() : $query;
     }
 
+    public function scopeMios($q)
+    {
+        $Usuario = \App\Functions\Helper::getUsuario();
+        return $q->where('afiliado_id', $Usuario->id);
+    }
+
     public function scopeOfAsoc($query, $id)
     {
-        return is_null($id) ? $query : $query->where('asociado_id', $id);
+        return is_null($id) ? $query : $query->where('afiliado_id', $id);
     }
 
     public function scopeById($query, $id)
@@ -86,8 +94,19 @@ class Credito extends Model
 
     public function getAsociadoAttribute()
     {
-        return $this->hasOne('App\Models\Core\User', 'id', 'asociado_id')->first();
+        return $this->hasOne('App\Models\Usuario', 'id', 'afiliado_id')->first();
     }
+
+    public function afiliado()
+    {
+        return $this->hasOne('App\Models\Usuario', 'id', 'afiliado_id');
+    }
+
+    public function usuario()
+    {
+        return $this->hasOne('App\Models\Usuario', 'id', 'usuario_id');
+    }
+
 
     public function recibos()
     {
@@ -102,6 +121,7 @@ class Credito extends Model
     public function CalcSaldos()
     {
         $Total_Pendiente = 0;
+        $Pago_Total = 0;
 
         //Calcular la mora
         foreach ($this->recibos as $Recibo) {
@@ -116,10 +136,14 @@ class Credito extends Model
             if($Saldo->due){
                 $Total_Pendiente += $Saldo->mora;
                 $Total_Pendiente += $Saldo->pendiente;
+                $Pago_Total += $Saldo->mora;
             }
+
+            $Pago_Total += $Saldo->pendiente;
         }
         
         $this->total_pendiente = $Total_Pendiente;
+        $this->pago_total = $Pago_Total;
     }
 
     public function CalcEstado()

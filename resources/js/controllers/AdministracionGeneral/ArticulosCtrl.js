@@ -25,12 +25,10 @@ angular.module('ArticulosCtrl', [])
 
 		Ctrl.getArticulos();
 
-		//INCIO DEV ANGÉLICA --> Lineas productivas
-		$http.post('api/lineasproductivas/obtener', {}).then(r => {
+			$http.post('api/lineasproductivas/obtener', {}).then(r => {
 			Ctrl.lineas_productivas = r.data;
 		    });
-		//FIN DEV ANGÉLICA
-
+		
 		Ctrl.nuevoArticulo = () => {
 
 			Ctrl.ArticulosCRUD.dialog({

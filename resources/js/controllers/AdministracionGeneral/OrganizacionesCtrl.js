@@ -169,6 +169,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         //Carga imagen al servidor
         Ctrl.subirImagen = ($file) => {
+            debugger;
             if(!$file) return;
 
             Upload.upload({
@@ -178,8 +179,10 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                     Ancho: 560, Alto: 300, Quality: 90
                 }
             }).then(function (resp) {
+                debugger;
                 respuesta = 'Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data;
             }, function (resp) {
+                debugger;
                 respuesta = 'Error status: ' + resp.status;
             });
         }

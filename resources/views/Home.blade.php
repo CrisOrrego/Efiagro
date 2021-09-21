@@ -26,10 +26,23 @@
 
 		<span flex></span>
 		<div>@{{ Usuario.nombre }} </div>
-		<md-button class="md-icon-button" ng-click="Logout()">
-			<md-icon md-font-icon="fa-power-off fa-lg"></md-icon>
-			<md-tooltip>Cerrar Sesion</md-tooltip>
-		</md-button>
+		<div>
+			<md-menu>
+				<md-button ng-click="$mdMenu.open($event)" class="md-icon-button no-margin" aria-label="Menu">
+					<md-icon md-svg-icon="md-more-v"></md-icon>
+				</md-button>
+				<md-menu-content>
+						<md-button class="md-warn" ng-click="cambiarClave(Usuario)">
+							<md-icon md-font-icon="fa-key"></md-icon>
+							Cambiar Contraseña </md-button></md-menu-item>
+					<md-menu-item ng-show=" !$last ">
+						<md-button class="md-warn" ng-click="Logout()">
+							<md-icon md-font-icon="fa-power-off fa-lg">						
+						</md-icon>
+							Cerrar Sesión</md-button></md-menu-item>
+				</md-menu-content>
+			</md-menu>
+		</div>
 	</div>
 
 	<div flex ui-view layout=column class="overflow-y">
