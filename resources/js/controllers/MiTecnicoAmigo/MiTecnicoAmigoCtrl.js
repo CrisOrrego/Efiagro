@@ -67,7 +67,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                     //['Tengo una Duda General', 'Consulta General'],
                     //['Necesito Ayuda Técnica', 'Apoyo Técnico'],
                     ['Quiero Contar Una Experiencia', 'Contar Experiencia']
-                ]; 
+                ];
 
                 Rs.BasicDialog({
                     Flex: 30,

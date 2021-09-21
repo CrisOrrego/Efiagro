@@ -93,6 +93,7 @@ angular.module("FincaEventosCtrl", []).controller("FincaEventosCtrl", [
                 //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
                 Ctrl.FincaEventoscopy = Ctrl.FincaEventoscopy.filter(FE => FE.finca.nombre.toUpperCase().indexOf(Ctrl.filterFinca.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
             }
+            
             //Filtro para buscar Evento
             if (Ctrl.filterEvento && Ctrl.filterEvento.length > 1){
                 //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
