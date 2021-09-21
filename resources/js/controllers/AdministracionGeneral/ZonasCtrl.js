@@ -23,6 +23,7 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
             Ctrl.ZonasCRUD.get().then(() => {
                 Ctrl.Zona = Ctrl.ZonasCRUD.rows[0];
                 //Ctrl.editarZona(Ctrl.ZonasCRUD.rows[0]);
+                Ctrl.Zonascopy = Ctrl.ZonasCRUD.rows.slice();
             });
         };
 
@@ -82,5 +83,22 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
                 fullscreen: false
             });
         };
+
+        //INICIO DEV ANGÉLICA
+        Ctrl.filterZona = () => {
+            //Filtro de tipo de lote
+            Ctrl.Zonascopy = Ctrl.ZonasCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
+           //Filtro para Descripcion
+           if (Ctrl.filterDescripcion && Ctrl.filterDescripcion.length > 2){
+            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+            Ctrl.Zonascopy = Ctrl.Zonascopy.filter(Z => Z.descripcion.toUpperCase().indexOf(Ctrl.filterDescripcion.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+           } 
+           //Filtro para buscar Linea productiva
+           if (Ctrl.filterLineaProductiva && Ctrl.filterLineaProductiva.length >= 1){
+               //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+               Ctrl.Zonascopy = Ctrl.Zonascopy.filter(Z => Z.linea_productiva.nombre.toUpperCase().indexOf(Ctrl.filterLineaProductiva.toUpperCase())> -1);
+           } 
+        //FIN DEV ANGÉLICA
+        }      
     }
 ]);
