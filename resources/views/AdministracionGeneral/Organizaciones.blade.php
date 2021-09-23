@@ -48,6 +48,7 @@
 					<th md-column>Nombre</th>
 					<th md-column>NIT</th>
 					{{-- <th md-column>Sigla</th> --}}
+					<th md-column>Linea Productiva</th>
 					<th md-column>Dirección</th>
 					{{-- <th md-column>Departamento</th> --}}
 					{{-- <th md-column>Municipio</th> --}}
@@ -66,6 +67,7 @@
 					<td md-cell>@{{ O.nombre }}</td>
 					<td md-cell>@{{ O.nit }}</td>
 					{{-- <td md-cell>@{{ O.sigla }}</td> --}}
+					<td md-cell>@{{ O.linea_productiva.nombre }}</td>
 					<td md-cell>@{{ O.direccion }}</td>
 					{{-- <td md-cell>@{{ O.departamento }}</td> --}}
 					{{-- <td md-cell>@{{ O.municipio }}</td> --}}
