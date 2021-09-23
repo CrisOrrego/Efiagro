@@ -19,6 +19,7 @@ use App\Http\Controllers\FincaController;
 Route::get('/', function () { return view('Base'); });
 Route::get('/Login', function(){ return view('Login'); });
 Route::get('/Home', function(){  return view('Home'); });
+Route::get('/info', function(){  phpinfo(); });
 Route::get('/Home/{seccion}', function(){  return view('Seccion'); });
 Route::get('/Home/{seccion}/{subseccion}', 'MainController@cargarSubseccion');
 Route::get('/Frag/{vista}',                'MainController@cargarFragmento');
@@ -27,12 +28,11 @@ Route::post("/api/upload", [FileController::class, 'upload']);
 Route::post("/api/lista", [ListaController::class, 'Actualizar']);
 Route::get("/api/lista/{id}",  [ListaController::class, 'Lista']);
 Route::get("/api/lista/{id}",   [ListaController::class, 'Listacompleta']); // Luigi
-// Route::post("/api/finca",       [FincaController::class, 'Actualizar']);    // Luigi
-
+Route::get("/api/lotelaborsemana/{loteid}/{lineaproductivaid}/{numsemana}",   [LoteLaboresController::class, 'Lotelaborsemana']);
 Route::get("/api/departamentos",  [ListaController::class, 'getDepartamentos']);
 Route::post("/api/lista",  [ListaController::class, 'Delete']);
 //FIN Dev ANGÉLICA
-
+// Route::post("/api/finca",       [FincaController::class, 'Actualizar']);    // Luigi
 AdvancedRoute::controller('/api/main',      'MainController');
 AdvancedRoute::controller('/api/usuario',   'UsuarioController');
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');
@@ -41,20 +41,28 @@ AdvancedRoute::controller('/api/articulos', 'ArticulosController');
 AdvancedRoute::controller('/api/contacto',                        'ContactoController');
 AdvancedRoute::controller('/api/organizacionesmurosecciones',     'OrganizacionesMuroSeccionesController');
 AdvancedRoute::controller('/api/lista',                           'ListaController');
+AdvancedRoute::controller('/api/lotelaboresrealizadas',           'LoteLaboresRealizadasController');
+AdvancedRoute::controller('/api/lotecosechas',                    'LoteCosechasController');
+AdvancedRoute::controller('/api/loteslaboresproductor',           'LotesLaboresProductorController');
 //FIN Dev ANGÉLICA
 
 AdvancedRoute::controller('/api/organizaciones',    'OrganizacionController');
 AdvancedRoute::controller('/api/fincas',            'FincaController');
-AdvancedRoute::controller('/api/cultivos',            'CultivoController');
+AdvancedRoute::controller('/api/cultivos',          'CultivoController');
 AdvancedRoute::controller('/api/lotes',             'LoteController');
+AdvancedRoute::controller('/api/eventos',           'EventoController');
+AdvancedRoute::controller('/api/fincaeventos',    'FincaEventosController');
 // AdvancedRoute::controller('/api/laboreslotes',      'LoteLaborController');
 AdvancedRoute::controller('/api/zonas',             'ZonasController');
 AdvancedRoute::controller('/api/labores',           'LaboresController');
+AdvancedRoute::controller('/api/lotelabores',         'LoteLaboresController');
+AdvancedRoute::controller('/api/loteslabores',      'LotesLaboresController');      
 
-AdvancedRoute::controller('/api/casos',             'CasosController');             // Luigi
-AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController'); // Luigi
-AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          // Luigi
-AdvancedRoute::controller('/api/secciones',         'SeccionesController');         // Luigi
+AdvancedRoute::controller('/api/casos',             'CasosController');             
+AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController'); 
+AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          
+AdvancedRoute::controller('/api/secciones',         'SeccionesController');         
 
-//CAOH
-AdvancedRoute::controller('/api/creditos',         'CreditosController'); 
+AdvancedRoute::controller('/api/opciones',         'OpcionesController');       
+AdvancedRoute::controller('/api/creditos',          'CreditosController'); 
+AdvancedRoute::controller('/api/articulos', 'ArticulosController');

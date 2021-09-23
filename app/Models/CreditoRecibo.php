@@ -10,7 +10,7 @@ class CreditoRecibo extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+ 
     protected $table = 'credito__recibos';
     protected $guarded = [];
     protected $appends = [ 'fecha', 'dia', 'user' ];

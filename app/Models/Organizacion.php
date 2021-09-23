@@ -12,16 +12,24 @@ class Organizacion extends Model
     protected $table = 'organizaciones';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'linea_productiva_id' => 'integer',
+         ];
+    
 
     public function columns()
     {
-        $departamento = [
-        ];
+        $lineasproductivas= \App\Models\LineaProductiva::all()->keyBy('id')->map( function($lp){
+            return $lp['nombre'];
+        })->toArray();
+        // $departamento = [
+        // ];
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
             ['nombre',                      'Nombre:',                       null, true,         false, null, 100],
             ['nit',                         'Nit:',                          null, true,         false, null, 100],
             ['sigla',                       'Sigla:',                        null, false,        false, null, 100],
+            ['linea_productiva_id', 'Linea Productiva', 'select',   true,   false,  null, 50, ['options' => $lineasproductivas] ],
             ['latitud',                     'Latitud:',                      null, false,        false, null, 100],
             ['longitud',                    'Longitud:',                     null, false,        false, null, 100],
             ['direccion',                   'Dirección:',                    null, true,         false, null, 100],
@@ -32,12 +40,16 @@ class Organizacion extends Model
             ['total_asociados',             'Asociados:',                    'integer', true,    false, null, 100],
             ['fecha_constitucion',          'Fecha Constitución:',           'date', true,       false, null, 100],         
         ];
-        
     }
 
     public function scopeId($q, $id)
     {
         return $q->where('id', $id);
+    }
+
+    public function linea_productiva()
+    {
+        return $this->belongsTo('App\Models\LineaProductiva', 'linea_productiva_id');
     }
 
     

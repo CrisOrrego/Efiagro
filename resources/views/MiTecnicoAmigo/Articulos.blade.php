@@ -42,9 +42,9 @@
 			</div>
 		</md-card>
 
-		<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="!Buscando">
-			<div ng-repeat="A in Articulos" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33 ng-click="abrirArticulo(A)">
-				<md-card class="padding no-margin" layout=column>
+		<div flex layout layout-wrap class="overflow-y" layout-align="center start" ng-show="!Buscando" >
+			<div ng-repeat="A in Articulos" class="padding" flex=100 flex-gt-xs=50 flex-gt-md=33 ng-click="abrirArticulo(A)" >
+				<md-card class="padding no-margin md-icon-button pointer" layout=column>
 					<div class="md-title margin-bottom-5" md-truncate>@{{ A.titulo }}</div>
 					<div class="md-subheader">Por @{{ A.autor.nombre }}</div>
 				</md-card>

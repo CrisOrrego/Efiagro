@@ -15,9 +15,9 @@ angular.module('Labores_LaborEditorCtrl', [])
 		// 	add_append: 'refresh',
 		// });
 
-		Ctrl.getLabores = () => {
-			Ctrl.LaboresCRUD.setScope('milabor', Labor.id).get();
-		};
+		// Ctrl.getLabores = () => {
+		// 	Ctrl.LaboresCRUD.setScope('milabor', Labor.id).get();
+		// };
 
 		Ctrl.getLabores();
 

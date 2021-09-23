@@ -17,13 +17,74 @@ angular.module('HomeCtrl', [])
                 });
             };
 
+
+            // Modal para el cambio de clave del usuario productor
+            Ctrl.cambiarClave = U => {
+            Rs.BasicDialog({
+                Flex: 30,
+                Title: `Cambiar Clave ${ U.nombres }` ,
+                Fields: [
+                    {
+                        Nombre: "Clave Actual",
+                        Value: '', //U.contrasena,
+                        Type: "password",
+                        Required: true,
+                    },
+                    {
+                        Nombre: "Nueva Clave",
+                        Value: '', //U.contrasena,
+                        Type: "password",
+                        Required: true,
+                    },
+                    {
+                        Nombre: "Confirmar Clave",
+                        Value: '', //U.contrasena,
+                        Type: "password",
+                        Required: true,
+                    }
+                ],
+                Confirm: { Text: "Actualiza Clave" }
+            }).then(u => {
+                if (!u) return;
+                if (u.Fields[0].Value === u.Fields[1].Value){
+                    Rs.showToast('La nueva clave debe ser diferente de la anterior', 'Error');
+                    return;
+                }
+                if (u.Fields[1].Value != u.Fields[2].Value){
+                    Rs.showToast('La nueva clave debe ser igual a la confirmación');
+                    return;
+                }
+                $http.post('/api/usuario/actualizar-clave-usuario', { claveAnterior: u.Fields[0].Value, claveNueva: u.Fields[1].Value })
+                    .then( () => {
+                        Rs.showToast("Se cambio la clave.");
+                    })
+                    .catch(e => {
+                        Rs.showToast(e.data.Msg, "Error");
+                        console.log(e);
+                    });
+                /*var nuevaclave = u.Fields[1].Value;
+                if ( nuevaclave.trim() != '' ) {
+                    var ClaveCambiada = {
+                        usuario_id: U.id,
+                        contrasena: u.Fields[1].Value,
+                    };
+                    // Accedemos mediante la API para el cambio de clave.
+                    $http.post('/api/usuario/actualizar-clave', ClaveCambiada)
+                        .then( () => {
+                            Rs.showToast("Se cambio la clave.");
+                        });
+                } else {
+                    Rs.showToast("Se envio la clave en blanco. No se modifica.");
+                }*/
+            });
+        };
+
             // Cargar el listado de secciones
             Ctrl.obtenerSecciones = () => {
                 Ctrl.logoInicio = true;
-                $http.post('api/main/obtener-secciones', {})
-                    .then(r => {
-                        Rs.Secciones = r.data;
-                    });
+                $http.post('api/main/obtener-secciones', {}).then(r => {
+                    Rs.Secciones = r.data;
+                });
             };
             Ctrl.obtenerSecciones();
 
@@ -43,19 +104,22 @@ angular.module('HomeCtrl', [])
             
             // Función para actualizar un campo en la tabla del usuario.
             Rs.actualizarUsuario = ( campo, valor ) => {
+                if ( !campo || !valor )
+                    return;
+                
                 $http.post('api/usuario/actualizarcampo', {
-                    usuario: Rs.Usuario['id'],
-                    // usuario: 1,
+                    usuarioid: Rs.Usuario['id'],
                     campo: campo, 
                     valor: valor
                 }).then( () => {
                     $state.reload();
+                    // console.log("Recargando Pagina")
                 });
             }
             
             // Validar el rol para cargar opciones de organizaciones y fincas
             // Administrador: 1 | Operaor: 2 | Soporte: 3 | Productor: 4 
-            switch( Rs.Usuario['perfil_id'] ) {
+            switch( parseInt(Rs.Usuario['perfil_id']) ) {
                 case 1:
                     Ctrl.listaOrganizacion = false;
                     Ctrl.listaFinca = false;

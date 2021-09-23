@@ -21,7 +21,7 @@
     <div layout=column flex class="overflow-y padding-0-20">
         <div ng-repeat="N in NovedadesCRUD.rows" class="footnote" >
 			<div class="bg-light-grey" style="border-radius: 5px; padding: 5px;">
-				<p class="md-title">@{{ N.created_at | date:'longDate' }} - @{{ Caso.autor.nombre }} </p>
+				<p class="md-title">@{{ N.created_at | date:'longDate' }} - @{{ N.autor.nombres }} </p>
 				<div ng-if="N.tipo == 'Texto'">
 					<p>@{{ N.novedad }}</p>
 				</div>
