@@ -18,7 +18,8 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             base_url: "/api/organizaciones/organizaciones",
             limit: 1000,
             add_append: "refresh",
-            order_by: ["-created_at"]
+            order_by: ["-created_at"],
+            query_with:['linea_productiva']
         });
 
         Ctrl.filterNombre = "";
@@ -270,6 +271,10 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
             Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(O => O.nit.toUpperCase().indexOf(Ctrl.filterNit.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
         }
+        if (Ctrl.filterLineaProductiva && Ctrl.filterLineaProductiva.length >= 1){
+            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+            Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(L => L.linea_productiva.nombre.toUpperCase().indexOf(Ctrl.filterLineaProductiva.toUpperCase())> -1);
+        } 
     } //FIN DEV ANGÉLICA
     }
 
