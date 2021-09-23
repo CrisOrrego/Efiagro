@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-09-2021 a las 05:55:06
+-- Tiempo de generación: 20-09-2021 a las 21:03:15
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -9977,10 +9977,11 @@ CREATE TABLE `opciones` (
 --
 
 INSERT INTO `opciones` (`id`, `organizacion_id`, `opcion`, `tipo`, `valor`, `created_at`, `updated_at`) VALUES
-(1, 1, 'CELULAR_TECNICO_AMIGO', 'Numero', '3165555555', '2021-08-10 20:32:58', '2021-08-29 19:49:29'),
-(2, 1, 'CORREO_SOPORTE', 'Texto', 'soporte@gmail.com', '2021-08-10 20:32:58', '2021-08-27 02:19:06'),
-(3, 1, 'WHATSAPP_SOLICITUD', 'Boolean', '0', '2021-08-10 20:32:58', '2021-09-04 00:35:10'),
-(4, 1, 'LINEAS_CREDITO', 'Lista', '[\"Libre inversion\",\"Maquinaria\"]', '2021-08-10 20:32:58', '2021-09-04 00:50:56');
+(1, 1, 'CELULAR_TECNICO_AMIGO', 'Numero', '3214325432', '2021-08-10 20:32:58', '2021-09-20 18:58:45'),
+(2, 1, 'CORREO_SOPORTE', 'Texto', 'soporte1@gmail.com', '2021-08-10 20:32:58', '2021-09-20 18:58:45'),
+(3, 1, 'WHATSAPP_SOLICITUD', 'Boolean', '1', '2021-08-10 20:32:58', '2021-09-20 18:58:45'),
+(4, 1, 'LINEAS_CREDITO', 'Lista', '[\"Libre inversion\",\"Maquinaria\",\"Insumos\"]', '2021-08-10 20:32:58', '2021-09-20 18:58:46'),
+(5, 1, 'DATOS_DECIMAL', 'Decimal', '2.3', '2021-08-10 20:32:58', '2021-09-20 18:58:46');
 
 -- --------------------------------------------------------
 
@@ -10674,7 +10675,7 @@ ALTER TABLE `lote_labores`
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `organizaciones`

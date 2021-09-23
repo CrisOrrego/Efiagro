@@ -65,3 +65,4 @@ AdvancedRoute::controller('/api/secciones',         'SeccionesController');
 
 AdvancedRoute::controller('/api/opciones',         'OpcionesController');       
 AdvancedRoute::controller('/api/creditos',          'CreditosController'); 
+AdvancedRoute::controller('/api/articulos', 'ArticulosController');
