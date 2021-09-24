@@ -49,7 +49,7 @@ class LoteController extends Controller
 		$campos = $req->Datos;
 		$lote = Lote::findOrFail($campos['id']);
             $lote->linea_productiva_id 	= $campos['linea_productiva_id'];
-            $lote->labores_id       	= $campos['labores_id'];
+            $lote->labores_id       	= 0; // $campos['labores_id'];
             $lote->hectareas 			= $campos['hectareas'];
             $lote->sitios    			= $campos['sitios'];
             $lote->coordenadas      	= $campos['coordenadas'];
@@ -69,7 +69,7 @@ class LoteController extends Controller
             $lote->finca_id      		= $req->finca;
             $lote->organizacion_id   	= $req->organizacion;
             $lote->linea_productiva_id 	= $campos['linea_productiva_id'];
-            $lote->labores_id       	= $campos['labores_id'];
+            $lote->labores_id       	= 0; // $campos['labores_id']; 
             $lote->hectareas 			= $campos['hectareas'];
             $lote->sitios    			= $campos['sitios'];
             $lote->coordenadas      	= $campos['coordenadas'];
