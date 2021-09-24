@@ -20,7 +20,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             add_append: "refresh",
             order_by: ["-created_at"]
         });
-
+        Ctrl.perfil_id = Rs.Usuario.perfil_id;
         Ctrl.filterNombre = "";
         Ctrl.filterNit = "";
 

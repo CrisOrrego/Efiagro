@@ -6,7 +6,7 @@
                 <div class="mi_Organizacion" align="left">
                     <div align="center" class="content_nombre_organizacion">
                         <img id="logo_perfil" class="img-organizacion" src="/../files/img_perfil_organizacion//@{{ Organizacion.id }}.jpg" alt="iconOrganizacion">
-                        <md-button class="md-icon-button pointer button-container">
+                        <md-button ng-if="perfil_id != 4" class="md-icon-button pointer button-container">
                                     <md-icon md-font-icon="fas fa-camera-retro" ng-click="cargarImagen()"></md-icon>
                         </md-button>
                         <h2>@{{ Organizacion . nombre }}</h2>
@@ -59,7 +59,7 @@
 
              <!--INICIO DEV ANGÉLICA -- Agrega espacio para hacer publicaciones-->
              <div flex="60">
-                <div layout class="seccion_content" magin-bottom>
+                <div ng-if="perfil_id != 4" layout class="seccion_content" magin-bottom>
                         <md-input-container flex class="md-block" no-margin>
                             <h4 class="openOrganigrama pointer" ng-click="nuevoArticuloMuro()">
                                 Agregue novedad...
