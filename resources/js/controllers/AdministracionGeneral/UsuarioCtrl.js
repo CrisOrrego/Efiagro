@@ -15,7 +15,7 @@ angular.module('UsuariosCtrl', [])
                 base_url: '/api/usuario/usuarios',
                 limit: 100,
                 add_append: 'refresh',
-                query_with: ['perfil'],
+                query_with: ['perfil', 'organizaciones_usuario'],
             });
 
             Ctrl.getUsuarios = () => {
@@ -38,7 +38,7 @@ angular.module('UsuariosCtrl', [])
                     title: 'Agregar Usuario',
                     except: [
                         'finca_id',
-                        'organizacion_id',
+                        // 'organizacion_id',
                     ],
                 }).then(U => {
                     if ( !U ) return;
@@ -55,7 +55,7 @@ angular.module('UsuariosCtrl', [])
                     title: `Editar usuario: ${ U.nombres } ${ U.apellidos }`,
                     except: [
                         'finca_id',
-                        'organizacion_id',
+                        // 'organizacion_id',
                     ],
                 }).then(r => {
                     if ( !r ) return;

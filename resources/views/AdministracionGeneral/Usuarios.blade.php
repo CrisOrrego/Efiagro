@@ -46,6 +46,7 @@
                         <th md-column>Correo</th>
                         <th md-column>Celular</th>
                         <th md-column>Perfil</th>
+                        <th md-column>Organización</th>
                     </tr>
                     </thead>
                     <tbody md-body >
@@ -72,6 +73,7 @@
                             <td md-cell>@{{ U.correo }}</td>
                             <td md-cell>@{{ U.celular }}</td>
                             <td md-cell>@{{ U.perfil.perfil }}</td>
+                            <td md-cell>@{{ U.organizaciones_usuario.nombre }}</td>
                         </tr>
                     </tbody>
                 </table>
