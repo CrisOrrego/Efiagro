@@ -21,6 +21,9 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             order_by: ["-created_at"],
             query_with:['linea_productiva']
         });
+        Ctrl.perfil_id = Rs.Usuario.perfil_id;
+        Ctrl.filterNombre = "";
+        Ctrl.filterNit = "";
 
         Ctrl.filterNombre = "";
         Ctrl.filterNit = "";

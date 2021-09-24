@@ -24,8 +24,18 @@
 					</md-input-container>
 
 					<md-input-container>
-						<label>Municipio</label>
+						<label>Código Postal</label>
 						<input ng-change="filterFinca()" type="text" ng-model="filterMunicipio" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
+					</md-input-container>
+
+					<md-input-container>
+						<label>Municipio</label>
+						<!--kM -->
+						<md-select ng-change="filterFinca()"  ng-model="filterMunicipio">
+							<md-option ng-repeat="(kM, M) in Municipios" ng-value="kM">  
+								@{{ M }}
+							</md-option>
+						</md-select>
 					</md-input-container>
 
 					<md-input-container>
@@ -74,7 +84,7 @@
 						<td md-cell>@{{ F.nombre }}</td>
 						<td md-cell>@{{ F.direccion }}</td>
 						<td md-cell>@{{ F.departamento_id }}</td>
-						<td md-cell>@{{ F.municipio_id }}</td>
+						<td md-cell>@{{ Municipios[F.municipio_id] }}</td>
 						<td md-cell>@{{ F.zona.descripcion }}</td>
 						<td md-cell>@{{ F.area_total }} <span>cm²</span></td>
 						<td md-cell>@{{ F.tipo_cultivo }}</td>

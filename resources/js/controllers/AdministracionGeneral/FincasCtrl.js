@@ -71,6 +71,18 @@ angular
 
             Ctrl.getDepartamentos();
 
+
+            //Obtener el elemento de la lista municiios
+            Ctrl.getMunicipios = () => {
+                $http.post ('api/lista/obtener', { lista: 'Municipios' }).then((r)=>{
+                    Ctrl.Municipios = r.data;
+                    console.log(Ctrl.Municipios);
+                });
+            }
+            
+            Ctrl.getMunicipios();
+
+
             Ctrl.FincasCRUD = $injector.get("CRUD").config({
                 base_url: "/api/fincas/fincas",
                 limit: 1000,
@@ -78,6 +90,9 @@ angular
                 order_by: ["-created_at"],
                 query_with: ["zona", 'usuarios']
             });
+
+
+            
 
 
             Ctrl.getFinca = () => {
