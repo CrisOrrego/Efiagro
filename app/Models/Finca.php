@@ -61,6 +61,11 @@ class Finca extends Model
     {
         return $this->belongsTo('App\Models\Zona', 'zona_id');
     }
+
+    public function municipio()
+    {
+        return $this->belongsTo('App\Models\ListaDetalle', 'id');
+    }
     
     public function usuarios()
     {
