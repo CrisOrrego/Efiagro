@@ -41,7 +41,7 @@
 				<div class="chat-history">
 					<ul>
 						<div ng-repeat="N in NovedadesCRUD.rows">
-							<li  ng-if="N.usuario_id != 1" class="clearfix">
+							<li  ng-if="N.usuario_id == 1" class="clearfix">
 								<p></p>
 								<div class="message-data align-right">
 									<span class="message-data-time" >@{{ N.created_at | date:'longDate' }}</span> &nbsp; &nbsp;
@@ -58,7 +58,7 @@
 									</div>
 								</div>
 							</li>
-							<li  ng-if="N.usuario_id == 1">
+							<li  ng-if="N.usuario_id != 1">
 								<div class="message-data">
 									<span class="message-data-name"><i class="fa fa-circle online"></i> @{{ N.autor.nombres }}</span>
 									<span class="message-data-time">@{{ N.created_at | date:'longDate' }}</span>
@@ -82,6 +82,7 @@
 			
 			</div> <!-- end container -->
 		</div>
+		<!--Fin seccion chat-->
 
 		<div layout class=" padding-5-10" layout-align="space-between start">
 			<md-input-container class="no-margin md-title mw650 w80p" >
