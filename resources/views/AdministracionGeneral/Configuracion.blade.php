@@ -19,19 +19,19 @@
                             <br>
                             <div layout="row" layout-wrap>
                                 <md-container>
-                                    <label><strong>Celular Técnico Amigo</strong></label>
+                                    <label style="color:rgb(179, 173, 165);">Celular Técnico Amigo</label>
                                     <div ng-repeat="Op in [Opciones.CELULAR_TECNICO_AMIGO]">
                                         @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                     </div>
                                 </md-container>
                                 <md-container>
-                                    <label><strong>Correo Soporte</strong></label>
+                                    <label style="color:rgb(179, 173, 165);">Correo Soporte</label>
                                     <div ng-repeat="Op in [Opciones.CORREO_SOPORTE]">
                                         @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                     </div>
                                 </md-container>
                                 <md-container>
-                                    <label><strong>Dato Decimal</strong></label>
+                                    <label style="color:rgb(179, 173, 165);">Dato Decimal</label>
                                     <div ng-repeat="Op in [Opciones.DATOS_DECIMAL]">
                                         @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                     </div>
@@ -39,7 +39,7 @@
                             </div>
                                 <div layout="row" layout-wrap>
                                     <md-container>
-                                        <label><strong>Línea de crédito</strong></label>
+                                        <label style="color:rgb(179, 173, 165);">Línea de crédito</label>
                                         <div ng-repeat="Op in [Opciones.LINEAS_CREDITO]">
                                             @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                         </div>
@@ -50,7 +50,7 @@
                                     <md-container>
                                         <div layout="row" layout-wrap>
     
-                                            <div><label><strong>WhatsApp Habilitado</strong></label> &nbsp; </div>
+                                            <div><label style="color:rgb(148, 143, 137);">WhatsApp Habilitado</label> &nbsp; </div>
                                             <div ng-repeat="Op in [Opciones.WHATSAPP_SOLICITUD]">
                                                 @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                             </div>
