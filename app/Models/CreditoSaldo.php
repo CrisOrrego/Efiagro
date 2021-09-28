@@ -18,6 +18,7 @@ class CreditoSaldo extends Model
         'abonos', 
         'abonado', 
         'abonadomora',
+        'interes_causado',
         'pendiente',
     ];
     protected $dates = ['created_at', 'updated_at', 'fecha'];
@@ -36,6 +37,11 @@ class CreditoSaldo extends Model
 			[ 'total', 			null, true, false, null, 100 ],
 			[ 'deuda', 			null, true, false, null, 100 ],
         ];
+    }
+
+    public function credito()
+    {
+        return $this->belongsTo('App\Models\Credito', 'credito_id');
     }
 
     public function getDateAttribute()
@@ -72,8 +78,6 @@ class CreditoSaldo extends Model
         $this->mora = 0;
         if(!$this->due OR $this->pendiente == 0){ return false; }
 
-        
-        
         $this->dias_mora = $Dias = $this->fecha->diffInDays(Carbon::today());
         /*
         $Vars = new Vars();
@@ -96,7 +100,7 @@ class CreditoSaldo extends Model
 
     public function getPendienteAttribute()
     {
-        return $this->total - $this->abonado;
+        return $this->capital + $this->interes_causado - $this->abonado;
     }
 
     public function CalcEstado()
@@ -128,6 +132,19 @@ class CreditoSaldo extends Model
 
         $this->estado_color = $Colors[$this->estado];
 
+    }
+
+    public function getInteresCausadoAttribute()
+    {
+        if($this->due) return $this->interes;
+
+        $FechaCredito = $this->credito->created_at;
+
+        $DiasCuota = $FechaCredito->diffInDays($this->fecha);
+        $DiasAHoy  = $FechaCredito->diffInDays(Carbon::today());
+        $PorcCausa = $DiasAHoy / $DiasCuota;
+
+        return ceil($this->interes * $PorcCausa);
     }
 
 }

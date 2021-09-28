@@ -8,8 +8,10 @@
 				<th md-column>Fecha</th>
 				<th md-column md-numeric>Capital</th>
 				<th md-column md-numeric>Interés</th>
-				<th md-column md-numeric>Total</th>
+				<th md-column md-numeric>In. Causados<md-tooltip>Interes Causados</md-tooltip></th>
+				<th md-column md-numeric>Cuota</th>
 				<th md-column md-numeric>Deuda</th>
+				<th md-column md-numeric>Abonado</th>
 				<th md-column md-numeric>Pendiente</th>
 				<th md-column md-numeric>Mora</th>
 				<th md-column md-numeric>Días Mora</th>
@@ -29,12 +31,31 @@
 				<td md-cell class="nowrap">@{{ Cuota.date   }}</td>
 				<td md-cell class="nowrap">@{{ Cuota.capital | currency:"$":0 }}</td>
 				<td md-cell class="nowrap">@{{ Cuota.interes | currency:"$":0 }}</td>
+				<td md-cell class="nowrap">@{{ Cuota.interes_causado | currency:"$":0 }}</td>
 				<td md-cell class="nowrap">@{{ Cuota.total   | currency:"$":0 }}</td>
 				<td md-cell class="nowrap">@{{ Cuota.deuda   | currency:"$":0 }}</td>
+				<td md-cell class="nowrap">@{{ Cuota.abonado | currency:"$":0 }}</td>
 				<td md-cell class="nowrap">@{{ Cuota.pendiente | currency:"$":0 }}</td>
 				<td md-cell class="nowrap">@{{ Cuota.mora   | currency:"$":0 }}</td>
 				<td md-cell class="nowrap">@{{ Cuota.dias_mora  }}</td>
 			</tr>
 		</tbody>
+		<tfoot md-foot>
+			<tr md-row class="md-row-hover text-bold border-bottom">
+				<td md-cell></td>
+				<td md-cell></td>
+				<td md-cell class="nowrap"></td>
+				<td md-cell class="nowrap"></td>
+				<td md-cell class="nowrap">@{{ CredSel.saldos | sum:'capital' | currency:"$":0 }}</td>
+				<td md-cell class="nowrap">@{{ CredSel.saldos | sum:'interes' | currency:"$":0 }}</td>
+				<td md-cell class="nowrap">@{{ CredSel.saldos | sum:'interes_causado' | currency:"$":0 }}</td>
+				<td md-cell class="nowrap"></td>
+				<td md-cell class="nowrap"></td>
+				<td md-cell class="nowrap">@{{ CredSel.saldos | sum:'abonado' | currency:"$":0 }}</td>
+				<td md-cell class="nowrap">@{{ CredSel.saldos | sum:'pendiente' | currency:"$":0 }}</td>
+				<td md-cell class="nowrap"></td>
+				<td md-cell class="nowrap"></td>
+			</tr>
+		</tfoot>
 	</table>
 </md-table-container>

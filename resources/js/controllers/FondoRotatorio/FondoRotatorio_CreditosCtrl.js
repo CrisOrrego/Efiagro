@@ -36,7 +36,7 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 			$http.post('/api/creditos/get', { asociado_id: Ctrl.Asociado.id }).then(function(res){
 				Ctrl.Creditos = res.data;
 				Ctrl.CredSel = null;
-				//Ctrl.ViewCredit(Ctrl.Creditos[0]); //FIX
+				Ctrl.ViewCredit(Ctrl.Creditos[0]); //FIX
 			});
 		}
 
@@ -151,11 +151,11 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 		}
 
 		//Testing
-		/*Rs.http('api/usuario/buscar-usuario', { 'query': '1093' }).then(r => {
+		Rs.http('api/usuario/buscar-usuario', { 'query': '1093' }).then(r => {
 			Ctrl.Asociado =  r[0];
 			Ctrl.LoadCreditos();
 			//Ctrl.nuevoCredito();
-		});*/
+		});
 
 	}
 ]);
