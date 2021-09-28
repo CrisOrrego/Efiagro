@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-09-2021 a las 17:52:09
+-- Tiempo de generación: 28-09-2021 a las 04:55:50
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -161,7 +161,10 @@ INSERT INTO `casos_novedades` (`id`, `usuario_id`, `caso_id`, `tipo`, `novedad`,
 (25, 1, 39, 'Texto', 'RESPUESTA', 0, '2021-07-30 02:36:24', '2021-07-30 02:36:24'),
 (26, 1, 39, 'Imagen', 'files/casos_media/39/20210729213626.jpg', 0, '2021-07-30 02:36:40', '2021-07-30 02:36:40'),
 (27, 1, 45, 'Texto', 'OTRA RESPUESTA', 0, '2021-07-30 02:37:28', '2021-07-30 02:37:28'),
-(28, 1, 45, 'Texto', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla sit amet nunc id luctus. Donec pellentesque justo sit amet urna mollis rhoncus. Nunc arcu quam, dapibus ac eros sed, scelerisque congue augue. Aliquam non tortor vel lorem volutpat semper eget id erat. Mauris ac lobortis felis. Donec orci est, tristique a mattis viverra, cursus ut lectus. Cras cursus quam vitae nisi molestie ornare. Nunc laoreet laoreet nulla, sit amet euismod eros euismod vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dolor urna, iaculis vitae nunc semper, semper maximus nisi. Aliquam nec tortor arcu. Nunc ornare lobortis quam, at venenatis velit pulvinar ac.\n\nSuspendisse efficitur, justo condimentum vehicula vestibulum, justo nulla tincidunt nisi, vitae tempor sapien turpis eget est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut id justo libero. Vivamus rhoncus, tellus et sagittis imperdiet, enim felis cursus mi, vitae mattis ipsum odio sodales nibh. Aliquam sodales dolor vitae purus facilisis ullamcorper. Etiam sagittis est id sem congue, vel scelerisque nunc consequat. In facilisis ut massa ut consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas non ullamcorper felis, vitae semper ex. Nullam scelerisque facilisis augue, vehicula sodales tortor sagittis vel. Vestibulum ullamcorper tellus vel odio vehicula rutrum. Sed metus quam, laoreet auctor interdum at, feugiat et purus.', 0, '2021-07-30 02:38:48', '2021-07-30 02:38:48');
+(28, 1, 45, 'Texto', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla sit amet nunc id luctus. Donec pellentesque justo sit amet urna mollis rhoncus. Nunc arcu quam, dapibus ac eros sed, scelerisque congue augue. Aliquam non tortor vel lorem volutpat semper eget id erat. Mauris ac lobortis felis. Donec orci est, tristique a mattis viverra, cursus ut lectus. Cras cursus quam vitae nisi molestie ornare. Nunc laoreet laoreet nulla, sit amet euismod eros euismod vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dolor urna, iaculis vitae nunc semper, semper maximus nisi. Aliquam nec tortor arcu. Nunc ornare lobortis quam, at venenatis velit pulvinar ac.\n\nSuspendisse efficitur, justo condimentum vehicula vestibulum, justo nulla tincidunt nisi, vitae tempor sapien turpis eget est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut id justo libero. Vivamus rhoncus, tellus et sagittis imperdiet, enim felis cursus mi, vitae mattis ipsum odio sodales nibh. Aliquam sodales dolor vitae purus facilisis ullamcorper. Etiam sagittis est id sem congue, vel scelerisque nunc consequat. In facilisis ut massa ut consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas non ullamcorper felis, vitae semper ex. Nullam scelerisque facilisis augue, vehicula sodales tortor sagittis vel. Vestibulum ullamcorper tellus vel odio vehicula rutrum. Sed metus quam, laoreet auctor interdum at, feugiat et purus.', 0, '2021-07-30 02:38:48', '2021-07-30 02:38:48'),
+(29, 1, 39, 'Texto', 'Muestra', 0, '2021-09-27 15:41:13', '2021-09-27 15:41:13'),
+(30, 1, 39, 'Texto', 'Aqui', 0, '2021-09-27 15:41:57', '2021-09-27 15:41:57'),
+(31, 1, 39, 'Texto', 'Aquiii', 0, '2021-09-27 15:42:07', '2021-09-27 15:42:07');
 
 -- --------------------------------------------------------
 
@@ -238,7 +241,7 @@ INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado
 (6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-09-09 00:50:05', NULL),
 (7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-09-09 00:55:32', NULL),
 (8, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-09-09 00:55:37', NULL),
-(9, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-09-09 00:55:41', NULL);
+(9, 1, 2, 'En Mora', '#ce0202', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-09-28 05:23:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -9980,9 +9983,17 @@ CREATE TABLE `opciones` (
 INSERT INTO `opciones` (`id`, `organizacion_id`, `opcion`, `tipo`, `valor`, `created_at`, `updated_at`) VALUES
 (1, 1, 'CELULAR_TECNICO_AMIGO', 'Numero', '3214325432', '2021-08-10 20:32:58', '2021-09-20 18:58:45'),
 (2, 1, 'CORREO_SOPORTE', 'Texto', 'soporte1@gmail.com', '2021-08-10 20:32:58', '2021-09-20 18:58:45'),
-(3, 1, 'WHATSAPP_SOLICITUD', 'Boolean', '1', '2021-08-10 20:32:58', '2021-09-20 18:58:45'),
-(4, 1, 'LINEAS_CREDITO', 'Lista', '[\"Libre inversion\",\"Maquinaria\",\"Insumos\"]', '2021-08-10 20:32:58', '2021-09-20 18:58:46'),
-(5, 1, 'DATOS_DECIMAL', 'Decimal', '2.5', '2021-08-10 20:32:58', '2021-09-20 19:15:54');
+(3, 1, 'WHATSAPP_SOLICITUD', 'Boolean', '1', '2021-08-10 20:32:58', '2021-09-28 02:46:54'),
+(4, 1, 'LINEAS_CREDITO', 'Lista', '[\"Libre inversion\",\"Maquinaria\"]', '2021-08-10 20:32:58', '2021-09-28 02:50:54'),
+(5, 1, 'DATOS_DECIMAL', 'Decimal', '2.5', '2021-08-10 20:32:58', '2021-09-20 19:15:54'),
+(6, 1, 'CREDITO_CAMBIAR_FECHA', 'Boolean', '1', '2021-09-27 20:32:58', '2021-09-28 02:50:54'),
+(7, 1, 'CREDITO_CAMBIAR_INTERES', 'Boolean', '0', '2021-09-27 20:32:58', '2021-09-28 02:42:59'),
+(8, 1, 'CREDITO_INTERES', 'Decimal', '2.1', '2021-09-27 20:32:58', '2021-09-28 02:42:26'),
+(9, 1, 'CREDITO_MORA_MENOS_30', 'Decimal', '2.2', '2021-09-27 20:32:58', '2021-09-28 02:42:26'),
+(10, 1, 'CREDITO_MORA_31_60', 'Decimal', '2.3', '2021-09-27 20:32:58', '2021-09-28 02:42:26'),
+(11, 1, 'CREDITO_MORA_61_90', 'Decimal', '2.4', '2021-09-27 20:32:58', '2021-09-28 02:42:26'),
+(12, 1, 'CREDITO_MORA_91_120', 'Decimal', '2.5', '2021-09-27 20:32:58', '2021-09-28 02:42:26'),
+(13, 1, 'CREDITO_MORA_MAS_120', 'Decimal', '3.25', '2021-09-27 20:32:58', '2021-09-28 02:50:35');
 
 -- --------------------------------------------------------
 
@@ -10601,7 +10612,7 @@ ALTER TABLE `casos`
 -- AUTO_INCREMENT de la tabla `casos_novedades`
 --
 ALTER TABLE `casos_novedades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `credito__abonos`
@@ -10709,7 +10720,7 @@ ALTER TABLE `lote_labores`
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `organizaciones`
