@@ -30,44 +30,126 @@
                                         @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                     </div>
                                 </md-container>
-                                <md-container>
-                                    <label style="color:rgb(179, 173, 165);">Dato Decimal</label>
-                                    <div ng-repeat="Op in [Opciones.DATOS_DECIMAL]">
-                                        @include('AdministracionGeneral.Configuracion_OpcionEditor')
-                                    </div>
-                                </md-container>
-                            </div>
-                                <div layout="row" layout-wrap>
-                                    <md-container>
-                                        <label style="color:rgb(179, 173, 165);">Línea de crédito</label>
-                                        <div ng-repeat="Op in [Opciones.LINEAS_CREDITO]">
-                                            @include('AdministracionGeneral.Configuracion_OpcionEditor')
-                                        </div>
-                                    </md-container>
-                                </div>
-                                <br>
                                 <div layout="row" layout-wrap>
                                     <md-container>
                                         <div layout="row" layout-wrap>
-    
-                                            <div><label style="color:rgb(148, 143, 137);">WhatsApp Habilitado</label> &nbsp; </div>
+
+                                            <div><label style="color:rgb(148, 143, 137);">WhatsApp Habilitado</label>
+                                                &nbsp; </div>
                                             <div ng-repeat="Op in [Opciones.WHATSAPP_SOLICITUD]">
                                                 @include('AdministracionGeneral.Configuracion_OpcionEditor')
                                             </div>
                                         </div>
                                     </md-container>
                                 </div>
-                                <div>
+                            </div>
+                            <div layout="row" layout-wrap>
+                                <md-container>
+                                    <label style="color:rgb(179, 173, 165);">Línea de crédito</label>
+                                    <div ng-repeat="Op in [Opciones.LINEAS_CREDITO]">
+                                        @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                    </div>
+                                </md-container>
+                            </div>
+                            <br>
 
-                                    <md-button class="md-raised md-primary" aria-label="Nuevo"
-                                        ng-click="actualizarOpciones()">
-                                        Actualizar
-                                    </md-button>
+                            <div layout="row" layout-wrap>
+                                <md-container>
+                                    <div layout="row" layout-wrap>
+                                        <div><label style="color:rgb(148, 143, 137);">Cambiar Inicio de Crédito:</label>
+                                            &nbsp; </div>
+                                        <div ng-repeat="Op in [Opciones.CREDITO_CAMBIAR_INTERES]">
+                                            @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                        </div>
+                                    </div>
+                                </md-container>
+                            </div>
+                            <div layout="row" layout-wrap>
+                                <md-container>
+                                    <div layout="row" layout-wrap>
+                                        <div><label style="color:rgb(148, 143, 137);">Cambiar fecha de interés:</label>
+                                            &nbsp; </div>
+                                        <div ng-repeat="Op in [Opciones.CREDITO_CAMBIAR_FECHA]">
+                                            @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                        </div>
+                                    </div>
+                                </md-container>
+                            </div>
+                            <div layout="row" layout-wrap>
+                                <md-container>
 
-                                </div>
+                                    <label style="color:rgb(148, 143, 137);">Interés por defecto (EA):</label>
+                                    <div ng-repeat="Op in [Opciones.CREDITO_INTERES]">
+                                        @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                    </div>
+
+                                </md-container>
+                            </div>
+                            <div layout="row" layout-wrap>
+                                <md-container>
+
+                                    <label style="color:rgb(179, 173, 165);">Interés de mora menor a 30
+                                        días:</label>
+                                    <div ng-repeat="Op in [Opciones.CREDITO_MORA_MENOS_30]">
+                                        @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                    </div>
+
+                                </md-container>
+                            </div>
+                            <div layout="row" layout-wrap>
+                                <md-container>
+
+                                    <label style="color:rgb(179, 173, 165);">Interés de mora entre 31 a 60
+                                        días:</label>
+                                    <div ng-repeat="Op in [Opciones.CREDITO_MORA_31_60]">
+                                        @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                    </div>
+
+                                </md-container>
+                            </div>
+                            <div layout="row" layout-wrap>
+                                <md-container>
+
+                                    <label style="color:rgb(179, 173, 165);">Interés de mora entre 62 a 90
+                                        días:</label>
+                                    <div ng-repeat="Op in [Opciones.CREDITO_MORA_61_90]">
+                                        @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                    </div>
+
+                                </md-container>
+                            </div>
+                            <div layout="row" layout-wrap>
+                                <md-container>
+
+                                    <label style="color:rgb(179, 173, 165);">Interés de mora entre 91 a 120
+                                        días:</label>
+                                    <div ng-repeat="Op in [Opciones.CREDITO_MORA_91_120]">
+                                        @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                    </div>
+
+                                </md-container>
+                            </div>
+                            <div layout="row" layout-wrap>
+                                <md-container>
+
+                                    <label style="color:rgb(179, 173, 165);">Interés de mora más de 120
+                                        días:</label>
+                                    <div ng-repeat="Op in [Opciones.CREDITO_MORA_MAS_120]">
+                                        @include('AdministracionGeneral.Configuracion_OpcionEditor')
+                                    </div>
+
+                                </md-container>
+                            </div>
+                            <div>
+                                <md-button class="md-raised md-primary" aria-label="Nuevo"
+                                    ng-click="actualizarOpciones()">
+                                    Actualizar
+                                </md-button>
+
                             </div>
                         </div>
                     </div>
+                </div>
             </md-card>
         </div>
         <!--INICIO DEV ANGELICA-->
@@ -112,7 +194,7 @@
                                 </md-button>
                             </div>
                         </md-table-container>
-                      
+
 
                     </div>
 
@@ -121,3 +203,9 @@
         </div>
     </div>
 </div>
+
+
+<style type="text/css">
+
+
+</style>
