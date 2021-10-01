@@ -1,7 +1,7 @@
-angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
-    .controller('UsuarioFincaCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'DatosUsuario', 
+angular.module('UsuarioFincaCtrl', ['ngFileUpload']) //ngFileUpload
+    .controller('UsuarioFincaCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 'DatosUsuario',
         function($scope, $rootScope, $http, $injector, $mdDialog, DatosUsuario) {
-            
+
             var Ctrl = $scope;
             var Rs = $rootScope;
             Ctrl.Cancel = $mdDialog.cancel;
@@ -45,34 +45,34 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                         $window.alert("Este navegador no soporta HTML5");
                     }
                 } else {
-                    $window.alert("Por favor subir un archivo de excel vàlido.");
+                    $window.alert("Por favor subir un archivo de excel valido.");
                 }
             };
-     
+
             Ctrl.ProcessExcel = function(data, L) {
                 // debugger;
                 //Read the Excel File data.
                 var workbook = XLSX.read(data, {
                     type: 'binary'
                 });
-     
+
                 //Fetch the name of First Sheet.
                 var firstSheet = workbook.SheetNames[0];
-     
+
                 //Read all rows from First Sheet into an JSON array.
                 var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
                 L.coordenadas = '';
                 excelRows.forEach(element => {
                     //console.log(element.lat);
-                    L.coordenadas += '{"lat":' + element.lat + ', "lng":' + element.lng + '},';  
-                    
+                    L.coordenadas += '{"lat":' + element.lat + ', "lng":' + element.lng + '},';
+
                 });
                 L.coordenadas = '[' + L.coordenadas + ']';
             };
             //FIN DEV ANGELICA
-            
+
             // Cargar las fincas del usuario seleccionado
-            $http.post('api/fincas/usuario', { 
+            $http.post('api/fincas/usuario', {
                 usuario: Ctrl.UsuarioFinca.id
             }).then(res => {
                 if (res.data.length > 0) {
@@ -88,14 +88,14 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 Ctrl.F = F;
                 loteSeleccionado = 0;
                 lineaSeleccionada = 0;
-                $http.post('api/lotes/finca', { 
+                $http.post('api/lotes/finca', {
                     finca: F.id
                 }).then(res => {
                     Ctrl.Lotes = res.data;
                     //console.log('Informacion de lote: ', Ctrl.Lotes[0]);
                     calcularZona(F);
                     // Ctrl.LoteSeleccionado = Ctrl.Lotes[0];
-                    
+
                     if (Ctrl.Lotes[0]) {
                         // console.log(Ctrl.Lotes[0]);
                         Ctrl.cargarLote(Ctrl.Lotes[0]);
@@ -125,7 +125,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 Ctrl.L = L;
                 loteSeleccionado = L.id;
                 lineaSeleccionada = L.linea_productiva_id;
-               //Ctrl.personalizarLabores(); //FIX
+                //Ctrl.personalizarLabores(); //FIX
                 //console.log('Informacion de otro lote: ', L);
             };
 
@@ -137,6 +137,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
             $http.post('api/lineasproductivas/obtener', {})
                 .then(res => {
                     Ctrl.Lineasproductivas = res.data;
+                    // console.log(Ctrl.Lineasproductivas);
                 });
 
             // Obtener el listado de las labores.
@@ -144,34 +145,34 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 .then(res => {
                     Ctrl.Labores = res.data;
                 });
-            
+
             // Obtener los datos de la lista 3: Municipios
-            $http.post('api/lista/listacompleta', { 
+            $http.post('api/lista/listacompleta', {
                 id: 3
-            }).then((r)=>{
+            }).then((r) => {
                 Ctrl.Municipios = r.data;
-			});
+            });
 
             // Obtener los datos de la lista 2: Departamentos
-            $http.post('api/lista/listacompleta', { 
+            $http.post('api/lista/listacompleta', {
                 id: 2
-            }).then((r)=>{
+            }).then((r) => {
                 Ctrl.Departamentos = r.data;
-			});
+            });
 
             // Obtener los datos de la lista 6: Tipo de Cultivo
-            $http.post('api/lista/listacompleta', { 
+            $http.post('api/lista/listacompleta', {
                 id: 5
-            }).then((r)=>{
+            }).then((r) => {
                 Ctrl.TipoCultivo = r.data;
-			});
+            });
 
             // Obtener los datos de la lista 7: Tipos de Suelo
-            $http.post('api/lista/listacompleta', { 
+            $http.post('api/lista/listacompleta', {
                 id: 4
-            }).then((r)=>{
+            }).then((r) => {
                 Ctrl.TipoSuelo = r.data;
-			});
+            });
 
             // Guardar / Actualizar los datos de la finca
             Ctrl.guardarFinca = (F) => {
@@ -180,7 +181,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 });
                 Ctrl.Cancel();
             };
-            
+
             // Agregar registro de finca.
             Ctrl.nuevaFinca = (Fn) => {
                 $http.post('api/fincas/crear', {
@@ -209,9 +210,9 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
             };
 
             // Obtener los datos maximos y minimos por cada zona y linea productiva
-            $http.post('api/zonas/obtener', {}).then((r)=>{
+            $http.post('api/zonas/obtener', {}).then((r) => {
                 Ctrl.zonas = r.data;
-			});
+            });
 
             Ctrl.recalcularZona = (data) => {
                 if (data['temperatura'] > 0 && data['humedad_relativa'] > 0 && data['precipitacion'] > 0 && data['altimetria'] > 0 && data['pendiente'] > 0 && data['brillo_solar'] > 0) {
@@ -225,7 +226,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 zonaprimaria = [];
                 angular.forEach(Ctrl.zonas, function(data) {
                     var contadorzona = 0;
-                    
+
                     if (data['temperatura_min'] <= Finca['temperatura'] && data['temperatura_max'] >= Finca['temperatura']) {
                         contadorzona++;
                     }
@@ -273,7 +274,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                     $mdDialog.show({
                         templateUrl: 'Frag/AdministracionGeneral.UsuarioLabores',
                         controller: 'UsuarioLaboresCtrl',
-                        locals: { 
+                        locals: {
                             DatosLote: loteSeleccionado
                         },
                         multiple: true,
@@ -296,6 +297,16 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
                 // Ctrl.Cancel();
             };
 
+
+            Ctrl.OrganizacionLinea = (Linea) => {
+                $http.post('api/organizaciones/linea', {
+                    linea: Linea
+                }).then((r) => {
+                    Ctrl.OrganizacionLinea = r.data;
+                    console.log(Ctrl.OrganizacionLinea);
+                });
+                console.log(Linea);
+            };
             // Modal para cargar el cronograma de labores.
             // Ctrl.cargarCronograma = ( L ) => {
             //     Ctrl.Cancel();
@@ -309,5 +320,4 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload'])//ngFileUpload
             //     });
             // };
         }
-    ]
-);
+    ]);

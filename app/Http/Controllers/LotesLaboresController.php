@@ -89,7 +89,8 @@ class LotesLaboresController extends Controller
             $LotesLabores->margen           = $req['margen'];
         $LotesLabores->save();
 	}
-        public function postActualizar(Request $req)
+        
+    public function postActualizar(Request $req)
 	{
         LotesLabores::where('lote_id', '=', $req['lote_id'])
             ->where('labor', '=', $req['labor'])

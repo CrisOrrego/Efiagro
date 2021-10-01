@@ -14,8 +14,7 @@ class Organizacion extends Model
     protected $appends = [];
     protected $casts = [
         'linea_productiva_id' => 'integer',
-         ];
-    
+    ];
 
     public function columns()
     {
@@ -51,10 +50,10 @@ class Organizacion extends Model
     {
         return $this->belongsTo('App\Models\LineaProductiva', 'linea_productiva_id');
     }
-
     
     public function departamento()
     {
         return $this->hasMany('App\Models\Departamento', 'id_departamento', 'id');
     }
+
 }

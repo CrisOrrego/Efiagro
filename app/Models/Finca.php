@@ -16,7 +16,7 @@ class Finca extends Model
         'departamento_id' => 'integer',
         'municipio_id' => 'integer',
         'zona_id' => 'integer'
-         ]; 
+    ]; 
 
     public function columns()
     { $usuarios = \App\Models\Usuario::all()->keyBy('id')->map(function($u){
@@ -47,7 +47,6 @@ class Finca extends Model
             ['altimetria_min',                 'Altimetria Minima (Mt):',       null,       false,  false, null, 100],
             ['altimetria_max',                 'Altimetria Maxima (Mt):',       null,       true,   false, null, 100],
             ['brillo_solar',                   'Brillo Solar (H):',             null,       true,   false, null, 100],
-           
         ];
 
     }

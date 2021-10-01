@@ -41,15 +41,16 @@ angular.module('App', [
     'SolicitudesDetalleCtrl',
 
     'UsuariosCtrl',
-    'UsuarioFincaCtrl',             // Luigi
-    'UsuarioLaboresCtrl',           // Luigi
+    'UsuarioFincaCtrl', // Luigi
+    'UsuarioOrganizacionCtrl', // Luigi
+    'UsuarioLaboresCtrl', // Luigi
     'ArticulosCtrl',
     'Articulos_ArticuloEditorCtrl',
-    'CasosCtrl',                    // Luigi
-    'Casos_NovedadesCtrl',          // Luigi
-    'LineasProductivasCtrl',        // Luigi
+    'CasosCtrl', // Luigi
+    'Casos_NovedadesCtrl', // Luigi
+    'LineasProductivasCtrl', // Luigi
     //'MitecnicoAmigoInicioCtrl', // Luigi
-    
+
     //Inicio Dev Angélica
     'ContactoCtrl',
     'ArticulomuroEditDialogCtrl',
@@ -67,7 +68,7 @@ angular.module('App', [
     'PerfilesCtrl', // Luigi
     'EventosCtrl',
     'FincaEventosCtrl',
-    
+
     // 'PerfilesCtrl',
     // Zonas Agroambientales
     'ZonasCtrl',
@@ -77,7 +78,7 @@ angular.module('App', [
     'LotesCtrl',
     'LoteDiagCtrl',
     'Labores_LaborEditorCtrl',
-    
+
     'FondoRotatorio_CreditosCtrl', //CAOH
     'FondoRotatorio_NuevoCreditoDiagCtrl', //CAOH
     'FondoRotatorio_Creditos_PayDialogCtrl', //CAOH

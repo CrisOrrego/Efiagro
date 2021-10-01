@@ -112,10 +112,10 @@
     </div>
 
     <div ng-show="F.id > 0">
-        <div class="text-clear padding" >Cosechas de la finca</div>
+        <div class="text-clear padding" >Cultivos de la finca</div>
         
         <md-tabs class="" >
-            <md-tab ng-show="L" ng-repeat="L in Lotes" label="Cosecha @{{ $index + 1 }}" 
+            <md-tab ng-show="L" ng-repeat="L in Lotes" label="Cultivo @{{ $index + 1 }}" 
                 ng-click="cargarLote(L)"></md-tab>
             <md-tab ng-click="formularioNuevoLote()" label="+"></md-tab>
         </md-tabs> 
@@ -124,8 +124,15 @@
             <md-input-container>
                 <label>Linea Productiva</label>
                 <md-select ng-model="L.linea_productiva_id" class="no-margin" style="min-width: 150px;"
-                    aria-label="linea_productiva_id">
+                    aria-label="linea_productiva_id" ng-change="OrganizacionLinea(L.linea_productiva_id)">
                     <md-option ng-value="LP.id" ng-repeat="LP in Lineasproductivas">@{{ LP.nombre }}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>Organizacion</label>
+                <md-select ng-model="L.organizacion_id" class="no-margin" style="min-width: 150px;"
+                    aria-label="organizacion_id">
+                    <md-option ng-value="ON.id" ng-repeat="ON in OrganizacionLinea">@{{ ON.nombre }}</md-option>
                 </md-select>
             </md-input-container>
             {{-- <md-input-container>
@@ -172,10 +179,10 @@
             </md-input-container>
             <div>
                 <md-button ng-show="L.id > 0" class="md-raised md-primary" ng-click="guardarLote(L, L.LP)">
-                    <md-icon md-font-icon="fa-save"></md-icon>Guardar Cosecha @{{ $index + 1 }}
+                    <md-icon md-font-icon="fa-save"></md-icon>Guardar Cultivo @{{ $index + 1 }}
                 </md-button>
                 <md-button ng-show="!L.id" class="md-raised md-primary" ng-click="nuevoLote(L)">
-                    <md-icon md-font-icon="fa-save"></md-icon>Nueva Cosecha
+                    <md-icon md-font-icon="fa-save"></md-icon>Nueva Cultivo
                 </md-button>
             </div>
         </div>
