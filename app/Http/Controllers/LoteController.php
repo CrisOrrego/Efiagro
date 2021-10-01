@@ -46,10 +46,12 @@ class LoteController extends Controller
 
 	public function postActualizar(Request $req)
 	{
+        // dd($req);
 		$campos = $req->Datos;
 		$lote = Lote::findOrFail($campos['id']);
+            $lote->organizacion_id 	    = $campos['organizacion_id'];
             $lote->linea_productiva_id 	= $campos['linea_productiva_id'];
-            $lote->labores_id       	= 0; // $campos['labores_id'];
+            $lote->labores_id       	= $campos['labores_id']; // 0; // 
             $lote->hectareas 			= $campos['hectareas'];
             $lote->sitios    			= $campos['sitios'];
             $lote->coordenadas      	= $campos['coordenadas'];
