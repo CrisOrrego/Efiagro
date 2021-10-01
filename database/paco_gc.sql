@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-09-2021 a las 04:55:50
+-- Tiempo de generación: 01-10-2021 a las 03:30:47
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -9984,7 +9984,7 @@ INSERT INTO `opciones` (`id`, `organizacion_id`, `opcion`, `tipo`, `valor`, `cre
 (1, 1, 'CELULAR_TECNICO_AMIGO', 'Numero', '3214325432', '2021-08-10 20:32:58', '2021-09-20 18:58:45'),
 (2, 1, 'CORREO_SOPORTE', 'Texto', 'soporte1@gmail.com', '2021-08-10 20:32:58', '2021-09-20 18:58:45'),
 (3, 1, 'WHATSAPP_SOLICITUD', 'Boolean', '1', '2021-08-10 20:32:58', '2021-09-28 02:46:54'),
-(4, 1, 'LINEAS_CREDITO', 'Lista', '[\"Libre inversion\",\"Maquinaria\"]', '2021-08-10 20:32:58', '2021-09-28 02:50:54'),
+(4, 1, 'LINEAS_CREDITO', 'Lista', '[\"Libre inversion\",\"Maquinaria\",\"Para Fincas\"]', '2021-08-10 20:32:58', '2021-09-28 03:01:55'),
 (5, 1, 'DATOS_DECIMAL', 'Decimal', '2.5', '2021-08-10 20:32:58', '2021-09-20 19:15:54'),
 (6, 1, 'CREDITO_CAMBIAR_FECHA', 'Boolean', '1', '2021-09-27 20:32:58', '2021-09-28 02:50:54'),
 (7, 1, 'CREDITO_CAMBIAR_INTERES', 'Boolean', '0', '2021-09-27 20:32:58', '2021-09-28 02:42:59'),
@@ -10221,6 +10221,7 @@ CREATE TABLE `secciones` (
   `id` int(10) NOT NULL,
   `seccion` varchar(100) NOT NULL,
   `subseccion` varchar(100) NOT NULL,
+  `navegacion` varchar(100) NOT NULL DEFAULT 'superior',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -10229,36 +10230,36 @@ CREATE TABLE `secciones` (
 -- Volcado de datos para la tabla `secciones`
 --
 
-INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `created_at`, `updated_at`) VALUES
-(1, 'Mi Técnico Amigo', 'Mi Técnico Amigo', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'Gestión Organización', 'Organización', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'Gestión Organización', 'Usuarios', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'Gestión Organización', 'Productores', '2021-02-18 12:22:49', '2021-02-18 12:22:49'),
-(5, 'Mi Finca', 'Finca', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'Administración General', 'Organizaciones', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 'Administración General', 'Artículos ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8, 'Administración General', 'Casos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, 'Administración General', 'Fincas', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
-(11, 'Administración General', 'Lotes', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 'Administración General', 'Zonas', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
-(13, 'Administración General', 'Líneas Productivas', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
-(16, 'Administración General', 'Labores', '2021-02-18 12:28:26', '2021-02-18 12:28:26'),
-(17, 'Mi Técnico Amigo', 'Artículos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 'Mi Técnico Amigo', 'Solicitudes', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19, 'Administración General', 'Contacto', '2021-03-01 12:28:26', '2021-03-01 12:28:26'),
-(20, 'Administración General', 'Perfiles', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
-(21, 'Administración General', 'Configuracion', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
-(22, 'Fondo Rotatorio', 'Créditos', '2021-03-23 23:25:24', '2021-03-23 23:25:24'),
-(23, 'Administración General', 'Usuarios', '2021-03-14 07:12:13', '2021-03-14 07:12:13'),
-(25, 'Mi Finca', 'Lotes', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(26, 'Mi Finca', 'Eventos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(27, 'Mi Finca', 'Organización', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(28, 'Gestión Organización', 'Cultivos', '2021-02-18 12:22:49', '2021-02-18 12:22:49'),
-(29, 'Administración General', 'Cultivos', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
-(30, 'Administración General', 'Eventos', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
-(31, 'Administración General', 'Finca Eventos', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
-(32, 'Fondo Rotatorio', 'Listado', '2021-09-06 14:59:37', '2021-09-06 14:59:37'),
-(33, 'Fondo Rotatorio', 'Mis Créditos', '2021-09-06 14:59:37', '2021-09-06 14:59:37');
+INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `navegacion`, `created_at`, `updated_at`) VALUES
+(1, 'Mi Técnico Amigo', 'Mi Técnico Amigo', 'superior', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Gestión Organización', 'Organización', 'superior', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Gestión Organización', 'Usuarios', 'superior', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Gestión Organización', 'Productores', 'superior', '2021-02-18 12:22:49', '2021-02-18 12:22:49'),
+(5, 'Mi Finca', 'Finca', 'superior', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Administración General', 'Organizaciones', 'izquierda', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Administración General', 'Artículos ', 'izquierda', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'Administración General', 'Casos', 'izquierda', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 'Administración General', 'Fincas', 'izquierda', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
+(11, 'Administración General', 'Lotes', 'izquierda', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'Administración General', 'Zonas', 'izquierda', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
+(13, 'Administración General', 'Líneas Productivas', 'izquierda', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
+(16, 'Administración General', 'Labores', 'izquierda', '2021-02-18 12:28:26', '2021-02-18 12:28:26'),
+(17, 'Mi Técnico Amigo', 'Artículos', 'superior', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 'Mi Técnico Amigo', 'Solicitudes', 'superior', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 'Administración General', 'Contacto', 'izquierda', '2021-03-01 12:28:26', '2021-03-01 12:28:26'),
+(20, 'Administración General', 'Perfiles', 'izquierda', '2021-02-15 14:59:37', '2021-02-15 14:59:37'),
+(21, 'Administración General', 'Configuracion', 'izquierda', '2021-01-17 23:25:24', '2021-01-17 23:25:24'),
+(22, 'Fondo Rotatorio', 'Créditos', 'superior', '2021-03-23 23:25:24', '2021-03-23 23:25:24'),
+(23, 'Administración General', 'Usuarios', 'izquierda', '2021-03-14 07:12:13', '2021-03-14 07:12:13'),
+(25, 'Mi Finca', 'Lotes', 'superior', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 'Mi Finca', 'Eventos', 'superior', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 'Mi Finca', 'Organización', 'superior', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 'Gestión Organización', 'Cultivos', 'superior', '2021-02-18 12:22:49', '2021-02-18 12:22:49'),
+(29, 'Administración General', 'Cultivos', 'izquierda', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
+(30, 'Administración General', 'Eventos', 'izquierda', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
+(31, 'Administración General', 'Finca Eventos', 'izquierda', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
+(32, 'Fondo Rotatorio', 'Listado', 'superior', '2021-09-06 14:59:37', '2021-09-06 14:59:37'),
+(33, 'Fondo Rotatorio', 'Mis Créditos', 'superior', '2021-09-06 14:59:37', '2021-09-06 14:59:37');
 
 -- --------------------------------------------------------
 
@@ -10292,6 +10293,28 @@ INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellid
 (2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 20, 13, '$2y$10$yWjyeV6QwUpa3qdrXjQHyOWRhA0ytPpiJh6Ii.0n1vNEH.ozOQQM.', '2021-05-10 13:21:39', '2021-09-08 20:36:55', NULL),
 (28, 'CC', '3212323421', 'Usuario Prueba', 'Opciones', 'opciones@gmail.com', '3212343234', 2, 22, NULL, '$2y$10$ztOTOq/K5mNVd/2RhWiXE.f4FOmUnl/L2DI4kgqz1lYSBAKYOZ1YO', '2021-08-11 21:39:14', '2021-09-24 14:35:30', NULL),
 (29, 'CC', '0000000000', 'Usuario Pueba', 'Mi prueba', 'usuarioprueba@gmail.com', '3212223343', 4, 21, NULL, 'eyJpdiI6IktKbUduSTJUak5laU5KN0Y2S0tzNWc9PSIsInZhbHVlIjoibU5RTFBKZ2Zlb0tNQmpkRkRkM2hWZz09IiwibWFjIjoiYmNmMTU1Y2Q4MTgzMDQyYjkyMjY2Nzk1ZTgzMGRjNGIxNWU3NWE3OTEwMjVmOGY4NzFlNWY3MDM3YWM1YzFlOSJ9', '2021-09-24 14:43:18', '2021-09-24 14:43:18', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario_organizacion`
+--
+
+CREATE TABLE `usuario_organizacion` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `organizacion_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuario_organizacion`
+--
+
+INSERT INTO `usuario_organizacion` (`id`, `usuario_id`, `organizacion_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 2, 20, '2021-10-01 01:20:50', '2021-10-01 01:20:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -10574,6 +10597,12 @@ ALTER TABLE `usuarios`
   ADD KEY `finca_id` (`finca_id`);
 
 --
+-- Indices de la tabla `usuario_organizacion`
+--
+ALTER TABLE `usuario_organizacion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `zonas`
 --
 ALTER TABLE `zonas`
@@ -10769,6 +10798,12 @@ ALTER TABLE `secciones`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario_organizacion`
+--
+ALTER TABLE `usuario_organizacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `zonas`
