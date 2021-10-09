@@ -1,4 +1,4 @@
-<md-dialog  aria-label="Dialog" flex="95">
+<md-dialog  aria-label="Dialog" flex="95" style="max-height: 100vh;" layout=column>
 	<md-toolbar class="md-short bg-primary">
 		<div class="md-toolbar-tools">
 			<h2>@{{ Title }}</h2>
@@ -9,10 +9,10 @@
 		</div>
 	</md-toolbar>
 
-	<form id="Credit_Print" name="Credit_Form" ng-submit="SaveCredit()" layout-padding class="no-padding-top no-padding-bottom">
-	<md-dialog-content  layout="column" layout-gt-xs="row" class="no-overflow">
+	<form flex layout=column id="Credit_Print" name="Credit_Form" ng-submit="SaveCredit()" layout-padding class="no-padding-top no-padding-bottom">
+	<md-dialog-content flex  layout="column" layout-gt-xs="row" class="no-overflow">
 
-		<div flex="30" layout layout-wrap layout-align="start start" class="not-on-print">
+		<div flex="30" layout layout-wrap layout-align="start start" class="not-on-print mw290 mxw400">
 		
 			<md-input-container class="md-icon-float" flex="100">
 				<input class="md-display-1" ng-model="Credit.Monto" required type="string" placeholder="Monto" ui-money-mask="0" min="0">
@@ -26,7 +26,7 @@
 			</md-input-container>
 
 			<md-input-container flex="50">
-				<input ng-model="Credit.Interes" required type="string" min="0" placeholder="Interés (EA)" ui-percentage-mask>
+				<input ng-model="Credit.Interes" required type="string" min="0" placeholder="Interés (EA)" ui-percentage-mask ng-readonly="@{{ !Parent.Vars.CREDITO_CAMBIAR_INTERES }}">
 			</md-input-container>
 
 			<md-input-container flex="50">
@@ -44,17 +44,17 @@
 				<input ng-model="Credit.Periodos_Gracia" required type="number" step="1" min="0" max="@{{ Credit.Periodos - 1 }}" placeholder="Periodos de Gracia">
 			</md-input-container>
 
-			<div class="md-input-container" flex ng-if="Parent.Vars.OP_CAMBIAR_FECHA_INICIO_CREDITO && !Simulate">
+			<md-input-container flex=100 ng-if="Parent.Vars.CREDITO_CAMBIAR_FECHA && !Simulate">
 				<label>Inicio</label>
 				<md-datepicker class="md-no-button" ng-model="Credit.Primer_Pago"></md-datepicker>
-			</div>
+			</md-input-container>
 			
 			<span flex="100" class="md-headline text-center" ng-if="Credit.Cuota > 0">Cuota: @{{ Credit.Cuota | currency:'$':0 }}</span>
 			
 
 		</div>
 
-		<div flex="70" layout="column" class="padding-left">
+		<div flex="70" layout="column" class="padding-left overflow-x">
 			
 			<div class="only-on-print">
 				<h4 class="md-headline no-margin">Simulación de Crédito</h4>
