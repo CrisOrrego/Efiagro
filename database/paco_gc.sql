@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-10-2021 a las 03:30:47
+-- Tiempo de generación: 09-10-2021 a las 03:27:20
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -10140,33 +10140,6 @@ INSERT INTO `perfiles_secciones` (`id`, `perfil_id`, `seccion_id`, `nivel`, `cre
 (243, 4, 27, 10, '2021-05-10 13:34:09', '2021-05-10 13:34:09'),
 (244, 4, 28, 10, '2021-05-10 13:34:09', '2021-05-10 13:34:09'),
 (245, 4, 32, 10, '2021-05-10 13:34:09', '2021-05-10 13:34:09'),
-(272, 1, 7, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(273, 1, 8, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(274, 1, 21, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(275, 1, 19, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(276, 1, 29, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(277, 1, 30, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(278, 1, 31, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(279, 1, 9, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(280, 1, 16, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(281, 1, 13, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(282, 1, 11, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(283, 1, 6, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(284, 1, 20, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(285, 1, 23, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(286, 1, 12, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(287, 1, 22, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(288, 1, 28, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(289, 1, 2, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(290, 1, 4, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(291, 1, 3, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(292, 1, 26, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(293, 1, 5, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(294, 1, 25, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(295, 1, 27, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(296, 1, 17, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(297, 1, 1, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
-(298, 1, 18, 10, '2021-05-22 15:21:44', '2021-05-22 15:21:44'),
 (299, 4, 33, 10, '2021-05-10 13:34:09', '2021-05-10 13:34:09'),
 (358, 2, 7, 0, '2021-09-24 15:45:43', '2021-09-24 15:45:43'),
 (359, 2, 8, 0, '2021-09-24 15:45:43', '2021-09-24 15:45:43'),
@@ -10196,7 +10169,140 @@ INSERT INTO `perfiles_secciones` (`id`, `perfil_id`, `seccion_id`, `nivel`, `cre
 (383, 2, 27, 10, '2021-09-24 15:45:43', '2021-09-24 15:45:43'),
 (384, 2, 17, 10, '2021-09-24 15:45:43', '2021-09-24 15:45:43'),
 (385, 2, 1, 10, '2021-09-24 15:45:43', '2021-09-24 15:45:43'),
-(386, 2, 18, 10, '2021-09-24 15:45:43', '2021-09-24 15:45:43');
+(386, 2, 18, 10, '2021-09-24 15:45:43', '2021-09-24 15:45:43'),
+(417, 1, 7, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(418, 1, 8, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(419, 1, 21, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(420, 1, 19, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(421, 1, 29, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(422, 1, 30, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(423, 1, 31, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(424, 1, 9, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(425, 1, 16, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(426, 1, 13, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(427, 1, 11, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(428, 1, 6, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(429, 1, 20, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(430, 1, 23, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(431, 1, 12, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(432, 1, 22, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(433, 1, 34, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(434, 1, 32, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(435, 1, 33, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(436, 1, 28, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(437, 1, 2, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(438, 1, 4, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(439, 1, 3, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(440, 1, 26, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(441, 1, 5, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(442, 1, 25, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(443, 1, 27, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(444, 1, 17, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(445, 1, 1, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49'),
+(446, 1, 18, 10, '2021-10-09 01:21:49', '2021-10-09 01:21:49');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reps__filters`
+--
+
+CREATE TABLE `reps__filters` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `Informe_id` int(11) NOT NULL,
+  `Type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Desc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Pattern` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Default` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Options` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reps__filters`
+--
+
+INSERT INTO `reps__filters` (`id`, `Informe_id`, `Type`, `Name`, `Desc`, `Pattern`, `Default`, `Options`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Date', 'DateIni', 'Desde', '0_d_S', NULL, NULL, NULL, NULL),
+(2, 1, 'Date', 'DateFin', 'Hasta', '0_d_.', NULL, NULL, NULL, NULL),
+(3, 2, 'Date', 'DateFin', 'Corte', '0_d_.', NULL, NULL, NULL, NULL),
+(4, 3, 'Date', 'DateIni', 'Desde', '0_d_S', NULL, NULL, NULL, NULL),
+(5, 3, 'Date', 'DateFin', 'Hasta', '0_d_.', NULL, NULL, NULL, NULL),
+(6, 3, 'Select', 'Modo', 'Modo', 'Resumen|Completo', 'Resumen', NULL, NULL, NULL),
+(7, 4, 'Date', 'DateIni', 'Desde', '-12_M_S', NULL, NULL, NULL, NULL),
+(8, 4, 'Date', 'DateFin', 'Hasta', '0_d_E', NULL, NULL, NULL, NULL),
+(9, 5, 'Date', 'DateIni', 'Desde', '-12_M_S', NULL, NULL, NULL, NULL),
+(10, 5, 'Date', 'DateFin', 'Hasta', '0_d_.', NULL, NULL, NULL, NULL),
+(11, 5, 'Select', 'Incluir', 'Incluir', 'Activos|Eliminados', 'Activos', NULL, NULL, NULL),
+(12, 6, 'Date', 'DateIni', 'Desde', '-12_M_S', NULL, NULL, NULL, NULL),
+(13, 6, 'Date', 'DateFin', 'Hasta', '0_d_.', NULL, NULL, NULL, NULL),
+(14, 7, 'Number', 'Dias', 'Dias', NULL, '15', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reps__informes`
+--
+
+CREATE TABLE `reps__informes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `Icon` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Titulo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Order` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reps__informes`
+--
+
+INSERT INTO `reps__informes` (`id`, `Icon`, `Titulo`, `Order`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(4, 'fa-chart-pie', 'Informe de Creditos', 1, NULL, NULL, NULL),
+(5, 'fa-list', 'Detalle de Creditos', 2, NULL, NULL, NULL),
+(6, 'fa-dollar-sign', 'Ingresos de Creditos', 3, NULL, NULL, NULL),
+(7, 'fa-eye', 'Proyección de Ingresos', 4, NULL, NULL, NULL),
+(8, 'fa-exclamation-triangle', 'Cartera Vencida', 5, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reps__sections`
+--
+
+CREATE TABLE `reps__sections` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `Informe_id` int(11) NOT NULL,
+  `Order` int(11) NOT NULL,
+  `Route` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Width` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reps__sections`
+--
+
+INSERT INTO `reps__sections` (`id`, `Informe_id`, `Order`, `Route`, `Width`, `created_at`, `updated_at`) VALUES
+(8, 3, 1, '/api/Clientes/Factura/rep-det-recibos', 100, NULL, NULL),
+(9, 4, 1, '/api/creditos/rep-resultados', 100, NULL, NULL),
+(10, 4, 2, '/api/creditos/rep-cred-n-mes', 50, NULL, NULL),
+(11, 4, 3, '/api/creditos/rep-cred-v-mes', 50, NULL, NULL),
+(12, 4, 4, '/api/creditos/rep-linea/n', 50, NULL, NULL),
+(13, 4, 5, '/api/creditos/rep-linea/v', 50, NULL, NULL),
+(14, 4, 6, '/api/creditos/rep-estado/n', 50, NULL, NULL),
+(15, 4, 7, '/api/creditos/rep-estado/v', 50, NULL, NULL),
+(16, 5, 1, '/api/creditos/rep-det-creditos', 100, NULL, NULL),
+(17, 6, 1, '/api/creditos/rep-ing/mes', 70, NULL, NULL),
+(18, 6, 2, '/api/creditos/rep-ing-tipopago', 30, NULL, NULL),
+(19, 6, 3, '/api/creditos/rep-ing/dia', 100, NULL, NULL),
+(20, 7, 1, '/api/creditos/rep-proy-dia', 100, NULL, NULL),
+(21, 7, 2, '/api/creditos/rep-proy-creditos', 100, NULL, NULL),
+(22, 8, 1, '/api/creditos/rep-mora', 100, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -10259,7 +10365,8 @@ INSERT INTO `secciones` (`id`, `seccion`, `subseccion`, `navegacion`, `created_a
 (30, 'Administración General', 'Eventos', 'izquierda', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
 (31, 'Administración General', 'Finca Eventos', 'izquierda', '2021-02-19 14:59:37', '2021-02-19 14:59:37'),
 (32, 'Fondo Rotatorio', 'Listado', 'superior', '2021-09-06 14:59:37', '2021-09-06 14:59:37'),
-(33, 'Fondo Rotatorio', 'Mis Créditos', 'superior', '2021-09-06 14:59:37', '2021-09-06 14:59:37');
+(33, 'Fondo Rotatorio', 'Mis Créditos', 'superior', '2021-09-06 14:59:37', '2021-09-06 14:59:37'),
+(34, 'Fondo Rotatorio', 'Estadísticas', 'superior', '2021-09-06 14:59:37', '2021-09-06 14:59:37');
 
 -- --------------------------------------------------------
 
@@ -10577,6 +10684,25 @@ ALTER TABLE `perfiles_secciones`
   ADD KEY `seccion_id` (`seccion_id`);
 
 --
+-- Indices de la tabla `reps__filters`
+--
+ALTER TABLE `reps__filters`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `reps__informes`
+--
+ALTER TABLE `reps__informes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `reps__sections`
+--
+ALTER TABLE `reps__sections`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Informe_id` (`Informe_id`);
+
+--
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -10779,7 +10905,25 @@ ALTER TABLE `perfiles`
 -- AUTO_INCREMENT de la tabla `perfiles_secciones`
 --
 ALTER TABLE `perfiles_secciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=387;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=447;
+
+--
+-- AUTO_INCREMENT de la tabla `reps__filters`
+--
+ALTER TABLE `reps__filters`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `reps__informes`
+--
+ALTER TABLE `reps__informes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `reps__sections`
+--
+ALTER TABLE `reps__sections`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -10791,7 +10935,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
