@@ -17,17 +17,7 @@ class OpcionesController extends Controller
 
 	public function postIndex()
 	{
-		$Opciones = Opcion::where('organizacion_id', 1)->get()->keyBy('opcion')->transform(function($Op){
-			if($Op->tipo == 'Numero') $Op->valor = intval($Op->valor);
-			
-			if($Op->tipo == 'Boolean') $Op->valor = intval($Op->valor);
-
-			if($Op->tipo == 'Lista') $Op->valor = json_decode($Op->valor);
-
-			if($Op->tipo == 'Decimal') $Op->valor = json_decode($Op->valor);
-			return $Op;
-		});
-
+		$Opciones = Helper::getOpciones();
 		return $Opciones;
 	}
 	public function postActualizar()
@@ -41,6 +31,14 @@ class OpcionesController extends Controller
 
 		}
 		// dd($req);		
+	}
+
+
+
+	public function postGetOpciones()
+	{
+		$Opciones = Helper::getOpciones(true);
+		return $Opciones;
 	}
 		
 }

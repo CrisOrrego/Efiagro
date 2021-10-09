@@ -10,6 +10,7 @@ use App\Models\CreditoRecibo;
 use App\Models\CreditoAbono;
 use App\Functions\CRUD;
 use Carbon\Carbon;
+use DB;
 
 class CreditosController extends Controller
 {
@@ -54,7 +55,7 @@ class CreditosController extends Controller
 		Credito::where('id', $I['id'])->update([ 
 											'saldo' => $Cred->saldo, 
 											'estado' => $Cred->Estado, 
-											'estado_color' => $Cred->Estado_color, 
+											'estado_color' => $Cred->estado_color, 
 											'proximo_pago' => $Cred->proximo_pago, 
 										]);
 
@@ -252,23 +253,26 @@ class CreditosController extends Controller
 
 
 	//Resultados
-	public function postRepResultados(Reps $Reps)
+	public function postRepResultados()
 	{
 		$f = request()->input('f');
 		$DateIni = Carbon::parse($f['DateIni']);
 		$DateFin = Carbon::parse($f['DateFin']);
-		$Sede = Auth::user()->sede_sel_id;
+
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => 'Resultados',
 			'Subtitulo' => '',
-			'Template' => '/Frag/Estadisticas.Sections.Data_Remark',
+			'Template' => '/Frag/FondoRotatorio.Sections.Data_Remark',
 		];
-		$Creds = Credito::sede($Sede);
+		$Creds = Credito::organizacion($Usuario->organizacion_id);
 		$NoCreditos = $Creds->entre( $f['DateIni'], $f['DateFin'] )->count();
-		$ValCreditos = $Creds->entre( $f['DateIni'], $f['DateFin'] )->sum('Monto');
+		$ValCreditos = $Creds->entre( $f['DateIni'], $f['DateFin'] )->sum('monto');
+		$Beneficiarios = $Creds->entre( $f['DateIni'], $f['DateFin'] )->distinct('afiliado_id')->count('afiliado_id');
 
 		$R['data'] = [
 			[ 'key' => 	'Creditos',  'color' => '#3B9E9F', 'value' => number_format($NoCreditos, 0) ],
+			[ 'key' => 	'Beneficiarios',  'color' => '#277ac6', 'value' => number_format($Beneficiarios, 0) ],
 			[ 'key' => 	'Asignados', 'color' => '#0BA002', 'value' => "$".number_format($ValCreditos, 0) ],
 		];
 
@@ -277,25 +281,25 @@ class CreditosController extends Controller
 
 
 	//Cred No por mes
-	public function postRepCredNMes(Reps $Reps)
+	public function postRepCredNMes()
 	{
 		$f = request()->input('f');
 		$DateIni = Carbon::parse($f['DateIni']);
 		$DateFin = Carbon::parse($f['DateFin']);
-		$Sede = Auth::user()->sede_sel_id;
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => 'No de Creditos por mes',
 			'Subtitulo' => $DateIni->format('d/m/Y').' a '.$DateFin->format('d/m/Y'),
-			'Template' => '/Frag/Estadisticas.Sections.Chart_Col',
+			'Template' => '/Frag/FondoRotatorio.Sections.Chart_Col',
 			'chart' => [ 'xAxisFormat' => null, 'yAxisFormat' => 'Number', 'margin' => ['top' => 0, 'right' => 40, 'bottom' => 30, 'left' => 40 ], 'height' => 300,  ]
 		];
 
-		//$DiasEntre = $Reps->generateDateRangeArr($DateIni, $DateFin, 'd/m/Y', 0);
+		//$DiasEntre = Helper::generateDateRangeArr($DateIni, $DateFin, 'd/m/Y', 0);
 
-		$NoCredMes = Credito::sede($Sede)->entre( $f['DateIni'], $f['DateFin'] )->orderBy('created_at')->get()->groupBy('periodo')->transform(function($Dia){
+		$NoCredMes = Credito::organizacion($Usuario->organizacion_id)->entre( $f['DateIni'], $f['DateFin'] )->orderBy('created_at')->get()->groupBy('periodo')->transform(function($Dia){
 			return $Dia->count();
 		});
-		$NoCredMes = $Reps->keyValueToArr($NoCredMes->toArray());
+		$NoCredMes = Helper::keyValueToArr($NoCredMes->toArray());
 
 		$R['data'] = [
 			[ 'key' => 	'Creditos', 'color' => '#3B9E9F', 'values' => $NoCredMes ],
@@ -306,25 +310,26 @@ class CreditosController extends Controller
 
 
 	//Cred Val por mes
-	public function postRepCredVMes(Reps $Reps)
+	public function postRepCredVMes()
 	{
 		$f = request()->input('f');
 		$DateIni = Carbon::parse($f['DateIni']);
 		$DateFin = Carbon::parse($f['DateFin']);
-		$Sede = Auth::user()->sede_sel_id;
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => 'Asignación por mes',
 			'Subtitulo' => $DateIni->format('d/m/Y').' a '.$DateFin->format('d/m/Y'),
-			'Template' => '/Frag/Estadisticas.Sections.Chart_Col',
+			'Template' => '/Frag/FondoRotatorio.Sections.Chart_Col',
 			'chart' => [ 'xAxisFormat' => null, 'yAxisFormat' => 'Money', 'margin' => ['top' => 0, 'right' => 40, 'bottom' => 30, 'left' => 80 ], 'height' => 300, ],
 		];
 
-		//$DiasEntre = $Reps->generateDateRangeArr($DateIni, $DateFin, 'd/m/Y', 0);
+		//$DiasEntre = Helper::generateDateRangeArr($DateIni, $DateFin, 'd/m/Y', 0);
 
-		$ValCredMes = Credito::sede($Sede)->entre( $f['DateIni'], $f['DateFin'] )->orderBy('created_at')->get()->groupBy('periodo')->transform(function($Dia){
-			return $Dia->sum('Monto');
+		$ValCredMes = Credito::organizacion($Usuario->organizacion_id)->entre( $f['DateIni'], $f['DateFin'] )->orderBy('created_at')->get()->groupBy('periodo')->transform(function($Dia){
+			return $Dia->sum('monto');
 		});
-		$ValCredMes = $Reps->keyValueToArr($ValCredMes->toArray());
+		//return $ValCredMes;
+		$ValCredMes = Helper::keyValueToArr($ValCredMes->toArray());
 
 		$R['data'] = [
 			[ 'key' => 	'Asignación', 'color' => '#0BA002', 'values' => $ValCredMes ],
@@ -335,16 +340,16 @@ class CreditosController extends Controller
 
 
 	//Creditos por linea
-	public function postRepLinea(Reps $Reps, $Mode)
+	public function postRepLinea($Mode = 'n')
 	{
 		$f = request()->input('f');
 		$DateIni = Carbon::parse($f['DateIni']);
 		$DateFin = Carbon::parse($f['DateFin']);
-		$Sede = Auth::user()->sede_sel_id;
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => '',
 			'Subtitulo' => $DateIni->format('d/m/Y').' a '.$DateFin->format('d/m/Y'),
-			'Template' => '/Frag/Estadisticas.Sections.Chart_Bar',
+			'Template' => '/Frag/FondoRotatorio.Sections.Chart_Bar',
 			'chart' => [ 'xAxisFormat' => null ],
 		];
 
@@ -362,11 +367,11 @@ class CreditosController extends Controller
 			$color = '#0BA002';
 		}
 
-		$CredLinea = Credito::sede($Sede)->entre( $f['DateIni'], $f['DateFin'] )->get()->groupBy('Linea')->transform(function($E) use ($Mode){
-			if($Mode == 'n'){ return $E->count(); }else if($Mode == 'v'){ return $E->sum('Monto'); }
+		$CredLinea = Credito::organizacion($Usuario->organizacion_id)->entre( $f['DateIni'], $f['DateFin'] )->get()->groupBy('Linea')->transform(function($E) use ($Mode){
+			if($Mode == 'n'){ return $E->count(); }else if($Mode == 'v'){ return $E->sum('monto'); }
 		})->toArray();
 		arsort($CredLinea);
-		$CredLinea = $Reps->keyValueToArr($CredLinea);
+		$CredLinea = Helper::keyValueToArr($CredLinea);
 
 		$R['data'] = [
 			[ 'key' => $key, 'color' => $color, 'values' => $CredLinea ],
@@ -377,16 +382,16 @@ class CreditosController extends Controller
 
 
 	//Creditos por estado
-	public function postRepEstado(Reps $Reps, $Mode)
+	public function postRepEstado($Mode = 'n')
 	{
 		$f = request()->input('f');
 		$DateIni = Carbon::parse($f['DateIni']);
 		$DateFin = Carbon::parse($f['DateFin']);
-		$Sede = Auth::user()->sede_sel_id;
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => '',
 			'Subtitulo' => $DateIni->format('d/m/Y').' a '.$DateFin->format('d/m/Y'),
-			'Template' => '/Frag/Estadisticas.Sections.Chart_Pie',
+			'Template' => '/Frag/FondoRotatorio.Sections.Chart_Pie',
 			'chart' => [ 'xAxisFormat' => null ],
 		];
 
@@ -398,11 +403,11 @@ class CreditosController extends Controller
 			$R['chart']['yAxisFormat'] = 'Money';
 		}
 
-		$R['data'] = Credito::sede($Sede)->entre( $f['DateIni'], $f['DateFin'] )->orderBy('Estado')->get()->groupBy('Estado')->transform(function($E) use ($Mode){
+		$R['data'] = Credito::organizacion($Usuario->organizacion_id)->entre( $f['DateIni'], $f['DateFin'] )->orderBy('estado')->get()->groupBy('estado')->transform(function($E) use ($Mode){
 			if($Mode == 'n'){ 
-				return [ 'key' => $E->first()->Estado, 'color' => $E->first()->Estado_color, 'value' => $E->count() ];
+				return [ 'key' => $E->first()->estado, 'color' => $E->first()->estado_color, 'value' => $E->count() ];
 			}else if($Mode == 'v'){
-				return [ 'key' => $E->first()->Estado, 'color' => $E->first()->Estado_color, 'value' => $E->sum('Monto') ];
+				return [ 'key' => $E->first()->estado, 'color' => $E->first()->estado_color, 'value' => $E->sum('monto') ];
 			}
 		})->values()->toArray();
 
@@ -419,7 +424,7 @@ class CreditosController extends Controller
 		$R = [
 			'Titulo' => 'Creditos',
 			'Subtitulo' => $DateIni->format('d/m/Y').' a '.$DateFin->format('d/m/Y'),
-			'Template' => '/Frag/Estadisticas.Sections.Table_WithSubtables',
+			'Template' => '/Frag/FondoRotatorio.Sections.Table_WithSubtables',
 		];
 
 		$Headers = [
@@ -447,7 +452,7 @@ class CreditosController extends Controller
 				 ->entre( $f['DateIni'], $f['DateFin'] )->orderBy($f['orderBy'], $f['orderSort'])
 				 ->get()->transform(function($Row){
 			//return $Row;
-			$o = [ 'color' => $Row->Estado_color ];
+			$o = [ 'color' => $Row->estado_color ];
 			//dd($RowOpts);
 			$r = [];
 			$r['id'] = $Row->id;
@@ -475,9 +480,9 @@ class CreditosController extends Controller
 		$RowOpts = $Creds->pluck('opts')->toArray();
 
 		$Buttons = [
-			[ 'Class' => 'md-icon-button', 'Name' => 'Cuotas', 'Icon' => 'fa-list-ol', 'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-cuotas' ],
-			[ 'Class' => 'md-icon-button', 'Name' => 'Recibos',  'Icon' => 'fa-money',  'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-recibos' ],
-			[ 'Class' => 'md-icon-button', 'Name' => 'Pagos',  'Icon' => 'fa-usd',  'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-pagos' ],
+			[ 'Class' => 'md-icon-button', 'Name' => 'Cuotas', 'Icon' => 'fa-list-ol', 'Action' => 'Rep', 'Url' => '/api/creditos/rep-det-cuotas' ],
+			[ 'Class' => 'md-icon-button', 'Name' => 'Recibos',  'Icon' => 'fa-money-bill-alt',  'Action' => 'Rep', 'Url' => '/api/creditos/rep-det-recibos' ],
+			[ 'Class' => 'md-icon-button', 'Name' => 'Pagos',  'Icon' => 'fa-dollar-sign',  'Action' => 'Rep', 'Url' => '/api/creditos/rep-det-pagos' ],
 		];
 
 		$R['data'] = [ 'Headers' => $Headers, 'Rows' => $Creditos, 'RowOpts' => $RowOpts, 'Buttons' => $Buttons, 'Filename' => 'Creditos', 'Ext' => 'xls' ];
@@ -486,7 +491,7 @@ class CreditosController extends Controller
 	}
 
 	//Detalle de Cuotas
-	public function postRepDetCuotas(Reps $Reps)
+	public function postRepDetCuotas()
 	{
 		$f = request()->input('f');
 		$Cred = Credito::where('id', $f['selectedRow']['id'])->first();
@@ -500,12 +505,12 @@ class CreditosController extends Controller
 			$r = [];
 			$r['.'] = null;
 			$r['estado'] = $Row->estado;
-			$r['Num_Pago'] = $Row->Num_Pago;
+			$r['Num_Pago'] = $Row->num_pago;
 			$r['date'] = $Row->date;
-			$r['Capital'] = "$".number_format($Row->Capital,0);
-			$r['Interes'] = "$".number_format($Row->Interes,0);
-			$r['Total'] = "$".number_format($Row->Total,0);
-			$r['Deuda'] = "$".number_format($Row->Deuda,0);
+			$r['Capital'] = "$".number_format($Row->capital,0);
+			$r['Interes'] = "$".number_format($Row->interes,0);
+			$r['Total'] = "$".number_format($Row->total,0);
+			$r['Deuda'] = "$".number_format($Row->deuda,0);
 			$r['pendiente'] = "$".number_format($Row->pendiente,0);
 			$r['mora'] = "$".number_format($Row->mora,0);
 			$r['dias_mora'] = $Row->dias_mora;
@@ -534,14 +539,14 @@ class CreditosController extends Controller
 		$R = [
 			'Titulo' => 'Cuotas de crédito Cod. '.$Cred->id,
 			'Subtitulo' => '',
-			'Template' => '/Frag/Estadisticas.Sections.Table_Basic',
+			'Template' => '/Frag/FondoRotatorio.Sections.Table_Basic',
 			'data' => [ 'Headers' => $Headers, 'Rows' => $Saldos, 'RowOpts' => $RowOpts, 'Filename' => 'Cuotas del crédito Cod. '.$Cred->id, 'Ext' => 'xls' ],
 		];
 		return $R;
 	}
 
 	//Detalle de Recibos
-	public function postRepDetRecibos(Reps $Reps)
+	public function postRepDetRecibos()
 	{
 		$f = request()->input('f');
 		$Cred = Credito::where('id', $f['selectedRow']['id'])->first();
@@ -554,12 +559,12 @@ class CreditosController extends Controller
 			$r['.'] = null;
 			$r['id'] = $Recibo->id;
 			$r['fecha'] = $Recibo->fecha;
-			$r['Medio'] = $Recibo->Medio;
-			$r['NoConsignacion'] = $Recibo->NoConsignacion;
-			$r['Recibo_Valor'] = "$".number_format($Recibo->Valor, 0);
-			$r['Valor_Recibido'] = "$".number_format($Recibo->Valor_Recibido, 0);
-			$r['Valor_Devuelto'] = "$".number_format($Recibo->Valor_Devuelto, 0);
-			$r['Cajero'] = $Recibo->user->Nombres .' '. $Recibo->user->Apellidos;
+			$r['Medio'] = $Recibo->medio;
+			$r['NoConsignacion'] = $Recibo->no_consignacion;
+			$r['Recibo_Valor'] = "$".number_format($Recibo->valor, 0);
+			$r['Valor_Recibido'] = "$".number_format($Recibo->valor_recibido, 0);
+			$r['Valor_Devuelto'] = "$".number_format($Recibo->valor_devuelto, 0);
+			$r['Cajero'] = $Recibo->user->nombre;
 			$Recibos[] = $r;
 		};
 
@@ -578,14 +583,14 @@ class CreditosController extends Controller
 		$R = [
 			'Titulo' => 'Pagos de crédito Cod. '.$Cred->id,
 			'Subtitulo' => '',
-			'Template' => '/Frag/Estadisticas.Sections.Table_Basic',
+			'Template' => '/Frag/FondoRotatorio.Sections.Table_Basic',
 			'data' => [ 'Headers' => $Headers, 'Rows' => $Recibos, 'RowOpts' => [], 'Filename' => 'Recibos del crédito Cod. '.$Cred->id, 'Ext' => 'xls' ],
 		];
 		return $R;
 	}
 
 	//Detalle de Pagos
-	public function postRepDetPagos(Reps $Reps)
+	public function postRepDetPagos()
 	{
 		$f = request()->input('f');
 		$Cred = Credito::where('id', $f['selectedRow']['id'])->first();
@@ -601,20 +606,20 @@ class CreditosController extends Controller
 				$r['.'] = null;
 				$r['id'] = $Recibo->id;
 				$r['fecha'] = $Recibo->fecha;
-				$r['Medio'] = $Recibo->Medio;
-				$r['NoConsignacion'] = $Recibo->NoConsignacion;
-				$r['Recibo_Valor'] = "$".number_format($Recibo->Valor, 0);
-				$r['Valor_Recibido'] = "$".number_format($Recibo->Valor_Recibido, 0);
-				$r['Valor_Devuelto'] = "$".number_format($Recibo->Valor_Devuelto, 0);
-				$r['Cajero'] = $Recibo->user->Nombres .' '. $Recibo->user->Apellidos;
+				$r['Medio'] = $Recibo->medio;
+				$r['NoConsignacion'] = $Recibo->no_consignacion;
+				$r['Recibo_Valor'] = "$".number_format($Recibo->valor, 0);
+				$r['Valor_Recibido'] = "$".number_format($Recibo->valor_recibido, 0);
+				$r['Valor_Devuelto'] = "$".number_format($Recibo->valor_devuelto, 0);
+				$r['Cajero'] = $Recibo->user->nombre;
 				$r['..'] = null;
 				$r['id_pago'] = $Abono->id;
-				$r['saldo_Num_Pago'] = $Abono->saldo->Num_Pago;
-				$r['saldo_Fecha'] = $Abono->saldo->Fecha;
-				$r['saldo_Valor'] = "$".number_format($Abono->saldo->Total, 0);
-				$r['Paga'] = $Abono->Paga;
-				$r['Tipo'] = $Abono->Tipo;
-				$r['Valor'] = "$".number_format($Abono->Valor, 0);
+				$r['saldo_Num_Pago'] = $Abono->saldo->num_pago;
+				$r['saldo_Fecha'] = $Abono->saldo->fecha;
+				$r['saldo_Valor'] = "$".number_format($Abono->saldo->total, 0);
+				$r['Paga'] = $Abono->paga;
+				$r['Tipo'] = $Abono->tipo;
+				$r['Valor'] = "$".number_format($Abono->valor, 0);
 
 				$Pagos[] = $r;
 				$RowOpts[] = $o;
@@ -644,45 +649,46 @@ class CreditosController extends Controller
 		$R = [
 			'Titulo' => 'Pagos de crédito Cod. '.$Cred->id,
 			'Subtitulo' => '',
-			'Template' => '/Frag/Estadisticas.Sections.Table_Basic',
+			'Template' => '/Frag/FondoRotatorio.Sections.Table_Basic',
 			'data' => [ 'Headers' => $Headers, 'Rows' => $Pagos, 'RowOpts' => $RowOpts, 'Filename' => 'Pagos del crédito Cod. '.$Cred->id, 'Ext' => 'xls' ],
 		];
 		return $R;
 	}
 
 	//Cred Ingresos por mes
-	public function postRepIng(Reps $Reps, $Period)
+	public function postRepIng($Period = 'mes')
 	{
 		$f = request()->input('f');
 		$DateIni = Carbon::parse($f['DateIni']);
 		$DateFin = Carbon::parse($f['DateFin']);
-		$Sede = Auth::user()->sede_sel_id;
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => 'Ingresos por '.$Period,
 			'Subtitulo' => $DateIni->format('d/m/Y').' a '.$DateFin->format('d/m/Y'),
-			'Template' => '/Frag/Estadisticas.Sections.Chart_Col',
+			'Template' => '/Frag/FondoRotatorio.Sections.Chart_Col',
 			'chart' => [ 'xAxisFormat' => null, 'yAxisFormat' => 'Money', 'margin' => ['top' => 0, 'right' => 40, 'bottom' => 30, 'left' => 80 ],  ],
 		];
 
-		//$DiasEntre = $Reps->generateDateRangeArr($DateIni, $DateFin, 'd/m/Y', 0);
+		//$DiasEntre = Helper::generateDateRangeArr($DateIni, $DateFin, 'd/m/Y', 0);
 		if($Period == 'mes'){
 			$Per = 'periodo';
 		}else{
-			$DiasEntre = $Reps->generateDateRangeArr($DateIni, $DateFin, 'Y-m-d', 0);
+			$DiasEntre = Helper::generateDateRangeArr($DateIni, $DateFin, 'Y-m-d', 0);
 			$Per = 'dia';
 		}
 
-		$Values = Credito::with('recibos')->sede($Sede)->entre( $f['DateIni'], $f['DateFin'] )->orderBy('created_at')->get()->groupBy($Per)->transform(function($Dia){
+		$Values = Credito::with('recibos')->organizacion($Usuario->organizacion_id)->entre( $f['DateIni'], $f['DateFin'] )->orderBy('created_at')->get()->groupBy($Per)->transform(function($Dia){
 			$Ing = 0;
 			foreach ($Dia as $Cred) {
-				$Ing += $Cred->recibos->sum('Valor');
+				$Ing += $Cred->recibos->sum('valor');
 			}
 			return $Ing;
 		});
+		//return $Values;
 		if($Period == 'mes'){
-			$Values = $Reps->keyValueToArr($Values->toArray());
+			$Values = Helper::keyValueToArr($Values->toArray());
 		}else{
-			$Values = $Reps->keyValueToArr(array_merge($DiasEntre, $Values->toArray()));
+			$Values = Helper::keyValueToArr(array_merge($DiasEntre, $Values->toArray()));
 		}
 		
 
@@ -694,22 +700,22 @@ class CreditosController extends Controller
 	}
 
 	//Cred Ingresos por tipo pago
-	public function postRepIngTipopago(Reps $Reps)
+	public function postRepIngTipopago()
 	{
 		$f = request()->input('f');
 		$DateIni = Carbon::parse($f['DateIni']);
 		$DateFin = Carbon::parse($f['DateFin']);
-		$Sede = Auth::user()->sede_sel_id;
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => 'Ingresos por tipo',
 			'Subtitulo' => '',
-			'Template' => '/Frag/Estadisticas.Sections.Chart_Pie',
+			'Template' => '/Frag/FondoRotatorio.Sections.Chart_Pie',
 			'chart' => [ 'xAxisFormat' => null, 'yAxisFormat' => 'Money' ],
 		];
 
-		//$DiasEntre = $Reps->generateDateRangeArr($DateIni, $DateFin, 'd/m/Y', 0);
+		//$DiasEntre = Helper::generateDateRangeArr($DateIni, $DateFin, 'd/m/Y', 0);
 
-		$Values = Credito::with('recibos')->sede($Sede)->entre( $f['DateIni'], $f['DateFin'] )->get()->transform(function($Cred){
+		$Values = Credito::with('recibos')->organizacion($Usuario->organizacion_id)->entre( $f['DateIni'], $f['DateFin'] )->get()->transform(function($Cred){
 			$TiposPago = [
 				'Cuota Total' => 0,
 				'Cuota Parcial' => 0,
@@ -721,7 +727,7 @@ class CreditosController extends Controller
 			foreach ($Cred->recibos as $Recibo) {
 				$Recibo->getAbonos();
 				foreach ($Recibo->abonos as $Abono) {
-					$TiposPago[$Abono->Paga.' '.$Abono->Tipo] += $Abono->Valor;
+					$TiposPago[$Abono->paga.' '.$Abono->tipo] += $Abono->valor;
 				}
 			}
 			return $TiposPago;
@@ -741,31 +747,31 @@ class CreditosController extends Controller
 	}
 
 	//Proyección de ingresos por día
-	public function postRepProyDia(Reps $Reps)
+	public function postRepProyDia()
 	{
 		$f = request()->input('f');
 		$DateIni = Carbon::today();
 		$DateFin = Carbon::today()->addDays(intval($f['Dias']));
-		$Sede = Auth::user()->sede_sel_id;
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => 'Ingresos proyectados por día',
 			'Subtitulo' => $DateIni->format('d/m/Y').' a '.$DateFin->format('d/m/Y'),
-			'Template' => '/Frag/Estadisticas.Sections.Chart_Col',
+			'Template' => '/Frag/FondoRotatorio.Sections.Chart_Col',
 			'chart' => [ 'xAxisFormat' => null, 'yAxisFormat' => 'Money', 'height' => 250,  ]
 		];
 
-		$DiasEntre = $Reps->generateDateRangeArr($DateIni, $DateFin, 'Y-m-d', 0);
-
-		$Rows = Credito::with('saldos')->sede($Sede)->whereBetween('ProximoPago', [$DateIni, $DateFin])->get()->transform(function($Cred) use ($DateIni, $DateFin){
+		$DiasEntre = Helper::generateDateRangeArr($DateIni, $DateFin, 'Y-m-d', 0);
+		//->whereBetween('proximo_pago', [$DateIni, $DateFin])
+		$Rows = Credito::with('saldos')->organizacion($Usuario->organizacion_id)->get()->transform(function($Cred) use ($DateIni, $DateFin){
 			return $Cred->saldos->filter(function($Saldo) use ($DateIni, $DateFin){
-				return $Saldo->Fecha->between($DateIni, $DateFin);
+				return $Saldo->fecha->between($DateIni, $DateFin);
 			});
 		})->collapse()->sortBy('date')->groupBy('date')->transform(function($Dia)
 			{
 				return $Dia->sum('pendiente');
 			});
 
-		$Values = $Reps->keyValueToArr(array_merge($DiasEntre, $Rows->toArray()));
+		$Values = Helper::keyValueToArr(array_merge($DiasEntre, $Rows->toArray()));
 
 		$R['data'] = [
 			[ 'key' => 	'Ingresos proyectados', 'color' => '#6DAF25', 'values' => $Values ],
@@ -775,16 +781,16 @@ class CreditosController extends Controller
 	}
 
 	//Proyección de ingresos detallado
-	public function postRepProyCreditos(Reps $Reps)
+	public function postRepProyCreditos()
 	{
 		$f = request()->input('f');
 		$DateIni = Carbon::today();
 		$DateFin = Carbon::today()->addDays(intval($f['Dias']));
-		$Sede = Auth::user()->sede_sel_id;
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => "Creditos con pago dentro de los próximos {$f['Dias']} días",
 			'Subtitulo' => '',
-			'Template' => '/Frag/Estadisticas.Sections.Table_WithSubtables',
+			'Template' => '/Frag/FondoRotatorio.Sections.Table_WithSubtables',
 		];
 
 		$Headers = [
@@ -793,11 +799,7 @@ class CreditosController extends Controller
 			'Documento' => 'Documento',
 			'Asociado' => 'Asociado',
 			'Email' => 'Email',
-			'Telefono' => 'Teléfono',
-			'Field_1' => 'Finca',
-			'Field_2' => 'Vereda',
-			'Field_3' => 'Distrito o Corregimiento',
-			'Field_4' => 'Municipio',
+			'Celular' => 'Celular',
 			'Estado' => 'Estado',
 			'Cuota' => 'Cuota',
 			'Linea' => 'Línea',
@@ -810,29 +812,25 @@ class CreditosController extends Controller
 			'solicitado' => 'Fecha Solicitud',
 		];
 
-		$Rows = Credito::sede($Sede)->whereBetween('ProximoPago', [$DateIni, $DateFin])->orderBy('ProximoPago')->get()->transform(function($Row){
-			$o = [ 'color' => $Row->Estado_color ];
+		$Rows = Credito::organizacion($Usuario->organizacion_id)->whereBetween('proximo_pago', [$DateIni, $DateFin])->orderBy('proximo_pago')->get()->transform(function($Row){
+			$o = [ 'color' => $Row->estado_color ];
 			//dd($RowOpts);
 			$r = [];
 			$r['id'] = $Row->id;
-			$r['ProximoPago'] = $Row->ProximoPago;
-			$r['Documento'] = $Row->asociado->Documento;
-			$r['Asociado'] = $Row->asociado->Nombres . ' ' . $Row->asociado->Apellidos;
-			$r['Email'] = $Row->asociado->Email;
-			$r['Telefono'] = $Row->asociado->Telefono;
-			$r['Field_1'] = $Row->asociado->Field_1;
-			$r['Field_2'] = $Row->asociado->Field_2;
-			$r['Field_3'] = $Row->asociado->Field_3;
-			$r['Field_4'] = $Row->asociado->Field_4;
-			$r['Estado'] = $Row->Estado;
-			$r['Cuota'] = "$".number_format($Row->Cuota,0);
-			$r['Linea'] = $Row->Linea;
-			$r['Monto'] = "$".number_format($Row->Monto,0);
-			$r['Interes'] = $Row->Interes."%";
-			$r['Pagos'] = $Row->Pagos;
-			$r['Periodos'] = $Row->Periodos;
-			$r['Periodos_Gracia'] = $Row->Periodos_Gracia;
-			$r['Saldo'] = "$".number_format($Row->Saldo,0);
+			$r['ProximoPago'] = $Row->proximo_pago;
+			$r['Documento'] = $Row->asociado->documento;
+			$r['Asociado'] = $Row->asociado->nombre;
+			$r['Email'] = $Row->asociado->correo;
+			$r['Celular'] = $Row->asociado->celular;
+			$r['Estado'] = $Row->estado;
+			$r['Cuota'] = "$".number_format($Row->cuota,0);
+			$r['Linea'] = $Row->linea;
+			$r['Monto'] = "$".number_format($Row->monto,0);
+			$r['Interes'] = $Row->interes."%";
+			$r['Pagos'] = $Row->pagos;
+			$r['Periodos'] = $Row->periodos;
+			$r['Periodos_Gracia'] = $Row->periodos_gracia;
+			$r['Saldo'] = "$".number_format($Row->saldo,0);
 			$r['solicitado'] = $Row->solicitado;
 
 			return [ 'opts' => $o, 'data' => $r ];
@@ -843,25 +841,25 @@ class CreditosController extends Controller
 		$RowOpts =  $Rows->pluck('opts')->toArray();
 
 		$Buttons = [
-			[ 'Class' => 'md-icon-button', 'Name' => 'Cuotas', 'Icon' => 'fa-list-ol', 'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-cuotas' ],
-			[ 'Class' => 'md-icon-button', 'Name' => 'Recibos',  'Icon' => 'fa-money',  'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-recibos' ],
-			[ 'Class' => 'md-icon-button', 'Name' => 'Pagos',  'Icon' => 'fa-usd',  'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-pagos' ],
+			[ 'Class' => 'md-icon-button', 'Name' => 'Cuotas', 'Icon' => 'fa-list-ol', 'Action' => 'Rep', 'Url' => '/api/creditos/rep-det-cuotas' ],
+			[ 'Class' => 'md-icon-button', 'Name' => 'Recibos',  'Icon' => 'fa-money-bill-alt',  'Action' => 'Rep', 'Url' => '/api/creditos/rep-det-recibos' ],
+			[ 'Class' => 'md-icon-button', 'Name' => 'Pagos',  'Icon' => 'fa-dollar-sign',  'Action' => 'Rep', 'Url' => '/api/creditos/rep-det-pagos' ],
 		];
 
-		$R['data'] = [ 'Headers' => $Headers, 'Rows' => $Creditos, 'RowOpts' => $RowOpts, 'Buttons' => $Buttons, 'Filename' => 'Creditos_'.$Sede, 'Ext' => 'xls' ];
+		$R['data'] = [ 'Headers' => $Headers, 'Rows' => $Creditos, 'RowOpts' => $RowOpts, 'Buttons' => $Buttons, 'Filename' => 'Creditos_', 'Ext' => 'xls' ];
 
 		return $R;
 	}
 
 	//Creditos en mora
-	public function postRepMora(Reps $Reps)
+	public function postRepMora()
 	{
 		$f = request()->input('f');
-		$Sede = Auth::user()->sede_sel_id;
+		$Usuario = Helper::getUsuario();
 		$R = [
 			'Titulo' => "Creditos que presentan mora",
 			'Subtitulo' => '',
-			'Template' => '/Frag/Estadisticas.Sections.Table_WithSubtables',
+			'Template' => '/Frag/FondoRotatorio.Sections.Table_WithSubtables',
 		];
 
 		$Headers = [
@@ -887,7 +885,7 @@ class CreditosController extends Controller
 			'solicitado' => 'Fecha Solicitud',
 		];
 
-		$Rows = Credito::sede($Sede)->where('Estado', 'En Mora')->orderBy('ProximoPago')->get()->transform(function($Row){
+		$Rows = Credito::organizacion($Usuario->organizacion_id)->where('Estado', 'En Mora')->orderBy('ProximoPago')->get()->transform(function($Row){
 			$o = [ 'color' => $Row->Estado_color ];
 			$r = [];
 			$r['id'] = $Row->id;
@@ -903,8 +901,8 @@ class CreditosController extends Controller
 			$r['Estado'] = $Row->Estado;
 			$r['Cuota'] = "$".number_format($Row->Cuota,0);
 			$r['Linea'] = $Row->Linea;
-			$r['Monto'] = "$".number_format($Row->Monto,0);
-			$r['Interes'] = $Row->Interes."%";
+			$r['Monto'] = "$".number_format($Row->monto,0);
+			$r['Interes'] = $Row->interes."%";
 			$r['Pagos'] = $Row->Pagos;
 			$r['Periodos'] = $Row->Periodos;
 			$r['Periodos_Gracia'] = $Row->Periodos_Gracia;
@@ -918,12 +916,12 @@ class CreditosController extends Controller
 		$RowOpts =  $Rows->pluck('opts')->toArray();
 
 		$Buttons = [
-			[ 'Class' => 'md-icon-button', 'Name' => 'Cuotas', 'Icon' => 'fa-list-ol', 'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-cuotas' ],
-			[ 'Class' => 'md-icon-button', 'Name' => 'Recibos',  'Icon' => 'fa-money',  'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-recibos' ],
-			[ 'Class' => 'md-icon-button', 'Name' => 'Pagos',  'Icon' => 'fa-usd',  'Action' => 'Rep', 'Url' => '/api/Credito/Creditos/rep-det-pagos' ],
+			[ 'Class' => 'md-icon-button', 'Name' => 'Cuotas', 'Icon' => 'fa-list-ol', 'Action' => 'Rep', 'Url' => '/api/creditos/rep-det-cuotas' ],
+			[ 'Class' => 'md-icon-button', 'Name' => 'Recibos',  'Icon' => 'fa-money-bill-alt',  'Action' => 'Rep', 'Url' => '/api/creditos/rep-det-recibos' ],
+			[ 'Class' => 'md-icon-button', 'Name' => 'Pagos',  'Icon' => 'fa-dollar-sign',  'Action' => 'Rep', 'Url' => '/api/creditos/rep-det-pagos' ],
 		];
 
-		$R['data'] = [ 'Headers' => $Headers, 'Rows' => $Creditos, 'RowOpts' => $RowOpts, 'Buttons' => $Buttons, 'Filename' => 'Creditos_'.$Sede, 'Ext' => 'xls' ];
+		$R['data'] = [ 'Headers' => $Headers, 'Rows' => $Creditos, 'RowOpts' => $RowOpts, 'Buttons' => $Buttons, 'Filename' => 'Creditos_', 'Ext' => 'xls' ];
 
 		return $R;
 	}

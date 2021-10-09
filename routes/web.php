@@ -63,6 +63,7 @@ AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController
 AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          
 AdvancedRoute::controller('/api/secciones',         'SeccionesController');         
 
-AdvancedRoute::controller('/api/opciones',         'OpcionesController');       
+AdvancedRoute::controller('/api/opciones',         	'OpcionesController');       
 AdvancedRoute::controller('/api/creditos',          'CreditosController'); 
-AdvancedRoute::controller('/api/articulos', 'ArticulosController');
+AdvancedRoute::controller('/api/reps', 				'RepsController');
+AdvancedRoute::controller('/api/articulos', 		'ArticulosController');

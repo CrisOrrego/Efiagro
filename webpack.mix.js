@@ -14,6 +14,7 @@ if(libs){
 		'resources/js/libs/angular-material.min.js',
 		
 		'resources/js/libs/jquery_plugins/*.js',
+		'resources/js/libs/nvd3/*.js',
 		'resources/js/libs/angular_modules/*.js',
 	    
 	    'resources/js/libs/other/moment.min.js',
