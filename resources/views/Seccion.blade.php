@@ -17,7 +17,7 @@
 		<md-sidenav md-is-locked-open="true" class="w200 overflow-y"  ng-show="Secciones[Estado.ruta[2]].length > 1 && Secciones[Estado.ruta[2]][0].navegacion == 'izquierda'"
 			md-whiteframe=2 layout=column>
 			<div ng-repeat="S in Secciones[Estado.ruta[2]]" class="Pointer padding-5-10"
-				ng-class="{ 'text-bold bg-primary': (S.subseccion_slug == Estado.ruta[3]) }"
+				ng-class="{ 'text-bold bg-light-grey': (S.subseccion_slug == Estado.ruta[3]) }"
 				ng-click="navegarSubseccion(S.seccion_slug, S.subseccion_slug)">
 				@{{ S.subseccion }}
 			</div>
