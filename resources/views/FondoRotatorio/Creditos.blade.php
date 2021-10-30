@@ -4,7 +4,6 @@
 		md-is-locked-open="AsociadosNav">
 		
 		<div class="h40 bg-primary text-16px lh40 padding-left"><span class="text-clear">Buscar Asociado</span></div>
-
 		<md-autocomplete 
 			md-selected-item="Asociado"
 			md-autoselect="true"
@@ -16,7 +15,7 @@
 			md-min-length="2"
 			placeholder="Buscar Asociado"
 			class="margin"
-			ng-disabled="Asociado !== null"
+			ng-disabled="Asociado"
 			>
 			<md-item-template>
 				@{{ Asociado.nombres }} @{{ Asociado.apellidos }}

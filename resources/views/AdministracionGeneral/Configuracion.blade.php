@@ -56,7 +56,7 @@
                             <div layout="row" layout-wrap>
                                 <md-container>
                                     <div layout="row" layout-wrap>
-                                        <div><label style="color:rgb(148, 143, 137);">Cambiar Inicio de Crédito:</label>
+                                        <div><label style="color:rgb(148, 143, 137);">Cambiar Interés de Crédito:</label>
                                             &nbsp; </div>
                                         <div ng-repeat="Op in [Opciones.CREDITO_CAMBIAR_INTERES]">
                                             @include('AdministracionGeneral.Configuracion_OpcionEditor')
@@ -67,7 +67,7 @@
                             <div layout="row" layout-wrap>
                                 <md-container>
                                     <div layout="row" layout-wrap>
-                                        <div><label style="color:rgb(148, 143, 137);">Cambiar fecha de interés:</label>
+                                        <div><label style="color:rgb(148, 143, 137);">Cambiar fecha de inicio de crédito:</label>
                                             &nbsp; </div>
                                         <div ng-repeat="Op in [Opciones.CREDITO_CAMBIAR_FECHA]">
                                             @include('AdministracionGeneral.Configuracion_OpcionEditor')
