@@ -73,6 +73,7 @@ class CreditosController extends Controller
 			'organizacion_id' 	=> $Usuario->organizacion_id,
 			'afiliado_id' 		=> $I['Asociado']['id'], 	
 			'estado' 			=> 'Normal', 		
+			'fecha' 			=> $I['Credit']['Fecha'],
 			'linea' 			=> $I['Credit']['Linea'], 			
 			'monto' 			=> $I['Credit']['Monto'], 			
 			'interes' 			=> floatval($I['Credit']['Interes']) * 100, 		
@@ -232,8 +233,8 @@ class CreditosController extends Controller
 
 	public function deleteRecibo($recibo_id)
 	{
-		Recibo::where('id', $recibo_id)->delete();
-		Abono::where('recibo_id', $recibo_id)->delete();
+		CreditoRecibo::where('id', $recibo_id)->delete();
+		CreditoAbono::where('recibo_id', $recibo_id)->delete();
 	}
 
 	public function postDelete(){
@@ -242,8 +243,10 @@ class CreditosController extends Controller
 		$Cred->delete();
 
 		//Borrar los recibos
-		$Recibo = Recibo::where('credito_id', $I['id'])->first();
-		$this->deleteRecibo($Recibo->id);
+		$Recibos = CreditoRecibo::where('credito_id', $I['id'])->get();
+		foreach ($Recibos as $Recibo) {
+			$this->deleteRecibo($Recibo->id);
+		}
 	}
 
 	public function postDeleteRecibo(){
