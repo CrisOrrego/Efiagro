@@ -16,7 +16,8 @@
 			md-min-length="2"
 			placeholder="Buscar Asociado"
 			class="margin"
-			ng-disabled="Asociado !== null">
+			ng-disabled="Asociado !== null"
+			>
 			<md-item-template>
 				@{{ Asociado.nombres }} @{{ Asociado.apellidos }}
 			</md-item-template>
