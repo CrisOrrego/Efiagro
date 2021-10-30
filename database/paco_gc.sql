@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2021 a las 03:27:20
+-- Tiempo de generación: 30-10-2021 a las 04:46:53
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -204,7 +204,9 @@ INSERT INTO `credito__abonos` (`id`, `credito_id`, `recibo_id`, `saldo_id`, `pag
 (24, 6, 8, 69, 'Cuota', 'Total', 448176, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL),
 (25, 6, 8, 70, 'Cuota', 'Total', 448176, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL),
 (26, 6, 8, 71, 'Cuota', 'Total', 448176, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL),
-(27, 6, 8, 72, 'Cuota', 'Total', 448173, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL);
+(27, 6, 8, 72, 'Cuota', 'Total', 448173, '2021-08-19 08:09:13', '2021-08-19 08:09:13', NULL),
+(28, 14, 9, 85, 'Cuota', 'Total', 167680, '2021-10-30 07:35:59', '2021-10-30 07:35:59', NULL),
+(29, 14, 9, 86, 'Cuota', 'Parcial', 3689, '2021-10-30 07:35:59', '2021-10-30 07:35:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -241,7 +243,12 @@ INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado
 (6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-09-09 00:50:05', NULL),
 (7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-09-09 00:55:32', NULL),
 (8, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-09-09 00:55:37', NULL),
-(9, 1, 2, 'En Mora', '#ce0202', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-09-28 05:23:25', NULL);
+(9, 1, 2, 'En Mora', '#ce0202', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-09-28 05:23:25', NULL),
+(10, 1, 2, 'Normal', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:32:08', '2021-10-30 07:32:08', NULL),
+(11, 1, 2, 'Normal', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:32:12', '2021-10-30 07:32:12', NULL),
+(12, 1, 2, 'Normal', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:33:02', '2021-10-30 07:33:02', NULL),
+(13, 1, 2, 'Normal', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:33:11', '2021-10-30 07:33:11', NULL),
+(14, 1, 2, 'Normal', '#00695c', 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, '2021-11-25', 1, '2021-10-30 07:35:03', '2021-10-30 07:36:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -271,7 +278,8 @@ INSERT INTO `credito__recibos` (`id`, `credito_id`, `user_id`, `medio`, `no_cons
 (5, 6, 1, 'Efectivo', NULL, 887821, 887821, 0, '2021-06-24 05:26:40', '2021-06-24 05:26:40', NULL),
 (6, 6, 1, 'Efectivo', NULL, 300000, 300000, 0, '2021-07-31 06:42:51', '2021-07-31 06:42:51', NULL),
 (7, 7, 1, 'Efectivo', NULL, 400000, 200000, 200000, '2021-07-31 06:43:27', '2021-07-31 06:43:27', NULL),
-(8, 6, 1, 'Efectivo', NULL, 5378109, 5378109, 0, '2021-08-19 08:09:11', '2021-08-19 08:09:11', NULL);
+(8, 6, 1, 'Efectivo', NULL, 5378109, 5378109, 0, '2021-08-19 08:09:11', '2021-08-19 08:09:11', NULL),
+(9, 14, 1, 'Efectivo', NULL, 171369, 171369, 0, '2021-10-30 07:35:59', '2021-10-30 07:35:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -323,7 +331,13 @@ INSERT INTO `credito__saldos` (`id`, `credito_id`, `activo`, `tipo`, `num_pago`,
 (81, 9, 1, 'CREDITO', 3, '2021-11-19', 165041, 12745, 177786, 513942, 1, '2021-08-20 01:04:41', '2021-08-20 01:04:41'),
 (82, 9, 1, 'CREDITO', 4, '2021-12-19', 168139, 9647, 177786, 345803, 1, '2021-08-20 01:04:42', '2021-08-20 01:04:42'),
 (83, 9, 1, 'CREDITO', 5, '2022-01-19', 171295, 6491, 177786, 174508, 1, '2021-08-20 01:04:42', '2021-08-20 01:04:42'),
-(84, 9, 1, 'CREDITO', 6, '2022-02-19', 174508, 3276, 177784, 0, 1, '2021-08-20 01:04:42', '2021-08-20 01:04:42');
+(84, 9, 1, 'CREDITO', 6, '2022-02-19', 174508, 3276, 177784, 0, 1, '2021-08-20 01:04:42', '2021-08-20 01:04:42'),
+(85, 14, 1, 'CREDITO', 1, '2021-10-25', 165946, 1734, 167680, 834054, 1, '2021-10-30 07:35:04', '2021-10-30 07:35:04'),
+(86, 14, 1, 'CREDITO', 2, '2021-11-25', 166234, 1446, 167680, 667820, 1, '2021-10-30 07:35:04', '2021-10-30 07:35:04'),
+(87, 14, 1, 'CREDITO', 3, '2021-12-25', 166522, 1158, 167680, 501298, 1, '2021-10-30 07:35:04', '2021-10-30 07:35:04'),
+(88, 14, 1, 'CREDITO', 4, '2022-01-25', 166811, 869, 167680, 334487, 1, '2021-10-30 07:35:04', '2021-10-30 07:35:04'),
+(89, 14, 1, 'CREDITO', 5, '2022-02-25', 167100, 580, 167680, 167387, 1, '2021-10-30 07:35:04', '2021-10-30 07:35:04'),
+(90, 14, 1, 'CREDITO', 6, '2022-03-25', 167387, 291, 167678, 0, 1, '2021-10-30 07:35:04', '2021-10-30 07:35:04');
 
 -- --------------------------------------------------------
 
@@ -9986,8 +10000,8 @@ INSERT INTO `opciones` (`id`, `organizacion_id`, `opcion`, `tipo`, `valor`, `cre
 (3, 1, 'WHATSAPP_SOLICITUD', 'Boolean', '1', '2021-08-10 20:32:58', '2021-09-28 02:46:54'),
 (4, 1, 'LINEAS_CREDITO', 'Lista', '[\"Libre inversion\",\"Maquinaria\",\"Para Fincas\"]', '2021-08-10 20:32:58', '2021-09-28 03:01:55'),
 (5, 1, 'DATOS_DECIMAL', 'Decimal', '2.5', '2021-08-10 20:32:58', '2021-09-20 19:15:54'),
-(6, 1, 'CREDITO_CAMBIAR_FECHA', 'Boolean', '1', '2021-09-27 20:32:58', '2021-09-28 02:50:54'),
-(7, 1, 'CREDITO_CAMBIAR_INTERES', 'Boolean', '0', '2021-09-27 20:32:58', '2021-09-28 02:42:59'),
+(6, 1, 'CREDITO_CAMBIAR_FECHA', 'Boolean', '1', '2021-09-27 20:32:58', '2021-10-30 02:32:32'),
+(7, 1, 'CREDITO_CAMBIAR_INTERES', 'Boolean', '0', '2021-09-27 20:32:58', '2021-10-30 02:32:32'),
 (8, 1, 'CREDITO_INTERES', 'Decimal', '2.1', '2021-09-27 20:32:58', '2021-09-28 02:42:26'),
 (9, 1, 'CREDITO_MORA_MENOS_30', 'Decimal', '2.2', '2021-09-27 20:32:58', '2021-09-28 02:42:26'),
 (10, 1, 'CREDITO_MORA_31_60', 'Decimal', '2.3', '2021-09-27 20:32:58', '2021-09-28 02:42:26'),
@@ -10773,19 +10787,25 @@ ALTER TABLE `casos_novedades`
 -- AUTO_INCREMENT de la tabla `credito__abonos`
 --
 ALTER TABLE `credito__abonos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `credito__creditos`
 --
 ALTER TABLE `credito__creditos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `credito__recibos`
 --
 ALTER TABLE `credito__recibos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `credito__saldos`
+--
+ALTER TABLE `credito__saldos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT de la tabla `cultivos`
