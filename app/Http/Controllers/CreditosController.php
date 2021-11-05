@@ -73,6 +73,7 @@ class CreditosController extends Controller
 			'organizacion_id' 	=> $Usuario->organizacion_id,
 			'afiliado_id' 		=> $I['Asociado']['id'], 	
 			'estado' 			=> 'Normal', 		
+			'fecha' 			=> $I['Credit']['Fecha'],
 			'linea' 			=> $I['Credit']['Linea'], 			
 			'monto' 			=> $I['Credit']['Monto'], 			
 			'interes' 			=> floatval($I['Credit']['Interes']) * 100, 		
@@ -232,8 +233,8 @@ class CreditosController extends Controller
 
 	public function deleteRecibo($recibo_id)
 	{
-		Recibo::where('id', $recibo_id)->delete();
-		Abono::where('recibo_id', $recibo_id)->delete();
+		CreditoRecibo::where('id', $recibo_id)->delete();
+		CreditoAbono::where('recibo_id', $recibo_id)->delete();
 	}
 
 	public function postDelete(){
@@ -242,8 +243,10 @@ class CreditosController extends Controller
 		$Cred->delete();
 
 		//Borrar los recibos
-		$Recibo = Recibo::where('credito_id', $I['id'])->first();
-		$this->deleteRecibo($Recibo->id);
+		$Recibos = CreditoRecibo::where('credito_id', $I['id'])->get();
+		foreach ($Recibos as $Recibo) {
+			$this->deleteRecibo($Recibo->id);
+		}
 	}
 
 	public function postDeleteRecibo(){
@@ -868,11 +871,7 @@ class CreditosController extends Controller
 			'Documento' => 'Documento',
 			'Asociado' => 'Asociado',
 			'Email' => 'Email',
-			'Telefono' => 'Teléfono',
-			'Field_1' => 'Finca',
-			'Field_2' => 'Vereda',
-			'Field_3' => 'Distrito o Corregimiento',
-			'Field_4' => 'Municipio',
+			'Celular' => 'Celular',
 			'Estado' => 'Estado',
 			'Cuota' => 'Cuota',
 			'Linea' => 'Línea',
@@ -885,28 +884,24 @@ class CreditosController extends Controller
 			'solicitado' => 'Fecha Solicitud',
 		];
 
-		$Rows = Credito::organizacion($Usuario->organizacion_id)->where('Estado', 'En Mora')->orderBy('ProximoPago')->get()->transform(function($Row){
+		$Rows = Credito::organizacion($Usuario->organizacion_id)->where('estado', 'En Mora')->orderBy('proximo_pago')->get()->transform(function($Row){
 			$o = [ 'color' => $Row->Estado_color ];
 			$r = [];
 			$r['id'] = $Row->id;
-			$r['ProximoPago'] = $Row->ProximoPago;
-			$r['Documento'] = $Row->asociado->Documento;
-			$r['Asociado'] = $Row->asociado->Nombres . ' ' . $Row->asociado->Apellidos;
-			$r['Email'] = $Row->asociado->Email;
-			$r['Telefono'] = $Row->asociado->Telefono;
-			$r['Field_1'] = $Row->asociado->Field_1;
-			$r['Field_2'] = $Row->asociado->Field_2;
-			$r['Field_3'] = $Row->asociado->Field_3;
-			$r['Field_4'] = $Row->asociado->Field_4;
-			$r['Estado'] = $Row->Estado;
-			$r['Cuota'] = "$".number_format($Row->Cuota,0);
-			$r['Linea'] = $Row->Linea;
+			$r['ProximoPago'] = $Row->proximo_pago;
+			$r['Documento'] = $Row->asociado->documento;
+			$r['Asociado'] = $Row->asociado->nombre;
+			$r['Email'] = $Row->asociado->correo;
+			$r['Celular'] = $Row->asociado->celular;
+			$r['Estado'] = $Row->estado;
+			$r['Cuota'] = "$".number_format($Row->cuota,0);
+			$r['Linea'] = $Row->linea;
 			$r['Monto'] = "$".number_format($Row->monto,0);
 			$r['Interes'] = $Row->interes."%";
-			$r['Pagos'] = $Row->Pagos;
-			$r['Periodos'] = $Row->Periodos;
-			$r['Periodos_Gracia'] = $Row->Periodos_Gracia;
-			$r['Saldo'] = "$".number_format($Row->Saldo,0);
+			$r['Pagos'] = $Row->pagos;
+			$r['Periodos'] = $Row->periodos;
+			$r['Periodos_Gracia'] = $Row->periodos_gracia;
+			$r['Saldo'] = "$".number_format($Row->saldo,0);
 			$r['solicitado'] = $Row->solicitado;
 
 			return [ 'opts' => $o, 'data' => $r ];

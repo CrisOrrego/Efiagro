@@ -137,7 +137,8 @@ class CreditoSaldo extends Model
     {
         if($this->due) return $this->interes;
 
-        $FechaCredito = $this->credito->created_at;
+        $FechaCredito = $this->credito->fecha;
+        if(!$FechaCredito) $FechaCredito = $this->credito->created_at;
 
         $DiasCuota = $FechaCredito->diffInDays($this->fecha);
         $DiasAHoy  = $FechaCredito->diffInDays(Carbon::today());

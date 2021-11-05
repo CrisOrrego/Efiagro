@@ -16,6 +16,9 @@ class Credito extends Model
     protected $table = 'credito__creditos';
     protected $guarded = [];
     protected $appends = ['solicitado', 'periodo'];
+    protected $casts = [
+        'fecha' => 'date'
+    ];
 
     public function columns()
     {
@@ -24,7 +27,8 @@ class Credito extends Model
 			[ 'organizacion_id', 	null, true, false, null, 100 ],
 			[ 'afiliado_id', 		null, true, false, null, 100 ],
 			[ 'estado', 			null, true, false, null, 100 ],
-			[ 'linea', 				null, true, false, null, 100 ],
+			[ 'fecha',              null, true, false, null, 100 ],
+            [ 'linea', 				null, true, false, null, 100 ],
 			[ 'monto', 				null, true, false, null, 100 ],
 			[ 'interes', 			null, true, false, null, 100 ],
 			[ 'pagos', 				null, true, false, null, 100 ],

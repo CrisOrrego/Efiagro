@@ -60,8 +60,12 @@ angular.module('FondoRotatorio_NuevoCreditoDiagCtrl', [])
 		Ctrl.SaveCredit = function(){
 			if(Simulate) return false;
 
+			let Credit = angular.copy(Ctrl.Credit);
+
+			Credit.Fecha = moment(Credit.Primer_Pago).format('YYYY-MM-DD');
+
 			var Daten = {
-				Credit: Ctrl.Credit,
+				Credit: Credit,
 				Amortable: Ctrl.Amortable,
 				AmortableRes: Ctrl.AmortableRes,
 				Asociado: Asociado,

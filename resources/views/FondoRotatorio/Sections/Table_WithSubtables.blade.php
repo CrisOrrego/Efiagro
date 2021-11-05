@@ -23,7 +23,7 @@
 					</tr>
 				</thead>
 				<tbody md-body>
-					<tr md-row ng-repeat="(k,R) in S.L.data.Rows | orderBy: OrderBy | filter: Filter" class="md-row-hover md-pointer" 
+					<tr md-row ng-repeat="(k,R) in S.L.data.Rows | orderBy: OrderBy" class="md-row-hover md-pointer" 
 						ng-style="{color: S.L.data.RowOpts[k].color, background: S.L.data.RowOpts[k].background}">
 						<td md-cell class="md-cell-compress">
 							<md-button class="no-margin" ng-class="B.Class" aria-label="i" ng-repeat="B in S.L.data.Buttons" 
