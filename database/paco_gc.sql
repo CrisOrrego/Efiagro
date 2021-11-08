@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2021 a las 04:46:53
+-- Tiempo de generación: 05-11-2021 a las 01:26:46
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -220,6 +220,7 @@ CREATE TABLE `credito__creditos` (
   `afiliado_id` int(11) NOT NULL,
   `estado` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Normal',
   `estado_color` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
   `linea` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `monto` bigint(20) NOT NULL,
   `interes` decimal(6,2) NOT NULL,
@@ -239,16 +240,16 @@ CREATE TABLE `credito__creditos` (
 -- Volcado de datos para la tabla `credito__creditos`
 --
 
-INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado`, `estado_color`, `linea`, `monto`, `interes`, `pagos`, `periodos`, `periodos_gracia`, `cuota`, `saldo`, `proximo_pago`, `usuario_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(6, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-09-09 00:50:05', NULL),
-(7, 18, 2, 'Terminado', '#979797', 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-09-09 00:55:32', NULL),
-(8, 1, 2, 'Normal', '#00695c', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-09-09 00:55:37', NULL),
-(9, 1, 2, 'En Mora', '#ce0202', 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-09-28 05:23:25', NULL),
-(10, 1, 2, 'Normal', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:32:08', '2021-10-30 07:32:08', NULL),
-(11, 1, 2, 'Normal', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:32:12', '2021-10-30 07:32:12', NULL),
-(12, 1, 2, 'Normal', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:33:02', '2021-10-30 07:33:02', NULL),
-(13, 1, 2, 'Normal', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:33:11', '2021-10-30 07:33:11', NULL),
-(14, 1, 2, 'Normal', '#00695c', 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, '2021-11-25', 1, '2021-10-30 07:35:03', '2021-10-30 07:36:00', NULL);
+INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado`, `estado_color`, `fecha`, `linea`, `monto`, `interes`, `pagos`, `periodos`, `periodos_gracia`, `cuota`, `saldo`, `proximo_pago`, `usuario_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(6, 18, 2, 'Terminado', '#979797', NULL, 'Libre Inversión', 5000000, '25.00', 'Trimestrales', 12, 0, 587821, 7053849, NULL, 1, '2021-06-24 05:25:59', '2021-09-09 00:50:05', NULL),
+(7, 18, 2, 'Terminado', '#979797', NULL, 'Libre Inversión', 200000, '25.00', 'Mensuales', 6, 0, 35558, 213345, NULL, 1, '2021-07-31 06:42:26', '2021-09-09 00:55:32', NULL),
+(8, 1, 2, 'Normal', '#00695c', NULL, 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:03:55', '2021-09-09 00:55:37', NULL),
+(9, 1, 2, 'En Mora', '#ce0202', NULL, 'Libre Inversión', 1000000, '25.00', 'Mensuales', 6, 0, 177786, 1066714, NULL, 1, '2021-08-20 01:04:41', '2021-09-28 05:23:25', NULL),
+(10, 1, 2, 'Normal', NULL, NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:32:08', '2021-10-30 07:32:08', NULL),
+(11, 1, 2, 'Normal', NULL, NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:32:12', '2021-10-30 07:32:12', NULL),
+(12, 1, 2, 'Normal', NULL, NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:33:02', '2021-10-30 07:33:02', NULL),
+(13, 1, 2, 'Normal', NULL, NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:33:11', '2021-10-30 07:33:11', NULL),
+(14, 1, 2, 'Normal', '#00695c', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, '2021-11-25', 1, '2021-10-30 07:35:03', '2021-11-05 00:19:18', NULL);
 
 -- --------------------------------------------------------
 
