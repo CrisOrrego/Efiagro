@@ -70,8 +70,8 @@
 						<th md-column>Temperatura </th>
 						<th md-column>Humedad Relativa </th>
 						<th md-column>Precipitación </th>
-						<th md-column>Altimetria Min </th>
-						<th md-column>Altimetria Max</th>
+						<th md-column>Altimetria</th>
+						{{-- <th md-column>Altimetria Max</th> --}}
 						<th md-column>Brillo Solar </th>
 						<th md-column>Acción</th>
 					</tr>
@@ -97,8 +97,8 @@
 						<td md-cell>@{{ F.temperatura }} <span>C°</span></td>
 						<td md-cell>@{{ F.humedad_relativa }} <span>%</span></td>
 						<td md-cell>@{{ F.precipitacion }} <span>Mm</span></td>
-						<td md-cell>@{{ F.altimetria_min }} <span>Mt</span></td>
-						<td md-cell>@{{ F.altimetria_max }} <span>Mt</span></td>
+						<td md-cell>@{{ F.altimetria }} <span>Mt</span></td>
+						{{-- <td md-cell>@{{ F.altimetria_max }} <span>Mt</span></td> --}}
 						<td md-cell>@{{ F.brillo_solar }} <span>H</span></td>
 						{{-- <td md-cell>@{{ O.created_at }}</td> --}}
 						{{-- <td md-cell>@{{ O.updated_at }}</td> --}}
