@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2021 a las 01:26:46
+-- Tiempo de generación: 11-11-2021 a las 14:07:44
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -44,8 +44,8 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`id`, `linea_productiva_id`, `titulo`, `palabras_clave`, `estado`, `permisos`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(3, 5, 'ORG Organización Cultivos', 'cultivo', 'Activo', NULL, 1, '2021-06-23 01:46:03', '2021-06-23 23:37:15'),
-(4, 4, 'Nueva Forma de Cultivo', 'Forma,OTRO', 'Activo', NULL, 1, '2021-06-23 23:33:35', '2021-07-30 02:57:05');
+(5, 5, 'Articulo Prueba', 'prueba', 'Activo', NULL, 1, '2021-11-10 10:33:19', '2021-11-10 10:35:04'),
+(6, 5, 'Otro articulo prueba', 'vaca, caballo', 'Activo', NULL, 1, '2021-11-10 10:33:19', '2021-11-10 10:35:04');
 
 -- --------------------------------------------------------
 
@@ -69,16 +69,9 @@ CREATE TABLE `articulos_secciones` (
 --
 
 INSERT INTO `articulos_secciones` (`id`, `articulo_id`, `indice`, `tipo`, `contenido`, `ruta`, `created_at`, `updated_at`) VALUES
-(39, 3, 1, 'Parrafo', NULL, NULL, '2021-06-23 01:48:00', '2021-06-23 01:48:00'),
-(40, 3, 2, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-06-23 01:48:03', '2021-06-23 01:48:03'),
-(41, 4, 2, 'Parrafo', 'Este es una forma nueva', NULL, '2021-06-23 23:34:03', '2021-06-23 23:35:00'),
-(42, 4, 3, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-06-23 23:34:21', '2021-06-23 23:35:00'),
-(43, 4, 1, 'Imagen', NULL, 'files/articulos_media/4/20210623183424.jpg', '2021-06-23 23:34:35', '2021-06-23 23:35:00'),
-(44, 3, 3, 'Imagen', NULL, 'files/articulos_media/3/20210623183707.jpg', '2021-06-23 23:37:14', '2021-06-23 23:37:14'),
-(45, 4, 4, 'Parrafo', NULL, NULL, '2021-07-30 02:56:38', '2021-07-30 02:56:38'),
-(46, 4, 5, 'Parrafo', NULL, NULL, '2021-07-30 02:56:39', '2021-07-30 02:56:39'),
-(47, 4, 6, 'Tabla', '[[\"Uno\",\"Dos\",\"Tres\"],[1,2,3],[4,5,6],[7,8,9]]', NULL, '2021-07-30 02:56:49', '2021-07-30 02:56:49'),
-(48, 4, 7, 'Imagen', NULL, 'files/articulos_media/4/20210729215651.jpg', '2021-07-30 02:57:03', '2021-07-30 02:57:03');
+(49, 5, 1, 'Parrafo', 'Este es un articulo de prueba', NULL, '2021-11-10 10:33:33', '2021-11-10 10:35:05'),
+(50, 5, 2, 'Imagen', NULL, 'files/articulos_media/5/20211110103405.jpg', '2021-11-10 10:34:12', '2021-11-10 10:34:12'),
+(52, 5, 3, 'Tabla', '[[\"Uno\",\"Tres\",null],[null,null,null]]', NULL, '2021-11-10 10:38:38', '2021-11-10 10:39:15');
 
 -- --------------------------------------------------------
 
@@ -116,17 +109,10 @@ CREATE TABLE `casos` (
 --
 
 INSERT INTO `casos` (`id`, `solicitante_id`, `titulo`, `tipo`, `asignados`, `created_at`, `updated_at`) VALUES
-(39, 2, 'Hay formas diferentes de cultivar', 'Consulta General', '[]', '2021-06-23 23:40:38', '2021-06-23 23:40:38'),
-(40, 2, 'Soporte', 'Llamada telefonica', '[]', '2021-06-23 23:56:17', '2021-06-23 23:56:17'),
-(41, 2, 'Causa de plaga', 'Apoyo Técnico', '[]', '2021-06-24 00:14:10', '2021-07-19 21:30:31'),
-(42, 2, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-06-24 00:14:14', '2021-06-24 00:14:14'),
-(43, 2, 'Boton Contacto', 'SMS', '[]', '2021-06-24 00:14:21', '2021-06-24 00:14:21'),
-(44, 2, 'Boton Contacto', 'Whatsapp', '[]', '2021-06-24 00:14:25', '2021-06-24 00:14:25'),
-(45, 1, 'ESTA ES UNA PRUEBA', 'Contar Experiencia', '[]', '2021-07-30 02:37:16', '2021-07-30 02:37:16'),
-(46, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-07-30 02:39:36', '2021-07-30 02:39:36'),
-(47, 1, 'Boton Contacto', 'SMS', '[]', '2021-07-30 02:39:40', '2021-07-30 02:39:40'),
-(48, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-07-30 02:39:53', '2021-07-30 02:39:53'),
-(49, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-07-31 01:34:41', '2021-07-31 01:35:31');
+(51, 30, 'Este es un reporte para casos de prueba', 'Consulta General', '[]', '2021-11-10 10:35:53', '2021-11-10 10:35:53'),
+(52, 1, 'Boton Contacto', 'Whatsapp', '[]', '2021-11-10 10:44:31', '2021-11-10 10:44:31'),
+(53, 1, 'Boton Contacto', 'SMS', '[]', '2021-11-10 10:44:37', '2021-11-10 10:44:37'),
+(54, 1, 'Boton Contacto', 'Llamada telefonica', '[]', '2021-11-10 10:44:40', '2021-11-10 10:44:40');
 
 -- --------------------------------------------------------
 
@@ -150,21 +136,8 @@ CREATE TABLE `casos_novedades` (
 --
 
 INSERT INTO `casos_novedades` (`id`, `usuario_id`, `caso_id`, `tipo`, `novedad`, `solucion`, `created_at`, `updated_at`) VALUES
-(17, 1, 39, 'Imagen', 'files/casos_media/39/20210623184209.jpg', 0, '2021-06-23 23:42:15', '2021-06-23 23:42:15'),
-(18, 1, 39, 'Texto', 'Si, en consulta para enviar información', 0, '2021-06-23 23:42:17', '2021-06-23 23:42:17'),
-(19, 2, 41, 'Texto', 'Esperando respuesta', 0, '2021-06-24 00:14:42', '2021-06-24 00:14:42'),
-(20, 2, 39, 'Texto', 'Gracias', 0, '2021-06-24 00:14:51', '2021-06-24 00:14:51'),
-(21, 1, 41, 'Texto', 'SI ES AHORA', 0, '2021-06-27 20:14:46', '2021-06-27 20:14:46'),
-(22, 1, 41, 'Imagen', 'files/casos_media/41/20210627151451.jpg', 0, '2021-06-27 20:15:04', '2021-06-27 20:15:04'),
-(23, 1, 41, 'Texto', 'Más', 0, '2021-07-19 21:27:35', '2021-07-19 21:27:35'),
-(24, 1, 41, 'Texto', 'aqui', 0, '2021-07-19 21:30:13', '2021-07-19 21:30:13'),
-(25, 1, 39, 'Texto', 'RESPUESTA', 0, '2021-07-30 02:36:24', '2021-07-30 02:36:24'),
-(26, 1, 39, 'Imagen', 'files/casos_media/39/20210729213626.jpg', 0, '2021-07-30 02:36:40', '2021-07-30 02:36:40'),
-(27, 1, 45, 'Texto', 'OTRA RESPUESTA', 0, '2021-07-30 02:37:28', '2021-07-30 02:37:28'),
-(28, 1, 45, 'Texto', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla sit amet nunc id luctus. Donec pellentesque justo sit amet urna mollis rhoncus. Nunc arcu quam, dapibus ac eros sed, scelerisque congue augue. Aliquam non tortor vel lorem volutpat semper eget id erat. Mauris ac lobortis felis. Donec orci est, tristique a mattis viverra, cursus ut lectus. Cras cursus quam vitae nisi molestie ornare. Nunc laoreet laoreet nulla, sit amet euismod eros euismod vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dolor urna, iaculis vitae nunc semper, semper maximus nisi. Aliquam nec tortor arcu. Nunc ornare lobortis quam, at venenatis velit pulvinar ac.\n\nSuspendisse efficitur, justo condimentum vehicula vestibulum, justo nulla tincidunt nisi, vitae tempor sapien turpis eget est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut id justo libero. Vivamus rhoncus, tellus et sagittis imperdiet, enim felis cursus mi, vitae mattis ipsum odio sodales nibh. Aliquam sodales dolor vitae purus facilisis ullamcorper. Etiam sagittis est id sem congue, vel scelerisque nunc consequat. In facilisis ut massa ut consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas non ullamcorper felis, vitae semper ex. Nullam scelerisque facilisis augue, vehicula sodales tortor sagittis vel. Vestibulum ullamcorper tellus vel odio vehicula rutrum. Sed metus quam, laoreet auctor interdum at, feugiat et purus.', 0, '2021-07-30 02:38:48', '2021-07-30 02:38:48'),
-(29, 1, 39, 'Texto', 'Muestra', 0, '2021-09-27 15:41:13', '2021-09-27 15:41:13'),
-(30, 1, 39, 'Texto', 'Aqui', 0, '2021-09-27 15:41:57', '2021-09-27 15:41:57'),
-(31, 1, 39, 'Texto', 'Aquiii', 0, '2021-09-27 15:42:07', '2021-09-27 15:42:07');
+(32, 1, 51, 'Imagen', 'files/casos_media/51/20211110103610.jpg', 0, '2021-11-10 10:36:15', '2021-11-10 10:36:15'),
+(33, 1, 51, 'Texto', 'Si prueba', 0, '2021-11-10 10:36:19', '2021-11-10 10:36:19');
 
 -- --------------------------------------------------------
 
@@ -249,7 +222,7 @@ INSERT INTO `credito__creditos` (`id`, `organizacion_id`, `afiliado_id`, `estado
 (11, 1, 2, 'Normal', NULL, NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:32:12', '2021-10-30 07:32:12', NULL),
 (12, 1, 2, 'Normal', NULL, NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:33:02', '2021-10-30 07:33:02', NULL),
 (13, 1, 2, 'Normal', NULL, NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, NULL, 1, '2021-10-30 07:33:11', '2021-10-30 07:33:11', NULL),
-(14, 1, 2, 'Normal', '#00695c', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, '2021-11-25', 1, '2021-10-30 07:35:03', '2021-11-05 00:19:18', NULL);
+(14, 1, 2, 'Normal', '#00695c', NULL, 'Libre inversion', 1000000, '2.10', 'Mensuales', 6, 0, 167680, 1006078, '2021-11-25', 1, '2021-10-30 07:35:03', '2021-11-10 13:17:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -364,8 +337,7 @@ CREATE TABLE `cultivos` (
 --
 
 INSERT INTO `cultivos` (`id`, `fechas`, `zona_id`, `produccion`, `produccion_estimada`, `eventos`, `creditos_colocados`, `cartera_vencida`, `created_at`, `updated_at`) VALUES
-(8, '2021-06-23T05:00:00.000Z', 6, 345, 300, NULL, 3, 1, '2021-06-24 00:01:58', '2021-06-24 00:01:58'),
-(9, '2021-07-30T05:00:00.000Z', 7, 23, 334, 12, 34, 4, '2021-07-31 01:39:31', '2021-07-31 01:39:31');
+(10, '2021-11-10T05:00:00.000Z', 11, 34, 23, 11, 3, 1, '2021-11-10 11:29:14', '2021-11-10 11:29:14');
 
 -- --------------------------------------------------------
 
@@ -407,7 +379,7 @@ CREATE TABLE `fincas` (
   `direccion` varchar(255) NOT NULL,
   `departamento_id` varchar(255) NOT NULL,
   `municipio_id` varchar(255) NOT NULL,
-  `area_total` int(100) NOT NULL,
+  `area_total` int(100) DEFAULT NULL,
   `tipo_cultivo` varchar(255) NOT NULL,
   `total_lotes` int(100) NOT NULL,
   `tipo_suelo` varchar(255) NOT NULL,
@@ -419,7 +391,7 @@ CREATE TABLE `fincas` (
   `temperatura` float NOT NULL,
   `humedad_relativa` float NOT NULL,
   `precipitacion` float NOT NULL,
-  `altimetria` float NOT NULL,
+  `altimetria` float DEFAULT NULL,
   `pendiente` float NOT NULL,
   `brillo_solar` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -431,8 +403,7 @@ CREATE TABLE `fincas` (
 --
 
 INSERT INTO `fincas` (`id`, `usuario_id`, `nombre`, `direccion`, `departamento_id`, `municipio_id`, `area_total`, `tipo_cultivo`, `total_lotes`, `tipo_suelo`, `zona_id`, `latitud`, `longitud`, `hectareas`, `sitios`, `temperatura`, `humedad_relativa`, `precipitacion`, `altimetria`, `pendiente`, `brillo_solar`, `created_at`, `updated_at`) VALUES
-(13, 2, 'Nuevo Amanecer', 'Calle 20 Centro', '66', '66001', 234, 'ASOCIADOS', 34, 'UNIDAD AMAGÁ', 9, '234.00000000', '-123.00000000', 12, 45, 23, 34, 213, 37, 25, 25, '2021-06-23 23:50:35', '2021-07-23 02:37:36'),
-(14, 2, 'Renacer', 'Mz Campo', '66', '66001', 34, 'MONOCULTIVO', 23, 'UNIDAD AMAGÁ', 1, '-123.00000000', '123.00000000', 445, 334, 23, 231, 42, 34, 34, 32, '2021-07-19 21:43:11', '2021-07-19 21:43:11');
+(15, 30, 'FINCA', 'CALLE 24', '66', '66001', 34, 'ASOCIADOS', 45, 'UNIDAD AMAGÁ', 11, '4.65435263', '-79.35425162', 34, 32, 4.3, 5.3, 2.3, 4.5, 45, 23, '2021-11-10 11:12:19', '2021-11-10 11:12:19');
 
 -- --------------------------------------------------------
 
@@ -456,10 +427,7 @@ CREATE TABLE `finca_eventos` (
 --
 
 INSERT INTO `finca_eventos` (`id`, `finca_id`, `evento_id`, `fecha`, `gravedad`, `observacion`, `created_at`, `updated_at`) VALUES
-(9, 13, 11, '2021-06-23T05:00:00.000Z', 'Media', 'Lluvia en los últimos días', '2021-06-24 00:20:27', '2021-06-24 00:20:27'),
-(10, 13, 12, '2021-06-23T05:00:00.000Z', 'Alta', 'Plagas en la zona por humedad', '2021-06-24 00:22:30', '2021-06-24 00:22:30'),
-(11, 14, 11, '2021-07-21T05:00:00.000Z', 'Media', 'Granizada', '2021-07-22 04:29:20', '2021-07-22 04:29:20'),
-(12, 14, 11, '2021-07-30T05:00:00.000Z', 'Media', 'CC', '2021-07-31 01:45:27', '2021-07-31 01:45:27');
+(13, 15, 11, '2021-11-10T05:00:00.000Z', 'Media', 'Prueba', '2021-11-10 11:33:57', '2021-11-10 11:33:57');
 
 -- --------------------------------------------------------
 
@@ -484,13 +452,14 @@ CREATE TABLE `labores` (
 --
 
 INSERT INTO `labores` (`id`, `labor`, `zona_id`, `linea_productiva_id`, `frecuencia`, `inicio`, `margen`, `created_at`, `updated_at`) VALUES
-(1, 'RESIEMBRA CON CABEZA DE TORO', 7, 6, 10, 4, 40, '2021-05-10 02:57:20', '2021-07-19 21:37:45'),
-(2, 'APLICACIÓN MATERIA ORGANICA 300g', 6, 4, 45, 2, 4, '2021-05-10 02:58:37', '2021-05-10 02:58:37'),
-(23, 'CORTADO CNSTANTE', 7, 4, 5, 45, 5, '2021-05-24 14:32:53', '2021-05-24 14:32:53'),
-(24, 'RESIEMBRA CON CABEZA DE TORO', 7, 6, 3, 2, 6, '2021-05-24 14:33:13', '2021-05-24 14:33:13'),
-(25, 'RECOLECCIÓN', 7, 5, 3, 5, 4, '2021-05-24 14:33:58', '2021-05-24 14:33:58'),
-(26, 'REVISIÓN', 7, 7, 4, 5, 3, '2021-06-23 23:55:20', '2021-07-31 01:32:24'),
-(27, 'BARREADO', 7, 6, 34, 34, 23, '2021-07-31 01:33:01', '2021-07-31 01:33:01');
+(2, 'APLICACIÓN MATERIA ORGANICA 300g', 12, 4, 4, 10, 4, '2021-05-10 02:58:37', '2021-05-10 02:58:37'),
+(23, 'CORTADO CNSTANTE', 11, 4, 5, 10, 5, '2021-05-24 14:32:53', '2021-05-24 14:32:53'),
+(24, 'RESIEMBRA CON CABEZA DE TORO', 7, 6, 3, 10, 6, '2021-05-24 14:33:13', '2021-05-24 14:33:13'),
+(25, 'RECOLECCIÓN', 12, 5, 3, 10, 4, '2021-05-24 14:33:58', '2021-05-24 14:33:58'),
+(26, 'REVISIÓN', 11, 7, 4, 10, 3, '2021-06-23 23:55:20', '2021-07-31 01:32:24'),
+(27, 'BARREADO', 12, 6, 3, 2, 23, '2021-07-31 01:33:01', '2021-07-31 01:33:01'),
+(28, 'sembrar arbol de manzanas', 7, 6, 3, 5, 2, '2021-11-10 16:57:32', '2021-11-10 16:57:32'),
+(29, 'PRUEBA', 11, 4, 3, 1, 4, '2021-11-10 15:02:16', '2021-11-10 15:02:16');
 
 -- --------------------------------------------------------
 
@@ -611,7 +580,8 @@ INSERT INTO `listas_indice` (`id`, `lista`, `autoincremental`, `clave_automatica
 (2, 'Departamentos', 0, 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37', NULL),
 (3, 'Municipios', 0, 1, 0, '2021-02-03 20:20:37', '2021-02-03 20:20:37', NULL),
 (4, 'TiposSuelo', 1, 1, 0, '2021-03-16 04:02:39', '2021-03-16 04:04:10', NULL),
-(5, 'TiposCultivo', 1, 1, 0, '2021-04-10 01:18:37', '2021-04-10 01:18:37', NULL);
+(5, 'TiposCultivo', 1, 1, 0, '2021-04-10 01:18:37', '2021-04-10 01:18:37', NULL),
+(6, 'Prueba', 1, 1, 0, '2021-11-10 11:20:45', '2021-11-10 11:23:37', '2021-11-10 11:23:37');
 
 -- --------------------------------------------------------
 
@@ -8685,7 +8655,7 @@ CREATE TABLE `lotes` (
   `labores_id` int(11) DEFAULT NULL,
   `hectareas` int(11) NOT NULL,
   `sitios` int(11) NOT NULL,
-  `coordenadas` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `coordenadas` text NOT NULL,
   `fecha_establecimiento` varchar(255) DEFAULT NULL,
   `kg_promedio` decimal(6,1) DEFAULT NULL,
   `un_promedio` int(1) DEFAULT NULL,
@@ -8699,8 +8669,8 @@ CREATE TABLE `lotes` (
 --
 
 INSERT INTO `lotes` (`id`, `finca_id`, `organizacion_id`, `linea_productiva_id`, `labores_id`, `hectareas`, `sitios`, `coordenadas`, `fecha_establecimiento`, `kg_promedio`, `un_promedio`, `frec_corte`, `created_at`, `updated_at`) VALUES
-(21, 13, 20, 6, 23, 231, 23, '[{\"lat\":4.876173763, \"lng\":-75.55123718},{\"lat\":4.876217265, \"lng\":-75.55127397},{\"lat\":4.876269819, \"lng\":-75.55133524},{\"lat\":4.87633897, \"lng\":-75.55137455},{\"lat\":4.876389597, \"lng\":-75.55144521},{\"lat\":4.876398649, \"lng\":-75.55143993},{\"lat\":4.87640854, \"lng\":-75.55143138},{\"lat\":4.876466962, \"lng\":-75.55149886},{\"lat\":4.876504932, \"lng\":-75.55154244},{\"lat\":4.876556061, \"lng\":-75.55160489},{\"lat\":4.87659202, \"lng\":-75.55170757},{\"lat\":4.876573747, \"lng\":-75.55180773},{\"lat\":4.876568634, \"lng\":-75.55190848},{\"lat\":4.876496298, \"lng\":-75.55195274},{\"lat\":4.876441732, \"lng\":-75.55189507},{\"lat\":4.876401667, \"lng\":-75.55185626},{\"lat\":4.876362775, \"lng\":-75.5519151},{\"lat\":4.8762751, \"lng\":-75.55192474},{\"lat\":4.876234783, \"lng\":-75.55192675},{\"lat\":4.876158172, \"lng\":-75.55195291},{\"lat\":4.876093799, \"lng\":-75.55196892},{\"lat\":4.876025068, \"lng\":-75.55197529},{\"lat\":4.87591845, \"lng\":-75.55201133},{\"lat\":4.875914175, \"lng\":-75.55201451},{\"lat\":4.875837481, \"lng\":-75.5520524},{\"lat\":4.875831613, \"lng\":-75.5520534},{\"lat\":4.87582298, \"lng\":-75.55205743},{\"lat\":4.875740334, \"lng\":-75.55209573},{\"lat\":4.875713345, \"lng\":-75.55206916},{\"lat\":4.875660874, \"lng\":-75.55206254},{\"lat\":4.875598932, \"lng\":-75.55202365},{\"lat\":4.875537911, \"lng\":-75.55199817},{\"lat\":4.875528524, \"lng\":-75.55198216},{\"lat\":4.875473287, \"lng\":-75.55192315},{\"lat\":4.875433305, \"lng\":-75.55185157},{\"lat\":4.875401203, \"lng\":-75.55174788},{\"lat\":4.875388965, \"lng\":-75.55164571},{\"lat\":4.875398856, \"lng\":-75.55156072},{\"lat\":4.875428779, \"lng\":-75.55141428},{\"lat\":4.875485189, \"lng\":-75.55129828},{\"lat\":4.875493739, \"lng\":-75.5512909},{\"lat\":4.875609744, \"lng\":-75.55121446},{\"lat\":4.875723654, \"lng\":-75.55113056},{\"lat\":4.875840666, \"lng\":-75.55114791},{\"lat\":4.876173763, \"lng\":-75.55123718},]', '2021-06-23', '345.0', 234, '44', '2021-06-23 23:51:35', '2021-08-11 21:12:24'),
-(22, 13, 1, 5, 2, 45, 3, '[{\"lat\":4.876173763, \"lng\":undefined},{\"lat\":4.876217265, \"lng\":undefined},{\"lat\":4.876269819, \"lng\":undefined},{\"lat\":4.87633897, \"lng\":undefined},{\"lat\":4.876389597, \"lng\":undefined},{\"lat\":4.876398649, \"lng\":undefined},{\"lat\":4.87640854, \"lng\":undefined},{\"lat\":4.876466962, \"lng\":undefined},{\"lat\":4.876504932, \"lng\":undefined},{\"lat\":4.876556061, \"lng\":undefined},{\"lat\":4.87659202, \"lng\":undefined},{\"lat\":4.876573747, \"lng\":undefined},{\"lat\":4.876568634, \"lng\":undefined},{\"lat\":4.876496298, \"lng\":undefined},{\"lat\":4.876441732, \"lng\":undefined},{\"lat\":4.876401667, \"lng\":undefined},{\"lat\":4.876362775, \"lng\":undefined},{\"lat\":4.8762751, \"lng\":undefined},{\"lat\":4.876234783, \"lng\":undefined},{\"lat\":4.876158172, \"lng\":undefined},{\"lat\":4.876093799, \"lng\":undefined},{\"lat\":4.876025068, \"lng\":undefined},{\"lat\":4.87591845, \"lng\":undefined},{\"lat\":4.875914175, \"lng\":undefined},{\"lat\":4.875837481, \"lng\":undefined},{\"lat\":4.875831613, \"lng\":undefined},{\"lat\":4.87582298, \"lng\":undefined},{\"lat\":4.875740334, \"lng\":undefined},{\"lat\":4.875713345, \"lng\":undefined},{\"lat\":4.875660874, \"lng\":undefined},{\"lat\":4.875598932, \"lng\":undefined},{\"lat\":4.875537911, \"lng\":undefined},{\"lat\":4.875528524, \"lng\":undefined},{\"lat\":4.875473287, \"lng\":undefined},{\"lat\":4.875433305, \"lng\":undefined},{\"lat\":4.875401203, \"lng\":undefined},{\"lat\":4.875388965, \"lng\":undefined},{\"lat\":4.875398856, \"lng\":undefined},{\"lat\":4.875428779, \"lng\":undefined},{\"lat\":4.875485189, \"lng\":undefined},{\"lat\":4.875493739, \"lng\":undefined},{\"lat\":4.875609744, \"lng\":undefined},{\"lat\":4.875723654, \"lng\":undefined},{\"lat\":4.875840666, \"lng\":undefined},{\"lat\":4.876173763, \"lng\":undefined},]', '2021-09-22', '34.0', 21, '5', '2021-09-23 03:02:26', '2021-09-23 03:02:26');
+(21, 15, 23, 6, 23, 231, 23, '[{\"lat\":4.876173763, \"lng\":-75.55123718},{\"lat\":4.876217265, \"lng\":-75.55127397},{\"lat\":4.876269819, \"lng\":-75.55133524},{\"lat\":4.87633897, \"lng\":-75.55137455},{\"lat\":4.876389597, \"lng\":-75.55144521},{\"lat\":4.876398649, \"lng\":-75.55143993},{\"lat\":4.87640854, \"lng\":-75.55143138},{\"lat\":4.876466962, \"lng\":-75.55149886},{\"lat\":4.876504932, \"lng\":-75.55154244},{\"lat\":4.876556061, \"lng\":-75.55160489},{\"lat\":4.87659202, \"lng\":-75.55170757},{\"lat\":4.876573747, \"lng\":-75.55180773},{\"lat\":4.876568634, \"lng\":-75.55190848},{\"lat\":4.876496298, \"lng\":-75.55195274},{\"lat\":4.876441732, \"lng\":-75.55189507},{\"lat\":4.876401667, \"lng\":-75.55185626},{\"lat\":4.876362775, \"lng\":-75.5519151},{\"lat\":4.8762751, \"lng\":-75.55192474},{\"lat\":4.876234783, \"lng\":-75.55192675},{\"lat\":4.876158172, \"lng\":-75.55195291},{\"lat\":4.876093799, \"lng\":-75.55196892},{\"lat\":4.876025068, \"lng\":-75.55197529},{\"lat\":4.87591845, \"lng\":-75.55201133},{\"lat\":4.875914175, \"lng\":-75.55201451},{\"lat\":4.875837481, \"lng\":-75.5520524},{\"lat\":4.875831613, \"lng\":-75.5520534},{\"lat\":4.87582298, \"lng\":-75.55205743},{\"lat\":4.875740334, \"lng\":-75.55209573},{\"lat\":4.875713345, \"lng\":-75.55206916},{\"lat\":4.875660874, \"lng\":-75.55206254},{\"lat\":4.875598932, \"lng\":-75.55202365},{\"lat\":4.875537911, \"lng\":-75.55199817},{\"lat\":4.875528524, \"lng\":-75.55198216},{\"lat\":4.875473287, \"lng\":-75.55192315},{\"lat\":4.875433305, \"lng\":-75.55185157},{\"lat\":4.875401203, \"lng\":-75.55174788},{\"lat\":4.875388965, \"lng\":-75.55164571},{\"lat\":4.875398856, \"lng\":-75.55156072},{\"lat\":4.875428779, \"lng\":-75.55141428},{\"lat\":4.875485189, \"lng\":-75.55129828},{\"lat\":4.875493739, \"lng\":-75.5512909},{\"lat\":4.875609744, \"lng\":-75.55121446},{\"lat\":4.875723654, \"lng\":-75.55113056},{\"lat\":4.875840666, \"lng\":-75.55114791},{\"lat\":4.876173763, \"lng\":-75.55123718},]', '2021-06-23', '345.0', 234, '44', '2021-06-23 23:51:35', '2021-08-11 21:12:24'),
+(29, 15, 23, 6, 23, 231, 23, '[{\"lat\":4.876173763, \"lng\":-75.55123718},{\"lat\":4.876217265, \"lng\":-75.55127397},{\"lat\":4.876269819, \"lng\":-75.55133524},{\"lat\":4.87633897, \"lng\":-75.55137455},{\"lat\":4.876389597, \"lng\":-75.55144521},{\"lat\":4.876398649, \"lng\":-75.55143993},{\"lat\":4.87640854, \"lng\":-75.55143138},{\"lat\":4.876466962, \"lng\":-75.55149886},{\"lat\":4.876504932, \"lng\":-75.55154244},{\"lat\":4.876556061, \"lng\":-75.55160489},{\"lat\":4.87659202, \"lng\":-75.55170757},{\"lat\":4.876573747, \"lng\":-75.55180773},{\"lat\":4.876568634, \"lng\":-75.55190848},{\"lat\":4.876496298, \"lng\":-75.55195274},{\"lat\":4.876441732, \"lng\":-75.55189507},{\"lat\":4.876401667, \"lng\":-75.55185626},{\"lat\":4.876362775, \"lng\":-75.5519151},{\"lat\":4.8762751, \"lng\":-75.55192474},{\"lat\":4.876234783, \"lng\":-75.55192675},{\"lat\":4.876158172, \"lng\":-75.55195291},{\"lat\":4.876093799, \"lng\":-75.55196892},{\"lat\":4.876025068, \"lng\":-75.55197529},{\"lat\":4.87591845, \"lng\":-75.55201133},{\"lat\":4.875914175, \"lng\":-75.55201451},{\"lat\":4.875837481, \"lng\":-75.5520524},{\"lat\":4.875831613, \"lng\":-75.5520534},{\"lat\":4.87582298, \"lng\":-75.55205743},{\"lat\":4.875740334, \"lng\":-75.55209573},{\"lat\":4.875713345, \"lng\":-75.55206916},{\"lat\":4.875660874, \"lng\":-75.55206254},{\"lat\":4.875598932, \"lng\":-75.55202365},{\"lat\":4.875537911, \"lng\":-75.55199817},{\"lat\":4.875528524, \"lng\":-75.55198216},{\"lat\":4.875473287, \"lng\":-75.55192315},{\"lat\":4.875433305, \"lng\":-75.55185157},{\"lat\":4.875401203, \"lng\":-75.55174788},{\"lat\":4.875388965, \"lng\":-75.55164571},{\"lat\":4.875398856, \"lng\":-75.55156072},{\"lat\":4.875428779, \"lng\":-75.55141428},{\"lat\":4.875485189, \"lng\":-75.55129828},{\"lat\":4.875493739, \"lng\":-75.5512909},{\"lat\":4.875609744, \"lng\":-75.55121446},{\"lat\":4.875723654, \"lng\":-75.55113056},{\"lat\":4.875840666, \"lng\":-75.55114791},{\"lat\":4.876173763, \"lng\":-75.55123718},]', '2021-06-23', '345.0', 234, '44', '2021-06-23 23:51:35', '2021-08-11 21:12:24');
 
 -- --------------------------------------------------------
 
@@ -8724,11 +8694,12 @@ CREATE TABLE `lotes_cosechas` (
 --
 
 INSERT INTO `lotes_cosechas` (`id`, `lote_id`, `fecha`, `cantidad`, `kilogramo`, `tipo`, `created_at`, `updated_at`) VALUES
-(1, 21, '2021-08-20', 45, 32, 'Bulto', '2021-08-20 19:15:07', '2021-08-20 19:15:07'),
-(2, 21, '2021-08-31', 453, 23, 'Bolsa', '2021-08-20 19:59:04', '2021-08-20 19:59:04'),
-(3, 21, '2021-09-01', 32, 67, 'Racimo', '2021-08-20 20:31:12', '2021-08-20 20:31:12'),
-(4, 21, '2021-10-12', 67, 12, 'Timbo', '2021-08-20 21:01:18', '2021-08-20 21:01:18'),
-(5, 21, '2021-08-20', 10, 10, 'Racimo', '2021-08-20 23:06:41', '2021-08-20 23:06:41');
+(1, 21, '2021-11-10', 23, 45, 'Canastilla', '2021-11-10 14:07:36', '2021-11-10 14:07:36'),
+(2, 27, '2021-11-10', 26, 78, 'Bulto', '2021-11-10 14:45:28', '2021-11-10 14:45:28'),
+(3, 27, '2021-11-09', 45, 23, 'Timbo', '2021-11-10 15:19:17', '2021-11-10 15:19:17'),
+(4, 27, '2021-11-04', 78, 23, 'Racimo', '2021-11-10 15:19:30', '2021-11-10 15:19:30'),
+(5, 27, '2021-11-03', 23, 54, 'Racimo', '2021-11-10 15:19:52', '2021-11-10 15:19:52'),
+(6, 27, '2021-11-11', 67, 12, 'Timbo', '2021-11-10 15:20:12', '2021-11-10 15:20:12');
 
 -- --------------------------------------------------------
 
@@ -8741,9 +8712,9 @@ CREATE TABLE `lotes_labores` (
   `lote_id` int(11) NOT NULL,
   `labor_id` int(11) DEFAULT NULL,
   `labor` varchar(255) DEFAULT NULL,
-  `inicio` int(11) DEFAULT 0,
-  `frecuencia` int(11) DEFAULT 0,
-  `margen` int(11) DEFAULT 0,
+  `inicio` int(11) NOT NULL DEFAULT 0,
+  `frecuencia` int(11) NOT NULL DEFAULT 0,
+  `margen` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -8753,12 +8724,14 @@ CREATE TABLE `lotes_labores` (
 --
 
 INSERT INTO `lotes_labores` (`id`, `lote_id`, `labor_id`, `labor`, `inicio`, `frecuencia`, `margen`, `created_at`, `updated_at`) VALUES
-(1, 21, 24, 'EMBOLSAR PLATANO', 1, 10, 1, '2021-07-22 05:57:54', '2021-09-21 21:24:23'),
-(2, 21, 24, 'SIEMBRA CON CABEZA', 3, 10, 1, '2021-07-22 05:57:54', '2021-09-21 21:24:29'),
-(3, 21, 24, 'APLICACIÓN MATERIA', 1, 10, 1, '2021-07-22 05:57:54', '2021-09-21 21:24:35'),
-(4, 21, NULL, 'Ahoyado', 6, 5, 1, '2021-09-09 23:58:49', '2021-09-17 03:51:01'),
-(5, 21, NULL, 'Cosecha', 7, 4, 2, '2021-09-10 00:10:43', '2021-09-17 03:53:45'),
-(6, 21, NULL, 'Nuevo', 10, 6, 1, '2021-09-11 21:53:52', '2021-09-17 03:51:22');
+(1, 21, 24, 'EMBOLSAR PLATANO', 10, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
+(2, 21, 23, 'SIEMBRA CON CABEZA', 10, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
+(3, 28, 24, 'APLICACIÓN MATERIA ', 10, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
+(4, 21, 27, 'sembrar uvas', 10, 10, 2, '2021-09-30 18:49:28', '2021-09-30 18:50:15'),
+(5, 29, 24, 'siembra de cerezas', 10, 10, 2, '2021-10-17 00:40:45', '2021-10-17 00:40:45'),
+(6, 29, 27, 'siembra de arbol de manzanas rojas', 1, 10, 1, '2021-10-17 00:40:45', '2021-10-17 00:40:45'),
+(7, 29, 26, 'APLICACIÓN MATERIA GRIS', 10, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54'),
+(8, 29, 24, 'EMBOLSAR PLATANO', 1, 10, 2, '2021-07-22 05:57:54', '2021-07-22 05:57:54');
 
 -- --------------------------------------------------------
 
@@ -8780,14 +8753,10 @@ CREATE TABLE `lotes_labores_productor` (
 --
 
 INSERT INTO `lotes_labores_productor` (`id`, `lote_id`, `labor`, `semana_id`, `created_at`, `updated_at`) VALUES
-(1, 21, 'Mi labor', 36, '2021-08-20 19:16:42', '2021-08-20 19:16:42'),
-(2, 21, 'Cosecha', 33, '2021-08-20 19:58:45', '2021-08-20 19:58:45'),
-(3, 21, 'Mi labor', 33, '2021-08-20 20:30:10', '2021-08-20 20:30:10'),
-(4, 21, 'Mi labor anterior', 32, '2021-08-20 20:30:26', '2021-08-20 20:30:26'),
-(5, 21, 'Nueva Coseca', 34, '2021-08-20 20:59:10', '2021-08-20 20:59:10'),
-(6, 21, 'Lavado', 33, '2021-08-20 20:59:39', '2021-08-20 20:59:39'),
-(7, 21, 'Prueba', 33, '2021-08-20 23:06:30', '2021-08-20 23:06:30'),
-(8, 21, 'NuevaPrueba', 38, '2021-09-11 22:26:31', '2021-09-11 22:26:31');
+(9, 1, 'Cosecha', 1, '2021-11-10 11:45:12', '2021-11-10 11:45:12'),
+(10, 27, 'Cosecha', 7, '2021-11-10 14:54:52', '2021-11-10 14:54:52'),
+(11, 28, 'Cosecha', 1, '2021-11-10 15:22:47', '2021-11-10 15:22:47'),
+(12, 28, 'Prueba cosecha', 2, '2021-11-10 15:22:57', '2021-11-10 15:22:57');
 
 -- --------------------------------------------------------
 
@@ -8810,7 +8779,8 @@ CREATE TABLE `lotes_labores_realizadas` (
 --
 
 INSERT INTO `lotes_labores_realizadas` (`id`, `lote_id`, `labor_id`, `cumplimiento`, `fecha`, `created_at`, `updated_at`) VALUES
-(4, 21, 24, '1.00', '2021-07-31', '2021-07-31 01:45:55', '2021-07-31 01:45:55');
+(5, 1, 9, '1.00', '2021-11-10', '2021-11-10 17:52:16', '2021-11-10 17:52:16'),
+(6, 21, 24, '0.50', '2021-11-10', '2021-11-10 14:40:01', '2021-11-10 14:40:01');
 
 -- --------------------------------------------------------
 
@@ -8832,8 +8802,7 @@ CREATE TABLE `lote_labores` (
 --
 
 INSERT INTO `lote_labores` (`id`, `labores_id`, `estado`, `created_at`, `updated_at`, `lote_id`) VALUES
-(6, 2, 'Pendiente', '2021-06-29 03:14:17', '2021-06-29 03:14:17', 21),
-(7, 23, 'Pendiente', '2021-07-15 17:26:06', '2021-07-15 17:26:06', 22);
+(8, 23, 'Pendiente', '2021-11-10 20:53:40', '2021-11-10 20:53:40', 27);
 
 -- --------------------------------------------------------
 
@@ -10041,10 +10010,7 @@ CREATE TABLE `organizaciones` (
 --
 
 INSERT INTO `organizaciones` (`id`, `usuario_id`, `nombre`, `nit`, `sigla`, `linea_productiva_id`, `latitud`, `longitud`, `direccion`, `departamento`, `municipio`, `telefono`, `correo`, `total_asociados`, `fecha_constitucion`, `created_at`, `updated_at`) VALUES
-(1, 1, 'PARA OPCIONES', '012345789', 'PO', 4, '234.00000000', '-125.00000000', 'Cra 30 Calle 34', '66', '66001', '31000000', 'orgcultivos@gmail.com', 10, '2021-06-22T05:00:00.000Z', '2021-06-23 01:44:25', '2021-09-23 03:42:52'),
-(20, 2, 'ORG CULTIVOS', '55555763', 'ORGC', 5, '234.00000000', '-125.00000000', 'Calle 34', '66', '66001', '31000000', 'orgcultivos@gmail.com', 10, '2021-06-22T05:00:00.000Z', '2021-06-23 01:44:25', '2021-09-23 03:42:59'),
-(21, 1, 'ORGANIZA', '12345', 'GAN', 7, '234.00000000', '234.00000000', 'cALLE23', '66', '66045', '31854524223', 'NDFN@GMAIL.COM', 5454, '2021-07-29T05:00:00.000Z', '2021-07-30 02:54:10', '2021-09-23 03:42:42'),
-(22, 28, 'Prueba  Final', '660005554443', 'PF', 6, '4.34232140', '79.48653200', 'Cra 21 Calle 24', '66', '66045', '31232123', 'pruebafinl@gmail.com', 3, '2021-09-22T05:00:00.000Z', '2021-09-23 03:42:12', '2021-09-23 03:42:12');
+(23, 30, 'Organización Prueba', '123456789', 'OGP', 4, '-47.89753430', '79.98764540', 'Calle 34', '66', '66001', '433423', 'ogragracacio@gmail.com', 20, '2021-11-10T05:00:00.000Z', '2021-11-10 10:26:37', '2021-11-10 10:26:37');
 
 -- --------------------------------------------------------
 
@@ -10070,8 +10036,7 @@ CREATE TABLE `organizaciones_muro_secciones` (
 --
 
 INSERT INTO `organizaciones_muro_secciones` (`id`, `organizacion_id`, `contenido`, `ruta`, `url`, `ext`, `usuario_id`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 20, '<p><b>Nuevo Muro</b></p><p><b><br/></b></p><p></p><ul><li><b>A</b></li></ul><p><b></b><ol><li>B</li></ol></p><p></p><p><br/></p>', 'files/muro_media/20/20210820142451.jpg', 'www.ab.com', NULL, 2, NULL, '2021-08-20 19:24:52', '2021-08-20 19:24:52'),
-(2, 20, '<p>Esta publicación</p><ul><li>​Nueva </li></ul><ol><li>Mi blog</li></ol>', 'files/muro_media/20/20210908153331.jpg', 'http://127.0.0.1:8000/#/Home/GestionOrganizacion/Organizacion', NULL, 2, NULL, '2021-09-08 20:33:31', '2021-09-08 20:33:31');
+(3, 1, '<p>Prueba de muro</p><ul><li>​</li></ul><ol><li>prueba</li></ol><p>Esta prueba</p><p><br/></p><p><br/></p><p>Cualquier cosa</p><p><br/></p><p><br/></p>', 'files/muro_media/1/20211110111834.jpg', 'http://127.0.0.1:8000/#/Home/GestionOrganizacion/Organizacion', NULL, 1, NULL, '2021-11-10 11:18:34', '2021-11-10 11:18:34');
 
 -- --------------------------------------------------------
 
@@ -10411,10 +10376,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `tipo_documento`, `documento`, `nombres`, `apellidos`, `correo`, `celular`, `perfil_id`, `organizacion_id`, `finca_id`, `contrasena`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'CC', '1044444', 'Christian Alejandro', 'Orregos Herrera', 'info@mbrain.co', '3103103104', 1, 1, 9, '$2y$10$kVKw9xUQ0uA4D9rKr0BLAummvBhCTowxlPGIpIuQY.IBzQoEMHr2K', '2021-03-01 08:06:04', '2021-05-07 01:39:40', NULL),
-(2, 'CC', '111179643', 'Miguel', 'Herrera', 'miguellangelhs@gmail.com', '3165544852', 4, 20, 13, '$2y$10$yWjyeV6QwUpa3qdrXjQHyOWRhA0ytPpiJh6Ii.0n1vNEH.ozOQQM.', '2021-05-10 13:21:39', '2021-09-08 20:36:55', NULL),
-(28, 'CC', '3212323421', 'Usuario Prueba', 'Opciones', 'opciones@gmail.com', '3212343234', 2, 22, NULL, '$2y$10$ztOTOq/K5mNVd/2RhWiXE.f4FOmUnl/L2DI4kgqz1lYSBAKYOZ1YO', '2021-08-11 21:39:14', '2021-09-24 14:35:30', NULL),
-(29, 'CC', '0000000000', 'Usuario Pueba', 'Mi prueba', 'usuarioprueba@gmail.com', '3212223343', 4, 21, NULL, 'eyJpdiI6IktKbUduSTJUak5laU5KN0Y2S0tzNWc9PSIsInZhbHVlIjoibU5RTFBKZ2Zlb0tNQmpkRkRkM2hWZz09IiwibWFjIjoiYmNmMTU1Y2Q4MTgzMDQyYjkyMjY2Nzk1ZTgzMGRjNGIxNWU3NWE3OTEwMjVmOGY4NzFlNWY3MDM3YWM1YzFlOSJ9', '2021-09-24 14:43:18', '2021-09-24 14:43:18', NULL);
+(1, 'CC', '123456789', 'Usuario', 'Prueba', 'info@mbrain.co', '3103103104', 1, 1, 9, '$2y$10$lnx9Aa59BD8PihfEbeA0tOaT3WffSXdNLeiyGxwgv.JxgLAi69zxu', '2021-03-01 08:06:04', '2021-11-10 15:27:00', NULL),
+(30, 'CC', '2323245654', 'Productor', 'Prueba', 'productor@gmail.com', '3212345432', 4, 23, 15, '$2y$10$WtvJz0Xlp.mv43evTnuK..vCe5teILVpssSKOp3vYLLO1UvmkVfJu', '2021-11-10 10:28:14', '2021-11-10 11:32:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -10430,13 +10393,6 @@ CREATE TABLE `usuario_organizacion` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `usuario_organizacion`
---
-
-INSERT INTO `usuario_organizacion` (`id`, `usuario_id`, `organizacion_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 2, 20, '2021-10-01 01:20:50', '2021-10-01 01:20:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -10469,9 +10425,8 @@ CREATE TABLE `zonas` (
 --
 
 INSERT INTO `zonas` (`id`, `linea_productiva_id`, `descripcion`, `temperatura_min`, `temperatura_max`, `humedad_relativa_min`, `humedad_relativa_max`, `precipitacion_min`, `precipitacion_max`, `altimetria_min`, `altimetria_max`, `brillo_solar_min`, `brillo_solar_max`, `pendiente_min`, `pendiente_max`, `created_at`, `updated_at`) VALUES
-(6, 5, 'Zona Norte', 23, 33, 12, 14, 23, 45, 23, 32, 23, 34, 5, 10, '2021-06-23 23:46:06', '2021-07-19 21:37:08'),
-(7, 6, 'Zona Este', 23, 33, 12, 15, 23, 45, 23, 32, 23, 34, 5, 10, '2021-06-23 23:46:06', '2021-06-23 23:46:06'),
-(10, 5, 'Zona Actual', 23, 45, 55, 32, 34, 45, 76, 34, 45, 65, 45, 54, '2021-07-31 01:24:19', '2021-07-31 01:24:19');
+(11, 4, 'ZONA PRUEBA', 34, 23, 45, 23, 34, 45, 67, 23, 34, 34, 45, 45, '2021-11-10 10:45:55', '2021-11-10 10:45:55'),
+(12, 5, 'ZONA B', 34, 34, 54, 54, 56, 656, 67, 6, 34, 23, 34, 5, '2021-11-10 10:46:30', '2021-11-10 10:46:30');
 
 --
 -- Índices para tablas volcadas
@@ -10577,7 +10532,7 @@ ALTER TABLE `finca_eventos`
 ALTER TABLE `labores`
   ADD PRIMARY KEY (`id`),
   ADD KEY `linea_productiva_id` (`linea_productiva_id`),
-  ADD KEY `zonas_id` (`zona_id`);
+  ADD KEY `zona_id` (`zona_id`);
 
 --
 -- Indices de la tabla `lineas_productivas`
@@ -10758,13 +10713,13 @@ ALTER TABLE `zonas`
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `articulos_secciones`
 --
 ALTER TABLE `articulos_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaciones`
@@ -10776,13 +10731,13 @@ ALTER TABLE `asignaciones`
 -- AUTO_INCREMENT de la tabla `casos`
 --
 ALTER TABLE `casos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `casos_novedades`
 --
 ALTER TABLE `casos_novedades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `credito__abonos`
@@ -10812,7 +10767,7 @@ ALTER TABLE `credito__saldos`
 -- AUTO_INCREMENT de la tabla `cultivos`
 --
 ALTER TABLE `cultivos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
@@ -10824,19 +10779,19 @@ ALTER TABLE `eventos`
 -- AUTO_INCREMENT de la tabla `fincas`
 --
 ALTER TABLE `fincas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `finca_eventos`
 --
 ALTER TABLE `finca_eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `labores`
 --
 ALTER TABLE `labores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `lineas_productivas`
@@ -10854,43 +10809,43 @@ ALTER TABLE `listas_detalle`
 -- AUTO_INCREMENT de la tabla `listas_indice`
 --
 ALTER TABLE `listas_indice`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes`
 --
 ALTER TABLE `lotes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_cosechas`
 --
 ALTER TABLE `lotes_cosechas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores`
 --
 ALTER TABLE `lotes_labores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores_productor`
 --
 ALTER TABLE `lotes_labores_productor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes_labores_realizadas`
 --
 ALTER TABLE `lotes_labores_realizadas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `lote_labores`
 --
 ALTER TABLE `lote_labores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `opciones`
@@ -10902,13 +10857,13 @@ ALTER TABLE `opciones`
 -- AUTO_INCREMENT de la tabla `organizaciones`
 --
 ALTER TABLE `organizaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `organizaciones_muro_secciones`
 --
 ALTER TABLE `organizaciones_muro_secciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion_lineas_productivas`
@@ -10962,7 +10917,7 @@ ALTER TABLE `secciones`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_organizacion`
@@ -10974,11 +10929,18 @@ ALTER TABLE `usuario_organizacion`
 -- AUTO_INCREMENT de la tabla `zonas`
 --
 ALTER TABLE `zonas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `lotes_labores`
+--
+ALTER TABLE `lotes_labores`
+  ADD CONSTRAINT `lotes_labores_ibfk_1` FOREIGN KEY (`lote_id`) REFERENCES `lotes` (`id`),
+  ADD CONSTRAINT `lotes_labores_ibfk_2` FOREIGN KEY (`labor_id`) REFERENCES `labores` (`id`);
 
 --
 -- Filtros para la tabla `usuarios`
