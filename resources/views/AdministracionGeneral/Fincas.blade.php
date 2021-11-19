@@ -50,7 +50,7 @@
 					</div>
 				</md-card>
 		</div>
-
+	<!--Modal para creación de finca-->
 	<md-card flex class="no-margin-top">
 				<md-table-container class="border-bottom">
 				<table md-table>
