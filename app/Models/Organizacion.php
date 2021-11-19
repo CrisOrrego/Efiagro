@@ -37,7 +37,7 @@ class Organizacion extends Model
             ['telefono',                    'Teléfono:',                     null, true,         false, null, 100],
             ['correo',                      'Correo:',                       'email', true,      false, null, 100],
             ['total_asociados',             'Asociados:',                    'integer', true,    false, null, 100],
-            ['fecha_constitucion',          'Fecha Constitución:',           'date', true,       false, null, 100],         
+            ['fecha_constitucion',          'Fecha Constitución:',           'date', false,       false, null, 100],         
         ];
     }
 

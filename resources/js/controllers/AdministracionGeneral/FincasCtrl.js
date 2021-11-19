@@ -172,6 +172,7 @@ angular
                 }).then(r => {
                     if (!r) return;
                     Ctrl.FincasCRUD.add(r);
+                    Rs.showToast("Finca creada");
                 });
             };
             //FIN DEV ANGÉLICA

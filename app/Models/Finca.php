@@ -46,7 +46,6 @@ class Finca extends Model
             ['humedad_relativa',               'Humedad Relativa (%):',         null,       true,   false, null, 100],
             ['precipitacion',                  'Precipitacion (Mm):',           null,       true,   false, null, 100],
             ['altimetria',                 'Altimetria (Mt):',       null,       false,  false, null, 100],
-            ['pendiente',                 'Pendiente',       null,       false,  false, null, 100],
             ['brillo_solar',                   'Brillo Solar (H):',             null,       true,   false, null, 100],
         ];
 
