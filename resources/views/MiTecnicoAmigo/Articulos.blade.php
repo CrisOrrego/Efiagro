@@ -139,7 +139,7 @@
 		padding-left:48px;
 		padding-top:1px;
 		font-size:22px;color:green;
-		background-image: url('imgs/lupa.png');
+		/* background-image: url('imgs/lupa.png'); */
 		background-repeat:no-repeat;
 		background-position:center;outline:0;
 	}
