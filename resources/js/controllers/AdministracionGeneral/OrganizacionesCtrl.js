@@ -53,7 +53,9 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             Ctrl.OrganizacionesCRUD.get().then(() => {
                 Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows.find(O => O.id === Rs.Usuario.organizacion_id);
                 
-                Ctrl.Organizacion = ( Ctrl.Organizacion ) ? Ctrl.OrganizacionesCRUD.rows[0] : [];
+                if (!Ctrl.Organizacion){
+                    Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows[0]; 
+                }  
                 Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
                 Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice();
             });
@@ -97,7 +99,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         inicializarListaDepartamentoMunicipio = () => {
             let col_departamento = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'departamento');
             loadDepartamentos(col_departamento);
-    
+           
             col_departamento.Options.onChangeFn = (valorDepartamento) => {
                 let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
                 loadMunicipios(valorDepartamento, col_municipio);
@@ -131,11 +133,14 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         Ctrl.editarOrganizacion = (O) => {
             inicializarListaDepartamentoMunicipio();
+            let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
+            loadMunicipios(O.departamento, col_municipio);
 			Ctrl.OrganizacionesCRUD.dialog(O, {
 				title: 'Editar Organización' + O.nombre
 			}).then(r => {
 				if(r == 'DELETE') return Ctrl.OrganizacionesCRUD.delete(O);
 				Ctrl.OrganizacionesCRUD.update(r).then(() => {
+                    Ctrl.getOrganizacion(); 
 					Rs.showToast('Organizacion actualizada');
 				});
 			});
@@ -173,7 +178,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         //Carga imagen al servidor
         Ctrl.subirImagen = ($file) => {
-            debugger;
             if(!$file) return;
 
             Upload.upload({
@@ -183,10 +187,8 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                     Ancho: 560, Alto: 300, Quality: 90
                 }
             }).then(function (resp) {
-                debugger;
                 respuesta = 'Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data;
             }, function (resp) {
-                debugger;
                 respuesta = 'Error status: ' + resp.status;
             });
         }

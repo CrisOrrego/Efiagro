@@ -90,7 +90,7 @@
 		
 		margin: 5px;
 		border-radius: 50%;
-		/background-image: url("imgs/default-section-icon.png");/
+		/*background-image: url("imgs/default-section-icon.png");*/
 		background-size: 100%;
 	}
 	.seccion_icono_img img{

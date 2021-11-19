@@ -24,7 +24,7 @@ angular.module('ArticulosCtrl', [])
 		};
 
 		Ctrl.getArticulos();
-
+			alert("muestre articulo");
 			$http.post('api/lineasproductivas/obtener', {}).then(r => {
 			Ctrl.lineas_productivas = r.data;
 		    });
@@ -53,6 +53,7 @@ angular.module('ArticulosCtrl', [])
 				scope: Ctrl.$new()
 			});
 		}
+
 
 		//INICIO DEV ANGÉLICA ---> Filtro de búsqueda 
 		Ctrl.suppressSpecialCharacters = (word) => { // suprimir algunos caracteres especiales -  funcion para buscar con tiltes

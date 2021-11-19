@@ -106,7 +106,7 @@ angular.module('HomeCtrl', [])
             Rs.actualizarUsuario = ( campo, valor ) => {
                 if ( !campo || !valor )
                     return;
-                
+                    Rs.Usuario.organizacion_id = valor;
                 $http.post('api/usuario/actualizarcampo', {
                     usuarioid: Rs.Usuario['id'],
                     campo: campo, 

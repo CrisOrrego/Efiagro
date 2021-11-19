@@ -80,4 +80,12 @@ class LoteController extends Controller
         $lote->save();
 	}
 
+    // Funcion para obtener las fincas y luego los lotes de las fincas que corresponden a un usuario_id :: Luigi
+	public function postLineaproductivausuario()
+    {
+		$usuario = request('usuario');
+		$fincas = Finca::where('usuario_id', $usuario)->get('id');
+		return Lote::whereIn('finca_id', $fincas)->distinct('linea_productiva_id')->get(['linea_productiva_id']);
+    }
+
 }
