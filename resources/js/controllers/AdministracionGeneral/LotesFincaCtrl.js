@@ -134,7 +134,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                 Title: "Crear Nueva Cosecha",
                 Fields: [
                     {
-                        Nombre: " " +  "Fecha",
+                        Nombre: " ",
                         Value: null,
                         Type: "date",
                         Required: true

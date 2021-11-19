@@ -133,7 +133,7 @@ angular
             //INICIO DEV ANGPELICA
             loadDepartamentos = (col_departamento) => {
 
-                col_departamento.Options.options = Departamentos;
+                col_departamento.Options.options = Ctrl.DepartamentosTabla;
             }
 
             loadMunicipios = (valorDepartamento, col_municipio) => {
@@ -371,6 +371,7 @@ angular
 
         Ctrl.filterMunicipios = () => {
             Ctrl.Municipios = [];
+            Ctrl.filterFinca();
             if(Ctrl.filterDepartamento){
                 $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: Ctrl.filterDepartamento }).then((r)=>{
                     for(let key in r.data){
@@ -384,7 +385,6 @@ angular
         Ctrl.filterFinca = () => {
             //Filtro para buscar Nombre
             if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2){
-                debugger;
                 //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
                 Ctrl.Fincascopy = Ctrl.Fincascopy.filter(F => F.nombre.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase())> -1);
             }

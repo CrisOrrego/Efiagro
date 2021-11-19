@@ -26,20 +26,20 @@
 							</md-option>
 						</md-select>
 					</md-input-container>
-
-					<md-input-container>
-						<label>Código Postal</label>
-						<input ng-change="filterFinca()" type="text" ng-model="filterCodigoPostal" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
-					</md-input-container>
-
+					
 					<md-input-container>
 						<label>Municipio</label>
 						<!--kM -->
 						<md-select ng-change="filterFinca()"  ng-model="filterMunicipio">
-							<md-option ng-repeat="M in Municipios" ng-value="M.nombre">  
+							<md-option ng-repeat="M in Municipios" ng-value="M.codigo">  
 								@{{ M.nombre }}
 							</md-option>
 						</md-select>
+					</md-input-container>
+
+					<md-input-container>
+						<label>Código Postal</label>
+						<input ng-change="filterFinca()" type="text" ng-model="filterCodigoPostal" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
 					</md-input-container>
 
 					<md-input-container>
