@@ -24,7 +24,5 @@
 		</md-sidenav>
 		<div id="Subseccion" flex layout ui-view></div>
 	</div>
-	
-
 </div>
 

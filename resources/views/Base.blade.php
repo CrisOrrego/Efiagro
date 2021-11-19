@@ -20,7 +20,11 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
-	
+		<script>
+			$(document).ready(function(){
+			  $('[data-toggle="popover"]').popover();
+			});
+			</script>
 	</head>
 
 	<body layout ui-view></body>
