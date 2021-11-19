@@ -170,9 +170,10 @@ angular.module("CasosCtrl", []).controller("CasosCtrl", [
 				Ctrl.Casoscopy = Ctrl.Casoscopy.filter(caso => caso.solicitante.nombre.toUpperCase().indexOf(Ctrl.filterAsociado.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
 			}
             //Filtro para quien lleva el caso
+            debugger;
 			if (Ctrl.filterLlevacaso && Ctrl.filterLlevacaso.length > 2){
 				//toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
-				Ctrl.Casoscopy = Ctrl.Casoscopy.filter(caso => caso.asignados.toUpperCase().indexOf(Ctrl.filterLlevacaso.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+				Ctrl.Casoscopy = Ctrl.Casoscopy.filter(caso => caso.asignados.nombre.toUpperCase().indexOf(Ctrl.filterLlevacaso.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
 			}
         } //FIN DEV ANGÉLICA
     }

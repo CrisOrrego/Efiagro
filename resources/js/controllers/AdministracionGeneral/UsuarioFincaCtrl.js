@@ -18,7 +18,7 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload']) //ngFileUpload
                 Ctrl.SelectedFile = file;
             };
             Ctrl.Upload = (L) => {
-                // debugger;
+                //debugger;
                 var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
                 if (regex.test(Ctrl.SelectedFile.name.toLowerCase())) {
                     if (typeof(FileReader) != "undefined") {
@@ -42,15 +42,15 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload']) //ngFileUpload
                             reader.readAsArrayBuffer(Ctrl.SelectedFile);
                         }
                     } else {
-                        $window.alert("Este navegador no soporta HTML5");
+                        alert("Este navegador no soporta HTML5");
                     }
                 } else {
-                    $window.alert("Por favor subir un archivo de excel valido.");
+                    alert("Por favor subir un archivo de excel vàlido.");
                 }
             };
 
             Ctrl.ProcessExcel = function(data, L) {
-                // debugger;
+                debugger;
                 //Read the Excel File data.
                 var workbook = XLSX.read(data, {
                     type: 'binary'
@@ -64,8 +64,11 @@ angular.module('UsuarioFincaCtrl', ['ngFileUpload']) //ngFileUpload
                 L.coordenadas = '';
                 excelRows.forEach(element => {
                     //console.log(element.lat);
-                    L.coordenadas += '{"lat":' + element.lat + ', "lng":' + element.lng + '},';
-
+                    if (L.coordenadas.length > 0 ){
+                        L.coordenadas += ',';
+                    }
+                    L.coordenadas += '{"lat":' + element.lat + ', "lng":' + element.lng + '}';
+                    
                 });
                 L.coordenadas = '[' + L.coordenadas + ']';
             };

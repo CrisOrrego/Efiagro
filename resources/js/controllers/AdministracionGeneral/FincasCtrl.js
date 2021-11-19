@@ -65,7 +65,11 @@ angular
             //Obtener el elemento de la lista
             Ctrl.getDepartamentos = () => {
                 $http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
-                    Departamentos = r.data;
+                    Ctrl.DepartamentosTabla = r.data;
+                    Ctrl.Departamentos = [];
+                    for(let key in r.data){
+                        Ctrl.Departamentos.push ({codigo: key, nombre: r.data[key]});
+                    }
                 });
             }
 
@@ -73,10 +77,9 @@ angular
 
 
             //Obtener el elemento de la lista municiios
-            Ctrl.getMunicipios = () => {
+                Ctrl.getMunicipios = () => {
                 $http.post ('api/lista/obtener', { lista: 'Municipios' }).then((r)=>{
-                    Ctrl.Municipios = r.data;
-                    console.log(Ctrl.Municipios);
+                    Ctrl.MunicipiosTabla = r.data;
                 });
             }
             
@@ -91,8 +94,6 @@ angular
                 query_with: ["zona", 'usuarios']
             });
 
-
-            
 
 
             Ctrl.getFinca = () => {
@@ -183,6 +184,7 @@ angular
                 }).then(r => {
                     if(r == 'DELETE') return Ctrl.FincasCRUD.delete(O);
                     Ctrl.FincasCRUD.update(r).then(() => {
+                        Ctrl.getFinca();
                         Rs.showToast('Finca actualizada');
                     });
                 });
@@ -365,6 +367,17 @@ angular
                   });
                 GClocation.setMap(map);
                 
+        }
+
+        Ctrl.filterMunicipios = () => {
+            Ctrl.Municipios = [];
+            if(Ctrl.filterDepartamento){
+                $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: Ctrl.filterDepartamento }).then((r)=>{
+                    for(let key in r.data){
+                        Ctrl.Municipios.push ({codigo: key, nombre: r.data[key]});
+                    }
+                });
+            }
         }
 
         //INICIO DEV ANGÉLICA
