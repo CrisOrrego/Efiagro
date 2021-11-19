@@ -49,6 +49,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
                 title: "Editar Cultivo" + C.id
             }).then(r => {
                 if (r == "DELETE") return Ctrl.CultivosCRUD.delete(C);
+                if (!r) return;
                 Ctrl.CultivosCRUD.update(r).then(() => {
                     Rs.showToast("Cultivo actualizado");
                 });

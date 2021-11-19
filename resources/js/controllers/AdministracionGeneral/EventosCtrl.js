@@ -47,6 +47,7 @@ angular.module("EventosCtrl", []).controller("EventosCtrl", [
                 title: "Editar Evento" + E.id
             }).then(r => {
                 if (r == "DELETE") return Ctrl.EventosCRUD.delete(E);
+                if (!r) return;
                 Ctrl.EventosCRUD.update(r).then(() => {
                     Rs.showToast("Evento actualizado");
                 });

@@ -183,6 +183,7 @@ angular
                     title: 'Editar Finca' + O.nombre
                 }).then(r => {
                     if(r == 'DELETE') return Ctrl.FincasCRUD.delete(O);
+                    if (!r) return;
                     Ctrl.FincasCRUD.update(r).then(() => {
                         Ctrl.getFinca();
                         Rs.showToast('Finca actualizada');
@@ -228,6 +229,7 @@ angular
                     title: "Editar Lote" + L.id
                 }).then(r => {
                     if (r == "DELETE") return Ctrl.LotesCRUD.delete(L);
+                    if (!r) return;
                     Ctrl.LotesCRUD.update(r).then(() => {
                         Rs.showToast("Lote actualizado");
                     });

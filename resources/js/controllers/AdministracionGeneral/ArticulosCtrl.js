@@ -24,7 +24,6 @@ angular.module('ArticulosCtrl', [])
 		};
 
 		Ctrl.getArticulos();
-			alert("muestre articulo");
 			$http.post('api/lineasproductivas/obtener', {}).then(r => {
 			Ctrl.lineas_productivas = r.data;
 		    });

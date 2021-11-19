@@ -50,6 +50,7 @@ angular.module("FincaEventosCtrl", []).controller("FincaEventosCtrl", [
                 title: "Editar Evento" + FE.id
             }).then(r => {
                 if (r == "DELETE") return Ctrl.FincaEventosCRUD.delete(FE);
+                if (!r) return;
                 Ctrl.FincaEventosCRUD.update(r).then(() => {
                     Rs.showToast("Evento actualizado");
                 });

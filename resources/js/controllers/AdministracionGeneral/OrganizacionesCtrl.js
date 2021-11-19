@@ -113,12 +113,15 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             inicializarListaDepartamentoMunicipio();
         //FIN DEV ANGÉLICA  
             Ctrl.OrganizacionesCRUD.dialog({
-                Flex: 10,
+                // Flex: 10,
                 title: 'Crear Organización',
-                Confirm: { Text: 'Crear Organizacion' },
-            }).then(r => {
+                // Confirm: { Text: 'Crear Organizacion' },
+            }).then(r  => {
                 if (!r) return;
-                Ctrl.OrganizacionesCRUD.add(r);
+                Ctrl.OrganizacionesCRUD.add(r)
+                .then(() => {
+                    Rs.showToast('Organización creada')
+                });
             });
         };
        
@@ -139,6 +142,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 				title: 'Editar Organización' + O.nombre
 			}).then(r => {
 				if(r == 'DELETE') return Ctrl.OrganizacionesCRUD.delete(O);
+                if (!r) return;
 				Ctrl.OrganizacionesCRUD.update(r).then(() => {
                     Ctrl.getOrganizacion(); 
 					Rs.showToast('Organizacion actualizada');
