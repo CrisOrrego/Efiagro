@@ -35,7 +35,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         Ctrl.nuevoCultivo = () => {
             Ctrl.CultivosCRUD.dialog({
                 Flex: 10,
-                Title: "Crear Cultivo",
+                title: "Crear Cultivo",
 
                 Confirm: { Text: "Crear Cultivo" }
             }).then(r => {

@@ -59,8 +59,9 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                 Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
                 Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice();
             });
+           
         };
-
+ 
          Ctrl.getOrganizacion();
 
         //INICIO DEV ANGPELICA
@@ -115,17 +116,14 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             Ctrl.OrganizacionesCRUD.dialog({
                 // Flex: 10,
                 title: 'Crear Organización',
-                // Confirm: { Text: 'Crear Organizacion' },
+                Confirm: { Text: 'Crear Organizacion' }
             }).then(r  => {
                 if (!r) return;
-                Ctrl.OrganizacionesCRUD.add(r)
-                .then(() => {
-                    Rs.showToast('Organización creada')
-                });
+                Ctrl.OrganizacionesCRUD.add(r);
+                Rs.showToast('Organización creada')
             });
         };
        
-
         Ctrl.getDepartamentos = () => {
 			$http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
                 departamentos = r.data;
