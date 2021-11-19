@@ -16,15 +16,15 @@ angular.module('FondoRotatorio_NuevoCreditoDiagCtrl', [])
 		Ctrl.Cancelar = function(){ $mdDialog.cancel(); }
 
 		Ctrl.Scales = CreditoSrv.Scales;
-		//Ctrl.Lineas = Parent.Vars.LINEAS;
-		Ctrl.Lineas = ['Libre Inversión']
+		Ctrl.Lineas = Parent.Vars.LINEAS_CREDITO;
+		Ctrl.changeInterest = Boolean(Parent.Vars.CREDITO_CAMBIAR_INTERES);
 		
 		Ctrl.Credit = {
 			Linea: Ctrl.Lineas[0],
 			Monto: 1000000,
 			Periodos: 6,
 			Periodos_Gracia: 0,
-			Interes: 0.25,
+			Interes: angular.copy(Parent.Vars.CREDITO_INTERES) / 100,
 			Cada: Ctrl.Scales['1_M'],
 			Cuota: 0,
 			Primer_Pago: moment().toDate(),
@@ -60,8 +60,12 @@ angular.module('FondoRotatorio_NuevoCreditoDiagCtrl', [])
 		Ctrl.SaveCredit = function(){
 			if(Simulate) return false;
 
+			let Credit = angular.copy(Ctrl.Credit);
+
+			Credit.Fecha = moment(Credit.Primer_Pago).format('YYYY-MM-DD');
+
 			var Daten = {
-				Credit: Ctrl.Credit,
+				Credit: Credit,
 				Amortable: Ctrl.Amortable,
 				AmortableRes: Ctrl.AmortableRes,
 				Asociado: Asociado,

@@ -8,6 +8,10 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
         var Ctrl = $scope;
         var Rs = $rootScope;
 
+
+        Ctrl.filterFinca = "";
+        Ctrl.filterOrganizacion = "";
+        Ctrl.filterLineaProductiva = "";
        
         Ctrl.Salir = $mdDialog.cancel;
 
@@ -23,6 +27,7 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
             Ctrl.LotesCRUD.get().then(() => {
                 Ctrl.Lote = Ctrl.LotesCRUD.rows[0];
                 //Ctrl.editarLote(Ctrl.LotesCRUD.rows[0]);
+                Ctrl.Lotescopy = Ctrl.LotesCRUD.rows.slice();
             });
         };
 
@@ -61,36 +66,6 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
             });
         };
 
-        Ctrl.abrirLabores = L => {
-            $mdDialog.show({
-                templateUrl: "Frag/MiFinca.LaboresDiag",
-                controller: "LaboresDiagCtrl",
-                locals: { Labor: L },
-                fullscreen: false
-            });
-        };
-
-        // Ctrl.addLabores = () => {
-        //     Ctrl.UsuariosCRUD.dialog({ 
-        //         tipo_documento: 'CC', 
-        //         organizacion_id: Rs.Usuario.organizacion_id
-        //     }, {
-        //         title: 'Agregar Usuario',
-        //         except: [
-        //             'finca_id',
-        //             'organizacion_id',
-        //         ],
-        //     }).then(U => {
-        //         if ( !U ) return;
-        //         Ctrl.UsuariosCRUD.add(U)
-        //             .then(() => {
-        //                 Rs.showToast('Usuario creado');
-        //             });
-        //     });
-  
-        // };
-
-
         // LABORES
         Ctrl.abrirLabores = L => {
             $mdDialog.show({
@@ -100,6 +75,28 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
                 fullscreen: false
             });
         };
+
+         //INICIO DEV ANGÉLICA
+         Ctrl.filterLote = () => {
+             //Filtro de tipo de lote
+             Ctrl.Lotescopy = Ctrl.LotesCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
+             //Filtro para buscar Lote
+             if (Ctrl.filterFinca && Ctrl.filterFinca.length > 2){
+                 //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                 Ctrl.Lotescopy = Ctrl.Lotescopy.filter(L => L.finca.nombre.toUpperCase().indexOf(Ctrl.filterFinca.toUpperCase())> -1);
+            } 
+            //Filtro para Organizacion
+            if (Ctrl.filterOrganizacion && Ctrl.filterOrganizacion.length >= 1){
+                //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                Ctrl.Lotescopy = Ctrl.Lotescopy.filter(L => L.organizacion.nombre.toUpperCase().indexOf(Ctrl.filterOrganizacion.toUpperCase())> -1);
+            }
+                //Filtro para buscar Linea productiva
+            if (Ctrl.filterLineaProductiva && Ctrl.filterLineaProductiva.length >= 1){
+                //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                Ctrl.Lotescopy = Ctrl.Lotescopy.filter(L => L.linea_productiva.nombre.toUpperCase().indexOf(Ctrl.filterLineaProductiva.toUpperCase())> -1);
+            } 
+        //FIN DEV ANGÉLICA
+    }
         
     }
 ]);

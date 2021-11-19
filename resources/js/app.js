@@ -11,6 +11,7 @@ angular.module('App', [
     'ngFileUpload',
     //'angular-loading-bar',
     //'angularResizable',
+    'nvd3',
     'ui.utils.masks',
     //'as.sortable',
     //'ngCsv',
@@ -41,14 +42,16 @@ angular.module('App', [
     'SolicitudesDetalleCtrl',
 
     'UsuariosCtrl',
-    'UsuarioFincaCtrl',     // Luigi
+    'UsuarioFincaCtrl', // Luigi
+    'UsuarioOrganizacionCtrl', // Luigi
+    'UsuarioLaboresCtrl', // Luigi
     'ArticulosCtrl',
     'Articulos_ArticuloEditorCtrl',
     'CasosCtrl', // Luigi
     'Casos_NovedadesCtrl', // Luigi
     'LineasProductivasCtrl', // Luigi
     //'MitecnicoAmigoInicioCtrl', // Luigi
-    
+
     //Inicio Dev Angélica
     'ContactoCtrl',
     'ArticulomuroEditDialogCtrl',
@@ -64,7 +67,9 @@ angular.module('App', [
     'FincasCtrl',
     'FincaDiagCtrl',
     'PerfilesCtrl', // Luigi
-    
+    'EventosCtrl',
+    'FincaEventosCtrl',
+
     // 'PerfilesCtrl',
     // Zonas Agroambientales
     'ZonasCtrl',
@@ -81,7 +86,16 @@ angular.module('App', [
     'FondoRotatorio__Creditos_CreditoDialogCtrl', //CAOH
     'FondoRotatorio__Creditos_ReciboDialogCtrl', //CAOH
     'CreditoSrv', //CAOH
+    'OpcionesCtrl',
     'FondoRotatorio_ListadoCtrl', //CAOH
-    'FondoRotatorio_MisCreditosCtrl' //CAOH
+    'FondoRotatorio_MisCreditosCtrl', //CAOH
+    'FondoRotatorio__EstadisticasCtrl', //CAOH
 
+    'Estadisticas__Data_RemarkCtrl',
+    'Estadisticas__Chart_ColCtrl',
+    'Estadisticas__Chart_BarCtrl',
+    'Estadisticas__Chart_PieCtrl',
+    'Estadisticas__Table_BasicCtrl',
+    'Estadisticas__Table_WithSubtablesCtrl',
+    'Estadisticas_RepDialogCtrl',
 ]);

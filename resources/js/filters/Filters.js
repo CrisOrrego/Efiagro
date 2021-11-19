@@ -157,4 +157,12 @@ angular.module('Filters', [])
 			var arr = input.split(' ');
 			return arr[index-1];
 		};
+	}).filter('sum', function() {
+		return function(array, key) {
+			var sum = 0;
+			angular.forEach(array, function(v) {
+				sum += parseFloat(v[key]);
+			});
+			return sum;
+		};
 	});

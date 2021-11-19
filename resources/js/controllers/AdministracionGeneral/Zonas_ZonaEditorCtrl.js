@@ -14,9 +14,9 @@ angular.module('Zonas_ZonaEditorCtrl', [])
 		// 	add_append: 'refresh',
 		// });
 
-		Ctrl.getZonas = () => {
-			Ctrl.ZonasCRUD.setScope('lazona', Zona.id).get();
-		};
+		// Ctrl.getZonas = () => {
+		// 	Ctrl.ZonasCRUD.setScope('lazona', Zona.id).get();
+		// };
 
 		Ctrl.getZonas();
 

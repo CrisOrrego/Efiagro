@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Lista extends Model
-{
+{ 
     use HasFactory;
     use SoftDeletes;
     

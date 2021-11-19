@@ -16,6 +16,7 @@ angular.module('Casos_NovedadesCtrl', [])
                 base_url: '/api/casos/novedades',
                 limit: 1000,
                 add_append: 'refresh',
+                query_with: ["autor"]
             });
 
             // Creamos listado de Tipo de novedad

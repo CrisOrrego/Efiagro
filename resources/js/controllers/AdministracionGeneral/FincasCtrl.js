@@ -10,7 +10,7 @@ angular
 
             var Ctrl = $scope;
             var Rs = $rootScope;
-    // INICIO ANGELICA
+            // INICIO ANGELICA
             var TiposSuelo = [
                 // "UNIDAD AMAGÁ",
                 // "UNIDAD ARMENIA",
@@ -57,6 +57,10 @@ angular
 
             Ctrl.Salir = $mdDialog.cancel;
 
+            Ctrl.filterDepartamento = "";
+            Ctrl.filterMunicipio = "";
+            Ctrl.filterZona = "";
+            Ctrl.filterNombre = "";
 
             //Obtener el elemento de la lista
             Ctrl.getDepartamentos = () => {
@@ -67,6 +71,18 @@ angular
 
             Ctrl.getDepartamentos();
 
+
+            //Obtener el elemento de la lista municiios
+            Ctrl.getMunicipios = () => {
+                $http.post ('api/lista/obtener', { lista: 'Municipios' }).then((r)=>{
+                    Ctrl.Municipios = r.data;
+                    console.log(Ctrl.Municipios);
+                });
+            }
+            
+            Ctrl.getMunicipios();
+
+
             Ctrl.FincasCRUD = $injector.get("CRUD").config({
                 base_url: "/api/fincas/fincas",
                 limit: 1000,
@@ -76,6 +92,9 @@ angular
             });
 
 
+            
+
+
             Ctrl.getFinca = () => {
                 Ctrl.FincasCRUD.get().then(() => {
                     Ctrl.Finca = Ctrl.FincasCRUD.rows[0];
@@ -83,6 +102,8 @@ angular
                     if (Ctrl.Finca.departamento_id && Departamentos) {
                         Ctrl.Finca.nombreDepartamento = Departamentos[Ctrl.Finca.departamento_id];                   
                     }
+                    Ctrl.Fincascopy = Ctrl.FincasCRUD.rows.slice();
+                    console.log(Ctrl.Fincascopy);
                 });
             };
 
@@ -345,7 +366,35 @@ angular
                 GClocation.setMap(map);
                 
         }
+
+        //INICIO DEV ANGÉLICA
+        Ctrl.filterFinca = () => {
+            //Filtro para buscar Nombre
+            if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2){
+                debugger;
+                //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                Ctrl.Fincascopy = Ctrl.Fincascopy.filter(F => F.nombre.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase())> -1);
+            }
+            //Filtro de tipo de finca
+            Ctrl.Fincascopy = Ctrl.FincasCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
+            //Filtro para Departamento
+            if (Ctrl.filterDepartamento && Ctrl.filterDepartamento.length >= 1){
+                //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                Ctrl.Fincascopy = Ctrl.Fincascopy.filter(F => F.departamento_id == Ctrl.filterDepartamento); 
+            }
+            //Filtro para buscar Municipio
+            if (Ctrl.filterMunicipio && Ctrl.filterMunicipio.length >= 1){
+                //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                Ctrl.Fincascopy = Ctrl.Fincascopy.filter(F => F.municipio_id == Ctrl.filterMunicipio);
+            }
+            //Filtro para buscar Zona
+            if (Ctrl.filterZona && Ctrl.filterZona.length > 2){
+                //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                Ctrl.Fincascopy = Ctrl.Fincascopy.filter(F => F.zona.descripcion.toUpperCase().indexOf(Ctrl.filterZona.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+            } 
+        //FIN DEV ANGÉLICA
     }
+ }
 
     ]).directive("mapa",[function(){
     return {

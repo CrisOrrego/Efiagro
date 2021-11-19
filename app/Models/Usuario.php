@@ -17,9 +17,14 @@ class Usuario extends Model
     protected $appends = [ 
         'nombre'
     ];
+    protected $casts = [
+        'perfil_id' => 'integer',
+        'organizacion_id' => 'integer',
+        'finca_id' => 'integer'
+    ];
 
     public function columns()
-    {
+    { 
         // Arreglo para la carga de Tipos de documentos.
         $tipodocumento = [
             'CC' => 'Cedula Ciudadania', 'CE' => 'Cedula Extranjeria', 'TI' => 'Tarjeta Identidad', 'PA' => 'Pasaporte', 'RC' => 'Registro Civil', 'NI' => 'NIT'
@@ -27,6 +32,11 @@ class Usuario extends Model
         // Obtener informacion de los perfiles, y luego almacenarlo en formato de arreglo.
         $perfiles = \App\Models\Perfil::all()->keyBy('id')->map( function($p){
             return $p['perfil'];
+        })->toArray();
+
+        
+        $organizacionesusuario= \App\Models\Organizacion::all()->keyBy('id')->map( function($o){
+            return $o['nombre'];
         })->toArray();
         
         //Name,         Desc,               Type,   Required, Unique, Default, Width, Options
@@ -38,7 +48,7 @@ class Usuario extends Model
             [ 'correo',         'Correo electrónico', 'email',  false,  false,  null, 100 ],
             [ 'celular',        'Celular',          'string',   false,  false,  null, 45 ],
             [ 'perfil_id',      'Perfil',           'select',   true,   false,  null, 50, ['options' => $perfiles] ],
-            [ 'organizacion_id','Organización',     'select',   false,  false,  null, 50 ],
+            [ 'organizacion_id','Organización',     'select',   true,   false,  null, 50, ['options' => $organizacionesusuario] ],
             [ 'finca_id',       'Finca',            'select',   false,  false,  null, 50 ]
         ];
     }
@@ -55,6 +65,11 @@ class Usuario extends Model
     public function organizaciones()
     {
         return $this->hasMany('App\Models\Organizacion', 'usuario_id');
+    }
+
+    public function organizaciones_usuario()
+    {
+        return $this->belongsTo('App\Models\Organizacion', 'organizacion_id');
     }
     
     public function perfil()
