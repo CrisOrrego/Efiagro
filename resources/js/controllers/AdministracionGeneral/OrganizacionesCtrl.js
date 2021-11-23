@@ -143,7 +143,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                 if (!r) return;
 				Ctrl.OrganizacionesCRUD.update(r).then(() => {
                     Ctrl.getOrganizacion(); 
-					Rs.showToast('Organizacion actualizada');
+					Rs.showToast('Organización actualizada');
 				});
 			});
 		}

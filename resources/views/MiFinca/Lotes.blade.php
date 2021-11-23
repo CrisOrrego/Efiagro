@@ -58,7 +58,7 @@
                             <div  ng-if="LB.delta === 1" style="color: red">
                                 @{{ LB.otraLabor }} 
                             </div>
-                            <label class="texto_title">@{{ LB.labor }} </label> <br> <span class="textoInfo">Inicio:  @{{ LB.inicio }} <br> Frecuencia:  @{{ LB.frecuencia }} Margen:  @{{LB.delta}} </span>
+                            <label class="texto_title">@{{ LB.labor }} </label> <br> <span class="textoInfo">Inicio:  @{{ LB.inicio }} <br> Frecuencia:  @{{ LB.frecuencia }}, Margen:  @{{LB.delta}} </span>
 
                             </md-checkbox>
                             </ul>

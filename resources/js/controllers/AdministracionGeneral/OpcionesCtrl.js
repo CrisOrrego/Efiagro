@@ -53,7 +53,7 @@ angular.module('OpcionesCtrl', []).controller('OpcionesCtrl', [
             }).then((r) => {
                 if (r == 'DELETE') return Ctrl.OpcionesCRUD.delete(Ops)
                 Ctrl.OpcionesCRUD.update(r).then(() => {
-                    Rs.showToast('Opcion actualizada')
+                    Rs.showToast('Opción actualizada')
                 })
             })
         }
@@ -72,7 +72,7 @@ angular.module('OpcionesCtrl', []).controller('OpcionesCtrl', [
             Rs.http('/api/opciones/actualizar', {
                 Opciones: opcionesCambiadas
             }).then(() => {
-                Rs.showToast('Opcion Actualizada')
+                Rs.showToast('Opción Actualizada')
             });
 
         }
