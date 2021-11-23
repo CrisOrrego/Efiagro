@@ -20,8 +20,8 @@ angular.module('App', [
     'enterStroke',
     'printThis',
     'textAngular',
-
-
+    'SeccionCtrl',
+    
     'CRUD',
     'CRUDDialogCtrl',
     'ConfirmDeleteCtrl',

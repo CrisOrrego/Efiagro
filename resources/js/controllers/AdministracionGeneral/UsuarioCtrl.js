@@ -125,7 +125,7 @@ angular.module('UsuariosCtrl', [])
 
             //INICIO DEV ANGÉLICA
             Ctrl.filterUsuarios = () => {
-                    //Filtro de tipo de Documento
+                    // Filtro de tipo de Documento
                     Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
                     if (Ctrl.filterDocumento && Ctrl.filterDocumento.length >= 1) {
                         //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas

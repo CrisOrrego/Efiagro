@@ -12,12 +12,11 @@
                 ng-click="navegarSubseccion(S.seccion_slug, S.subseccion_slug)"></md-tab>
         </md-tabs>
     </div>
-
-    <div flex layout>
+    {{-- <div flex layout>
         <md-sidenav md-is-locked-open="true" class="w200 overflow-y"
             ng-show="Secciones[Estado.ruta[2]].length > 1 && Secciones[Estado.ruta[2]][0].navegacion == 'izquierda'"
             md-whiteframe=2 layout=column>
-            <div ng-repeat="grupo in ['grupoA', 'grupoB', 'grupoC', 'grupoD']">
+            <div ng-repeat="grupo in ['ORGANIZACIÓN', 'CONFIGURACIÓN','FINCA', 'LOTE', ]">
                 <md-subheader>@{{ grupo }}</md-subheader>
                 <div ng-repeat="S in Secciones[Estado.ruta[2]] | filter:{grupo:grupo}:true" class="Pointer padding-5-10"
                     ng-class="{ 'text-bold bg-light-grey': (S.subseccion_slug == Estado.ruta[3]) }"
@@ -25,12 +24,44 @@
                     @{{ S . subseccion }}
                 </div>
             </div>
-            {{-- <div ng-repeat="S in Secciones[Estado.ruta[2]]" class="Pointer padding-5-10"
-				ng-class="{ 'text-bold bg-light-grey': (S.subseccion_slug == Estado.ruta[3]) }"
-				ng-click="navegarSubseccion(S.seccion_slug, S.subseccion_slug)">
-				@{{ S.subseccion }}
-			</div> --}}
         </md-sidenav>
         <div id="Subseccion" flex layout ui-view></div>
+    </div> --}}
+
+    {{--  --}}
+    <div layout="row" ng-controller="SeccionCtrl" >
+
+        <div ng-show="Secciones[Estado.ruta[2]].length > 1 && Secciones[Estado.ruta[2]][0].navegacion == 'izquierda'">
+
+            <md-sidenav class="md-sidenav-left" style="width: 230px; top: 40px;" md-component-id="closeEventsDisabled"
+                md-whiteframe="4">
+                <md-toolbar class="md-theme-indigo">
+                    <h1 ng-click="toggleSidenav()" class="md-toolbar-tools ">Administración</h1>
+                </md-toolbar>
+                <md-content layout-margin="">
+                    <p ng-show="Secciones[Estado.ruta[2]].length > 1 && Secciones[Estado.ruta[2]][0].navegacion == 'izquierda'"
+                        md-whiteframe=2 layout=column>
+                    <div ng-repeat="grupo in ['ORGANIZACIÓN', 'CONFIGURACIÓN','FINCA', 'LOTE', ]" class="no-margin">
+                        <md-subheader>@{{ grupo }}</md-subheader>
+                        <div ng-repeat="S in Secciones[Estado.ruta[2]] | filter:{grupo:grupo}:true"
+                            class="Pointer padding-1-5"
+                            ng-class="{ 'text-bold bg-light-grey': (S.subseccion_slug == Estado.ruta[3]) }"
+                            ng-click="navegarSubseccion(S.seccion_slug, S.subseccion_slug)">
+                            @{{ S . subseccion }}
+                        </div>
+                    </div>
+                    </p>
+                </md-content>
+
+            </md-sidenav>
+            <div>
+                <md-button ng-click="toggleSidenav()" class="md-raised md-primary">
+                    Menú <i class="fas fa-bars"></i>
+                </md-button>
+            </div>
+        </div>
+        <div id="Subseccion" flex layout ui-view></div>
     </div>
+    {{--  --}}
+
 </div>
