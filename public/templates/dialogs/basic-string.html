@@ -29,14 +29,11 @@
 						<md-icon ng-if="Field.Type == 'password' && Field.showPassword"  md-font-icon="Pointer fa-fw fa-eye-slash"    ng-click="Field.showPassword = false"><md-tooltip>Ocultar Contraseña</md-tooltip></md-icon>
 						<md-icon ng-if="Field.Type == 'password' && !Field.showPassword" md-font-icon="Pointer fa-fw fa-eye" 	      ng-click="Field.showPassword = true"><md-tooltip>Mostrar Contraseña</md-tooltip></md-icon>
 
-
-
 					<input ng-model="Field.Value" ng-required="Field.Required" class="w100p" min="{{Field.Min}}"
 						max="{{Field.Max}}" ng-if="Field.Type == 'number'" type="number">
 
-
-					<md-datepicker ng-model="Field.Value" ng-if="Field.Type == 'date'" ng-required="Field.Required"
-						class="w100p posicionDate"></md-datepicker>
+					<!-- <md-datepicker ng-model="Field.Value" ng-if="Field.Type == 'date'" ng-required="Field.Required"
+						></md-datepicker> -->
 
 					<md-datepicker ng-model="Field.Value" ng-if="Field.Type == 'period'" ng-required="Field.Required"
 						class="w100p" md-mode="month" md-date-locale="periodDateLocale"></md-datepicker>
