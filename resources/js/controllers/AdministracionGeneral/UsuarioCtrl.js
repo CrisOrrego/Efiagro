@@ -3,21 +3,29 @@ angular.module('UsuariosCtrl', [])
         function($scope, $rootScope, $http, $injector, $mdDialog) {
          
             var Ctrl = $scope;
-            var Rs = $rootScope; 
+            var Rs = $rootScope;
+            console.log('UsuariosCtrl');
+
+            Ctrl.filterDocumento = "";
+            Ctrl.filterNombre = "";
+            Ctrl.filterApellido = "";
 
             // Cargar CRUD angular para Usuarios
             Ctrl.UsuariosCRUD = $injector.get('CRUD').config({
                 base_url: '/api/usuario/usuarios',
                 limit: 100,
                 add_append: 'refresh',
-                query_with: ['perfil'],
+                query_with: ['perfil', 'organizaciones_usuario'],
             });
 
             Ctrl.getUsuarios = () => {
                 // Asignar organizacion por defecto y obtener la informacion del usuario
                 // 20210505 Se quita funcion de filtrar por Organizacion.
                 // Ctrl.UsuariosCRUD.setScope('laorganizacion', Rs.Usuario.organizacion_id); 
-                Ctrl.UsuariosCRUD.get().then(() => {});
+                Ctrl.UsuariosCRUD.get().then(() => {
+                    Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows.slice();
+                    //Ctrl.cargarFincas(Ctrl.UsuariosCRUD.rows[1]); //FIX
+                });
             };
             Ctrl.getUsuarios();
 
@@ -30,7 +38,7 @@ angular.module('UsuariosCtrl', [])
                     title: 'Agregar Usuario',
                     except: [
                         'finca_id',
-                        'organizacion_id',
+                        // 'organizacion_id',
                     ],
                 }).then(U => {
                     if ( !U ) return;
@@ -47,7 +55,7 @@ angular.module('UsuariosCtrl', [])
                     title: `Editar usuario: ${ U.nombres } ${ U.apellidos }`,
                     except: [
                         'finca_id',
-                        'organizacion_id',
+                        // 'organizacion_id',
                     ],
                 }).then(r => {
                     if ( !r ) return;
@@ -104,5 +112,27 @@ angular.module('UsuariosCtrl', [])
                     fullscreen: false,
                 });
             };
+
+            //INICIO DEV ANGÉLICA
+            Ctrl.filterUsuarios = () => {
+                //Filtro de tipo de Documento
+                Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
+                if (Ctrl.filterDocumento && Ctrl.filterDocumento.length >= 1){
+                    //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                    Ctrl.Usuarioscopy = Ctrl.Usuarioscopy.filter(U => U.documento == Ctrl.filterDocumento); 
+                }
+
+                //Filtro para nombre
+                if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2){
+                    //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                    Ctrl.Usuarioscopy = Ctrl.Usuarioscopy.filter(U => U.nombres.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+                }
+                //Filtro para buscar Nit
+                if (Ctrl.filterApellido && Ctrl.filterApellido.length > 2){
+                    //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                    Ctrl.Usuarioscopy = Ctrl.Usuarioscopy.filter(U => U.apellidos.toUpperCase().indexOf(Ctrl.filterApellido.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+                }
+            } 
+            //FIN DEV ANGÉLICA
         }
     ]);

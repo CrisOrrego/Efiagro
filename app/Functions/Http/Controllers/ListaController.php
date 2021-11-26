@@ -29,6 +29,45 @@ class ListaController extends Controller
 		return $L;
 	}
 
+	//
+	public function postObtenerdetalle()
+	{
+		$lista_id = request('lista_id');
+		$codigo = request('codigo');
+		//$L = Lista:: with ("listadetalle") -> where ("id", 1); // me trae la lista con los detalles donde el id sea 1
+		$D = ListaDetalle::where("lista_id", $lista_id)->where("codigo", $codigo)->first();
+		return $D;
+	}
+	//
+
+	public function postObtener()
+	{
+		$lista = request('lista');
+
+		$L = Lista::where('lista', $lista)->first();
+		$Q = ListaDetalle::where('lista_id', $L->id);
+
+		if(request('Op1')){ $Q = $Q->where('op1', request('Op1')); }
+
+		return $Op = $Q->get()->keyBy('codigo')->transform(function($op){
+			return $op->descripcion;
+		});
+	}
+
+
+
+	public function getDepartamentos()
+	{
+		$L = ListaDetalle::where("lista_id", 2)->get();
+		foreach($L as $$listadetalles){
+			$LM = ListaDetalle::where("lista_id", 3) //LM = LISTA MUNICIPIOS
+			->where("op1",$listadetalles->codigo)
+			->get(); 
+			$listadetalles->municipios=$LM;
+		}
+		return $L;
+	}
+
 	public function postActualizar(Request $req)
 	{
 		$lista=$req->Lista;
@@ -61,8 +100,17 @@ class ListaController extends Controller
 		$listadetalle=ListaDetalle::findOrFail($req->id);
 		$id=$listadetalle->lista_id;
 		$listadetalle->delete();
-		$L = Lista::with ("listadetalle")->findOrFail($id); 
-		return $L;
+		/*$L = Lista::with ("listadetalle")->findOrFail($id); 
+		return $L;*/
+	}
+
+	// Funcion para traer todos los registros de una tabla 
+	// con un solo criterio de consulta y ordenado por la descripcion
+	public function postListacompleta(Request $req)
+	{
+		return ListaDetalle::where("lista_id", $req->id)
+			->orderBy('descripcion')
+			->get();
 	}
 	
 }

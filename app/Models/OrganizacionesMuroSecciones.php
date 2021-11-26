@@ -12,12 +12,12 @@ class OrganizacionesMuroSecciones extends Model
     protected $table = 'organizaciones_muro_secciones';
     protected $guarded = ['id'];
     protected $appends = [];
-    protected $cast = [
-        //'objeto' => 'array'
-    ];
-
+    protected $casts = [
+        'organizacion_id' => 'integer',
+        'usuario_id' => 'integer'
+         ];
     public function columns()
-    {
+    { 
         //      Name,       Desc,       Type,   Required, Unique, Default, Width, Options
         // [ 'organizaciones_muro_id', 'organizaciones_muro_id',   null,   true,  false, null, 100 ],
         return [

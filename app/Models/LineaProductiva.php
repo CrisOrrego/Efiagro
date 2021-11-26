@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class LineaProductiva extends Model
-{
+{ 
     use HasFactory, SoftDeletes;
 
     protected $table = 'lineas_productivas';

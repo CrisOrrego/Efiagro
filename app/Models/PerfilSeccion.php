@@ -13,9 +13,13 @@ class PerfilSeccion extends Model
     protected $table = 'perfiles_secciones';
     protected $guarded = ['id'];
     protected $appends = [ ];
+    protected $casts = [
+        'perfil_id' => 'integer',
+        'seccion_id' => 'integer'
+         ];
 
     public function columns()
-    {
+    { 
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
             ['perfil_id',     'perfil_id',      null, true, false, null, 100],

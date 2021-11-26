@@ -10,18 +10,21 @@
 
 		<md-button class="md-raised md-primary boton-principal" ng-click="crearCaso()">Crear Nueva Solicitud</md-button>
 		<!--INICIO DEV ANGELICA-->
-		<div flex>
-			<a href="tel:3173562730" ng-click="crearCasoTelefonico('Llamada telefonica')" style="text-decoration: unset;">
-				<img src="imgs/contacto/tel.png" alt="" width="45" height="45" HSPACE="10" VSPACE="10" />
-			</a>
-			<a href="sms:+573173562730?body=Hola Inges de GC!" ng-click="crearCasoTelefonico('SMS')" style="text-decoration: unset;">
-				<img src="imgs/contacto/sms.png" alt="" width="45" height="45" HSPACE="10" VSPACE="10" />
-			</a>
-			<a target="_blank" ng-click="crearCasoTelefonico('Whatsapp')" style="text-decoration: unset;" 
-				href="https://api.whatsapp.com/send?phone=3173562730&text=Hola%20Ingenieros%20de%20GC%20">
-				<img src="imgs/contacto/wpp.png" alt="" width="45" height="45" HSPACE="10" VSPACE="10" />
-			</a>
-		<!--FIN DEV ANGELICA--> 	
+		
+		<div ng-repeat="Op in [Opciones.CELULAR_TECNICO_AMIGO]">
+			<div flex>
+				<a href="tel:@{{Op.valor}}" ng-click="crearCasoTelefonico('Llamada telefonica')" style="text-decoration: unset;">
+					<img src="imgs/contacto/tel.png" alt="" width="45" height="45" HSPACE="10" VSPACE="10" />
+				</a>
+				<a href="sms:+57@{{Op.valor}}?body=Hola Inges de GC!" ng-click="crearCasoTelefonico('SMS')" style="text-decoration: unset;">
+					<img src="imgs/contacto/sms.png" alt="" width="45" height="45" HSPACE="10" VSPACE="10" />
+				</a>
+				<a target="_blank" ng-click="crearCasoTelefonico('Whatsapp')" style="text-decoration: unset;" 
+					href="https://api.whatsapp.com/send?phone=@{{Op.valor}}&text=Hola%20Ingenieros%20de%20GC%20">
+					<img src="imgs/contacto/wpp.png" alt="" width="45" height="45" HSPACE="10" VSPACE="10" />
+				</a>
+            </div>
+			<!--FIN DEV ANGELICA--> 	
 		</div>
 	</div>
 	

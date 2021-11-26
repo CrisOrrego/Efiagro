@@ -4,12 +4,18 @@
         <div layout="center">
             <div flex="">
                 <div class="mi_Organizacion" align="left">
-                    <div align="center" class="content_nombre_organizacion ">
-                        <img class="img-organizacion" src="/../imgs/organizacion1.jpg" alt="iconOrganizacion">
+                    <div align="center" class="content_nombre_organizacion">
+                        <img style="background-image: url('/../files/img_perfil_organizacion/sinLogo.jpg'); 
+                        background-color: white; display: block; margin: 10px; font-size: 12px; font-weight: bold; color: #800000; " 
+                        id="logo_perfil" class="img-organizacion" src="/../files/img_perfil_organizacion//@{{ Organizacion.id }}.jpg" alt="Logo Organizacion">
+                        <md-button ng-if="perfil_id != 4" class="md-icon-button pointer button-container">
+                                    <md-icon md-font-icon="fas fa-camera-retro" ng-click="cargarImagen()"></md-icon>
+                        </md-button>
                         <h2>@{{ Organizacion . nombre }}</h2>
-                        <h4 class="openOrganigrama pointer" ng-click="abrirOrganigrama(O)">
+
+                        {{-- <h4 class="openOrganigrama pointer" ng-click="abrirOrganigrama(O)">
                             Ver Organigrama
-                        </h4>
+                        </h4> --}}
                     </div>
 
                 </div>
@@ -56,7 +62,7 @@
 
              <!--INICIO DEV ANGÉLICA -- Agrega espacio para hacer publicaciones-->
              <div flex="60">
-                <div layout class="seccion_content" magin-bottom>
+                <div ng-if="perfil_id != 4" layout class="seccion_content" magin-bottom>
                         <md-input-container flex class="md-block" no-margin>
                             <h4 class="openOrganigrama pointer" ng-click="nuevoArticuloMuro()">
                                 Agregue novedad...
@@ -102,10 +108,26 @@
 
     </div>
 
-
-
 </div>
 
+
+<style>
+    div .mi_Organizacion .button-container{
+        position: relative;
+        top:  -43px;
+        right: -43px;
+        background-color: #E0DFCA;
+    }
+
+    .button-container md-buttom{
+        bottom:4em;
+        right:4em;
+        border-radius:1.5em;
+        color:white;
+        text-transform:uppercase;
+        padding:1em 1.5em;
+    }
+</style>
 
 <style type="text/css">
     md-card {

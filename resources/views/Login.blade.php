@@ -8,7 +8,7 @@
 
 				{{-- <div class="border-rounded" > --}}
 					<div  align="center">
-						<img class="imagen" src="imgs/default-section-icon.jpg"  alt="" >
+						<img class="imagen" src="imgs/login_icon.png"  alt="" >
 					</div>
 				{{-- </div> --}}
 
@@ -35,7 +35,7 @@
 	
 	<div class="logos">
 		<span class='spacer'></span>
-		<div align="center"><img class="" src="imgs/logosentidad.jpeg"  alt="" ></div>
+		<div align="center"><img class="" src="imgs/logos_entidades.png"  alt="" ></div>
 		<span class='spacer'></span>
 	</div>
 

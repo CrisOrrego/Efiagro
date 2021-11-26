@@ -18,8 +18,15 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             base_url: "/api/organizaciones/organizaciones",
             limit: 1000,
             add_append: "refresh",
-            order_by: ["-created_at"]
+            order_by: ["-created_at"],
+            query_with:['linea_productiva']
         });
+        Ctrl.perfil_id = Rs.Usuario.perfil_id;
+        Ctrl.filterNombre = "";
+        Ctrl.filterNit = "";
+
+        Ctrl.filterNombre = "";
+        Ctrl.filterNit = "";
 
         Ctrl.value = 0;
 
@@ -46,8 +53,11 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             Ctrl.OrganizacionesCRUD.get().then(() => {
                 Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows.find(O => O.id === Rs.Usuario.organizacion_id);
                 
-                Ctrl.Organizacion = ( Ctrl.Organizacion ) ? Ctrl.OrganizacionesCRUD.rows[0] : [];
+                if (!Ctrl.Organizacion){
+                    Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows[0]; 
+                }  
                 Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
+                Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice();
             });
         };
 
@@ -89,7 +99,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         inicializarListaDepartamentoMunicipio = () => {
             let col_departamento = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'departamento');
             loadDepartamentos(col_departamento);
-    
+           
             col_departamento.Options.onChangeFn = (valorDepartamento) => {
                 let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
                 loadMunicipios(valorDepartamento, col_municipio);
@@ -123,11 +133,14 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         Ctrl.editarOrganizacion = (O) => {
             inicializarListaDepartamentoMunicipio();
+            let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
+            loadMunicipios(O.departamento, col_municipio);
 			Ctrl.OrganizacionesCRUD.dialog(O, {
 				title: 'Editar Organización' + O.nombre
 			}).then(r => {
 				if(r == 'DELETE') return Ctrl.OrganizacionesCRUD.delete(O);
 				Ctrl.OrganizacionesCRUD.update(r).then(() => {
+                    Ctrl.getOrganizacion(); 
 					Rs.showToast('Organizacion actualizada');
 				});
 			});
@@ -220,7 +233,56 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         }
     //FIN DEV ANGÉLICA
 
+    //INICIO DEV ANGELICA --> O = Organizacion
+    Ctrl.cargarImagen = async() => {
+        var Imagen = await $mdDialog.show({
+            templateUrl: 'templates/dialogs/image-editor.html',
+            controller: 'ImageEditor_DialogCtrl',
+            multiple: true,
+            locals: {
+                Config: {
+                    Theme: 'default',
+                    CanvasWidth: 200,
+                    CanvasHeight: 200,
+                    CropWidth: 200,
+                    CropHeight: 200,
+                    MinWidth: 50,
+                    MinHeight: 50,
+                    KeepAspect: true,
+                    Preview: false,
+                    Daten: {
+                        Path: 'files/img_perfil_organizacion/' + Ctrl.Organizacion.id + '.jpg'
+                    }
+                }
+            }
+        });
+        let logo = document.getElementById("logo_perfil");
+        logo.src = "/../files/img_perfil_organizacion//" + Ctrl.Organizacion.id + ".jpg?d=" + new Date().getTime(); 
+    };
+    //FIN DEV ANGELICA
+
+
+    //INICIO DEV ANGÉLICA
+    Ctrl.filterOrganizacion = () => {
+        //Filtro de tipo de organizacion
+        Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
+        //Filtro para nombre
+        if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2){
+            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+            Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(O => O.nombre.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+        }
+        //Filtro para buscar Nit
+        if (Ctrl.filterNit && Ctrl.filterNit.length > 2){
+            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+            Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(O => O.nit.toUpperCase().indexOf(Ctrl.filterNit.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+        }
+        if (Ctrl.filterLineaProductiva && Ctrl.filterLineaProductiva.length >= 1){
+            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+            Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(L => L.linea_productiva.nombre.toUpperCase().indexOf(Ctrl.filterLineaProductiva.toUpperCase())> -1);
+        } 
+    } //FIN DEV ANGÉLICA
     }
+
 ]);
 
 

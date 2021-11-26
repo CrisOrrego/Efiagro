@@ -24,13 +24,11 @@ angular.module('ArticulosCtrl', [])
 		};
 
 		Ctrl.getArticulos();
-
-		//INCIO DEV ANGÉLICA --> Lineas productivas
-		$http.post('api/lineasproductivas/obtener', {}).then(r => {
+			alert("muestre articulo");
+			$http.post('api/lineasproductivas/obtener', {}).then(r => {
 			Ctrl.lineas_productivas = r.data;
 		    });
-		//FIN DEV ANGÉLICA
-
+		
 		Ctrl.nuevoArticulo = () => {
 
 			Ctrl.ArticulosCRUD.dialog({
@@ -56,6 +54,7 @@ angular.module('ArticulosCtrl', [])
 			});
 		}
 
+
 		//INICIO DEV ANGÉLICA ---> Filtro de búsqueda 
 		Ctrl.suppressSpecialCharacters = (word) => { // suprimir algunos caracteres especiales -  funcion para buscar con tiltes
 			return word.toLowerCase()
@@ -79,7 +78,7 @@ angular.module('ArticulosCtrl', [])
 			}
 			//Filtro de palabras clave, los chips
 			if(Ctrl.filterKeys && Ctrl.filterKeys.length>0){
-				debugger;
+				// debugger;
 				let index = 0; //Se necesita el índice del artículo que se está recorriendo
 				let L = Ctrl.Articuloscopy.length;
 				for (i = 0; i<L; i++){

@@ -12,6 +12,9 @@ class Caso extends Model
     protected $table = 'casos';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'solicitante_id' => 'integer'
+         ]; 
 
     public function columns()
     {
@@ -31,6 +34,11 @@ class Caso extends Model
         return $this->belongsTo('App\Models\Usuario', 'solicitante_id', 'id');
     }
 
+    public function asignados()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'asignados', 'id');
+    }
+
     public function novedades()
     {
         return $this->hasMany('App\Models\CasoNovedad', 'caso_id');
@@ -41,11 +49,21 @@ class Caso extends Model
     public function scopeTipo($q)
     {
         return $q->whereIn('tipo', ['tipo', 'Consulta General', 'Apoyo Tecnico', 'Contar Experiencia']);
-    }
+    } 
 
     public function scopeTipocontacto($q)
     {
         return $q->whereIn('tipo', ['Whatsapp', 'SMS', 'Llamada telefonica']);
     }
     //Fin Dev Angélica
+
+    public function usuarios()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id');
+    }
+
+    public function autor()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id', 'id');
+    }
 }
