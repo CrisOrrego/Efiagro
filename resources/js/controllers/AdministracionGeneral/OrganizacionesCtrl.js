@@ -4,17 +4,17 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
     "$http",
     "$injector",
     "$mdDialog",
-    "Upload",  //DEV ANGÉLICA --> 
+    "Upload",  //DEV ANGÉLICA -->
     function($scope, $rootScope, $http, $injector, $mdDialog, Upload) {
-        
+
         var Ctrl = $scope;
         var Rs = $rootScope;
         var departamentos = [];
 
         Ctrl.Salir = $mdDialog.cancel;
-		
+
         Ctrl.OrganizacionesCRUD = $injector.get("CRUD").config({
-            
+
             base_url: "/api/organizaciones/organizaciones",
             limit: 1000,
             add_append: "refresh",
@@ -30,26 +30,26 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         Ctrl.myHTML =
         'I am an <code>HTML</code>string with ' +
         '<a href="#">links!</a> and other <em>stuff</em>';
-        
+
         //INICIO DEV ANGÉLICA -- MURO
-        Ctrl.OrganizacionesmuroseccionesCRUD = $injector.get('CRUD').config({ 
+        Ctrl.OrganizacionesmuroseccionesCRUD = $injector.get('CRUD').config({
             base_url: '/api/organizacionesmurosecciones/organizacionesmurosecciones',
             limit: 1000,
 			add_append: 'refresh',
             query_with: ['usuario'],
 			order_by: [ '-created_at' ]
 		});
-        
+
         Ctrl.obtenerSecciones = (organizacion_id) => {
             Ctrl.OrganizacionesmuroseccionesCRUD.setScope('elorganizacion', organizacion_id).get();
 		};
-        
+
         //FIN DEV ANGÉLICA
         Ctrl.getOrganizacion = () => {
             // Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id); //con el setScope estoy haciendo un filtro en la BD para que él nos traiga sólo un registro
             Ctrl.OrganizacionesCRUD.get().then(() => {
                 Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows.find(O => O.id === Rs.Usuario.organizacion_id);
-                
+
                 Ctrl.Organizacion = ( Ctrl.Organizacion ) ? Ctrl.OrganizacionesCRUD.rows[0] : [];
                 Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
                 Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice();
@@ -66,7 +66,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             /*departamentos.forEach(departamento => {
                 let codigo = departamento.codigo;
                 let descripcion = departamento.descripcion;
-                col_departamento.Options.options = {...col_departamento.Options.options, 
+                col_departamento.Options.options = {...col_departamento.Options.options,
                     [codigo]: descripcion // si quiero que en la base de datos se vea por codigos en departamento y municipio
                     //[descripcion]: descripcion // si quiero que en la base de datos se vea por nombres(descripcion) en departamento y municipio
                 };
@@ -83,7 +83,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             /*departamento.municipios.forEach(municipio => {
                 let codigo = municipio.codigo;
                 let descripcion = municipio.descripcion;
-                col_municipio.Options.options = {...col_municipio.Options.options, 
+                col_municipio.Options.options = {...col_municipio.Options.options,
                     //[codigo]: descripcion ----> si quiero que en la base de datos se vea por codigos en departamento y municipio
                     [descripcion]: descripcion // si quiero que en la base de datos se vea por nombres(descripcion) en departamento y municipio
                 };
@@ -94,11 +94,11 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         inicializarListaDepartamentoMunicipio = () => {
             let col_departamento = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'departamento');
             loadDepartamentos(col_departamento);
-    
+
             col_departamento.Options.onChangeFn = (valorDepartamento) => {
                 let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
                 loadMunicipios(valorDepartamento, col_municipio);
-            }                        
+            }
 
         }
         //FIN DEV ANGÉLICA
@@ -106,7 +106,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         //INICIO DEV ANGÉLICA
         Ctrl.nuevaOrganizacion = () => {  //Esta es una función que me crea automaticamente la modal y lleva la informacion a la BD desde la modal de CRUD
             inicializarListaDepartamentoMunicipio();
-        //FIN DEV ANGÉLICA  
+        //FIN DEV ANGÉLICA
             Ctrl.OrganizacionesCRUD.dialog({
                 Flex: 10,
                 Title: 'Crear Organización',
@@ -116,7 +116,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                 Ctrl.OrganizacionesCRUD.add(r);
             });
         };
-       
+
 
         Ctrl.getDepartamentos = () => {
 			$http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
@@ -138,6 +138,23 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			});
 		}
 
+		Ctrl.seleccionar = (u, o) => {
+            $http.post('/api/usuario/actualizarorganizacion', {
+                usuario: u,
+                organizacion: o
+            }).then(() => {
+                Rs.showToast("Se cambio la Organizacion.");
+            });
+        };
+
+		Ctrl.quitar = (u) => {
+            $http.post('/api/usuario/quitarorganizacion', {
+                usuario: u
+            }).then(() => {
+                Rs.showToast("Se quito la Organizacion para el Usuario.");
+            });
+        };
+
 		Ctrl.eliminarOrganizacion = (O) => {
 			Rs.confirmDelete({
 				Title: '¿Eliminar Organizacion #'+O.id+'?',
@@ -147,7 +164,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			});
         }
 
-        //Abre el modal de publicaciones del muro 
+        //Abre el modal de publicaciones del muro
 		Ctrl.abrirOrganigrama = (O) => {
 			$mdDialog.show({
 				templateUrl: 'Frag/GestionOrganizacion.OrganigramaDiag',
@@ -158,11 +175,11 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         }
 
 
-    //INICIO DEV ANGÉLICA 
+    //INICIO DEV ANGÉLICA
         //Abre el modal del un articulo de un muro de la organizacion
         Ctrl.abrirArticulomuro = (A) => {
 			$mdDialog.show({
-                templateUrl: 'templates/dialogs/image-editor.html',               
+                templateUrl: 'templates/dialogs/image-editor.html',
 				controller: 'ImageEditor_DialogCtrl',
 				locals: {Organizacionesmurosecciones: A},
 			});
@@ -187,7 +204,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                 respuesta = 'Error status: ' + resp.status;
             });
         }
-        
+
         //Abre el modal del un articulo de un muro de la organizacion
         Ctrl.nuevoArticuloMuro = (O) => {
 			$mdDialog.show({
@@ -198,7 +215,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			}).then(function (resp) {
                 Ctrl.OrganizacionesmuroseccionesCRUD.setScope('elorganizacion', Rs.Usuario.organizacion_id).get();
             }, function (resp) {
-                respuesta = 'Error status: ' + resp.status; 
+                respuesta = 'Error status: ' + resp.status;
             });
 
         }
@@ -252,7 +269,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             }
         });
         let logo = document.getElementById("logo_perfil");
-        logo.src = "/../files/img_perfil_organizacion//" + Ctrl.Organizacion.id + ".jpg?d=" + new Date().getTime(); 
+        logo.src = "/../files/img_perfil_organizacion//" + Ctrl.Organizacion.id + ".jpg?d=" + new Date().getTime();
     };
     //FIN DEV ANGELICA
 
@@ -274,7 +291,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         if (Ctrl.filterLineaProductiva && Ctrl.filterLineaProductiva.length >= 1){
             //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
             Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(L => L.linea_productiva.nombre.toUpperCase().indexOf(Ctrl.filterLineaProductiva.toUpperCase())> -1);
-        } 
+        }
     } //FIN DEV ANGÉLICA
     }
 

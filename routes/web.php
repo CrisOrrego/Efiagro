@@ -31,6 +31,8 @@ Route::get("/api/lista/{id}",   [ListaController::class, 'Listacompleta']); // L
 Route::get("/api/lotelaborsemana/{loteid}/{lineaproductivaid}/{numsemana}",   [LoteLaboresController::class, 'Lotelaborsemana']);
 Route::get("/api/departamentos",  [ListaController::class, 'getDepartamentos']);
 Route::post("/api/lista",  [ListaController::class, 'Delete']);
+
+// Route::post("/api/usuario", [ListaController::class, 'actualizarorganizacion']); // Luigi 2021-12-08
 //FIN Dev ANGÉLICA
 // Route::post("/api/finca",       [FincaController::class, 'Actualizar']);    // Luigi
 AdvancedRoute::controller('/api/main',      'MainController');
@@ -56,13 +58,13 @@ AdvancedRoute::controller('/api/fincaeventos',    'FincaEventosController');
 AdvancedRoute::controller('/api/zonas',             'ZonasController');
 AdvancedRoute::controller('/api/labores',           'LaboresController');
 AdvancedRoute::controller('/api/lotelabores',         'LoteLaboresController');
-AdvancedRoute::controller('/api/loteslabores',      'LotesLaboresController');      
+AdvancedRoute::controller('/api/loteslabores',      'LotesLaboresController');
 
-AdvancedRoute::controller('/api/casos',             'CasosController');             
-AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController'); 
-AdvancedRoute::controller('/api/perfiles',          'PerfilesController');          
-AdvancedRoute::controller('/api/secciones',         'SeccionesController');         
+AdvancedRoute::controller('/api/casos',             'CasosController');
+AdvancedRoute::controller('/api/lineasproductivas', 'LineasProductivasController');
+AdvancedRoute::controller('/api/perfiles',          'PerfilesController');
+AdvancedRoute::controller('/api/secciones',         'SeccionesController');
 
-AdvancedRoute::controller('/api/opciones',         'OpcionesController');       
-AdvancedRoute::controller('/api/creditos',          'CreditosController'); 
+AdvancedRoute::controller('/api/opciones',         'OpcionesController');
+AdvancedRoute::controller('/api/creditos',          'CreditosController');
 AdvancedRoute::controller('/api/articulos', 'ArticulosController');

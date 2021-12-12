@@ -40,7 +40,7 @@ class UsuarioController extends Controller
     		return response()->json(['Msg' => 'Error en el usuario registrado'], 500);
     	}
     }
- 
+
     public function postRevisarToken()
     {
         $token = request('token');
@@ -51,7 +51,7 @@ class UsuarioController extends Controller
 
         return $Usuario;
     }
-    
+
     // Medoto para la actualizacion solo de la clave del usuario.
     public function postActualizarClave()
     {
@@ -102,6 +102,23 @@ class UsuarioController extends Controller
     //http://127.0.0.1:8000/api/usuario/generar-clave/12345
     public function getGenerarClave($texto){
         return Hash::make($texto);
+    }
+
+    public function postActualizarorganizacion()
+    {
+        $usuario = request('usuario');
+        $organizacion = request('organizacion');
+        $usuario = Usuario::where('id', $usuario)->first();
+        $usuario->organizacion_id = $organizacion;
+        $usuario->save();
+    }
+
+    public function postQuitarorganizacion()
+    {
+        $usuario = request('usuario');
+        $usuario = Usuario::where('id', $usuario)->first();
+        $usuario->organizacion_id = NULL;
+        $usuario->save();
     }
 
 }

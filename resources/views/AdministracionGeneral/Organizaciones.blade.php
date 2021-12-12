@@ -1,5 +1,5 @@
 <div id="GestionOrganizaciones" ng-controller="OrganizacionesCtrl" flex layout=column>
-	
+
 	<div layout class="padding-0-10" layout-align="center center">
 		<div class="md-title">Gestion de Organizaciones</div>
 		<span flex></span>
@@ -7,7 +7,7 @@
 			<md-icon md-font-icon="fa-search fa-fw"></md-icon>
 			<input type="text" ng-model="filterOrganizaciones" placeholder="Buscar...">
 		</md-input-container>
-		
+
 		<span flex></span>
 		<!--<md-select ng-change="selectChanged()" ng-model="value">
 			<md-option value="1">Algo</md-option>
@@ -78,12 +78,37 @@
 					{{-- <td md-cell>@{{ O.created_at }}</td> --}}
 					{{-- <td md-cell>@{{ O.updated_at }}</td> --}}
 					<td md-cell>
-						<md-button class="md-icon-button" ng-click="editarOrganizacion(O)">
-							<md-icon md-font-icon="fa-edit"></md-icon>
-						</md-button>
-						<md-button class="md-icon-button md-warn" ng-click="eliminarOrganizacion(O)">
-							<md-icon md-font-icon="fa-trash"></md-icon>
-						</md-button>
+
+
+                        <div>
+                            <md-menu>
+                                <md-button ng-click="$mdMenu.open($event)" class="md-icon-button no-margin" aria-label="Menu">
+                                    <md-icon md-svg-icon="md-more-v"></md-icon>
+                                </md-button>
+                                <md-menu-content>
+                                    <md-menu-item>
+                                        <md-button class="md-warn" ng-click="editarOrganizacion(O)">
+                                            <md-icon md-font-icon="fa-edit"></md-icon>
+                                        Editar</md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button class="md-warn" ng-click="seleccionar(Usuario.id, O.id)">
+                                            <md-icon md-font-icon="fa-chart-area"></md-icon>
+                                        Seleccionar </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button class="md-warn" ng-click="eliminarOrganizacion(O)">
+                                            <md-icon md-font-icon="fa-trash"></md-icon>
+                                        Eliminar </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button class="md-warn" ng-click="quitar(Usuario.id)">
+                                            <md-icon md-font-icon="fa-chart-area"></md-icon>
+                                        Quitar Seleccion</md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
 					</td>
 					</tr>
 				</tbody>
