@@ -4,7 +4,6 @@
 		md-is-locked-open="AsociadosNav">
 		
 		<div class="h40 bg-primary text-16px lh40 padding-left"><span class="text-clear">Buscar Asociado</span></div>
-
 		<md-autocomplete 
 			md-selected-item="Asociado"
 			md-autoselect="true"
@@ -16,7 +15,7 @@
 			md-min-length="2"
 			placeholder="Buscar Asociado"
 			class="margin"
-			ng-disabled="Asociado !== null">
+			ng-disabled="Asociado">
 			<md-item-template>
 				@{{ Asociado.nombres }} @{{ Asociado.apellidos }}
 			</md-item-template>
@@ -67,7 +66,7 @@
 									<md-icon md-font-icon="fa-print" class=" fa-fw"></md-icon>Imprimir Comprobante
 								</md-button>
 							</md-menu-item>
-							<md-menu-item hide>
+							<md-menu-item ng-show="CredSel">
 								<md-button class="md-warn" ng-click="DeleteCredit($event)">
 									<md-icon md-font-icon="fa-trash" class=" fa-fw"></md-icon>Eliminar Crédito
 								</md-button>

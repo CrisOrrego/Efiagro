@@ -51,15 +51,15 @@ Ctrl.nuevaLabor = () => {
             {
                 Nombre: "Zona",
                 Value: Ctrl.zona_select,
-                Type: "string",
-                // List: zona_select,
+                Type: "list",
+                List: Ctrl.zonas, Item_Val:'id', Item_Show:'descripcion',
                 Required: true
             },
             {
                 Nombre: "Linea Productiva",
                 Value: Ctrl.linea_lp_select,
-                Type: "string",
-                // List: zona_select,
+                Type: "list",
+                List: Ctrl.lineas_productivas, Item_Val:'id', Item_Show:'nombre', 
                 Required: true
             },
             {

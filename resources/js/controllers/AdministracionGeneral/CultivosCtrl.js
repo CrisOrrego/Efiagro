@@ -35,7 +35,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         Ctrl.nuevoCultivo = () => {
             Ctrl.CultivosCRUD.dialog({
                 Flex: 10,
-                Title: "Crear Cultivo",
+                title: "Crear Cultivo",
 
                 Confirm: { Text: "Crear Cultivo" }
             }).then(r => {
@@ -49,6 +49,7 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
                 title: "Editar Cultivo" + C.id
             }).then(r => {
                 if (r == "DELETE") return Ctrl.CultivosCRUD.delete(C);
+                if (!r) return;
                 Ctrl.CultivosCRUD.update(r).then(() => {
                     Rs.showToast("Cultivo actualizado");
                 });

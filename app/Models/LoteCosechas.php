@@ -11,6 +11,9 @@ class LoteCosechas extends Model
     protected $table = 'lotes_cosechas';
     protected $guarded = ['id'];
     protected $appends = [];
+    protected $casts = [
+        'lote_id' => 'integer',
+         ];
     
     public function columns()
     {    

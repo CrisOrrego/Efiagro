@@ -47,7 +47,7 @@
 				</tr>
 				</thead>
 				<tbody md-body>
-				<tr md-row ng-repeat="C in Contactoscopy">
+				<tr md-row ng-repeat="C in ContactoCRUD.rows">
 					<td md-cell>
 						<md-button class="md-icon-button" ng-click="editarContacto(C)">
 							<md-icon md-font-icon="fa-edit"></md-icon>

@@ -40,12 +40,12 @@ class Finca extends Model
             ['latitud',                        'Latitud',                       null,       true,   false, null, 100],
             ['longitud',                       'Longitud',                      null,       true,   false, null, 100],
             ['hectareas',                      'Hectareas',                     null,       true,   false, null, 100],
+            ['pendiente',                      'Pendiente',                     null,       true,   false, null, 100],
             ['sitios',                         'Sitios',                        null,       true,   false, null, 100],
             ['temperatura',                    'Temperatura (C°):',             null,       false,  false, null, 100],
             ['humedad_relativa',               'Humedad Relativa (%):',         null,       true,   false, null, 100],
             ['precipitacion',                  'Precipitacion (Mm):',           null,       true,   false, null, 100],
-            ['altimetria_min',                 'Altimetria Minima (Mt):',       null,       false,  false, null, 100],
-            ['altimetria_max',                 'Altimetria Maxima (Mt):',       null,       true,   false, null, 100],
+            ['altimetria',                 'Altimetria (Mt):',       null,       false,  false, null, 100],
             ['brillo_solar',                   'Brillo Solar (H):',             null,       true,   false, null, 100],
         ];
 
@@ -59,6 +59,11 @@ class Finca extends Model
     public function zona()
     {
         return $this->belongsTo('App\Models\Zona', 'zona_id');
+    }
+
+    public function municipio()
+    {
+        return $this->belongsTo('App\Models\ListaDetalle', 'id');
     }
     
     public function usuarios()

@@ -45,7 +45,7 @@
 						</tr>
 					</thead>
 					<tbody md-body>
-						<tr md-row ng-repeat="FE in FincaEventoscopy">
+						<tr md-row ng-repeat="FE in FincaEventosCRUD.rows">
 							<td md-cell>
 								<md-button class="md-icon-button" ng-click="editarEvento(FE)">
 									<md-icon md-font-icon="fa-edit"></md-icon>

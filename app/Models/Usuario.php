@@ -33,6 +33,11 @@ class Usuario extends Model
         $perfiles = \App\Models\Perfil::all()->keyBy('id')->map( function($p){
             return $p['perfil'];
         })->toArray();
+
+        
+        $organizacionesusuario= \App\Models\Organizacion::all()->keyBy('id')->map( function($o){
+            return $o['nombre'];
+        })->toArray();
         
         //Name,         Desc,               Type,   Required, Unique, Default, Width, Options
         return [
@@ -43,7 +48,7 @@ class Usuario extends Model
             [ 'correo',         'Correo electrónico', 'email',  false,  false,  null, 100 ],
             [ 'celular',        'Celular',          'string',   false,  false,  null, 45 ],
             [ 'perfil_id',      'Perfil',           'select',   true,   false,  null, 50, ['options' => $perfiles] ],
-            [ 'organizacion_id','Organización',     'select',   false,  false,  null, 50 ],
+            [ 'organizacion_id','Organización',     'select',   true,   false,  null, 50, ['options' => $organizacionesusuario] ],
             [ 'finca_id',       'Finca',            'select',   false,  false,  null, 50 ]
         ];
     }
@@ -60,6 +65,11 @@ class Usuario extends Model
     public function organizaciones()
     {
         return $this->hasMany('App\Models\Organizacion', 'usuario_id');
+    }
+
+    public function organizaciones_usuario()
+    {
+        return $this->belongsTo('App\Models\Organizacion', 'organizacion_id');
     }
     
     public function perfil()

@@ -22,17 +22,19 @@ class Labor extends Model
     public function columns()
     { 
         $zonas = \App\Models\Zona::all()->keyBy('id')->map(function($z){
-            return $z['zona'];
+            return $z['descripcion'];
+        })->toArray();
+        $linea_productiva = \App\Models\LineaProductiva::all()->keyBy('id')->map(function($lp){
+            return $lp['nombre'];
         })->toArray();
         // dd($zonas);
-
         //Name, Desc, Type, Required, Unique, Default, Width, Options
         return [
-            ['labor',               'Labor:',                                           null, true, false, null, 255],
-            ['zona_id',             'Zona:',                                            null, true, false, null, 100],
-            ['linea_productiva_id', 'Linea productiva (1-Platano, 2-Café, 3-Mora):',    null, true, false, null, 255],
+            ['labor',               'Labor:',                                          null, true, false, null, 100],
+            ['zona_id',             'Zona:',                                            'select', false, false, null, 255, [ 'options' => $zonas] ],
+            ['linea_productiva_id', 'Linea productiva:',                               'select', false, false, null, 255, [ 'options' => $linea_productiva] ],
             ['frecuencia',          'Frecuencia:',                                      null, true, false, null, 100],
-            ['inicio',       'Semana de inicio:',                                null, false, false, null, 100],
+            ['inicio',       'Semana de inicio:',                                       null, false, false, null, 100],
             ['margen',              'Margen:',                                          null, false, false, null, 100],   
         ];
     }

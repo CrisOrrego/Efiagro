@@ -1,4 +1,4 @@
-<div id="CreditDetail" flex layout="column" ng-hide="CredSel == null">
+<div id="CreditDetail" flex layout="column" ng-hide="CredSel == null" class="overflow-y">
 
 	<md-card id="CredSelDetails" class="Cred">
 		@include('FondoRotatorio.Creditos_CreditCard')

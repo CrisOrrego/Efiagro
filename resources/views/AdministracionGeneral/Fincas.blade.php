@@ -20,14 +20,28 @@
 
 					<md-input-container>
 						<label>Departamento</label>
-						<input ng-change="filterFinca()" type="text" ng-model="filterDepartamento" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
+						<md-select ng-change="filterMunicipios()"  ng-model="filterDepartamento">
+							<md-option ng-repeat="D in Departamentos" ng-value="D.codigo">  
+								@{{ D.nombre }}
+							</md-option>
+						</md-select>
 					</md-input-container>
 
 					<md-input-container>
 						<label>Municipio</label>
-						<input ng-change="filterFinca()" type="text" ng-model="filterMunicipio" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
+						<!--kM -->
+						<md-select ng-change="filterFinca()"  ng-model="filterMunicipio">
+							<md-option ng-repeat="M in Municipios" ng-value="M.codigo">  
+								@{{ M.nombre }}
+							</md-option>
+						</md-select>
 					</md-input-container>
 
+					<md-input-container>
+						<label>Código Postal</label>
+						<input ng-change="filterFinca()" type="text" ng-model="filterCodigoPostal" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
+					</md-input-container>
+					
 					<md-input-container>
 						<label>Zona</label>
 						<input ng-change="filterFinca()" type="text" ng-model="filterZona" placeholder="" ng-model-options="{ debounce: 1000 }" autocomplete="off" enter-stroke="buscador()" aria-label="Palabras clave">
@@ -36,7 +50,7 @@
 					</div>
 				</md-card>
 		</div>
-
+	<!--Modal para creación de finca-->
 	<md-card flex class="no-margin-top">
 				<md-table-container class="border-bottom">
 				<table md-table>
@@ -60,8 +74,8 @@
 						<th md-column>Temperatura </th>
 						<th md-column>Humedad Relativa </th>
 						<th md-column>Precipitación </th>
-						<th md-column>Altimetria Min </th>
-						<th md-column>Altimetria Max</th>
+						<th md-column>Altimetria</th>
+						{{-- <th md-column>Altimetria Max</th> --}}
 						<th md-column>Brillo Solar </th>
 						<th md-column>Acción</th>
 					</tr>
@@ -73,8 +87,8 @@
 						{{-- <td md-cell>@{{ F.usuario_id }}</td> --}}
 						<td md-cell>@{{ F.nombre }}</td>
 						<td md-cell>@{{ F.direccion }}</td>
-						<td md-cell>@{{ F.departamento_id }}</td>
-						<td md-cell>@{{ F.municipio_id }}</td>
+						<td md-cell>@{{ DepartamentosTabla[F.departamento_id] }}</td>
+						<td md-cell>@{{ MunicipiosTabla[F.municipio_id] }}</td>
 						<td md-cell>@{{ F.zona.descripcion }}</td>
 						<td md-cell>@{{ F.area_total }} <span>cm²</span></td>
 						<td md-cell>@{{ F.tipo_cultivo }}</td>
@@ -87,8 +101,8 @@
 						<td md-cell>@{{ F.temperatura }} <span>C°</span></td>
 						<td md-cell>@{{ F.humedad_relativa }} <span>%</span></td>
 						<td md-cell>@{{ F.precipitacion }} <span>Mm</span></td>
-						<td md-cell>@{{ F.altimetria_min }} <span>Mt</span></td>
-						<td md-cell>@{{ F.altimetria_max }} <span>Mt</span></td>
+						<td md-cell>@{{ F.altimetria }} <span>Mt</span></td>
+						{{-- <td md-cell>@{{ F.altimetria_max }} <span>Mt</span></td> --}}
 						<td md-cell>@{{ F.brillo_solar }} <span>H</span></td>
 						{{-- <td md-cell>@{{ O.created_at }}</td> --}}
 						{{-- <td md-cell>@{{ O.updated_at }}</td> --}}

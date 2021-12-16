@@ -35,9 +35,9 @@ class FincaEvento extends Model
            
             ['finca_id',            'Finca',                'select',   true,   false,  null, 50, ['options' => $fincas] ],
             ['evento_id',           'Selecionar Evento',    'select',   true,   false,  null, 50, ['options' => $eventos] ],
-            ['fecha',               'Fecha',                'date',     true,   false,  null, 100],
-            ['observacion',         'Observacion',           null,     true,   false,  null, 100],
-            ['gravedad',            'Gravedad',             'select',   true,   false,  null, 100, [ 'options' => $gravedad ]],   
+            ['fecha',               'Fecha',                'date',     false,   false,  null, 100],
+            ['observacion',         'Observacion',           null,      false,   false,  null, 100],
+            ['gravedad',            'Gravedad',             'select',   false,   false,  null, 100, [ 'options' => $gravedad ]],   
         ];
 
     }

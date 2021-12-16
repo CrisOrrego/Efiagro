@@ -12,6 +12,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         var departamentos = [];
 
         Ctrl.Salir = $mdDialog.cancel;
+<<<<<<< HEAD
 
         listarOrganizaciones = () => {
             Ctrl.OrganizacionesCRUD = $injector.get("CRUD").config({
@@ -23,6 +24,20 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             });
         };
         listarOrganizaciones();
+=======
+		
+        Ctrl.OrganizacionesCRUD = $injector.get("CRUD").config({
+            
+            base_url: "/api/organizaciones/organizaciones",
+            limit: 1000,
+            add_append: "refresh",
+            order_by: ["-created_at"],
+            query_with:['linea_productiva']
+        });
+        Ctrl.perfil_id = Rs.Usuario.perfil_id;
+        Ctrl.filterNombre = "";
+        Ctrl.filterNit = "";
+>>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
 
         Ctrl.filterNombre = "";
         Ctrl.filterNit = "";
@@ -51,14 +66,27 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             // Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id); //con el setScope estoy haciendo un filtro en la BD para que él nos traiga sólo un registro
             Ctrl.OrganizacionesCRUD.get().then(() => {
                 Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows.find(O => O.id === Rs.Usuario.organizacion_id);
+<<<<<<< HEAD
 
                 Ctrl.Organizacion = ( Ctrl.Organizacion ) ? Ctrl.OrganizacionesCRUD.rows[0] : [];
+=======
+                
+                if (!Ctrl.Organizacion){
+                    Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows[0]; 
+                }  
+>>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
                 Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
                 Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice();
             });
+           
         };
+<<<<<<< HEAD
 
         Ctrl.getOrganizacion();
+=======
+ 
+         Ctrl.getOrganizacion();
+>>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
 
         //INICIO DEV ANGPELICA
         loadDepartamentos = (col_departamento) => {
@@ -95,7 +123,11 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         inicializarListaDepartamentoMunicipio = () => {
             let col_departamento = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'departamento');
             loadDepartamentos(col_departamento);
+<<<<<<< HEAD
 
+=======
+           
+>>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
             col_departamento.Options.onChangeFn = (valorDepartamento) => {
                 let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
                 loadMunicipios(valorDepartamento, col_municipio);
@@ -109,16 +141,21 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             inicializarListaDepartamentoMunicipio();
         //FIN DEV ANGÉLICA
             Ctrl.OrganizacionesCRUD.dialog({
-                Flex: 10,
-                Title: 'Crear Organización',
-                Confirm: { Text: 'Crear Organizacion' },
-            }).then(r => {
+                // Flex: 10,
+                title: 'Crear Organización',
+                Confirm: { Text: 'Crear Organizacion' }
+            }).then(r  => {
                 if (!r) return;
                 Ctrl.OrganizacionesCRUD.add(r);
+                Rs.showToast('Organización creada')
             });
         };
+<<<<<<< HEAD
 
 
+=======
+       
+>>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
         Ctrl.getDepartamentos = () => {
 			$http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
                 departamentos = r.data;
@@ -129,12 +166,16 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         Ctrl.editarOrganizacion = (O) => {
             inicializarListaDepartamentoMunicipio();
+            let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
+            loadMunicipios(O.departamento, col_municipio);
 			Ctrl.OrganizacionesCRUD.dialog(O, {
 				title: 'Editar Organización' + O.nombre
 			}).then(r => {
 				if(r == 'DELETE') return Ctrl.OrganizacionesCRUD.delete(O);
+                if (!r) return;
 				Ctrl.OrganizacionesCRUD.update(r).then(() => {
-					Rs.showToast('Organizacion actualizada');
+                    Ctrl.getOrganizacion(); 
+					Rs.showToast('Organización actualizada');
 				});
 			});
 		}
@@ -193,7 +234,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         //Carga imagen al servidor
         Ctrl.subirImagen = ($file) => {
-            debugger;
             if(!$file) return;
 
             Upload.upload({
@@ -203,10 +243,8 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                     Ancho: 560, Alto: 300, Quality: 90
                 }
             }).then(function (resp) {
-                debugger;
                 respuesta = 'Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data;
             }, function (resp) {
-                debugger;
                 respuesta = 'Error status: ' + resp.status;
             });
         }
@@ -302,6 +340,3 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
     }
 
 ]);
-
-
-

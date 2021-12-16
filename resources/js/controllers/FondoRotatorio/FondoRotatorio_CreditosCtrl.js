@@ -1,6 +1,6 @@
 angular.module('FondoRotatorio_CreditosCtrl', [])
-.controller('FondoRotatorio_CreditosCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', 
-	function($scope, $rootScope, $http, $injector, $mdDialog) {
+.controller('FondoRotatorio_CreditosCtrl', ['$scope', '$rootScope', '$http', '$injector', '$mdDialog', '$mdToast',
+	function($scope, $rootScope, $http, $injector, $mdDialog, $mdToast) {
 
 		console.info('FondoRotatorio_CreditosCtrl');
 		var Ctrl = $scope;
@@ -149,6 +149,52 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 				targetEvent: ev,
 			});
 		}
+
+		Ctrl.DeleteCredit = function(ev) {
+			var confirm = $mdDialog.confirm()
+							.title('BORRAR el crédito Cod. '+Ctrl.CredSel.id+'?')
+							.textContent('ESTA ACCIÓN NO SE PUEDE DESHACER.')
+							.ariaLabel('Borrar')
+							.targetEvent(ev)
+							.theme('Danger')
+							.ok('BORRAR CRÉDITO')
+							.cancel('Cancelar');
+			$mdDialog.show(confirm).then(function() {
+				
+				$http.post('/api/creditos/delete', { id: Ctrl.CredSel.id }).then(function(res){
+					$mdToast.showSimple('Borrado');
+					Ctrl.CredSel = null;
+					Ctrl.LoadCreditos();
+				});
+
+			});
+		}
+
+		Ctrl.DeleteRecibo = function(ev, Recibo) {
+			var confirm = $mdDialog.confirm()
+							.title('BORRAR el Recibo Cod. '+Recibo.id+'?')
+							.textContent('ESTA ACCIÓN NO SE PUEDE DESHACER.')
+							.ariaLabel('Borrar')
+							.targetEvent(ev)
+							.theme('Danger')
+							.ok('BORRAR RECIBO')
+							.cancel('Cancelar');
+			$mdDialog.show(confirm).then(function() {
+				
+				$http.post('/api/creditos/delete-recibo', { id: Recibo.id }).then(function(res){
+					$mdToast.showSimple('Borrado');
+					Ctrl.ViewCredit(Ctrl.CredSel);
+				});
+
+			});
+		}
+
+		//Obtener Opciones
+		Ctrl.getOpciones = () => {
+			return Rs.http('api/opciones/get-opciones', {}, Ctrl, 'Vars');
+		}
+
+		Ctrl.getOpciones();
 
 		//Testing
 		/*Rs.http('api/usuario/buscar-usuario', { 'query': '1093' }).then(r => {

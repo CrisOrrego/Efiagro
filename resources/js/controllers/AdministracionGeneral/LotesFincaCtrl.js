@@ -134,7 +134,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                 Title: "Crear Nueva Cosecha",
                 Fields: [
                     {
-                        Nombre: "Fecha",
+                        Nombre: " ",
                         Value: null,
                         Type: "date",
                         Required: true
@@ -180,38 +180,30 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
         //FIN DEV ANGÉLICA 
 
 
-        Ctrl.generarSemanas = () => {
-
-            var curr = new Date((new Date()).getFullYear(), 0, 1); // get current date
-            var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-            var last = first + 7; // last day is the first day + 6
-
-            let fecha = new Date(curr.setDate(last));
-
+        Ctrl.generarSemanas = (fecha_establecimiento, numeroSemanasLote) => {
+            let fecha = new Date(fecha_establecimiento);
             let hoy = new Date();
 
             hoy.setHours(0,0,0,0);
 
-            let numeroSemanasLote = 0
-            
-            for(i=1; i < numeroSemanasLote + 52; i++) {
+            for(i=1; i < numeroSemanasLote; i++) {
                 const f = fecha;
 
                 let fechacontresdiasmas= f.getTime() + (6*24*60*60*1000);  
                 let segundaFecha = new Date(fechacontresdiasmas);
                 
-                if (i >= numeroSemanasLote) {
+               
+               // if (i >= numeroSemanasLote) {
                     Ctrl.semanas.push({id: i - numeroSemanasLote, fechaInicial: f.toISOString().slice(0, 10), fechaFinal: segundaFecha.toISOString().slice(0, 10), semana: i});
                     if(segundaFecha.getTime() >= hoy.getTime() && f.getTime() <= hoy.getTime()){
                         Ctrl.indice = Ctrl.semanas.length -1;
                     }
-                }
+                //}
 
                 fecha = new Date(segundaFecha.getTime() + (1*24*60*60*1000));  
             }
         }
 
-        Ctrl.generarSemanas();
         Ctrl.Salir = $mdDialog.cancel;
 
         Ctrl.LotesCRUD = $injector.get("CRUD").config({
@@ -243,6 +235,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                     L.checked = false;
                 });
                 lote.checked = true; 
+                Ctrl.generarSemanas(lote.fecha_establecimiento, 156);  //este 156 deberia reemplazarse por lote.numeroSemanasLote, esta variable debe almacenar el tiempo que el lote va a ser productivo (tiempo de vida) en esa linea
                 Ctrl.getLoteLabores(lote.id, lote.linea_productiva.id, Ctrl.semanas[Ctrl.indice].semana, Ctrl.semanas[Ctrl.indice].fechaInicial, Ctrl.semanas[Ctrl.indice].fechaFinal);
                 Ctrl.getLaboresProductor(lote.id, Ctrl.semanas[Ctrl.indice].semana);          
             }
@@ -334,6 +327,7 @@ angular.module("LotesFincaCtrl", []).controller("LotesFincaCtrl", [
                     lote_id: lote.id,
                     labor: r.Fields[0].Value,
                     semana_id,
+                    fecha: new Date()
                 };
                 
                 Ctrl.LoteLaboresProductorCRUD.add(NuevaLaborProductor).then(() => {

@@ -11,6 +11,7 @@ angular.module('App', [
     'ngFileUpload',
     //'angular-loading-bar',
     //'angularResizable',
+    'nvd3',
     'ui.utils.masks',
     //'as.sortable',
     //'ngCsv',
@@ -19,8 +20,8 @@ angular.module('App', [
     'enterStroke',
     'printThis',
     'textAngular',
-
-
+    'SeccionCtrl',
+    
     'CRUD',
     'CRUDDialogCtrl',
     'ConfirmDeleteCtrl',
@@ -87,6 +88,14 @@ angular.module('App', [
     'CreditoSrv', //CAOH
     'OpcionesCtrl',
     'FondoRotatorio_ListadoCtrl', //CAOH
-    'FondoRotatorio_MisCreditosCtrl' //CAOH
+    'FondoRotatorio_MisCreditosCtrl', //CAOH
+    'FondoRotatorio__EstadisticasCtrl', //CAOH
 
+    'Estadisticas__Data_RemarkCtrl',
+    'Estadisticas__Chart_ColCtrl',
+    'Estadisticas__Chart_BarCtrl',
+    'Estadisticas__Chart_PieCtrl',
+    'Estadisticas__Table_BasicCtrl',
+    'Estadisticas__Table_WithSubtablesCtrl',
+    'Estadisticas_RepDialogCtrl',
 ]);

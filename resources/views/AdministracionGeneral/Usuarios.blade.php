@@ -44,10 +44,11 @@
                         <th md-column>Correo</th>
                         <th md-column>Celular</th>
                         <th md-column>Perfil</th>
+                        <th md-column>Organización</th>
                     </tr>
                     </thead>
                     <tbody md-body >
-                        <tr md-row ng-repeat="U in Usuarioscopy ">
+                        <tr md-row ng-repeat="U in UsuariosCRUD.rows ">
                             <td md-cell>
                                 <div>
                                     <md-menu>
@@ -86,6 +87,7 @@
                             <td md-cell>@{{ U.correo }}</td>
                             <td md-cell>@{{ U.celular }}</td>
                             <td md-cell>@{{ U.perfil.perfil }}</td>
+                            <td md-cell>@{{ U.organizaciones_usuario.nombre }}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -14,6 +14,7 @@
                         <ul ><label class="texto_title">Lineas Productivas: </label> <span> @{{ Lote.linea_productiva.nombre }}</span></ul>
                         <ul ><span class="textoInfo">@{{ Lote.hectareas }}</span><label class="texto_title"> Hectareas</label>  / <span class="textoInfo">@{{ Lote.sitios }}</span> <label class="texto_title"> Sitios</label></ul> 
                         <ul ><label class="texto_title">Tipo de suelo: </label> <span class="textoInfo">@{{ Lote.finca.tipo_suelo }}</span></ul>                    
+                        <ul ><label class="texto_title">Fecha de Establecimiento: </label> <span class="textoInfo">@{{ Lote.fecha_establecimiento }}</span></ul>                    
                     </div>
                 </div>
                 <div class="padding-5-20 border-rounded">
@@ -57,7 +58,7 @@
                             <div  ng-if="LB.delta === 1" style="color: red">
                                 @{{ LB.otraLabor }} 
                             </div>
-                            <label class="texto_title">@{{ LB.labor }} </label> <br> <span class="textoInfo">Inicio:  @{{ LB.inicio }} <br> Frecuencia:  @{{ LB.frecuencia }} @{{LB.delta}} </span>
+                            <label class="texto_title">@{{ LB.labor }} </label> <br> <span class="textoInfo">Inicio:  @{{ LB.inicio }} <br> Frecuencia:  @{{ LB.frecuencia }}, Margen:  @{{LB.delta}} </span>
 
                             </md-checkbox>
                             </ul>

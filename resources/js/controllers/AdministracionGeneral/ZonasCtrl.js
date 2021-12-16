@@ -42,6 +42,7 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
             }).then(r => {
                 if (!r) return;
                 Ctrl.ZonasCRUD.add(r);
+                Rs.showToast('Zona Creada');
             });
         };
 
@@ -72,6 +73,7 @@ angular.module("ZonasCtrl", []).controller("ZonasCtrl", [
             }).then(d => {
                 if (!d) return;
                 Ctrl.ZonasCRUD.delete(Z);
+                Rs.showToast('Zona Eliminada');
             });
         };
 

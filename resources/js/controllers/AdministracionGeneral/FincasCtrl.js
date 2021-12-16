@@ -65,11 +65,26 @@ angular
             //Obtener el elemento de la lista
             Ctrl.getDepartamentos = () => {
                 $http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
-                    Departamentos = r.data;
+                    Ctrl.DepartamentosTabla = r.data;
+                    Ctrl.Departamentos = [];
+                    for(let key in r.data){
+                        Ctrl.Departamentos.push ({codigo: key, nombre: r.data[key]});
+                    }
                 });
             }
 
             Ctrl.getDepartamentos();
+
+
+            //Obtener el elemento de la lista municiios
+                Ctrl.getMunicipios = () => {
+                $http.post ('api/lista/obtener', { lista: 'Municipios' }).then((r)=>{
+                    Ctrl.MunicipiosTabla = r.data;
+                });
+            }
+            
+            Ctrl.getMunicipios();
+
 
             Ctrl.FincasCRUD = $injector.get("CRUD").config({
                 base_url: "/api/fincas/fincas",
@@ -78,6 +93,7 @@ angular
                 order_by: ["-created_at"],
                 query_with: ["zona", 'usuarios']
             });
+
 
 
             Ctrl.getFinca = () => {
@@ -117,7 +133,7 @@ angular
             //INICIO DEV ANGPELICA
             loadDepartamentos = (col_departamento) => {
 
-                col_departamento.Options.options = Departamentos;
+                col_departamento.Options.options = Ctrl.DepartamentosTabla;
             }
 
             loadMunicipios = (valorDepartamento, col_municipio) => {
@@ -156,6 +172,7 @@ angular
                 }).then(r => {
                     if (!r) return;
                     Ctrl.FincasCRUD.add(r);
+                    Rs.showToast("Finca creada");
                 });
             };
             //FIN DEV ANGÉLICA
@@ -167,7 +184,9 @@ angular
                     title: 'Editar Finca' + O.nombre
                 }).then(r => {
                     if(r == 'DELETE') return Ctrl.FincasCRUD.delete(O);
+                    if (!r) return;
                     Ctrl.FincasCRUD.update(r).then(() => {
+                        Ctrl.getFinca();
                         Rs.showToast('Finca actualizada');
                     });
                 });
@@ -211,6 +230,7 @@ angular
                     title: "Editar Lote" + L.id
                 }).then(r => {
                     if (r == "DELETE") return Ctrl.LotesCRUD.delete(L);
+                    if (!r) return;
                     Ctrl.LotesCRUD.update(r).then(() => {
                         Rs.showToast("Lote actualizado");
                     });
@@ -352,11 +372,22 @@ angular
                 
         }
 
+        Ctrl.filterMunicipios = () => {
+            Ctrl.Municipios = [];
+            Ctrl.filterFinca();
+            if(Ctrl.filterDepartamento){
+                $http.post ('api/lista/obtener', { lista: 'Municipios', Op1: Ctrl.filterDepartamento }).then((r)=>{
+                    for(let key in r.data){
+                        Ctrl.Municipios.push ({codigo: key, nombre: r.data[key]});
+                    }
+                });
+            }
+        }
+
         //INICIO DEV ANGÉLICA
         Ctrl.filterFinca = () => {
             //Filtro para buscar Nombre
             if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2){
-                debugger;
                 //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
                 Ctrl.Fincascopy = Ctrl.Fincascopy.filter(F => F.nombre.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase())> -1);
             }

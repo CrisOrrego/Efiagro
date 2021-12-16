@@ -51,6 +51,7 @@ angular.module("LotesCtrl", []).controller("LotesCtrl", [
                 title: "Editar Lote" + L.id
             }).then(r => {
                 if (r == "DELETE") return Ctrl.LotesCRUD.delete(L);
+                if (!r) return;
                 Ctrl.LotesCRUD.update(r).then(() => {
                     Rs.showToast("Lote actualizado");
                 });

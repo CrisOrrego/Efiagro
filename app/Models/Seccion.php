@@ -20,6 +20,7 @@ class Seccion extends Model
         return [
             ['seccion',     'Seccion',      null, true, false, null, 100],
             ['subseccion',  'Subseccion',   null, true, false, null, 100],
+            ['navegacion',  'navegacion',   null, true, false, null, 100],
         ];
         
     }

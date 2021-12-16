@@ -35,7 +35,7 @@
 				<table md-table>
 					<thead md-head>
 						<tr md-row>
-							{{-- <th md-column>ID</th> --}}
+							<th md-column>Acción</th>
 							<th md-column>Descripción</th>
 							<th md-column>Linea Productiva</th>
 							<th md-column>Temperatura Min </th>
@@ -50,13 +50,20 @@
 							<th md-column>Brillo Solar Max</th>
 							<th md-column>Pendiente Min</th>
 							<th md-column>Pendiente Max</th>
-							<th md-column>Acción</th>
+							
 						</tr>
 					</thead>
 					<tbody md-body>
-						<tr md-row ng-repeat="Z in Zonascopy">
+						<tr md-row ng-repeat="Z in ZonasCRUD.rows">
 							
-							{{-- <td md-cell>@{{ Z.id }} </td> --}}
+							<td md-cell>
+								<md-button class="md-icon-button" ng-click="editarZona(Z)">
+									<md-icon md-font-icon="fa-edit"></md-icon>
+								</md-button>
+								<md-button class="md-icon-button md-warn" ng-click="eliminarZona(Z)">
+									<md-icon md-font-icon="fa-trash"></md-icon>
+								</md-button>
+							</td>
 							<td md-cell>@{{ Z.descripcion }}</td>
 							<td md-cell>@{{ Z.linea_productiva.nombre }}</td>
 							<td md-cell>@{{ Z.temperatura_min }} <span>C°</span></td>
@@ -71,15 +78,6 @@
 							<td md-cell>@{{ Z.brillo_solar_max }} <span>H</span></td>
 							<td md-cell>@{{ Z.pendiente_min }} <span>H</span></td>
 							<td md-cell>@{{ Z.pendiente_max }} <span>H</span></td>
-
-							<td md-cell>
-								<md-button class="md-icon-button" ng-click="editarZona(Z)">
-									<md-icon md-font-icon="fa-edit"></md-icon>
-								</md-button>
-								<md-button class="md-icon-button md-warn" ng-click="eliminarZona(Z)">
-									<md-icon md-font-icon="fa-trash"></md-icon>
-								</md-button>
-							</td>
 						</tr>
 					</tbody>
 				</table>

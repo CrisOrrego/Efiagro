@@ -49,7 +49,7 @@
 					
 					</thead>
 					<tbody md-body>
-					<tr md-row ng-repeat="L in Lotescopy">
+					<tr md-row ng-repeat="L in LotesCRUD.rows">
 						{{-- <td md-cell>@{{ L.id }}</td> --}}
 						<td md-cell>@{{ L.finca.nombre }}</td>
 						<td md-cell>@{{ L.organizacion.nombre }}</td>

@@ -13,6 +13,33 @@ angular.module('MiTecnicoAmigoCtrl', [])
              Ctrl.key = "";
              Ctrl.keys= [];
              Ctrl.ArticulosBuscados = [];
+             Ctrl.ArticulosLinea = [];
+             Ctrl.LineasProductivasUsuario = [];
+
+             // Cargar los lotes de la finca seleccionada
+            Ctrl.cargarLineasProductivasUsuario = () => {
+                loteSeleccionado = 0;
+                lineaSeleccionada = 0;
+                $http.post('api/lotes/lineaproductivausuario', { 
+                    usuario: Rs.Usuario.id
+                }).then(res => {
+                    console.log(res.data);
+                    res.data.forEach(function(lp) {
+                        Ctrl.LineasProductivasUsuario.push(lp.linea_productiva_id);
+                    });
+                });
+            };
+
+            Ctrl.cargarLineasProductivasUsuario();
+
+            Ctrl.getOpciones = () => {
+                Rs.http('/api/opciones', {}, Ctrl, 'Opciones');
+                //let opciones =  Rs.http('/api/opciones', {});
+                //console.log(opciones);
+            }
+
+            Ctrl.getOpciones()
+
 
             $http.post('api/articulos/obtener', {}).then(
                 r => {
@@ -20,11 +47,14 @@ angular.module('MiTecnicoAmigoCtrl', [])
                     //Inicio Dev Angélica -- seleccionar las palabras claves
                     let keys = [];
                     Ctrl.Articulos.forEach(function(articulo) {
+                        if (Ctrl.LineasProductivasUsuario.indexOf(articulo.linea_productiva_id) >=0) {
+                            Ctrl.ArticulosLinea.push(articulo);
+                        }
                         if (articulo.palabras_clave && articulo.palabras_clave.length > 3) {
                             keys.push(...articulo.palabras_clave.split(","));
                         }
                     });
-                    // console.log(keys);
+                    console.log(Ctrl.ArticulosLinea);
                     keys = keys.sort().filter(function(item, pos, ary) {
                         return !pos || item != ary[pos - 1];
                     });
@@ -32,6 +62,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                     Ctrl.PalabrasClave = keys;
                 });
             //Fin Dev Angélica 
+
 
             Ctrl.abrirArticulo = (A) => {
                 $mdDialog.show({
@@ -73,7 +104,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                     Flex: 30,
                     Title: 'Crear Nueva Solicitud',
                     Fields: [
-                        { Nombre: '¿En Qué Puedo Ayudarte?', Value: 'Tengo una Duda General', Type: 'simplelist', List: OpcionesTipo.map(a => a[0]), Required: true },
+                        { Nombre: '¿En Qué Puedo Ayudarte?', Value: 'Tengo una Duda General', Type: 'simplelistDisabled', List: OpcionesTipo.map(a => a[0]), Required: true },
                         { Nombre: 'Describe el Caso', Value: '', Type: 'textarea', Required: true, opts: { rows: 3 } }
                     ],
                     Confirm: { Text: 'Crear Solicitud' },
@@ -83,7 +114,7 @@ angular.module('MiTecnicoAmigoCtrl', [])
                     var NuevoCaso = {
                         titulo: r.Fields[1].Value,
                         solicitante_id: Rs.Usuario.id,
-                        tipo: OpcionesTipo.find(a => a[0] == r.Fields[0].Value)[1],
+                        tipo: 'Contar Experiencia',
                         asignados: '[]'
                     };
                     Ctrl.CasosCRUD.add(NuevoCaso);

@@ -15,7 +15,10 @@ class Credito extends Model
     
     protected $table = 'credito__creditos';
     protected $guarded = [];
-    protected $appends = ['solicitado'];
+    protected $appends = ['solicitado', 'periodo'];
+    protected $casts = [
+        'fecha' => 'date'
+    ];
 
     public function columns()
     {
@@ -24,7 +27,8 @@ class Credito extends Model
 			[ 'organizacion_id', 	null, true, false, null, 100 ],
 			[ 'afiliado_id', 		null, true, false, null, 100 ],
 			[ 'estado', 			null, true, false, null, 100 ],
-			[ 'linea', 				null, true, false, null, 100 ],
+			[ 'fecha',              null, true, false, null, 100 ],
+            [ 'linea', 				null, true, false, null, 100 ],
 			[ 'monto', 				null, true, false, null, 100 ],
 			[ 'interes', 			null, true, false, null, 100 ],
 			[ 'pagos', 				null, true, false, null, 100 ],
@@ -167,8 +171,8 @@ class Credito extends Model
             if($v['estado'] == 'Pendiente' AND $v['estado'] == $currState){
                 break;
             }else{
-                $ProximoPago = $v->Fecha;
-                $ProximoNum  = $v->Num_Pago;
+                $ProximoPago = $v->fecha;
+                $ProximoNum  = $v->num_pago;
             }
 
             if( !in_array($v['estado'], ['Pendiente','Pagado']) ){
@@ -181,7 +185,7 @@ class Credito extends Model
         if($this->Saldo == 0) $Estado = "Terminado";
 
         $this->Estado      = $Estado;
-        $this->ProximoPago = is_null($ProximoPago) ? null : $ProximoPago->toDateString();
+        $this->proximo_pago = is_null($ProximoPago) ? null : $ProximoPago->toDateString();
         $this->ProximoNum  = $ProximoNum;
 
         
@@ -193,7 +197,7 @@ class Credito extends Model
             'Terminado'  => '#979797',
         ];
 
-        $this->Estado_color = $Colors[$Estado];
+        $this->estado_color = $Colors[$Estado];
     }
 
 }

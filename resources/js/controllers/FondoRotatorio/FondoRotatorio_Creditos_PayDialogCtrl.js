@@ -62,7 +62,7 @@ angular.module('FondoRotatorio_Creditos_PayDialogCtrl', [])
 			angular.forEach(c.saldos, function(s){
 				//console.log(s);
 
-				s.dias_mora = FechaPago.diff(s.fecha, 'days');
+				s.dias_mora = FechaPago.diff(s.date, 'days');
 
 				if(s.dias_mora < 1 && s.estado == 'Mora'){ //Cambiar a estado pendiente
 					s.due = false;
@@ -80,11 +80,14 @@ angular.module('FondoRotatorio_Creditos_PayDialogCtrl', [])
 					//Calcular interés de mora
 					var Interes = null;
 
-						 if(s.dias_mora <= 30)                      { Interes = Parent.Vars?.INTERES_MORA_MENOS_30D || 0; }
-					else if(s.dias_mora >= 31 && s.dias_mora <=  60){ Interes = Parent.Vars?.INTERES_MORA_31D_60D   || 0; }
-					else if(s.dias_mora >= 61 && s.dias_mora <=  90){ Interes = Parent.Vars?.INTERES_MORA_61D_90D   || 0; }
-					else if(s.dias_mora >= 91 && s.dias_mora <= 120){ Interes = Parent.Vars?.INTERES_MORA_91D_120D  || 0; }
-					            		 else if(s.dias_mora >= 121){ Interes = Parent.Vars?.INTERES_MORA_MAS_120D  || 0; }
+						 if(s.dias_mora <= 30)                      { Interes = Parent.Vars?.CREDITO_MORA_MENOS_30 || 0; }
+					else if(s.dias_mora >= 31 && s.dias_mora <=  60){ Interes = Parent.Vars?.CREDITO_MORA_31_60    || 0; }
+					else if(s.dias_mora >= 61 && s.dias_mora <=  90){ Interes = Parent.Vars?.CREDITO_MORA_61_90    || 0; }
+					else if(s.dias_mora >= 91 && s.dias_mora <= 120){ Interes = Parent.Vars?.CREDITO_MORA_91_120   || 0; }
+					            		 else if(s.dias_mora >= 121){ Interes = Parent.Vars?.CREDITO_MORA_MAS_120  || 0; }
+
+					Interes = Interes / 100;
+					//console.log(Parent.Vars.CREDITO_MORA_MENOS_30, s, Interes);
 
 					var ValMora = Math.ceil( s.pendiente * Interes );
 					s.mora = ValMora - s.abonadomora;

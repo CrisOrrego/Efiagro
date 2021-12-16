@@ -50,6 +50,7 @@ angular.module('ConfiguracionCtrl', [])
 				if(!r.autoincremental){
 					r.autoincremental = false;
 				}
+				if (!r) return;
 				Ctrl.ListaCRUD.add(r).then(() => {
 					Rs.showToast('Lista creada');
 				});
