@@ -21,7 +21,7 @@ angular.module('UsuariosCtrl', [])
             Ctrl.getUsuarios = () => {
                 // Asignar organizacion por defecto y obtener la informacion del usuario
                 // 20210505 Se quita funcion de filtrar por Organizacion.
-                // Ctrl.UsuariosCRUD.setScope('laorganizacion', Rs.Usuario.organizacion_id); 
+                // Ctrl.UsuariosCRUD.setScope('laorganizacion', Rs.Usuario.organizacion_id);
                 Ctrl.UsuariosCRUD.get().then(() => {
                     Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows.slice();
                     //Ctrl.cargarFincas(Ctrl.UsuariosCRUD.rows[1]); //FIX

@@ -13,14 +13,16 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 
         Ctrl.Salir = $mdDialog.cancel;
 
-        Ctrl.OrganizacionesCRUD = $injector.get("CRUD").config({
-
-            base_url: "/api/organizaciones/organizaciones",
-            limit: 1000,
-            add_append: "refresh",
-            order_by: ["-created_at"],
-            query_with:['linea_productiva']
-        });
+        listarOrganizaciones = () => {
+            Ctrl.OrganizacionesCRUD = $injector.get("CRUD").config({
+                base_url: "/api/organizaciones/organizaciones",
+                limit: 1000,
+                add_append: "refresh",
+                order_by: ["-created_at"],
+                query_with:['linea_productiva']
+            });
+        };
+        listarOrganizaciones();
 
         Ctrl.filterNombre = "";
         Ctrl.filterNit = "";
@@ -56,11 +58,10 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             });
         };
 
-         Ctrl.getOrganizacion();
+        Ctrl.getOrganizacion();
 
         //INICIO DEV ANGPELICA
         loadDepartamentos = (col_departamento) => {
-
             col_departamento.Options.options = departamentos;
 
             /*departamentos.forEach(departamento => {
@@ -138,20 +139,25 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 			});
 		}
 
+        // Funcion para MARCAR/SELECCIONAR la organizacion que el usuario logeado va a trabajar
 		Ctrl.seleccionar = (u, o) => {
             $http.post('/api/usuario/actualizarorganizacion', {
                 usuario: u,
                 organizacion: o
             }).then(() => {
+                // Rs.Usuario.organizacion_id = o;
+                // listarOrganizaciones();
                 Rs.showToast("Se cambio la Organizacion.");
             });
         };
 
+        // Funcion para DESMARCAR la organizacion que el usuario tiene por defecto
 		Ctrl.quitar = (u) => {
             $http.post('/api/usuario/quitarorganizacion', {
                 usuario: u
             }).then(() => {
                 Rs.showToast("Se quito la Organizacion para el Usuario.");
+                // listarOrganizaciones();
             });
         };
 

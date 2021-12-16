@@ -38,7 +38,6 @@
 			</md-card>
 		</div>
 
-
 		<md-card flex class="no-margin-top">
 			<md-table-container class="border-bottom">
 				<table md-table>
@@ -59,10 +58,11 @@
 					{{-- <th md-column>Creada</th> --}}
 					{{-- <th md-column>Actualizada</th> --}}
 					<th md-column>Acción</th>
+					<th md-column>Sel</th>
 					</tr>
 				</thead>
 				<tbody md-body>
-					<tr md-row ng-repeat="O in Organizacionescopy">
+					<tr md-row ng-repeat="O in Organizacionescopy" class="text text-red">
 					<td md-cell>@{{ O.id }}</td>
 					<td md-cell>@{{ O.nombre }}</td>
 					<td md-cell>@{{ O.nit }}</td>
@@ -78,8 +78,6 @@
 					{{-- <td md-cell>@{{ O.created_at }}</td> --}}
 					{{-- <td md-cell>@{{ O.updated_at }}</td> --}}
 					<td md-cell>
-
-
                         <div>
                             <md-menu>
                                 <md-button ng-click="$mdMenu.open($event)" class="md-icon-button no-margin" aria-label="Menu">
@@ -110,6 +108,9 @@
                             </md-menu>
                         </div>
 					</td>
+                    <td md-cell>
+                        <md-icon md-font-icon="fa-edit" ng-if="Usuario.organizacion_id === O.id"></md-icon>
+                    </td>
 					</tr>
 				</tbody>
 				</table>
