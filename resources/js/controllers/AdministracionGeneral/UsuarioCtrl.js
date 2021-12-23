@@ -4,8 +4,6 @@ angular.module('UsuariosCtrl', [])
 
             var Ctrl = $scope;
             var Rs = $rootScope;
-            // console.log('UsuariosCtrl');
-
             Ctrl.filterDocumento = "";
             Ctrl.filterNombre = "";
             Ctrl.filterApellido = "";
@@ -18,14 +16,32 @@ angular.module('UsuariosCtrl', [])
                 query_with: ['perfil', 'organizaciones_usuario'],
             });
 
+            // console.log(Rs.Usuario);
+            // console.log(Rs.Usuario.organizacion_id);
             Ctrl.getUsuarios = () => {
-                // Asignar organizacion por defecto y obtener la informacion del usuario
-                // 20210505 Se quita funcion de filtrar por Organizacion.
-                // Ctrl.UsuariosCRUD.setScope('laorganizacion', Rs.Usuario.organizacion_id);
-                Ctrl.UsuariosCRUD.get().then(() => {
-                    Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows.slice();
-                    //Ctrl.cargarFincas(Ctrl.UsuariosCRUD.rows[1]); //FIX
-                });
+                if ( Rs.Usuario.organizacion_id > 0 ) {
+                    // Cargar los usuario que pertenecen a la organizacion seleccionada
+                    $http.post('api/organizaciones/usuarios', {
+                        organizacion: Rs.Usuario.organizacion_id
+                    }).then(res => {
+                        if (res.data.length > 0) {
+                            Ctrl.UsuariosCRUD.rows = res.data;
+                        }
+                        Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows;
+                    });
+                } else {
+                    // Ctrl.getUsuarios = () => {
+                    // Asignar organizacion por defecto y obtener la informacion del usuario
+                    // 20210505 Se quita funcion de filtrar por Organizacion.
+                    // Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.setScope(
+                    //     'laorganizacion',
+                    //     Rs.Usuario.organizacion_id
+                    // );
+                    Ctrl.UsuariosCRUD.get().then(() => {
+                        Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows.slice();
+                        //Ctrl.cargarFincas(Ctrl.UsuariosCRUD.rows[1]); //FIX
+                    });
+                }
             };
             Ctrl.getUsuarios();
 

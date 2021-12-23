@@ -16,7 +16,7 @@ class OrganizacionController extends Controller
 		$CRUD = new CRUD('App\Models\Organizacion');
         return $CRUD->call(request()->fn, request()->ops);
 	}
-	
+
 	public function postDepartamentos()
  	{
  		$CRUD = new CRUD('App\Models\Departamento');
@@ -42,6 +42,16 @@ class OrganizacionController extends Controller
             ->get();
     }
 
+	// Funcion para obtener las organizaciones que corresponden a un usuario_id
+	public function postUsuarios()
+    {
+		$organizacion = request('organizacion');
+		return UsuarioOrganizacion::
+            join('usuarios', 'usuarios.id', '=', 'usuario_id')
+            ->where("usuario_organizacion.organizacion_id", $organizacion)
+            ->get();
+    }
+
 	// Funcion para obtener las organizaciones que no se han asignado a un usuario_id
 	public function postNoasignada()
     {
@@ -49,7 +59,7 @@ class OrganizacionController extends Controller
 		$organizaciones = UsuarioOrganizacion::select('organizacion_id')
             ->where("usuario_id", $usuario)
             ->get();
-		
+
 		return Organizacion::whereNotIn("id", $organizaciones)
             ->get();
     }

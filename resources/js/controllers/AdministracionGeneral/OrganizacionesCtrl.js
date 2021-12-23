@@ -2,32 +2,19 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
     "$scope",
     "$rootScope",
     "$http",
+    "$state",
     "$injector",
     "$mdDialog",
     "Upload",  //DEV ANGÉLICA -->
-    function($scope, $rootScope, $http, $injector, $mdDialog, Upload) {
+    function($scope, $rootScope, $http, $state, $injector, $mdDialog, Upload) {
 
         var Ctrl = $scope;
         var Rs = $rootScope;
         var departamentos = [];
 
         Ctrl.Salir = $mdDialog.cancel;
-<<<<<<< HEAD
 
-        listarOrganizaciones = () => {
-            Ctrl.OrganizacionesCRUD = $injector.get("CRUD").config({
-                base_url: "/api/organizaciones/organizaciones",
-                limit: 1000,
-                add_append: "refresh",
-                order_by: ["-created_at"],
-                query_with:['linea_productiva']
-            });
-        };
-        listarOrganizaciones();
-=======
-		
         Ctrl.OrganizacionesCRUD = $injector.get("CRUD").config({
-            
             base_url: "/api/organizaciones/organizaciones",
             limit: 1000,
             add_append: "refresh",
@@ -37,7 +24,6 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         Ctrl.perfil_id = Rs.Usuario.perfil_id;
         Ctrl.filterNombre = "";
         Ctrl.filterNit = "";
->>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
 
         Ctrl.filterNombre = "";
         Ctrl.filterNit = "";
@@ -66,27 +52,17 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
             // Ctrl.OrganizacionesCRUD.setScope('id', Rs.Usuario.organizacion_id); //con el setScope estoy haciendo un filtro en la BD para que él nos traiga sólo un registro
             Ctrl.OrganizacionesCRUD.get().then(() => {
                 Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows.find(O => O.id === Rs.Usuario.organizacion_id);
-<<<<<<< HEAD
 
-                Ctrl.Organizacion = ( Ctrl.Organizacion ) ? Ctrl.OrganizacionesCRUD.rows[0] : [];
-=======
-                
                 if (!Ctrl.Organizacion){
-                    Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows[0]; 
-                }  
->>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
+                    Ctrl.Organizacion = Ctrl.OrganizacionesCRUD.rows[0];
+                }
                 Ctrl.obtenerSecciones(Ctrl.Organizacion.id);
                 Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice();
             });
-           
+
         };
-<<<<<<< HEAD
 
         Ctrl.getOrganizacion();
-=======
- 
-         Ctrl.getOrganizacion();
->>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
 
         //INICIO DEV ANGPELICA
         loadDepartamentos = (col_departamento) => {
@@ -123,16 +99,11 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         inicializarListaDepartamentoMunicipio = () => {
             let col_departamento = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'departamento');
             loadDepartamentos(col_departamento);
-<<<<<<< HEAD
 
-=======
-           
->>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
             col_departamento.Options.onChangeFn = (valorDepartamento) => {
                 let col_municipio = Ctrl.OrganizacionesCRUD.columns.find(c => c.Field == 'municipio');
                 loadMunicipios(valorDepartamento, col_municipio);
             }
-
         }
         //FIN DEV ANGÉLICA
 
@@ -150,12 +121,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                 Rs.showToast('Organización creada')
             });
         };
-<<<<<<< HEAD
 
-
-=======
-       
->>>>>>> 04f959b760f5a5e6a7ebc0bbca630f37d9520ba5
         Ctrl.getDepartamentos = () => {
 			$http.post ('api/lista/obtener', { lista: 'Departamentos' }).then((r)=>{
                 departamentos = r.data;
@@ -174,7 +140,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
 				if(r == 'DELETE') return Ctrl.OrganizacionesCRUD.delete(O);
                 if (!r) return;
 				Ctrl.OrganizacionesCRUD.update(r).then(() => {
-                    Ctrl.getOrganizacion(); 
+                    Ctrl.getOrganizacion();
 					Rs.showToast('Organización actualizada');
 				});
 			});
@@ -186,9 +152,8 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                 usuario: u,
                 organizacion: o
             }).then(() => {
-                // Rs.Usuario.organizacion_id = o;
-                // listarOrganizaciones();
                 Rs.showToast("Se cambio la Organizacion.");
+                $state.reload();
             });
         };
 
@@ -198,7 +163,7 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
                 usuario: u
             }).then(() => {
                 Rs.showToast("Se quito la Organizacion para el Usuario.");
-                // listarOrganizaciones();
+                $state.reload();
             });
         };
 

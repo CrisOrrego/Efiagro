@@ -10,7 +10,7 @@
 
 		<link   rel="stylesheet"              		href="/css/libs.min.css?202010051927" />
 		<link   rel="stylesheet"              		href="/css/app.min.css?202010051927" />
-		
+
 
 		<script type="application/javascript" src="/js/libs.min.js"></script>
 		<script defer type="application/javascript" src="/js/app.min.js?202010051927"></script>
@@ -22,11 +22,11 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
 		<script>
 			$(document).ready(function(){
-			  $('[data-toggle="popover"]').popover();
+			    // $('[data-toggle="popover"]').popover();
 			});
 			</script>
 	</head>
 
 	<body layout ui-view></body>
-	
+
 </html>
