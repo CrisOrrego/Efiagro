@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\UsuarioOrganizacion;
 use App\Functions\CRUD;
 use App\Functions\Helper;
 
@@ -79,6 +80,7 @@ class UsuarioController extends Controller
         }
     }
 
+    // Metodo para buscar en todos los usuarios del sistema (Solo administradores)
     public function postBuscarUsuario()
     {
         $query = request('query');
@@ -87,6 +89,20 @@ class UsuarioController extends Controller
                     ->orWhere('documento',    'LIKE', "$query%")
                     ->with(['fincas'])
                     ->get();
+    }
+
+    // Metodo para buscar en todos los usuarios que pertececen a una organizacion
+    public function postBuscarUsuarioOrganizacion()
+    {
+        $organizacion = request('organizacion');
+        $query = request('query');
+        return Usuario
+            ::join('usuario_organizacion', 'usuarios.id', '=', 'usuario_organizacion.usuario_id')
+            ->where("usuario_organizacion.organizacion_id", $organizacion)
+            ->Where('nombres',   'LIKE', "%$query%")
+            ->orWhere('apellidos', 'LIKE', "%$query%")
+            ->orWhere('documento',    'LIKE', "$query%")
+            ->get();
     }
 
     // Medoto para la actualizacion de cualquier campo de la tabla del usuario. // Luigi

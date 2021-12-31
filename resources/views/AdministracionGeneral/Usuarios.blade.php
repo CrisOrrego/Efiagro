@@ -48,7 +48,7 @@
                     </tr>
                     </thead>
                     <tbody md-body >
-                        <tr md-row ng-repeat="U in UsuariosCRUD.rows ">
+                        <tr md-row ng-repeat="U in Usuarioscopy ">
                             <td md-cell>
                                 <div>
                                     <md-menu>

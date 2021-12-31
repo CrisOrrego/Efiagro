@@ -252,56 +252,56 @@ angular.module("OrganizacionesCtrl", []).controller("OrganizacionesCtrl", [
         Ctrl.Update = () => {
             //alert("Update");
         }
-    //FIN DEV ANGÉLICA
+        //FIN DEV ANGÉLICA
 
-    //INICIO DEV ANGELICA --> O = Organizacion
-    Ctrl.cargarImagen = async() => {
-        var Imagen = await $mdDialog.show({
-            templateUrl: 'templates/dialogs/image-editor.html',
-            controller: 'ImageEditor_DialogCtrl',
-            multiple: true,
-            locals: {
-                Config: {
-                    Theme: 'default',
-                    CanvasWidth: 200,
-                    CanvasHeight: 200,
-                    CropWidth: 200,
-                    CropHeight: 200,
-                    MinWidth: 50,
-                    MinHeight: 50,
-                    KeepAspect: true,
-                    Preview: false,
-                    Daten: {
-                        Path: 'files/img_perfil_organizacion/' + Ctrl.Organizacion.id + '.jpg'
+        //INICIO DEV ANGELICA --> O = Organizacion
+        Ctrl.cargarImagen = async() => {
+            var Imagen = await $mdDialog.show({
+                templateUrl: 'templates/dialogs/image-editor.html',
+                controller: 'ImageEditor_DialogCtrl',
+                multiple: true,
+                locals: {
+                    Config: {
+                        Theme: 'default',
+                        CanvasWidth: 200,
+                        CanvasHeight: 200,
+                        CropWidth: 200,
+                        CropHeight: 200,
+                        MinWidth: 50,
+                        MinHeight: 50,
+                        KeepAspect: true,
+                        Preview: false,
+                        Daten: {
+                            Path: 'files/img_perfil_organizacion/' + Ctrl.Organizacion.id + '.jpg'
+                        }
                     }
                 }
+            });
+            let logo = document.getElementById("logo_perfil");
+            logo.src = "/../files/img_perfil_organizacion//" + Ctrl.Organizacion.id + ".jpg?d=" + new Date().getTime();
+        };
+        //FIN DEV ANGELICA
+
+
+        //INICIO DEV ANGÉLICA
+        Ctrl.filterOrganizacion = () => {
+            //Filtro de tipo de organizacion
+            Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
+            //Filtro para nombre
+            if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2){
+                //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(O => O.nombre.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
             }
-        });
-        let logo = document.getElementById("logo_perfil");
-        logo.src = "/../files/img_perfil_organizacion//" + Ctrl.Organizacion.id + ".jpg?d=" + new Date().getTime();
-    };
-    //FIN DEV ANGELICA
-
-
-    //INICIO DEV ANGÉLICA
-    Ctrl.filterOrganizacion = () => {
-        //Filtro de tipo de organizacion
-        Ctrl.Organizacionescopy = Ctrl.OrganizacionesCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
-        //Filtro para nombre
-        if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2){
-            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
-            Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(O => O.nombre.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
-        }
-        //Filtro para buscar Nit
-        if (Ctrl.filterNit && Ctrl.filterNit.length > 2){
-            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
-            Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(O => O.nit.toUpperCase().indexOf(Ctrl.filterNit.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
-        }
-        if (Ctrl.filterLineaProductiva && Ctrl.filterLineaProductiva.length >= 1){
-            //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
-            Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(L => L.linea_productiva.nombre.toUpperCase().indexOf(Ctrl.filterLineaProductiva.toUpperCase())> -1);
-        }
-    } //FIN DEV ANGÉLICA
+            //Filtro para buscar Nit
+            if (Ctrl.filterNit && Ctrl.filterNit.length > 2){
+                //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(O => O.nit.toUpperCase().indexOf(Ctrl.filterNit.toUpperCase())> -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+            }
+            if (Ctrl.filterLineaProductiva && Ctrl.filterLineaProductiva.length >= 1){
+                //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                Ctrl.Organizacionescopy = Ctrl.Organizacionescopy.filter(L => L.linea_productiva.nombre.toUpperCase().indexOf(Ctrl.filterLineaProductiva.toUpperCase())> -1);
+            }
+        } //FIN DEV ANGÉLICA
     }
 
 ]);

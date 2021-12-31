@@ -1,10 +1,10 @@
 <div id="Creditos" flex ng-controller="FondoRotatorio_CreditosCtrl" layout>
-	
+
 	<md-sidenav class="w230 " md-whiteframe=4
 		md-is-locked-open="AsociadosNav">
-		
+
 		<div class="h40 bg-primary text-16px lh40 padding-left"><span class="text-clear">Buscar Asociado</span></div>
-		<md-autocomplete 
+		<md-autocomplete
 			md-selected-item="Asociado"
 			md-autoselect="true"
 			md-search-text="asociadosQuery"
@@ -23,7 +23,7 @@
 		</md-autocomplete>
 
 		<div flex layout=column class="padding-0-10" ng-show="Asociado">
-			
+
 			@include('FondoRotatorio.Creditos_UsuarioForma')
 
 		</div>
@@ -45,7 +45,7 @@
 					<md-button ng-click="CredSel = null" aria-label="b" ng-show="CredSel" class="no-margin-left no-padding-left">
 						<md-icon md-font-icon="fa-chevron-left"></md-icon>&nbsp;&nbsp;Volver a Creditos
 					</md-button>
- 
+
 					<span class="text-16px text-clear" ng-show="!CredSel">Créditos de @{{ Asociado.nombre }}</span>
 
 					<span flex></span>
@@ -75,7 +75,7 @@
 					</md-menu>
 
 				</div>
-		</md-toolbar>			
+		</md-toolbar>
 
 		@include('FondoRotatorio.Creditos_CreditosLista')
 		@include('FondoRotatorio.Creditos_CreditDetail')

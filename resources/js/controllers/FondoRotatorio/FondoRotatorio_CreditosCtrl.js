@@ -7,9 +7,16 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 		var Rs = $rootScope;
 		Ctrl.AsociadosNav = true;
 		Ctrl.Asociado = null;
-	
+
 		Ctrl.buscarAsociados = (query) => {
-			return Rs.http('api/usuario/buscar-usuario', { 'query': query });
+            if ( Rs.Usuario.perfil_id ) {
+                return Rs.http('api/usuario/buscar-usuario-organizacion', {
+                    'query': query,
+                    'organizacion': Rs.Usuario.organizacion_id
+                });
+            } else {
+                return Rs.http('api/usuario/buscar-usuario', { 'query': query });
+            }
 		}
 
 		Ctrl.selectAsociado = (Asociado) => {
@@ -24,7 +31,7 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 				clickOutsideToClose: false,
 				locals: { Asociado: Ctrl.Asociado, myUser: Rs.Usuario, Parent: Ctrl, Simulate: false },
 				fullscreen: false,
-			}).then(function(Cred) { 
+			}).then(function(Cred) {
 				//Ctrl.ViewCredit(Cred);
 				Ctrl.LoadCreditos();
 			});
@@ -41,7 +48,7 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 		}
 
 		Ctrl.ViewCredit = function(Cred){
-			
+
 			if (!angular.isDefined(Cred)) return false;
 			$http.get('/api/creditos/?id='+Cred.id).then(function(res){
 				Ctrl.CredSel = res.data;
@@ -70,7 +77,7 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
             var buf = new ArrayBuffer(s.length);
             var view = new Uint8Array(buf);
             for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-            return buf;        
+            return buf;
         }
 
         function excelColName(n) {
@@ -116,10 +123,10 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 				var ws = XLSX.utils.aoa_to_sheet(SheetData);
 				var last_cell = excelColName(ColumnsNo - 1) + (r.data.data.Rows.length + 1);
 				ws['!autofilter'] = { ref: ('A1:'+last_cell) };
-		        
+
 		        XLSX.utils.book_append_sheet(wb, ws, "Creditos");
 		        var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
-		     
+
 		        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), Titulo + '.xlsx');
 			});
 		}
@@ -132,7 +139,7 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 				locals: { CredSel: Ctrl.CredSel, Parent: Ctrl },
 				fullscreen: true,
 				targetEvent: ev,
-			}).then(function() { 
+			}).then(function() {
 				Ctrl.ViewCredit(Ctrl.CredSel);
 			});
 		}
@@ -160,7 +167,7 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 							.ok('BORRAR CRÉDITO')
 							.cancel('Cancelar');
 			$mdDialog.show(confirm).then(function() {
-				
+
 				$http.post('/api/creditos/delete', { id: Ctrl.CredSel.id }).then(function(res){
 					$mdToast.showSimple('Borrado');
 					Ctrl.CredSel = null;
@@ -180,7 +187,7 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 							.ok('BORRAR RECIBO')
 							.cancel('Cancelar');
 			$mdDialog.show(confirm).then(function() {
-				
+
 				$http.post('/api/creditos/delete-recibo', { id: Recibo.id }).then(function(res){
 					$mdToast.showSimple('Borrado');
 					Ctrl.ViewCredit(Ctrl.CredSel);
