@@ -7,7 +7,7 @@ use App\Models\Usuario;
 use App\Models\UsuarioOrganizacion;
 use App\Functions\CRUD;
 use App\Functions\Helper;
-
+use Facade\Ignition\QueryRecorder\Query;
 use Illuminate\Support\Facades\Crypt;
 use Hash;
 
@@ -95,13 +95,17 @@ class UsuarioController extends Controller
     public function postBuscarUsuarioOrganizacion()
     {
         $organizacion = request('organizacion');
-        $query = request('query');
         return Usuario
             ::join('usuario_organizacion', 'usuarios.id', '=', 'usuario_organizacion.usuario_id')
             ->where("usuario_organizacion.organizacion_id", $organizacion)
-            ->Where('nombres',   'LIKE', "%$query%")
-            ->orWhere('apellidos', 'LIKE', "%$query%")
-            ->orWhere('documento',    'LIKE', "$query%")
+            ->where(
+                function($sentencia){
+                    $query = request('query');
+                    $sentencia->orWhere('apellidos', 'LIKE', "%$query%");
+                    $sentencia->orWhere('nombres',   'LIKE', "%$query%");
+                    $sentencia->orWhere('documento',    'LIKE', "$query%");
+                }
+            )
             ->get();
     }
 

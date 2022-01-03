@@ -9,7 +9,8 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
 		Ctrl.Asociado = null;
 
 		Ctrl.buscarAsociados = (query) => {
-            if ( Rs.Usuario.perfil_id ) {
+			// console.log(Rs.Usuario.perfil_id);
+            if ( Rs.Usuario.perfil_id == 2 ) {
                 return Rs.http('api/usuario/buscar-usuario-organizacion', {
                     'query': query,
                     'organizacion': Rs.Usuario.organizacion_id
@@ -17,7 +18,7 @@ angular.module('FondoRotatorio_CreditosCtrl', [])
             } else {
                 return Rs.http('api/usuario/buscar-usuario', { 'query': query });
             }
-		}
+		};
 
 		Ctrl.selectAsociado = (Asociado) => {
 			Ctrl.Asociado = Asociado;
