@@ -141,24 +141,24 @@ angular.module('UsuariosCtrl', [])
 
             //INICIO DEV ANGÉLICA
             Ctrl.filterUsuarios = () => {
-                    // Filtro de tipo de Documento
-                    Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
-                    if (Ctrl.filterDocumento && Ctrl.filterDocumento.length >= 1) {
-                        //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
-                        Ctrl.Usuarioscopy = Ctrl.Usuarioscopy.filter(U => U.documento == Ctrl.filterDocumento);
-                    }
-
-                    //Filtro para nombre
-                    if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2) {
-                        //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
-                        Ctrl.Usuarioscopy = Ctrl.Usuarioscopy.filter(U => U.nombres.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase()) > -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
-                    }
-                    //Filtro para buscar Nit
-                    if (Ctrl.filterApellido && Ctrl.filterApellido.length > 2) {
-                        //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
-                        Ctrl.Usuarioscopy = Ctrl.Usuarioscopy.filter(U => U.apellidos.toUpperCase().indexOf(Ctrl.filterApellido.toUpperCase()) > -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
-                    }
+                // Filtro de tipo de Documento
+                Ctrl.Usuarioscopy = Ctrl.UsuariosCRUD.rows.slice(); //Cada que hagamos un filtro obtenemos los datos originales
+                if (Ctrl.filterDocumento && Ctrl.filterDocumento.length >= 1) {
+                    //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                    Ctrl.Usuarioscopy = Ctrl.Usuarioscopy.filter(U => U.documento == Ctrl.filterDocumento);
                 }
-                //FIN DEV ANGÉLICA
+
+                //Filtro para nombre
+                if (Ctrl.filterNombre && Ctrl.filterNombre.length > 2) {
+                    //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                    Ctrl.Usuarioscopy = Ctrl.Usuarioscopy.filter(U => U.nombres.toUpperCase().indexOf(Ctrl.filterNombre.toUpperCase()) > -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+                }
+                //Filtro para buscar Nit
+                if (Ctrl.filterApellido && Ctrl.filterApellido.length > 2) {
+                    //toUpperCase() --> Para pasarlo a mayúscula/ lo encuentra en minuscyulas o mayusculas
+                    Ctrl.Usuarioscopy = Ctrl.Usuarioscopy.filter(U => U.apellidos.toUpperCase().indexOf(Ctrl.filterApellido.toUpperCase()) > -1); //indexOf para mirar si una cadena está contenida en otra y me dice en que posición está contenida
+                }
+            }
+            //FIN DEV ANGÉLICA
         }
     ]);

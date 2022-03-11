@@ -11,12 +11,12 @@ class CultivoController extends Controller
     public function postCultivos()
     {
         $CRUD = new CRUD('App\Models\Cultivo');
-       return $CRUD->call(request()->fn, request()->ops);
+        return $CRUD->call(request()->fn, request()->ops);
     }
 
     public function postObtener()
-   {
-       $Cultivo = Cultivo::All();
-       return $Cultivo;
-   } 
+    {
+        $Cultivo = Cultivo::All();
+        return $Cultivo;
+    }
 }

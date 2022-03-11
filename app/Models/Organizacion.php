@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Organizacion extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'organizaciones';
     protected $guarded = ['id'];
     protected $appends = [];
@@ -37,7 +37,7 @@ class Organizacion extends Model
             ['telefono',                    'Teléfono:',                     null, true,         false, null, 100],
             ['correo',                      'Correo:',                       'email', true,      false, null, 100],
             ['total_asociados',             'Asociados:',                    'integer', true,    false, null, 100],
-            ['fecha_constitucion',          'Fecha Constitución:',           'date', false,       false, null, 100],         
+            ['fecha_constitucion',          'Fecha Constitución:',           'date', false,       false, null, 100],
         ];
     }
 
@@ -50,10 +50,15 @@ class Organizacion extends Model
     {
         return $this->belongsTo('App\Models\LineaProductiva', 'linea_productiva_id');
     }
-    
+
     public function departamento()
     {
         return $this->hasMany('App\Models\Departamento', 'id_departamento', 'id');
+    }
+
+    public function promedioproduccion()
+    {
+        return $this->hasMany('App\Models\Infpromedioproduccion', 'organizacion_id', 'id');
     }
 
 }
