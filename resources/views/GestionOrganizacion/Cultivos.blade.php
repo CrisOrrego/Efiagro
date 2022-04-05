@@ -11,6 +11,9 @@
                 </div>
                 <div class="col">
                     <canvas id="promedioproduccion" width="320" height="320"></canvas>
+                    <hr>
+                    <button ng-click="calcularPeriodo()" class="md-icon-button no-margin" aria-label="calcular">
+                        Calcular</button>
                 </div>
                 <div class="col">
                     <canvas id="creditos" width="320" height="320"></canvas>

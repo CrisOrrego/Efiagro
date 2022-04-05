@@ -58,7 +58,7 @@ class Organizacion extends Model
 
     public function promedioproduccion()
     {
-        return $this->hasMany('App\Models\Infpromedioproduccion', 'organizacion_id', 'id');
+        return $this->hasOne('App\Models\Infpromedioproduccion', 'organizacion_id', 'id')->row();
     }
 
 }

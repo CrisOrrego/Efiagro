@@ -88,51 +88,79 @@ class OrganizacionController extends Controller
     }
 
     // Funcion para calcular el valor de la produccion por cada Organizacion.
-	public function postCalculoProduccion()
+	public function getCalculoproduccion()
     {
-		$mesActual = date('m');
+		$periodoActual = intval(date('m')/2);
 		$datosActuales = Promedio::where("estado", "A")
             ->get();
-        // Validar que no exista el mes actual o siguiente, para generar el conteo.
-        if ( $datosActuales[0]['periodo'] == $mesActual || $datosActuales[0]['periodo'] + 1 == $mesActual ) {
+        $anio = date('Y');
+        if ( $periodoActual == 1 ) {
+            $inicio = $anio . '-11-01';
+            $final = $anio . '-12-31';
+            $periodoActual = 6;
+        } else {
+            $periodoActual--;
+            $mes2 = $periodoActual * 2;
+            $inicio = $anio . '-' . ( $mes2 - 1 ) . '-01';
+            $final = $anio . '-' . $mes2 . '-31';
+        }
+
+        if ( $datosActuales[0]['periodo'] == $periodoActual ) {
             return;
         } else {
-            $anio = date('Y');
-            if ( $mesActual == 1 || $mesActual == 2 ) {
-                $inicio = $anio . '-11-01';
-                $final = $anio . '-12-31';
-                $mesActual--;
-            } else {
-                $mes1 = ( $mesActual % 2 == 0 ) ? $mesActual - 3 : $mesActual - 2;
-                $inicio = $anio . '-' . $mes1 . '-01';
-                $final = $anio . '-' . ( $mes1 + 1 ) . '-31';
-            }
-            // Obtener promedio de hectareas y suma de kilogramos, para generar el promedio por organizacion.
-            $organizaciones = Organizacion::findAll();
+            $organizaciones = Organizacion::All();
             for ($o = 0; $o < count($organizaciones); $o++ ) {
+                $idLotePromedio = 0;
                 $valores = DB::select("SELECT AVG(l.hectareas) as 'hectareas', SUM(kilogramo) as kilogramos
-                    FROM `lotes` l
-                        inner join `lotes_cosechas` c on l.id = c.lote_id
-                    where l.organizacion_id = {$organizaciones[$o]['id']} and c.created_at between '$inicio' and '$final' ");
-                if ( $valores['hectareas'] > 0 && $valores['kilogramos'] > 0 ) {
-                    $promedio = $valores['hectareas'] / $valores['kilogramos'];
-                } else {
-                    $promedio = 0;
+                    FROM lotes l
+                        inner join lotes_cosechas c on l.id = c.lote_id
+                    where l.organizacion_id = {$organizaciones[$o]['id']} and c.fecha between '$inicio' and '$final' ");
+                foreach ($valores as $otro) {
+                    $hectareas = $otro->hectareas;
+                    $kilogramos = $otro->kilogramos;
+                    if ( $hectareas > 0 && $kilogramos > 0 ) {
+                        $promedio = $kilogramos / $hectareas;
+                    } else {
+                        $promedio = 0;
+                    }
+                    $datosOrg = Promedio::where("estado", "A")
+                        ->where("organizacion_id", $organizaciones[$o]['id'])
+                        ->get();
+                    if ( count($datosOrg) > 0 ) {
+                        foreach ($datosOrg as $datosOrgOK) {
+                            $datos = new Promedio([
+                                'organizacion_id' => $organizaciones[$o]['id'],
+                                'periodo'=> $periodoActual,
+                                'bimestre1'=> $promedio,
+                                'bimestre2'=> $datosOrgOK->bimestre1,
+                                'bimestre3'=> $datosOrgOK->bimestre2,
+                                'bimestre4'=> $datosOrgOK->bimestre3,
+                                'bimestre5'=> $datosOrgOK->bimestre4,
+                                'bimestre6'=> $datosOrgOK->bimestre5,
+                                'estado' => 'A'
+                            ]);
+                            $idLotePromedio = $datosOrgOK->id;
+                        }
+                        $inactivar = Promedio::findOrFail($idLotePromedio);
+                        $inactivar->estado = 'I';
+                        $inactivar->deleted_at = date('Y-m-d');
+                        $inactivar->save();
+                    } else {
+                        $datos = new Promedio([
+                            'organizacion_id' => $organizaciones[$o]['id'],
+                            'periodo'=> $periodoActual,
+                            'bimestre1'=> $promedio,
+                            'bimestre2'=> 0,
+                            'bimestre3'=> 0,
+                            'bimestre4'=> 0,
+                            'bimestre5'=> 0,
+                            'bimestre6'=> 0,
+                            'estado' => 'A'
+                        ]);
+                    }
+                    $datos->save();
                 }
-                $datos = new Promedio([
-                    'organizacion_id' => $organizaciones[$o]['id'],
-                    'periodo'=> $mesActual,
-                    'bimestre1'=> $datosActuales['bimestre2'],
-                    'bimestre2'=> $datosActuales['bimestre3'],
-                    'bimestre3'=> $datosActuales['bimestre4'],
-                    'bimestre4'=> $datosActuales['bimestre5'],
-                    'bimestre5'=> $datosActuales['bimestre6'],
-                    'bimestre6'=> $promedio,
-                    'estado' => 'A'
-                ]);
-                $datos->save();
             }
         }
     }
-
 }

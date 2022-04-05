@@ -29,4 +29,10 @@ class Infpromedioproduccion extends Model
             ['bimestre6',       'Valor',        null, true, false, null, 100]
         ];
     }
+
+    // $this->saldo = DB::table('credito__saldos')->where('id', $this->saldo_id)->first();
+    // public function scopePeriodoactual($q)
+    // {
+    // 	return $q->where('estado', 'A');
+    // }
 }

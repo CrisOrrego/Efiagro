@@ -21,8 +21,9 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
         // Ctrl.promedioproduccion = 20;
         Ctrl.pp = () => {
             return $http.post('api/organizaciones/promedioproduccion', {
-                organizacion: 1
+                organizacion: Rs.Usuario.organizacion_id
             }).then( r => {
+                console.log(r);
                 bi = r.data[0];
                 console.log(r);
 
@@ -335,6 +336,12 @@ angular.module("CultivosCtrl", []).controller("CultivosCtrl", [
 
         }
 
+        Ctrl.calcularPeriodo = () => {
+            // console.log('hola a todos');
+            $http.get('api/organizaciones/calculoproduccion/', {})
+                .then();
+                location.reload();
+        };
 
 }])
 .directive("mapa",[function(){
